@@ -79,8 +79,14 @@ xfce_utf8_remove_controls
 </SECTION>
 
 <SECTION>
+<TITLE>File Utilities</TITLE>
+<FILE>xfce-fileutils</FILE>
+xfce_mkdirhier
+</SECTION>
+
+<SECTION>
 <TITLE>Miscellaneous Utilities</TITLE>
-<FILE>util</FILE>
+<FILE>xfce-miscutils</FILE>
 XFCE_LICENSE_BSD
 XFCE_LICENSE_GPL
 XFCE_LICENSE_LGPL
@@ -95,7 +101,6 @@ xfce_strjoin
 xfce_gethostname
 xfce_putenv
 xfce_setenv
-xfce_mkdirhier
 </SECTION>
 
 
@@ -108,7 +113,6 @@ xfce_desktop_entry_parse
 xfce_desktop_entry_get_file
 xfce_desktop_entry_get_string
 xfce_desktop_entry_get_int
-
 <SUBSECTION Standard>
 XFCE_DESKTOP_ENTRY
 XFCE_IS_DESKTOP_ENTRY

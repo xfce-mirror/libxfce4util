@@ -18,6 +18,8 @@ libxfce4utilinclude_HEADERS =						\
 	utf8.h								\
 	util.h								\
 	xfce-desktopentry.h						\
+	xfce-fileutils.h						\
+	xfce-miscutils.h						\
 	xfce-rc.h							\
 	xfce-resource.h
 
@@ -28,10 +30,12 @@ libxfce4util_la_SOURCES =						\
 	licenses-texts.c						\
 	utf8.c								\
 	utf8.h								\
-	util.c								\
-	util.h								\
 	xfce-desktopentry.c						\
 	xfce-desktopentry.h						\
+	xfce-fileutils.c						\
+	xfce-fileutils.h						\
+	xfce-miscutils.c						\
+	xfce-miscutils.h						\
 	xfce-rc.c							\
 	xfce-rc.h							\
 	xfce-rc-config.c						\

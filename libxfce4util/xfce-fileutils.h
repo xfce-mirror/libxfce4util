@@ -25,9 +25,13 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <libxfce4util/libxfce4util.h>
+#ifndef __LIBXFCE4UTIL_XFCE_FILEUTILS_H__
+#define __LIBXFCE4UTIL_XFCE_FILEUTILS_H__
 
-#ifdef XFCE_DISABLE_DEPRECATED
-#warning "Don't include <libxfce4util/util.h> directly, include <libxfce4util/libxfce4util.h> instead."
-#endif
+#include <glib.h>
 
+gboolean xfce_mkdirhier (const gchar   *whole_path,
+                         unsigned long  mode,
+                         GError       **error);
+
+#endif /* !__LIBXFCE4UTIL_XFCE_FILEUTILS_H__ */

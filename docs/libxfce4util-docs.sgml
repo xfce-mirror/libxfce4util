@@ -5,8 +5,9 @@
 <!ENTITY libxfce4util-Internationalization SYSTEM "xml/i18n.xml">
 <!ENTITY libxfce4util-Resource SYSTEM "xml/xfce-resource.xml">
 <!ENTITY libxfce4util-RcParser SYSTEM "xml/xfce-rc.xml">
+<!ENTITY libxfce4util-FileUtils-Functions SYSTEM "xml/xfce-fileutils.xml">
+<!ENTITY libxfce4util-MiscUtils-Functions SYSTEM "xml/xfce-miscutils.xml">
 <!ENTITY libxfce4util-Unicode-Functions SYSTEM "xml/utf8.xml">
-<!ENTITY libxfce4util-Utility-Functions SYSTEM "xml/util.xml">
 <!ENTITY libxfce4util-Desktop-Entries SYSTEM "xml/xfce-desktopentry.xml">
 <!ENTITY version SYSTEM "version.xml">
 ]>
@@ -36,8 +37,9 @@
 		<title>Xfce Utilities</title>
 		&libxfce4util-Resource;
 		&libxfce4util-RcParser;
+		&libxfce4util-FileUtils-Functions;
+		&libxfce4util-MiscUtils-Functions;
 		&libxfce4util-Unicode-Functions;
-		&libxfce4util-Utility-Functions;
 	</chapter>
 
 	<chapter id="libxfce4util-desktop">

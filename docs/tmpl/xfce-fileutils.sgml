@@ -1,0 +1,27 @@
+<!-- ##### SECTION Title ##### -->
+File Utilities
+
+<!-- ##### SECTION Short_Description ##### -->
+miscellaneous file-related utility functions.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+<ulink url="http://developer.gnome.org/doc/API/2.0/glib/glib-File-Utilities.html">GLib File Utilities</ulink>
+</para>
+
+<!-- ##### FUNCTION xfce_mkdirhier ##### -->
+<para>
+
+</para>
+
+@whole_path: 
+@Param2: 
+@error: 
+@Returns: 
+
+

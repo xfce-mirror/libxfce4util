@@ -57,8 +57,10 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libxfce4util_la_DEPENDENCIES =
 am_libxfce4util_la_OBJECTS = libxfce4util_la-i18n.lo \
 	libxfce4util_la-licenses-texts.lo libxfce4util_la-utf8.lo \
-	libxfce4util_la-util.lo libxfce4util_la-xfce-desktopentry.lo \
-	libxfce4util_la-xfce-rc.lo libxfce4util_la-xfce-rc-config.lo \
+	libxfce4util_la-xfce-desktopentry.lo \
+	libxfce4util_la-xfce-fileutils.lo \
+	libxfce4util_la-xfce-miscutils.lo libxfce4util_la-xfce-rc.lo \
+	libxfce4util_la-xfce-rc-config.lo \
 	libxfce4util_la-xfce-rc-simple.lo \
 	libxfce4util_la-xfce-resource.lo
 libxfce4util_la_OBJECTS = $(am_libxfce4util_la_OBJECTS)
@@ -68,8 +70,9 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libxfce4util_la-i18n.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-licenses-texts.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-utf8.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-util.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-fileutils.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-miscutils.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-rc-config.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-rc-simple.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-rc.Plo \
@@ -219,6 +222,8 @@ libxfce4utilinclude_HEADERS = \
 	utf8.h								\
 	util.h								\
 	xfce-desktopentry.h						\
+	xfce-fileutils.h						\
+	xfce-miscutils.h						\
 	xfce-rc.h							\
 	xfce-resource.h
 
@@ -229,10 +234,12 @@ libxfce4util_la_SOURCES = \
 	licenses-texts.c						\
 	utf8.c								\
 	utf8.h								\
-	util.c								\
-	util.h								\
 	xfce-desktopentry.c						\
 	xfce-desktopentry.h						\
+	xfce-fileutils.c						\
+	xfce-fileutils.h						\
+	xfce-miscutils.c						\
+	xfce-miscutils.h						\
 	xfce-rc.c							\
 	xfce-rc.h							\
 	xfce-rc-config.c						\
@@ -338,8 +345,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-i18n.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-licenses-texts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-utf8.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-util.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-fileutils.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-miscutils.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-rc-config.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-rc-simple.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-rc.Plo@am__quote@
@@ -441,30 +449,6 @@ libxfce4util_la-utf8.lo: utf8.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-utf8.lo `test -f 'utf8.c' || echo '$(srcdir)/'`utf8.c
 
-libxfce4util_la-util.o: util.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-util.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-util.Tpo" -c -o libxfce4util_la-util.o `test -f 'util.c' || echo '$(srcdir)/'`util.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-util.Tpo" "$(DEPDIR)/libxfce4util_la-util.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-util.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='util.c' object='libxfce4util_la-util.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-util.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-util.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-util.o `test -f 'util.c' || echo '$(srcdir)/'`util.c
-
-libxfce4util_la-util.obj: util.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-util.obj -MD -MP -MF "$(DEPDIR)/libxfce4util_la-util.Tpo" -c -o libxfce4util_la-util.obj `if test -f 'util.c'; then $(CYGPATH_W) 'util.c'; else $(CYGPATH_W) '$(srcdir)/util.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-util.Tpo" "$(DEPDIR)/libxfce4util_la-util.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-util.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='util.c' object='libxfce4util_la-util.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-util.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-util.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-util.obj `if test -f 'util.c'; then $(CYGPATH_W) 'util.c'; else $(CYGPATH_W) '$(srcdir)/util.c'; fi`
-
-libxfce4util_la-util.lo: util.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-util.lo -MD -MP -MF "$(DEPDIR)/libxfce4util_la-util.Tpo" -c -o libxfce4util_la-util.lo `test -f 'util.c' || echo '$(srcdir)/'`util.c; \
-@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-util.Tpo" "$(DEPDIR)/libxfce4util_la-util.Plo"; else rm -f "$(DEPDIR)/libxfce4util_la-util.Tpo"; exit 1; fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='util.c' object='libxfce4util_la-util.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-util.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-util.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-util.lo `test -f 'util.c' || echo '$(srcdir)/'`util.c
-
 libxfce4util_la-xfce-desktopentry.o: xfce-desktopentry.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-desktopentry.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Tpo" -c -o libxfce4util_la-xfce-desktopentry.o `test -f 'xfce-desktopentry.c' || echo '$(srcdir)/'`xfce-desktopentry.c; \
 @am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Tpo"; exit 1; fi
@@ -488,6 +472,54 @@ libxfce4util_la-xfce-desktopentry.lo: xfce-desktopentry.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-desktopentry.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-desktopentry.lo `test -f 'xfce-desktopentry.c' || echo '$(srcdir)/'`xfce-desktopentry.c
+
+libxfce4util_la-xfce-fileutils.o: xfce-fileutils.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-fileutils.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo" -c -o libxfce4util_la-xfce-fileutils.o `test -f 'xfce-fileutils.c' || echo '$(srcdir)/'`xfce-fileutils.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-fileutils.c' object='libxfce4util_la-xfce-fileutils.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-fileutils.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-fileutils.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-fileutils.o `test -f 'xfce-fileutils.c' || echo '$(srcdir)/'`xfce-fileutils.c
+
+libxfce4util_la-xfce-fileutils.obj: xfce-fileutils.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-fileutils.obj -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo" -c -o libxfce4util_la-xfce-fileutils.obj `if test -f 'xfce-fileutils.c'; then $(CYGPATH_W) 'xfce-fileutils.c'; else $(CYGPATH_W) '$(srcdir)/xfce-fileutils.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-fileutils.c' object='libxfce4util_la-xfce-fileutils.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-fileutils.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-fileutils.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-fileutils.obj `if test -f 'xfce-fileutils.c'; then $(CYGPATH_W) 'xfce-fileutils.c'; else $(CYGPATH_W) '$(srcdir)/xfce-fileutils.c'; fi`
+
+libxfce4util_la-xfce-fileutils.lo: xfce-fileutils.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-fileutils.lo -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo" -c -o libxfce4util_la-xfce-fileutils.lo `test -f 'xfce-fileutils.c' || echo '$(srcdir)/'`xfce-fileutils.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Plo"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-fileutils.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-fileutils.c' object='libxfce4util_la-xfce-fileutils.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-fileutils.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-fileutils.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-fileutils.lo `test -f 'xfce-fileutils.c' || echo '$(srcdir)/'`xfce-fileutils.c
+
+libxfce4util_la-xfce-miscutils.o: xfce-miscutils.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-miscutils.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo" -c -o libxfce4util_la-xfce-miscutils.o `test -f 'xfce-miscutils.c' || echo '$(srcdir)/'`xfce-miscutils.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-miscutils.c' object='libxfce4util_la-xfce-miscutils.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-miscutils.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-miscutils.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-miscutils.o `test -f 'xfce-miscutils.c' || echo '$(srcdir)/'`xfce-miscutils.c
+
+libxfce4util_la-xfce-miscutils.obj: xfce-miscutils.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-miscutils.obj -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo" -c -o libxfce4util_la-xfce-miscutils.obj `if test -f 'xfce-miscutils.c'; then $(CYGPATH_W) 'xfce-miscutils.c'; else $(CYGPATH_W) '$(srcdir)/xfce-miscutils.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-miscutils.c' object='libxfce4util_la-xfce-miscutils.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-miscutils.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-miscutils.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-miscutils.obj `if test -f 'xfce-miscutils.c'; then $(CYGPATH_W) 'xfce-miscutils.c'; else $(CYGPATH_W) '$(srcdir)/xfce-miscutils.c'; fi`
+
+libxfce4util_la-xfce-miscutils.lo: xfce-miscutils.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-miscutils.lo -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo" -c -o libxfce4util_la-xfce-miscutils.lo `test -f 'xfce-miscutils.c' || echo '$(srcdir)/'`xfce-miscutils.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Plo"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-miscutils.c' object='libxfce4util_la-xfce-miscutils.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-miscutils.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-miscutils.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-miscutils.lo `test -f 'xfce-miscutils.c' || echo '$(srcdir)/'`xfce-miscutils.c
 
 libxfce4util_la-xfce-rc.o: xfce-rc.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-rc.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-rc.Tpo" -c -o libxfce4util_la-xfce-rc.o `test -f 'xfce-rc.c' || echo '$(srcdir)/'`xfce-rc.c; \
