@@ -78,6 +78,7 @@
 #include <glib.h>
 
 #include <libxfce4util/i18n.h>
+#include <libxfce4util/debug.h>
 
 #ifndef HAVE_STRLCPY
 #define strlcpy(x,y,z)	g_strlcpy(x,y,z)
@@ -302,8 +303,7 @@ xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
   gchar *dstlast;
   gchar *d;
   const gchar *locale;
-  const gchar *lang;
-  gchar langbuf[PATH_MAX];
+  gboolean need_lang = FALSE;
 
   g_return_val_if_fail(dst != NULL, NULL);
   g_return_val_if_fail(size > 2, NULL);
@@ -320,18 +320,60 @@ xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
       if ((locale = g_getenv("LANG")) == NULL)
 	locale = DEFAULT_LOCALE;
 
-  lang = __unaliasname(NLS_ALIAS_DB, locale, langbuf, sizeof(langbuf));
-
-  for (; d < dst + (size - 1); ) {
+  for (; d < dstlast; ) {
     if (*paths == ':' || *paths == '\0') {
       *d = '\0';
 
-      if (g_file_test(dst, test))
+      if (need_lang) {
+	/* ok, we will try four things here:
+	   - ll_LL@qualifier.encoding
+	   - ll_LL@qualifier
+	   - ll_LL
+	   - ll
+	 */
+	char buffer [size];
+	char delim[] = { '.', '@', '_' };
+	int i;
+
+	g_snprintf (buffer, size, dst, locale);
+
+	DBG ("path : %s", buffer);
+	
+	if (g_file_test(buffer, test)) {
+	  strncpy (dst, buffer, size);
+	  return dst;
+	}
+
+	for (i = 0; i < G_N_ELEMENTS(delim); i++) {
+	  char *langext, *p;
+	  char c = delim[i];
+	  
+	  if ((p = strchr(locale, c)) != NULL) {
+	    int s = p - locale;
+
+	    langext = g_new(char, s + 1);
+	    strlcpy(langext, locale, s + 1);
+
+	    g_snprintf(buffer, size, dst, langext);
+	    g_free(langext);
+
+	    DBG ("path : %s", buffer);
+	
+	    if (g_file_test(buffer, test)) {
+	      strncpy (dst, buffer, size);
+	      return dst;
+	    }
+	  }
+	}
+      }
+      else if (g_file_test(dst, test)) {
 	return(dst);
+      }
 
       if (*paths == ':') {
 	d = dst;
 	paths++;
+	need_lang = FALSE;
 	continue;
       }
       break;
@@ -358,8 +400,13 @@ xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
 	continue;
       }
       else if (*(paths + 1) == 'l') {
-	for (f = lang; *f && d < dstlast; )
-	  *d++ = *f++;
+	if (d + 2 < dstlast) {
+	  /* Ok if someone has a path with '%s' in it this will break.
+	   * That should be against the law anyway IMO ;-) */
+	  *d++ = '%';
+	  *d++ = 's';
+	  need_lang = TRUE;
+	}
 
 	paths += 2;
 	continue;
