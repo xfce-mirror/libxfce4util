@@ -394,7 +394,11 @@ xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 		}
 
 		if (current_section)
+		{
+		    if (entry->section)
+		        g_free (entry->section);
 		    entry->section = g_strdup (current_section);
+		}
 		
 		break;
 	    }
@@ -402,8 +406,10 @@ xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 
 	g_free (key);
 	g_free (value);
+	if (locale) g_free (locale);
     }
 
+    if (current_locale) g_free (current_locale);
     g_free (current_section);
     g_strfreev (lines);
 
