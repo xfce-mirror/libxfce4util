@@ -1,7 +1,14 @@
 SUBDIRS = i18n libxfce4util m4
 
 EXTRA_DIST =								\
-	libxfce4util.spec
+	AUTHORS								\
+	COPYING								\
+	COPYING.BSD							\
+	COPYING.LGPL							\
+	libxfce4util.spec						\
+	NEWS								\
+	README								\
+	TODO
 
 distclean-local:
 	rm -rf libxfce4util.spec *.cache *~
