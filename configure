@@ -1744,7 +1744,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=libxfce4util
- VERSION=3.99.1
+ VERSION=3.99.2
 
 
 cat >>confdefs.h <<_ACEOF
@@ -1899,7 +1899,7 @@ fi
 
 
 
-LIBXFCE4UTIL_VERINFO=0:5:0
+LIBXFCE4UTIL_VERINFO=1:0:0
 
 
 DEPDIR="${am__leading_dot}deps"
