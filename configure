@@ -1744,7 +1744,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=libxfce4util
- VERSION=3.99.3
+ VERSION=3.99.4
 
 
 cat >>confdefs.h <<_ACEOF
