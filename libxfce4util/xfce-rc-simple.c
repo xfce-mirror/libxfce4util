@@ -399,7 +399,7 @@ simple_escape (gchar *buffer, gsize size, const gchar *string)
 {
   gchar *p;
 
-  for (p = buffer; p - buffer < size - 2; ++string)
+  for (p = buffer; p - buffer < size - 2 && *string != '\0'; ++string)
     switch (*string)
       {
       case '\n':
@@ -462,13 +462,13 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
 
       for (entry = group->efirst; entry != NULL; entry = entry->next)
 	{
-	  fprintf (fp, "%s=%s\n", entry->key,
-		   simple_escape (buffer, LINE_MAX, entry->value));
+          simple_escape (buffer, LINE_MAX, entry->value);
+	  fprintf (fp, "%s=%s\n", entry->key, buffer);
 
 	  for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
 	    {
-	      fprintf (fp, "%s[%s]=%s\n", entry->key, lentry->locale,
-		       simple_escape (buffer, LINE_MAX, lentry->value));
+              simple_escape (buffer, LINE_MAX, lentry->value);
+	      fprintf (fp, "%s[%s]=%s\n", entry->key, lentry->locale, buffer);
 	    }
 	}
 
@@ -527,7 +527,7 @@ _xfce_rc_simple_new (XfceRcSimple *shared,
       simple->entry_chunk   = shared->entry_chunk;
       simple->lentry_chunk  = shared->lentry_chunk;
       simple->group_chunk   = shared->group_chunk;
-      simple->string_chunk  = simple->string_chunk;
+      simple->string_chunk  = shared->string_chunk;
     }
   else
     {

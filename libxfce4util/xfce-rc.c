@@ -395,8 +395,8 @@ xfce_rc_get_group (const XfceRc *rc)
 gboolean
 xfce_rc_has_group (const XfceRc *rc, const gchar *group)
 {
-  g_return_val_if_fail (rc != NULL, NULL);
-  g_return_val_if_fail (rc->has_group != NULL, NULL);
+  g_return_val_if_fail (rc != NULL, FALSE);
+  g_return_val_if_fail (rc->has_group != NULL, FALSE);
 
   return (*rc->has_group) (rc, group);
 }
@@ -462,13 +462,13 @@ xfce_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
 gboolean
 xfce_rc_has_entry (const XfceRc *rc, const gchar *key)
 {
-  g_return_val_if_fail (rc != NULL, NULL);
-  g_return_val_if_fail (key != NULL, NULL);
+  g_return_val_if_fail (rc != NULL, FALSE);
+  g_return_val_if_fail (key != NULL, FALSE);
 
   if (G_LIKELY (rc->has_entry != NULL))
     return (*rc->has_entry) (rc, key);
   else
-    return (*rc->read_entry) (rc, key, NULL) != NULL;
+    return (*rc->read_entry) (rc, key, FALSE) != NULL;
 }
 
 
