@@ -46,8 +46,8 @@
 /* This looks a bit "hacky", but its ok */
 #define _BUILTIN_LICENSE_TEXT(name) \
 ({ \
-  extern const char _xfce_builtin_license_##name[]; \
-  _xfce_builtin_license_##name; \
+  extern const char xfce_builtin_license_##name[]; \
+  xfce_builtin_license_##name; \
 })
 #endif
 
@@ -70,6 +70,14 @@
  */
 
 /**
+ * @brief Returns the overall version of the installed XFce desktop.
+ *
+ * @return the overall version of the installed XFce desktop.
+ */
+extern G_CONST_RETURN gchar *
+xfce_version_string(void);
+
+/**
  * @brief Similar to g_get_home_dir() in functionality but will never return
  *        NULL.
  *
@@ -82,7 +90,8 @@
  *
  * @return The path to the current user's home directory.
  */
-extern G_CONST_RETURN gchar *xfce_get_homedir(void);
+extern G_CONST_RETURN gchar *
+xfce_get_homedir(void);
 
 /**
  * @brief Returns the path to a file in the current user's home directory.
@@ -132,8 +141,8 @@ extern G_CONST_RETURN gchar *xfce_get_homedir(void);
  *
  * @return Pointer to @p buffer.
  */
-extern G_CONST_RETURN gchar *xfce_get_homefile_r(gchar *buffer,
-		size_t length, const gchar *format, ...);
+extern G_CONST_RETURN gchar *
+xfce_get_homefile_r(gchar *buffer, size_t length, const gchar *format, ...);
 
 /**
  * @brief Safe way to retrieve the path to users ".xfce4" directory.
@@ -149,7 +158,8 @@ extern G_CONST_RETURN gchar *xfce_get_homefile_r(gchar *buffer,
  *
  * @return The path to the current user's ".xfce4" directory.
  */
-extern G_CONST_RETURN gchar *xfce_get_userdir(void);
+extern G_CONST_RETURN gchar *
+xfce_get_userdir(void);
 
 /**
  * @brief To be done...
@@ -160,8 +170,8 @@ extern G_CONST_RETURN gchar *xfce_get_userdir(void);
 /**
  * @brief To be done...
  */
-extern G_CONST_RETURN gchar *xfce_get_userfile_r(gchar *buffer,
-		size_t length, const gchar *format, ...);
+extern G_CONST_RETURN gchar *
+xfce_get_userfile_r(gchar *buffer, size_t length, const gchar *format, ...);
 
 /**
  * @brief Joins the @p count character strings pointed to by @p strings
@@ -170,7 +180,8 @@ extern G_CONST_RETURN gchar *xfce_get_userfile_r(gchar *buffer,
  * @return The joined string. The returned string must be freed when
  *         no longer needed using g_free().
  */
-extern gchar *xfce_strjoin(gchar *separator, gchar **strings, gint count);
+extern gchar *
+xfce_strjoin(gchar *separator, gchar **strings, gint count);
 
 /**
  * @brief Portable way to query the hostname of the current host.
@@ -181,7 +192,8 @@ extern gchar *xfce_strjoin(gchar *separator, gchar **strings, gint count);
  * @return The hostname of the node running the current process. The string
  *         must be freed using g_free() when no longer needed.
  */
-extern gchar *xfce_gethostname(void);
+extern gchar *
+xfce_gethostname(void);
 
 /**
  * @brief Portable replacement for putenv().
@@ -196,7 +208,8 @@ extern gchar *xfce_gethostname(void);
  * @return 0 if the operation was successful; otherwise the global variable
  *         @p errno is set to indicate the error and a value of -1 is returned.
  */
-extern int xfce_putenv(const gchar *string);
+extern int
+xfce_putenv(const gchar *string);
 
 /**
  * @brief Inserts or resets the environment variable @p name in the
@@ -219,8 +232,8 @@ extern int xfce_putenv(const gchar *string);
  * @return 0 if the operation was successful; otherwise the global variable
  *         @p errno is set to indicate the error and a value of -1 is returned.
  */
-extern int xfce_setenv(const gchar *name, const gchar *value,
-                       gboolean overwrite);
+extern int
+xfce_setenv(const gchar *name, const gchar *value, gboolean overwrite);
 
 /** @} */
 /* end util */

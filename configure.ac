@@ -10,8 +10,11 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:2:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [2])
+m4_define([libxfce4util_version_micro], [3])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
+
+dnl Overall XFce version, modify this when making releases
+m4_define([xfce_version_string], [4.1.0])
 
 dnl Initialize autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2004
@@ -31,6 +34,10 @@ AM_MAINTAINER_MODE
 dnl libtool versioning
 LIBXFCE4UTIL_VERINFO=libxfce4util_verinfo
 AC_SUBST([LIBXFCE4UTIL_VERINFO])
+
+dnl Subst overall XFce version
+AC_DEFINE([XFCE_VERSION_STRING], ["xfce_version_string"],
+  [Overall XFce version])
 
 dnl check for UNIX variants
 AC_AIX

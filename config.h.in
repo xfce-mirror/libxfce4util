@@ -96,6 +96,9 @@
 /* Version number of package */
 #undef VERSION
 
+/* Overall XFce version */
+#undef XFCE_VERSION_STRING
+
 /* Define to 1 if on AIX 3.
    System headers sometimes define this.
    We just want to avoid a redefinition error message.  */

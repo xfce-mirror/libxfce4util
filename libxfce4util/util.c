@@ -143,6 +143,12 @@ internal_get_file_r(const gchar *dir, gchar *buffer, size_t len,
 }
 
 G_CONST_RETURN gchar *
+xfce_version_string(void)
+{
+  return(XFCE_VERSION_STRING);
+}
+
+G_CONST_RETURN gchar *
 xfce_get_homedir(void)
 {
 	G_LOCK(_lock);

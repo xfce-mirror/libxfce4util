@@ -7,7 +7,7 @@
 #define SECTION
 #endif
 
-const char _xfce_builtin_license_BSD [] SECTION =
+const char xfce_builtin_license_BSD [] SECTION =
   " Redistribution and use in source and binary forms, with or without\n"
   " modification, are permitted provided that the following conditions\n"
   " are met:\n"
@@ -31,7 +31,7 @@ const char _xfce_builtin_license_BSD [] SECTION =
   "\n"
 ;
 
-const char _xfce_builtin_license_GPL [] SECTION =
+const char xfce_builtin_license_GPL [] SECTION =
   "		    GNU GENERAL PUBLIC LICENSE\n"
   "		       Version 2, June 1991\n"
   "\n"
@@ -374,7 +374,7 @@ const char _xfce_builtin_license_GPL [] SECTION =
   "Public License instead of this License.\n"
 ;
 
-const char _xfce_builtin_license_LGPL [] SECTION =
+const char xfce_builtin_license_LGPL [] SECTION =
   "		  GNU LIBRARY GENERAL PUBLIC LICENSE\n"
   "		       Version 2, June 1991\n"
   "\n"
