@@ -1,166 +1,175 @@
-2003-09-14  xfce
+2003-09-22 00:19  xfce
+
+	* configure, configure.ac: Update version number to 4.0.0 Improve
+	focus change for modal dialogs in xfwm4
+
+2003-09-15 00:06  xfce
 
 	* ChangeLog: Update ChangeLog
 
-2003-09-10  huysmans
+2003-09-14 01:13  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-09-10 09:54  huysmans
 
 	* ChangeLog: Update ChangeLogs
 
-2003-09-10  huysmans
+2003-09-10 09:39  huysmans
 
 	* configure, configure.ac: Update version numbers and po files for
 	release
 
-2003-08-28  edscott
+2003-08-28 18:09  edscott
 
 	* libxfce4util/i18n.h: supress compiler warnings because of intl
 	macro redefinitions
 
-2003-08-26  huysmans
+2003-08-26 09:38  huysmans
 
 	* ChangeLog: Update changelogs
 
-2003-08-07  huysmans
+2003-08-07 21:04  huysmans
 
 	* libxfce4util/i18n.c: Make i18n work
 
-2003-08-03  bmeurer
+2003-08-03 20:45  bmeurer
 
 	* ChangeLog: Updated ChangeLogs
 
-2003-08-03  bmeurer
+2003-08-03 20:37  bmeurer
 
 	* m4/X11.m4: grep -q does not work with Solaris grep, fixed it.
 
-2003-07-30  huysmans
+2003-07-30 13:31  huysmans
 
 	* ChangeLog: Update changlogs
 
-2003-07-30  huysmans
+2003-07-30 10:03  huysmans
 
 	* configure, configure.ac: Update version numbers and po files for
 	release
 
-2003-07-19  huysmans
+2003-07-19 11:30  huysmans
 
 	* ChangeLog: Update ChangeLogs
 
-2003-07-19  huysmans
+2003-07-19 10:58  huysmans
 
 	* configure, configure.ac: Update version numbers and po files for
 	release
 
-2003-07-13  huysmans
+2003-07-13 10:43  huysmans
 
 	* ChangeLog: Update ChangeLogs for release
 
-2003-07-11  huysmans
+2003-07-11 09:33  huysmans
 
 	* ChangeLog: Update ChangeLog's for release
 
-2003-07-10  huysmans
+2003-07-10 11:56  huysmans
 
 	* ChangeLog: Update ChangeLog's for release
 
-2003-07-10  huysmans
+2003-07-10 11:24  huysmans
 
 	* configure, configure.ac: Bump version numbers for release and
 	update po files
 
-2003-07-08  xfce
+2003-07-08 00:26  xfce
 
 	* ltmain.sh: Update ltmain.sh with patched version
 
-2003-07-06  bmeurer
+2003-07-06 23:17  bmeurer
 
 	* TODO: Note that TODO items are for > 4.0
 
-2003-07-06  huysmans
+2003-07-06 21:45  huysmans
 
 	* ChangeLog, ChangeLog: Updating ChangeLogs
 
-2003-07-06  bmeurer
+2003-07-06 11:15  bmeurer
 
 	* TODO: New todo item.
 
-2003-07-05  xfce
+2003-07-05 14:31  xfce
 
 	* Makefile.in, ltconfig: Remove ltconfig script as it is generated
 
-2003-07-05  xfce
+2003-07-05 01:37  xfce
 
 	* Makefile.in, aclocal.m4, configure, ltcf-c.sh: libttol update and
 	all
 
-2003-07-05  bmeurer
+2003-07-05 00:30  bmeurer
 
 	* TODO: Added TODO about "XDG Base Directory Specification"
 
-2003-07-04  bmeurer
+2003-07-04 23:03  bmeurer
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, ltmain.sh,
 	i18n/Makefile.in, libxfce4util/Makefile.in, m4/Makefile.in: libtool
 	updated to 1.5.
 
-2003-07-03  xfce
+2003-07-03 21:57  xfce
 
 	* libxfce4util/util.c: Rename fns starting with __* to internal_*
 	("__" should be avoided as some linker use this for their own use)
 
-2003-07-02  bmeurer
+2003-07-02 14:32  bmeurer
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, ltmain.sh,
 	i18n/Makefile.in, libxfce4util/Makefile.in, libxfce4util/utf8.h,
 	m4/Makefile.in: Cleanups.
 
-2003-07-01  xfce
+2003-07-01 22:44  xfce
 
 	* configure, configure.ac, libxfce4util/Makefile.am,
 	libxfce4util/Makefile.in, libxfce4util/utf8.c, libxfce4util/utf8.h:
 	Add utf8 utility (used in libxfcegui4 and xfwm4)
 
-2003-06-28  xfce
+2003-06-28 11:46  xfce
 
 	* Makefile.in, aclocal.m4, config.h.in, configure, configure.ac,
 	ltmain.sh, i18n/Makefile.in, libxfce4util/Makefile.in,
 	m4/Makefile.in: Update to libtool-1.5 Use proper complete
 	CURRENT:REVISION:AGE scheme for lib versionning
 
-2003-06-21  bmeurer
+2003-06-21 22:18  bmeurer
 
 	* libxfce4util/debug.h: Cleanup
 
-2003-06-21  bmeurer
+2003-06-21 22:17  bmeurer
 
 	* libxfce4util/i18n.h: Added note.
 
-2003-06-15  bmeurer
+2003-06-15 11:50  bmeurer
 
 	* libxfce4util/i18n.h: TRy to force CVS to update to 1.7
 
-2003-06-14  bmeurer
+2003-06-14 23:53  bmeurer
 
 	* NEWS, TODO, libxfce4util/i18n.c, libxfce4util/i18n.h, m4/i18n.m4:
 	Introduced xfce_textdomain()
 
-2003-06-10  bmeurer
+2003-06-10 21:51  bmeurer
 
 	* libxfce4util/Makefile.in, libxfce4util/i18n.h, m4/Makefile.in:
 	Added xfce_get_path_localized(). Updated to 3.91.0
 
-2003-06-10  bmeurer
+2003-06-10 21:47  bmeurer
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	configure.ac, install-sh, ltcf-c.sh, ltconfig, ltmain.sh,
 	i18n/Makefile.in: Added xfce_get_path_localized(). Updated to
 	3.91.0
 
-2003-06-06  xfce
+2003-06-06 23:36  xfce
 
 	* aclocal.m4, configure, configure.ac, ltcf-c.sh, ltconfig,
 	ltmain.sh: Versionning scheme
 
-2003-06-06  bmeurer
+2003-06-06 00:00  bmeurer
 
 	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.sub,
 	configure, configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
@@ -168,15 +177,15 @@
 	libxfce4util/i18n.h, m4/Makefile.in, m4/depends.m4: Updated version
 	to 3.90.0
 
-2003-05-25  bmeurer
+2003-05-25 17:02  bmeurer
 
 	* i18n/nls.alias: Added catalan aliases.
 
-2003-05-15  huysmans
+2003-05-15 13:03  huysmans
 
 	* ChangeLog: Mass update of ChangeLogs
 
-2003-05-04  huysmans
+2003-05-04 16:02  huysmans
 
 	* Makefile.am, Makefile.in, aclocal.m4, config.guess, config.sub,
 	configure, libxfce4util.spec.in, ltcf-c.sh, ltconfig, ltmain.sh,
@@ -184,19 +193,19 @@
 	libxfce4util/Makefile.in, m4/Makefile.in: Fix distcheck and rpm
 	build targets
 
-2003-05-01  bmeurer
+2003-05-01 15:48  bmeurer
 
 	* Makefile.am, libxfce4util/Makefile.am, libxfce4util/Makefile.in,
 	libxfce4util/filter.c, libxfce4util/filter.h,
 	libxfce4util/option.c, libxfce4util/option.h, m4/Makefile.am,
 	m4/Makefile.in: Moved xfprint stuff to xfprint.
 
-2003-05-01  bmeurer
+2003-05-01 12:55  bmeurer
 
 	* configure, configure.ac: API was changed, so raise version (and
 	lib major) to 0.3.0
 
-2003-05-01  bmeurer
+2003-05-01 12:42  bmeurer
 
 	* Makefile.am, Makefile.in, aclocal.m4, config.h.in, configure,
 	configure.ac, i18n/Makefile.am, i18n/Makefile.in, i18n/nls.alias,
@@ -205,20 +214,20 @@
 	m4/Makefile.am, m4/Makefile.in, m4/depends.m4: Added i18n functions
 	to libxfce4util.
 
-2003-04-27  tobias_henle
+2003-04-27 20:51  tobias_henle
 
 	* libxfce4util/debug.h: Added __FUNCTION__ in DBG and TRACE for gcc
 	v3+.
 
-2003-04-26  bmeurer
+2003-04-26 23:15  bmeurer
 
 	* m4/depends.m4: Updated BM_DEPEND_CHECK.
 
-2003-04-26  bmeurer
+2003-04-26 13:52  bmeurer
 
 	* m4/debug.m4: Fixed a stupid typo.
 
-2003-04-25  bmeurer
+2003-04-25 11:53  bmeurer
 
 	* m4/Makefile.am, m4/Makefile.in, m4/X11.m4, m4/depends.m4,
 	m4/i18n.m4, Makefile.am, Makefile.in, configure, configure.ac:
@@ -226,19 +235,19 @@
 	Updated libxfce4util to install the common m4 files into
 	$(datadir)/xfce4/m4.
 
-2003-04-20  huysmans
+2003-04-20 12:05  huysmans
 
 	* libxfce4util/i18n.h: Fix i18n panel issue: use GETTEXT_PACKAGE
 	instead of PACKAGE
 
-2003-04-19  bmeurer
+2003-04-19 23:31  bmeurer
 
 	* Makefile.in, aclocal.m4, configure, configure.ac,
 	libxfce4util/Makefile.in, libxfce4util/libxfce4util-1.0.pc.in,
 	m4/rpath.m4: Added system tray support to libxfcegui4 and frontend
 	to xftaskbar4.	Lots of cleanups in the autotools stuff.
 
-2003-04-09  bmeurer
+2003-04-09 22:39  bmeurer
 
 	* aclocal.m4, configure, m4/debug.m4: Improved debug.m4:
 	
@@ -246,19 +255,19 @@
 		2) --enable-profiling now enables profiling code
 		3) --disable-asserts allows disabling of assert()'s
 
-2003-04-05  bmeurer
+2003-04-05 23:30  bmeurer
 
 	* config.h.in, configure, configure.ac, libxfce4util/util.c: Fixed
 	libxfce4util libtool verinfo.  Updated to automake 1.7.3.
 
-2003-04-05  bmeurer
+2003-04-05 19:20  bmeurer
 
 	* configure, configure.ac, libxfce4util/util.c,
 	libxfce4util/util.h: Added xfce_get_homefile_r() and
 	xfce_get_userfile_r() for use with static buffers. Raise version to
 	0.2.
 
-2003-04-05  xfce
+2003-04-05 02:09  xfce
 
 	* libxfce4util/debug.h: Revert last change in debug.h, use "??"
 	instead of ((__const char *)0) Replace DBG() statements with
@@ -267,30 +276,30 @@
 	traces) Add params to TRACE() (just like in DBG()) Remove trailing
 	CR in log messages
 
-2003-04-05  bmeurer
+2003-04-05 00:35  bmeurer
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	depcomp, ltconfig, libxfce4util/Makefile.in, libxfce4util/debug.h,
 	libxfce4util/util.h: Update debug stuff.
 
-2003-04-04  bmeurer
+2003-04-04 00:08  bmeurer
 
 	* m4/depends.m4: Updated BM_DEPEND_CHECK to make it possible to
 	disable the test
 
-2003-04-03  bmeurer
+2003-04-03 23:34  bmeurer
 
 	* aclocal.m4, m4/depends.m4: Fixed BM_DEPEND_CHECK
 
-2003-04-02  xfce
+2003-04-02 23:18  xfce
 
 	* ChangeLog: Update ChangeLog
 
-2003-04-02  bmeurer
+2003-04-02 22:35  bmeurer
 
 	* libxfce4util/debug.h: Debugging stuff has moved to libxfce4util.
 
-2003-04-02  bmeurer
+2003-04-02 22:10  bmeurer
 
 	* aclocal.m4, config.h.in, configure, configure.ac,
 	libxfce4util/Makefile.am, libxfce4util/Makefile.in,
@@ -299,17 +308,17 @@
 	libxfce4util.  Some other updates.  added a hint to the libxfcegui4
 	README for Xinerama problems with XFree86.
 
-2003-04-02  bmeurer
+2003-04-02 19:33  bmeurer
 
 	* aclocal.m4, configure, m4/debug.m4, m4/rpath.m4: left-over
 	autostuff for libxfce*, xfcs-mcs-* and xfce4
 
-2003-04-02  bmeurer
+2003-04-02 16:58  bmeurer
 
 	* libxfce4util/: Makefile.am, Makefile.in, filter.h, i18n.h,
 	util.h: Put i18n support code into libxfce4util.
 
-2003-04-02  bmeurer
+2003-04-02 15:24  bmeurer
 
 	* aclocal.m4, config.h.in, configure, configure.ac,
 	libxfce4util/Makefile.am, libxfce4util/Makefile.in,
@@ -318,92 +327,92 @@
 	in .pc files. Should also make it easier to port XFce4 to a
 	non-POSIX (or even non-UNIX) plattform, using autoconf.
 
-2003-04-01  bmeurer
+2003-04-01 20:36  bmeurer
 
 	* aclocal.m4, configure, ltcf-c.sh, ltconfig, ltmain.sh,
 	m4/debug.m4, m4/rpath.m4: Updates of the m4 files (test's have some
 	problems).
 
-2003-03-31  bmeurer
+2003-03-31 18:41  bmeurer
 
 	* libxfce4util/: filter.c, option.c, test.c, util.c: Header files
 	are now only included if found by configure.
 
-2003-03-27  xfce
+2003-03-27 21:32  xfce
 
 	* ChangeLog: Update ChangeLog
 
-2003-03-23  xfce
+2003-03-23 22:17  xfce
 
 	* ChangeLog: Update ChangeLog
 
-2003-03-19  huysmans
+2003-03-19 08:12  huysmans
 
 	* autogen.sh: Only add extra autogen parameters when none are given
 
-2003-03-18  xfce
+2003-03-18 23:33  xfce
 
 	* ChangeLog, aclocal.m4, configure, ltcf-c.sh, ltconfig, ltmain.sh:
 	Update ChangeLog Update build scripts (ie rerun autogen.sh) Update
 	xfwm4's microdeck theme Remove 1 pix border arround xffm menu bar
 
-2003-03-15  bmeurer
+2003-03-15 11:07  bmeurer
 
 	* Makefile.in, aclocal.m4, autogen.sh, configure, configure.ac,
 	libxfce4util.spec.in, libxfce4util/Makefile.in,
 	libxfce4util/filter.c, m4/depends.m4: Create a valid .spec file.
 
-2003-03-14  bmeurer
+2003-03-14 20:22  bmeurer
 
 	* autogen.sh: update
 
-2003-03-14  bmeurer
+2003-03-14 19:55  bmeurer
 
 	* Makefile.in, aclocal.m4, configure, configure.ac,
 	libxfce4util.spec.in, libxfce4util/Makefile.in,
 	libxfce4util/libxfce4util-1.0.pc.in, m4/rpath.m4: New rpath stuff
 	(for debian people)
 
-2003-03-13  bmeurer
+2003-03-13 22:37  bmeurer
 
 	* aclocal.m4, configure, configure.ac, libxfce4util/util.c,
 	libxfce4util/util.h, m4/debug.m4: debug.m4 update. Removed junk
 	from the sources.
 
-2003-03-13  xfce
+2003-03-13 21:39  xfce
 
 	* ChangeLog: Update Changelogs
 
-2003-03-13  bmeurer
+2003-03-13 14:50  bmeurer
 
 	* configure: Requires glib-2.0.
 
-2003-03-13  bmeurer
+2003-03-13 14:47  bmeurer
 
 	* configure.ac: Works with glib 2.0.0 as well.
 
-2003-03-10  bmeurer
+2003-03-10 22:27  bmeurer
 
 	* libxfce4util/: filter.c, filter.h: remove a possible buffer
 	overflow.
 
-2003-03-10  bmeurer
+2003-03-10 12:40  bmeurer
 
 	* libxfce4util/filter.c: Typo
 
-2003-03-10  bmeurer
+2003-03-10 12:33  bmeurer
 
 	* libxfce4util/filter.h: [no log message]
 
-2003-03-10  bmeurer
+2003-03-10 12:29  bmeurer
 
 	* libxfce4util/filter.h: Fixed typo
 
-2003-03-10  bmeurer
+2003-03-10 12:02  bmeurer
 
 	* libxfce4util/: filter.c, filter.h: Update the filter interface.
 
-2003-03-09  bmeurer
+2003-03-09 23:10  bmeurer
 
 	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, Makefile.in,
 	NEWS, README, aclocal.m4, autogen.sh, compile, config.guess,
