@@ -75,6 +75,9 @@ pkgconfig_DATA = libxfce4util-1.0.pc
 licenses-texts.c: licenses-to-c.sh BSD GPL LGPL
 	sh licenses-to-c.sh BSD:BSD GPL:GPL LGPL:LGPL > $@
 
+# required for gtk-doc
+dist-hook: all
+
 EXTRA_DIST =							\
 	BSD							\
 	GPL							\

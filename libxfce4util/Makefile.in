@@ -583,6 +583,9 @@ distdir: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
+	$(MAKE) $(AM_MAKEFLAGS) \
+	  top_distdir="$(top_distdir)" distdir="$(distdir)" \
+	  dist-hook
 check-am: all-am
 check: check-am
 all-am: Makefile $(LTLIBRARIES) $(DATA) $(HEADERS)
@@ -668,7 +671,7 @@ uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES \
 	uninstall-libxfce4utilincludeHEADERS uninstall-pkgconfigDATA
 
 .PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
-	clean-libLTLIBRARIES clean-libtool ctags distclean \
+	clean-libLTLIBRARIES clean-libtool ctags dist-hook distclean \
 	distclean-compile distclean-generic distclean-libtool \
 	distclean-tags distdir dvi dvi-am html html-am info info-am \
 	install install-am install-data install-data-am install-exec \
@@ -685,6 +688,9 @@ uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES \
 
 licenses-texts.c: licenses-to-c.sh BSD GPL LGPL
 	sh licenses-to-c.sh BSD:BSD GPL:GPL LGPL:LGPL > $@
+
+# required for gtk-doc
+dist-hook: all
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
