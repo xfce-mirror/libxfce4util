@@ -182,6 +182,7 @@ xfce_desktop_entry_new (const char *file, const char **categories,
     XfceDesktopEntry *desktop_entry;
     XfceDesktopEntryPrivate *priv;
     int i;
+    entry_t *entry;
 
     g_return_val_if_fail (file != NULL, NULL);
     g_return_val_if_fail (categories != NULL, NULL);
@@ -194,7 +195,7 @@ xfce_desktop_entry_new (const char *file, const char **categories,
     priv->entries = g_new0 (entry_t, num_categories);
     priv->num_entries = num_categories;
 
-    entry_t *entry = &(priv->entries[0]);
+    entry = &(priv->entries[0]);
 
     for (i = 0; i < priv->num_entries; ++i, entry++)
     {
