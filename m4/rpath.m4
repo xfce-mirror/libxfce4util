@@ -11,7 +11,7 @@ AC_HELP_STRING([--disable-rpath], [Do not use -rpath (use with care!!)]),
     [ac_cv_rpath=$enableval], [ac_cv_rpath=yes])
   AC_MSG_CHECKING([whether to use -rpath])
   LD_RPATH=
-  if test "x$ac_cv_rpath" != "xno"; then
+  if test x"$ac_cv_rpath" != x"no"; then
     LD_RPATH="-Wl,-R"
     AC_MSG_RESULT([yes])
   else
@@ -23,7 +23,7 @@ AC_HELP_STRING([--disable-rpath], [Do not use -rpath (use with care!!)]),
 AC_DEFUN([BM_PKG_LDFLAGS], [
   AC_REQUIRE([BM_RPATH_SUPPORT])
   AC_MSG_CHECKING([which pkg-config LDFLAGS to use])
-  if test x$LD_RPATH == x; then
+  if test x"$LD_RPATH" = x""; then
     $1_LDFLAGS="-L\${libdir}"
   else
     $1_LDFLAGS="$LD_RPATH\${libdir} -L\${libdir}"
