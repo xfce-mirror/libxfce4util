@@ -49,4 +49,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/*a
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/xfce4/libxfce4util
+%{_datadir}/xfce4/i18n/nls.alias
+%{_datadir}/xfce4/m4/
 

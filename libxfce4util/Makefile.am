@@ -24,6 +24,7 @@ libxfce4util_la_LIBADD =					\
 	@GLIB_LIBS@
 
 libxfce4util_la_CFLAGS = 					\
+	-I$(top_srcdir)						\
 	-DNLS_ALIAS_DB=\"$(datadir)/xfce4/i18n/nls.alias\"	\
 	@GLIB_CFLAGS@
 

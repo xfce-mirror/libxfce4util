@@ -1,7 +1,7 @@
 SUBDIRS = i18n libxfce4util m4
 
 EXTRA_DIST =								\
-	libxfce4util.spec.in
+	libxfce4util.spec
 
 distclean-local:
 	rm -rf libxfce4util.spec *.cache *~
