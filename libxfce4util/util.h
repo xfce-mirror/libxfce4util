@@ -38,6 +38,33 @@
 #include <libxfce4util/debug.h>
 
 /**
+ * @defgroup license Builtin license texts.
+ * @{
+ */
+
+#ifndef DOXYGEN_SHOULD_SKIP_THIS
+/* This looks a bit "hacky", but its ok */
+#define _BUILTIN_LICENSE_TEXT(name) \
+({ \
+  extern const char _xfce_builtin_license_##name[]; \
+  _xfce_builtin_license_##name; \
+})
+#endif
+
+/** @brief Builtin BSD License text.  */
+#define XFCE_LICENSE_BSD  _BUILTIN_LICENSE_TEXT(BSD)
+
+/** @brief Builtin GNU General Public License text.  */
+#define XFCE_LICENSE_GPL  _BUILTIN_LICENSE_TEXT(GPL)
+
+/** @brief Builtin GNU Library General Public License text.  */
+#define XFCE_LICENSE_LGPL _BUILTIN_LICENSE_TEXT(LGPL)
+
+/** @} */
+/* end license */
+
+
+/**
  * @defgroup util Miscellaneous utility functions.
  * @{
  */

@@ -1,19 +1,23 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2003,2004
+dnl Copyright (c) 2002-2004
 dnl         The XFce development team. All rights reserved.
+dnl
+dnl Written for XFce by Benedikt Meurer <benny@xfce.org>.
 dnl
 
 dnl Version information
-m4_define([libxfce4util_verinfo], [1:1:0])
+m4_define([libxfce4util_verinfo], [1:2:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [1])
+m4_define([libxfce4util_version_micro], [2])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2003,2004
-        The XFce development team. All rights reserved.])
+AC_COPYRIGHT([Copyright (c) 2002-2004
+        The XFce development team. All rights reserved.
+
+Written for XFce by Benedikt Meurer <benny@xfce.org>.])
 AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])

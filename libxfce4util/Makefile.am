@@ -14,6 +14,7 @@ libxfce4util_la_SOURCES =					\
 	debug.h							\
 	i18n.c							\
 	i18n.h							\
+	licenses-texts.c						\
 	utf8.c							\
 	utf8.h							\
 	util.c							\
@@ -37,3 +38,11 @@ libxfce4util_la_CFLAGS = 					\
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libxfce4util-1.0.pc
 
+licenses-texts.c: licenses-to-c.sh BSD GPL LGPL
+	sh licenses-to-c.sh BSD:BSD GPL:GPL LGPL:LGPL > $@
+
+EXTRA_DIST =							\
+	BSD							\
+	GPL							\
+	LGPL							\
+	licenses-to-c.sh

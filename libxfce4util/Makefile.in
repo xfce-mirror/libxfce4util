@@ -55,13 +55,14 @@ libLTLIBRARIES_INSTALL = $(INSTALL)
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libxfce4util_la_DEPENDENCIES =
 am_libxfce4util_la_OBJECTS = libxfce4util_la-i18n.lo \
-	libxfce4util_la-utf8.lo libxfce4util_la-util.lo \
-	libxfce4util_la-xfce_desktop_entry.lo
+	libxfce4util_la-licenses-texts.lo libxfce4util_la-utf8.lo \
+	libxfce4util_la-util.lo libxfce4util_la-xfce_desktop_entry.lo
 libxfce4util_la_OBJECTS = $(am_libxfce4util_la_OBJECTS)
 DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libxfce4util_la-i18n.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-licenses-texts.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-utf8.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-util.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce_desktop_entry.Plo
@@ -197,6 +198,7 @@ libxfce4util_la_SOURCES = \
 	debug.h							\
 	i18n.c							\
 	i18n.h							\
+	licenses-texts.c						\
 	utf8.c							\
 	utf8.h							\
 	util.c							\
@@ -219,6 +221,12 @@ libxfce4util_la_CFLAGS = \
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libxfce4util-1.0.pc
+EXTRA_DIST = \
+	BSD							\
+	GPL							\
+	LGPL							\
+	licenses-to-c.sh
+
 all: all-am
 
 .SUFFIXES:
@@ -291,6 +299,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-i18n.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-licenses-texts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-utf8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-util.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce_desktop_entry.Plo@am__quote@
@@ -342,6 +351,30 @@ libxfce4util_la-i18n.lo: i18n.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-i18n.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-i18n.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-i18n.lo `test -f 'i18n.c' || echo '$(srcdir)/'`i18n.c
+
+libxfce4util_la-licenses-texts.o: licenses-texts.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-licenses-texts.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo" -c -o libxfce4util_la-licenses-texts.o `test -f 'licenses-texts.c' || echo '$(srcdir)/'`licenses-texts.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo" "$(DEPDIR)/libxfce4util_la-licenses-texts.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='licenses-texts.c' object='libxfce4util_la-licenses-texts.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-licenses-texts.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-licenses-texts.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-licenses-texts.o `test -f 'licenses-texts.c' || echo '$(srcdir)/'`licenses-texts.c
+
+libxfce4util_la-licenses-texts.obj: licenses-texts.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-licenses-texts.obj -MD -MP -MF "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo" -c -o libxfce4util_la-licenses-texts.obj `if test -f 'licenses-texts.c'; then $(CYGPATH_W) 'licenses-texts.c'; else $(CYGPATH_W) '$(srcdir)/licenses-texts.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo" "$(DEPDIR)/libxfce4util_la-licenses-texts.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='licenses-texts.c' object='libxfce4util_la-licenses-texts.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-licenses-texts.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-licenses-texts.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-licenses-texts.obj `if test -f 'licenses-texts.c'; then $(CYGPATH_W) 'licenses-texts.c'; else $(CYGPATH_W) '$(srcdir)/licenses-texts.c'; fi`
+
+libxfce4util_la-licenses-texts.lo: licenses-texts.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-licenses-texts.lo -MD -MP -MF "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo" -c -o libxfce4util_la-licenses-texts.lo `test -f 'licenses-texts.c' || echo '$(srcdir)/'`licenses-texts.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo" "$(DEPDIR)/libxfce4util_la-licenses-texts.Plo"; else rm -f "$(DEPDIR)/libxfce4util_la-licenses-texts.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='licenses-texts.c' object='libxfce4util_la-licenses-texts.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-licenses-texts.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-licenses-texts.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-licenses-texts.lo `test -f 'licenses-texts.c' || echo '$(srcdir)/'`licenses-texts.c
 
 libxfce4util_la-utf8.o: utf8.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-utf8.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-utf8.Tpo" -c -o libxfce4util_la-utf8.o `test -f 'utf8.c' || echo '$(srcdir)/'`utf8.c; \
@@ -629,6 +662,9 @@ uninstall-am: uninstall-info-am uninstall-libLTLIBRARIES \
 	uninstall-libLTLIBRARIES uninstall-libxfce4utilincludeHEADERS \
 	uninstall-pkgconfigDATA
 
+
+licenses-texts.c: licenses-to-c.sh BSD GPL LGPL
+	sh licenses-to-c.sh BSD:BSD GPL:GPL LGPL:LGPL > $@
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
