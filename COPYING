@@ -1,7 +1,7 @@
  All parts of libxfce4util are licensed under the BSD license (see the file
- BSD in this directory), except the following files.
+ COPYING.BSD in this directory), except the following files.
 
- Licensed under the LGPL (see the file LGPL in this directory):
+ Licensed under the LGPL (see the file COPYING.LGPL in this directory):
   - libxfce4util/xfce_desktop_entry.c
   - libxfce4util/xfce_desktop_entry.h
 
