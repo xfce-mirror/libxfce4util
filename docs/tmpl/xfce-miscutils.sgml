@@ -159,3 +159,13 @@ formed by a NULL terminated list of path components.
 @name: 
 
 
+<!-- ##### FUNCTION xfce_expand_variables ##### -->
+<para>
+
+</para>
+
+@command: 
+@envp: 
+@Returns: 
+
+

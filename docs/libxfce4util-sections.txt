@@ -104,6 +104,7 @@ xfce_gethostname
 xfce_putenv
 xfce_setenv
 xfce_unsetenv
+xfce_expand_variables
 </SECTION>
 
 
