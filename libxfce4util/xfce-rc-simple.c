@@ -50,9 +50,10 @@
 #define PATH_MAX 4096
 #endif
 
-#ifndef LINE_MAX
-#define LINE_MAX 8192
+#ifdef LINE_MAX
+#undef LINE_MAX
 #endif
+#define LINE_MAX 8192
 
 /* name of the NULL group */
 #define NULL_GROUP "[NULL]"
