@@ -46,21 +46,21 @@ void         xfce_rc_close                   (XfceRc *rc);
 void         xfce_rc_flush                   (XfceRc *rc);
 void         xfce_rc_rollback                (XfceRc *rc);
 
-gboolean     xfce_rc_is_dirty                (const XfceRc *rc) G_GNUC_CONST;
-gboolean     xfce_rc_is_readonly             (const XfceRc *rc) G_GNUC_CONST;
+gboolean     xfce_rc_is_dirty                (const XfceRc *rc);
+gboolean     xfce_rc_is_readonly             (const XfceRc *rc);
 
-const gchar* xfce_rc_get_locale              (const XfceRc *rc) G_GNUC_CONST;
+const gchar* xfce_rc_get_locale              (const XfceRc *rc);
 
-gchar**      xfce_rc_get_groups              (const XfceRc *rc) G_GNUC_CONST;
+gchar**      xfce_rc_get_groups              (const XfceRc *rc);
 gchar**      xfce_rc_get_entries             (const XfceRc *rc,
-					      const gchar  *group) G_GNUC_CONST;
+					      const gchar  *group);
 
 void         xfce_rc_delete_group            (XfceRc       *rc,
                                               const gchar  *group,
                                               gboolean      global);
-const gchar* xfce_rc_get_group               (const XfceRc *rc) G_GNUC_CONST;
+const gchar* xfce_rc_get_group               (const XfceRc *rc);
 gboolean     xfce_rc_has_group               (const XfceRc *rc,
-					      const gchar  *group) G_GNUC_CONST;
+					      const gchar  *group);
 void         xfce_rc_set_group               (XfceRc       *rc,
 					      const gchar  *group);
 
@@ -68,23 +68,23 @@ void         xfce_rc_delete_entry            (XfceRc       *rc,
                                               const gchar  *key,
                                               gboolean      global);
 gboolean     xfce_rc_has_entry               (const XfceRc *rc,
-					      const gchar  *key) G_GNUC_CONST;
+					      const gchar  *key);
 
 const gchar* xfce_rc_read_entry              (const XfceRc *rc,
 					      const gchar  *key,
-					      const gchar  *fallback) G_GNUC_CONST;
+					      const gchar  *fallback);
 const gchar* xfce_rc_read_entry_untranslated (const XfceRc *rc,
 					      const gchar  *key,
-					      const gchar  *fallback) G_GNUC_CONST;
+					      const gchar  *fallback);
 gboolean     xfce_rc_read_bool_entry         (const XfceRc *rc,
 					      const gchar  *key,
-					      gboolean      fallback) G_GNUC_CONST;
+					      gboolean      fallback);
 gint         xfce_rc_read_int_entry          (const XfceRc *rc,
 					      const gchar  *key,
-					      gboolean      fallback) G_GNUC_CONST;
+					      gboolean      fallback);
 gchar**      xfce_rc_read_list_entry         (const XfceRc *rc,
 					      const gchar  *key,
-					      const gchar  *delimiter) G_GNUC_CONST;
+					      const gchar  *delimiter);
 void         xfce_rc_write_entry             (XfceRc       *rc,
 					      const gchar  *key,
 					      const gchar  *value);

@@ -46,21 +46,21 @@
 #define XFCE_LICENSE_LGPL _BUILTIN_LICENSE_TEXT(LGPL)
 
 
-G_CONST_RETURN gchar* xfce_version_string (void) G_GNUC_PURE;
+const gchar* xfce_version_string (void) G_GNUC_PURE;
 
-G_CONST_RETURN gchar* xfce_get_homedir (void) G_GNUC_PURE;
+const gchar* xfce_get_homedir    (void) G_GNUC_PURE;
 
-G_CONST_RETURN gchar* xfce_get_homefile_r (gchar *buffer,
-                                           size_t length, 
-                                           const gchar *format,
-                                           ...) G_GNUC_PURE;
+gchar* xfce_get_homefile_r       (gchar *buffer,
+                                  size_t length, 
+                                  const gchar *format,
+                                  ...);
 
-G_CONST_RETURN gchar* xfce_get_userdir (void) G_GNUC_PURE;
+const gchar* xfce_get_userdir    (void) G_GNUC_PURE;
 
-G_CONST_RETURN gchar* xfce_get_userfile_r (gchar *buffer,
-                                           size_t length, 
-                                           const gchar *format,
-                                           ...) G_GNUC_PURE;
+gchar* xfce_get_userfile_r       (gchar *buffer,
+                                  size_t length, 
+                                  const gchar *format,
+                                  ...);
 
 #if defined(G_HAVE_ISO_VARARGS)
 
@@ -73,10 +73,10 @@ G_CONST_RETURN gchar* xfce_get_userfile_r (gchar *buffer,
 #elif defined(G_HAVE_GNUC_VARARGS)
 
 #define xfce_get_homefile(first_element...)	               \
-	(g_build_filename(xfce_get_homedir(), ## first_element))
+  (g_build_filename (xfce_get_homedir (), ## first_element))
 
 #define xfce_get_userfile(first_element...)	               \
-	(g_build_filename(xfce_get_userdir(), ## first_element))
+  (g_build_filename (xfce_get_userdir (), ## first_element))
 
 #else
 
@@ -94,17 +94,17 @@ xfce_get_userfile (const gchar *first_element, ...)
 
 #endif
 
-gchar*  xfce_strjoin (const gchar *separator,
-                      gchar **strings,
-                      gint count) G_GNUC_PURE;
+gchar*  xfce_strjoin     (const gchar *separator,
+                          gchar **strings,
+                          gint count);
 
 gchar*  xfce_gethostname (void) G_GNUC_PURE;
 
-gint    xfce_putenv   (const gchar *string);
+gint    xfce_putenv      (const gchar *string);
 
-gint    xfce_setenv   (const gchar *name,
-                       const gchar *value,
-                       gboolean overwrite);
-void    xfce_unsetenv (const gchar *name);
+gint    xfce_setenv      (const gchar *name,
+                          const gchar *value,
+                          gboolean overwrite);
+void    xfce_unsetenv    (const gchar *name);
 
 #endif	/* __LIBXFCE4UTIL_UTIL_H__ */

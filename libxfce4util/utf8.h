@@ -33,14 +33,14 @@
 G_BEGIN_DECLS
 
 #ifndef XFCE_DISABLE_DEPRECATED
-gchar	*utf8_string_remove_controls (gchar *str,
-                                    gssize max_len,
-                                    const gchar *end);
+gchar *utf8_string_remove_controls (gchar       *str,
+                                    gssize       max_len,
+                                    const gchar *end) G_GNUC_DEPRECATED;
 #endif
 
-gchar	*xfce_utf8_remove_controls (gchar *str,
-                                  gssize max_len,
-                                  const gchar *end);
+gchar *xfce_utf8_remove_controls   (gchar       *str,
+                                    gssize       max_len,
+                                    const gchar *end);
 
 G_END_DECLS
 

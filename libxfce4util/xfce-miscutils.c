@@ -66,19 +66,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
-/*
- * Use glib replacements
- */
-#ifndef HAVE_STRLCAT
-#define strlcat		g_strlcat
-#endif
 
-#ifndef HAVE_STRLCPY
-#define strlcpy		g_strlcpy
-#endif
-
-
-/* */
 #define XFCE4DIR		".xfce4"
 
 /* environment variable the user can set to change the path to
@@ -90,59 +78,69 @@
 G_LOCK_DEFINE_STATIC(_lock);
 
 
-static const gchar *xfce_homedir = NULL;/* path to users home directory */
-static const gchar *xfce_userdir = NULL;/* path to users .xfce4 directory */
+static gchar *xfce_homedir = NULL; /* path to users home directory */
+static gchar *xfce_userdir = NULL; /* path to users .xfce4 directory */
 
 static void
 internal_initialize(void)
 {
-	const gchar *dir;
+  const gchar *dir;
 
-	/**
-	 * determine path to users home directory
-	 */
-	if ((xfce_homedir = g_get_home_dir()) == NULL) {
+  /* determine path to users home directory */
+  dir = g_get_home_dir ();
+  if (dir == NULL)
+    {
 #ifdef HAVE_ERR_H
-		errx(EXIT_FAILURE, "Unable to determine users home directory");
+      errx (EXIT_FAILURE, "Unable to determine users home directory");
 #else
-		fprintf(stderr, "%s: ", g_get_prgname());
-		fprintf(stderr, "Unable to determinte users home directory");
-		fprintf(stderr, "\n");
-		exit(EXIT_FAILURE);
+      fprintf (stderr, "%s: ", g_get_prgname ());
+      fprintf (stderr, "Unable to determinte users home directory");
+      fprintf (stderr, "\n");
+      exit (EXIT_FAILURE);
 #endif
-	}
+    }
+  else
+    {
+      xfce_homedir = g_strdup (dir);
+    }
 
-	/**
-	 * get path to users .xfce4 directory
-	 */
-	dir = xfce_userdir ? xfce_userdir : g_getenv(XFCE4HOME_ENVVAR);
-	if (dir && g_file_test(dir, G_FILE_TEST_IS_DIR))
-		xfce_userdir = g_strdup(dir);
-	else {
-		xfce_userdir = g_build_filename(xfce_homedir, XFCE4DIR, NULL);
-	}
+  /* get path to users .xfce4 directory */
+  dir = g_getenv (XFCE4HOME_ENVVAR);
+  if (dir != NULL && g_file_test (dir, G_FILE_TEST_IS_DIR))
+    {    
+      xfce_userdir = g_strdup (dir);
+    }
+  else
+    {
+      xfce_userdir = g_build_filename (xfce_homedir, XFCE4DIR, NULL);
+      xfce_mkdirhier (xfce_userdir, 0700, NULL);
+    }
 }
 
-static G_CONST_RETURN gchar *
-internal_get_file_r(const gchar *dir, gchar *buffer, size_t len,
-		const gchar *format, va_list ap)
+
+static gchar*
+internal_get_file_r (const gchar *dir,
+                     gchar       *buffer,
+                     size_t       len,
+                     const gchar *format,
+                     va_list      ap)
 {
-	size_t n;
+  size_t n;
 
-	g_return_val_if_fail(buffer != NULL, NULL);
-	g_return_val_if_fail(format != NULL, NULL);
-	g_return_val_if_fail(len > 0, NULL);
+  g_return_val_if_fail(buffer != NULL, NULL);
+  g_return_val_if_fail(format != NULL, NULL);
+  g_return_val_if_fail(len > 0, NULL);
 
-	if ((n = strlcpy(buffer, dir, len)) >= len)
-		return(NULL);
+  if ((n = g_strlcpy(buffer, dir, len)) >= len)
+    return NULL;
 
-	if ((n = strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
-		return(NULL);
+  if ((n = g_strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
+    return NULL;
 
-	if (g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)
-		return(NULL);
+  if (g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)
+    return NULL;
 
-	return(buffer);
+  return buffer;
 }
 
 
@@ -155,7 +153,7 @@ internal_get_file_r(const gchar *dir, gchar *buffer, size_t len,
  *
  * Since: 4.2
  */
-G_CONST_RETURN gchar*
+const gchar*
 xfce_version_string (void)
 {
   return XFCE_VERSION_STRING;
@@ -175,15 +173,15 @@ xfce_version_string (void)
  *
  * Return value: the path to the current user's home directory.
  **/
-G_CONST_RETURN gchar *
-xfce_get_homedir(void)
+const gchar*
+xfce_get_homedir (void)
 {
-	G_LOCK(_lock);
-	if (!xfce_homedir)
-		internal_initialize();
-	G_UNLOCK(_lock);
+  G_LOCK (_lock);
+  if (!xfce_homedir)
+    internal_initialize ();
+  G_UNLOCK (_lock);
 	
-	return(xfce_homedir);
+  return xfce_homedir;
 }
 
 /**
@@ -202,17 +200,17 @@ xfce_get_homedir(void)
  *
  * Return value: pointer to @buffer.
  **/
-G_CONST_RETURN gchar *
-xfce_get_homefile_r(gchar *buffer, size_t len, const gchar *format, ...)
+gchar*
+xfce_get_homefile_r (gchar *buffer, size_t len, const gchar *format, ...)
 {
-	G_CONST_RETURN gchar *ptr;
-	va_list ap;
+  gchar  *ptr;
+  va_list ap;
 
-	va_start(ap, format);
-	ptr = internal_get_file_r(xfce_get_homedir(), buffer, len, format, ap);
-	va_end(ap);
+  va_start (ap, format);
+  ptr = internal_get_file_r (xfce_get_homedir (), buffer, len, format, ap);
+  va_end (ap);
 
-	return(ptr);
+  return ptr;
 }
 
 
@@ -231,15 +229,15 @@ xfce_get_homefile_r(gchar *buffer, size_t len, const gchar *format, ...)
  *
  * Return value: the path to the current user's ".xfce4" directory.
  */
-G_CONST_RETURN gchar *
-xfce_get_userdir(void)
+const gchar*
+xfce_get_userdir (void)
 {
-	G_LOCK(_lock);
-	if (!xfce_userdir)
-		internal_initialize();
-	G_UNLOCK(_lock);
+  G_LOCK(_lock);
+  if (!xfce_userdir)
+    internal_initialize();
+  G_UNLOCK(_lock);
 
-	return(xfce_userdir);
+  return xfce_userdir;
 }
 
 
@@ -252,17 +250,17 @@ xfce_get_userdir(void)
  *
  * Return value: pointer to @buffer.
  **/
-G_CONST_RETURN gchar*
+gchar*
 xfce_get_userfile_r (gchar *buffer, size_t length, const gchar *format, ...)
 {
-	G_CONST_RETURN gchar *ptr;
-	va_list               ap;
+  gchar  *ptr;
+  va_list ap;
 
-	va_start (ap, format);
-	ptr = internal_get_file_r (xfce_get_userdir (), buffer, length, format, ap);
-	va_end (ap);
+  va_start (ap, format);
+  ptr = internal_get_file_r (xfce_get_userdir (), buffer, length, format, ap);
+  va_end (ap);
 
-	return ptr;
+  return ptr;
 }
 
 

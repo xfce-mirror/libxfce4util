@@ -554,9 +554,9 @@ xfce_rc_read_bool_entry (const XfceRc *rc, const gchar *key, gboolean fallback)
   value = xfce_rc_read_entry (rc, key, NULL);
   if (value != NULL)
     {
-      return strcmp (value, "on") == 0
-	|| strcmp (value, "true") == 0
-	|| strcmp (value, "yes") == 0;
+      return g_ascii_strcasecmp (value, "on") == 0
+	|| g_ascii_strcasecmp (value, "true") == 0
+	|| g_ascii_strcasecmp (value, "yes") == 0;
     }
 
   return fallback;
