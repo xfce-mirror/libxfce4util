@@ -29,6 +29,16 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif
+#ifdef HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#endif
+#ifdef HAVE_SYS_UTSNAME_H
+#include <sys/utsname.h>
+#endif
+
 #ifdef HAVE_ERR_H
 #include <err.h>
 #endif
@@ -50,9 +60,6 @@
 #endif
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif
-#ifdef HAVE_SYS_UTSNAME_H
-#include <sys/utsname.h>
 #endif
 
 #include <glib.h>
@@ -309,20 +316,21 @@ xfce_gethostname (void)
 #ifndef MAXHOSTNAMELEN
 #define MAXHOSTNAMELEN		256
 #endif
-	char hostname[MAXHOSTNAMELEN];
+  char hostname[MAXHOSTNAMELEN];
 
-	if (gethostname(hostname, MAXHOSTNAMELEN) == 0)
-		return(g_strdup(hostname));
+  if (gethostname (hostname, MAXHOSTNAMELEN) == 0)
+    return g_strdup (hostname);
 #elif defined(HAVE_SYS_UTSNAME_H)
-	struct utsname name;
+  struct utsname name;
 
-	if (uname(&name) == 0)
-		return(g_strdup(name.nodename));
+  if (uname (&name) == 0)
+    return g_strdup (name.nodename);
 #endif
-	g_error("Unable to determine your hostname: %s", g_strerror(errno));
-	/* NOT REACHED */
-	return(NULL);
+  g_error ("Unable to determine your hostname: %s", g_strerror (errno));
+  /* NOT REACHED */
+  return NULL;
 }
+
 
 /**
  * xfce_putenv:
@@ -351,27 +359,32 @@ xfce_putenv (const gchar *string)
    * plattforms putenv() implementation.
    */
 #ifdef HAVE_STRDUP
-  if ((buffer = strdup (string)) != NULL) {
+  if ((buffer = strdup (string)) != NULL)
+    {
 #else
-  if ((buffer = malloc (strlen (string) + 1)) != NULL) {
-    strcpy(buffer, string);
+  if ((buffer = malloc (strlen (string) + 1)) != NULL)
+    {
+      strcpy(buffer, string);
 #endif
-    if ((result = putenv (buffer)) < 0) {
-      sverrno = errno;
-      free (buffer);
-      errno = sverrno;
+      if ((result = putenv (buffer)) < 0)
+	{
+	  sverrno = errno;
+	  free (buffer);
+	  errno = sverrno;
+	}
     }
-  }
-  else {
-    errno = ENOMEM;
-    result = -1;
-  }
+  else
+    {
+      errno = ENOMEM;
+      result = -1;
+    }
 
-  return result;
+    return result;
 #else /* !HAVE_BROKEN_PUTENV */
-  return putenv (string);
+    return putenv (string);
 #endif /* !HAVE_BROKEN_PUTENV */
 }
+
 
 /**
  * xfce_setenv:
@@ -401,18 +414,122 @@ xfce_setenv (const gchar *name, const gchar *value, gboolean overwrite)
   /* Plattforms with broken putenv() are unlikely to have a working setenv() */
 #if !defined(HAVE_SETENV) || defined(HAVE_BROKEN_PUTENV)
   int result = 0;
-	gchar *buf;
+  gchar *buf;
 
-  if (g_getenv (name) == NULL || overwrite) {
-	  buf = g_strdup_printf ("%s=%s", name, value);
-	  result = xfce_putenv (buf);
-    g_free (buf);
-  }
+  if (g_getenv (name) == NULL || overwrite)
+    {
+      buf = g_strdup_printf ("%s=%s", name, value);
+      result = xfce_putenv (buf);
+      g_free (buf);
+    }
 
   return result;
 #else
   return setenv (name, value, overwrite);
 #endif	/* !HAVE_SETENV */
+}
+
+
+/**
+ * xfce_mkdirhier:
+ * @whole_path :
+ * @omode      :
+ * @error      : location where to store GError object to.
+ *
+ * Return value: %TRUE on success, else %FALSE.
+ *
+ * Since: 4.1.8
+ **/
+gboolean
+xfce_mkdirhier (const gchar  *whole_path,
+                unsigned long omode,
+                GError      **error)
+{
+  /* Stolen from FreeBSD's mkdir(1) */
+  char path[1024];
+  struct stat sb;
+  mode_t numask, oumask;
+  int first, last;
+  gboolean retval;
+  char *p;
+
+  g_strlcpy (path, whole_path, sizeof (path));
+  p = path;
+  oumask = 0;
+  retval = TRUE;
+
+  if (p[0] == '/')		/* Skip leading '/'. */
+    ++p;
+
+  for (first = 1, last = 0; !last ; ++p)
+    {
+      if (p[0] == '\0')
+	last = 1;
+      else if (p[0] != '/')
+	continue;
+
+      *p = '\0';
+
+      if (p[1] == '\0')
+	last = 1;
+
+      if (first)
+	{
+	  /*
+	   * POSIX 1003.2:
+	   * For each dir operand that does not name an existing
+	   * directory, effects equivalent to those cased by the
+	   * following command shall occcur:
+	   *
+	   * mkdir -p -m $(umask -S),u+wx $(dirname dir) &&
+	   *    mkdir [-m mode] dir
+	   *
+	   * We change the user's umask and then restore it,
+	   * instead of doing chmod's.
+	   */
+	  oumask = umask(0);
+	  numask = oumask & ~(S_IWUSR | S_IXUSR);
+	  umask(numask);
+	  first = 0;
+	}
+
+      if (last)
+	umask(oumask);
+
+      if (mkdir (path, last ? omode : S_IRWXU | S_IRWXG | S_IRWXO) < 0)
+	{
+	  if (errno == EEXIST || errno == EISDIR)
+	    {
+	      if (stat (path, &sb) < 0)
+		{
+		  retval = FALSE;
+		  break;
+		}
+	      else if (!S_ISDIR (sb.st_mode))
+		{
+		  if (last)
+		    errno = EEXIST;
+		  else
+		    errno = ENOTDIR;
+		  retval = FALSE;
+		  break;
+		}
+	    }
+	  else
+	    {
+	      retval = FALSE;
+	      break;
+	    }
+	}
+
+      if (!last)
+	*p = '/';
+    }
+
+  if (!first && !last)
+    umask (oumask);
+
+  return retval;
 }
 
 

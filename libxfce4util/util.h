@@ -80,4 +80,8 @@ gint    xfce_setenv (const gchar *name,
                      const gchar *value,
                      gboolean overwrite);
 
+gboolean xfce_mkdirhier (const gchar   *whole_path,
+                         unsigned long  mode,
+                         GError       **error);
+
 #endif	/* __LIBXFCE4UTIL_UTIL_H__ */
