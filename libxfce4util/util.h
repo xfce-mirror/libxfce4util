@@ -27,8 +27,6 @@
 #ifndef __LIBXFCE4UTIL_UTIL_H__
 #define __LIBXFCE4UTIL_UTIL_H__
 
-#include <string.h>
-
 #include <glib.h>
 
 /* save way to get path to users home directory and files below */

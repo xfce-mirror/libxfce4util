@@ -5,6 +5,7 @@ libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
 
 libxfce4utilinclude_HEADERS =					\
 	filter.h						\
+	i18n.h							\
 	option.h						\
 	util.h
 

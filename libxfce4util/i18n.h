@@ -24,38 +24,36 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __LIBXFCE4UTIL_FILTER_H__
-#define __LIBXFCE4UTIL_FILTER_H__
+#ifndef __LIBXFCE4UTIL_I18N_H
+#define __LIBXFCE4UTIL_I18N_H
 
-#include <glib.h>
+/*
+ * gettext macros
+ */
+#if defined(ENABLE_NLS) && defined(PACKAGE)
 
-typedef struct _XfceFilter	XfceFilter;
-typedef struct _XfceFilterList	XfceFilterList;
+#include <libintl.h>
 
-struct _XfceFilter
-{
-	guint	argc;
-	gchar	**argv;
-	gchar	*command;
-	guint	size;
-};
+#undef	_
+#define	_(s)			(dgettext(PACKAGE, s))
 
-struct _XfceFilterList
-{
-	GList	*cursor;
-	GList	*filters;
-};
+#ifdef gettext_noop
+#define N_(s)			(gettext_noop(s))
+#else
+#define N_(s)			(s)
+#endif
 
-/* filter function prototypes */
-extern XfceFilter	*xfce_filter_new(const gchar *);
-extern void		xfce_filter_free(XfceFilter *);
-extern void		xfce_filter_add(XfceFilter *, const gchar *, ...);
+#else /* !defined(ENABLE_NLS) || !defined(PACKAGE) */
 
-/* filterlist function prototypes */
-extern XfceFilterList	*xfce_filterlist_new(void);
-extern void		xfce_filterlist_free(XfceFilterList *);
-extern void		xfce_filterlist_append(XfceFilterList *, XfceFilter *);
-extern void		xfce_filterlist_prepend(XfceFilterList *, XfceFilter *);
-extern int		xfce_filterlist_execute(XfceFilterList *, int,int,int);
+#define _(s)	(s)
+#define N_(s)	(s)
 
-#endif	/* !__LIBXFCE4UTIL_FILTER_H__ */
+#define textdomain(s)				(s)
+#define gettext(s)				(s)
+#define dgettext(domain,s)			(s)
+#define dcgettext(domain,s,type)		(s)
+#define bindtextdomain(domain,directory)	(domain)
+
+#endif
+
+#endif	/* !__LIBXFCE4UTIL_I18N_H */
