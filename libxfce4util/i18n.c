@@ -1,6 +1,7 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003,2004 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2004 Jasper Huijsman <jasper@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -23,32 +24,6 @@
  * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-
-/*-
- * Copyright (c)2002 YAMAMOTO Takashi,
- * All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- *
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -135,7 +110,14 @@ found:
 	return(buffer);
 }
 
-gchar *
+
+/**
+ * xfce_get_file_localized:
+ * @filename :
+ *
+ * Return value:
+ **/
+gchar*
 xfce_get_file_localized(const gchar *filename)
 {
 	gchar buffer[PATH_MAX + 1];
@@ -146,7 +128,16 @@ xfce_get_file_localized(const gchar *filename)
 					G_FILE_TEST_IS_REGULAR)));
 }
 
-gchar *
+
+/**
+ * xfce_get_file_localized_r:
+ * @buffer   :
+ * @length   :
+ * @filename :
+ *
+ * Return value:
+ **/
+gchar*
 xfce_get_file_localized_r(gchar *buffer, gsize length, const gchar *filename)
 {
 	g_return_val_if_fail(buffer != NULL, NULL);
@@ -156,7 +147,14 @@ xfce_get_file_localized_r(gchar *buffer, gsize length, const gchar *filename)
 				G_FILE_TEST_IS_REGULAR));
 }
 
-gchar *
+
+/**
+ * xfce_get_dir_localized:
+ * @directory :
+ *
+ * Return value:
+ **/
+gchar*
 xfce_get_dir_localized(const gchar *directory)
 {
 	gchar buffer[PATH_MAX + 1];
@@ -167,6 +165,15 @@ xfce_get_dir_localized(const gchar *directory)
 					G_FILE_TEST_IS_DIR)));
 }
 
+
+/**
+ * xfce_get_dir_localized_r:
+ * @buffer    : 
+ * @length    :
+ * @directory :
+ *
+ * Return value:
+ **/
 gchar *
 xfce_get_dir_localized_r(gchar *buffer, gsize length, const gchar *directory)
 {
@@ -175,6 +182,7 @@ xfce_get_dir_localized_r(gchar *buffer, gsize length, const gchar *directory)
 
 	return(__localize_path(buffer, length, directory, G_FILE_TEST_IS_DIR));
 }
+
 
 /**
  * xfce_get_path_localized:

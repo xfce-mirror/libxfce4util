@@ -1,6 +1,7 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003,2004 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2004 Jasper Huijsman <jasper@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -118,14 +119,14 @@ do {									\
 
 #endif
 
-#ifndef XFCE_DISABLE_DEPRECATED
-
-gchar *	xfce_get_file_localized(const gchar *);
-gchar *	xfce_get_dir_localized(const gchar *);
-gchar *	xfce_get_file_localized_r(gchar *, gsize, const gchar *);
-gchar *	xfce_get_dir_localized_r(gchar *, gsize, const gchar *);
-
-#endif
+gchar*	xfce_get_file_localized   (const gchar *filename) G_GNUC_PURE;
+gchar*	xfce_get_dir_localized    (const gchar *directory) G_GNUC_PURE;
+gchar*	xfce_get_file_localized_r (gchar       *buffer,
+                                   gsize        length,
+                                   const gchar *filename) G_GNUC_PURE;
+gchar*	xfce_get_dir_localized_r  (gchar       *buffer,
+                                   gsize        length,
+                                   const gchar *directory) G_GNUC_PURE;
 
 gchar*	xfce_get_path_localized (gchar       *dst,
 				 gsize        size,
