@@ -306,8 +306,6 @@ xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
 
 	g_snprintf (buffer, size, dst, locale);
 
-	DBG ("path : %s", buffer);
-	
 	if (g_file_test(buffer, test)) {
 	  strncpy (dst, buffer, size);
 	  return dst;
@@ -326,8 +324,6 @@ xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
 	    g_snprintf(buffer, size, dst, langext);
 	    g_free(langext);
 
-	    DBG ("path : %s", buffer);
-	
 	    if (g_file_test(buffer, test)) {
 	      strncpy (dst, buffer, size);
 	      return dst;
