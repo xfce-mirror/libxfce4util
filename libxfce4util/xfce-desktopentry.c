@@ -394,7 +394,6 @@ xfce_desktop_entry_new_from_data (const char *data, const char **categories,
     }
 
     if (!entry_parse (desktop_entry)) {
-        g_warning ("Unable to parse .desktop file data");
         g_object_unref (G_OBJECT (desktop_entry));
         desktop_entry = NULL;
     }
@@ -452,7 +451,6 @@ xfce_desktop_entry_new (const char *file, const char **categories,
     }
 
     if (!entry_parse(desktop_entry)) {
-        g_warning ("Unable to parse .desktop file '%s'", file);
         g_object_unref (G_OBJECT (desktop_entry));
         desktop_entry = NULL;
     }
