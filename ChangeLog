@@ -1,3 +1,46 @@
+2004-11-13 16:19  olivier
+
+	* configure: Auto-tools check-up.
+
+2004-11-11 21:50  benny
+
+	* libxfce4util/xfce-kiosk.c: xfce_kiosk_new() always returns a
+	  valid XfceKiosk object now. xfce_kiosk_init() is a bit more
+	  verbose about whats wrong.
+
+2004-11-11 14:12  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, configure.ac, depcomp, install-sh, ltmain.sh, missing,
+	  docs/Makefile.in, libxfce4util/Makefile.in, m4/Makefile.in,
+	  xfce4-kiosk-query/Makefile.in: Update version number as code has
+	  changed
+
+2004-11-11 13:55  jasper
+
+	* libxfce4util/xfce-desktopentry.c: Remove some warnings; parsing
+	  may fail for valid reasons. Let applications handle this
+	  themselves. (bug #438)
+
+2004-11-10 00:54  benny
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, depcomp, install-sh, ltmain.sh, missing,
+	  docs/Makefile.in, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/xfce-resource.c,
+	  m4/Makefile.in, xfce4-kiosk-query/Makefile.in: Always include
+	  xfce prefix in XFCE_RESOURCE_{DATA,CONFIG}.
+
+2004-11-06 17:23  olivier
+
+	* ChangeLog, Makefile.in, aclocal.m4, compile, config.guess,
+	  config.sub, configure, configure.ac, depcomp, install-sh,
+	  missing, docs/Makefile.in, libxfce4util/Makefile.in,
+	  m4/Makefile.in, xfce4-kiosk-query/Makefile.in: Update
+	  automake/autoconf/libtool/gettext versions to generate the
+	  configure scripts and Makefiles, Update versions of all packages
+	  to 4.1.99.1 (ie 4.2 RC1), Update ChangeLogs.
+
 2004-11-05 18:32  benny
 
 	* libxfce4util/xfce-rc-simple.c: Increase line buffer size, fixes
