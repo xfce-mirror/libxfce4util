@@ -265,7 +265,7 @@ xfce_get_userfile_r(gchar *buffer, size_t length, const gchar *format, ...)
  *               using g_free() when no longer needed.
  **/
 gchar *
-xfce_strjoin(gchar *separator, gchar **strings, gint count)
+xfce_strjoin(const gchar *separator, gchar **strings, gint count)
 {
 	gchar *result;
 	gint length;

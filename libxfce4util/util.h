@@ -68,7 +68,7 @@ G_CONST_RETURN gchar* xfce_get_userfile_r (gchar *buffer,
                                            const gchar *format,
                                            ...);
 
-gchar*  xfce_strjoin (gchar *separator,
+gchar*  xfce_strjoin (const gchar *separator,
                       gchar **strings,
                       gint count);
 
