@@ -11,11 +11,11 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:4:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [15])
+m4_define([libxfce4util_version_micro], [16])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Overall XFce version, modify this when making releases
-m4_define([xfce_version_string], [4.1.3])
+m4_define([xfce_version_string], [4.1.4])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -58,6 +58,7 @@ dnl check for UNIX variants
 AC_AIX
 AC_ISC_POSIX
 AC_MINIX
+AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
 dnl check for basic programs
 AC_PROG_CC

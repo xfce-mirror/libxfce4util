@@ -39,6 +39,7 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_triplet = @host@
+@HAVE_CYGWIN_TRUE@am__append_1 = -no-undefined
 subdir = libxfce4util
 DIST_COMMON = $(libxfce4utilinclude_HEADERS) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/libxfce4util-1.0.pc.in \
@@ -133,6 +134,8 @@ GOBJECT_LIBS = @GOBJECT_LIBS@
 GOBJECT_REQUIRED_VERSION = @GOBJECT_REQUIRED_VERSION@
 GTK_DOC_USE_LIBTOOL_FALSE = @GTK_DOC_USE_LIBTOOL_FALSE@
 GTK_DOC_USE_LIBTOOL_TRUE = @GTK_DOC_USE_LIBTOOL_TRUE@
+HAVE_CYGWIN_FALSE = @HAVE_CYGWIN_FALSE@
+HAVE_CYGWIN_TRUE = @HAVE_CYGWIN_TRUE@
 HTML_DIR = @HTML_DIR@
 INSTALL_DATA = @INSTALL_DATA@
 INSTALL_PROGRAM = @INSTALL_PROGRAM@
@@ -262,8 +265,8 @@ libxfce4util_la_SOURCES = \
 libxfce4util_la_LDFLAGS = \
 	-export-dynamic						\
 	-version-info @LIBXFCE4UTIL_VERINFO@			\
-	-export-symbols-regex "^[^_].*"
-
+	-export-symbols-regex "^[^_].*"\
+$(am__append_1)
 libxfce4util_la_LIBADD = \
 	@GOBJECT_LIBS@
 

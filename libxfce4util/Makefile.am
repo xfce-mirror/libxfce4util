@@ -57,6 +57,10 @@ libxfce4util_la_LDFLAGS =					\
 	-version-info @LIBXFCE4UTIL_VERINFO@			\
 	-export-symbols-regex "^[^_].*"
 
+if HAVE_CYGWIN
+libxfce4util_la_LDFLAGS += -no-undefined
+endif
+
 libxfce4util_la_LIBADD =					\
 	@GOBJECT_LIBS@
 
