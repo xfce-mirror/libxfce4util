@@ -200,6 +200,12 @@ _res_init (void)
   _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS],
 					      "/usr/share/pixmaps");
 
+  /* fallback for system which that don't install everything in /usr */
+  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS],
+                                              "/usr/local/share/pixmaps");
+  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS],
+                                              DATADIR "/share/pixmaps");
+
   /* remove duplicates from the lists */
 #define REMOVE_DUPLICATES(type) { _list[(type)] = _res_remove_duplicates (_list[(type)]); }
   REMOVE_DUPLICATES (XFCE_RESOURCE_DATA);

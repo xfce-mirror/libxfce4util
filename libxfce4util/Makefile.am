@@ -4,6 +4,7 @@ INCLUDES =								\
 	-DDEFAULT_XDG_CONFIG_HOME=\"~/.config\"				\
 	-DDEFAULT_XDG_DATA_DIRS=\"$(datadir):/usr/local/share:/usr/share\" \
 	-DDEFAULT_XDG_CONFIG_DIRS=\"$(sysconfdir)/xdg:$(sysconfdir)/xfce4:/etc/xdg\" \
+	-DDATADIR=\"$(datadir)\"					\
 	-DG_LOG_DOMAIN=\"libxfce4util\"
 
 lib_LTLIBRARIES = libxfce4util.la
