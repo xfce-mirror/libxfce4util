@@ -39,7 +39,7 @@
 
 #if GLIB_CHECK_VERSION(2,4,0)
 
-#include <glib/gi18n.h>
+#include <glib/gi18n-lib.h>
 
 #else
 
