@@ -1,3 +1,27 @@
+2004-11-26 23:13  benny
+
+	* libxfce4util/i18n.h: Fix empty statement.
+
+2004-11-23 00:28  benny
+
+	* libxfce4util/i18n.h: Use glib/gi18n-lib.h instead, because
+	glib/gi18n.h is unsuitable, since it defines _(s) to gettext(s),
+	which in turn uses the default translation domain.
+
+2004-11-19 00:27  benny
+
+	* libxfce4util/xfce-rc-simple.c: Another attempt to fix #469.
+
+2004-11-18 23:50  benny
+
+	* configure, configure.ac, ltmain.sh: Specifying the nano version
+	within the micro version broke the LIBXFCE4UTIL_MICRO_VERSION and
+	related macros. Added some m4 magic to work-around the problem.
+
+2004-11-14 10:23  benny
+
+	* ChangeLog: Here's your ChangeLog. :-)
+
 2004-11-14 10:20  benny
 
 	* libxfce4util/xfce-kiosk.c: NGROUPS_MAX doesn't seem to be useful
