@@ -566,8 +566,8 @@ xfce_resource_match (XfceResourceType type,
 
 /**
  * xfce_resource_match_custom:
- * @type      :
- * @unique    :
+ * @type      : type of the resource to locate directories for.
+ * @unique    : if %TRUE, only return items which have unique suffixes.
  * @func      :
  * @user_data :
  *
@@ -590,6 +590,8 @@ xfce_resource_match_custom (XfceResourceType type,
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
   g_return_val_if_fail (func != NULL, NULL);
+
+  _res_init ();
 
   if (unique)
     result = _res_remove_duplicates (result);

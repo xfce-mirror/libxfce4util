@@ -412,6 +412,8 @@ xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
  *               the match. You should not rely on any specific value besides
  *               the constants #XFCE_LOCALE_FULL_MATCH and #XFCE_LOCALE_NO_MATCH,
  *               since the range of returned values may change in the future.
+ *
+ * Since: 4.2
  **/
 guint
 xfce_locale_match (const gchar *locale1,

@@ -23,6 +23,7 @@ Resource lookup functions
 @XFCE_RESOURCE_CONFIG: configuration files.
 @XFCE_RESOURCE_CACHE: cached information.
 @XFCE_RESOURCE_ICONS: icon search path.
+@XFCE_RESOURCE_THEMES: themes search path.
 
 <!-- ##### USER_FUNCTION XfceMatchFunc ##### -->
 <para>

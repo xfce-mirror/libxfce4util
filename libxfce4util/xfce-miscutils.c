@@ -503,6 +503,8 @@ xfce_expand_variables (const gchar *command,
   gchar       *vp;
   gchar      **ep;
   guint        len;
+
+  g_return_val_if_fail (command != NULL, NULL);
   
   if (*command == '~')
     {

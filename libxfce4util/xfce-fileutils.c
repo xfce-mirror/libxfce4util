@@ -48,10 +48,17 @@
 
 /**
  * xfce_mkdirhier:
- * @whole_path :
- * @omode      :
+ * @whole_path : path to the directory to create.
+ * @omode      : file permissions to use for the newly created directories.
  * @error      : location where to store GError object to, error are returned
  *               in the %G_FILE_ERROR domain.
+ *
+ * Creates the specified directory @whole_path, but unlike the mkdir()
+ * function from the standard C library, if any of the parent directories
+ * of the @whole_path do not exists, they are created as well.
+ *
+ * If the directory specified by @whole_path already exists, this function
+ * performs no operation and simply returns %TRUE.
  *
  * Return value: %TRUE on success, else %FALSE.
  *
