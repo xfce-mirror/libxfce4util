@@ -50,6 +50,9 @@
 #define PATH_MAX 1024
 #endif
 
+#ifndef LINE_MAX
+#define LINE_MAX 2048
+#endif
 
 /* name of the NULL group */
 #define NULL_GROUP "[NULL]"
@@ -753,12 +756,12 @@ _xfce_rc_simple_delete_group (XfceRc *rc, const gchar *name, gboolean global)
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
   Group        *group;
-  
+
   if (name == NULL)
     name = NULL_GROUP;
-  
+
   for (group = simple->gfirst; group != NULL; group = group->next)
-    {      
+    {
       if (strcmp (group->name, name) == 0)
         {
           if (simple->group == group || strcmp (name, NULL_GROUP) == 0)
@@ -834,7 +837,7 @@ _xfce_rc_simple_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
   Entry        *entry;
-  
+
   for (entry = simple->group->efirst; entry != NULL; entry = entry->next)
     {
       if (strcmp (entry->key, key) == 0)
@@ -848,7 +851,7 @@ _xfce_rc_simple_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
             entry->next = entry->prev;
           else
             simple->group->elast = entry->prev;
-          
+
           simple->dirty = TRUE;
           break;
         }
