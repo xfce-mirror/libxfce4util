@@ -1,3 +1,84 @@
+2004-02-20 14:24  benny
+
+	* NEWS, README, aclocal.m4, config.h.in, configure, configure.ac:
+	Version 4.1.4 with some bugfixes and
+	--with-broken-putenv=[auto/no/yes] option added to configure to
+	make libxfce4util cross-compilable again.
+
+2004-02-20 14:12  benny
+
+	* libxfce4util/xfce-desktopentry.c: atoi() is deprecated, strtol()
+	should be used instead. In addition the check for temp >= 0
+	prevented negative integer values from being stored in desktop
+	files.
+
+2004-02-20 12:44  benny
+
+	* libxfce4util/util.c: Be sure to use the plattform malloc() in our
+	putenv(), cause we don't know about the evil interna of putenv()
+	and g_malloc() need not to use malloc() on this plattform. Fixed
+	bug in xfce_setenv() where memory was not freed after the call to
+	xfce_putenv().
+
+2004-02-15 23:02  jasper
+
+	* libxfce4util/xfce-desktopentry.c: Add extra sanity check
+
+2004-02-12 02:11  benny
+
+	* libxfce4util/xfce_desktop_entry.h: Provide "wrapping" depending
+	on XFCE_DISABLE_DEPRECATED.
+
+2004-02-12 01:59  benny
+
+	* Makefile.am, Makefile.in, NEWS, aclocal.m4, configure,
+	configure.ac, libxfce4util.spec.in, docs/.cvsignore, docs/Doxyfile,
+	docs/MAINPAGE, docs/Makefile.am, docs/Makefile.in,
+	docs/libxfce4util-docs.sgml, docs/libxfce4util-overrides.txt,
+	docs/libxfce4util-sections.txt, docs/libxfce4util.types,
+	docs/version.xml.in, docs/tmpl/debug.sgml, docs/tmpl/i18n.sgml,
+	docs/tmpl/utf8.sgml, docs/tmpl/util.sgml,
+	docs/tmpl/xfce-desktopentry.sgml, i18n/Makefile.in,
+	libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	libxfce4util/debug.h, libxfce4util/i18n.c, libxfce4util/i18n.h,
+	libxfce4util/libxfce4util.h, libxfce4util/utf8.c,
+	libxfce4util/utf8.h, libxfce4util/util.c, libxfce4util/util.h,
+	libxfce4util/xfce-desktopentry.c, libxfce4util/xfce-desktopentry.h,
+	libxfce4util/xfce_desktop_entry.c,
+	libxfce4util/xfce_desktop_entry.h, m4/Makefile.in, m4/debug.m4:
+	Version 4.1.3: Code cleanups, doxygen -> gtk-doc, some functions
+	marked as DEPRECATED.
+
+2004-02-11 23:48  benny
+
+	* autogen.sh: Always append --enable-maintainer-mode if configure
+	is invoked by autogen.sh, since this makes more sense to me.
+
+2004-02-09 02:47  kelnos
+
+	* libxfce4util/xfce_desktop_entry.c: fix three memleaks in
+	xfce_desktop_entry_parse()
+
+2004-02-03 19:06  benny
+
+	* config.h.in, configure, configure.ac,
+	libxfce4util/licenses-texts.c, libxfce4util/licenses-to-c.sh,
+	libxfce4util/util.c, libxfce4util/util.h: Fixed leftover naming
+	problem _xfce_builtin_* -> xfce_builtin_*.
+
+2004-02-02 21:57  benny
+
+	* ChangeLog, Makefile.in, configure, configure.ac, docs/Doxyfile,
+	libxfce4util/BSD, libxfce4util/GPL, libxfce4util/LGPL,
+	libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	libxfce4util/licenses-texts.c, libxfce4util/licenses-to-c.sh,
+	libxfce4util/util.h: Hardcode common licenses into the library
+	(using a special section, if possible, to prevent unneccessary
+	memory usage) and added XFCE_LICENSE_* macros to access the license
+	texts. This is done, so license texts can be accessed by
+	application without requiring the user to install xfce-utils (which
+	should be altered to use the XFCE_LICENSE_* stuff).
+
 2004-01-31 09:59  jasper
 
 	* docs/: Doxyfile, MAINPAGE: Add simple front page for API docs.
