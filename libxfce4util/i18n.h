@@ -129,11 +129,14 @@ do {									\
 #define gettext(s)				(s)
 #define dgettext(domain,s)			(s)
 #define dcgettext(domain,s,type)		(s)
-#define bindtextdomain(domain,directory)	(domain)
+#define bindtextdomain(domain,directory) \
+do { \
+  /* nothing to do here */ \
+} while(0)
 
 #define	xfce_textdomain(package, localedir, encoding)			\
 do {									\
-	/* nothing do here */						\
+	/* nothing to do here */						\
 } while(0)
 
 #endif /* !defined(ENABLE_NLS) || !defined(GETTEXT_PACKAGE) */
