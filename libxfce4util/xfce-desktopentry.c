@@ -422,6 +422,7 @@ gboolean
 xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 {
   /* already done in _new and _new_from_data : do nothing */
+  return TRUE;
 }
 
 static G_CONST_RETURN entry_t *
