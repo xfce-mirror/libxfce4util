@@ -57,6 +57,15 @@ xfce_get_path_localized
 </SECTION>
 
 <SECTION>
+<TITLE>Standard Macros</TITLE>
+<FILE>standard-macros</FILE>
+LIBXFCE4UTIL_MAJOR_VERSION
+LIBXFCE4UTIL_MINOR_VERSION
+LIBXFCE4UTIL_MICRO_VERSION
+LIBXFCE4UTIL_CHECK_VERSION
+</SECTION>
+
+<SECTION>
 <TITLE>Unicode Support Functions</TITLE>
 <FILE>utf8</FILE>
 xfce_utf8_remove_controls

@@ -4,6 +4,7 @@
 <!ENTITY libxfce4util-Basedir-Support SYSTEM "xml/xdg-basedir-support.xml">
 <!ENTITY libxfce4util-Desktop-Entries SYSTEM "xml/xfce-desktopentry.xml">
 <!ENTITY libxfce4util-Internationalization SYSTEM "xml/i18n.xml">
+<!ENTITY libxfce4util-StandardMacros SYSTEM "xml/standard-macros.xml">
 <!ENTITY libxfce4util-Unicode-Functions SYSTEM "xml/utf8.xml">
 <!ENTITY libxfce4util-Utility-Functions SYSTEM "xml/util.xml">
 <!ENTITY version SYSTEM "version.xml">
@@ -26,6 +27,7 @@
 
 	<chapter id="libxfce4util-fundamentals">
 		<title>Xfce Fundamentals</title>
+		&libxfce4util-StandardMacros;
 		&libxfce4util-Internationalization;
 	</chapter>
 

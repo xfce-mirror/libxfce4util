@@ -1,3 +1,9 @@
+20040301:
+---------
+
+	- Version 4.1.6
+	- Added LIBXFCE4UTIL_*_VERSION macros.
+
 20040224:
 ---------
 

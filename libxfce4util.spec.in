@@ -51,4 +51,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/xfce4/libxfce4util
 %{_datadir}/xfce4/m4/
+%{_datadir}/gtk-doc
 

@@ -7,6 +7,7 @@ libxfce4utilinclude_HEADERS =					\
 	debug.h							\
 	i18n.h							\
 	libxfce4util.h						\
+	libxfce4util-config.h					\
 	utf8.h							\
 	util.h							\
 	xdg.h							\
@@ -52,4 +53,5 @@ EXTRA_DIST =							\
 	BSD							\
 	GPL							\
 	LGPL							\
+	libxfce4util-config.h.in				\
 	licenses-to-c.sh
