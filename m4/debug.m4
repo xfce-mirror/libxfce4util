@@ -8,6 +8,7 @@ dnl
 
 AC_DEFUN([BM_DEBUG_SUPPORT],
 [
+dnl # --enable-debug
   AC_ARG_ENABLE([debug],
 AC_HELP_STRING([--enable-debug[=yes|no|full]], [Build with debugging support])
 AC_HELP_STRING([--disable-debug], [Include no debugging support [default]]),
@@ -28,6 +29,7 @@ AC_HELP_STRING([--disable-debug], [Include no debugging support [default]]),
     AC_MSG_RESULT([no])
   fi
 
+dnl # --enable-profiling
   AC_ARG_ENABLE([profiling],
 AC_HELP_STRING([--enable-profiling],
     [Generate extra code to write profile information])
@@ -43,6 +45,23 @@ AC_HELP_STRING([--disable-profiling],
     AC_MSG_RESULT([no])
   fi
 
+dnl # --enable-gcov
+  AC_ARG_ENABLE([gcov],
+AC_HELP_STRING([--enable-gcov],
+    [compile with coverage profiling instrumentation (gcc only)])
+AC_HELP_STRING([--disable-gcov],
+    [do not generate coverage profiling instrumentation (default)]),
+    [], [enable_gcov=no])
+
+  AC_MSG_CHECKING([whether to compile with coverage profiling instrumentation])
+  if test x"$enable_gcov" != x"no"; then
+    CFLAGS="$CFLAGS -fprofile-arcs -ftest-coverage"
+    AC_MSG_RESULT([yes])
+  else
+    AC_MSG_RESULT([no])
+  fi
+
+dnl # --enable-asserts
   AC_ARG_ENABLE([asserts],
 AC_HELP_STRING([--enable-asserts], [Enable assert statements (default)])
 AC_HELP_STRING([--disable-asserts],
