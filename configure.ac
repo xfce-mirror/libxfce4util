@@ -41,4 +41,5 @@ Makefile
 libxfce4util.spec
 libxfce4util/libxfce4util-1.0.pc
 libxfce4util/Makefile
+m4/Makefile
 ])
