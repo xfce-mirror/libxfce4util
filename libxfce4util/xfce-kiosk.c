@@ -32,6 +32,9 @@
 #ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
 #endif
+#ifdef HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#endif
 
 #ifdef HAVE_GRP_H
 #include <grp.h>
@@ -45,11 +48,17 @@
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
+#ifdef HAVE_TIME_H
+#include <time.h>
+#endif
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
 
 #include <libxfce4util/libxfce4util.h>
+
+
+#define KIOSKRC (KIOSKDIR "/kioskrc")
 
 
 struct _XfceKiosk
@@ -63,11 +72,13 @@ static const gchar *xfce_kiosk_lookup  (const XfceKiosk *kiosk,
                                         const gchar     *capability);
 static gboolean     xfce_kiosk_chkgrp  (const gchar     *group);
 static gboolean     xfce_kiosk_init    (void);
+static time_t       mtime              (const gchar     *path);
 
 
 static gchar        *usrname  = NULL;
 static gchar       **groups;
-static const gchar  *kioskdef;
+static time_t        kiosktime = 0;
+static const gchar  *kioskdef = NULL;
 static XfceRc       *kioskrc;
 
 
@@ -228,6 +239,24 @@ xfce_kiosk_init (void)
   int            gidsetlen;
   int            n;
   int            m;
+  time_t         time;
+
+  /* reload kioskrc */
+  time = mtime (KIOSKRC);
+  if (time > kiosktime || kioskdef == NULL)
+    {
+      kiosktime = time;
+      kioskrc = xfce_rc_simple_open (KIOSKRC, TRUE);
+      if (kioskrc != NULL)
+        {
+          xfce_rc_set_group (kioskrc, "General");
+          kioskdef = xfce_rc_read_entry (kioskrc, "Default", KIOSKDEF);
+        }
+      else
+        {
+          kioskdef = KIOSKDEF;
+        }
+    }
 
   if (G_LIKELY (usrname != NULL))
     return TRUE;
@@ -254,19 +283,19 @@ xfce_kiosk_init (void)
     }
   groups[m] = NULL;
 
-  /* open global $sysconfdir/xfce4/kiosk/kioskrc */
-  kioskrc = xfce_rc_simple_open (KIOSKDIR "/kioskrc", TRUE);
-  if (kioskrc != NULL)
-    {
-      xfce_rc_set_group (kioskrc, "General");
-      kioskdef = xfce_rc_read_entry (kioskrc, "Default", KIOSKDEF);
-    }
-  else
-    {
-      kioskdef = KIOSKDEF;
-    }
-
   return TRUE;
+}
+
+
+static time_t
+mtime (const gchar *path)
+{
+  struct stat sb;
+
+  if (G_UNLIKELY (path == NULL) || stat (path, &sb) < 0)
+    return (time_t) 0; 
+
+  return sb.st_mtime;
 }
 
 
