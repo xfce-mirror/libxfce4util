@@ -11,11 +11,12 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:5:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [99.1])
-m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
+m4_define([libxfce4util_version_micro], [99])
+m4_define([libxfce4util_version_nano], [2])   dnl leave this empty to have no nano version
+m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano])])
 
-dnl Overall XFce version, modify this when making releases
-m4_define([xfce_version_string], [4.1.99.1])
+dnl Overall Xfce version, modify this when making releases
+m4_define([xfce_version_string], [4.1.99.2])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -28,18 +29,18 @@ AC_COPYRIGHT([Copyright (c) 2002-2004
 
 Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
 Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.])
-AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
+AC_INIT([libxfce4util], [libxfce4util_version()], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
 
 dnl Initialize automake
-LIBXFCE4UTIL_VERSION=libxfce4util_version
+LIBXFCE4UTIL_VERSION=libxfce4util_version()
 AM_INIT_AUTOMAKE([libxfce4util], [$LIBXFCE4UTIL_VERSION])
 AM_CONFIG_HEADER([config.h])
 AM_MAINTAINER_MODE
 
 dnl libtool versioning
-LIBXFCE4UTIL_VERINFO=libxfce4util_verinfo
+LIBXFCE4UTIL_VERINFO=libxfce4util_verinfo()
 AC_SUBST([LIBXFCE4UTIL_VERINFO])
 
 dnl Subst overall XFce version
@@ -47,9 +48,9 @@ AC_DEFINE([XFCE_VERSION_STRING], ["xfce_version_string"],
   [Overall XFce version])
 
 dnl Subst libxfce4util version
-LIBXFCE4UTIL_VERSION_MAJOR=libxfce4util_version_major
-LIBXFCE4UTIL_VERSION_MINOR=libxfce4util_version_minor
-LIBXFCE4UTIL_VERSION_MICRO=libxfce4util_version_micro
+LIBXFCE4UTIL_VERSION_MAJOR=libxfce4util_version_major()
+LIBXFCE4UTIL_VERSION_MINOR=libxfce4util_version_minor()
+LIBXFCE4UTIL_VERSION_MICRO=libxfce4util_version_micro()
 AC_SUBST([LIBXFCE4UTIL_VERSION_MAJOR])
 AC_SUBST([LIBXFCE4UTIL_VERSION_MINOR])
 AC_SUBST([LIBXFCE4UTIL_VERSION_MICRO])
