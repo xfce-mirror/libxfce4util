@@ -109,14 +109,13 @@ internal_initialize(void)
 
   /* get path to users .xfce4 directory */
   dir = g_getenv (XFCE4HOME_ENVVAR);
-  if (dir != NULL && g_file_test (dir, G_FILE_TEST_IS_DIR))
-    {    
+  if (dir != NULL)
+    {
       xfce_userdir = g_strdup (dir);
     }
   else
     {
       xfce_userdir = g_build_filename (xfce_homedir, XFCE4DIR, NULL);
-      xfce_mkdirhier (xfce_userdir, 0700, NULL);
     }
 }
 
@@ -237,7 +236,13 @@ xfce_get_userdir (void)
 {
   G_LOCK(_lock);
   if (!xfce_userdir)
-    internal_initialize();
+    {
+      internal_initialize();
+
+      /* verify that the directory exists or is created */
+      if (!g_file_test (xfce_userdir, G_FILE_TEST_IS_DIR))
+        xfce_mkdirhier (xfce_userdir, 0700, NULL);
+    }
   G_UNLOCK(_lock);
 
   return xfce_userdir;
