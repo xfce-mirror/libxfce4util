@@ -151,14 +151,6 @@ xfce_desktop_entry_finalize (GObject *object)
     parent_class->finalize (G_OBJECT (desktop_entry));
 }
 
-/**
- * xfce_desktop_entry_get_file
- * @desktop_entry : an #XfceDesktopEntry
- *
- * Returns: path of the desktop entry file used to create @desktop_entry.
- *
- * The return value should be considered read-only and should not be freed.
- **/
 G_CONST_RETURN char *
 xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry)
 {
@@ -167,14 +159,6 @@ xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry)
     return desktop_entry->priv->file;
 }
 
-/**
- * xfce_desktop_entry_new
- * @file           : full path to the desktop entry file to use
- * @categories     : array of categories (does not have to be NULL terminated)
- * @num_categories : number of categories in the array
- *
- * Returns : newly created #XfceDesktopEntry or NULL if it fails.
- **/
 XfceDesktopEntry *
 xfce_desktop_entry_new (const char *file, const char **categories,
 			int num_categories)
@@ -302,9 +286,10 @@ parse_desktop_entry_line (const char *line, char **section,
 }
 
 /**
- * match_locale:
- * @current_locale : current locale value
- * @locale	   : locale value to match against
+ * @brief Match current locale against locale string.
+ * 
+ * @param current_locale : current locale value
+ * @param locale	   : locale value to match against
  *
  * The locale is of the general form LANG_COUNTRY.ENCODING@MODIFIER.
  * Each of COUNTRY, ENCODING and MODIFIER can be absent.
@@ -313,7 +298,7 @@ parse_desktop_entry_line (const char *line, char **section,
  * according to the freedesktop.org spec, but much easier. Should 
  * probably be fixed.
  *
- * Returns : integer value ranging from 0 (no match) to 4 (full match).
+ * @return : integer value ranging from 0 (no match) to 4 (full match).
  **/
 static int
 match_locale (const char *current_locale, const char*locale)
@@ -349,14 +334,6 @@ match_locale (const char *current_locale, const char*locale)
     return 0;
 }
 
-/**
- * xfce_desktop_entry_parse
- * @desktop_entry : an #XfceDesktopEntry
- *
- * Parses the desktop entry file and fills in the values for all categories.
- *
- * Returns: %TRUE on success, %FALSE on failure.
- **/
 gboolean
 xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 {
@@ -453,19 +430,6 @@ xfce_desktop_entry_get_entry (XfceDesktopEntry * desktop_entry,
     return NULL;
 }
 
-/**
- * xfce_desktop_entry_get_string
- * @desktop_entry : an #XfceDesktopEntry
- * @key           : category to find value for
- * @translated    : set to %TRUE if the translated value is preferred
- * @value         : location for the value, which will be newly allocated
- *
- * Finds the value for @key. When @translated is %TRUE the function will use
- * the translated value (using the current locale settings) if available or
- * the untranslated value if no translation can be found.
- *
- * Returns: %TRUE on success, %FALSE on failure. @value must be freed.
- **/
 gboolean
 xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
 			       const char *key, gboolean translated,
@@ -494,16 +458,6 @@ xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
     return TRUE;
 }
 
-/**
- * xfce_desktop_entry_get_int
- * @desktop_entry : an #XfceDesktopEntry
- * @key           : category to find value for
- * @value         : location for the value
- * 
- * Finds the value for @key as an integer.
- *
- * Returns: %TRUE on success, %FALSE on failure.
- **/
 gboolean
 xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
 			    const char *key, int *value)
