@@ -4,18 +4,18 @@ dnl Copyright (c) 2002-2004
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
-dnl Huijsman <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.
+dnl Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.
 dnl
 
 dnl Version information
 m4_define([libxfce4util_verinfo], [1:4:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [17])
+m4_define([libxfce4util_version_micro], [90])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Overall XFce version, modify this when making releases
-m4_define([xfce_version_string], [4.1.4])
+m4_define([xfce_version_string], [4.1.90])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -27,7 +27,7 @@ AC_COPYRIGHT([Copyright (c) 2002-2004
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
-Huijsman <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.])
+Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.])
 AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
