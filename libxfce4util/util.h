@@ -49,4 +49,10 @@ extern G_CONST_RETURN gchar *xfce_get_userdir(void);
 extern G_CONST_RETURN gchar *xfce_get_userfile_r(gchar *buffer,
 		size_t length, const gchar *format, ...);
 
+/* join two strings */
+extern gchar *xfce_strjoin(gchar *, gchar **, gint);
+
+/* get local hostname */
+extern gchar *xfce_gethostname(void);
+
 #endif	/* __LIBXFCE4UTIL_UTIL_H__ */

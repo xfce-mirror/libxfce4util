@@ -50,6 +50,9 @@
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+#ifdef HAVE_SYS_UTSNAME_H
+#include <sys/utsname.h>
+#endif
 
 #include <glib.h>
 
@@ -189,4 +192,52 @@ xfce_get_userfile_r(gchar *buffer, size_t len, const gchar *format, ...)
 	return(ptr);
 }
 
+gchar *
+xfce_strjoin(gchar *separator, gchar **strings, gint count)
+{
+	gchar *result;
+	gint length;
+	gint n;
 
+	g_return_val_if_fail(count < 1, NULL);
+	g_return_val_if_fail(strings != NULL, NULL);
+
+	for (length = 1, n = 0; n < count; n++)
+		length += strlen(strings[n]);
+
+	if (separator != NULL)
+		length += (count - 1) * strlen(separator);
+
+	result = g_new0(gchar, length);
+
+	for (n = 0; n < count; n++) {
+		(void)g_strlcat(result, strings[n], length);
+
+		if (separator != NULL && n + 1 < count)
+			(void)g_strlcat(result, separator, length);
+	}
+
+	return(result);
+}
+
+gchar *
+xfce_gethostname(void)
+{
+#if defined(HAVE_GETHOSTNAME)
+#ifndef MAXHOSTNAMELEN
+#define MAXHOSTNAMELEN		256
+#endif
+	char hostname[MAXHOSTNAMELEN];
+
+	if (gethostname(hostname, MAXHOSTNAMELEN) == 0)
+		return(g_strdup(hostname));
+#elif defined(HAVE_SYS_UTSNAME_H)
+	struct utsname name;
+
+	if (uname(&name) == 0)
+		return(g_strdup(name.nodename));
+#endif
+	g_error("Unable to determine your hostname: %s", g_strerror(errno));
+	/* NOT REACHED */
+	return(NULL);
+}

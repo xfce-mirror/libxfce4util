@@ -27,8 +27,8 @@ AC_PROG_LIBTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([err.h limits.h locale.h sys/wait.h])
-AC_CHECK_FUNCS([__unaliasname setlocale strlcat strlcpy])
+AC_CHECK_HEADERS([err.h limits.h locale.h sys/wait.h sys/utsname.h])
+AC_CHECK_FUNCS([__unaliasname setlocale strlcat strlcpy gethostname])
 
 dnl Check for Glib >= 2.0 installed
 BM_DEPEND([GLIB], [glib-2.0], [2.0.0])
