@@ -6,7 +6,7 @@
 /* Define for tracing support */
 #undef DEBUG_TRACE
 
-/* Define if putenv() is broken */
+/* Define if putenv(3) is broken */
 #undef HAVE_BROKEN_PUTENV
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
@@ -41,6 +41,9 @@
 
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the `strdup' function. */
+#undef HAVE_STRDUP
 
 /* Define to 1 if you have the <strings.h> header file. */
 #undef HAVE_STRINGS_H

@@ -10,7 +10,7 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:3:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [3])
+m4_define([libxfce4util_version_micro], [4])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Overall XFce version, modify this when making releases
@@ -20,7 +20,8 @@ dnl Initialize autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2004
         The Xfce development team. All rights reserved.
 
-Written for XFce by Benedikt Meurer <benny@xfce.org>.])
+Written for Xfce by Benedikt Meurer <benny@xfce.org> and
+Jasper Huijsman <jasper@xfce.org>.])
 AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
@@ -52,7 +53,8 @@ AC_PROG_LIBTOOL
 dnl check for standard header files
 AC_HEADER_STDC
 AC_CHECK_HEADERS([err.h limits.h locale.h sys/utsname.h sys/wait.h])
-AC_CHECK_FUNCS([__unaliasname gethostname setenv setlocale strlcat strlcpy])
+AC_CHECK_FUNCS([__unaliasname gethostname setenv setlocale strdup \
+  strlcat strlcpy])
 
 dnl Check for GObject >= 2.0.0 installed (GObject in turn depends on GLib)
 BM_DEPEND([GOBJECT], [gobject-2.0], [2.0.0])
@@ -68,22 +70,27 @@ BM_DEBUG_SUPPORT
 # Solaris is known to have such an implementation, also glibc seems to
 # be hit by this problem.
 AC_MSG_CHECKING([whether putenv() implementation is broken])
-AC_RUN_IFELSE([
-#include <stdlib.h>
-#include <string.h>
-int main(int argc, char *argv[])
-{
-  char *buffer = (char *)malloc(8);
-  strcpy(buffer, "foo=bar");
-  putenv(buffer);
-  strcpy(buffer, "foo=rab");
-  return(strcmp(getenv("foo"), "bar") == 0 ? 0 : 1);
-}],
-[AC_MSG_RESULT([no])],
-[
-  AC_DEFINE([HAVE_BROKEN_PUTENV], [1], [Define if putenv() is broken])
-  AC_MSG_RESULT([yes])
-])
+AC_ARG_WITH([broken-putenv],
+  [  --with-broken-putenv=[[auto/yes/no]] broken putenv(3) [default=auto]])
+if test x"$with_broken_putenv" != x"yes" -a x"$with_broken_putenv" != x"no"; then
+  AC_RUN_IFELSE([
+  #include <stdlib.h>
+  #include <string.h>
+  int main(int argc, char *argv[])
+  {
+    char *buffer = (char *)malloc(8);
+    strcpy(buffer, "foo=bar");
+    putenv(buffer);
+    strcpy(buffer, "foo=rab");
+    return(strcmp(getenv("foo"), "bar") == 0 ? 0 : 1);
+  }],
+  [with_broken_putenv=no],
+  [with_broken_putenv=yes])
+fi
+if test x"$with_broken_putenv" = x"yes"; then
+  AC_DEFINE([HAVE_BROKEN_PUTENV], [1], [Define if putenv(3) is broken])
+fi
+AC_MSG_RESULT([$with_broken_putenv])
 
 AC_OUTPUT([
 Makefile

@@ -1,3 +1,11 @@
+20040220:
+---------
+
+	- Version 4.1.4
+	- Several bugfixes
+	- Added --with-broken-putenv=[auto/no/yes] to configure to make
+	  libxfce4util cross-compilable again.
+
 20040212:
 ---------
 
