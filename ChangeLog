@@ -1,0 +1,42 @@
+2003-03-13  bmeurer
+
+	* configure: Requires glib-2.0.
+
+2003-03-13  bmeurer
+
+	* configure.ac: Works with glib 2.0.0 as well.
+
+2003-03-10  bmeurer
+
+	* libxfce4util/: filter.c, filter.h: remove a possible buffer
+	overflow.
+
+2003-03-10  bmeurer
+
+	* libxfce4util/filter.c: Typo
+
+2003-03-10  bmeurer
+
+	* libxfce4util/filter.h: [no log message]
+
+2003-03-10  bmeurer
+
+	* libxfce4util/filter.h: Fixed typo
+
+2003-03-10  bmeurer
+
+	* libxfce4util/: filter.c, filter.h: Update the filter interface.
+
+2003-03-09  bmeurer
+
+	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, Makefile.in,
+	NEWS, README, aclocal.m4, autogen.sh, compile, config.guess,
+	config.h.in, config.sub, configure, configure.ac, depcomp,
+	install-sh, libxfce4util.spec.in, ltcf-c.sh, ltconfig, ltmain.sh,
+	missing, mkinstalldirs, libxfce4util/Makefile.am,
+	libxfce4util/Makefile.in, libxfce4util/filter.c,
+	libxfce4util/filter.h, libxfce4util/libxfce4util-1.0.pc.in,
+	libxfce4util/option.c, libxfce4util/option.h, libxfce4util/test.c,
+	libxfce4util/util.c, libxfce4util/util.h, m4/debug.m4: Initiali
+	import of stripped libxfce4util.
+
