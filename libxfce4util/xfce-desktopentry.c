@@ -342,6 +342,17 @@ entry_parse (XfceDesktopEntry * desktop_entry)
     return result;
 }
 
+/**
+ * xfce_desktop_entry_new_from_data:
+ * @data           : pointer to the desktop entry inline data
+ * @categories     : array of categories, not necessarily NULL terminated.
+ * @num_categories : number of items in @categories.
+ * @Returns: newly created #XfceDesktopEntry or NULL if something goes wrong.
+ *
+ * Create a new XfceDesktopEntry object from a desktop entry stored in memory.
+ *
+ * Since: 4.2
+ **/
 XfceDesktopEntry *
 xfce_desktop_entry_new_from_data (const char *data, const char **categories,
 				  int num_categories)
