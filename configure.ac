@@ -5,7 +5,7 @@ dnl
 
 AC_INIT([libxfce4util])
 
-AM_INIT_AUTOMAKE([libxfce4util], [3.99.3])
+AM_INIT_AUTOMAKE([libxfce4util], [4.0.2])
 
 AM_CONFIG_HEADER([config.h])
 
