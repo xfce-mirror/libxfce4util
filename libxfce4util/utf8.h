@@ -24,13 +24,13 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef INC_LIBXFCE4UTIL_UTF8_H
-#define INC_LIBXFCE4UTIL_UTF8_H
+#ifndef __LIBXFCE4UTIL_UTF8_H__
+#define __LIBXFCE4UTIL_UTF8_H__
 
 #include <glib.h>
 
 #include <libxfce4util/debug.h>
 
-gchar * utf8_string_remove_controls(gchar *, gssize, const gchar *);
+extern gchar	*utf8_string_remove_controls(gchar *, gssize, const gchar *);
 
-#endif INC_LIBXFCE4UTIL_UTF8_H
+#endif	/* !__LIBXFCE4UTIL_UTF8_H__ */
