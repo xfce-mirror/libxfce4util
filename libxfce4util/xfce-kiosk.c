@@ -117,8 +117,8 @@ xfce_kiosk_new (const gchar *module)
 
 /**
  * xfce_kiosk_query:
- * @kiosk:
- * @capability:
+ * @kiosk:      A #XfceKiosk.
+ * @capability: The name of the capability to check.
  *
  * Queries the @kiosk object for a given capability and returns %TRUE if
  * the current user has the @capability, else %FALSE.
@@ -136,6 +136,9 @@ xfce_kiosk_query (const XfceKiosk *kiosk,
   gchar      **vector;
   gchar       *string;
   gint         n;
+
+  g_return_val_if_fail (kiosk != NULL, FALSE);
+  g_return_val_if_fail (capability != NULL, FALSE);
 
   value = xfce_kiosk_lookup (kiosk, capability);
 
@@ -180,7 +183,7 @@ xfce_kiosk_query (const XfceKiosk *kiosk,
 
 /**
  * xfce_kiosk_free:
- * @kiosk: a valid XfceKiosk object.
+ * @kiosk: A #XfceKiosk.
  *
  * Frees the @kiosk object.
  *
@@ -189,6 +192,8 @@ xfce_kiosk_query (const XfceKiosk *kiosk,
 void
 xfce_kiosk_free (XfceKiosk *kiosk)
 {
+  g_return_if_fail (kiosk != NULL);
+
   if (kiosk->module_rc != NULL)
     xfce_rc_close (kiosk->module_rc);
   g_free (kiosk->module_name);
