@@ -31,15 +31,9 @@
 
 #include <stdio.h>
 
-#if defined(__NetBSD__) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
-#define __DBG_FUNC__    __func__
-#else
-#define __DBG_FUNC__    ((__const char *)0)
-#endif
-
 #define DBG(fmt, args...)                                                   \
 {                                                                           \
-    fprintf(stderr, "DBG[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+    fprintf(stderr, "%s, line %d: ", __FILE__, __LINE__);                   \
     fprintf(stderr, fmt, ##args);                                           \
     fprintf(stderr, "\n");                                                  \
 }
@@ -48,7 +42,7 @@
 
 #define TRACE()                                                             \
 {                                                                           \
-    fprintf(stderr, "TRACE[%s:%d] %s(): ",__FILE__,__LINE__,__DBG_FUNC__);  \
+    fprintf(stderr, "TRACE %s, line %d: ", __FILE__, __LINE__);             \
 }
 
 #else /* !defined(DEBUG_TRACE) || DEBUG_TRACE <= 0 */

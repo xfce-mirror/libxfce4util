@@ -29,6 +29,8 @@
 
 #include <glib.h>
 
+#include <libxfce4util/debug.h>
+
 /* save way to get path to users home directory and files below */
 extern G_CONST_RETURN gchar *xfce_get_homedir(void);
 #define xfce_get_homefile(first_element...)	\
