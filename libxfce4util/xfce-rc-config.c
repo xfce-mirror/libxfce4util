@@ -156,6 +156,7 @@ _xfce_rc_config_new (XfceResourceType type,
     {
       g_critical ("Failed to parse file %s, ignoring.", user);
     }
+  config->save   = XFCE_RC (simple);
   config->rclist = g_list_prepend (config->rclist, simple);
 
   /* attach callbacks */
