@@ -15,7 +15,7 @@ m4_define([libxfce4util_version_micro], [91])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Overall XFce version, modify this when making releases
-m4_define([xfce_version_string], [4.1.90])
+m4_define([xfce_version_string], [4.1.91])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
