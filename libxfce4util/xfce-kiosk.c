@@ -71,11 +71,11 @@ struct _XfceKiosk
 static const gchar *xfce_kiosk_lookup  (const XfceKiosk *kiosk,
                                         const gchar     *capability);
 static gboolean     xfce_kiosk_chkgrp  (const gchar     *group);
-static gboolean     xfce_kiosk_init    (void);
+static void         xfce_kiosk_init    (void);
 static time_t       mtime              (const gchar     *path);
 
 
-static gchar        *usrname  = NULL;
+static gchar        *usrname = NULL;
 static gchar       **groups;
 static time_t        kiosktime = 0;
 static const gchar  *kioskdef = NULL;
@@ -102,8 +102,7 @@ xfce_kiosk_new (const gchar *module)
   g_return_val_if_fail (module != NULL, NULL);
   g_return_val_if_fail (strcmp (module, "General") != 0, NULL);
 
-  if (G_UNLIKELY (!xfce_kiosk_init ()))
-    return NULL;
+  xfce_kiosk_init ();
 
   g_snprintf (path, 1024, "%s/%s.kioskrc", KIOSKDIR, module);
 
@@ -139,6 +138,9 @@ xfce_kiosk_query (const XfceKiosk *kiosk,
 
   g_return_val_if_fail (kiosk != NULL, FALSE);
   g_return_val_if_fail (capability != NULL, FALSE);
+
+  if (G_UNLIKELY (usrname == NULL))
+    return FALSE;
 
   value = xfce_kiosk_lookup (kiosk, capability);
 
@@ -244,7 +246,7 @@ xfce_kiosk_chkgrp (const gchar *group)
 }
 
 
-static gboolean
+static void
 xfce_kiosk_init (void)
 {
   struct passwd *pw;
@@ -280,15 +282,18 @@ xfce_kiosk_init (void)
   if (G_LIKELY (usrname != NULL))
     {
       G_UNLOCK (kiosk_lock);
-      return TRUE;
+      return;
     }
 
   /* determine user name */
   pw = getpwuid (getuid ());
   if (G_UNLIKELY (pw == NULL))
     {
+      g_warning ("Unable to determine your username, all kiosk protected features "
+                 "will be disabled for you. Please check your system setup "
+                 "or ask your administrator.");
       G_UNLOCK (kiosk_lock);
-      return FALSE;
+      return;
     }
   usrname = g_strdup (pw->pw_name);
 
@@ -296,9 +301,12 @@ xfce_kiosk_init (void)
   gidsetlen = getgroups (NGROUPS_MAX, gidset);
   if (G_UNLIKELY (gidsetlen < 0))
     {
+      g_warning ("Unable to determine your current group access list, all kiosk "
+                 "protected features will be disabled for you. Please check "
+                 "your system setup or ask your administrator.");
       g_free (usrname); usrname = NULL;
       G_UNLOCK (kiosk_lock);
-      return FALSE;
+      return;
     }
   groups = g_new (gchar *, gidsetlen + 1);
   for (n = m = 0; n < gidsetlen; ++n)
@@ -310,7 +318,6 @@ xfce_kiosk_init (void)
   groups[m] = NULL;
 
   G_UNLOCK (kiosk_lock);
-  return TRUE;
 }
 
 
