@@ -33,7 +33,7 @@
 
 #include <glib.h>
 
-#include <libxfce4util/xfce-desktopentry.h>
+#include <libxfce4util/libxfce4util.h>
 
 typedef struct
 {
@@ -294,6 +294,7 @@ parse_desktop_entry_line (const char *line, char **section,
     }
 }
 
+#if 0
 /* @brief Match current locale against locale string.
  * 
  * @param current_locale : current locale value
@@ -341,6 +342,7 @@ match_locale (const char *current_locale, const char *locale)
 
     return 0;
 }
+#endif
 
 gboolean
 xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
@@ -395,7 +397,7 @@ xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 	    {
 		if (current_locale && locale)
 		{
-		    int match = match_locale (current_locale, locale);
+		    int match = xfce_locale_match (current_locale, locale);
 
 		    if (match > locale_matched)
 		    {
