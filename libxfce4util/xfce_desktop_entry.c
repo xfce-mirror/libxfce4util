@@ -278,12 +278,23 @@ parse_desktop_entry_line (const char *line, char **section,
 	
 	q = r + strlen (r);
 
-	while (g_ascii_isspace (*(q-1)))
+	while (
+	    q > r 
+	&&
+	    (
+	        g_ascii_isspace (*(q-1)) 
+	    || 
+	        ((*(q-1)) == '\r')) /* kde... */
+	)
 	    --q;
-	
-	*value = g_new (char, q - r + 1);
-	strncpy (*value, r, q - r);
-	(*value) [q - r] = '\0';
+
+	if (q > r) {
+	    *value = g_new (char, q - r + 1);
+	    strncpy (*value, r, q - r);
+	    (*value) [q - r] = '\0';
+	} else {
+	    *value = g_new0 (char, 1);
+	}
 	
 	return TRUE;
     }
