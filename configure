@@ -20815,8 +20815,9 @@ else
 fi;
 
   have_gtk_doc=no
-  if test -z "$PKG_CONFIG"; then
-    # Extract the first word of "pkg-config", so it can be a program name with args.
+  if test x$enable_gtk_doc = xyes; then
+    if test -z "$PKG_CONFIG"; then
+      # Extract the first word of "pkg-config", so it can be a program name with args.
 set dummy pkg-config; ac_word=$2
 echo "$as_me:$LINENO: checking for $ac_word" >&5
 echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
@@ -20856,26 +20857,25 @@ else
 echo "${ECHO_T}no" >&6
 fi
 
-  fi
-  if test "$PKG_CONFIG" != "no" && $PKG_CONFIG --exists gtk-doc; then
-    have_gtk_doc=yes
-  fi
+    fi
+    if test "$PKG_CONFIG" != "no" && $PKG_CONFIG --exists gtk-doc; then
+      have_gtk_doc=yes
+    fi
 
   gtk_doc_min_version=1.0
-  if test "$have_gtk_doc" = yes; then
-    echo "$as_me:$LINENO: checking gtk-doc version >= $gtk_doc_min_version" >&5
+    if test "$have_gtk_doc" = yes; then
+      echo "$as_me:$LINENO: checking gtk-doc version >= $gtk_doc_min_version" >&5
 echo $ECHO_N "checking gtk-doc version >= $gtk_doc_min_version... $ECHO_C" >&6
-    if $PKG_CONFIG --atleast-version $gtk_doc_min_version gtk-doc; then
-      echo "$as_me:$LINENO: result: yes" >&5
+      if $PKG_CONFIG --atleast-version $gtk_doc_min_version gtk-doc; then
+        echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
-    else
-      echo "$as_me:$LINENO: result: no" >&5
+      else
+        echo "$as_me:$LINENO: result: no" >&5
 echo "${ECHO_T}no" >&6
-      have_gtk_doc=no
+        have_gtk_doc=no
+      fi
     fi
-  fi
 
-  if test x$enable_gtk_doc = xyes; then
     if test "$have_gtk_doc" != yes; then
       enable_gtk_doc=no
     fi
@@ -21063,7 +21063,7 @@ fi
 echo "$as_me:$LINENO: result: $with_broken_putenv" >&5
 echo "${ECHO_T}$with_broken_putenv" >&6
 
-                                                                                          ac_config_files="$ac_config_files Makefile docs/version.xml docs/Makefile i18n/Makefile libxfce4util.spec libxfce4util/libxfce4util-1.0.pc libxfce4util/libxfce4util-config.h libxfce4util/Makefile m4/Makefile"
+                                                                                ac_config_files="$ac_config_files Makefile docs/version.xml docs/Makefile libxfce4util.spec libxfce4util/libxfce4util-1.0.pc libxfce4util/libxfce4util-config.h libxfce4util/Makefile m4/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -21651,7 +21651,6 @@ do
   "Makefile" ) CONFIG_FILES="$CONFIG_FILES Makefile" ;;
   "docs/version.xml" ) CONFIG_FILES="$CONFIG_FILES docs/version.xml" ;;
   "docs/Makefile" ) CONFIG_FILES="$CONFIG_FILES docs/Makefile" ;;
-  "i18n/Makefile" ) CONFIG_FILES="$CONFIG_FILES i18n/Makefile" ;;
   "libxfce4util.spec" ) CONFIG_FILES="$CONFIG_FILES libxfce4util.spec" ;;
   "libxfce4util/libxfce4util-1.0.pc" ) CONFIG_FILES="$CONFIG_FILES libxfce4util/libxfce4util-1.0.pc" ;;
   "libxfce4util/libxfce4util-config.h" ) CONFIG_FILES="$CONFIG_FILES libxfce4util/libxfce4util-config.h" ;;
