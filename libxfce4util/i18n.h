@@ -120,15 +120,23 @@ do {									\
 
 #ifndef XFCE_DISABLE_DEPRECATED
 
-extern gchar *	xfce_get_file_localized(const gchar *);
-extern gchar *	xfce_get_dir_localized(const gchar *);
-extern gchar *	xfce_get_file_localized_r(gchar *, gsize, const gchar *);
-extern gchar *	xfce_get_dir_localized_r(gchar *, gsize, const gchar *);
+gchar *	xfce_get_file_localized(const gchar *);
+gchar *	xfce_get_dir_localized(const gchar *);
+gchar *	xfce_get_file_localized_r(gchar *, gsize, const gchar *);
+gchar *	xfce_get_dir_localized_r(gchar *, gsize, const gchar *);
 
 #endif
 
-/* */
-extern gchar *	xfce_get_path_localized(gchar *, gsize, const gchar *,
-					const gchar *, GFileTest);
+gchar*	xfce_get_path_localized (gchar       *dst,
+				 gsize        size,
+				 const gchar *paths,
+				 const gchar *filename,
+				 GFileTest    test);
+
+#define XFCE_LOCALE_FULL_MATCH 50
+#define XFCE_LOCALE_NO_MATCH    0
+
+guint   xfce_locale_match       (const gchar *locale1,
+				 const gchar *locale2);
 
 #endif	/* !__LIBXFCE4UTIL_I18N_H__ */

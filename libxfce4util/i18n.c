@@ -61,6 +61,9 @@
 #ifdef HAVE_LOCALE_H
 #include <locale.h>
 #endif
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
 #include <stdio.h>
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
@@ -295,86 +298,140 @@ gchar *
 xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
 		        const gchar *filename, GFileTest test)
 {
-	const gchar *f;
-	gchar *dstlast;
-	gchar *d;
-	const gchar *locale;
-	const gchar *lang;
-	gchar langbuf[PATH_MAX];
+  const gchar *f;
+  gchar *dstlast;
+  gchar *d;
+  const gchar *locale;
+  const gchar *lang;
+  gchar langbuf[PATH_MAX];
 
-	g_return_val_if_fail(dst != NULL, NULL);
-	g_return_val_if_fail(size > 2, NULL);
-	g_return_val_if_fail(paths != NULL, NULL);
+  g_return_val_if_fail(dst != NULL, NULL);
+  g_return_val_if_fail(size > 2, NULL);
+  g_return_val_if_fail(paths != NULL, NULL);
 
-	d = dst;
+  d = dst;
 
-	dstlast = dst + (size - 1);
+  dstlast = dst + (size - 1);
 
 #ifdef HAVE_SETLOCALE
-	if ((locale = setlocale(LC_MESSAGES, NULL)) == NULL)
+  if ((locale = setlocale(LC_MESSAGES, NULL)) == NULL)
 #endif
-		if ((locale = g_getenv("LANGUAGE")) == NULL)
-			if ((locale = g_getenv("LANG")) == NULL)
-				locale = DEFAULT_LOCALE;
+    if ((locale = g_getenv("LANGUAGE")) == NULL)
+      if ((locale = g_getenv("LANG")) == NULL)
+	locale = DEFAULT_LOCALE;
 
-	lang = __unaliasname(NLS_ALIAS_DB, locale, langbuf, sizeof(langbuf));
+  lang = __unaliasname(NLS_ALIAS_DB, locale, langbuf, sizeof(langbuf));
 
-	for (; d < dst + (size - 1); ) {
-		if (*paths == ':' || *paths == '\0') {
-			*d = '\0';
+  for (; d < dst + (size - 1); ) {
+    if (*paths == ':' || *paths == '\0') {
+      *d = '\0';
 
-			if (g_file_test(dst, test))
-				return(dst);
+      if (g_file_test(dst, test))
+	return(dst);
 
-			if (*paths == ':') {
-				d = dst;
-				paths++;
-				continue;
-			}
-			break;
-		}
+      if (*paths == ':') {
+	d = dst;
+	paths++;
+	continue;
+      }
+      break;
+    }
 
-		if (*paths == '%') {
-			if (*(paths + 1) == 'F') {
-				/* 
-				 * if "filename" is NULL, then simply skip
-				 * the %F.
-				 */
-				if ((f = filename) != NULL)
-					while (*f && d < dstlast)
-						*d++ = *f++;
+    if (*paths == '%') {
+      if (*(paths + 1) == 'F') {
+	/* 
+	 * if "filename" is NULL, then simply skip
+	 * the %F.
+	 */
+	if ((f = filename) != NULL)
+	  while (*f && d < dstlast)
+	    *d++ = *f++;
 
-				paths += 2;
-				continue;
-			}
-			else if (*(paths + 1) == 'L') {
-				for (f = locale; *f && d < dstlast; )
-						*d++ = *f++;
+	paths += 2;
+	continue;
+      }
+      else if (*(paths + 1) == 'L') {
+	for (f = locale; *f && d < dstlast; )
+	  *d++ = *f++;
 
-				paths += 2;
-				continue;
-			}
-			else if (*(paths + 1) == 'l') {
-				for (f = lang; *f && d < dstlast; )
-					*d++ = *f++;
+	paths += 2;
+	continue;
+      }
+      else if (*(paths + 1) == 'l') {
+	for (f = lang; *f && d < dstlast; )
+	  *d++ = *f++;
 
-				paths += 2;
-				continue;
-			}
-			else if (*(paths + 1) == 'N') {
-				if ((f = g_get_prgname()) != NULL) 
-					while (*f && d < dstlast)
-						*d++ = *f++;
+	paths += 2;
+	continue;
+      }
+      else if (*(paths + 1) == 'N') {
+	if ((f = g_get_prgname()) != NULL) 
+	  while (*f && d < dstlast)
+	    *d++ = *f++;
 
-				paths += 2;
-				continue;
-			}
-		}
+	paths += 2;
+	continue;
+      }
+    }
 
-		*d++ = *paths++;
-	}
+    *d++ = *paths++;
+  }
 
-	return(NULL);
+  return(NULL);
 }
 
 
+/**
+ * xfce_locale_match:
+ * @locale1 : the current locale value as returned by setlocale(LC_MESSAGES,%NULL).
+ * @locale2 : the locale value to match against.
+ *
+ * The locale is of the general form LANG_COUNTRY.ENCODING @ MODIFIER, where
+ * each of COUNTRY, ENCODING and MODIFIER can be absent.
+ *
+ * The match is done by actually removing the rightmost element one by one. This
+ * is not entirely according to the freedesktop.org specification, but much easier.
+ * Will probably be fixed in the future.
+ *
+ * Return value: an integer value indicating the level of matching, where
+ *               the constant #XFCE_LOCALE_FULL_MATCH indicates a full match
+ *               and #XFCE_LOCALE_NO_MATCH means no match. Every other value
+ *               indicates a partial match, the higher the value, the better
+ *               the match. You should not rely on any specific value besides
+ *               the constants #XFCE_LOCALE_FULL_MATCH and #XFCE_LOCALE_NO_MATCH,
+ *               since the range of returned values may change in the future.
+ **/
+guint
+xfce_locale_match (const gchar *locale1,
+		   const gchar *locale2)
+{
+  g_return_val_if_fail (locale1 != NULL, XFCE_LOCALE_NO_MATCH);
+  g_return_val_if_fail (locale2 != NULL, XFCE_LOCALE_NO_MATCH);
+
+  while (*locale1 == *locale2 && *locale1 != '\0')
+    {
+      ++locale1;
+      ++locale2;
+    }
+
+  if (*locale1 == '\0')
+    {
+      if (*locale2 == '\0')
+	return XFCE_LOCALE_FULL_MATCH;
+
+      /* FALL-THROUGH */
+    }
+  else if (*locale2 == '\0')
+    {
+      switch (*locale1)
+	{
+	case '@': return XFCE_LOCALE_NO_MATCH + 3;
+	case '.': return XFCE_LOCALE_NO_MATCH + 2;
+	case '_': return XFCE_LOCALE_NO_MATCH + 1;
+	}
+
+      /* FALL-THROUGH */
+    }
+
+  return XFCE_LOCALE_NO_MATCH;
+}
