@@ -160,14 +160,16 @@ _xfce_rc_config_new (XfceResourceType type,
   config->rclist = g_list_prepend (config->rclist, simple);
 
   /* attach callbacks */
-  config->__parent__.close       = _xfce_rc_config_close;
-  config->__parent__.get_groups  = _xfce_rc_config_get_groups;
-  config->__parent__.get_entries = _xfce_rc_config_get_entries;
-  config->__parent__.get_group   = _xfce_rc_config_get_group;
-  config->__parent__.has_group   = _xfce_rc_config_has_group;
-  config->__parent__.set_group   = _xfce_rc_config_set_group;
-  config->__parent__.has_entry   = _xfce_rc_config_has_entry;
-  config->__parent__.read_entry  = _xfce_rc_config_read_entry;
+  config->__parent__.close        = _xfce_rc_config_close;
+  config->__parent__.get_groups   = _xfce_rc_config_get_groups;
+  config->__parent__.get_entries  = _xfce_rc_config_get_entries;
+  config->__parent__.delete_group = _xfce_rc_config_delete_group;
+  config->__parent__.get_group    = _xfce_rc_config_get_group;
+  config->__parent__.has_group    = _xfce_rc_config_has_group;
+  config->__parent__.set_group    = _xfce_rc_config_set_group;
+  config->__parent__.delete_entry = _xfce_rc_config_delete_entry;
+  config->__parent__.has_entry    = _xfce_rc_config_has_entry;
+  config->__parent__.read_entry   = _xfce_rc_config_read_entry;
 
   if (!readonly)
     {
@@ -297,6 +299,18 @@ _xfce_rc_config_get_entries (const XfceRc *rc, const gchar *name)
 }
 
 
+void
+_xfce_rc_config_delete_group (XfceRc       *rc,
+                              const gchar  *name,
+                              gboolean      global)
+{
+  XfceRcConfig *config = XFCE_RC_CONFIG (rc);
+
+  _xfce_rc_simple_delete_group (XFCE_RC (config->save), name, global);
+}
+
+
+
 const gchar*
 _xfce_rc_config_get_group (const XfceRc *rc)
 {
@@ -330,6 +344,18 @@ _xfce_rc_config_set_group (XfceRc *rc, const gchar *name)
   for (list = config->rclist; list != NULL; list = list->next)
     _xfce_rc_simple_set_group (XFCE_RC (list->data), name);
 }
+
+
+void
+_xfce_rc_config_delete_entry (XfceRc       *rc,
+                              const gchar  *key,
+                              gboolean      global)
+{
+  XfceRcConfig *config = XFCE_RC_CONFIG (rc);
+
+  _xfce_rc_simple_delete_entry (XFCE_RC (config->save), key, global);
+}
+
 
 
 gboolean

@@ -113,11 +113,17 @@ gboolean      _xfce_rc_config_is_readonly (const XfceRc *rc) G_GNUC_CONST;
 gchar**       _xfce_rc_config_get_groups  (const XfceRc *rc) G_GNUC_CONST;
 gchar**       _xfce_rc_config_get_entries (const XfceRc *rc,
 					   const gchar  *name) G_GNUC_CONST;
+void          _xfce_rc_config_delete_group(XfceRc       *rc,
+                                           const gchar  *name,
+                                           gboolean      global);
 const gchar*  _xfce_rc_config_get_group   (const XfceRc *rc) G_GNUC_CONST;
 gboolean      _xfce_rc_config_has_group   (const XfceRc *rc,
 					   const gchar  *name) G_GNUC_CONST;
 void          _xfce_rc_config_set_group   (XfceRc       *rc,
 					   const gchar  *name);
+void          _xfce_rc_config_delete_entry(XfceRc       *rc,
+					   const gchar  *key,
+                                           gboolean      global);
 gboolean      _xfce_rc_config_has_entry   (const XfceRc *rc,
 					   const gchar  *key) G_GNUC_CONST;
 const gchar*  _xfce_rc_config_read_entry  (const XfceRc *rc,
