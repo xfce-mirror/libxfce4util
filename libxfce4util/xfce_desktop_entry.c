@@ -469,6 +469,9 @@ xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
     if (!(entry = xfce_desktop_entry_get_entry (desktop_entry, key)))
 	return FALSE;
 
+    if (!entry->value || !strlen(entry->value))
+	return FALSE;
+
     temp = entry->value;
     if (translated && entry->translated_value != NULL)
     {
@@ -501,6 +504,9 @@ xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
     g_return_val_if_fail (value != NULL, FALSE);
 
     if (!(entry = xfce_desktop_entry_get_entry (desktop_entry, key)))
+	return FALSE;
+
+    if (!entry->value || !strlen(entry->value))
 	return FALSE;
 
     temp = atoi (entry->value);
