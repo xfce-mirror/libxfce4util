@@ -7,8 +7,8 @@ URL: 		http://www.xfce.org/
 Source0: 	%{name}-%{version}.tar.gz
 Group: 		Development/Libraries
 BuildRoot: 	%{_tmppath}/%{name}-root
-Requires:	glib2 >= @GLIB_REQUIRED_VERSION@
-BuildRequires: 	glib2-devel >= @GLIB_REQUIRED_VERSION@
+Requires:	glib2 >= @GOBJECT_REQUIRED_VERSION@
+BuildRequires: 	glib2-devel >= @GOBJECT_REQUIRED_VERSION@
 
 %description
 Basic utility non-GUI functions for XFce4.
