@@ -1,0 +1,1193 @@
+2004-12-25 21:33  kelnos
+
+	* Makefile.am: fix distcheck-bz2
+
+2004-12-25 13:36  pollux
+
+	* Makefile.in, configure, configure.ac: update version to 4.1.99.3
+	  we forgot this one
+
+2004-12-24 01:03  kelnos
+
+	* Makefile.am: add dist-bz2 and distcheck-bz2 targets
+
+2004-12-23 09:56  benny
+
+	* gtk-doc.make, docs/Makefile.in, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in: Fix dist creation with gtk-doc.
+
+2004-12-22 21:10  benny
+
+	* ChangeLog, Makefile.am, Makefile.in: Improve EXTRA_DIST.
+
+2004-12-22 20:53  benny
+
+	* ChangeLog, Makefile.am, Makefile.in, configure, gtk-doc.make,
+	  docs/Makefile.am, docs/Makefile.in,
+	  xfce4-kiosk-query/Makefile.am, xfce4-kiosk-query/Makefile.in:
+	  Update ChangeLog. Get make distcheck to work.
+
+2004-12-20 22:00  jasper
+
+	* ChangeLog, configure, configure.ac: Update versions and ChangeLog
+
+2004-12-07 09:33  benny
+
+	* libxfce4util/xfce-miscutils.c: Fix #575 and create the .xfce4
+	  directory only if xfce_get_userdir() is called.
+
+2004-12-04 17:31  benny
+
+	* ChangeLog, configure: Update ChangeLog.
+
+2004-11-26 23:13  benny
+
+	* libxfce4util/i18n.h: Fix empty statement.
+
+2004-11-23 00:28  benny
+
+	* libxfce4util/i18n.h: Use glib/gi18n-lib.h instead, because
+	  glib/gi18n.h is unsuitable, since it defines _(s) to gettext(s),
+	  which in turn uses the default translation domain.
+
+2004-11-19 00:27  benny
+
+	* libxfce4util/xfce-rc-simple.c: Another attempt to fix #469.
+
+2004-11-18 23:50  benny
+
+	* configure, configure.ac, ltmain.sh: Specifying the nano version
+	  within the micro version broke the LIBXFCE4UTIL_MICRO_VERSION and
+	  related macros. Added some m4 magic to work-around the problem.
+
+2004-11-14 10:23  benny
+
+	* ChangeLog: Here's your ChangeLog. :-)
+
+2004-11-14 10:20  benny
+
+	* libxfce4util/xfce-kiosk.c: NGROUPS_MAX doesn't seem to be useful
+	  on Glibc based systems. Instead, determine the number of groups
+	  dynamically (and hope that all systems can handle the NULL
+	  pointer to getgroups).
+
+2004-11-13 19:01  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2004-11-13 16:19  olivier
+
+	* configure: Auto-tools check-up.
+
+2004-11-11 21:50  benny
+
+	* libxfce4util/xfce-kiosk.c: xfce_kiosk_new() always returns a
+	  valid XfceKiosk object now. xfce_kiosk_init() is a bit more
+	  verbose about whats wrong.
+
+2004-11-11 14:12  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, configure.ac, depcomp, install-sh, ltmain.sh, missing,
+	  docs/Makefile.in, libxfce4util/Makefile.in, m4/Makefile.in,
+	  xfce4-kiosk-query/Makefile.in: Update version number as code has
+	  changed
+
+2004-11-11 13:55  jasper
+
+	* libxfce4util/xfce-desktopentry.c: Remove some warnings; parsing
+	  may fail for valid reasons. Let applications handle this
+	  themselves. (bug #438)
+
+2004-11-10 00:54  benny
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, depcomp, install-sh, ltmain.sh, missing,
+	  docs/Makefile.in, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/xfce-resource.c,
+	  m4/Makefile.in, xfce4-kiosk-query/Makefile.in: Always include
+	  xfce prefix in XFCE_RESOURCE_{DATA,CONFIG}.
+
+2004-11-06 17:23  olivier
+
+	* ChangeLog, Makefile.in, aclocal.m4, compile, config.guess,
+	  config.sub, configure, configure.ac, depcomp, install-sh,
+	  missing, docs/Makefile.in, libxfce4util/Makefile.in,
+	  m4/Makefile.in, xfce4-kiosk-query/Makefile.in: Update
+	  automake/autoconf/libtool/gettext versions to generate the
+	  configure scripts and Makefiles, Update versions of all packages
+	  to 4.1.99.1 (ie 4.2 RC1), Update ChangeLogs.
+
+2004-11-05 18:32  benny
+
+	* libxfce4util/xfce-rc-simple.c: Increase line buffer size, fixes
+	  #469.
+
+2004-10-30 21:03  olivier
+
+	* ChangeLog, ltmain.sh: Global update for 4.1.91 (Xfce 4.2 beta 2)
+
+2004-10-30 14:37  benny
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  depcomp, install-sh, ltmain.sh, docs/Makefile.in,
+	  libxfce4util/Makefile.in, m4/Makefile.in,
+	  xfce4-kiosk-query/Makefile.in: Rerun autogen.sh (previous commit
+	  was done with Debian autotools).
+
+2004-10-30 10:05  benny
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  configure.ac, depcomp, install-sh, ltmain.sh, docs/Makefile.in,
+	  libxfce4util/Makefile.in, m4/Makefile.in,
+	  xfce4-kiosk-query/Makefile.in: Update overall version to 4.1.91.
+
+2004-10-23 16:45  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2004-10-23 16:09  benny
+
+	* libxfce4util/: Makefile.am, Makefile.in: Use
+	  ${sysconfdir}/xdg/xfce4/kiosk/ for kiosk mode configuration.
+
+2004-10-22 22:37  olivier
+
+	* ChangeLog, configure, configure.ac, ltmain.sh: Updated versions
+	  and change logs
+
+2004-10-21 19:47  benny
+
+	* docs/: Makefile.am, Makefile.in: Fix build w/o gtk-doc.
+
+2004-10-16 18:09  benny
+
+	* libxfce4util/xfce-kiosk.c: Check parameters in exported
+	  functions.
+
+2004-10-07 22:35  benny
+
+	* configure, ltmain.sh, m4/debug.m4: Added --enable-final (-O1 for
+	  GNU ld) as per Jaspers request. Added missing m4 files.
+
+2004-10-02 15:28  olivier
+
+	* ChangeLog, configure, ltmain.sh: Update all files for 4.2 beta 1
+
+2004-09-27 19:54  jasper
+
+	* configure, configure.ac: Update version to 4.1.90
+
+2004-09-26 12:30  jasper
+
+	* aclocal.m4, configure: autogen for jean-francois
+
+2004-09-26 12:18  pollux
+
+	* configure.ac: bump version in libxfce4util to 4.1.17 and make
+	  xfwm4 depends on it
+
+2004-09-24 10:40  benny
+
+	* libxfce4util/xfce-rc-simple.c: Fixed get_entries.
+
+2004-09-24 09:33  pollux
+
+	* libxfce4util/xfce-rc-simple.c: fix _xfce_rc_simple_get_entries
+	  when name = NULL, benny let me know if it's correct
+
+2004-09-21 00:22  olivier
+
+	* ChangeLog: Update all ChangeLogs
+
+2004-09-18 23:38  benny
+
+	* libxfce4util/: xfce-rc-config.c, xfce-rc-private.h: Implemented
+	  delete_entry/delete_group for XfceRcConfig.
+
+2004-09-17 13:07  benny
+
+	* ChangeLog: Updated ChangeLog.
+
+2004-09-13 18:44  benny
+
+	* AUTHORS, Makefile.in, aclocal.m4, configure, configure.ac,
+	  ltmain.sh, docs/Makefile.in, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, m4/Makefile.in, m4/depends.m4,
+	  xfce4-kiosk-query/Makefile.in: Applied cygwin patches from
+	  Maarten Boekhold <boekhold@emirates.net.ae>.
+
+2004-09-05 23:32  olivier
+
+	* libxfce4util.spec.in, ltmain.sh: Fix spec file
+
+2004-08-24 12:04  pollux
+
+	* docs/tmpl/xfce-generics.sgml: RU translations update from Anthony
+	  Ivanoff <a-i@bk.ru>
+
+2004-08-24 09:13  jasper
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure: Building docs
+	  requires something that links to libxfce4util, so that has to be
+	  build before the docs.
+
+2004-08-05 01:16  olivier
+
+	* libxfce4util/xfce-resource.c: Fix lib internals not being initted
+	  in push/pop fns causing a crash in UI plugin.
+
+2004-08-04 16:27  benny
+
+	* aclocal.m4, configure, configure.ac, docs/libxfce4util-docs.sgml,
+	  docs/libxfce4util-sections.txt, docs/tmpl/xfce-generics.sgml,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/libxfce4util.h, libxfce4util/xfce-generics.h: Added
+	  a generic stack data type, usefull for keeping state while
+	  parsing xml files using the Glib XML parser. Version is now
+	  4.1.15.
+
+2004-07-29 23:18  benny
+
+	* Makefile.in, aclocal.m4, configure, configure.ac,
+	  docs/Makefile.in, docs/tmpl/xfce-kiosk.sgml,
+	  libxfce4util/Makefile.in, libxfce4util/xfce-kiosk.c,
+	  m4/Makefile.am, m4/Makefile.in, m4/gtk-doc.m4, m4/pkg.m4,
+	  xfce4-kiosk-query/Makefile.in: Thread-safety for the kiosk
+	  module. Ship all required m4 files.
+
+2004-07-28 23:22  benny
+
+	* m4/depends.m4: Fixed (module)_FOUND bug reported by brian.
+	  Hopefully nothing else broke this time.
+
+2004-07-26 20:33  benny
+
+	* config.h.in, configure, configure.ac, libxfce4util/xfce-kiosk.c:
+	  Reload kioskrc file on-demand
+
+2004-07-26 19:38  benny
+
+	* Makefile.am, Makefile.in, README.Kiosk, config.h.in, configure,
+	  configure.ac, libxfce4util.spec.in, docs/libxfce4util-docs.sgml,
+	  docs/libxfce4util-sections.txt, docs/tmpl/xfce-desktopentry.sgml,
+	  docs/tmpl/xfce-fileutils.sgml, docs/tmpl/xfce-kiosk.sgml,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/libxfce4util.h, libxfce4util/xfce-kiosk.c,
+	  libxfce4util/xfce-kiosk.h, libxfce4util/xfce-miscutils.c,
+	  xfce4-kiosk-query/.cvsignore, xfce4-kiosk-query/Makefile.am,
+	  xfce4-kiosk-query/Makefile.in, xfce4-kiosk-query/main.c: Added
+	  Kiosk mode for Xfce, supporting modules will have to be changed
+	  to use this functions.
+
+2004-07-24 20:52  benny
+
+	* m4/depends.m4: Readded XFCE_MCS_PLUGIN() again, dunno how I
+	  manage to remove it everytime I edit depends.m4!
+
+2004-07-24 19:30  benny
+
+	* m4/depends.m4: XFCE_PANEL_PLUGIN had wrong panel version for the
+	  threaded test.
+
+2004-07-24 19:28  benny
+
+	* m4/depends.m4: Extended the XFCE_PANEL_PLUGIN macro to include
+	  some magic for threaded panels.
+
+2004-07-24 19:02  benny
+
+	* Makefile.in, aclocal.m4, config.guess, config.h.in, config.sub,
+	  configure, configure.ac, install-sh, ltmain.sh, mkinstalldirs,
+	  docs/Makefile.in, libxfce4util/Makefile.in,
+	  libxfce4util/xfce-miscutils.c, libxfce4util/xfce-rc-simple.c,
+	  m4/Makefile.in: Added ~user support to xfce_expand_variables().
+
+2004-07-22 01:00  benny
+
+	* m4/depends.m4: Readded the XFCE_MCS_PLUGIN macro. I didn't ment
+	  to remove it, tho.
+
+2004-07-20 22:53  benny
+
+	* m4/depends.m4: Modified panel plugin check, so one (the
+	  installer) can choose to install into a different plugin dir.
+
+2004-07-17 13:45  kelnos
+
+	* libxfce4util/xfce-desktopentry.c: be more informative when
+	  parsing fails, and plug memleak
+
+2004-07-12 02:42  kelnos
+
+	* libxfce4util/xfce-rc.h: prototype/definition mismatch fix
+
+2004-07-08 19:53  kelnos
+
+	* libxfce4util/xfce-rc-simple.c: cygwin compile fix
+
+2004-07-04 14:19  benny
+
+	* libxfce4util/xfce-rc-simple.c: Small optimization.
+
+2004-06-20 18:54  benny
+
+	* libxfce4util/: xfce-rc-simple.c, xfce-resource.c: More PATH_MAX
+	  fixes.
+
+2004-06-20 18:34  benny
+
+	* libxfce4util/i18n.c: Fix #232.
+
+2004-06-13 09:04  benny
+
+	* libxfce4util.spec.in: Fixed #225.
+
+2004-06-01 19:48  benny
+
+	* libxfce4util/xfce-rc-simple.c: Same applies when an entry is
+	  deleted.
+
+2004-06-01 19:44  benny
+
+	* libxfce4util/xfce-rc-simple.c: Mark XfceRc object dirty after
+	  group deletion.
+
+2004-05-27 21:49  pollux
+
+	* docs/tmpl/xfce-desktopentry.sgml,
+	  libxfce4util/xfce-desktopentry.c: move documentation of
+	  xfce-desktopentry functions into the code
+
+2004-05-27 16:23  pollux
+
+	* libxfce4util/xfce-desktopentry.c: i forgot to commit the source
+	  ... oups
+
+2004-05-27 15:58  pollux
+
+	* docs/: libxfce4util-sections.txt, tmpl/xfce-desktopentry.sgml,
+	  tmpl/xfce-fileutils.sgml: - correct a little error from benny
+	  (Param2 needed to be omode) - add doc for
+	  xfce_desktop_entry_new_from_data
+
+2004-05-27 13:49  benny
+
+	* docs/tmpl/xfce-resource.sgml, libxfce4util/i18n.c,
+	  libxfce4util/xfce-fileutils.c, libxfce4util/xfce-miscutils.c,
+	  libxfce4util/xfce-resource.c: Added some docs.
+
+2004-05-27 13:16  pollux
+
+	* libxfce4util/xfce-desktopentry.c: xfce_desktop_entry_parse should
+	  return TRUE
+
+2004-05-26 23:01  pollux
+
+	* libxfce4util/xfce-desktopentry.c: static gboolean entry_parse
+	  created and xfce_desktop_entry_parse does nothing
+
+2004-05-26 22:48  pollux
+
+	* libxfce4util/: xfce-desktopentry.c, xfce-desktopentry.h: -
+	  xfce_desktop_entry_parse deprecated - xfce_desktop_entry_new and
+	  xfce_desktop_entry_new_from_data directly call
+	  xfce_desktop_entry_parse (what happens if
+	  xfce_desktop_entry_parse is still called after ?)
+
+2004-05-26 22:33  pollux
+
+	* libxfce4util/: xfce-desktopentry.c, xfce-desktopentry.h:
+	  xfce_desktop_entry_new_from_data added
+
+2004-05-24 20:51  benny
+
+	* libxfce4util/: xfce-resource.c, xfce-resource.h: Added theme
+	  type. Bugfix in xfce_resource_match().
+
+2004-05-19 20:25  benny
+
+	* libxfce4util/i18n.c: Get rid of this disturbing debug message.
+
+2004-05-17 21:55  benny
+
+	* configure, docs/libxfce4util-sections.txt,
+	  docs/tmpl/xfce-miscutils.sgml: Added xfce_expand_variables to the
+	  docs.
+
+2004-05-17 19:59  benny
+
+	* configure, configure.ac, libxfce4util/xfce-miscutils.c,
+	  libxfce4util/xfce-miscutils.h: Added xfce_expand_variables() for
+	  Brian ;-). Bumped version to 4.1.11.
+
+2004-05-14 23:16  benny
+
+	* configure, configure.ac: Bump version, so I can depend on it.
+
+2004-05-14 22:51  benny
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  install-sh, ltmain.sh, mkinstalldirs, docs/Makefile.in,
+	  libxfce4util/Makefile.in, libxfce4util/xfce-rc-simple.c,
+	  libxfce4util/xfce-rc.c, m4/Makefile.in, m4/debug.m4: Bugfixes.
+
+2004-05-03 23:44  olivier
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  install-sh, ltmain.sh, mkinstalldirs, docs/Makefile.in,
+	  libxfce4util/Makefile.in, m4/Makefile.in: Update zh_TW
+	  translations from umm <umm@pchome.com.tw>
+
+2004-04-01 23:42  benny
+
+	* configure, libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/xfce-resource.c, m4/depends.m4: Added more icon
+	  fallback dirs for systems that doesn't install everything in /usr
+	  (why doesn't the icon spec cover this?).
+
+2004-03-31 21:40  benny
+
+	* config.h.in, configure, configure.ac: No need to check for
+	  strlcpy/strlcat, will use GLib replacements instead.
+
+2004-03-31 21:08  benny
+
+	* configure, libxfce4util/utf8.h, libxfce4util/xfce-miscutils.c,
+	  libxfce4util/xfce-miscutils.h, libxfce4util/xfce-rc.c,
+	  libxfce4util/xfce-rc.h: Misused gcc function attributes, thanks
+	  to danny for figuring out.  Problems fixed now.
+
+2004-03-29 22:14  benny
+
+	* libxfce4util/xfce-rc-config.c: Bugfix.
+
+2004-03-28 20:42  benny
+
+	* config.h.in, configure, configure.ac,
+	  docs/libxfce4util-sections.txt, docs/tmpl/xfce-miscutils.sgml,
+	  docs/tmpl/xfce-rc.sgml, libxfce4util/utf8.c,
+	  libxfce4util/xfce-miscutils.c, libxfce4util/xfce-miscutils.h,
+	  libxfce4util/xfce-rc-private.h, libxfce4util/xfce-rc-simple.c,
+	  libxfce4util/xfce-rc.c, libxfce4util/xfce-rc.h: Added
+	  xfce_unsetenv(). Added delete_group()/delete_entry() for XfceRc,
+	  currently limited to the simple backend, have to figure out a
+	  nice way to do this with the config backend. Version is now
+	  4.1.9.
+
+2004-03-18 12:09  benny
+
+	* libxfce4util/: debug.h, xfce-miscutils.h: Make this compile with
+	  the Sun Forte Compiler, fixes #0000140.
+
+2004-03-17 23:34  benny
+
+	* configure, docs/libxfce4util-docs.sgml,
+	  docs/libxfce4util-sections.txt, docs/tmpl/util.sgml,
+	  docs/tmpl/xfce-fileutils.sgml, docs/tmpl/xfce-miscutils.sgml,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/debug.h, libxfce4util/libxfce4util.h,
+	  libxfce4util/util.c, libxfce4util/util.h,
+	  libxfce4util/xfce-fileutils.c, libxfce4util/xfce-fileutils.h,
+	  libxfce4util/xfce-miscutils.c, libxfce4util/xfce-miscutils.h:
+	  Some rearrangements, splitting up stuff is better. Applications
+	  should include <libxfce4util/libxfce4util.h> to be unaffected by
+	  such rearrangements.
+
+2004-03-17 22:42  benny
+
+	* TODO, aclocal.m4, config.h.in, configure, configure.ac,
+	  libxfce4util.spec.in, docs/libxfce4util-docs.sgml,
+	  docs/libxfce4util-overrides.txt, docs/libxfce4util-sections.txt,
+	  docs/tmpl/i18n.sgml, docs/tmpl/utf8.sgml, docs/tmpl/util.sgml,
+	  docs/tmpl/xdg-basedir-support.sgml, docs/tmpl/xfce-rc.sgml,
+	  docs/tmpl/xfce-resource.sgml, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/debug.h,
+	  libxfce4util/i18n.c, libxfce4util/i18n.h,
+	  libxfce4util/libxfce4util.h, libxfce4util/utf8.c,
+	  libxfce4util/util.c, libxfce4util/util.h, libxfce4util/xdg.c,
+	  libxfce4util/xdg.h, libxfce4util/xfce-desktopentry.c,
+	  libxfce4util/xfce-rc-config.c, libxfce4util/xfce-rc-private.h,
+	  libxfce4util/xfce-rc-simple.c, libxfce4util/xfce-rc.c,
+	  libxfce4util/xfce-rc.h, libxfce4util/xfce-resource.c,
+	  libxfce4util/xfce-resource.h, libxfce4util/xfce_desktop_entry.h:
+	  Added RC parser and resource lookup functions (which replace
+	  those stupid xfce_xdg_* functions). Added more documentation.
+	  Added more gettext functions (xfce_strip_context, Q_), fixes.
+
+2004-03-15 00:16  benny
+
+	* libxfce4util/: i18n.c, i18n.h: Undeprecate
+	  xfce_get_{dir,file}_localized* on jaspers request. Remove
+	  unneccessary copyright notice, as we don't include the
+	  __unaliasname() function any longer.
+
+2004-03-14 23:33  benny
+
+	* configure, configure.ac: Remove i18n/Makefile
+
+2004-03-14 22:42  jasper
+
+	* Makefile.am, Makefile.in, aclocal.m4, configure,
+	  libxfce4util/i18n.c: Remove __unaliasname definition and
+	  nls.alias file
+
+2004-03-13 17:32  jasper
+
+	* libxfce4util/i18n.c: Dynamic method to find localized path.
+
+2004-03-13 09:06  benny
+
+	* libxfce4util/: i18n.c, i18n.h: Added xfce_locale_match, was
+	  missing from previous commit.
+
+2004-03-12 21:38  benny
+
+	* libxfce4util/xfce-desktopentry.c: Use xfce_locale_match(), its
+	  faster.
+
+2004-03-11 22:19  benny
+
+	* libxfce4util/: util.c, util.h: Added xfce_mkdirhier() functions
+	  that creates a directory hierarchy similar to the mkdirhier tool
+	  that ships with the X distribution.
+
+2004-03-09 22:10  benny
+
+	* libxfce4util/: util.c, util.h: separator parameter should be
+	  const!
+
+2004-03-09 13:46  benny
+
+	* m4/depends.m4: XFCE_MCS_PLUGIN was missing from here for some
+	  weird reason!
+
+2004-03-08 10:24  benny
+
+	* libxfce4util/debug.h: Remove senseless constructs. Thanks to
+	  Frederic Motte for pointing this out.
+
+2004-03-01 23:50  benny
+
+	* ChangeLog, Makefile.in, NEWS, configure, configure.ac,
+	  libxfce4util.spec.in, docs/Makefile.in,
+	  docs/libxfce4util-docs.sgml, docs/libxfce4util-sections.txt,
+	  docs/tmpl/standard-macros.sgml, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/libxfce4util-config.h.in,
+	  libxfce4util/libxfce4util.h, m4/Makefile.in: Added gtk-doc
+	  framework to libxfcegui4, more documentation soon to come (as
+	  usual :). Added version checks to both libxfce4util and
+	  libxfcegui4, namely LIBXFCE4UTIL_CHECK_VERSION and
+	  LIBXFCEGUI4_CHECK_VERSION similar to the ones in glib/gtk.
+	  Updated spec files to include the gtk-doc files. Bumped versions
+	  of both libs to 4.1.6. Started renaming some of the libxfcegui4
+	  functions include the xfce_ prefix (ok'd with jasper). Maybe
+	  things will still work after this commit ;-).
+
+2004-03-01 22:09  benny
+
+	* m4/debug.m4: Added --enable-gcov to compile xfce with support for
+	  coverage tests. Very useful.
+
+2004-02-24 21:50  benny
+
+	* ChangeLog, NEWS, TODO, config.h.in, configure, configure.ac,
+	  docs/libxfce4util-docs.sgml, docs/libxfce4util-sections.txt,
+	  docs/tmpl/xdg-basedir-support.sgml, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/libxfce4util.h,
+	  libxfce4util/xdg.c, libxfce4util/xdg.h,
+	  libxfce4util/xfce-desktopentry.c: Bumped version to 4.1.5. Added
+	  "XDG Base Directory" implementation; now, brian, make the theming
+	  stuff standards compliant :-)
+
+2004-02-20 14:25  benny
+
+	* ChangeLog: Updated ChangeLog.
+
+2004-02-20 14:24  benny
+
+	* NEWS, README, aclocal.m4, config.h.in, configure, configure.ac:
+	  Version 4.1.4 with some bugfixes and
+	  --with-broken-putenv=[auto/no/yes] option added to configure to
+	  make libxfce4util cross-compilable again.
+
+2004-02-20 14:12  benny
+
+	* libxfce4util/xfce-desktopentry.c: atoi() is deprecated, strtol()
+	  should be used instead. In addition the check for temp >= 0
+	  prevented negative integer values from being stored in desktop
+	  files.
+
+2004-02-20 12:44  benny
+
+	* libxfce4util/util.c: Be sure to use the plattform malloc() in our
+	  putenv(), cause we don't know about the evil interna of putenv()
+	  and g_malloc() need not to use malloc() on this plattform. Fixed
+	  bug in xfce_setenv() where memory was not freed after the call to
+	  xfce_putenv().
+
+2004-02-15 23:02  jasper
+
+	* libxfce4util/xfce-desktopentry.c: Add extra sanity check
+
+2004-02-12 02:11  benny
+
+	* libxfce4util/xfce_desktop_entry.h: Provide "wrapping" depending
+	  on XFCE_DISABLE_DEPRECATED.
+
+2004-02-12 01:59  benny
+
+	* Makefile.am, Makefile.in, NEWS, aclocal.m4, configure,
+	  configure.ac, libxfce4util.spec.in, docs/.cvsignore,
+	  docs/Doxyfile, docs/MAINPAGE, docs/Makefile.am, docs/Makefile.in,
+	  docs/libxfce4util-docs.sgml, docs/libxfce4util-overrides.txt,
+	  docs/libxfce4util-sections.txt, docs/libxfce4util.types,
+	  docs/version.xml.in, docs/tmpl/debug.sgml, docs/tmpl/i18n.sgml,
+	  docs/tmpl/utf8.sgml, docs/tmpl/util.sgml,
+	  docs/tmpl/xfce-desktopentry.sgml, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/debug.h,
+	  libxfce4util/i18n.c, libxfce4util/i18n.h,
+	  libxfce4util/libxfce4util.h, libxfce4util/utf8.c,
+	  libxfce4util/utf8.h, libxfce4util/util.c, libxfce4util/util.h,
+	  libxfce4util/xfce-desktopentry.c,
+	  libxfce4util/xfce-desktopentry.h,
+	  libxfce4util/xfce_desktop_entry.c,
+	  libxfce4util/xfce_desktop_entry.h, m4/Makefile.in, m4/debug.m4:
+	  Version 4.1.3: Code cleanups, doxygen -> gtk-doc, some functions
+	  marked as DEPRECATED.
+
+2004-02-11 23:48  benny
+
+	* autogen.sh: Always append --enable-maintainer-mode if configure
+	  is invoked by autogen.sh, since this makes more sense to me.
+
+2004-02-09 02:47  kelnos
+
+	* libxfce4util/xfce_desktop_entry.c: fix three memleaks in
+	  xfce_desktop_entry_parse()
+
+2004-02-03 19:06  benny
+
+	* config.h.in, configure, configure.ac,
+	  libxfce4util/licenses-texts.c, libxfce4util/licenses-to-c.sh,
+	  libxfce4util/util.c, libxfce4util/util.h: Fixed leftover naming
+	  problem _xfce_builtin_* -> xfce_builtin_*.
+
+2004-02-02 21:57  benny
+
+	* ChangeLog, Makefile.in, configure, configure.ac, docs/Doxyfile,
+	  libxfce4util/BSD, libxfce4util/GPL, libxfce4util/LGPL,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/licenses-texts.c, libxfce4util/licenses-to-c.sh,
+	  libxfce4util/util.h: Hardcode common licenses into the library
+	  (using a special section, if possible, to prevent unneccessary
+	  memory usage) and added XFCE_LICENSE_* macros to access the
+	  license texts. This is done, so license texts can be accessed by
+	  application without requiring the user to install xfce-utils
+	  (which should be altered to use the XFCE_LICENSE_* stuff).
+
+2004-01-31 09:59  jasper
+
+	* docs/: Doxyfile, MAINPAGE: Add simple front page for API docs.
+
+2004-01-30 20:19  jasper
+
+	* libxfce4util/: xfce_desktop_entry.c, xfce_desktop_entry.h:
+	  gtk-doc -> doxygen style comments. Cool stuff.
+
+2004-01-29 23:03  benny
+
+	* AUTHORS, Makefile.in, NEWS, aclocal.m4, config.h.in, configure,
+	  configure.ac, ltmain.sh, docs/Doxyfile, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/util.c,
+	  libxfce4util/util.h, m4/Makefile.in: Added xfce_putenv() and
+	  xfce_setenv() to get a portable way to modify the process
+	  environment list ((Linux and Solaris seem to have a broken
+	  putenv() implementation, see the autocoonf check for details on
+	  this topic). Started doxygen documentation.
+
+2004-01-25 01:07  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, depcomp, install-sh, ltmain.sh, missing,
+	  mkinstalldirs, libxfce4util/Makefile.in, m4/Makefile.in: Update
+	  libtool and other automake, autoconf and gettext packages
+
+2004-01-17 11:05  benny
+
+	* Makefile.am: leftover commit.
+
+2004-01-16 19:33  benny
+
+	* AUTHORS, BSD, COPYING, COPYING.BSD, COPYING.LGPL, LGPL: I think
+	  the filenames "COPYING.BSD" and "COPYING.LGPL" make more sense
+	  than just "BSD" and "LGPL".
+
+2004-01-16 19:09  jasper
+
+	* libxfce4util/xfce_desktop_entry.c: Bleh, gcc3-ism. Sloppy.
+
+2004-01-12 23:52  dannym
+
+	* libxfce4util/xfce_desktop_entry.c: fix crash with some kde
+	  desktop files with 1) empty "name=" and 2) "name=\r"
+
+2004-01-12 08:20  jasper
+
+	* libxfce4util/xfce_desktop_entry.c: Fix bug when value == NULL.
+
+2004-01-11 22:27  jasper
+
+	* configure, configure.ac: /me doesn't like libtool. I don't know
+	  why but this seems to generate the correct library version ...
+
+2004-01-11 22:12  jasper
+
+	* BSD, COPYING, LGPL, Makefile.in, aclocal.m4, config.guess,
+	  config.sub, configure, configure.ac, depcomp, install-sh,
+	  ltmain.sh, libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/xfce_desktop_entry.c,
+	  libxfce4util/xfce_desktop_entry.h, m4/Makefile.in: Add desktop
+	  entry parser code
+
+2004-01-10 19:43  benny
+
+	* Makefile.in, aclocal.m4, config.guess, config.h.in, config.sub,
+	  configure, configure.ac, depcomp, install-sh, ltmain.sh,
+	  libxfce4util/Makefile.in, libxfce4util/util.c,
+	  libxfce4util/util.h, m4/Makefile.in: Imported patches from Brian
+	  J. Tarricone regarding custom halt/poweroff/reboot commands with
+	  some modifications and bumped version to 0.2.0
+
+2003-10-13 20:51  jasper
+
+	* ChangeLog: Update ChangeLog's after syncing with SF. Everything
+	  should now be up-to-date.
+
+2003-09-22 22:52  huysmans
+
+	* ChangeLog: Update ChangeLogs
+
+2003-09-22 00:19  xfce
+
+	* configure, configure.ac: Update version number to 4.0.0 Improve
+	  focus change for modal dialogs in xfwm4
+
+2003-09-15 00:06  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-09-14 01:13  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-09-10 09:54  huysmans
+
+	* ChangeLog: Update ChangeLogs
+
+2003-09-10 09:39  huysmans
+
+	* configure, configure.ac: Update version numbers and po files for
+	  release
+
+2003-08-28 18:09  edscott
+
+	* libxfce4util/i18n.h: supress compiler warnings because of intl
+	  macro redefinitions
+
+2003-08-26 09:38  huysmans
+
+	* ChangeLog: Update changelogs
+
+2003-08-07 21:04  huysmans
+
+	* libxfce4util/i18n.c: Make i18n work
+
+2003-08-03 20:45  bmeurer
+
+	* ChangeLog: Updated ChangeLogs
+
+2003-08-03 20:37  bmeurer
+
+	* m4/X11.m4: grep -q does not work with Solaris grep, fixed it.
+
+2003-07-30 13:31  huysmans
+
+	* ChangeLog: Update changlogs
+
+2003-07-30 10:03  huysmans
+
+	* configure, configure.ac: Update version numbers and po files for
+	  release
+
+2003-07-19 11:30  huysmans
+
+	* ChangeLog: Update ChangeLogs
+
+2003-07-19 10:58  huysmans
+
+	* configure, configure.ac: Update version numbers and po files for
+	  release
+
+2003-07-13 10:43  huysmans
+
+	* ChangeLog: Update ChangeLogs for release
+
+2003-07-11 09:33  huysmans
+
+	* ChangeLog: Update ChangeLog's for release
+
+2003-07-10 11:56  huysmans
+
+	* ChangeLog: Update ChangeLog's for release
+
+2003-07-10 11:24  huysmans
+
+	* configure, configure.ac: Bump version numbers for release and
+	  update po files
+
+2003-07-08 00:26  xfce
+
+	* ltmain.sh: Update ltmain.sh with patched version
+
+2003-07-06 23:17  bmeurer
+
+	* TODO: Note that TODO items are for > 4.0
+
+2003-07-06 21:45  huysmans
+
+	* ChangeLog: Updating ChangeLogs
+
+2003-07-06 11:15  bmeurer
+
+	* TODO: New todo item.
+
+2003-07-05 14:31  xfce
+
+	* Makefile.in, ltconfig: Remove ltconfig script as it is generated
+
+2003-07-05 01:37  xfce
+
+	* Makefile.in, aclocal.m4, configure, ltcf-c.sh: libttol update and
+	  all
+
+2003-07-05 00:30  bmeurer
+
+	* TODO: Added TODO about "XDG Base Directory Specification"
+
+2003-07-04 23:03  bmeurer
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, ltmain.sh,
+	  libxfce4util/Makefile.in, m4/Makefile.in: libtool updated to 1.5.
+
+2003-07-03 21:57  xfce
+
+	* libxfce4util/util.c: Rename fns starting with __* to internal_*
+	  ("__" should be avoided as some linker use this for their own
+	  use)
+
+2003-07-02 14:32  bmeurer
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, ltmain.sh,
+	  libxfce4util/Makefile.in, libxfce4util/utf8.h, m4/Makefile.in:
+	  Cleanups.
+
+2003-07-01 22:44  xfce
+
+	* configure, configure.ac, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/utf8.c,
+	  libxfce4util/utf8.h: Add utf8 utility (used in libxfcegui4 and
+	  xfwm4)
+
+2003-06-28 11:46  xfce
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, configure.ac,
+	  ltmain.sh, libxfce4util/Makefile.in, m4/Makefile.in: Update to
+	  libtool-1.5 Use proper complete CURRENT:REVISION:AGE scheme for
+	  lib versionning
+
+2003-06-21 22:18  bmeurer
+
+	* libxfce4util/debug.h: Cleanup
+
+2003-06-21 22:17  bmeurer
+
+	* libxfce4util/i18n.h: Added note.
+
+2003-06-15 11:50  bmeurer
+
+	* libxfce4util/i18n.h: TRy to force CVS to update to 1.7
+
+2003-06-14 23:53  bmeurer
+
+	* NEWS, TODO, libxfce4util/i18n.c, libxfce4util/i18n.h, m4/i18n.m4:
+	  Introduced xfce_textdomain()
+
+2003-06-10 21:51  bmeurer
+
+	* libxfce4util/Makefile.in, libxfce4util/i18n.h, m4/Makefile.in:
+	  Added xfce_get_path_localized(). Updated to 3.91.0
+
+2003-06-10 21:47  bmeurer
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  configure.ac, install-sh, ltcf-c.sh, ltconfig, ltmain.sh: Added
+	  xfce_get_path_localized(). Updated to 3.91.0
+
+2003-06-06 23:36  xfce
+
+	* aclocal.m4, configure, configure.ac, ltcf-c.sh, ltconfig,
+	  ltmain.sh: Versionning scheme
+
+2003-06-06 00:00  bmeurer
+
+	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.sub,
+	  configure, configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
+	  libxfce4util/Makefile.in, libxfce4util/i18n.c,
+	  libxfce4util/i18n.h, m4/Makefile.in, m4/depends.m4: Updated
+	  version to 3.90.0
+
+2003-05-15 13:03  huysmans
+
+	* ChangeLog: Mass update of ChangeLogs
+
+2003-05-04 16:02  huysmans
+
+	* Makefile.am, Makefile.in, aclocal.m4, config.guess, config.sub,
+	  configure, libxfce4util.spec.in, ltcf-c.sh, ltconfig, ltmain.sh,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  m4/Makefile.in: Fix distcheck and rpm build targets
+
+2003-05-01 15:48  bmeurer
+
+	* Makefile.am, libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/filter.c, libxfce4util/filter.h,
+	  libxfce4util/option.c, libxfce4util/option.h, m4/Makefile.am,
+	  m4/Makefile.in: Moved xfprint stuff to xfprint.
+
+2003-05-01 12:55  bmeurer
+
+	* configure, configure.ac: API was changed, so raise version (and
+	  lib major) to 0.3.0
+
+2003-05-01 12:42  bmeurer
+
+	* Makefile.am, Makefile.in, aclocal.m4, config.h.in, configure,
+	  configure.ac, libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/i18n.c, libxfce4util/i18n.h, libxfce4util/util.c,
+	  m4/Makefile.am, m4/Makefile.in, m4/depends.m4: Added i18n
+	  functions to libxfce4util.
+
+2003-04-27 20:51  tobias_henle
+
+	* libxfce4util/debug.h: Added __FUNCTION__ in DBG and TRACE for gcc
+	  v3+.
+
+2003-04-26 23:15  bmeurer
+
+	* m4/depends.m4: Updated BM_DEPEND_CHECK.
+
+2003-04-26 13:52  bmeurer
+
+	* m4/debug.m4: Fixed a stupid typo.
+
+2003-04-25 11:53  bmeurer
+
+	* m4/Makefile.am, m4/Makefile.in, m4/X11.m4, m4/depends.m4,
+	  m4/i18n.m4, Makefile.am, Makefile.in, configure, configure.ac:
+	  Updated depends.m4 and added macro for use with panel plugins.
+	  Updated libxfce4util to install the common m4 files into
+	  $(datadir)/xfce4/m4.
+
+2003-04-20 12:05  huysmans
+
+	* libxfce4util/i18n.h: Fix i18n panel issue: use GETTEXT_PACKAGE
+	  instead of PACKAGE
+
+2003-04-19 23:31  bmeurer
+
+	* Makefile.in, aclocal.m4, configure, configure.ac,
+	  libxfce4util/Makefile.in, libxfce4util/libxfce4util-1.0.pc.in,
+	  m4/rpath.m4: Added system tray support to libxfcegui4 and
+	  frontend to xftaskbar4.  Lots of cleanups in the autotools stuff.
+
+2003-04-09 22:39  bmeurer
+
+	* aclocal.m4, configure, m4/debug.m4: Improved debug.m4:
+
+		  1) --disable-debug no longer disables assert()'s
+		  2) --enable-profiling now enables profiling code
+		  3) --disable-asserts allows disabling of assert()'s
+
+2003-04-05 23:30  bmeurer
+
+	* config.h.in, configure, configure.ac, libxfce4util/util.c: Fixed
+	  libxfce4util libtool verinfo.  Updated to automake 1.7.3.
+
+2003-04-05 19:20  bmeurer
+
+	* configure, configure.ac, libxfce4util/util.c,
+	  libxfce4util/util.h: Added xfce_get_homefile_r() and
+	  xfce_get_userfile_r() for use with static buffers. Raise version
+	  to 0.2.
+
+2003-04-05 02:09  xfce
+
+	* libxfce4util/debug.h: Revert last change in debug.h, use "??"
+	  instead of ((__const char *)0) Replace DBG() statements with
+	  TRACE() in libxfcegui4 and xfwm4 because it was generating far
+	  too much logs in simple debug mode (use --enable-debug=full to
+	  get full traces) Add params to TRACE() (just like in DBG())
+	  Remove trailing CR in log messages
+
+2003-04-05 00:35  bmeurer
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  depcomp, ltconfig, libxfce4util/Makefile.in,
+	  libxfce4util/debug.h, libxfce4util/util.h: Update debug stuff.
+
+2003-04-04 00:08  bmeurer
+
+	* m4/depends.m4: Updated BM_DEPEND_CHECK to make it possible to
+	  disable the test
+
+2003-04-03 23:34  bmeurer
+
+	* aclocal.m4, m4/depends.m4: Fixed BM_DEPEND_CHECK
+
+2003-04-02 23:18  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-04-02 22:35  bmeurer
+
+	* libxfce4util/debug.h: Debugging stuff has moved to libxfce4util.
+
+2003-04-02 22:10  bmeurer
+
+	* aclocal.m4, config.h.in, configure, configure.ac,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/i18n.h, m4/debug.m4: Debugging stuff now provided by
+	  libxfce4util. As a result of this change libxfcegui4 now depends
+	  on libxfce4util.  Some other updates.  added a hint to the
+	  libxfcegui4 README for Xinerama problems with XFree86.
+
+2003-04-02 19:33  bmeurer
+
+	* aclocal.m4, configure, m4/debug.m4, m4/rpath.m4: left-over
+	  autostuff for libxfce*, xfcs-mcs-* and xfce4
+
+2003-04-02 16:58  bmeurer
+
+	* libxfce4util/: Makefile.am, Makefile.in, filter.h, i18n.h,
+	  util.h: Put i18n support code into libxfce4util.
+
+2003-04-02 15:24  bmeurer
+
+	* aclocal.m4, config.h.in, configure, configure.ac,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/filter.c, m4/debug.m4, m4/depends.m4: Large
+	  autotools update. Should fix James problems with unsubstituted
+	  @PKG_LDFLAGS@ in .pc files. Should also make it easier to port
+	  XFce4 to a non-POSIX (or even non-UNIX) plattform, using
+	  autoconf.
+
+2003-04-01 20:36  bmeurer
+
+	* aclocal.m4, configure, ltcf-c.sh, ltconfig, ltmain.sh,
+	  m4/debug.m4, m4/rpath.m4: Updates of the m4 files (test's have
+	  some problems).
+
+2003-03-31 18:41  bmeurer
+
+	* libxfce4util/: filter.c, option.c, test.c, util.c: Header files
+	  are now only included if found by configure.
+
+2003-03-27 21:32  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-03-23 22:17  xfce
+
+	* ChangeLog: Update ChangeLog
+
+2003-03-19 08:12  huysmans
+
+	* autogen.sh: Only add extra autogen parameters when none are given
+
+2003-03-18 23:33  xfce
+
+	* ChangeLog, aclocal.m4, configure, ltcf-c.sh, ltconfig, ltmain.sh:
+	  Update ChangeLog Update build scripts (ie rerun autogen.sh)
+	  Update xfwm4's microdeck theme Remove 1 pix border arround xffm
+	  menu bar
+
+2003-03-15 11:07  bmeurer
+
+	* Makefile.in, aclocal.m4, autogen.sh, configure, configure.ac,
+	  libxfce4util.spec.in, libxfce4util/Makefile.in,
+	  libxfce4util/filter.c, m4/depends.m4: Create a valid .spec file.
+
+2003-03-14 20:22  bmeurer
+
+	* autogen.sh: update
+
+2003-03-14 19:55  bmeurer
+
+	* Makefile.in, aclocal.m4, configure, configure.ac,
+	  libxfce4util.spec.in, libxfce4util/Makefile.in,
+	  libxfce4util/libxfce4util-1.0.pc.in, m4/rpath.m4: New rpath stuff
+	  (for debian people)
+
+2003-03-13 22:37  bmeurer
+
+	* aclocal.m4, configure, configure.ac, libxfce4util/util.c,
+	  libxfce4util/util.h, m4/debug.m4: debug.m4 update. Removed junk
+	  from the sources.
+
+2003-03-13 21:39  xfce
+
+	* ChangeLog: Update Changelogs
+
+2003-03-13 14:50  bmeurer
+
+	* configure: Requires glib-2.0.
+
+2003-03-13 14:47  bmeurer
+
+	* configure.ac: Works with glib 2.0.0 as well.
+
+2003-03-10 22:27  bmeurer
+
+	* libxfce4util/: filter.c, filter.h: remove a possible buffer
+	  overflow.
+
+2003-03-10 12:40  bmeurer
+
+	* libxfce4util/filter.c: Typo
+
+2003-03-10 12:33  bmeurer
+
+	* libxfce4util/filter.h: [no log message]
+
+2003-03-10 12:29  bmeurer
+
+	* libxfce4util/filter.h: Fixed typo
+
+2003-03-10 12:02  bmeurer
+
+	* libxfce4util/: filter.c, filter.h: Update the filter interface.
+
+2003-03-09 23:10  bmeurer
+
+	* AUTHORS, COPYING, ChangeLog, INSTALL, Makefile.am, Makefile.in,
+	  NEWS, README, aclocal.m4, autogen.sh, compile, config.guess,
+	  config.h.in, config.sub, configure, configure.ac, depcomp,
+	  install-sh, libxfce4util.spec.in, ltcf-c.sh, ltconfig, ltmain.sh,
+	  missing, mkinstalldirs, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/filter.c,
+	  libxfce4util/filter.h, libxfce4util/libxfce4util-1.0.pc.in,
+	  libxfce4util/option.c, libxfce4util/option.h,
+	  libxfce4util/test.c, libxfce4util/util.c, libxfce4util/util.h,
+	  m4/debug.m4: Initiali import of stripped libxfce4util.
+

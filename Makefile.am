@@ -1,7 +1,6 @@
 SUBDIRS =								\
 	libxfce4util							\
 	docs								\
-	m4								\
 	xfce4-kiosk-query
 
 distclean-local:
@@ -16,6 +15,8 @@ EXTRA_DIST =								\
 	COPYING								\
 	COPYING.BSD							\
 	COPYING.LGPL							\
+	ChangeLog							\
+	ChangeLog.pre-4.2.0						\
 	INSTALL								\
 	NEWS								\
 	README								\
@@ -24,12 +25,12 @@ EXTRA_DIST =								\
 	gtk-doc.make							\
 	libxfce4util.spec
 
-ACLOCAL_AMFLAGS = -I m4
-
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
 dist-bz2: dist
-	zcat $(PACKAGE)-$(VERSION).tar.gz | bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+	zcat $(PACKAGE)-$(VERSION).tar.gz | \
+	 bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
 
 distcheck-bz2: distcheck
-	zcat $(PACKAGE)-$(VERSION).tar.gz | bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+	zcat $(PACKAGE)-$(VERSION).tar.gz | \
+	 bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
