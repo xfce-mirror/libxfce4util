@@ -1,3 +1,13 @@
+2004-10-23 16:09  benny
+
+	* libxfce4util/: Makefile.am, Makefile.in: Use
+	  ${sysconfdir}/xdg/xfce4/kiosk/ for kiosk mode configuration.
+
+2004-10-22 22:37  olivier
+
+	* ChangeLog, configure, configure.ac, ltmain.sh: Updated versions
+	  and change logs
+
 2004-10-21 19:47  benny
 
 	* docs/: Makefile.am, Makefile.in: Fix build w/o gtk-doc.
