@@ -107,4 +107,7 @@ gint    xfce_setenv      (const gchar *name,
                           gboolean overwrite);
 void    xfce_unsetenv    (const gchar *name);
 
+gchar*  xfce_expand_variables (const gchar *command,
+                               gchar      **envp);
+
 #endif	/* __LIBXFCE4UTIL_UTIL_H__ */

@@ -476,3 +476,91 @@ xfce_unsetenv (const gchar *name)
   *envp2 = NULL;
 #endif
 } 
+
+
+/**
+ * xfce_expand_variables:
+ * @command : Input string.
+ * @envp    : Addition environment variables to take into account. These
+ *            variables have higher priority than the ones in the process's
+ *            environment.
+ *
+ * Expands shell like environment variables and tilde in @command. XXX 
+ * - complete me!
+ *
+ * Return value: the string, use g_free().
+ *
+ * Since: 4.2
+ **/
+gchar*
+xfce_expand_variables (const gchar *command,
+                       gchar      **envp)
+{
+  const gchar *value;
+  gchar        variable[256];
+  gchar        buffer[2048];
+  gchar       *bp;
+  gchar       *vp;
+  gchar      **ep;
+  guint        len;
+  
+  if (*command == '~')
+    {
+      /* XXX - add support for "~user" syntax */
+      g_strlcpy (buffer, xfce_get_homedir (), 2048);
+      bp = buffer + strlen (buffer);
+      ++command;
+    }
+  else
+    bp = buffer;
+  
+  while (*command != '\0')
+    {
+      if (*command != '$')
+        *bp++ = *command++;
+      else
+        {
+          ++command;
+          
+          for (vp = variable; g_ascii_isalnum (*command) && vp < variable + 255; )
+            *vp++ = *command++;
+          
+          if (vp == variable)
+            continue;
+
+          *vp = '\0';
+          len = vp - variable;
+          value = NULL;
+          
+          if (envp != NULL)
+            {
+              for (ep = envp; *ep != NULL; ++ep)
+                if (strncmp (*ep, variable, len) == 0 && (*ep)[len] == '=')
+                  {
+                    value = (*ep) + len + 1;
+                    break;
+                  }
+            }
+          
+          if (value == NULL)
+            value = g_getenv (variable);
+
+          if (value != NULL)
+            {
+              while (*value != '\0')
+                *bp++ = *value++;
+            }
+          else
+            {
+              *bp++ = '$';
+              for (vp = variable; *vp != '\0'; )
+                *bp++ = *vp++;
+            }
+        }
+    }
+
+  *bp = '\0';
+
+  return g_strdup (buffer);
+}
+
