@@ -1,3 +1,22 @@
+2004-10-30 14:37  benny
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  depcomp, install-sh, ltmain.sh, docs/Makefile.in,
+	  libxfce4util/Makefile.in, m4/Makefile.in,
+	  xfce4-kiosk-query/Makefile.in: Rerun autogen.sh (previous commit
+	  was done with Debian autotools).
+
+2004-10-30 10:05  benny
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  configure.ac, depcomp, install-sh, ltmain.sh, docs/Makefile.in,
+	  libxfce4util/Makefile.in, m4/Makefile.in,
+	  xfce4-kiosk-query/Makefile.in: Update overall version to 4.1.91.
+
+2004-10-23 16:45  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-10-23 16:09  benny
 
 	* libxfce4util/: Makefile.am, Makefile.in: Use
