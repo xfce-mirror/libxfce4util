@@ -81,7 +81,7 @@ gboolean     xfce_rc_read_bool_entry         (const XfceRc *rc,
 					      gboolean      fallback);
 gint         xfce_rc_read_int_entry          (const XfceRc *rc,
 					      const gchar  *key,
-					      gboolean      fallback);
+					      gint          fallback);
 gchar**      xfce_rc_read_list_entry         (const XfceRc *rc,
 					      const gchar  *key,
 					      const gchar  *delimiter);
