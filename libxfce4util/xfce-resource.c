@@ -174,12 +174,14 @@ _res_init (void)
    */
   dirs = _res_getenv ("XDG_DATA_DIRS", DEFAULT_XDG_DATA_DIRS);
   _res_split_and_append (dirs, XFCE_RESOURCE_DATA);
+  _res_split_and_append (DATADIR, XFCE_RESOURCE_DATA);
 
   /*
    * Config dirs
    */
   dirs = _res_getenv ("XDG_CONFIG_DIRS", DEFAULT_XDG_CONFIG_DIRS);
   _res_split_and_append (dirs, XFCE_RESOURCE_CONFIG);
+  _res_split_and_append (SYSCONFDIR "/xdg", XFCE_RESOURCE_CONFIG);
 
   /*
    * Icons dirs

@@ -5,6 +5,7 @@ INCLUDES =								\
 	-DDEFAULT_XDG_DATA_DIRS=\"$(datadir):/usr/local/share:/usr/share\" \
 	-DDEFAULT_XDG_CONFIG_DIRS=\"$(sysconfdir)/xdg:$(sysconfdir)/xfce4:/etc/xdg\" \
 	-DDATADIR=\"$(datadir)\"					\
+	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DG_LOG_DOMAIN=\"libxfce4util\"					\
 	-DKIOSKDIR=\"$(sysconfdir)/xdg/xfce4/kiosk\"			\
 	-DKIOSKDEF=\"ALL\"
