@@ -9,6 +9,7 @@ Group: 		Development/Libraries
 BuildRoot: 	%{_tmppath}/%{name}-root
 Requires:	glib2 >= @GOBJECT_REQUIRED_VERSION@
 BuildRequires: 	glib2-devel >= @GOBJECT_REQUIRED_VERSION@
+BuildRequires:	gtk-doc
 
 %description
 Basic utility non-GUI functions for XFce4.
@@ -25,7 +26,7 @@ Static libraries and header files for the libxfce4util library.
 %setup -q
 
 %build
-%configure
+%configure --enable-gtk-doc
 make
 
 %install
