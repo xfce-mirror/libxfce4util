@@ -27,6 +27,8 @@
 #ifndef __LIBXFCE4UTIL_I18N_H__
 #define __LIBXFCE4UTIL_I18N_H__
 
+#include <glib.h>
+
 /*
  * gettext macros
  */
@@ -55,5 +57,14 @@
 #define bindtextdomain(domain,directory)	(domain)
 
 #endif
+
+/* */
+extern gchar *	xfce_get_file_localized(const gchar *);
+extern gchar *	xfce_get_dir_localized(const gchar *);
+
+/* */
+extern gchar *	xfce_get_file_localized_r(gchar *, gsize, const gchar *);
+extern gchar *	xfce_get_dir_localized_r(gchar *, gsize, const gchar *);
+
 
 #endif	/* !__LIBXFCE4UTIL_I18N_H__ */

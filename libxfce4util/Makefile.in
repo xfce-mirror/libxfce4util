@@ -140,6 +140,8 @@ libxfce4utilinclude_HEADERS = \
 libxfce4util_la_SOURCES = \
 	filter.c						\
 	filter.h						\
+	i18n.c							\
+	i18n.h							\
 	option.c						\
 	option.h						\
 	util.c							\
@@ -153,12 +155,11 @@ libxfce4util_la_LDFLAGS = \
 
 
 libxfce4util_la_LIBADD = \
-	@LIBS@							\
 	@GLIB_LIBS@
 
 
 libxfce4util_la_CFLAGS = \
-	-I$(srcdir)						\
+	-DNLS_ALIAS_DB=\"$(datadir)/xfce4/i18n/nls.alias\"	\
 	@GLIB_CFLAGS@
 
 
@@ -172,13 +173,15 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 
 libxfce4util_la_DEPENDENCIES =
 am_libxfce4util_la_OBJECTS = libxfce4util_la-filter.lo \
-	libxfce4util_la-option.lo libxfce4util_la-util.lo
+	libxfce4util_la-i18n.lo libxfce4util_la-option.lo \
+	libxfce4util_la-util.lo
 libxfce4util_la_OBJECTS = $(am_libxfce4util_la_OBJECTS)
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
 @AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libxfce4util_la-filter.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-i18n.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-option.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-util.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -246,6 +249,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-filter.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-i18n.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-option.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-util.Plo@am__quote@
 
@@ -317,6 +321,39 @@ libxfce4util_la-filter.lo: filter.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-filter.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-filter.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-filter.lo `test -f 'filter.c' || echo '$(srcdir)/'`filter.c
+
+libxfce4util_la-i18n.o: i18n.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-i18n.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-i18n.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-i18n.o `test -f 'i18n.c' || echo '$(srcdir)/'`i18n.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-i18n.Tpo" "$(DEPDIR)/libxfce4util_la-i18n.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-i18n.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='i18n.c' object='libxfce4util_la-i18n.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-i18n.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-i18n.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-i18n.o `test -f 'i18n.c' || echo '$(srcdir)/'`i18n.c
+
+libxfce4util_la-i18n.obj: i18n.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-i18n.obj -MD -MP -MF "$(DEPDIR)/libxfce4util_la-i18n.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-i18n.obj `if test -f 'i18n.c'; then $(CYGPATH_W) 'i18n.c'; else $(CYGPATH_W) '$(srcdir)/i18n.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-i18n.Tpo" "$(DEPDIR)/libxfce4util_la-i18n.Po"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-i18n.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='i18n.c' object='libxfce4util_la-i18n.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-i18n.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-i18n.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-i18n.obj `if test -f 'i18n.c'; then $(CYGPATH_W) 'i18n.c'; else $(CYGPATH_W) '$(srcdir)/i18n.c'; fi`
+
+libxfce4util_la-i18n.lo: i18n.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-i18n.lo -MD -MP -MF "$(DEPDIR)/libxfce4util_la-i18n.Tpo" \
+@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-i18n.lo `test -f 'i18n.c' || echo '$(srcdir)/'`i18n.c; \
+@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-i18n.Tpo" "$(DEPDIR)/libxfce4util_la-i18n.Plo"; \
+@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-i18n.Tpo"; exit 1; \
+@am__fastdepCC_TRUE@	fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='i18n.c' object='libxfce4util_la-i18n.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-i18n.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-i18n.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-i18n.lo `test -f 'i18n.c' || echo '$(srcdir)/'`i18n.c
 
 libxfce4util_la-option.o: option.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-option.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-option.Tpo" \

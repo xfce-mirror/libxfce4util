@@ -7,7 +7,7 @@ AC_INIT([libxfce4util])
 
 AM_CONFIG_HEADER([config.h])
 
-AM_INIT_AUTOMAKE([libxfce4util], [0.2])
+AM_INIT_AUTOMAKE([libxfce4util], [0.2.1])
 
 AM_MAINTAINER_MODE
 
@@ -27,8 +27,8 @@ AC_PROG_LIBTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([err.h sys/wait.h])
-AC_CHECK_FUNCS([strlcat strlcpy])
+AC_CHECK_HEADERS([err.h limits.h locale.h sys/wait.h])
+AC_CHECK_FUNCS([__unaliasname setlocale strlcat strlcpy])
 
 dnl Check for Glib >= 2.0 installed
 BM_DEPEND([GLIB], [glib-2.0], [2.0.0])
@@ -38,6 +38,7 @@ BM_DEBUG_SUPPORT
 
 AC_OUTPUT([
 Makefile
+i18n/Makefile
 libxfce4util.spec
 libxfce4util/libxfce4util-1.0.pc
 libxfce4util/Makefile

@@ -1,4 +1,4 @@
-SUBDIRS = libxfce4util m4
+SUBDIRS = i18n libxfce4util m4
 
 EXTRA_DIST = libxfce4util.spec.in
 

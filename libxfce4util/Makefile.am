@@ -13,6 +13,8 @@ libxfce4utilinclude_HEADERS =					\
 libxfce4util_la_SOURCES =					\
 	filter.c						\
 	filter.h						\
+	i18n.c							\
+	i18n.h							\
 	option.c						\
 	option.h						\
 	util.c							\
@@ -24,11 +26,10 @@ libxfce4util_la_LDFLAGS =					\
 	-export-symbols-regex "^[^_].*"
 
 libxfce4util_la_LIBADD =					\
-	@LIBS@							\
 	@GLIB_LIBS@
 
 libxfce4util_la_CFLAGS = 					\
-	-I$(srcdir)						\
+	-DNLS_ALIAS_DB=\"$(datadir)/xfce4/i18n/nls.alias\"	\
 	@GLIB_CFLAGS@
 
 pkgconfigdir = $(libdir)/pkgconfig
