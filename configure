@@ -308,7 +308,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT LIBXFCE4UTIL_VERINFO CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL PKG_CONFIG GLIB_CFLAGS GLIB_LIBS GLIB_REQUIRED_VERSION PKG_LDFLAGS LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE am__leading_dot MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT LIBXFCE4UTIL_VERINFO CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL PKG_CONFIG GLIB_CFLAGS GLIB_LIBS GLIB_REQUIRED_VERSION LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -863,8 +863,6 @@ Optional Features:
   --disable-profiling     No extra code for profiling (default)
   --enable-asserts        Enable assert statements (default)
   --disable-asserts       Disable assert statements (USE WITH CARE!!!)
-  --enable-rpath          Specify run path to the ELF linker (default)
-  --disable-rpath         Do not use -rpath (use with care!!)
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -5116,7 +5114,7 @@ test x"$pic_mode" = xno && libtool_flags="$libtool_flags --prefer-non-pic"
 case $host in
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5119 "configure"' > conftest.$ac_ext
+  echo '#line 5117 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -5880,41 +5878,6 @@ echo "${ECHO_T}yes" >&6
   fi
 
 
-
-  # Check whether --enable-rpath or --disable-rpath was given.
-if test "${enable_rpath+set}" = set; then
-  enableval="$enable_rpath"
-  ac_cv_rpath=$enableval
-else
-  ac_cv_rpath=yes
-fi;
-  echo "$as_me:$LINENO: checking whether to use -rpath" >&5
-echo $ECHO_N "checking whether to use -rpath... $ECHO_C" >&6
-  LD_RPATH=
-  if test x"$ac_cv_rpath" != x"no"; then
-    LD_RPATH="-Wl,-R"
-    echo "$as_me:$LINENO: result: yes" >&5
-echo "${ECHO_T}yes" >&6
-  else
-    LD_RPATH=""
-    echo "$as_me:$LINENO: result: no" >&5
-echo "${ECHO_T}no" >&6
-  fi
-
-
-
-  echo "$as_me:$LINENO: checking which pkg-config LDFLAGS to use" >&5
-echo $ECHO_N "checking which pkg-config LDFLAGS to use... $ECHO_C" >&6
-  if test x"$LD_RPATH" = x""; then
-    PKG_LDFLAGS="-L\${libdir}"
-  else
-    PKG_LDFLAGS="$LD_RPATH\${libdir} -L\${libdir}"
-  fi
-  echo "$as_me:$LINENO: result: $PKG_LDFLAGS" >&5
-echo "${ECHO_T}$PKG_LDFLAGS" >&6
-
-
-
                                         ac_config_files="$ac_config_files Makefile libxfce4util.spec libxfce4util/libxfce4util-1.0.pc libxfce4util/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -6626,7 +6589,6 @@ s,@PKG_CONFIG@,$PKG_CONFIG,;t t
 s,@GLIB_CFLAGS@,$GLIB_CFLAGS,;t t
 s,@GLIB_LIBS@,$GLIB_LIBS,;t t
 s,@GLIB_REQUIRED_VERSION@,$GLIB_REQUIRED_VERSION,;t t
-s,@PKG_LDFLAGS@,$PKG_LDFLAGS,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF

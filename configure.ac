@@ -3,17 +3,17 @@ dnl
 dnl Copyright (c) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
 dnl
 
-AC_INIT(libxfce4util)
+AC_INIT([libxfce4util])
 
-AM_CONFIG_HEADER(config.h)
+AM_CONFIG_HEADER([config.h])
 
-AM_INIT_AUTOMAKE(libxfce4util, 0.2)
+AM_INIT_AUTOMAKE([libxfce4util], [0.2])
 
 AM_MAINTAINER_MODE
 
 dnl libtool versioning
 LIBXFCE4UTIL_VERINFO=0:2
-AC_SUBST(LIBXFCE4UTIL_VERINFO)
+AC_SUBST([LIBXFCE4UTIL_VERINFO])
 
 dnl check for UNIX variants
 AC_AIX
@@ -27,17 +27,14 @@ AC_PROG_LIBTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS(err.h sys/wait.h)
+AC_CHECK_HEADERS([err.h sys/wait.h])
 AC_CHECK_FUNCS([strlcat strlcpy])
 
 dnl Check for Glib >= 2.0 installed
-BM_DEPEND(GLIB, glib-2.0, 2.0.0)
+BM_DEPEND([GLIB], [glib-2.0], [2.0.0])
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
-
-dnl Build ldflags for pkg-config file
-BM_PKG_LDFLAGS(PKG)
 
 AC_OUTPUT([
 Makefile
