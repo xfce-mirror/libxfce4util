@@ -58,13 +58,14 @@
 
 #endif
 
-/* */
+#ifndef XFCE_DISABLE_DEPRECATED
+
 extern gchar *	xfce_get_file_localized(const gchar *);
 extern gchar *	xfce_get_dir_localized(const gchar *);
-
-/* */
 extern gchar *	xfce_get_file_localized_r(gchar *, gsize, const gchar *);
 extern gchar *	xfce_get_dir_localized_r(gchar *, gsize, const gchar *);
+
+#endif
 
 /* */
 extern gchar *	xfce_get_path_localized(gchar *, gsize, const gchar *,

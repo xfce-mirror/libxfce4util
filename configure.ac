@@ -5,14 +5,14 @@ dnl
 
 AC_INIT([libxfce4util])
 
-AM_INIT_AUTOMAKE([libxfce4util], [3.90.0])
+AM_INIT_AUTOMAKE([libxfce4util], [3.91.0])
 
 AM_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
 
 dnl libtool versioning
-LIBXFCE4UTIL_VERINFO=0:3
+LIBXFCE4UTIL_VERINFO=0:4
 AC_SUBST([LIBXFCE4UTIL_VERINFO])
 
 dnl check for UNIX variants
