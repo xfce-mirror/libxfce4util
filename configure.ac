@@ -11,7 +11,7 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:0:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [0])
-m4_define([libxfce4util_version_micro], [4])
+m4_define([libxfce4util_version_micro], [5])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
   
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
