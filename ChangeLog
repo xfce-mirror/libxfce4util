@@ -1,3 +1,11 @@
+2003-08-07 21:04  huysmans
+
+	* libxfce4util/i18n.c: Make i18n work
+
+2003-08-03 20:45  bmeurer
+
+	* ChangeLog: Updated ChangeLogs
+
 2003-08-03 20:37  bmeurer
 
 	* m4/X11.m4: grep -q does not work with Solaris grep, fixed it.
@@ -137,23 +145,6 @@
 	i18n/Makefile.in, libxfce4util/Makefile.in, libxfce4util/i18n.c,
 	libxfce4util/i18n.h, m4/Makefile.in, m4/depends.m4: Updated version
 	to 3.90.0
-
-2003-06-04 13:38  bmeurer
-
-	* examples/i18n/main.c: Updated sample app.
-
-2003-06-03 20:53  bmeurer
-
-	* examples/: testi18n.c, i18n/Makefile, i18n/main.c: Reorganized
-	examples.
-
-2003-06-03 20:41  bmeurer
-
-	* examples/testi18n.c: Initial revision
-
-2003-06-03 20:41  bmeurer
-
-	* examples/testi18n.c: Initial import.
 
 2003-05-25 17:02  bmeurer
 
