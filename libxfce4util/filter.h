@@ -56,5 +56,6 @@ extern XfceFilterList	*xfce_filterlist_new(void);
 extern void		xfce_filterlist_free(XfceFilterList *);
 extern void		xfce_filterlist_append(XfceFilterList *, XfceFilter *);
 extern void		xfce_filterlist_prepend(XfceFilterList *, XfceFilter *);
+extern int		xfce_filterlist_execute(XfceFilterList *, int,int,int);
 
 #endif	/* !__LIBXFCE4UTIL_FILTER_H__ */
