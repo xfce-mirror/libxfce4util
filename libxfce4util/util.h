@@ -37,10 +37,16 @@ extern G_CONST_RETURN gchar *xfce_get_homedir(void);
 	(g_build_filename(xfce_get_homedir(),	\
 		## first_element))
 
+extern G_CONST_RETURN gchar *xfce_get_homefile_r(gchar *buffer,
+		size_t length, const gchar *format, ...);
+
 /* save way to get path to users ".xfce4" directory */
 extern G_CONST_RETURN gchar *xfce_get_userdir(void);
 #define xfce_get_userfile(first_element...)	\
 	(g_build_filename(xfce_get_userdir(),	\
 		## first_element))
+
+extern G_CONST_RETURN gchar *xfce_get_userfile_r(gchar *buffer,
+		size_t length, const gchar *format, ...);
 
 #endif	/* __LIBXFCE4UTIL_UTIL_H__ */

@@ -32,6 +32,11 @@
 #include <err.h>
 #endif
 #include <errno.h>
+#ifdef HAVE_STAD_ARG_H
+#include <stdarg.h>
+#elif HAVE_VARARGS_H
+#include <varargs.h>
+#endif
 #include <stdio.h>
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
@@ -61,7 +66,7 @@ static const gchar *xfce_userdir = NULL;/* path to users .xfce4 directory */
  * Wrapper around gtk_init to to some stuff required for Xfce4 apps
  */
 static void
-initialize(void)
+__initialize(void)
 {
 	const gchar *dir;
 
@@ -90,6 +95,28 @@ initialize(void)
 	}
 }
 
+static G_CONST_RETURN gchar *
+__get_file_r(const gchar *dir, gchar *buffer, size_t len,
+		const gchar *format, va_list ap)
+{
+	size_t n;
+
+	g_return_val_if_fail(buffer != NULL, NULL);
+	g_return_val_if_fail(format != NULL, NULL);
+	g_return_val_if_fail(len > 0, NULL);
+
+	if ((n = g_strlcpy(buffer, dir, len)) >= len)
+		return(NULL);
+
+	if ((n = g_strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
+		return(NULL);
+
+	if (g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)
+		return(NULL);
+
+	return(buffer);
+}
+
 /**
  * This is garantied to never return NULL, unlike g_get_home_dir()
  */
@@ -98,10 +125,23 @@ xfce_get_homedir(void)
 {
 	G_LOCK(_lock);
 	if (!xfce_homedir)
-		initialize();
+		__initialize();
 	G_UNLOCK(_lock);
 	
 	return(xfce_homedir);
+}
+
+G_CONST_RETURN gchar *
+xfce_get_homefile_r(gchar *buffer, size_t len, const gchar *format, ...)
+{
+	G_CONST_RETURN gchar *ptr;
+	va_list ap;
+
+	va_start(ap, format);
+	ptr = __get_file_r(xfce_get_homedir(), buffer, len, format, ap);
+	va_end(ap);
+
+	return(ptr);
 }
 
 G_CONST_RETURN gchar *
@@ -109,10 +149,23 @@ xfce_get_userdir(void)
 {
 	G_LOCK(_lock);
 	if (!xfce_userdir)
-		initialize();
+		__initialize();
 	G_UNLOCK(_lock);
 
 	return(xfce_userdir);
+}
+
+G_CONST_RETURN gchar *
+xfce_get_userfile_r(gchar *buffer, size_t len, const gchar *format, ...)
+{
+	G_CONST_RETURN gchar *ptr;
+	va_list ap;
+
+	va_start(ap, format);
+	ptr = __get_file_r(xfce_get_userdir(), buffer, len, format, ap);
+	va_end(ap);
+
+	return(ptr);
 }
 
 
