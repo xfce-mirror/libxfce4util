@@ -1,3 +1,30 @@
+2003-03-15  bmeurer
+
+	* Makefile.in, aclocal.m4, autogen.sh, configure, configure.ac,
+	libxfce4util.spec.in, libxfce4util/Makefile.in,
+	libxfce4util/filter.c, m4/depends.m4: Create a valid .spec file.
+
+2003-03-14  bmeurer
+
+	* autogen.sh: update
+
+2003-03-14  bmeurer
+
+	* Makefile.in, aclocal.m4, configure, configure.ac,
+	libxfce4util.spec.in, libxfce4util/Makefile.in,
+	libxfce4util/libxfce4util-1.0.pc.in, m4/rpath.m4: New rpath stuff
+	(for debian people)
+
+2003-03-13  bmeurer
+
+	* aclocal.m4, configure, configure.ac, libxfce4util/util.c,
+	libxfce4util/util.h, m4/debug.m4: debug.m4 update. Removed junk
+	from the sources.
+
+2003-03-13  xfce
+
+	* ChangeLog: Update Changelogs
+
 2003-03-13  bmeurer
 
 	* configure: Requires glib-2.0.
