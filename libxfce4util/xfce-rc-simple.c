@@ -47,11 +47,11 @@
 
 
 #ifndef PATH_MAX
-#define PATH_MAX 1024
+#define PATH_MAX 4096
 #endif
 
 #ifndef LINE_MAX
-#define LINE_MAX 2048
+#define LINE_MAX 8192
 #endif
 
 /* name of the NULL group */
@@ -411,28 +411,28 @@ simple_escape (gchar *buffer, gsize size, const gchar *string)
     switch (*string)
       {
       case '\n':
-	*p++ = '\\';
-	*p++ = 'n';
-	break;
+        *p++ = '\\';
+        *p++ = 'n';
+        break;
 
       case '\t':
-	*p++ = '\\';
-	*p++ = 't';
-	break;
+        *p++ = '\\';
+        *p++ = 't';
+        break;
 
       case '\r':
-	*p++ = '\\';
-	*p++ = 'r';
-	break;
+        *p++ = '\\';
+        *p++ = 'r';
+        break;
 
       case '\\':
-	*p++ = '\\';
-	*p++ = '\\';
-	break;
+        *p++ = '\\';
+        *p++ = '\\';
+        break;
 
       default:
-	*p++ = *string;
-	break;
+        *p++ = *string;
+        break;
       }
 
   *p = '\0';
@@ -462,23 +462,23 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
     {
       /* don't store empty groups */
       if (group->efirst == NULL)
-	continue;
+	      continue;
 
       /* NULL_GROUP has no header */
       if (strcmp (group->name, NULL_GROUP) != 0)
-	fprintf (fp, "[%s]\n", group->name);
+      	fprintf (fp, "[%s]\n", group->name);
 
       for (entry = group->efirst; entry != NULL; entry = entry->next)
-	{
+      	{
           simple_escape (buffer, LINE_MAX, entry->value);
-	  fprintf (fp, "%s=%s\n", entry->key, buffer);
+      	  fprintf (fp, "%s=%s\n", entry->key, buffer);
 
-	  for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
-	    {
+      	  for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
+	          {
               simple_escape (buffer, LINE_MAX, lentry->value);
-	      fprintf (fp, "%s[%s]=%s\n", entry->key, lentry->locale, buffer);
-	    }
-	}
+      	      fprintf (fp, "%s[%s]=%s\n", entry->key, lentry->locale, buffer);
+	          }
+      	}
 
       fprintf (fp, "\n");
     }
@@ -486,7 +486,7 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
   if (ferror (fp))
     {
       g_critical ("Unable to write to file %s: Unexpected internal error",
-		  filename);
+		              filename);
       fclose (fp);
       unlink (filename);
       return FALSE;
@@ -579,28 +579,28 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
   while (fgets (line, LINE_MAX, fp) != NULL)
     {
       if (!simple_parse_line (line, &section, &key, &value, &locale))
-	continue;
+	      continue;
 
       if (section != NULL)
-	{
-	  simple->group = simple_add_group (simple, section);
-	  continue;
-	}
+      	{
+      	  simple->group = simple_add_group (simple, section);
+      	  continue;
+      	}
 
       if (locale == NULL)
-	{
-	  simple_add_entry (simple, key, value, NULL);
-	  continue;
-	}
+      	{
+      	  simple_add_entry (simple, key, value, NULL);
+      	  continue;
+      	}
 
       if (XFCE_RC (simple)->locale == NULL)
-	continue;
+      	continue;
 
       if (xfce_locale_match (XFCE_RC (simple)->locale, locale) > XFCE_LOCALE_NO_MATCH
-	  || !readonly)
-	{
-	  simple_add_entry (simple, key, value, locale);
-	}
+          || !readonly)
+        {
+          simple_add_entry (simple, key, value, locale);
+        }
     }
 
   fclose (fp);
@@ -637,15 +637,15 @@ _xfce_rc_simple_flush (XfceRc *rc)
   if (simple_write (simple, tmp_path))
     {
       if (rename (tmp_path, simple->filename) < 0)
-	{
-	  g_critical ("Unable to rename %s to %s: %s",
-		      tmp_path,
-		      simple->filename,
-		      g_strerror (errno));
-	  unlink (tmp_path);
-	}
+        {
+          g_critical ("Unable to rename %s to %s: %s",
+                tmp_path,
+                simple->filename,
+                g_strerror (errno));
+          unlink (tmp_path);
+        }
       else
-	simple->dirty = FALSE;
+        simple->dirty = FALSE;
     }
 }
 
