@@ -12,7 +12,7 @@ m4_define([libxfce4util_verinfo], [1:5:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
 m4_define([libxfce4util_version_micro], [99])
-m4_define([libxfce4util_version_nano], [2])   dnl leave this empty to have no nano version
+m4_define([libxfce4util_version_nano], [3])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano])])
 
 dnl Overall Xfce version, modify this when making releases
