@@ -251,7 +251,7 @@ xfce_kiosk_init (void)
 {
   struct passwd *pw;
   struct group  *gr;
-  gid_t          gidset[NGROUPS_MAX];
+  gid_t         *gidset;
   int            gidsetlen;
   int            n;
   int            m;
@@ -297,8 +297,21 @@ xfce_kiosk_init (void)
     }
   usrname = g_strdup (pw->pw_name);
 
+  /* query number of user groups */
+  gidsetlen = getgroups (0, NULL);
+  if (G_UNLIKELY (gidsetlen < 0))
+    {
+      g_warning ("Unable to determine the number of groups for your user account, "
+                 "all kiosk protected features will be disabled for you. Please "
+                 "check your system setup or ask your administrator.");
+      g_free (usrname); usrname = NULL;
+      G_UNLOCK (kiosk_lock);
+      return;
+    }
+
   /* query user groups */
-  gidsetlen = getgroups (NGROUPS_MAX, gidset);
+  gidset = g_malloc (gidsetlen * sizeof (*gidset));
+  gidsetlen = getgroups (gidsetlen, gidset);
   if (G_UNLIKELY (gidsetlen < 0))
     {
       g_warning ("Unable to determine your current group access list, all kiosk "
@@ -306,6 +319,7 @@ xfce_kiosk_init (void)
                  "your system setup or ask your administrator.");
       g_free (usrname); usrname = NULL;
       G_UNLOCK (kiosk_lock);
+      g_free (gidset);
       return;
     }
   groups = g_new (gchar *, gidsetlen + 1);
@@ -316,6 +330,7 @@ xfce_kiosk_init (void)
         groups[m++] = g_strdup (gr->gr_name);
     }
   groups[m] = NULL;
+  g_free (gidset);
 
   G_UNLOCK (kiosk_lock);
 }
