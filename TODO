@@ -6,3 +6,7 @@ Todo list for libxfce4util:
 	
 	- Conform to the "XDG Base Directory Specification"
 	  http://www.freedesktop.org/standards/basedir/draft/basedir-spec/basedir-spec.html
+
+	- Add a xfce_timer_fire_once(time, func) that fires a timeout after
+	  a specified amount of time and automatically removes the timeout
+	  afterwards.
