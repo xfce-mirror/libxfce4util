@@ -1,3 +1,16 @@
+2005-01-08 16:04  pollux
+
+	* configure: update RU translations
+
+2005-01-05 22:33  benny
+
+	* ChangeLog, configure, ltmain.sh: Final updates.
+
+2005-01-02 13:51  olivier
+
+	* ChangeLog, Makefile.in, configure, configure.ac, ltmain.sh:
+	  Update version and changelog
+
 2004-12-25 21:33  kelnos
 
 	* Makefile.am: fix distcheck-bz2
@@ -322,6 +335,22 @@
 
 	* libxfce4util/xfce-rc.h: prototype/definition mismatch fix
 
+2004-07-09 13:30  olivier
+
+	* configure: Fix some automake tools missing the exec bit.
+
+2004-07-09 11:32  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2004-07-09 10:59  olivier
+
+	* configure, configure.ac: Update versions.
+
+2004-07-09 09:53  olivier
+
+	* ChangeLog: Update ChangeLogs for 4.0.6
+
 2004-07-08 19:53  kelnos
 
 	* libxfce4util/xfce-rc-simple.c: cygwin compile fix
@@ -337,7 +366,7 @@
 
 2004-06-20 18:34  benny
 
-	* libxfce4util/i18n.c: Fix #232.
+	* libxfce4util/: i18n.c: Fix #232.
 
 2004-06-13 09:04  benny
 
@@ -432,12 +461,27 @@
 	  libxfce4util/Makefile.in, libxfce4util/xfce-rc-simple.c,
 	  libxfce4util/xfce-rc.c, m4/Makefile.in, m4/debug.m4: Bugfixes.
 
+2004-05-04 00:12  olivier
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  install-sh, ltmain.sh, mkinstalldirs, libxfce4util/Makefile.in,
+	  m4/Makefile.in: Update zh_TW translations by umm
+	  <umm@pchome.com.tw>
+
 2004-05-03 23:44  olivier
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
 	  install-sh, ltmain.sh, mkinstalldirs, docs/Makefile.in,
 	  libxfce4util/Makefile.in, m4/Makefile.in: Update zh_TW
 	  translations from umm <umm@pchome.com.tw>
+
+2004-04-13 23:32  olivier
+
+	* configure, configure.ac: Fix version number on some packages
+
+2004-04-13 22:41  olivier
+
+	* configure: Prepare 4.0.5
 
 2004-04-01 23:42  benny
 
@@ -474,6 +518,31 @@
 	  currently limited to the simple backend, have to figure out a
 	  nice way to do this with the config backend. Version is now
 	  4.1.9.
+
+2004-03-21 21:06  olivier
+
+	* aclocal.m4, ltmain.sh: autogen
+
+2004-03-20 14:07  benny
+
+	* Makefile.in, configure, configure.ac, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/debug.h,
+	  libxfce4util/i18n.h, libxfce4util/libxfce4util-config.h.in,
+	  libxfce4util/libxfce4util.h, libxfce4util/utf8.h,
+	  libxfce4util/util.h, m4/Makefile.in: Backport
+	  LIBXFCE4UTIL_CHECK_VERSION to stable branch.
+
+2004-03-18 14:25  benny
+
+	* aclocal.m4, ltmain.sh, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/libxfce4util.h: Added
+	  <libxfce4util/libxfce4util.h> header for smoother transition to
+	  4.2.
+
+2004-03-18 12:55  benny
+
+	* libxfce4util/: debug.h, i18n.c, i18n.h, utf8.c, utf8.h, util.c,
+	  util.h: Backport sun forte cc fix and update email address.
 
 2004-03-18 12:09  benny
 
@@ -558,6 +627,11 @@
 	  const!
 
 2004-03-09 13:46  benny
+
+	* m4/depends.m4: XFCE_MCS_PLUGIN was missing from here for some
+	  weird reason!
+
+2004-03-09 13:43  benny
 
 	* m4/depends.m4: XFCE_MCS_PLUGIN was missing from here for some
 	  weird reason!
@@ -706,6 +780,13 @@
 	  putenv() implementation, see the autocoonf check for details on
 	  this topic). Started doxygen documentation.
 
+2004-01-25 01:09  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, configure.ac, depcomp, install-sh, ltmain.sh, missing,
+	  mkinstalldirs, libxfce4util/Makefile.in, m4/Makefile.in: Update
+	  libtool and other automake, autoconf and gettext.
+
 2004-01-25 01:07  olivier
 
 	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
@@ -758,6 +839,29 @@
 	  libxfce4util/util.h, m4/Makefile.in: Imported patches from Brian
 	  J. Tarricone regarding custom halt/poweroff/reboot commands with
 	  some modifications and bumped version to 0.2.0
+
+2004-01-07 21:38  olivier
+
+	* ChangeLog: Huge update before 4.0.3 release, mainly: ChangeLog
+	  update, Version number updates.
+
+2003-12-29 16:19  olivier
+
+	* ChangeLog, configure, configure.ac: Update version number, Update
+	  ChangeLog Fix missing CHARSET in potfiles
+
+2003-12-18 00:00  olivier
+
+	* ChangeLog: Update ChangeLog(s)
+
+2003-12-16 23:36  olivier
+
+	* configure, configure.ac: Resync, update version number
+
+2003-11-11 19:35  jasper
+
+	* configure, configure.ac: Update po files, just in case something
+	  changed ...
 
 2003-10-13 20:51  jasper
 
