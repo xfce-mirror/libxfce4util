@@ -18,6 +18,6 @@ EOF
   exit 1
 }
 
-exec xdt-autogen
+exec xdt-autogen $@
 
 # vi:set ts=2 sw=2 et ai:
