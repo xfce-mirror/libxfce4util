@@ -199,10 +199,13 @@ EXTRA_DIST = \
 	COPYING								\
 	COPYING.BSD							\
 	COPYING.LGPL							\
-	libxfce4util.spec						\
+	INSTALL								\
 	NEWS								\
 	README								\
-	TODO
+	README.Kiosk							\
+	TODO								\
+	gtk-doc.make							\
+	libxfce4util.spec
 
 ACLOCAL_AMFLAGS = -I m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc

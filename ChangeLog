@@ -1,3 +1,10 @@
+2004-12-22 20:53  benny
+
+	* ChangeLog, Makefile.am, Makefile.in, configure, gtk-doc.make,
+	docs/Makefile.am, docs/Makefile.in, xfce4-kiosk-query/Makefile.am,
+	xfce4-kiosk-query/Makefile.in: Update ChangeLog. Get make distcheck
+	to work.
+
 2004-12-20 22:00  jasper
 
 	* ChangeLog, configure, configure.ac: Update versions and ChangeLog
