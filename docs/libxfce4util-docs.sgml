@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
                "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY libxfce4util-Basedir-Support SYSTEM "xml/xdg-basedir-support.xml">
 <!ENTITY libxfce4util-Desktop-Entries SYSTEM "xml/xfce-desktopentry.xml">
 <!ENTITY libxfce4util-Internationalization SYSTEM "xml/i18n.xml">
 <!ENTITY libxfce4util-Unicode-Functions SYSTEM "xml/utf8.xml">
@@ -36,6 +37,7 @@
 
 	<chapter id="libxfce4util-desktop">
 		<title>Xfce Desktop Support</title>
+		&libxfce4util-Basedir-Support;
 		&libxfce4util-Desktop-Entries;
 	</chapter>
 

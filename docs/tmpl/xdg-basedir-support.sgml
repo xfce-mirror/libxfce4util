@@ -1,0 +1,98 @@
+<!-- ##### SECTION Title ##### -->
+XDG Base Directory support
+
+<!-- ##### SECTION Short_Description ##### -->
+Implementation of the XDG Base Directory Specification.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+The <ulink url="http://freedesktop.org/Standards/basedir-spec">XDG Base 
+Directory Specification</ulink> defines where certain files should be
+looked for by defining one or more base directories relative to which files
+should be located.
+</para>
+
+<para>
+This implementation is based on <ulink url="http://freedesktop.org/Standards/basedir-spec/basedir-spec-0.6.html">version 0.6</ulink> of the Base Directory
+Specification.
+</para>
+
+<para>
+Since the Specification is not yet finished, and may change in the future,
+this implementation may also change, though I'll try to avoid API changes
+if possible.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+<variablelist>
+<varlistentry>
+<term>#XfceDesktopEntry</term>
+<listitem><para>an implementation of the XDG Desktop Entry Specification.</para></listitem>
+</varlistentry>
+</variablelist>
+</para>
+
+<!-- ##### FUNCTION xfce_xdg_save_cache_path ##### -->
+<para>
+
+</para>
+
+@resource: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_xdg_save_config_path ##### -->
+<para>
+
+</para>
+
+@resource: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_xdg_save_data_path ##### -->
+<para>
+
+</para>
+
+@resource: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_xdg_load_config_path ##### -->
+<para>
+
+</para>
+
+@resource: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_xdg_load_data_path ##### -->
+<para>
+
+</para>
+
+@resource: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_xdg_load_config_paths ##### -->
+<para>
+
+</para>
+
+@resource: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_xdg_load_data_paths ##### -->
+<para>
+
+</para>
+
+@resource: 
+@Returns: 
+
+

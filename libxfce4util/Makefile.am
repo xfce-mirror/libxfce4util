@@ -9,6 +9,7 @@ libxfce4utilinclude_HEADERS =					\
 	libxfce4util.h						\
 	utf8.h							\
 	util.h							\
+	xdg.h							\
 	xfce-desktopentry.h					\
 	xfce_desktop_entry.h
 
@@ -21,6 +22,8 @@ libxfce4util_la_SOURCES =					\
 	utf8.h							\
 	util.c							\
 	util.h							\
+	xdg.c							\
+	xdg.h							\
 	xfce-desktopentry.c					\
 	xfce-desktopentry.h
 
@@ -34,6 +37,8 @@ libxfce4util_la_LIBADD =					\
 
 libxfce4util_la_CFLAGS = 					\
 	-I$(top_srcdir)						\
+	-DDEFAULT_XDG_DATA_DIRS=\"$(datadir):/usr/local/share:/usr/share\" \
+	-DDEFAULT_XDG_CONFIG_DIRS=\"$(sysconfdir)/xfce4:/etc/xdg\" \
 	-DNLS_ALIAS_DB=\"$(datadir)/xfce4/i18n/nls.alias\"	\
 	@GOBJECT_CFLAGS@
 

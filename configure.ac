@@ -10,7 +10,7 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:3:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [4])
+m4_define([libxfce4util_version_micro], [5])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Overall XFce version, modify this when making releases
@@ -52,7 +52,8 @@ AC_PROG_LIBTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([err.h limits.h locale.h sys/utsname.h sys/wait.h])
+AC_CHECK_HEADERS([err.h errno.h limits.h locale.h sys/stat.h sys/types.h \
+  sys/utsname.h sys/wait.h unistd.h])
 AC_CHECK_FUNCS([__unaliasname gethostname setenv setlocale strdup \
   strlcat strlcpy])
 

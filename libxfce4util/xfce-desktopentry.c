@@ -355,8 +355,8 @@ xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
     g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
 
     /* FIXME: should object creation fail instead ? */
-    g_return_if_fail (g_file_test (desktop_entry->priv->file, 
-				   G_FILE_TEST_EXISTS));
+    g_return_val_if_fail (g_file_test (desktop_entry->priv->file, 
+				   G_FILE_TEST_EXISTS), FALSE);
     
     current_locale = g_strdup (setlocale (LC_MESSAGES, NULL));
 
@@ -487,7 +487,6 @@ xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
 {
     const entry_t *entry;
     char *endptr;
-    int temp;
 
     g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
     g_return_val_if_fail (key != NULL, FALSE);

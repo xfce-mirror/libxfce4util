@@ -25,14 +25,17 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
-#define __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
+#ifndef __LIBXFCE4UTIL_XDG_H__
+#define __LIBXFCE4UTIL_XDG_H__
 
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/utf8.h>
-#include <libxfce4util/util.h>
-#include <libxfce4util/xdg.h>
-#include <libxfce4util/xfce-desktopentry.h>
+#include <glib.h>
 
-#endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */
+gchar*  xfce_xdg_save_cache_path    (const gchar *resource);
+gchar*  xfce_xdg_save_config_path   (const gchar *resource);
+gchar*  xfce_xdg_save_data_path     (const gchar *resource);
+gchar*  xfce_xdg_load_config_path   (const gchar *resource);
+gchar*  xfce_xdg_load_data_path     (const gchar *resource);
+gchar** xfce_xdg_load_config_paths  (const gchar *resource);
+gchar** xfce_xdg_load_data_paths    (const gchar *resource);
+
+#endif  /* !__LIBXFCE4UTIL_XDG_H__ */

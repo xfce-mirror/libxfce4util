@@ -1,3 +1,12 @@
+20040224:
+---------
+
+	- Version 4.1.5
+	- Added XDG Base Directory Implementation (version 0.6) and updated
+	  documentation.
+	- Small fixes to make gcc happy and first steps with Intel C compiler
+	  on FreeBSD.
+
 20040220:
 ---------
 

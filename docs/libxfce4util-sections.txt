@@ -22,6 +22,18 @@ XFCE_DESKTOP_ENTRY_GET_CLASS
 </SECTION>
 
 <SECTION>
+<TITLE>XDG Base Directory support</TITLE>
+<FILE>xdg-basedir-support</FILE>
+xfce_xdg_save_cache_path
+xfce_xdg_save_config_path
+xfce_xdg_save_data_path
+xfce_xdg_load_config_path
+xfce_xdg_load_data_path
+xfce_xdg_load_config_paths
+xfce_xdg_load_data_paths
+</SECTION>
+
+<SECTION>
 <FILE>debug</FILE>
 DBG
 TRACE
