@@ -87,7 +87,7 @@ static const gchar *xfce_userdir = NULL;/* path to users .xfce4 directory */
  * Wrapper around gtk_init to to some stuff required for Xfce4 apps
  */
 static void
-__initialize(void)
+internal_initialize(void)
 {
 	const gchar *dir;
 
@@ -117,7 +117,7 @@ __initialize(void)
 }
 
 static G_CONST_RETURN gchar *
-__get_file_r(const gchar *dir, gchar *buffer, size_t len,
+internal_get_file_r(const gchar *dir, gchar *buffer, size_t len,
 		const gchar *format, va_list ap)
 {
 	size_t n;
@@ -146,7 +146,7 @@ xfce_get_homedir(void)
 {
 	G_LOCK(_lock);
 	if (!xfce_homedir)
-		__initialize();
+		internal_initialize();
 	G_UNLOCK(_lock);
 	
 	return(xfce_homedir);
@@ -159,7 +159,7 @@ xfce_get_homefile_r(gchar *buffer, size_t len, const gchar *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-	ptr = __get_file_r(xfce_get_homedir(), buffer, len, format, ap);
+	ptr = internal_get_file_r(xfce_get_homedir(), buffer, len, format, ap);
 	va_end(ap);
 
 	return(ptr);
@@ -170,7 +170,7 @@ xfce_get_userdir(void)
 {
 	G_LOCK(_lock);
 	if (!xfce_userdir)
-		__initialize();
+		internal_initialize();
 	G_UNLOCK(_lock);
 
 	return(xfce_userdir);
@@ -183,7 +183,7 @@ xfce_get_userfile_r(gchar *buffer, size_t len, const gchar *format, ...)
 	va_list ap;
 
 	va_start(ap, format);
-	ptr = __get_file_r(xfce_get_userdir(), buffer, len, format, ap);
+	ptr = internal_get_file_r(xfce_get_userdir(), buffer, len, format, ap);
 	va_end(ap);
 
 	return(ptr);
