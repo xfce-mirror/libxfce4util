@@ -26,7 +26,7 @@ AC_HEADER_STDC
 AC_CHECK_HEADERS(err.h)
 
 dnl Check for Glib >= 2.0 installed
-PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.0.0)
+BM_DEPEND(GLIB, glib-2.0, 2.0.0)
 
 dnl libtool versioning
 LIBXFCE4UTIL_VERINFO=0:0
@@ -40,6 +40,7 @@ BM_PKG_LDFLAGS(PKG)
 
 AC_OUTPUT([
 Makefile
+libxfce4util.spec
 libxfce4util/libxfce4util-1.0.pc
 libxfce4util/Makefile
 ])

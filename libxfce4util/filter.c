@@ -166,7 +166,7 @@ xfce_filterlist_execute(XfceFilterList *filters, int input, int output,
 		if (pipe(fd) < 0)
 			return(-1);
 
-		if ((pid = vfork()) < 0) {
+		if ((pid = fork()) < 0) {
 			return(-1);
 		}
 		else if (pid == 0) {

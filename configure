@@ -308,7 +308,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL PKG_CONFIG GLIB_CFLAGS GLIB_LIBS LIBXFCE4UTIL_VERINFO PKG_LDFLAGS LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL PKG_CONFIG GLIB_CFLAGS GLIB_LIBS GLIB_REQUIRED_VERSION LIBXFCE4UTIL_VERINFO PKG_LDFLAGS LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -5598,6 +5598,7 @@ done
 
 
 
+
   succeeded=no
 
   if test -z "$PKG_CONFIG"; then
@@ -5695,6 +5696,9 @@ echo "$as_me: error: Library requirements (glib-2.0 >= 2.0.0) not met; consider 
    { (exit 1); exit 1; }; }
   fi
 
+  GLIB_REQUIRED_VERSION=2.0.0
+
+
 
 LIBXFCE4UTIL_VERINFO=0:0
 
@@ -5765,7 +5769,7 @@ echo "${ECHO_T}$PKG_LDFLAGS" >&6
 
 
 
-                              ac_config_files="$ac_config_files Makefile libxfce4util/libxfce4util-1.0.pc libxfce4util/Makefile"
+                                        ac_config_files="$ac_config_files Makefile libxfce4util.spec libxfce4util/libxfce4util-1.0.pc libxfce4util/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -6329,6 +6333,7 @@ do
   case "$ac_config_target" in
   # Handling of arguments.
   "Makefile" ) CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+  "libxfce4util.spec" ) CONFIG_FILES="$CONFIG_FILES libxfce4util.spec" ;;
   "libxfce4util/libxfce4util-1.0.pc" ) CONFIG_FILES="$CONFIG_FILES libxfce4util/libxfce4util-1.0.pc" ;;
   "libxfce4util/Makefile" ) CONFIG_FILES="$CONFIG_FILES libxfce4util/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
@@ -6472,6 +6477,7 @@ s,@LIBTOOL@,$LIBTOOL,;t t
 s,@PKG_CONFIG@,$PKG_CONFIG,;t t
 s,@GLIB_CFLAGS@,$GLIB_CFLAGS,;t t
 s,@GLIB_LIBS@,$GLIB_LIBS,;t t
+s,@GLIB_REQUIRED_VERSION@,$GLIB_REQUIRED_VERSION,;t t
 s,@LIBXFCE4UTIL_VERINFO@,$LIBXFCE4UTIL_VERINFO,;t t
 s,@PKG_LDFLAGS@,$PKG_LDFLAGS,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
