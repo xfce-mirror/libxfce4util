@@ -30,6 +30,16 @@ xfce_locale_match
 
 
 <SECTION>
+<TITLE>Xfce Kiosk functions</TITLE>
+<FILE>xfce-kiosk</FILE>
+XfceKiosk
+xfce_kiosk_new
+xfce_kiosk_query
+xfce_kiosk_free
+</SECTION>
+
+
+<SECTION>
 <TITLE>Resource lookup functions</TITLE>
 <FILE>xfce-resource</FILE>
 XfceResourceType

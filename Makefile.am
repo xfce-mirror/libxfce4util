@@ -1,4 +1,8 @@
-SUBDIRS = libxfce4util m4 docs
+SUBDIRS =								\
+	docs								\
+	libxfce4util							\
+	m4								\
+	xfce4-kiosk-query
 
 EXTRA_DIST =								\
 	AUTHORS								\

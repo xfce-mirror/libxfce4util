@@ -5,7 +5,9 @@ INCLUDES =								\
 	-DDEFAULT_XDG_DATA_DIRS=\"$(datadir):/usr/local/share:/usr/share\" \
 	-DDEFAULT_XDG_CONFIG_DIRS=\"$(sysconfdir)/xdg:$(sysconfdir)/xfce4:/etc/xdg\" \
 	-DDATADIR=\"$(datadir)\"					\
-	-DG_LOG_DOMAIN=\"libxfce4util\"
+	-DG_LOG_DOMAIN=\"libxfce4util\"					\
+	-DKIOSKDIR=\"$(sysconfdir)/xfce4/kiosk\"			\
+	-DKIOSKDEF=\"ALL\"
 
 lib_LTLIBRARIES = libxfce4util.la
 
@@ -20,6 +22,7 @@ libxfce4utilinclude_HEADERS =						\
 	util.h								\
 	xfce-desktopentry.h						\
 	xfce-fileutils.h						\
+	xfce-kiosk.h							\
 	xfce-miscutils.h						\
 	xfce-rc.h							\
 	xfce-resource.h
@@ -35,6 +38,8 @@ libxfce4util_la_SOURCES =						\
 	xfce-desktopentry.h						\
 	xfce-fileutils.c						\
 	xfce-fileutils.h						\
+	xfce-kiosk.c							\
+	xfce-kiosk.h							\
 	xfce-miscutils.c						\
 	xfce-miscutils.h						\
 	xfce-rc.c							\

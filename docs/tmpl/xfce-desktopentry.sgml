@@ -23,6 +23,7 @@ XfceDesktopEntry implementation and should never be accessed directly.
 Instead, you should use the functions listed below.
 </para>
 
+
 <!-- ##### FUNCTION xfce_desktop_entry_new ##### -->
 <para>
 
@@ -50,8 +51,8 @@ Instead, you should use the functions listed below.
 
 </para>
 
-@desktop_entry:
-@Returns:
+@desktop_entry: 
+@Returns: 
 
 
 <!-- ##### FUNCTION xfce_desktop_entry_get_file ##### -->
@@ -59,8 +60,8 @@ Instead, you should use the functions listed below.
 
 </para>
 
-@desktop_entry:
-@Returns:
+@desktop_entry: 
+@Returns: 
 
 
 <!-- ##### FUNCTION xfce_desktop_entry_get_string ##### -->
@@ -68,11 +69,11 @@ Instead, you should use the functions listed below.
 
 </para>
 
-@desktop_entry:
+@desktop_entry: 
 @key: 
-@translated:
+@translated: 
 @value: 
-@Returns:
+@Returns: 
 
 
 <!-- ##### FUNCTION xfce_desktop_entry_get_int ##### -->
@@ -80,9 +81,9 @@ Instead, you should use the functions listed below.
 
 </para>
 
-@desktop_entry:
-@key:
-@value:
-@Returns:
+@desktop_entry: 
+@key: 
+@value: 
+@Returns: 
 
 

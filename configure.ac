@@ -11,7 +11,7 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:4:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [12])
+m4_define([libxfce4util_version_micro], [13])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Overall XFce version, modify this when making releases
@@ -66,12 +66,13 @@ AC_PROG_LIBTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([err.h errno.h limits.h locale.h pwd.h sys/stat.h sys/types.h \
-                  sys/utsname.h sys/wait.h unistd.h])
+AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
+                  sys/stat.h sys/types.h sys/utsname.h \
+                  sys/wait.h unistd.h])
 AC_CHECK_FUNCS([gethostname getpwnam setenv setlocale strdup unsetenv])
 
-dnl Check for GObject >= 2.0.0 installed (GObject in turn depends on GLib)
-BM_DEPEND([GOBJECT], [gobject-2.0], [2.0.0])
+dnl Check for GObject >= 2.2.0 installed (GObject in turn depends on GLib)
+BM_DEPEND([GOBJECT], [gobject-2.0], [2.2.0])
 
 dnl Check for gtk-doc
 GTK_DOC_CHECK([1.0])
@@ -115,4 +116,5 @@ libxfce4util/libxfce4util-1.0.pc
 libxfce4util/libxfce4util-config.h
 libxfce4util/Makefile
 m4/Makefile
+xfce4-kiosk-query/Makefile
 ])

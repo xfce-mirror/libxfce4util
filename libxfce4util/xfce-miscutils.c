@@ -507,7 +507,7 @@ xfce_expand_variables (const gchar *command,
   gchar          variable[256];
   gchar          buffer[2048];
   gchar         *bend = buffer + 2047;
-  gchar         *bp;
+  gchar         *bp = buffer;
   gchar         *vend = variable + 255;
   gchar         *vp;
   gchar        **ep;
@@ -544,8 +544,6 @@ xfce_expand_variables (const gchar *command,
         }
 #endif
     }
-  else
-    bp = buffer;
   
   while (*command != '\0' && bp < bend)
     {

@@ -20,8 +20,10 @@ miscellaneous file-related utility functions.
 </para>
 
 @whole_path: 
-@omode: 
+@Param2: 
 @error: 
 @Returns: 
+<!-- # Unused Parameters # -->
+@omode: 
 
 

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003,2004 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,19 +25,23 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
-#define __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
+#ifndef __LIBXFCE4UTIL_XFCE_KIOSK_H__
+#define __LIBXFCE4UTIL_XFCE_KIOSK_H__
 
-#include <libxfce4util/libxfce4util-config.h>
+#include <glib.h>
 
-#include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/utf8.h>
-#include <libxfce4util/xfce-desktopentry.h>
-#include <libxfce4util/xfce-fileutils.h>
-#include <libxfce4util/xfce-kiosk.h>
-#include <libxfce4util/xfce-miscutils.h>
-#include <libxfce4util/xfce-rc.h>
-#include <libxfce4util/xfce-resource.h>
+G_BEGIN_DECLS;
 
-#endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */
+#define XFCE_KIOSK(obj) ((XfceKiosk *)(obj))
+
+typedef struct _XfceKiosk XfceKiosk;
+
+
+XfceKiosk *xfce_kiosk_new   (const gchar     *module);
+gboolean   xfce_kiosk_query (const XfceKiosk *kiosk,
+                             const gchar     *capability);
+void       xfce_kiosk_free  (XfceKiosk       *kiosk);
+
+G_END_DECLS;
+
+#endif /* !__LIBXFCE4UTIL_XFCE_KIOSK_H__ */

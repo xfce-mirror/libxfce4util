@@ -3,6 +3,7 @@
                "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <!ENTITY libxfce4util-StandardMacros SYSTEM "xml/standard-macros.xml">
 <!ENTITY libxfce4util-Internationalization SYSTEM "xml/i18n.xml">
+<!ENTITY libxfce4util-Kiosk SYSTEM "xml/xfce-kiosk.xml">
 <!ENTITY libxfce4util-Resource SYSTEM "xml/xfce-resource.xml">
 <!ENTITY libxfce4util-RcParser SYSTEM "xml/xfce-rc.xml">
 <!ENTITY libxfce4util-FileUtils-Functions SYSTEM "xml/xfce-fileutils.xml">
@@ -31,6 +32,11 @@
 		<title>Xfce Fundamentals</title>
 		&libxfce4util-StandardMacros;
 		&libxfce4util-Internationalization;
+	</chapter>
+
+	<chapter id="libxfce4util-core">
+		<title>Xfce Core Application support</title>
+		&libxfce4util-Kiosk;
 	</chapter>
 
 	<chapter id="libxfce4util-utilities">

@@ -59,6 +59,7 @@ am_libxfce4util_la_OBJECTS = libxfce4util_la-i18n.lo \
 	libxfce4util_la-licenses-texts.lo libxfce4util_la-utf8.lo \
 	libxfce4util_la-xfce-desktopentry.lo \
 	libxfce4util_la-xfce-fileutils.lo \
+	libxfce4util_la-xfce-kiosk.lo \
 	libxfce4util_la-xfce-miscutils.lo libxfce4util_la-xfce-rc.lo \
 	libxfce4util_la-xfce-rc-config.lo \
 	libxfce4util_la-xfce-rc-simple.lo \
@@ -72,6 +73,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-utf8.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-fileutils.Plo \
+@AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-kiosk.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-miscutils.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-rc-config.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-xfce-rc-simple.Plo \
@@ -211,7 +213,9 @@ INCLUDES = \
 	-DDEFAULT_XDG_DATA_DIRS=\"$(datadir):/usr/local/share:/usr/share\" \
 	-DDEFAULT_XDG_CONFIG_DIRS=\"$(sysconfdir)/xdg:$(sysconfdir)/xfce4:/etc/xdg\" \
 	-DDATADIR=\"$(datadir)\"					\
-	-DG_LOG_DOMAIN=\"libxfce4util\"
+	-DG_LOG_DOMAIN=\"libxfce4util\"					\
+	-DKIOSKDIR=\"$(sysconfdir)/xfce4/kiosk\"			\
+	-DKIOSKDEF=\"ALL\"
 
 lib_LTLIBRARIES = libxfce4util.la
 libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
@@ -224,6 +228,7 @@ libxfce4utilinclude_HEADERS = \
 	util.h								\
 	xfce-desktopentry.h						\
 	xfce-fileutils.h						\
+	xfce-kiosk.h							\
 	xfce-miscutils.h						\
 	xfce-rc.h							\
 	xfce-resource.h
@@ -239,6 +244,8 @@ libxfce4util_la_SOURCES = \
 	xfce-desktopentry.h						\
 	xfce-fileutils.c						\
 	xfce-fileutils.h						\
+	xfce-kiosk.c							\
+	xfce-kiosk.h							\
 	xfce-miscutils.c						\
 	xfce-miscutils.h						\
 	xfce-rc.c							\
@@ -348,6 +355,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-utf8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-desktopentry.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-fileutils.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-kiosk.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-miscutils.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-rc-config.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-xfce-rc-simple.Plo@am__quote@
@@ -497,6 +505,30 @@ libxfce4util_la-xfce-fileutils.lo: xfce-fileutils.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-fileutils.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-fileutils.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-fileutils.lo `test -f 'xfce-fileutils.c' || echo '$(srcdir)/'`xfce-fileutils.c
+
+libxfce4util_la-xfce-kiosk.o: xfce-kiosk.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-kiosk.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo" -c -o libxfce4util_la-xfce-kiosk.o `test -f 'xfce-kiosk.c' || echo '$(srcdir)/'`xfce-kiosk.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-kiosk.c' object='libxfce4util_la-xfce-kiosk.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-kiosk.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-kiosk.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-kiosk.o `test -f 'xfce-kiosk.c' || echo '$(srcdir)/'`xfce-kiosk.c
+
+libxfce4util_la-xfce-kiosk.obj: xfce-kiosk.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-kiosk.obj -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo" -c -o libxfce4util_la-xfce-kiosk.obj `if test -f 'xfce-kiosk.c'; then $(CYGPATH_W) 'xfce-kiosk.c'; else $(CYGPATH_W) '$(srcdir)/xfce-kiosk.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Po"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-kiosk.c' object='libxfce4util_la-xfce-kiosk.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-kiosk.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-kiosk.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-kiosk.obj `if test -f 'xfce-kiosk.c'; then $(CYGPATH_W) 'xfce-kiosk.c'; else $(CYGPATH_W) '$(srcdir)/xfce-kiosk.c'; fi`
+
+libxfce4util_la-xfce-kiosk.lo: xfce-kiosk.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-kiosk.lo -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo" -c -o libxfce4util_la-xfce-kiosk.lo `test -f 'xfce-kiosk.c' || echo '$(srcdir)/'`xfce-kiosk.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo" "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Plo"; else rm -f "$(DEPDIR)/libxfce4util_la-xfce-kiosk.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='xfce-kiosk.c' object='libxfce4util_la-xfce-kiosk.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-xfce-kiosk.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-xfce-kiosk.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-xfce-kiosk.lo `test -f 'xfce-kiosk.c' || echo '$(srcdir)/'`xfce-kiosk.c
 
 libxfce4util_la-xfce-miscutils.o: xfce-miscutils.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-xfce-miscutils.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-xfce-miscutils.Tpo" -c -o libxfce4util_la-xfce-miscutils.o `test -f 'xfce-miscutils.c' || echo '$(srcdir)/'`xfce-miscutils.c; \
