@@ -54,7 +54,7 @@ extern void		xfce_filter_add(XfceFilter *, const gchar *, ...);
 /* filterlist function prototypes */
 extern XfceFilterList	*xfce_filterlist_new(void);
 extern void		xfce_filterlist_free(XfceFilterList *);
-extern XfceFilter	*xfce_filterlist_first(XfceFilterList *);
-extern XfceFilter	*xfce_filterlist_next(XfceFilterList *);
+extern void		xfce_filterlist_append(XfceFilterList *, XfceFilter *);
+extern void		xfce_filterlist_prepend(XfceFilterList *, XfceFilter *);
 
 #endif	/* !__LIBXFCE4UTIL_FILTER_H__ */
