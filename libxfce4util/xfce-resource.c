@@ -39,11 +39,11 @@
 #include <libxfce4util/libxfce4util.h>
 
 
-#define TYPE_VALID(t) ((t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_ICONS)
+#define TYPE_VALID(t) ((t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
 
 
-static gchar*   _save[4] = { NULL, };
-static GList*   _list[4] = { NULL, };
+static gchar*   _save[5] = { NULL, };
+static GList*   _list[5] = { NULL, };
 static gboolean _inited = FALSE;
 
 
@@ -75,7 +75,7 @@ _res_getenv (const gchar *variable,
 
 static void
 _res_split_and_append (const gchar     *dir_list,
-		       XfceResourceType type)
+		                   XfceResourceType type)
 {
   gchar **dirs;
   gint    n;
@@ -99,17 +99,17 @@ _res_remove_duplicates (GList *list)
   for (lp = list; lp != NULL; lp = lp->next)
     {
       for (pp = ll; pp != NULL; pp = pp->next)
-	if (strcmp ((const gchar *) pp->data, (const gchar *) lp->data) == 0)
-	  break;
+      	if (strcmp ((const gchar *) pp->data, (const gchar *) lp->data) == 0)
+      	  break;
 
       if (pp == NULL)
-	ll = g_list_append (ll, lp->data);
+	      ll = g_list_append (ll, lp->data);
       else
-	g_free (lp->data);
+      	g_free (lp->data);
     }
 
   g_list_free (list);
-  return ll;;
+  return ll;
 }
 
 
@@ -186,7 +186,7 @@ _res_init (void)
   _list[XFCE_RESOURCE_ICONS] = g_list_prepend (_list[XFCE_RESOURCE_ICONS], path);
 
   /* backward compatibility */
-  path = g_build_filename (xfce_get_homedir (), ".icons", NULL);
+  path = xfce_get_homefile (".icons", NULL);
   _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], path);
 
   for (l = _list[XFCE_RESOURCE_DATA]; l != NULL; l = l->next)
@@ -206,12 +206,27 @@ _res_init (void)
   _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS],
                                               DATADIR "/share/pixmaps");
 
+  /*
+   * Themes dirs
+   */
+  path = xfce_get_homefile (".themes", NULL);
+  _save[XFCE_RESOURCE_THEMES] = g_strdup (path);
+  _list[XFCE_RESOURCE_THEMES] = g_list_prepend (_list[XFCE_RESOURCE_THEMES], path);
+
+  for (l = _list[XFCE_RESOURCE_DATA]; l != NULL; l = l->next)
+    {
+      path = g_build_filename ((const gchar *) l->data, "themes", NULL);
+      _list[XFCE_RESOURCE_THEMES] = g_list_append (_list[XFCE_RESOURCE_THEMES],
+                                                   path);
+    }
+
   /* remove duplicates from the lists */
 #define REMOVE_DUPLICATES(type) { _list[(type)] = _res_remove_duplicates (_list[(type)]); }
   REMOVE_DUPLICATES (XFCE_RESOURCE_DATA);
   REMOVE_DUPLICATES (XFCE_RESOURCE_CONFIG);
   REMOVE_DUPLICATES (XFCE_RESOURCE_CACHE);
   REMOVE_DUPLICATES (XFCE_RESOURCE_ICONS);
+  REMOVE_DUPLICATES (XFCE_RESOURCE_THEMES);
 #undef REMOVE_DUPLICATES
 }
 
@@ -307,11 +322,11 @@ _res_match_path (const gchar *path,
 	{
 	  if (file_test == G_FILE_TEST_IS_DIR)
 	    {
-	      entries = g_list_append (entries, g_strconcat (relpath, entry, NULL));
+	      entries = g_list_append (entries, g_strconcat (relpath, entry, "/", NULL));
 	    }
 	  else
 	    {
-	      entries = g_list_append (entries, g_strconcat (relpath, entry, "/", NULL));
+	      entries = g_list_append (entries, g_strconcat (relpath, entry, NULL));
 	    }
 	}
 

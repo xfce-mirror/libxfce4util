@@ -34,6 +34,7 @@ typedef enum
   XFCE_RESOURCE_CONFIG = 1,
   XFCE_RESOURCE_CACHE  = 2,
   XFCE_RESOURCE_ICONS  = 3,
+  XFCE_RESOURCE_THEMES = 4,
 } XfceResourceType;
 
 typedef gboolean (*XfceMatchFunc)   (const gchar *basedir,
