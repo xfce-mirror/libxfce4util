@@ -8,7 +8,7 @@ dnl Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.
 dnl
 
 dnl Version information
-m4_define([libxfce4util_verinfo], [1:4:0])
+m4_define([libxfce4util_verinfo], [1:5:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
 m4_define([libxfce4util_version_micro], [99.1])
