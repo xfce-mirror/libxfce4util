@@ -28,11 +28,18 @@
 #include <config.h>
 #endif /* !HAVE_CONFIG_H */
 
+#ifdef HAVE_SYS_TYPES_H
 #include <sys/types.h>
+#endif
 #include <sys/wait.h>
 
 #include <errno.h>
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 #include "filter.h"
 
