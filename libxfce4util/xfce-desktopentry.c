@@ -169,8 +169,104 @@ xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry)
     return desktop_entry->priv->file;
 }
 
-gboolean
-xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
+static gboolean
+parse_desktop_entry_line (const char *line, char **section, 
+			  char **key, char **value, char **locale)
+{
+    char *p, *q;
+
+    p = (char *)line;
+    
+    /* initialize to NULL, so we don't have tho think about it anymore */
+    *section = NULL;
+    *key = NULL;
+    *value = NULL;
+    *locale = NULL;
+    
+    while (g_ascii_isspace (*p))
+	++p;
+
+    if (*p == '#' || *p == '\n' || *p == '\0')
+	return FALSE;
+    
+    if (*p == '[')
+    {
+	++p;
+	if ((q = strchr (p, ']')) == NULL)
+	    return FALSE;
+
+	*section = g_new (char, q - p + 1);
+	strncpy (*section, p, q - p);
+	(*section)[q - p] = '\0';
+	
+	return TRUE;
+    }
+    else
+    {
+	char *r;
+	
+	if ((q = strchr (p, '=')) == NULL)
+	    return FALSE;
+	
+	r = q + 1;
+	--q;
+
+	while (g_ascii_isspace (*q))
+	    --q;
+
+	if (*q == ']')
+	{
+	    char *s;
+
+	    if ((s = strchr (p, '[')) == NULL)
+		return FALSE;
+	    
+	    *key = g_new (char, s - p + 1);
+	    strncpy (*key, p, s - p);
+	    (*key)[s - p] = '\0';
+
+	    ++s;
+	    *locale = g_new (char, q - s + 1);
+	    strncpy (*locale, s, q - s);
+	    (*locale)[q - s] = '\0';
+	}
+	else
+	{
+	    ++q;
+	    *key = g_new (char, q - p + 1);
+	    strncpy (*key, p, q - p);
+	    (*key)[q - p] = '\0';
+	}
+
+	while (g_ascii_isspace (*r))
+	    ++r;
+	
+	q = r + strlen (r);
+
+	while (
+	    q > r 
+	&&
+	    (
+	        g_ascii_isspace (*(q-1)) 
+	    || 
+	        ((*(q-1)) == '\r')) /* kde... */
+	)
+	    --q;
+
+	if (q > r) {
+	    *value = g_new (char, q - r + 1);
+	    strncpy (*value, r, q - r);
+	    (*value) [q - r] = '\0';
+	} else {
+	    *value = g_new0 (char, 1);
+	}
+	
+	return TRUE;
+    }
+}
+
+static gboolean
+entry_parse (XfceDesktopEntry * desktop_entry)
 {
     char *current_locale;
     int locale_matched = 0;
@@ -274,7 +370,7 @@ xfce_desktop_entry_new_from_data (const char *data, const char **categories,
 	entry->key = g_strdup (categories[i]);
     }
 
-    g_return_val_if_fail (xfce_desktop_entry_parse(desktop_entry), NULL);
+    g_return_val_if_fail (entry_parse(desktop_entry), NULL);
 
     return desktop_entry;
 }
@@ -317,105 +413,15 @@ xfce_desktop_entry_new (const char *file, const char **categories,
 	entry->key = g_strdup (categories[i]);
     }
 
-    g_return_val_if_fail (xfce_desktop_entry_parse(desktop_entry), NULL);
+    g_return_val_if_fail (entry_parse(desktop_entry), NULL);
 
     return desktop_entry;
 }
 
-static gboolean
-parse_desktop_entry_line (const char *line, char **section, 
-			  char **key, char **value, char **locale)
+gboolean
+xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 {
-    char *p, *q;
-
-    p = (char *)line;
-    
-    /* initialize to NULL, so we don't have tho think about it anymore */
-    *section = NULL;
-    *key = NULL;
-    *value = NULL;
-    *locale = NULL;
-    
-    while (g_ascii_isspace (*p))
-	++p;
-
-    if (*p == '#' || *p == '\n' || *p == '\0')
-	return FALSE;
-    
-    if (*p == '[')
-    {
-	++p;
-	if ((q = strchr (p, ']')) == NULL)
-	    return FALSE;
-
-	*section = g_new (char, q - p + 1);
-	strncpy (*section, p, q - p);
-	(*section)[q - p] = '\0';
-	
-	return TRUE;
-    }
-    else
-    {
-	char *r;
-	
-	if ((q = strchr (p, '=')) == NULL)
-	    return FALSE;
-	
-	r = q + 1;
-	--q;
-
-	while (g_ascii_isspace (*q))
-	    --q;
-
-	if (*q == ']')
-	{
-	    char *s;
-
-	    if ((s = strchr (p, '[')) == NULL)
-		return FALSE;
-	    
-	    *key = g_new (char, s - p + 1);
-	    strncpy (*key, p, s - p);
-	    (*key)[s - p] = '\0';
-
-	    ++s;
-	    *locale = g_new (char, q - s + 1);
-	    strncpy (*locale, s, q - s);
-	    (*locale)[q - s] = '\0';
-	}
-	else
-	{
-	    ++q;
-	    *key = g_new (char, q - p + 1);
-	    strncpy (*key, p, q - p);
-	    (*key)[q - p] = '\0';
-	}
-
-	while (g_ascii_isspace (*r))
-	    ++r;
-	
-	q = r + strlen (r);
-
-	while (
-	    q > r 
-	&&
-	    (
-	        g_ascii_isspace (*(q-1)) 
-	    || 
-	        ((*(q-1)) == '\r')) /* kde... */
-	)
-	    --q;
-
-	if (q > r) {
-	    *value = g_new (char, q - r + 1);
-	    strncpy (*value, r, q - r);
-	    (*value) [q - r] = '\0';
-	} else {
-	    *value = g_new0 (char, 1);
-	}
-	
-	return TRUE;
-    }
+  /* already done in _new and _new_from_data : do nothing */
 }
 
 static G_CONST_RETURN entry_t *
