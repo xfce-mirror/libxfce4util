@@ -1,6 +1,6 @@
 SUBDIRS =								\
-	docs								\
 	libxfce4util							\
+	docs								\
 	m4								\
 	xfce4-kiosk-query
 

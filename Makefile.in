@@ -184,8 +184,8 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 SUBDIRS = \
-	docs								\
 	libxfce4util							\
+	docs								\
 	m4								\
 	xfce4-kiosk-query
 
