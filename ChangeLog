@@ -1,3 +1,11 @@
+2005-02-02	Benedikt Meurer <benny@xfce.org>
+
+	* libxfce4util/xfce-fileutils.c(xfce_mkdirhier): Make function always
+	  verify if the directory was actually created or already existed,
+	  instead of checking for special errno results if mkdir() failed.
+	  This fixes bug #724 (xfce fails on automounted NFS home-directories).
+	  All tabs have been expanded to spaces.
+
 2005-01-26	Benedikt Meurer <benny@xfce.org>
 
 	* autogen.sh: Send all command line parameters to xdt-autogen.
