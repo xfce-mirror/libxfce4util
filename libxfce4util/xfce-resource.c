@@ -39,6 +39,10 @@
 #include <libxfce4util/libxfce4util.h>
 
 
+#ifndef PATH_MAX
+#define PATH_MAX  1024
+#endif
+
 #define TYPE_VALID(t) ((t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
 
 

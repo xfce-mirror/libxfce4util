@@ -46,6 +46,11 @@
 #include <libxfce4util/xfce-rc-private.h>
 
 
+#ifndef PATH_MAX
+#define PATH_MAX 1024
+#endif
+
+
 /* name of the NULL group */
 #define NULL_GROUP "[NULL]"
 
