@@ -824,7 +824,8 @@ _xfce_rc_simple_set_group (XfceRc *rc, const gchar *name)
   if (name == NULL)
     name = NULL_GROUP;
 
-  simple->group = simple_add_group (simple, name);
+  if (strcmp (simple->group->name, name) != 0)
+    simple->group = simple_add_group (simple, name);
 }
 
 
