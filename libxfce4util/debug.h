@@ -48,7 +48,7 @@
 
 #if defined(DEBUG_TRACE) && DEBUG_TRACE > 0
 
-#define TRACE(fmt, args...)                                                             \
+#define TRACE(fmt, args...)						    \
 {                                                                           \
     fprintf(stderr, "TRACE[%s:%d] %s(): ",__FILE__,__LINE__,__DBG_FUNC__);  \
     fprintf(stderr, fmt, ##args);                                           \
