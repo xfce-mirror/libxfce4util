@@ -161,6 +161,18 @@ xfce_desktop_entry_finalize (GObject *object)
     parent_class->finalize (G_OBJECT (desktop_entry));
 }
 
+/**
+ * xfce_desktop_entry_get_file:
+ * @desktop_entry: an #XfceDesktopEntry.
+ * @Returns: path of the desktop entry file used to create @desktop_entry. The
+ *           return value should be considered read-only and must not be freed
+ *           by the caller.
+ *
+ * Obtain the path to the desktop entry file associated with the
+ * #XfceDesktopEntry.
+ *
+ * Since: 4.2
+ **/
 G_CONST_RETURN char *
 xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry)
 {
@@ -344,7 +356,7 @@ entry_parse (XfceDesktopEntry * desktop_entry)
 
 /**
  * xfce_desktop_entry_new_from_data:
- * @data           : pointer to the desktop entry inline data
+ * @data           : pointer to the desktop entry inline data.
  * @categories     : array of categories, not necessarily NULL terminated.
  * @num_categories : number of items in @categories.
  * @Returns: newly created #XfceDesktopEntry or NULL if something goes wrong.
@@ -386,6 +398,17 @@ xfce_desktop_entry_new_from_data (const char *data, const char **categories,
     return desktop_entry;
 }
 
+/**
+ * xfce_desktop_entry_new:
+ * @file           : full path to the desktop entry file to use.
+ * @categories     : array of categories, not necessarily NULL terminated.
+ * @num_categories : number of items in @categories.
+ * @Returns: newly created #XfceDesktopEntry or NULL if something goes wrong.
+ *
+ * Create a new XfceDesktopEntry object from a desktop entry stored in memory.
+ *
+ * Since: 4.2
+ **/
 XfceDesktopEntry *
 xfce_desktop_entry_new (const char *file, const char **categories,
 			int num_categories)
@@ -429,6 +452,15 @@ xfce_desktop_entry_new (const char *file, const char **categories,
     return desktop_entry;
 }
 
+/**
+ * xfce_desktop_entry_parse:
+ * @desktop_entry: an #XfceDesktopEntry.
+ * @Returns: TRUE on success, FALSE on failure.
+ *
+ * Parses the desktop entry file and fills in the values for all categories. 
+ *
+ * Since: 4.2
+**/
 gboolean
 xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 {
@@ -456,6 +488,20 @@ xfce_desktop_entry_get_entry (XfceDesktopEntry * desktop_entry,
     return NULL;
 }
 
+/**
+ * xfce_desktop_entry_get_string:
+ * @desktop_entry: an #XfceDesktopEntry
+ * @key: category to find value for.
+ * @translated: set to TRUE if the translated value is preferred.
+ * @value: location for the value, which will be newly allocated.
+ * @Returns: TRUE on success, FALSE on failure. @value must be freed.
+ *
+ * Finds the value for @key. When @translated is TRUE the function will use
+ * the translated value (using the current locale settings) if available or
+ * the untranslated value if no translation can be found.
+ *
+ * Since: 4.2
+**/
 gboolean
 xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
 			       const char *key, gboolean translated,
@@ -484,6 +530,18 @@ xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
     return TRUE;
 }
 
+/**
+ * xfce_desktop_entry_get_int:
+ * @desktop_entry: an #XfceDesktopEntry.
+ * @key: category to find value for.
+ * @value: location for the value.
+ * @Returns: TRUE on success, FALSE on failure.
+ *
+ * Gets a value from @desktop_entry as integer. Therefore finds the value for
+ * @key and returns its integer representation.
+ *
+ * Since: 4.2
+**/
 gboolean
 xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
 			    const char *key, int *value)
