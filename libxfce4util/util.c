@@ -345,10 +345,20 @@ xfce_putenv (const gchar *string)
   gchar* buffer;
   int result, sverrno;
   
-  if ((buffer = g_strdup(string)) != NULL) {
-    if ((result = putenv(buffer)) < 0) {
+  /*
+   * We need to use plattform malloc() here, cause g_malloc() need not
+   * to use malloc(), and we don't know about the evil interna of this
+   * plattforms putenv() implementation.
+   */
+#ifdef HAVE_STRDUP
+  if ((buffer = strdup (string)) != NULL) {
+#else
+  if ((buffer = malloc (strlen (string) + 1)) != NULL) {
+    strcpy(buffer, string);
+#endif
+    if ((result = putenv (buffer)) < 0) {
       sverrno = errno;
-      g_free(buffer);
+      free (buffer);
       errno = sverrno;
     }
   }
@@ -357,9 +367,9 @@ xfce_putenv (const gchar *string)
     result = -1;
   }
 
-  return(result);
+  return result;
 #else /* !HAVE_BROKEN_PUTENV */
-  return(putenv(string));
+  return putenv (string);
 #endif /* !HAVE_BROKEN_PUTENV */
 }
 
@@ -389,18 +399,19 @@ gint
 xfce_setenv (const gchar *name, const gchar *value, gboolean overwrite)
 {
   /* Plattforms with broken putenv() are unlikely to have a working setenv() */
-#if defined(HAVE_SETENV) || defined(HAVE_BROKEN_PUTENV)
+#if !defined(HAVE_SETENV) || defined(HAVE_BROKEN_PUTENV)
   int result = 0;
 	gchar *buf;
 
-  if (g_getenv(name) == NULL || overwrite) {
-	  buf = g_strdup_printf("%s=%s", name, value);
-	  result = xfce_putenv(buf);
+  if (g_getenv (name) == NULL || overwrite) {
+	  buf = g_strdup_printf ("%s=%s", name, value);
+	  result = xfce_putenv (buf);
+    g_free (buf);
   }
 
-  return(result);
+  return result;
 #else
-  return(setenv(name, value, overwrite));
+  return setenv (name, value, overwrite);
 #endif	/* !HAVE_SETENV */
 }
 
