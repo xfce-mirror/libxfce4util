@@ -60,6 +60,10 @@
 
 #define DEFAULT_LOCALE	"C"
 
+#ifndef PATH_MAX
+#define PATH_MAX 1024
+#endif
+
 static gchar*
 __localize_path (gchar *buffer, gsize len, const gchar *path, GFileTest test)
 {
