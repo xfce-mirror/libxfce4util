@@ -18,9 +18,18 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#ifdef HAVE_LIMITS_H
+#include <limits.h>
+#endif
+#ifdef HAVE_LOCALE_H
+#include <locale.h>
+#endif
 #include <stdlib.h>
 #include <string.h>
-#include <locale.h>
 
 #include <glib.h>
 
@@ -435,10 +444,10 @@ xfce_desktop_entry_get_entry (XfceDesktopEntry * desktop_entry,
 
     for (i = 0; i < desktop_entry->priv->num_entries; ++i, entry++)
     {
-	if (strcmp (entry->key, key) == 0)
-	{
-	    return entry;
-	}
+        if (strcmp (entry->key, key) == 0)
+        {
+            return entry;
+        }
     }
 
     return NULL;
@@ -457,15 +466,15 @@ xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
     g_return_val_if_fail (value != NULL, FALSE);
 
     if (!(entry = xfce_desktop_entry_get_entry (desktop_entry, key)))
-	return FALSE;
+        return FALSE;
 
     if (!entry->value || !strlen(entry->value))
-	return FALSE;
+        return FALSE;
 
     temp = entry->value;
     if (translated && entry->translated_value != NULL)
     {
-	temp = entry->translated_value;
+        temp = entry->translated_value;
     }
 
     *value = g_strdup (temp);
@@ -477,6 +486,7 @@ xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
 			    const char *key, int *value)
 {
     const entry_t *entry;
+    char *endptr;
     int temp;
 
     g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
@@ -484,18 +494,15 @@ xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
     g_return_val_if_fail (value != NULL, FALSE);
 
     if (!(entry = xfce_desktop_entry_get_entry (desktop_entry, key)))
-	return FALSE;
+		return FALSE;
 
     if (!entry->value || !strlen(entry->value))
-	return FALSE;
+		return FALSE;
 
-    temp = atoi (entry->value);
-
-    if (temp >= 0)
-    {
-	*value = temp;
-	return TRUE;
-    }
+    *value = (int)strtol (entry->value, &endptr, 10);
+    
+    if (*endptr == '\0')
+        return TRUE;
 
     return FALSE;
 }
