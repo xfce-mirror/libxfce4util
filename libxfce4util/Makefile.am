@@ -7,7 +7,8 @@ libxfce4utilinclude_HEADERS =					\
 	debug.h							\
 	i18n.h							\
 	utf8.h							\
-	util.h
+	util.h							\
+	xfce_desktop_entry.h
 
 libxfce4util_la_SOURCES =					\
 	debug.h							\
@@ -16,7 +17,9 @@ libxfce4util_la_SOURCES =					\
 	utf8.c							\
 	utf8.h							\
 	util.c							\
-	util.h
+	util.h							\
+	xfce_desktop_entry.c					\
+	xfce_desktop_entry.h
 
 libxfce4util_la_LDFLAGS =					\
 	-export-dynamic						\
@@ -24,12 +27,14 @@ libxfce4util_la_LDFLAGS =					\
 	-export-symbols-regex "^[^_].*"
 
 libxfce4util_la_LIBADD =					\
-	@GLIB_LIBS@
+	@GLIB_LIBS@						\
+	@GOBJECT_LIBS@
 
 libxfce4util_la_CFLAGS = 					\
 	-I$(top_srcdir)						\
 	-DNLS_ALIAS_DB=\"$(datadir)/xfce4/i18n/nls.alias\"	\
-	@GLIB_CFLAGS@
+	@GLIB_CFLAGS@						\
+	@GOBJECT_CFLAGS@
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libxfce4util-1.0.pc

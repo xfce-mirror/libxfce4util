@@ -5,14 +5,14 @@ dnl
 
 AC_INIT([libxfce4util])
 
-AM_INIT_AUTOMAKE([libxfce4util], [4.0.0])
+AM_INIT_AUTOMAKE([libxfce4util], [4.1.0])
 
 AM_CONFIG_HEADER([config.h])
 
 AM_MAINTAINER_MODE
 
 dnl libtool versioning
-LIBXFCE4UTIL_VERINFO=1:0:0
+LIBXFCE4UTIL_VERINFO=1:0:1
 AC_SUBST([LIBXFCE4UTIL_VERINFO])
 
 dnl check for UNIX variants
@@ -32,6 +32,7 @@ AC_CHECK_FUNCS([__unaliasname setlocale strlcat strlcpy gethostname])
 
 dnl Check for Glib >= 2.0 installed
 BM_DEPEND([GLIB], [glib-2.0], [2.0.0])
+BM_DEPEND([GOBJECT], [gobject-2.0], [2.0.0])
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
