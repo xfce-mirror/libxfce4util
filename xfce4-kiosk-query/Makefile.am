@@ -1,3 +1,7 @@
+INCLUDES =								\
+	-I$(top_builddir)						\
+	-I$(top_srcdir)
+
 sbin_PROGRAMS =								\
 	xfce4-kiosk-query
 

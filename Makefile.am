@@ -22,3 +22,5 @@ rpm: dist
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
 
 ACLOCAL_AMFLAGS = -I m4
+
+DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc

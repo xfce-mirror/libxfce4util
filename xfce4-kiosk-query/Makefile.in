@@ -186,6 +186,10 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
+INCLUDES = \
+	-I$(top_builddir)						\
+	-I$(top_srcdir)
+
 xfce4_kiosk_query_SOURCES = \
 	main.c
 
