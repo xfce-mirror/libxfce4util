@@ -501,14 +501,16 @@ _xfce_rc_simple_new (XfceRcSimple *shared,
   _xfce_rc_init (XFCE_RC (simple));
 
   /* attach callbacks */
-  simple->__parent__.close       = _xfce_rc_simple_close;
-  simple->__parent__.get_groups  = _xfce_rc_simple_get_groups;
-  simple->__parent__.get_entries = _xfce_rc_simple_get_entries;
-  simple->__parent__.get_group   = _xfce_rc_simple_get_group;
-  simple->__parent__.has_group   = _xfce_rc_simple_has_group;
-  simple->__parent__.set_group   = _xfce_rc_simple_set_group;
-  simple->__parent__.has_entry   = _xfce_rc_simple_has_group;
-  simple->__parent__.read_entry  = _xfce_rc_simple_read_entry;
+  simple->__parent__.close        = _xfce_rc_simple_close;
+  simple->__parent__.get_groups   = _xfce_rc_simple_get_groups;
+  simple->__parent__.get_entries  = _xfce_rc_simple_get_entries;
+  simple->__parent__.delete_group = _xfce_rc_simple_delete_group;
+  simple->__parent__.get_group    = _xfce_rc_simple_get_group;
+  simple->__parent__.has_group    = _xfce_rc_simple_has_group;
+  simple->__parent__.set_group    = _xfce_rc_simple_set_group;
+  simple->__parent__.delete_entry = _xfce_rc_simple_delete_entry;
+  simple->__parent__.has_entry    = _xfce_rc_simple_has_entry;
+  simple->__parent__.read_entry   = _xfce_rc_simple_read_entry;
 
   if (!readonly)
     {
@@ -741,6 +743,43 @@ _xfce_rc_simple_get_entries (const XfceRc *rc, const gchar *name)
 }
 
 
+void
+_xfce_rc_simple_delete_group (XfceRc *rc, const gchar *name, gboolean global)
+{
+  XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
+  Group        *group;
+  
+  if (name == NULL)
+    name = NULL_GROUP;
+  
+  for (group = simple->gfirst; group != NULL; group = group->next)
+    {      
+      if (strcmp (group->name, name) == 0)
+        {
+          if (simple->group == group || strcmp (name, NULL_GROUP) == 0)
+            {
+              /* don't delete current group or the default group, just clear them */
+              group->efirst = group->elast = NULL;
+            }
+          else
+            {
+              /* unlink group from group list */
+              if (group->prev != NULL)
+                group->prev->next = group->next;
+              else
+                simple->gfirst = group->next;
+              if (group->next != NULL)
+                group->next->prev = group->prev;
+              else
+                simple->glast = group->prev;
+            }
+          
+          break;
+        }
+    }
+}
+
+
 const gchar*
 _xfce_rc_simple_get_group (const XfceRc *rc)
 {
@@ -780,6 +819,32 @@ _xfce_rc_simple_set_group (XfceRc *rc, const gchar *name)
     name = NULL_GROUP;
 
   simple->group = simple_add_group (simple, name);
+}
+
+
+void
+_xfce_rc_simple_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
+{
+  XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
+  Entry        *entry;
+  
+  for (entry = simple->group->efirst; entry != NULL; entry = entry->next)
+    {
+      if (strcmp (entry->key, key) == 0)
+        {
+          if (entry->prev != NULL)
+            entry->prev = entry->next;
+          else
+            simple->group->efirst = entry->next;
+
+          if (entry->next != NULL)
+            entry->next = entry->prev;
+          else
+            simple->group->elast = entry->prev;
+          
+          break;
+        }
+    }
 }
 
 

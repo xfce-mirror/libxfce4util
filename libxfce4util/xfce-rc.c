@@ -332,6 +332,34 @@ xfce_rc_get_entries (const XfceRc *rc, const gchar *group)
 
 
 /**
+ * xfce_rc_delete_group:
+ * @rc     : an #XfceRc object.
+ * @group  : name of the group to delete.
+ * @global : whether to delete the group globally.
+ *
+ * If @rc is a simple config object and @group exists, it is deleted. All entries
+ * within @group will be deleted. For simple config objects, @global is ignored.
+ *
+ * If @rc is a complex config object and @group exists, it will be deleted will
+ * all entries. If @global is %TRUE, the entry will be marked as deleted globally,
+ * therefore all calls to #xfce_rc_read_entry and related functions will return
+ * the fallback values. If @global is %FALSE, the @group will be deleted in the
+ * per-user config file, and further calls to #xfce_rc_read_entry will most
+ * probably return the system-wide config entries.
+ *
+ * Since: 4.2
+ **/
+void
+xfce_rc_delete_group (XfceRc *rc, const gchar *group, gboolean global)
+{
+  g_return_if_fail (rc != NULL);
+
+  if (rc->delete_group != NULL)
+    (*rc->delete_group) (rc, group, global);
+}
+
+
+/**
  * xfce_rc_get_group:
  * @rc : an #XfceRc object.
  *
@@ -395,6 +423,28 @@ xfce_rc_set_group (XfceRc *rc, const gchar *group)
   g_return_if_fail (rc->set_group != NULL);
 
   (*rc->set_group) (rc, group);
+}
+
+
+/**
+ * xfce_rc_delete_entry:
+ * @rc     : an #XfceRc object.
+ * @key    : the key to delete.
+ * @global : whether to delete @key globally.
+ *
+ * Similar to #xfce_rc_delete_group, but works on an entry in the current
+ * group.
+ *
+ * Since: 4.2
+ **/
+void
+xfce_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
+{
+  g_return_if_fail (rc != NULL);
+  g_return_if_fail (key != NULL);
+  
+  if (rc->delete_entry != NULL)
+    (*rc->delete_entry) (rc, key, global);
 }
 
 

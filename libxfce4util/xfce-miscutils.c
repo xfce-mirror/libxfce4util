@@ -278,32 +278,34 @@ xfce_get_userfile_r (gchar *buffer, size_t length, const gchar *format, ...)
  * Return value: the joined string. The string has to be freed by the caller
  *               using g_free() when no longer needed.
  **/
-gchar *
-xfce_strjoin(const gchar *separator, gchar **strings, gint count)
+gchar*
+xfce_strjoin (const gchar *separator,
+              gchar      **strings,
+              gint         count)
 {
-	gchar *result;
-	gint length;
-	gint n;
+  gchar *result;
+  gint   length;
+  gint   n;
 
-	g_return_val_if_fail(count < 1, NULL);
-	g_return_val_if_fail(strings != NULL, NULL);
+  g_return_val_if_fail (count < 1, NULL);
+  g_return_val_if_fail (strings != NULL, NULL);
 
-	for (length = 1, n = 0; n < count; n++)
-		length += strlen(strings[n]);
+  for (length = 1, n = 0; n < count; n++)
+    length += strlen (strings[n]);
 
-	if (separator != NULL)
-		length += (count - 1) * strlen(separator);
+  if (separator != NULL)
+    length += (count - 1) * strlen (separator);
 
-	result = g_new0(gchar, length);
+  result = g_new0 (gchar, length);
 
-	for (n = 0; n < count; n++) {
-		(void)g_strlcat(result, strings[n], length);
+  for (n = 0; n < count; n++) {
+    g_strlcat (result, strings[n], length);
 
-		if (separator != NULL && n + 1 < count)
-			(void)g_strlcat(result, separator, length);
-	}
+    if (separator != NULL && n + 1 < count)
+      g_strlcat (result, separator, length);
+  }
 
-	return(result);
+  return result;
 }
 
 
@@ -438,3 +440,41 @@ xfce_setenv (const gchar *name, const gchar *value, gboolean overwrite)
 }
 
 
+/**
+ * xfce_unsetenv:
+ * @name : the name of the environment variable to unset, must not contain '='.
+ *
+ * Deletes all instances of the variables @name from the list of environment
+ * variables in the current process.
+ *
+ * Note that on some systems, the memory used for the variable and its value
+ * can't be reclaimed. Furthermore, this function can't be guaranteed to
+ * operate in a threadsafe way.
+ *
+ * Since: 4.2
+ **/
+void
+xfce_unsetenv (const gchar *name)
+{
+#if defined(HAVE_UNSETENV)
+  unsetenv (name);
+#elif GLIB_CHECK_VERSION(2,4,0)
+  g_unsetenv (name);
+#else
+  /* Adopted the GLib way of doing things, since my putenv (name + "=") does
+   * not work properly on most plattforms :-/
+   */
+  extern char **environ;
+  char **envp1;
+  char **envp2;
+  int    length;
+  
+  length = strlen (name);
+  
+  for (envp1 = envp2 = environ; *envp1 != NULL; ++envp1)
+    if (strncmp (*envp1, name, length) != 0 || (*envp1)[length] != '=')
+      *envp2++ = *envp1;
+
+  *envp2 = NULL;
+#endif
+} 

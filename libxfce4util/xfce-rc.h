@@ -54,14 +54,22 @@ const gchar* xfce_rc_get_locale              (const XfceRc *rc) G_GNUC_CONST;
 gchar**      xfce_rc_get_groups              (const XfceRc *rc) G_GNUC_CONST;
 gchar**      xfce_rc_get_entries             (const XfceRc *rc,
 					      const gchar  *group) G_GNUC_CONST;
+
+void         xfce_rc_delete_group            (XfceRc       *rc,
+                                              const gchar  *group,
+                                              gboolean      global);
 const gchar* xfce_rc_get_group               (const XfceRc *rc) G_GNUC_CONST;
 gboolean     xfce_rc_has_group               (const XfceRc *rc,
 					      const gchar  *group) G_GNUC_CONST;
 void         xfce_rc_set_group               (XfceRc       *rc,
 					      const gchar  *group);
 
+void         xfce_rc_delete_entry            (XfceRc       *rc,
+                                              const gchar  *key,
+                                              gboolean      global);
 gboolean     xfce_rc_has_entry               (const XfceRc *rc,
 					      const gchar  *key) G_GNUC_CONST;
+
 const gchar* xfce_rc_read_entry              (const XfceRc *rc,
 					      const gchar  *key,
 					      const gchar  *fallback) G_GNUC_CONST;

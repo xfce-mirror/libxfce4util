@@ -54,12 +54,14 @@ xfce_rc_close
 xfce_rc_flush
 xfce_rc_is_dirty
 xfce_rc_is_readonly
+xfce_rc_get_locale
 xfce_rc_get_groups
 xfce_rc_get_entries
+xfce_rc_delete_group
 xfce_rc_get_group
 xfce_rc_has_group
 xfce_rc_set_group
-xfce_rc_get_locale
+xfce_rc_delete_entry
 xfce_rc_has_entry
 xfce_rc_read_entry
 xfce_rc_read_entry_untranslated
@@ -101,6 +103,7 @@ xfce_strjoin
 xfce_gethostname
 xfce_putenv
 xfce_setenv
+xfce_unsetenv
 </SECTION>
 
 

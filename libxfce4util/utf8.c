@@ -25,7 +25,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <libxfce4util/utf8.h>
+#include <libxfce4util/libxfce4util.h>
 
 /* Around for compatibility. DEPRECATED! */
 gchar*

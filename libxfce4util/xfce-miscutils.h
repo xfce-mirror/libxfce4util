@@ -73,14 +73,24 @@ G_CONST_RETURN gchar* xfce_get_userfile_r (gchar *buffer,
 #elif defined(G_HAVE_GNUC_VARARGS)
 
 #define xfce_get_homefile(first_element...)	               \
-	(g_build_filename(xfce_get_homedir(),	## first_element))
+	(g_build_filename(xfce_get_homedir(), ## first_element))
 
 #define xfce_get_userfile(first_element...)	               \
-	(g_build_filename(xfce_get_userdir(),	## first_element))
+	(g_build_filename(xfce_get_userdir(), ## first_element))
 
 #else
 
-#error "Variable argument lists not support on your plattform."
+static gchar*
+xfce_get_homefile (const gchar *first_element, ...)
+{
+#error "Implement this, if you see this error!"
+}
+
+static gchar*
+xfce_get_userfile (const gchar *first_element, ...)
+{
+#error "Implement this, if you see this error!"
+}
 
 #endif
 
@@ -90,10 +100,11 @@ gchar*  xfce_strjoin (const gchar *separator,
 
 gchar*  xfce_gethostname (void) G_GNUC_PURE;
 
-gint    xfce_putenv (const gchar *string);
+gint    xfce_putenv   (const gchar *string);
 
-gint    xfce_setenv (const gchar *name,
-                     const gchar *value,
-                     gboolean overwrite);
+gint    xfce_setenv   (const gchar *name,
+                       const gchar *value,
+                       gboolean overwrite);
+void    xfce_unsetenv (const gchar *name);
 
 #endif	/* __LIBXFCE4UTIL_UTIL_H__ */

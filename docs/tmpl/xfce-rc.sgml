@@ -85,6 +85,15 @@ Opaque struct that encapsulates the resource config data.
 @Returns: 
 
 
+<!-- ##### FUNCTION xfce_rc_get_locale ##### -->
+<para>
+
+</para>
+
+@rc: 
+@Returns: 
+
+
 <!-- ##### FUNCTION xfce_rc_get_groups ##### -->
 <para>
 
@@ -102,6 +111,16 @@ Opaque struct that encapsulates the resource config data.
 @rc: 
 @group: 
 @Returns: 
+
+
+<!-- ##### FUNCTION xfce_rc_delete_group ##### -->
+<para>
+
+</para>
+
+@rc: 
+@group: 
+@global: 
 
 
 <!-- ##### FUNCTION xfce_rc_get_group ##### -->
@@ -132,13 +151,14 @@ Opaque struct that encapsulates the resource config data.
 @group: 
 
 
-<!-- ##### FUNCTION xfce_rc_get_locale ##### -->
+<!-- ##### FUNCTION xfce_rc_delete_entry ##### -->
 <para>
 
 </para>
 
 @rc: 
-@Returns: 
+@key: 
+@global: 
 
 
 <!-- ##### FUNCTION xfce_rc_has_entry ##### -->
