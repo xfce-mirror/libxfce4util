@@ -48,7 +48,7 @@ struct _XfceDesktopEntryPrivate
 {
     char *file;
     char *locale;
-
+    gchar *data;
     entry_t *entries;
     int num_entries;
 };
@@ -148,6 +148,7 @@ xfce_desktop_entry_finalize (GObject *object)
     int i;
 
     g_free (priv->file);
+    g_free (priv->data);
 
     for (i = 0; i < priv->num_entries; i++)
     {
@@ -169,6 +170,37 @@ xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry)
 }
 
 XfceDesktopEntry *
+xfce_desktop_entry_new_from_data (const char *data, const char **categories,
+				  int num_categories)
+{
+    XfceDesktopEntry *desktop_entry;
+    XfceDesktopEntryPrivate *priv;
+    int i;
+    entry_t *entry;
+
+    g_return_val_if_fail (data != NULL, NULL);
+    g_return_val_if_fail (categories != NULL, NULL);
+
+    desktop_entry = g_object_new (XFCE_TYPE_DESKTOP_ENTRY, NULL);
+
+    priv = desktop_entry->priv;
+
+    priv->file = g_strdup (""); /* or "data" or ... */
+    priv->data = g_strdup (data);
+    priv->entries = g_new0 (entry_t, num_categories);
+    priv->num_entries = num_categories;
+
+    entry = &(priv->entries[0]);
+
+    for (i = 0; i < priv->num_entries; ++i, entry++)
+    {
+	entry->key = g_strdup (categories[i]);
+    }
+
+    return desktop_entry;
+}
+
+XfceDesktopEntry *
 xfce_desktop_entry_new (const char *file, const char **categories,
 			int num_categories)
 {
@@ -187,6 +219,17 @@ xfce_desktop_entry_new (const char *file, const char **categories,
     priv->file = g_strdup (file);
     priv->entries = g_new0 (entry_t, num_categories);
     priv->num_entries = num_categories;
+
+    g_return_val_if_fail (g_file_test (priv->file, 
+			               G_FILE_TEST_EXISTS), NULL);
+   
+    if (!g_file_get_contents (priv->file, &(priv->data), NULL, NULL))
+    {
+	g_warning ("Could not get contents of file %s",
+		   priv->file);
+	
+	return NULL;
+    }
 
     entry = &(priv->entries[0]);
 
@@ -306,22 +349,9 @@ xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 
     g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
 
-    /* FIXME: should object creation fail instead ? */
-    g_return_val_if_fail (g_file_test (desktop_entry->priv->file, 
-				   G_FILE_TEST_EXISTS), FALSE);
-    
     current_locale = g_strdup (setlocale (LC_MESSAGES, NULL));
 
-    if (!g_file_get_contents (desktop_entry->priv->file, &contents, NULL, NULL))
-    {
-	g_warning ("Could not get contents of file %s",
-		   desktop_entry->priv->file);
-
-	return FALSE;
-    }
-
-    lines = g_strsplit (contents, "\n", -1);
-    g_free (contents);
+    lines = g_strsplit (desktop_entry->priv->data, "\n", -1);
     
     for (p = lines; *p != NULL; ++p)
     {

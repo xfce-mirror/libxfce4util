@@ -65,6 +65,9 @@ GType xfce_desktop_entry_get_type (void) G_GNUC_CONST;
 G_CONST_RETURN 
 char *xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry);
 
+XfceDesktopEntry *xfce_desktop_entry_new_from_data (const char *data,
+						    const char **categories,
+						    int num_categories);
 XfceDesktopEntry *xfce_desktop_entry_new (const char *file, 
     					  const char **categories,
 					  int num_categories);
