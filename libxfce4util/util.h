@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003 Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+ * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,20 +33,34 @@
 
 /* save way to get path to users home directory and files below */
 extern G_CONST_RETURN gchar *xfce_get_homedir(void);
-#define xfce_get_homefile(first_element...)	\
-	(g_build_filename(xfce_get_homedir(),	\
-		## first_element))
 
 extern G_CONST_RETURN gchar *xfce_get_homefile_r(gchar *buffer,
 		size_t length, const gchar *format, ...);
 
 /* save way to get path to users ".xfce4" directory */
 extern G_CONST_RETURN gchar *xfce_get_userdir(void);
-#define xfce_get_userfile(first_element...)	\
-	(g_build_filename(xfce_get_userdir(),	\
-		## first_element))
 
 extern G_CONST_RETURN gchar *xfce_get_userfile_r(gchar *buffer,
 		size_t length, const gchar *format, ...);
+
+#if defined(G_HAVE_ISO_VARARGS)
+
+#define xfce_get_homefile(...)                             \
+  (g_build_filename (xfce_get_homedir (), __VA_ARGS__))
+
+#define xfce_get_userfile(...)                             \
+  (g_build_filename (xfce_get_userdir (), __VA_ARGS__))
+
+#elif defined(G_HAVE_GNUC_VARARGS)
+
+#define xfce_get_homefile(first_element...)	               \
+	(g_build_filename(xfce_get_homedir(),	## first_element))
+
+#define xfce_get_userfile(first_element...)	               \
+	(g_build_filename(xfce_get_userdir(),	## first_element))
+
+#else
+#error "Variable argument lists not support on your plattform."
+#endif
 
 #endif	/* __LIBXFCE4UTIL_UTIL_H__ */

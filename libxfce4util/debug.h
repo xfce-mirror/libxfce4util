@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003 Benedikt Meurer (benedikt.meurer@unix-ag.uni-siegen.de)
+ * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,9 +27,12 @@
 #ifndef __LIBXFCE4UTIL_DEBUG_H__
 #define __LIBXFCE4UTIL_DEBUG_H__
 
-#if defined(DEBUG) && DEBUG > 0
-
 #include <stdio.h>
+
+#include <glib.h>
+
+#if defined(DEBUG) && (DEBUG > 0) && (defined(G_HAVE_ISO_VARARGS) \
+                                        || defined(G_HAVE_GNUC_VARARGS))
 
 #if defined(__NetBSD__) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
 #define __DBG_FUNC__    __func__
@@ -39,32 +42,56 @@
 #define __DBG_FUNC__    "??"
 #endif
 
-#define DBG(fmt, args...)                                                   \
+#if defined(G_HAVE_ISO_VARARGS)
+
+#define DBG(...)                G_STMT_START{                               \
+    fprintf(stderr, "DBG[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+    fprintf(stderr, __VA_ARGS__);                                           \
+    fprintf(stderr, "\n");                                                  \
+}G_STMT_END
+
+#elif defined(G_HAVE_GNUC_VARARGS)
+
+#define DBG(fmt, args...)       G_STMT_START{                               \
 {                                                                           \
     fprintf(stderr, "DBG[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
     fprintf(stderr, fmt, ##args);                                           \
     fprintf(stderr, "\n");                                                  \
-}
+}G_STMT_END
 
-#if defined(DEBUG_TRACE) && DEBUG_TRACE > 0
+#endif
 
-#define TRACE(fmt, args...)						    \
+#if defined(DEBUG_TRACE) && (DEBUG_TRACE > 0)
+
+#if defined(G_HAVE_ISO_VARARGS)
+
+#define TRACE(...)              G_STMT_START{                               \
+    fprintf(stderr, "TRACE[%s:%d] %s(): ",__FILE__,__LINE__,__DBG_FUNC__);  \
+    fprintf(stderr, __VA_ARGS__);                                           \
+    fprintf(stderr, "\n");                                                  \
+}G_STMT_END
+
+#elif defined (G_HAVE_GNUC_VARARGS)
+
+#define TRACE(fmt, args...)     G_STMT_START{                               \
 {                                                                           \
     fprintf(stderr, "TRACE[%s:%d] %s(): ",__FILE__,__LINE__,__DBG_FUNC__);  \
     fprintf(stderr, fmt, ##args);                                           \
     fprintf(stderr, "\n");                                                  \
-}
+}G_STMT_END
+
+#endif
 
 #else /* !defined(DEBUG_TRACE) || DEBUG_TRACE <= 0 */
 
-#define TRACE(fmt, args...) { do {} while(0); }
+#define TRACE(...) G_STMT_START{ (void)0; }G_STMT_END
 
 #endif
 
 #else /* !defined(DEBUG) || DEBUG <= 0 */
 
-#define DBG(fmt, args...)   { do {} while(0); }
-#define TRACE(fmt, args...) { do {} while(0); }
+#define DBG(...)   G_STMT_START{ (void)0; }G_STMT_END
+#define TRACE(...) G_STMT_START{ (void)0; }G_STMT_END
 
 #endif
 

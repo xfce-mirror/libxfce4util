@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+ * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -117,14 +117,10 @@ do {									\
 
 #endif
 
-#ifndef XFCE_DISABLE_DEPRECATED
-
 extern gchar *	xfce_get_file_localized(const gchar *);
 extern gchar *	xfce_get_dir_localized(const gchar *);
 extern gchar *	xfce_get_file_localized_r(gchar *, gsize, const gchar *);
 extern gchar *	xfce_get_dir_localized_r(gchar *, gsize, const gchar *);
-
-#endif
 
 /* */
 extern gchar *	xfce_get_path_localized(gchar *, gsize, const gchar *,
