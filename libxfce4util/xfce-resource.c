@@ -46,8 +46,8 @@
 #define TYPE_VALID(t) ((t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
 
 
-static gchar*   _save[5] = { NULL, };
-static GList*   _list[5] = { NULL, };
+static gchar*   _save[5] = { NULL, NULL, NULL, NULL, NULL };
+static GList*   _list[5] = { NULL, NULL, NULL, NULL, NULL };
 static gboolean _inited = FALSE;
 
 
@@ -150,7 +150,7 @@ _res_init (void)
   if (!xfce_mkdirhier (dir, 0700, NULL))
     {
       g_warning ("Invalid XDG_DATA_HOME directory `%s', program may "
-		 "behave incorretly.", dir);
+		 "behave incorrectly.", dir);
     }
   _save[XFCE_RESOURCE_DATA] = g_strdup (dir);
   _list[XFCE_RESOURCE_DATA] = g_list_prepend (_list[XFCE_RESOURCE_DATA],
@@ -393,7 +393,6 @@ xfce_resource_dirs (XfceResourceType type)
       paths[pos] = g_strdup ((const gchar *) l->data);
       ++pos;
     }
-
   paths[pos] = NULL;
 
   return paths;
@@ -633,6 +632,8 @@ xfce_resource_push_path (XfceResourceType type,
   g_return_if_fail (TYPE_VALID (type));
   g_return_if_fail (path != NULL);
 
+  _res_init ();
+
   _list[type] = g_list_append (_list[type], g_strdup (path));
 }
 
@@ -654,6 +655,8 @@ xfce_resource_pop_path (XfceResourceType type)
   GList *l;
 
   g_return_if_fail (TYPE_VALID (type));
+
+  _res_init ();
 
   l = g_list_last (_list[type]);
   if (G_LIKELY (l != NULL))
