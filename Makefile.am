@@ -1,4 +1,4 @@
-SUBDIRS = i18n libxfce4util m4 docs
+SUBDIRS = libxfce4util m4 docs
 
 EXTRA_DIST =								\
 	AUTHORS								\

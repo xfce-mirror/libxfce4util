@@ -86,103 +86,9 @@
 
 #define DEFAULT_LOCALE	"C"
 
-#if defined(__NetBSD__) && defined(HAVE___UNALIASNAME)
-/*
- * NetBSD has the __unaliasname function in -lc
- */
-
-extern const char *__unaliasname(const char *, const char *, void *, size_t);
-
-#else
-G_INLINE_FUNC int
-__is_ws(gchar ch)
-{
-	return(ch == ' ' || ch == '\t');
-}
-
-G_INLINE_FUNC G_CONST_RETURN gchar *
-__unaliasname(const gchar *dbname, const gchar *alias, gpointer buf,
-		gsize bufsize)
-{
-	FILE *fp;
-	const gchar *result = alias;
-	gsize resultlen;
-	gsize aliaslen;
-	const gchar *p;
-	gchar __buf[PATH_MAX + 1];
-	gsize len;
-
-	if ((fp = fopen(dbname, "r")) == NULL)
-		goto quit;
-
-	aliaslen = strlen(alias);
-
-	for (;;) {
-		if ((p = fgets(__buf, sizeof(__buf), fp)) == NULL)
-			goto quit; /* eof or error */
-
-		len = strlen(p);
-
-		/* ignore terminating NL */
-		if (p[len - 1] == '\n')
-			len--;
-
-		/* ignore null line and comment */
-		if (len == 0 || p[0] == '#')
-			continue;
-
-		if (aliaslen > len)
-			continue;
-
-		if (memcmp(alias, p, aliaslen))
-			continue;
-
-		p += aliaslen;
-		len -= aliaslen;
-
-		if (len == 0 || !__is_ws(*p))
-			continue;
-
-		/* entry was found here */
-		break;
-
-		/* NOTREACHED */
-	}
-
-	/* skip white spaces */
-	do {
-		p++;
-		len--;
-	} while (len != 0 && __is_ws(*p));
-
-	if (len == 0)
-		goto quit;
-
-	/* count length of result */
-	resultlen = 0;
-	while (resultlen < len && !__is_ws(*p))
-		resultlen++;
-
-	/* check if space is enough */
-	if (bufsize < resultlen + 1)
-		goto quit;
-
-	memcpy(buf, p, resultlen);
-	((gchar *)buf)[resultlen] = 0;
-	result = buf;
-
-quit:
-	if (fp)
-		fclose(fp);
-
-	return(result);
-}
-#endif
-
 static gchar *
 __localize_path(gchar *buffer, gsize len, const gchar *path, GFileTest test)
 {
-	gchar langbuf[PATH_MAX];
 	const gchar *lang;
 	char delim[] = { '.', '@', '_' };
 	int i;
@@ -193,9 +99,6 @@ __localize_path(gchar *buffer, gsize len, const gchar *path, GFileTest test)
 		lang = getenv("LANG");
 
 	if (lang != NULL && !strchr(lang, '/')) {
-		lang = __unaliasname(NLS_ALIAS_DB, lang, langbuf,
-				sizeof(langbuf));
-
 		/* ok, we will try four things here
 		   - full locale name:         ll_LL@qualifier.encoding
 		   - locale without encoding:  ll_LL@qualifier

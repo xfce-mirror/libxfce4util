@@ -182,7 +182,7 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-SUBDIRS = i18n libxfce4util m4 docs
+SUBDIRS = libxfce4util m4 docs
 EXTRA_DIST = \
 	AUTHORS								\
 	COPYING								\
