@@ -68,8 +68,7 @@ dnl check for standard header files
 AC_HEADER_STDC
 AC_CHECK_HEADERS([err.h errno.h limits.h locale.h sys/stat.h sys/types.h \
   sys/utsname.h sys/wait.h unistd.h])
-AC_CHECK_FUNCS([gethostname setenv setlocale strdup strlcat strlcpy \
-  unsetenv])
+AC_CHECK_FUNCS([gethostname setenv setlocale strdup unsetenv])
 
 dnl Check for GObject >= 2.0.0 installed (GObject in turn depends on GLib)
 BM_DEPEND([GOBJECT], [gobject-2.0], [2.0.0])
