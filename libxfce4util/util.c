@@ -44,8 +44,8 @@
 
 /**
  * environment variable the user can set to change the path to
- * the users .xfce4 directory (see also the command line option
- * --xfce-userdir=DIR in xfce_init) at runtime
+ * the users .xfce4 directory. If not set, the xfce_userdir defaults
+ * to "$HOME/.xfce4".
  */
 #define	XFCE4HOME_ENVVAR	"XFCE4HOME"
 

@@ -37,13 +37,10 @@ extern G_CONST_RETURN gchar *xfce_get_homedir(void);
 	(g_build_filename(xfce_get_homedir(),	\
 		## first_element))
 
+/* save way to get path to users ".xfce4" directory */
 extern G_CONST_RETURN gchar *xfce_get_userdir(void);
 #define xfce_get_userfile(first_element...)	\
 	(g_build_filename(xfce_get_userdir(),	\
 		## first_element))
-
-/* string utility functions */
-#define	xfce_strequal(s1, s2)	(!strcmp(s1, s2))
-#define xfce_strnequal(s1, s2)	(!strncmp(s1, s2, n))
 
 #endif	/* __LIBXFCE4UTIL_UTIL_H__ */

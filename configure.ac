@@ -34,11 +34,10 @@ AC_CHECK_HEADERS(err.h)
 dnl Check for Glib >= 2.0 installed
 PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.0.0)
 
-dnl Check for debugging support
-AM_DEBUG_SUPPORT
-CFLAGS="$CFLAGS $DEBUG_CFLAGS"
-
 AC_SUBST(LIBXFCE4UTIL_VERINFO)
+
+dnl Check for debugging support
+BM_DEBUG_SUPPORT
 
 AC_OUTPUT([
 Makefile
