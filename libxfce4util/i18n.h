@@ -30,12 +30,12 @@
 /*
  * gettext macros
  */
-#if defined(ENABLE_NLS) && defined(PACKAGE)
+#if defined(ENABLE_NLS) && defined(GETTEXT_PACKAGE)
 
 #include <libintl.h>
 
 #undef	_
-#define	_(s)			(dgettext(PACKAGE, s))
+#define	_(s)			(dgettext(GETTEXT_PACKAGE, s))
 
 #ifdef gettext_noop
 #define N_(s)			(gettext_noop(s))
@@ -43,7 +43,7 @@
 #define N_(s)			(s)
 #endif
 
-#else /* !defined(ENABLE_NLS) || !defined(PACKAGE) */
+#else /* !defined(ENABLE_NLS) || !defined(GETTEXT_PACKAGE) */
 
 #define _(s)	(s)
 #define N_(s)	(s)
