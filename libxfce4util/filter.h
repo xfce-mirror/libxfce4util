@@ -35,9 +35,10 @@ typedef struct _XfceFilterList	XfceFilterList;
 
 struct _XfceFilter
 {
-	gint	argc;
+	guint	argc;
 	gchar	**argv;
 	gchar	*command;
+	guint	size;
 };
 
 struct _XfceFilterList

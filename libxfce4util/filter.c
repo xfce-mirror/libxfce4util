@@ -47,8 +47,9 @@ xfce_filter_new(const gchar *command)
 
 	filter = g_new0(XfceFilter, 1);
 
-	/* XXX */
+	filter->argc = 0;
 	filter->argv = g_new0(gchar *, 40);
+	filter->size = 40;
 
 	filter->argv[0] = g_path_get_basename(command);
 	filter->command = g_strdup(command);
@@ -81,9 +82,16 @@ xfce_filter_add(XfceFilter *filter, const gchar *format, ...)
 	g_return_if_fail(filter != NULL);
 	g_return_if_fail(format != NULL);
 
-	va_start(ap, format);
-	filter->argv[++filter->argc] = g_strdup_vprintf(format, ap);
-	va_end(ap);
+	if (++filter->argc < filter->size) {
+		va_start(ap, format);
+		filter->argv[filter->argc] = g_strdup_vprintf(format, ap);
+		va_end(ap);
+	}
+	else {
+		g_warning(
+			"Unable to add another option. Dynamic resizing "
+			"no implemented yet.");
+	}
 }
 
 XfceFilterList *
