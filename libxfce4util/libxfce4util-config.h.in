@@ -28,10 +28,6 @@
 #ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_CONFIG_H__
 #define __LIBXFCE4UTIL_LIBXFCE4UTIL_CONFIG_H__
 
-#ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
-#error  "Do not include <libxfce4util/libxfce4util-config.h> directly. Include <libxfce4util/libxfce4util.h> instead."
-#endif
-
 #include <glib.h>
 
 G_BEGIN_DECLS;

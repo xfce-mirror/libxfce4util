@@ -29,7 +29,7 @@
 
 #include <stdio.h>
 
-#include <glib.h>
+#include <libxfce4util/libxfce4util-config.h>
 
 #if defined(DEBUG) && (DEBUG > 0) && (defined(G_HAVE_ISO_VARARGS) \
                                         || defined(G_HAVE_GNUC_VARARGS))
