@@ -1,3 +1,21 @@
+2004-10-21 19:47  benny
+
+	* docs/: Makefile.am, Makefile.in: Fix build w/o gtk-doc.
+
+2004-10-16 18:09  benny
+
+	* libxfce4util/xfce-kiosk.c: Check parameters in exported
+	  functions.
+
+2004-10-07 22:35  benny
+
+	* configure, ltmain.sh, m4/debug.m4: Added --enable-final (-O1 for
+	  GNU ld) as per Jaspers request. Added missing m4 files.
+
+2004-10-02 15:28  olivier
+
+	* ChangeLog, configure, ltmain.sh: Update all files for 4.2 beta 1
+
 2004-09-27 19:54  jasper
 
 	* configure, configure.ac: Update version to 4.1.90
