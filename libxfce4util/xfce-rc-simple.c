@@ -843,6 +843,7 @@ _xfce_rc_simple_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
           else
             simple->group->elast = entry->prev;
           
+          simple->dirty = TRUE;
           break;
         }
     }
