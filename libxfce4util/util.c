@@ -32,6 +32,9 @@
 #include <err.h>
 #endif
 #include <errno.h>
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
 #ifdef HAVE_STAD_ARG_H
 #include <stdarg.h>
 #elif HAVE_VARARGS_H
@@ -41,12 +44,27 @@
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
+#ifdef HAVE_STRING_H
+#include <string.h>
+#endif
 
 #include <glib.h>
 
 #include "util.h"
 
+/*
+ * Use glib replacements
+ */
+#ifndef HAVE_STRLCAT
+#define strlcat		g_strlcat
+#endif
 
+#ifndef HAVE_STRLCPY
+#define strlcpy		g_strlcpy
+#endif
+
+
+/* */
 #define XFCE4DIR		".xfce4"
 
 /**
@@ -105,10 +123,10 @@ __get_file_r(const gchar *dir, gchar *buffer, size_t len,
 	g_return_val_if_fail(format != NULL, NULL);
 	g_return_val_if_fail(len > 0, NULL);
 
-	if ((n = g_strlcpy(buffer, dir, len)) >= len)
+	if ((n = strlcpy(buffer, dir, len)) >= len)
 		return(NULL);
 
-	if ((n = g_strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
+	if ((n = strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
 		return(NULL);
 
 	if (g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)

@@ -11,6 +11,10 @@ AM_INIT_AUTOMAKE(libxfce4util, 0.2)
 
 AM_MAINTAINER_MODE
 
+dnl libtool versioning
+LIBXFCE4UTIL_VERINFO=0:2
+AC_SUBST(LIBXFCE4UTIL_VERINFO)
+
 dnl check for UNIX variants
 AC_AIX
 AC_ISC_POSIX
@@ -24,13 +28,10 @@ AC_PROG_LIBTOOL
 dnl check for standard header files
 AC_HEADER_STDC
 AC_CHECK_HEADERS(err.h sys/wait.h)
+AC_CHECK_FUNCS([strlcat strlcpy])
 
 dnl Check for Glib >= 2.0 installed
 BM_DEPEND(GLIB, glib-2.0, 2.0.0)
-
-dnl libtool versioning
-LIBXFCE4UTIL_VERINFO=0:0
-AC_SUBST(LIBXFCE4UTIL_VERINFO)
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
