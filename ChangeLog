@@ -1,3 +1,100 @@
+2003-07-06 11:15  bmeurer
+
+	* TODO: New todo item.
+
+2003-07-05 14:31  xfce
+
+	* Makefile.in, ltconfig: Remove ltconfig script as it is generated
+
+2003-07-05 01:37  xfce
+
+	* Makefile.in, aclocal.m4, configure, ltcf-c.sh: libttol update and
+	all
+
+2003-07-05 00:30  bmeurer
+
+	* TODO: Added TODO about "XDG Base Directory Specification"
+
+2003-07-04 23:03  bmeurer
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, ltmain.sh,
+	i18n/Makefile.in, libxfce4util/Makefile.in, m4/Makefile.in: libtool
+	updated to 1.5.
+
+2003-07-03 21:57  xfce
+
+	* libxfce4util/util.c: Rename fns starting with __* to internal_*
+	("__" should be avoided as some linker use this for their own use)
+
+2003-07-02 14:32  bmeurer
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, ltmain.sh,
+	i18n/Makefile.in, libxfce4util/Makefile.in, libxfce4util/utf8.h,
+	m4/Makefile.in: Cleanups.
+
+2003-07-01 22:44  xfce
+
+	* configure, configure.ac, libxfce4util/Makefile.am,
+	libxfce4util/Makefile.in, libxfce4util/utf8.c, libxfce4util/utf8.h:
+	Add utf8 utility (used in libxfcegui4 and xfwm4)
+
+2003-06-28 11:46  xfce
+
+	* Makefile.in, aclocal.m4, config.h.in, configure, configure.ac,
+	ltmain.sh, i18n/Makefile.in, libxfce4util/Makefile.in,
+	m4/Makefile.in: Update to libtool-1.5 Use proper complete
+	CURRENT:REVISION:AGE scheme for lib versionning
+
+2003-06-21 22:18  bmeurer
+
+	* libxfce4util/debug.h: Cleanup
+
+2003-06-21 22:17  bmeurer
+
+	* libxfce4util/i18n.h: Added note.
+
+2003-06-15 11:50  bmeurer
+
+	* libxfce4util/i18n.h: TRy to force CVS to update to 1.7
+
+2003-06-14 23:53  bmeurer
+
+	* NEWS, TODO, libxfce4util/i18n.c, libxfce4util/i18n.h, m4/i18n.m4:
+	Introduced xfce_textdomain()
+
+2003-06-10 21:51  bmeurer
+
+	* libxfce4util/Makefile.in, libxfce4util/i18n.h, m4/Makefile.in:
+	Added xfce_get_path_localized(). Updated to 3.91.0
+
+2003-06-10 21:47  bmeurer
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	configure.ac, install-sh, ltcf-c.sh, ltconfig, ltmain.sh,
+	i18n/Makefile.in: Added xfce_get_path_localized(). Updated to
+	3.91.0
+
+2003-06-06 23:36  xfce
+
+	* aclocal.m4, configure, configure.ac, ltcf-c.sh, ltconfig,
+	ltmain.sh: Versionning scheme
+
+2003-06-06 00:00  bmeurer
+
+	* INSTALL, Makefile.in, aclocal.m4, config.guess, config.sub,
+	configure, configure.ac, ltcf-c.sh, ltconfig, ltmain.sh,
+	i18n/Makefile.in, libxfce4util/Makefile.in, libxfce4util/i18n.c,
+	libxfce4util/i18n.h, m4/Makefile.in, m4/depends.m4: Updated version
+	to 3.90.0
+
+2003-05-25 17:02  bmeurer
+
+	* i18n/nls.alias: Added catalan aliases.
+
+2003-05-15 13:03  huysmans
+
+	* ChangeLog: Mass update of ChangeLogs
+
 2003-05-04 16:02  huysmans
 
 	* Makefile.am, Makefile.in, aclocal.m4, config.guess, config.sub,
