@@ -23,7 +23,7 @@ AC_PROG_LIBTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS(err.h)
+AC_CHECK_HEADERS(err.h sys/wait.h)
 
 dnl Check for Glib >= 2.0 installed
 BM_DEPEND(GLIB, glib-2.0, 2.0.0)

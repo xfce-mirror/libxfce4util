@@ -5455,7 +5455,8 @@ _ACEOF
 fi
 
 
-for ac_header in err.h
+
+for ac_header in err.h sys/wait.h
 do
 as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
 if eval "test \"\${$as_ac_Header+set}\" = set"; then
@@ -5720,11 +5721,11 @@ cat >>confdefs.h <<\_ACEOF
 _ACEOF
 
     if test x$ac_cv_debug == xfull; then
-      CFLAGS="$CFLAGS -g3 -Wall -Werror"
+      CFLAGS="$CFLAGS -g3 -Wall -Werror -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
       echo "$as_me:$LINENO: result: full" >&5
 echo "${ECHO_T}full" >&6
     else
-      CFLAGS="$CFLAGS -g -Wall"
+      CFLAGS="$CFLAGS -g -Wall -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
       echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
     fi

@@ -27,7 +27,6 @@ libxfce4util_la_LIBADD =					\
 
 libxfce4util_la_CFLAGS = 					\
 	-I$(srcdir)						\
-	@CFLAGS@						\
 	@GLIB_CFLAGS@
 
 pkgconfigdir = $(libdir)/pkgconfig
