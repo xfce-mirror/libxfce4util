@@ -1,3 +1,17 @@
+2003-09-10 09:39  huysmans
+
+	* configure, configure.ac: Update version numbers and po files for
+	release
+
+2003-08-28 18:09  edscott
+
+	* libxfce4util/i18n.h: supress compiler warnings because of intl
+	macro redefinitions
+
+2003-08-26 09:38  huysmans
+
+	* ChangeLog: Update changelogs
+
 2003-08-07 21:04  huysmans
 
 	* libxfce4util/i18n.c: Make i18n work
