@@ -9,5 +9,10 @@ m4_DATA =								\
 	depends.m4							\
 	i18n.m4
 
+noinst_DATA =								\
+	gtk-doc.m4							\
+	pkg.m4
+
 EXTRA_DIST =								\
-	$(m4_DATA)
+	$(m4_DATA)							\
+	$(noinst_DATA)

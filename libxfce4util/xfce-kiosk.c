@@ -79,7 +79,10 @@ static gchar        *usrname  = NULL;
 static gchar       **groups;
 static time_t        kiosktime = 0;
 static const gchar  *kioskdef = NULL;
-static XfceRc       *kioskrc;
+static XfceRc       *kioskrc = NULL;
+
+
+G_LOCK_DEFINE_STATIC (kiosk_lock);
 
 
 /**
@@ -117,9 +120,10 @@ xfce_kiosk_new (const gchar *module)
  * @kiosk:
  * @capability:
  *
- * FIXME
+ * Queries the @kiosk object for a given capability and returns %TRUE if
+ * the current user has the @capability, else %FALSE.
  *
- * Return value:
+ * Return value: %TRUE if the current user has the @capability, else %FALSE.
  *
  * Since: 4.2
  **/
@@ -178,7 +182,7 @@ xfce_kiosk_query (const XfceKiosk *kiosk,
  * xfce_kiosk_free:
  * @kiosk: a valid XfceKiosk object.
  *
- * FIXME
+ * Frees the @kiosk object.
  *
  * Since: 4.2
  */
@@ -207,8 +211,13 @@ xfce_kiosk_lookup (const XfceKiosk *kiosk,
 
   if (G_UNLIKELY (kioskrc != NULL))
     {
+      G_LOCK (kiosk_lock);
+
       xfce_rc_set_group (kioskrc, kiosk->module_name);
       value = xfce_rc_read_entry (kioskrc, capability, NULL);
+
+      G_UNLOCK (kiosk_lock);
+
       if (value != NULL)
         return value;
     }
@@ -241,10 +250,15 @@ xfce_kiosk_init (void)
   int            m;
   time_t         time;
 
+  G_LOCK (kiosk_lock);
+
   /* reload kioskrc */
   time = mtime (KIOSKRC);
   if (time > kiosktime || kioskdef == NULL)
     {
+      if (kioskrc != NULL)
+        xfce_rc_close (kioskrc);
+
       kiosktime = time;
       kioskrc = xfce_rc_simple_open (KIOSKRC, TRUE);
       if (kioskrc != NULL)
@@ -259,12 +273,18 @@ xfce_kiosk_init (void)
     }
 
   if (G_LIKELY (usrname != NULL))
-    return TRUE;
+    {
+      G_UNLOCK (kiosk_lock);
+      return TRUE;
+    }
 
   /* determine user name */
   pw = getpwuid (getuid ());
   if (G_UNLIKELY (pw == NULL))
-    return FALSE;
+    {
+      G_UNLOCK (kiosk_lock);
+      return FALSE;
+    }
   usrname = g_strdup (pw->pw_name);
 
   /* query user groups */
@@ -272,6 +292,7 @@ xfce_kiosk_init (void)
   if (G_UNLIKELY (gidsetlen < 0))
     {
       g_free (usrname); usrname = NULL;
+      G_UNLOCK (kiosk_lock);
       return FALSE;
     }
   groups = g_new (gchar *, gidsetlen + 1);
@@ -283,6 +304,7 @@ xfce_kiosk_init (void)
     }
   groups[m] = NULL;
 
+  G_UNLOCK (kiosk_lock);
   return TRUE;
 }
 
