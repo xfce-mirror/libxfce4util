@@ -68,7 +68,6 @@ MyDoubleStack *my_stack = xfce_stack_new (MyDoubleStack);
 @StackType: Type of stack declared with #XFCE_GENERIC_STACK.
 
 
-
 <!-- ##### MACRO xfce_stack_free ##### -->
 <para>
 Frees a stack, that was allocated using #xfce_stack_new.
