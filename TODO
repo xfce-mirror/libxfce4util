@@ -1,5 +1,8 @@
 Todo list for libxfce4util:
 ---------------------------
 
-	- Make xfce_textdomain() a C function and check for gettext framework in
-	  libxfce4util's configure
+	- Make xfce_textdomain() a C function and check for gettext framework
+	  in libxfce4util's configure
+	
+	- Conform to the "XDG Base Directory Specification"
+	  http://www.freedesktop.org/standards/basedir/draft/basedir-spec/basedir-spec.html
