@@ -138,10 +138,7 @@ m4_DATA = \
 
 
 EXTRA_DIST = \
-	X11.m4								\
-	debug.m4							\
-	depends.m4							\
-	i18n.m4
+	$(m4_DATA)
 
 subdir = m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs

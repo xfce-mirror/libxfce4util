@@ -131,19 +131,14 @@ libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
 
 libxfce4utilinclude_HEADERS = \
 	debug.h							\
-	filter.h						\
 	i18n.h							\
-	option.h						\
 	util.h
 
 
 libxfce4util_la_SOURCES = \
-	filter.c						\
-	filter.h						\
+	debug.h							\
 	i18n.c							\
 	i18n.h							\
-	option.c						\
-	option.h						\
 	util.c							\
 	util.h
 
@@ -172,17 +167,14 @@ CONFIG_CLEAN_FILES = libxfce4util-1.0.pc
 LTLIBRARIES = $(lib_LTLIBRARIES)
 
 libxfce4util_la_DEPENDENCIES =
-am_libxfce4util_la_OBJECTS = libxfce4util_la-filter.lo \
-	libxfce4util_la-i18n.lo libxfce4util_la-option.lo \
+am_libxfce4util_la_OBJECTS = libxfce4util_la-i18n.lo \
 	libxfce4util_la-util.lo
 libxfce4util_la_OBJECTS = $(am_libxfce4util_la_OBJECTS)
 
 DEFAULT_INCLUDES =  -I. -I$(srcdir) -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
-@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libxfce4util_la-filter.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-i18n.Plo \
-@AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-option.Plo \
+@AMDEP_TRUE@DEP_FILES = ./$(DEPDIR)/libxfce4util_la-i18n.Plo \
 @AMDEP_TRUE@	./$(DEPDIR)/libxfce4util_la-util.Plo
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -248,9 +240,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-filter.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-i18n.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-option.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libxfce4util_la-util.Plo@am__quote@
 
 distclean-depend:
@@ -289,39 +279,6 @@ distclean-depend:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LTCOMPILE) -c -o $@ `test -f '$<' || echo '$(srcdir)/'`$<
 
-libxfce4util_la-filter.o: filter.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-filter.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-filter.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-filter.o `test -f 'filter.c' || echo '$(srcdir)/'`filter.c; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-filter.Tpo" "$(DEPDIR)/libxfce4util_la-filter.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-filter.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='filter.c' object='libxfce4util_la-filter.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-filter.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-filter.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-filter.o `test -f 'filter.c' || echo '$(srcdir)/'`filter.c
-
-libxfce4util_la-filter.obj: filter.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-filter.obj -MD -MP -MF "$(DEPDIR)/libxfce4util_la-filter.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-filter.obj `if test -f 'filter.c'; then $(CYGPATH_W) 'filter.c'; else $(CYGPATH_W) '$(srcdir)/filter.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-filter.Tpo" "$(DEPDIR)/libxfce4util_la-filter.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-filter.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='filter.c' object='libxfce4util_la-filter.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-filter.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-filter.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-filter.obj `if test -f 'filter.c'; then $(CYGPATH_W) 'filter.c'; else $(CYGPATH_W) '$(srcdir)/filter.c'; fi`
-
-libxfce4util_la-filter.lo: filter.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-filter.lo -MD -MP -MF "$(DEPDIR)/libxfce4util_la-filter.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-filter.lo `test -f 'filter.c' || echo '$(srcdir)/'`filter.c; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-filter.Tpo" "$(DEPDIR)/libxfce4util_la-filter.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-filter.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='filter.c' object='libxfce4util_la-filter.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-filter.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-filter.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-filter.lo `test -f 'filter.c' || echo '$(srcdir)/'`filter.c
-
 libxfce4util_la-i18n.o: i18n.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-i18n.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-i18n.Tpo" \
 @am__fastdepCC_TRUE@	  -c -o libxfce4util_la-i18n.o `test -f 'i18n.c' || echo '$(srcdir)/'`i18n.c; \
@@ -354,39 +311,6 @@ libxfce4util_la-i18n.lo: i18n.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-i18n.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-i18n.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-i18n.lo `test -f 'i18n.c' || echo '$(srcdir)/'`i18n.c
-
-libxfce4util_la-option.o: option.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-option.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-option.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-option.o `test -f 'option.c' || echo '$(srcdir)/'`option.c; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-option.Tpo" "$(DEPDIR)/libxfce4util_la-option.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-option.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='option.c' object='libxfce4util_la-option.o' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-option.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-option.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-option.o `test -f 'option.c' || echo '$(srcdir)/'`option.c
-
-libxfce4util_la-option.obj: option.c
-@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-option.obj -MD -MP -MF "$(DEPDIR)/libxfce4util_la-option.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-option.obj `if test -f 'option.c'; then $(CYGPATH_W) 'option.c'; else $(CYGPATH_W) '$(srcdir)/option.c'; fi`; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-option.Tpo" "$(DEPDIR)/libxfce4util_la-option.Po"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-option.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='option.c' object='libxfce4util_la-option.obj' libtool=no @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-option.Po' tmpdepfile='$(DEPDIR)/libxfce4util_la-option.TPo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-option.obj `if test -f 'option.c'; then $(CYGPATH_W) 'option.c'; else $(CYGPATH_W) '$(srcdir)/option.c'; fi`
-
-libxfce4util_la-option.lo: option.c
-@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-option.lo -MD -MP -MF "$(DEPDIR)/libxfce4util_la-option.Tpo" \
-@am__fastdepCC_TRUE@	  -c -o libxfce4util_la-option.lo `test -f 'option.c' || echo '$(srcdir)/'`option.c; \
-@am__fastdepCC_TRUE@	then mv "$(DEPDIR)/libxfce4util_la-option.Tpo" "$(DEPDIR)/libxfce4util_la-option.Plo"; \
-@am__fastdepCC_TRUE@	else rm -f "$(DEPDIR)/libxfce4util_la-option.Tpo"; exit 1; \
-@am__fastdepCC_TRUE@	fi
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='option.c' object='libxfce4util_la-option.lo' libtool=yes @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/libxfce4util_la-option.Plo' tmpdepfile='$(DEPDIR)/libxfce4util_la-option.TPlo' @AMDEPBACKSLASH@
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -c -o libxfce4util_la-option.lo `test -f 'option.c' || echo '$(srcdir)/'`option.c
 
 libxfce4util_la-util.o: util.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(libxfce4util_la_CFLAGS) $(CFLAGS) -MT libxfce4util_la-util.o -MD -MP -MF "$(DEPDIR)/libxfce4util_la-util.Tpo" \

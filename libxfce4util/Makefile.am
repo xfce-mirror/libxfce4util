@@ -5,18 +5,13 @@ libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
 
 libxfce4utilinclude_HEADERS =					\
 	debug.h							\
-	filter.h						\
 	i18n.h							\
-	option.h						\
 	util.h
 
 libxfce4util_la_SOURCES =					\
-	filter.c						\
-	filter.h						\
+	debug.h							\
 	i18n.c							\
 	i18n.h							\
-	option.c						\
-	option.h						\
 	util.c							\
 	util.h
 
