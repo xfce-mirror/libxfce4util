@@ -79,6 +79,8 @@
 #define strlcpy(x,y,z)	g_strlcpy(x,y,z)
 #endif
 
+#define DEFAULT_LOCALE	"C"
+
 #if defined(__NetBSD__) && defined(HAVE___UNALIASNAME)
 /*
  * NetBSD has the __unaliasname function in -lc
@@ -239,4 +241,103 @@ xfce_get_dir_localized_r(gchar *buffer, gsize length, const gchar *directory)
 
 	return(__localize_path(buffer, length, directory, G_FILE_TEST_IS_DIR));
 }
+
+/*
+ * paths is a ':'-separated list of pathnames.
+ *
+ *	%F	- The filename
+ *	%L	- The language string, as returned by 
+ *		  setlocale(LC_MESSAGES, NULL)
+ *	%l	- The language component of the language string
+ *	%N	- application name
+ *
+ * Example paths:
+ *
+ *	/usr/local/lib/%L/%F:/usr/local/share/%N/%l/%F
+ */
+gchar *
+xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
+		        const gchar *filename, GFileTest test)
+{
+	const gchar *f;
+	gchar *dstlast;
+	gchar *d;
+	const gchar *locale;
+	const gchar *lang;
+	gchar langbuf[PATH_MAX];
+
+	g_return_val_if_fail(dst != NULL, NULL);
+	g_return_val_if_fail(size > 2, NULL);
+	g_return_val_if_fail(paths != NULL, NULL);
+
+	d = dst;
+
+	dstlast = dst + (size - 1);
+
+#ifdef HAVE_SETLOCALE
+	if ((locale = setlocale(LC_MESSAGES, NULL)) == NULL)
+#endif
+		if ((locale = g_getenv("LANG")) == NULL)
+			locale = DEFAULT_LOCALE;
+
+	lang = __unaliasname(NLS_ALIAS_DB, locale, langbuf, sizeof(langbuf));
+
+	for (; d < dst + (size - 1); ) {
+		if (*paths == ':' || *paths == '\0') {
+			*d = '\0';
+
+			if (g_file_test(dst, test))
+				return(dst);
+
+			if (*paths == ':') {
+				d = dst;
+				paths++;
+				continue;
+			}
+			break;
+		}
+
+		if (*paths == '%') {
+			if (*(paths + 1) == 'F') {
+				/* 
+				 * if "filename" is NULL, then simply skip
+				 * the %F.
+				 */
+				if ((f = filename) != NULL)
+					while (*f && d < dstlast)
+						*d++ = *f++;
+
+				paths += 2;
+				continue;
+			}
+			else if (*(paths + 1) == 'L') {
+				for (f = locale; *f && d < dstlast; )
+						*d++ = *f++;
+
+				paths += 2;
+				continue;
+			}
+			else if (*(paths + 1) == 'l') {
+				for (f = lang; *f && d < dstlast; )
+					*d++ = *f++;
+
+				paths += 2;
+				continue;
+			}
+			else if (*(paths + 1) == 'N') {
+				if ((f = g_get_prgname()) != NULL) 
+					while (*f && d < dstlast)
+						*d++ = *f++;
+
+				paths += 2;
+				continue;
+			}
+		}
+
+		*d++ = *paths++;
+	}
+
+	return(NULL);
+}
+
 

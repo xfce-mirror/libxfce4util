@@ -66,5 +66,8 @@ extern gchar *	xfce_get_dir_localized(const gchar *);
 extern gchar *	xfce_get_file_localized_r(gchar *, gsize, const gchar *);
 extern gchar *	xfce_get_dir_localized_r(gchar *, gsize, const gchar *);
 
+/* */
+extern gchar *	xfce_get_path_localized(gchar *, gsize, const gchar *,
+					const gchar *, GFileTest);
 
 #endif	/* !__LIBXFCE4UTIL_I18N_H__ */

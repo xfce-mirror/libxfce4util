@@ -7,7 +7,7 @@ AC_INIT([libxfce4util])
 
 AM_CONFIG_HEADER([config.h])
 
-AM_INIT_AUTOMAKE([libxfce4util], [0.3.0])
+AM_INIT_AUTOMAKE([libxfce4util], [3.90.0])
 
 AM_MAINTAINER_MODE
 
