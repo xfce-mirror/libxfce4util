@@ -113,6 +113,7 @@ xfce_expand_variables
 <FILE>xfce-desktopentry</FILE>
 XfceDesktopEntry
 xfce_desktop_entry_new
+xfce_desktop_entry_new_from_data
 xfce_desktop_entry_parse
 xfce_desktop_entry_get_file
 xfce_desktop_entry_get_string
