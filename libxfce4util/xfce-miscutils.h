@@ -50,9 +50,6 @@ G_CONST_RETURN gchar* xfce_version_string (void) G_GNUC_PURE;
 
 G_CONST_RETURN gchar* xfce_get_homedir (void) G_GNUC_PURE;
 
-#define xfce_get_homefile(first_element...)	\
-	(g_build_filename(xfce_get_homedir(),	## first_element))
-
 G_CONST_RETURN gchar* xfce_get_homefile_r (gchar *buffer,
                                            size_t length, 
                                            const gchar *format,
@@ -60,13 +57,32 @@ G_CONST_RETURN gchar* xfce_get_homefile_r (gchar *buffer,
 
 G_CONST_RETURN gchar* xfce_get_userdir (void) G_GNUC_PURE;
 
-#define xfce_get_userfile(first_element...)	\
-	(g_build_filename(xfce_get_userdir(),	## first_element))
-
 G_CONST_RETURN gchar* xfce_get_userfile_r (gchar *buffer,
                                            size_t length, 
                                            const gchar *format,
                                            ...) G_GNUC_PURE;
+
+#if defined(G_HAVE_ISO_VARARGS)
+
+#define xfce_get_homefile(...)                             \
+  (g_build_filename (xfce_get_homedir (), __VA_ARGS__))
+
+#define xfce_get_userfile(...)                             \
+  (g_build_filename (xfce_get_userdir (), __VA_ARGS__))
+
+#elif defined(G_HAVE_GNUC_VARARGS)
+
+#define xfce_get_homefile(first_element...)	               \
+	(g_build_filename(xfce_get_homedir(),	## first_element))
+
+#define xfce_get_userfile(first_element...)	               \
+	(g_build_filename(xfce_get_userdir(),	## first_element))
+
+#else
+
+#error "Variable argument lists not support on your plattform."
+
+#endif
 
 gchar*  xfce_strjoin (const gchar *separator,
                       gchar **strings,
