@@ -773,7 +773,8 @@ _xfce_rc_simple_delete_group (XfceRc *rc, const gchar *name, gboolean global)
               else
                 simple->glast = group->prev;
             }
-          
+
+          simple->dirty = TRUE;
           break;
         }
     }
