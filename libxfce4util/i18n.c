@@ -81,6 +81,10 @@
 
 #define DEFAULT_LOCALE	"C"
 
+#ifndef PATH_MAX
+#define PATH_MAX 1024
+#endif
+
 #if defined(__NetBSD__) && defined(HAVE___UNALIASNAME)
 /*
  * NetBSD has the __unaliasname function in -lc
