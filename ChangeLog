@@ -1,3 +1,66 @@
+2004-06-20 18:35  benny
+
+	* libxfce4util/i18n.c: Fix #232.
+
+2004-05-04 00:12  olivier
+
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  install-sh, ltmain.sh, mkinstalldirs, i18n/Makefile.in,
+	  libxfce4util/Makefile.in, m4/Makefile.in: Update zh_TW
+	  translations by umm <umm@pchome.com.tw>
+
+2004-04-13 23:32  olivier
+
+	* configure, configure.ac: Fix version number on some packages
+
+2004-04-13 22:41  olivier
+
+	* configure: Prepare 4.0.5
+
+2004-03-21 21:06  olivier
+
+	* aclocal.m4, ltmain.sh: autogen
+
+2004-03-20 14:07  benny
+
+	* Makefile.in, configure, configure.ac, i18n/Makefile.in,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/debug.h, libxfce4util/i18n.h,
+	  libxfce4util/libxfce4util-config.h.in,
+	  libxfce4util/libxfce4util.h, libxfce4util/utf8.h,
+	  libxfce4util/util.h, m4/Makefile.in: Backport
+	  LIBXFCE4UTIL_CHECK_VERSION to stable branch.
+
+2004-03-18 14:25  benny
+
+	* aclocal.m4, ltmain.sh, libxfce4util/Makefile.am,
+	  libxfce4util/Makefile.in, libxfce4util/libxfce4util.h: Added
+	  <libxfce4util/libxfce4util.h> header for smoother transition to
+	  4.2.
+
+2004-03-18 12:55  benny
+
+	* libxfce4util/: debug.h, i18n.c, i18n.h, utf8.c, utf8.h, util.c,
+	  util.h: Backport sun forte cc fix and update email address.
+
+2004-03-09 13:43  benny
+
+	* m4/depends.m4: XFCE_MCS_PLUGIN was missing from here for some
+	  weird reason!
+
+2004-01-25 01:09  olivier
+
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, configure.ac, depcomp, install-sh, ltmain.sh, missing,
+	  mkinstalldirs, i18n/Makefile.in, libxfce4util/Makefile.in,
+	  m4/Makefile.in: Update libtool and other automake, autoconf and
+	  gettext.
+
+2004-01-07 21:38  olivier
+
+	* ChangeLog: Huge update before 4.0.3 release, mainly: ChangeLog
+	  update, Version number updates.
+
 2003-12-29 16:19  olivier
 
 	* ChangeLog, configure, configure.ac: Update version number, Update
