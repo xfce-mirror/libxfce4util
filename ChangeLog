@@ -1,3 +1,13 @@
+2003-03-19  huysmans
+
+	* autogen.sh: Only add extra autogen parameters when none are given
+
+2003-03-18  xfce
+
+	* ChangeLog, aclocal.m4, configure, ltcf-c.sh, ltconfig, ltmain.sh:
+	Update ChangeLog Update build scripts (ie rerun autogen.sh) Update
+	xfwm4's microdeck theme Remove 1 pix border arround xffm menu bar
+
 2003-03-15  bmeurer
 
 	* Makefile.in, aclocal.m4, autogen.sh, configure, configure.ac,
