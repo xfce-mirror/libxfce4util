@@ -294,56 +294,6 @@ parse_desktop_entry_line (const char *line, char **section,
     }
 }
 
-#if 0
-/* @brief Match current locale against locale string.
- * 
- * @param current_locale : current locale value
- * @param locale	   : locale value to match against
- *
- * The locale is of the general form LANG_COUNTRY.ENCODING@MODIFIER.
- * Each of COUNTRY, ENCODING and MODIFIER can be absent.
- *
- * Matched by removing rightmost element one by one. This is not entirely
- * according to the freedesktop.org spec, but much easier. Should 
- * probably be fixed.
- *
- * @return : integer value ranging from 0 (no match) to 4 (full match).
- */
-static int
-match_locale (const char *current_locale, const char *locale)
-{
-    char *p;
-    
-    if (strcmp (current_locale, locale) == 0)
-    {
-	return 4;
-    }
-
-    if ((p = strchr (current_locale, '@')) != NULL &&
-	strlen (locale) == p - current_locale &&
-	strncmp (current_locale, locale, p - current_locale) == 0)
-    {
-	return 3;
-    }
-    
-    if ((p = strchr (current_locale, '.')) != NULL &&
-	strlen (locale) == p - current_locale &&
-	strncmp (current_locale, locale, p - current_locale) == 0)
-    {
-	return 2;
-    }
-    
-    if ((p = strchr (current_locale, '_')) != NULL &&
-	strlen (locale) == p - current_locale &&
-	strncmp (current_locale, locale, p - current_locale) == 0)
-    {
-	return 1;
-    }
-
-    return 0;
-}
-#endif
-
 gboolean
 xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 {

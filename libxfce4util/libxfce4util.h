@@ -34,7 +34,8 @@
 #include <libxfce4util/i18n.h>
 #include <libxfce4util/utf8.h>
 #include <libxfce4util/util.h>
-#include <libxfce4util/xdg.h>
 #include <libxfce4util/xfce-desktopentry.h>
+#include <libxfce4util/xfce-rc.h>
+#include <libxfce4util/xfce-resource.h>
 
 #endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003,2004 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,9 +46,9 @@
 #define XFCE_LICENSE_LGPL _BUILTIN_LICENSE_TEXT(LGPL)
 
 
-G_CONST_RETURN gchar* xfce_version_string (void);
+G_CONST_RETURN gchar* xfce_version_string (void) G_GNUC_PURE;
 
-G_CONST_RETURN gchar* xfce_get_homedir (void);
+G_CONST_RETURN gchar* xfce_get_homedir (void) G_GNUC_PURE;
 
 #define xfce_get_homefile(first_element...)	\
 	(g_build_filename(xfce_get_homedir(),	## first_element))
@@ -56,9 +56,9 @@ G_CONST_RETURN gchar* xfce_get_homedir (void);
 G_CONST_RETURN gchar* xfce_get_homefile_r (gchar *buffer,
                                            size_t length, 
                                            const gchar *format,
-                                           ...);
+                                           ...) G_GNUC_PURE;
 
-G_CONST_RETURN gchar* xfce_get_userdir (void);
+G_CONST_RETURN gchar* xfce_get_userdir (void) G_GNUC_PURE;
 
 #define xfce_get_userfile(first_element...)	\
 	(g_build_filename(xfce_get_userdir(),	## first_element))
@@ -66,13 +66,13 @@ G_CONST_RETURN gchar* xfce_get_userdir (void);
 G_CONST_RETURN gchar* xfce_get_userfile_r (gchar *buffer,
                                            size_t length, 
                                            const gchar *format,
-                                           ...);
+                                           ...) G_GNUC_PURE;
 
 gchar*  xfce_strjoin (const gchar *separator,
                       gchar **strings,
-                      gint count);
+                      gint count) G_GNUC_PURE;
 
-gchar*  xfce_gethostname (void);
+gchar*  xfce_gethostname (void) G_GNUC_PURE;
 
 gint    xfce_putenv (const gchar *string);
 

@@ -35,26 +35,39 @@
 
 #include <glib.h>
 
-/*
- * gettext macros
- */
 #if defined(ENABLE_NLS) && defined(GETTEXT_PACKAGE)
+
+#if GLIB_CHECK_VERSION(2,4,0)
+
+#include <glib/gi18n.h>
+
+#else
 
 #include <libintl.h>
 
 #ifdef _
 #undef _
 #endif
-#define	_(s)			(dgettext(GETTEXT_PACKAGE, s))
+#define	_(s)                            (dgettext(GETTEXT_PACKAGE, s))
 
 #ifdef gettext_noop
 #ifdef N_
 #undef N_
 #endif
-#define N_(s)			(gettext_noop(s))
+#define N_(s)                           (gettext_noop (s))
 #else
-#define N_(s)			(s)
+#define N_(s)                           (s)
 #endif
+
+#ifdef Q_
+#undef Q_
+#endif
+#define Q_(s)                           (xfce_strip_context ((s), gettext ((s))))
+
+#define g_strip_context(msgid, msgval)  (xfce_strip_context ((msgid), (msgval)))
+
+#endif /* !GLIB_CHECK_VERSION(2,4,0) */
+
 
 #ifdef HAVE_BIND_TEXTDOMAIN_CODESET
 
@@ -85,10 +98,16 @@ do {									\
 #undef _
 #endif
 #define _(s)	(s)
+
 #ifdef N_
 #undef N_
 #endif
 #define N_(s)	(s)
+
+#ifdef Q_
+#undef Q_
+#endif
+#define Q_(s)   (s)
 
 #ifdef textdomain
 #undef textdomain
@@ -117,27 +136,30 @@ do {									\
 	/* nothing do here */						\
 } while(0)
 
-#endif
+#endif /* !defined(ENABLE_NLS) || !defined(GETTEXT_PACKAGE) */
 
-gchar*	xfce_get_file_localized   (const gchar *filename) G_GNUC_PURE;
-gchar*	xfce_get_dir_localized    (const gchar *directory) G_GNUC_PURE;
-gchar*	xfce_get_file_localized_r (gchar       *buffer,
-                                   gsize        length,
-                                   const gchar *filename) G_GNUC_PURE;
-gchar*	xfce_get_dir_localized_r  (gchar       *buffer,
-                                   gsize        length,
-                                   const gchar *directory) G_GNUC_PURE;
+G_CONST_RETURN gchar* xfce_strip_context        (const gchar *msgid,
+						 const gchar *msgval) G_GNUC_PURE;
 
-gchar*	xfce_get_path_localized (gchar       *dst,
-				 gsize        size,
-				 const gchar *paths,
-				 const gchar *filename,
-				 GFileTest    test);
+gchar*	              xfce_get_file_localized   (const gchar *filename) G_GNUC_PURE;
+gchar*	              xfce_get_dir_localized    (const gchar *directory) G_GNUC_PURE;
+gchar*	              xfce_get_file_localized_r (gchar       *buffer,
+						 gsize        length,
+						 const gchar *filename) G_GNUC_PURE;
+gchar*	              xfce_get_dir_localized_r  (gchar       *buffer,
+						 gsize        length,
+						 const gchar *directory) G_GNUC_PURE;
+
+gchar*	              xfce_get_path_localized (gchar       *dst,
+					       gsize        size,
+					       const gchar *paths,
+					       const gchar *filename,
+					       GFileTest    test);
 
 #define XFCE_LOCALE_FULL_MATCH 50
 #define XFCE_LOCALE_NO_MATCH    0
 
-guint   xfce_locale_match       (const gchar *locale1,
-				 const gchar *locale2);
+guint                 xfce_locale_match       (const gchar *locale1,
+					       const gchar *locale2) G_GNUC_PURE;
 
 #endif	/* !__LIBXFCE4UTIL_I18N_H__ */

@@ -52,8 +52,7 @@
 
 #include <glib.h>
 
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/debug.h>
+#include <libxfce4util/libxfce4util.h>
 
 #ifndef HAVE_STRLCPY
 #define strlcpy(x,y,z)	g_strlcpy(x,y,z)
@@ -61,126 +60,185 @@
 
 #define DEFAULT_LOCALE	"C"
 
-static gchar *
-__localize_path(gchar *buffer, gsize len, const gchar *path, GFileTest test)
+static gchar*
+__localize_path (gchar *buffer, gsize len, const gchar *path, GFileTest test)
 {
-	const gchar *lang;
-	char delim[] = { '.', '@', '_' };
-	int i;
+  const gchar *lang;
+  char delim[] = { '.', '@', '_' };
+  int i;
 
 #ifdef HAVE_SETLOCALE
-	if ((lang = setlocale(LC_MESSAGES, NULL)) == NULL)
+  if ((lang = setlocale(LC_MESSAGES, NULL)) == NULL)
 #endif
-		lang = getenv("LANG");
+    lang = getenv ("LANG");
 
-	if (lang != NULL && !strchr(lang, '/')) {
-		/* ok, we will try four things here
-		   - full locale name:         ll_LL@qualifier.encoding
-		   - locale without encoding:  ll_LL@qualifier
-		   - locale without qualifier: ll_LL
-		   - base locale:              ll
-		 */
-		g_snprintf(buffer, len, "%s.%s", path, lang);
+  if (lang != NULL && !strchr (lang, '/'))
+    {
+      /* ok, we will try four things here
+	 - full locale name:         ll_LL@qualifier.encoding
+	 - locale without encoding:  ll_LL@qualifier
+	 - locale without qualifier: ll_LL
+	 - base locale:              ll
+      */
+      g_snprintf (buffer, len, "%s.%s", path, lang);
 
-		if (g_file_test(buffer, test))
-			goto found;
+      if (g_file_test (buffer, test))
+	goto found;
 
-		for (i = 0; i < G_N_ELEMENTS(delim); i++) {
-			char *langext, *p;
-		    	char c = delim[i];
+      for (i = 0; i < G_N_ELEMENTS(delim); i++)
+	{
+	  char *langext, *p;
+	  char c = delim[i];
 	
-			if ((p = strchr(lang, c)) != NULL) {
-				int s = p - lang;
+	  if ((p = strchr (lang, c)) != NULL)
+	    {
+	      int s = p - lang;
 
-				langext = g_new(char, s + 1);
-				strlcpy(langext, lang, s + 1);
+	      langext = g_new (char, s + 1);
+	      strlcpy (langext, lang, s + 1);
 	
-				g_snprintf(buffer, len, "%s.%s", path, langext);
-				g_free(langext);
+	      g_snprintf (buffer, len, "%s.%s", path, langext);
+	      g_free (langext);
 
-				if (g_file_test(buffer, test))
-					goto found;
-			}
-		}
+	      if (g_file_test (buffer, test))
+		goto found;
+	    }
 	}
+    }
 
-	strlcpy(buffer, path, len);
+  strlcpy (buffer, path, len);
 
-found:
-	return(buffer);
+ found:
+  return buffer;
+}
+
+
+/**
+ * xfce_strip_context:
+ * @msgid  : a string that may be translated.
+ * @msgval : a possible translation for @msgid or the same as @msgid.
+ *
+ * Portable replacement for g_strip_context() introduced in GLib 2.4. You
+ * prefer this method over g_strip_context() cause it allows your software
+ * to be used with older versions of GLib as well, though libxfce4util also
+ * defines a macro named g_strip_context() that simply calls #xfce_strip_context
+ * if an older GLib version is detected.
+ *
+ * Return value: @msgval, unless @msgval is identical to @msgid and contains a
+ *               '|' character, in which case a pointer to the substring of @msgid
+ *               after the first '|' character is returned
+ *
+ * Since: 4.2
+ **/
+G_CONST_RETURN gchar*
+xfce_strip_context (const gchar *msgid,
+		    const gchar *msgval)
+{
+  register const gchar *mi;
+
+  g_return_val_if_fail (msgid != NULL, NULL);
+  g_return_val_if_fail (msgval != NULL, NULL);
+
+  if (msgid == msgval)
+    {
+      for (mi = msgid; *mi != '\0'; ++mi)
+	if (*mi == '|')
+	  return mi + 1;
+    }
+
+  return msgval;
 }
 
 
 /**
  * xfce_get_file_localized:
- * @filename :
+ * @filename : name of a file to look for a localized version.
  *
- * Return value:
+ * Checks if theres a version of @filename which is localized to the current
+ * locale. This is done by appending the full locale name to @filename, separated
+ * by a '.'. If theres no file of that name, it retries using the full locale
+ * name without the encoding (if any), then without the qualifier (if any) and
+ * at last the base locale is tried. If all of those fails, a copy of @filename
+ * is returned.
+ *
+ * Return value: path of the localized file or copy of @filename if no such
+ *               file exists. Returned string should be freed using g_free().
  **/
 gchar*
-xfce_get_file_localized(const gchar *filename)
+xfce_get_file_localized (const gchar *filename)
 {
-	gchar buffer[PATH_MAX + 1];
+  gchar buffer[PATH_MAX + 1];
 
-	g_return_val_if_fail(filename != NULL, NULL);
+  g_return_val_if_fail (filename != NULL, NULL);
 
-	return(g_strdup(__localize_path(buffer, sizeof(buffer), filename,
-					G_FILE_TEST_IS_REGULAR)));
+  return g_strdup (__localize_path(buffer, sizeof (buffer), filename,
+				   G_FILE_TEST_IS_REGULAR));
 }
 
 
 /**
  * xfce_get_file_localized_r:
- * @buffer   :
- * @length   :
- * @filename :
+ * @buffer   : destination buffer to store the localized filename to.
+ * @length   : size of @buffer in bytes.
+ * @filename : name of a file to look for a localized version.
  *
- * Return value:
+ * Similar in functionality to #xfce_get_file_localized, but stores the
+ * result in @buffer instead of allocating a new buffer.
+ *
+ * Return value: pointer to @buffer or %NULL on error.
  **/
 gchar*
-xfce_get_file_localized_r(gchar *buffer, gsize length, const gchar *filename)
+xfce_get_file_localized_r (gchar *buffer, gsize length, const gchar *filename)
 {
-	g_return_val_if_fail(buffer != NULL, NULL);
-	g_return_val_if_fail(filename != NULL, NULL);
+  g_return_val_if_fail (buffer != NULL, NULL);
+  g_return_val_if_fail (filename != NULL, NULL);
 
-	return(__localize_path(buffer, length, filename,
-				G_FILE_TEST_IS_REGULAR));
+  return __localize_path (buffer, length, filename,
+			  G_FILE_TEST_IS_REGULAR);
 }
 
 
 /**
  * xfce_get_dir_localized:
- * @directory :
+ * @directory : directory name to check for a localized variant.
  *
- * Return value:
+ * Similar to #xfce_get_file_localized, but works on directory instead of
+ * a file.
+ *
+ * Return value: path of the localized directory name or copy of @directory if
+ *               no such directory exists. Returned string should be freed using
+ *               g_free().
  **/
 gchar*
-xfce_get_dir_localized(const gchar *directory)
+xfce_get_dir_localized (const gchar *directory)
 {
-	gchar buffer[PATH_MAX + 1];
+  gchar buffer[PATH_MAX + 1];
 
-	g_return_val_if_fail(directory != NULL, NULL);
+  g_return_val_if_fail (directory != NULL, NULL);
 
-	return(g_strdup(__localize_path(buffer, sizeof(buffer), directory,
-					G_FILE_TEST_IS_DIR)));
+  return g_strdup(__localize_path(buffer, sizeof (buffer), directory,
+				  G_FILE_TEST_IS_DIR));
 }
 
 
 /**
  * xfce_get_dir_localized_r:
- * @buffer    : 
- * @length    :
- * @directory :
+ * @buffer    : destination buffer to store the localized filename to.
+ * @length    : size of @buffer in bytes.
+ * @directory : name of directory to check for localized variant of.
  *
- * Return value:
+ * Similar to #xfce_get_file_localized_r, but works on directory instead
+ * of regular file.
+ *
+ * Return value: pointer to @buffer or %NULL on error.
  **/
-gchar *
-xfce_get_dir_localized_r(gchar *buffer, gsize length, const gchar *directory)
+gchar*
+xfce_get_dir_localized_r (gchar *buffer, gsize length, const gchar *directory)
 {
-	g_return_val_if_fail(buffer != NULL, NULL);
-	g_return_val_if_fail(directory != NULL, NULL);
+  g_return_val_if_fail (buffer != NULL, NULL);
+  g_return_val_if_fail (directory != NULL, NULL);
 
-	return(__localize_path(buffer, length, directory, G_FILE_TEST_IS_DIR));
+  return __localize_path (buffer, length, directory, G_FILE_TEST_IS_DIR);
 }
 
 

@@ -1,8 +1,8 @@
 <!-- ##### SECTION Title ##### -->
-utf8
+Unicode Manipulation
 
 <!-- ##### SECTION Short_Description ##### -->
-Unicode support functions.
+functions operating on Unicode characters and UTF-8 strings.
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
@@ -10,6 +10,7 @@ Unicode support functions.
 
 <!-- ##### SECTION See_Also ##### -->
 <para>
+<ulink url="http://developer.gnome.org/doc/API/2.0/glib/glib-Unicode-Manipulation.html">Glib Unicode Manipulation</ulink>
 </para>
 
 <!-- ##### FUNCTION xfce_utf8_remove_controls ##### -->
@@ -21,20 +22,5 @@ Unicode support functions.
 @max_len: 
 @end: 
 @Returns: 
-
-
-<!-- ##### FUNCTION utf8_string_remove_controls ##### -->
-<para>
-
-</para>
-
-@str: 
-@max_len: 
-@end: 
-@Returns: 
-<!-- # Unused Parameters # -->
-@Param1: 
-@Param2: 
-@Param3: 
 
 

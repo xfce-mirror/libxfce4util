@@ -7,3 +7,24 @@ Todo list for libxfce4util (> 4.0):
 	- Add a xfce_timer_fire_once(time, func) that fires a timeout after
 	  a specified amount of time and automatically removes the timeout
 	  afterwards.
+	  
+In KDE3 two important changes have been made:
+
+* Default values are no longer written.
+When a configuration file in a location other than $KDEHOME defines a value 
+for a key and the application subsequently writes out a new configuration file
+to $KDEHOME, that configuration file will only contain an entry for the key
+if its value differs from the value read from the other file.
+
+This counters the problem that changing default configuration files under 
+$KDEDIR would not take effect for users, since these users would most likely
+have their own copy of these settings under $KDEHOME. KDE3 will make sure 
+not to copy these settings so changes made under $KDEDIR will affect all users
+that haven't explicitly changed the affected settings to something else.
+
+* Configuration entries can be marked "immutable".
+Starting with KDE3, configuration entries can be marked "immutable". When a
+configuration entry is immutable it means that configurations files that are
+read later will not be able to override its value. Immutable entries can not
+be changed via KConfig and if the entry is present under $KDEHOME it will 
+be ignored.

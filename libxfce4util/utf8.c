@@ -28,32 +28,37 @@
 #include <libxfce4util/utf8.h>
 
 /* Around for compatibility. DEPRECATED! */
-gchar *
-utf8_string_remove_controls(gchar *str, gssize max_len, const gchar *end)
+gchar*
+utf8_string_remove_controls (gchar *str, gssize max_len, const gchar *end)
 {
   return xfce_utf8_remove_controls (str, max_len, end);
 }
 
 /**
  * xfce_utf8_remove_controls:
- * @str: target string.
- * @max_len:
- * @end:
+ * @str     : target string.
+ * @max_len : max characters to check or -1 for no character limit.
+ * @end     : pointer to the endpoint in @str or %NULL for no endpoint.
  *
- * Removes all control characters from @str.
+ * Removes all control characters from @str up to @end or up to
+ * @max_len characters (note that characters does not mean bytes with
+ * UTF-8), where both @str and @max_len may not be given.
  *
- * Return value: pointer to @str.
+ * Control characters are replaced in @str by whitespaces, no new string
+ * will be allocated. The operation is done in-place.
  *
- * Since: 4.1.3
+ * Return value: pointer to @str or %NULL on error.
+ *
+ * Since: 4.2
  **/
-gchar *
+gchar*
 xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
 {
     gchar *p;
     
     g_return_val_if_fail (str != NULL, NULL);
     
-    p = (gchar *) str;
+    p = str;
     while (p && *p && (!end || p < end) && (max_len < 0 || (p - str) < max_len))
     {
         if ((*p > 0) && (*p < 32))
@@ -61,6 +66,6 @@ xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
         p = g_utf8_find_next_char(p, end);
     }
 
-    return (gchar *) str;
+    return str;
 }
 

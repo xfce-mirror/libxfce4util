@@ -28,9 +28,11 @@
 #ifndef __LIBXFCE4UTIL_DEBUG_H__
 #define __LIBXFCE4UTIL_DEBUG_H__
 
-#if defined(DEBUG) && DEBUG > 0
-
 #include <stdio.h>
+
+#include <glib.h>
+
+#if defined(DEBUG) && DEBUG > 0
 
 #if defined(__NetBSD__) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
 #define __DBG_FUNC__    __func__

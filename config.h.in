@@ -75,9 +75,6 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
 
-/* Define to 1 if you have the `__unaliasname' function. */
-#undef HAVE___UNALIASNAME
-
 /* Name of package */
 #undef PACKAGE
 

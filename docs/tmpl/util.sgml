@@ -147,3 +147,14 @@ formed by a NULL terminated list of path components.
 @Returns: 
 
 
+<!-- ##### FUNCTION xfce_mkdirhier ##### -->
+<para>
+
+</para>
+
+@whole_path: 
+@Param2: 
+@error: 
+@Returns: 
+
+

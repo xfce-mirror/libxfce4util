@@ -1,0 +1,4 @@
+<STRUCT>
+<NAME>XfceRc</NAME>
+</STRUCT>
+

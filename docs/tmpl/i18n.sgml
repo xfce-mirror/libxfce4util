@@ -1,22 +1,26 @@
 <!-- ##### SECTION Title ##### -->
-i18n
+Internationalization
 
 <!-- ##### SECTION Short_Description ##### -->
 Internationalization and Localization Support Functions
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
-
+Provides functions and preprocessor macros to aid the application developers
+making his software localizable. It also offers functionality similar to the
+one introduced in GLib 2.4 and referenced as gi18n. This includes the #Q_
+gettext macro and the #xfce_strip_context function.
 </para>
 
 <!-- ##### SECTION See_Also ##### -->
 <para>
-
+<ulink url="http://developer.gnome.org/doc/API/2.0/glib/glib-I18N.html">GLib
+Internationalization</ulink>
 </para>
 
 <!-- ##### MACRO _ ##### -->
 <para>
-Convience macro for the #gettext function.
+Marks a string for translation, gets replaced with the translated string at runtime.
 </para>
 
 @s: string to translate.
@@ -24,15 +28,35 @@ Convience macro for the #gettext function.
 
 <!-- ##### MACRO N_ ##### -->
 <para>
-
+Marks a string for translation, gets replaced with the untranslated string at runtime.
+This is useful in situations where the translated strings can't be directly used, e.g.
+in string array initializers.
 </para>
 
-@s: 
+@s: the string to be translated.
+
+
+<!-- ##### MACRO Q_ ##### -->
+<para>
+Like _(), but applies xfce_strip_context() to the translation. This has the advantage that
+the string can be adorned with a prefix to guarantee uniqueness and provide context to
+the package translator.
+</para>
+<para>
+One use case given in the gettext manual is GUI translation, where one could e.g.
+disambiguate two "Open" menu entries as "File|Open" and "Printer|Open". Another use case
+is the string "Russian" which may have to be translated differently depending on whether
+it is the name of a character set or a language. This could be solved by using
+"charset|Russian" and "language|Russian". 
+</para>
+
+@s: the string to be translated, with a '|'-separated prefix which must not be
+    translated by the package translators.
 
 
 <!-- ##### MACRO xfce_textdomain ##### -->
 <para>
-
+Binds the current text domain for @package to @localedir and sets @encoding.
 </para>
 
 @package: 
@@ -40,48 +64,14 @@ Convience macro for the #gettext function.
 @encoding: 
 
 
-<!-- ##### MACRO textdomain ##### -->
+<!-- ##### FUNCTION xfce_strip_context ##### -->
 <para>
 
 </para>
 
-@s: 
-
-
-<!-- ##### MACRO gettext ##### -->
-<para>
-
-</para>
-
-@s: 
-
-
-<!-- ##### MACRO dgettext ##### -->
-<para>
-
-</para>
-
-@domain: 
-@s: 
-
-
-<!-- ##### MACRO dcgettext ##### -->
-<para>
-
-</para>
-
-@domain: 
-@s: 
-@type: 
-
-
-<!-- ##### MACRO bindtextdomain ##### -->
-<para>
-
-</para>
-
-@domain: 
-@directory: 
+@msgid: 
+@msgval: 
+@Returns: 
 
 
 <!-- ##### FUNCTION xfce_get_file_localized ##### -->
@@ -89,16 +79,7 @@ Convience macro for the #gettext function.
 
 </para>
 
-@Param1: 
-@Returns: 
-
-
-<!-- ##### FUNCTION xfce_get_dir_localized ##### -->
-<para>
-
-</para>
-
-@Param1: 
+@filename: 
 @Returns: 
 
 
@@ -107,9 +88,18 @@ Convience macro for the #gettext function.
 
 </para>
 
-@Param1: 
-@Param2: 
-@Param3: 
+@buffer: 
+@length: 
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_get_dir_localized ##### -->
+<para>
+
+</para>
+
+@directory: 
 @Returns: 
 
 
@@ -118,9 +108,9 @@ Convience macro for the #gettext function.
 
 </para>
 
-@Param1: 
-@Param2: 
-@Param3: 
+@buffer: 
+@length: 
+@directory: 
 @Returns: 
 
 
@@ -129,11 +119,35 @@ Convience macro for the #gettext function.
 
 </para>
 
-@Param1: 
-@Param2: 
-@Param3: 
-@Param4: 
-@Param5: 
+@dst: 
+@size: 
+@paths: 
+@filename: 
+@test: 
+@Returns: 
+
+
+<!-- ##### MACRO XFCE_LOCALE_FULL_MATCH ##### -->
+<para>
+Returned by #xfce_locale_match in case of a full match.
+</para>
+
+
+
+<!-- ##### MACRO XFCE_LOCALE_NO_MATCH ##### -->
+<para>
+Returned by #xfce_locale_match if no match could be detected.
+</para>
+
+
+
+<!-- ##### FUNCTION xfce_locale_match ##### -->
+<para>
+
+</para>
+
+@locale1: 
+@locale2: 
 @Returns: 
 
 

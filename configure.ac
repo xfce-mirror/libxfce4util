@@ -3,14 +3,15 @@ dnl
 dnl Copyright (c) 2002-2004
 dnl         The Xfce development team. All rights reserved.
 dnl
-dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>.
+dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
+dnl Huijsman <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.
 dnl
 
 dnl Version information
-m4_define([libxfce4util_verinfo], [1:3:0])
+m4_define([libxfce4util_verinfo], [1:4:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [6])
+m4_define([libxfce4util_version_micro], [8])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Overall XFce version, modify this when making releases
@@ -25,8 +26,8 @@ dnl Initialize autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2004
         The Xfce development team. All rights reserved.
 
-Written for Xfce by Benedikt Meurer <benny@xfce.org> and
-Jasper Huijsman <jasper@xfce.org>.])
+Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
+Huijsman <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.])
 AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
@@ -67,8 +68,7 @@ dnl check for standard header files
 AC_HEADER_STDC
 AC_CHECK_HEADERS([err.h errno.h limits.h locale.h sys/stat.h sys/types.h \
   sys/utsname.h sys/wait.h unistd.h])
-AC_CHECK_FUNCS([__unaliasname gethostname setenv setlocale strdup \
-  strlcat strlcpy])
+AC_CHECK_FUNCS([gethostname setenv setlocale strdup strlcat strlcpy])
 
 dnl Check for GObject >= 2.0.0 installed (GObject in turn depends on GLib)
 BM_DEPEND([GOBJECT], [gobject-2.0], [2.0.0])

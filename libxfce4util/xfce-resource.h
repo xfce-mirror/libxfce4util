@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003,2004 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,17 +25,38 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __LIBXFCE4UTIL_XDG_H__
-#define __LIBXFCE4UTIL_XDG_H__
+#ifndef __LIBXFCE4UTIL_XFCE_RESOURCE_H__
+#define __LIBXFCE4UTIL_XFCE_RESOURCE_H__
 
-#include <glib.h>
+typedef enum
+{
+  XFCE_RESOURCE_DATA   = 0,
+  XFCE_RESOURCE_CONFIG = 1,
+  XFCE_RESOURCE_CACHE  = 2,
+  XFCE_RESOURCE_ICONS  = 3,
+} XfceResourceType;
 
-gchar*  xfce_xdg_save_cache_path    (const gchar *resource);
-gchar*  xfce_xdg_save_config_path   (const gchar *resource);
-gchar*  xfce_xdg_save_data_path     (const gchar *resource);
-gchar*  xfce_xdg_load_config_path   (const gchar *resource);
-gchar*  xfce_xdg_load_data_path     (const gchar *resource);
-gchar** xfce_xdg_load_config_paths  (const gchar *resource);
-gchar** xfce_xdg_load_data_paths    (const gchar *resource);
+typedef gboolean (*XfceMatchFunc)   (const gchar *basedir,
+				     const gchar *relpath,
+				     gpointer     user_data);
 
-#endif  /* !__LIBXFCE4UTIL_XDG_H__ */
+gchar** xfce_resource_dirs          (XfceResourceType type);
+gchar*  xfce_resource_lookup        (XfceResourceType type,
+				     const gchar     *filename);
+gchar** xfce_resource_lookup_all    (XfceResourceType type,
+				     const gchar     *filename);
+gchar** xfce_resource_match         (XfceResourceType type,
+				     const gchar     *pattern,
+				     gboolean         unique);
+gchar** xfce_resource_match_custom  (XfceResourceType type,
+				     gboolean         unique,
+				     XfceMatchFunc    func,
+				     gpointer         user_data);
+void    xfce_resource_push_path     (XfceResourceType type,
+				     const gchar     *path);
+void    xfce_resource_pop_path      (XfceResourceType type);
+gchar*  xfce_resource_save_location (XfceResourceType type,
+				     const gchar     *relpath,
+				     gboolean         create);
+
+#endif /* !__LIBXFCE4UTIL_XFCE_RESOURCE_H__ */

@@ -2,61 +2,6 @@
 <INCLUDE>libxfce4util/libxfce4util.h</INCLUDE>
 
 <SECTION>
-<TITLE>Desktop entries</TITLE>
-<FILE>xfce-desktopentry</FILE>
-XfceDesktopEntry
-xfce_desktop_entry_new
-xfce_desktop_entry_parse
-xfce_desktop_entry_get_file
-xfce_desktop_entry_get_string
-xfce_desktop_entry_get_int
-
-<SUBSECTION Standard>
-XFCE_DESKTOP_ENTRY
-XFCE_IS_DESKTOP_ENTRY
-XFCE_TYPE_DESKTOP_ENTRY
-xfce_desktop_entry_get_type
-XFCE_DESKTOP_ENTRY_CLASS
-XFCE_IS_DESKTOP_ENTRY_CLASS
-XFCE_DESKTOP_ENTRY_GET_CLASS
-</SECTION>
-
-<SECTION>
-<TITLE>XDG Base Directory support</TITLE>
-<FILE>xdg-basedir-support</FILE>
-xfce_xdg_save_cache_path
-xfce_xdg_save_config_path
-xfce_xdg_save_data_path
-xfce_xdg_load_config_path
-xfce_xdg_load_data_path
-xfce_xdg_load_config_paths
-xfce_xdg_load_data_paths
-</SECTION>
-
-<SECTION>
-<FILE>debug</FILE>
-DBG
-TRACE
-</SECTION>
-
-<SECTION>
-<FILE>i18n</FILE>
-_
-N_
-xfce_textdomain
-textdomain
-gettext
-dgettext
-dcgettext
-bindtextdomain
-xfce_get_file_localized
-xfce_get_dir_localized
-xfce_get_file_localized_r
-xfce_get_dir_localized_r
-xfce_get_path_localized
-</SECTION>
-
-<SECTION>
 <TITLE>Standard Macros</TITLE>
 <FILE>standard-macros</FILE>
 LIBXFCE4UTIL_MAJOR_VERSION
@@ -66,10 +11,71 @@ LIBXFCE4UTIL_CHECK_VERSION
 </SECTION>
 
 <SECTION>
+<TITLE>Internationalisation</TITLE>
+<FILE>i18n</FILE>
+_
+N_
+Q_
+xfce_textdomain
+xfce_strip_context
+xfce_get_file_localized
+xfce_get_file_localized_r
+xfce_get_dir_localized
+xfce_get_dir_localized_r
+xfce_get_path_localized
+XFCE_LOCALE_FULL_MATCH
+XFCE_LOCALE_NO_MATCH
+xfce_locale_match
+</SECTION>
+
+
+<SECTION>
+<TITLE>Resource lookup functions</TITLE>
+<FILE>xfce-resource</FILE>
+XfceResourceType
+XfceMatchFunc
+xfce_resource_dirs
+xfce_resource_lookup
+xfce_resource_lookup_all
+xfce_resource_match
+xfce_resource_match_custom
+xfce_resource_push_path
+xfce_resource_pop_path
+xfce_resource_save_location
+</SECTION>
+
+<SECTION>
+<TITLE>Resource Config File Support</TITLE>
+<FILE>xfce-rc</FILE>
+XfceRc
+xfce_rc_simple_open
+xfce_rc_config_open
+xfce_rc_close
+xfce_rc_flush
+xfce_rc_is_dirty
+xfce_rc_is_readonly
+xfce_rc_get_groups
+xfce_rc_get_entries
+xfce_rc_get_group
+xfce_rc_has_group
+xfce_rc_set_group
+xfce_rc_get_locale
+xfce_rc_has_entry
+xfce_rc_read_entry
+xfce_rc_read_entry_untranslated
+xfce_rc_read_bool_entry
+xfce_rc_read_int_entry
+xfce_rc_read_list_entry
+xfce_rc_write_entry
+xfce_rc_write_bool_entry
+xfce_rc_write_int_entry
+xfce_rc_write_list_entry
+</SECTION>
+
+<SECTION>
 <TITLE>Unicode Support Functions</TITLE>
 <FILE>utf8</FILE>
 xfce_utf8_remove_controls
-utf8_string_remove_controls
 </SECTION>
 
 <SECTION>
@@ -89,5 +95,28 @@ xfce_strjoin
 xfce_gethostname
 xfce_putenv
 xfce_setenv
+xfce_mkdirhier
 </SECTION>
+
+
+<SECTION>
+<TITLE>Desktop entries</TITLE>
+<FILE>xfce-desktopentry</FILE>
+XfceDesktopEntry
+xfce_desktop_entry_new
+xfce_desktop_entry_parse
+xfce_desktop_entry_get_file
+xfce_desktop_entry_get_string
+xfce_desktop_entry_get_int
+
+<SUBSECTION Standard>
+XFCE_DESKTOP_ENTRY
+XFCE_IS_DESKTOP_ENTRY
+XFCE_TYPE_DESKTOP_ENTRY
+xfce_desktop_entry_get_type
+XFCE_DESKTOP_ENTRY_CLASS
+XFCE_IS_DESKTOP_ENTRY_CLASS
+XFCE_DESKTOP_ENTRY_GET_CLASS
+</SECTION>
+
 
