@@ -82,7 +82,7 @@ xfce_filter_add(XfceFilter *filter, const gchar *format, ...)
 	g_return_if_fail(format != NULL);
 
 	va_start(ap, format);
-	filter->argv[++filter->argc] = g_strdup_printf(format, ap);
+	filter->argv[++filter->argc] = g_strdup_vprintf(format, ap);
 	va_end(ap);
 }
 
