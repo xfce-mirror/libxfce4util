@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2004 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -69,85 +69,80 @@ xfce_mkdirhier (const gchar  *whole_path,
                 unsigned long omode,
                 GError      **error)
 {
-  /* Stolen from FreeBSD's mkdir(1) */
+  /* Stolen from FreeBSD's mkdir(1) with modifications to make it
+   * work properly with NFS on Solaris */
   char path[1024];
   struct stat sb;
   mode_t numask, oumask;
-  int first, last;
+  int first, last, sverrno;
   gboolean retval;
   char *p;
+
+  g_return_val_if_fail (whole_path != NULL, FALSE);
 
   g_strlcpy (path, whole_path, sizeof (path));
   p = path;
   oumask = 0;
   retval = TRUE;
 
-  if (p[0] == '/')		/* Skip leading '/'. */
+  if (p[0] == '/')              /* Skip leading '/'. */
     ++p;
 
   for (first = 1, last = 0; !last ; ++p)
     {
       if (p[0] == '\0')
-	last = 1;
+        last = 1;
       else if (p[0] != '/')
-	continue;
+        continue;
 
       *p = '\0';
 
       if (p[1] == '\0')
-	last = 1;
+        last = 1;
 
       if (first)
-	{
-	  /*
-	   * POSIX 1003.2:
-	   * For each dir operand that does not name an existing
-	   * directory, effects equivalent to those cased by the
-	   * following command shall occcur:
-	   *
-	   * mkdir -p -m $(umask -S),u+wx $(dirname dir) &&
-	   *    mkdir [-m mode] dir
-	   *
-	   * We change the user's umask and then restore it,
-	   * instead of doing chmod's.
-	   */
-	  oumask = umask(0);
-	  numask = oumask & ~(S_IWUSR | S_IXUSR);
-	  umask(numask);
-	  first = 0;
-	}
+        {
+          /*
+           * POSIX 1003.2:
+           * For each dir operand that does not name an existing
+           * directory, effects equivalent to those cased by the
+           * following command shall occcur:
+           *
+           * mkdir -p -m $(umask -S),u+wx $(dirname dir) &&
+           *    mkdir [-m mode] dir
+           *
+           * We change the user's umask and then restore it,
+           * instead of doing chmod's.
+           */
+          oumask = umask(0);
+          numask = oumask & ~(S_IWUSR | S_IXUSR);
+          umask(numask);
+          first = 0;
+        }
 
       if (last)
-	umask(oumask);
+        umask(oumask);
 
       if (mkdir (path, last ? omode : S_IRWXU | S_IRWXG | S_IRWXO) < 0)
-	{
-	  if (errno == EEXIST || errno == EISDIR)
-	    {
-	      if (stat (path, &sb) < 0)
-		{
-		  retval = FALSE;
-		  break;
-		}
-	      else if (!S_ISDIR (sb.st_mode))
-		{
-		  if (last)
-		    errno = EEXIST;
-		  else
-		    errno = ENOTDIR;
-		  retval = FALSE;
-		  break;
-		}
-	    }
-	  else
-	    {
-	      retval = FALSE;
-	      break;
-	    }
-	}
+        {
+          sverrno = errno;
+
+          if (stat (path, &sb) < 0)
+            {
+              errno = sverrno;
+              retval = FALSE;
+              break;
+            }
+          else if (!S_ISDIR (sb.st_mode))
+            {
+              errno = ENOTDIR;
+              retval = FALSE;
+              break;
+            }
+        }
 
       if (!last)
-	*p = '/';
+        *p = '/';
     }
 
   if (!first && !last)
@@ -156,12 +151,11 @@ xfce_mkdirhier (const gchar  *whole_path,
   if (!retval && error != NULL)
     {
       g_set_error (error, G_FILE_ERROR,
-		   g_file_error_from_errno (errno),
-		   _("Error creating directory '%s': %s"),
-		   whole_path, g_strerror (errno));
+                   g_file_error_from_errno (errno),
+                   _("Error creating directory '%s': %s"),
+                   whole_path, g_strerror (errno));
     }
 
   return retval;
 }
-
 

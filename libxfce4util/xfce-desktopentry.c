@@ -312,7 +312,7 @@ entry_parse (XfceDesktopEntry * desktop_entry)
 
 	for (i = 0; i < desktop_entry->priv->num_entries; ++i, ++entry)
 	{
-	    if (strcmp (key, entry->key) == 0)
+	    if (key && entry->key && strcmp (key, entry->key) == 0)
 	    {
 		if (current_locale && locale)
 		{
