@@ -1,0 +1,5 @@
+Todo list for libxfce4util:
+---------------------------
+
+	- Make xfce_textdomain() a C function and check for gettext framework in
+	  libxfce4util's configure

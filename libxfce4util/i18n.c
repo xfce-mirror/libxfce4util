@@ -277,8 +277,9 @@ xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
 #ifdef HAVE_SETLOCALE
 	if ((locale = setlocale(LC_MESSAGES, NULL)) == NULL)
 #endif
-		if ((locale = g_getenv("LANG")) == NULL)
-			locale = DEFAULT_LOCALE;
+		if ((locale = g_getenv("LANGUAGE")) == NULL)
+			if ((locale = g_getenv("LANG")) == NULL)
+				locale = DEFAULT_LOCALE;
 
 	lang = __unaliasname(NLS_ALIAS_DB, locale, langbuf, sizeof(langbuf));
 

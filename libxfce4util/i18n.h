@@ -45,7 +45,30 @@
 #define N_(s)			(s)
 #endif
 
+#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
+
+#define	xfce_textdomain(package, localedir, encoding)			\
+do {									\
+	bindtextdomain(package, localedir);				\
+	bind_textdomain_codeset(package, encoding);			\
+	textdomain(package);						\
+} while(0)
+
+#else /* !defined(HAVE_BIND_TEXTDOMAIN_CODESET) */
+
+#define	xfce_textdomain(package, localedir, encoding)			\
+do {									\
+	bindtextdomain(package, localedir);				\
+	textdomain(package);						\
+} while(0)
+
+#endif
+
 #else /* !defined(ENABLE_NLS) || !defined(GETTEXT_PACKAGE) */
+
+#if defined(ENABLE_NLS)
+#warning "National language support requested but GETTEXT_PACKAGE undefined"
+#endif
 
 #define _(s)	(s)
 #define N_(s)	(s)
@@ -55,6 +78,11 @@
 #define dgettext(domain,s)			(s)
 #define dcgettext(domain,s,type)		(s)
 #define bindtextdomain(domain,directory)	(domain)
+
+#define	xfce_textdomain(package, localedir, encoding)			\
+do {									\
+	/* nothing do here */						\
+} while(0)
 
 #endif
 

@@ -1,0 +1,5 @@
+20030614:
+---------
+
+	- Added xfce_textdomain(package, localedir, encoding) to avoid
+	  problems with gettext binding in the future.
