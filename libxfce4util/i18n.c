@@ -179,6 +179,8 @@ __localize_path(gchar *buffer, gsize len, const gchar *path, GFileTest test)
 {
 	gchar langbuf[PATH_MAX];
 	const gchar *lang;
+	char delim[] = { '.', '@', '_' };
+	int i;
 
 #ifdef HAVE_SETLOCALE
 	if ((lang = setlocale(LC_MESSAGES, NULL)) == NULL)
@@ -189,10 +191,34 @@ __localize_path(gchar *buffer, gsize len, const gchar *path, GFileTest test)
 		lang = __unaliasname(NLS_ALIAS_DB, lang, langbuf,
 				sizeof(langbuf));
 
+		/* ok, we will try four things here
+		   - full locale name:         ll_LL@qualifier.encoding
+		   - locale without encoding:  ll_LL@qualifier
+		   - locale without qualifier: ll_LL
+		   - base locale:              ll
+		 */
 		g_snprintf(buffer, len, "%s.%s", path, lang);
 
 		if (g_file_test(buffer, test))
 			goto found;
+
+		for (i = 0; i < G_N_ELEMENTS(delim); i++) {
+			char *langext, *p;
+		    	char c = delim[i];
+	
+			if ((p = strchr(lang, c)) != NULL) {
+				int s = p - lang;
+
+				langext = g_new(char, s + 1);
+				strlcpy(langext, lang, s + 1);
+	
+				g_snprintf(buffer, len, "%s.%s", path, langext);
+				g_free(langext);
+
+				if (g_file_test(buffer, test))
+					goto found;
+			}
+		}
 	}
 
 	strlcpy(buffer, path, len);
