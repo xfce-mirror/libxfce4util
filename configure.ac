@@ -1,0 +1,48 @@
+dnl configure.ac
+
+AC_INIT(libxfce4util)
+
+AM_CONFIG_HEADER(config.h)
+
+dnl
+dnl Library settings
+dnl
+LIBXFCE4UTIL_MAJOR=0
+LIBXFCE4UTIL_MINOR=0
+LIBXFCE4UTIL_AGE=0
+LIBXFCE4UTIL_VERSION=$LIBXFCE4UTIL_MAJOR.$LIBXFCE4UTIL_MINOR.$LIBXFCE4UTIL_AGE
+LIBXFCE4UTIL_VERINFO=$LIBXFCE4UTIL_MAJOR:$LIBXFCE4UTIL_MINOR:$LIBXFCE4UTIL_AGE
+
+AM_INIT_AUTOMAKE(libxfce4util, $LIBXFCE4UTIL_VERSION)
+
+AM_MAINTAINER_MODE
+
+dnl check for UNIX variants
+AC_AIX
+AC_ISC_POSIX
+AC_MINIX
+
+dnl check for basic programs
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_LIBTOOL
+
+dnl check for standard header files
+AC_HEADER_STDC
+AC_CHECK_HEADERS(err.h)
+
+dnl Check for Glib >= 2.2 installed
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.2.0)
+
+dnl Check for debugging support
+AM_DEBUG_SUPPORT
+CFLAGS="$CFLAGS $DEBUG_CFLAGS"
+
+AC_SUBST(LIBXFCE4UTIL_VERINFO)
+
+AC_OUTPUT([
+Makefile
+libxfce4util/Makefile
+libxfce4util/libxfce4util-1.0.pc
+libxfce4util.spec
+])
