@@ -169,6 +169,83 @@ xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry)
     return desktop_entry->priv->file;
 }
 
+gboolean
+xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
+{
+    char *current_locale;
+    int locale_matched = 0;
+    char **lines, **p;
+    char *current_section = NULL;
+    gboolean result = FALSE;
+
+    g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
+
+    current_locale = g_strdup (setlocale (LC_MESSAGES, NULL));
+
+    lines = g_strsplit (desktop_entry->priv->data, "\n", -1);
+    
+    for (p = lines; *p != NULL; ++p)
+    {
+	entry_t *entry;
+	int i;
+	char *section, *key, *value, *locale;
+	
+	if (!parse_desktop_entry_line (*p, &section, &key, &value, &locale))
+	    continue;
+
+	if (section != NULL)
+	{
+	    g_free (current_section);
+	    current_section = section;
+	    continue;
+	}
+	
+	entry = &(desktop_entry->priv->entries[0]);
+
+	for (i = 0; i < desktop_entry->priv->num_entries; ++i, ++entry)
+	{
+	    if (strcmp (key, entry->key) == 0)
+	    {
+		if (current_locale && locale)
+		{
+		    int match = xfce_locale_match (current_locale, locale);
+
+		    if (match > locale_matched)
+		    {
+			g_free (entry->translated_value);
+			entry->translated_value = g_strdup (value);
+		    }
+		}
+		else
+		{
+		    g_free (entry->value);
+		    entry->value = g_strdup (value);
+		    result = TRUE;
+		}
+
+		if (current_section) {
+            if (entry->section != NULL)
+                g_free (entry->section);
+		    entry->section = g_strdup (current_section);
+        }
+		
+		break;
+	    }
+	}
+
+	g_free (key);
+	g_free (value);
+    if (locale != NULL)
+        g_free (locale);
+    }
+
+    if (current_locale != NULL) g_free (current_locale);
+    g_free (current_section);
+    g_strfreev (lines);
+
+    return result;
+}
+
 XfceDesktopEntry *
 xfce_desktop_entry_new_from_data (const char *data, const char **categories,
 				  int num_categories)
@@ -196,6 +273,8 @@ xfce_desktop_entry_new_from_data (const char *data, const char **categories,
     {
 	entry->key = g_strdup (categories[i]);
     }
+
+    g_return_val_if_fail (xfce_desktop_entry_parse(desktop_entry), NULL);
 
     return desktop_entry;
 }
@@ -237,6 +316,8 @@ xfce_desktop_entry_new (const char *file, const char **categories,
     {
 	entry->key = g_strdup (categories[i]);
     }
+
+    g_return_val_if_fail (xfce_desktop_entry_parse(desktop_entry), NULL);
 
     return desktop_entry;
 }
@@ -335,84 +416,6 @@ parse_desktop_entry_line (const char *line, char **section,
 	
 	return TRUE;
     }
-}
-
-gboolean
-xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
-{
-    char *current_locale;
-    int locale_matched = 0;
-    char *contents;
-    char **lines, **p;
-    char *current_section = NULL;
-    gboolean result = FALSE;
-
-    g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
-
-    current_locale = g_strdup (setlocale (LC_MESSAGES, NULL));
-
-    lines = g_strsplit (desktop_entry->priv->data, "\n", -1);
-    
-    for (p = lines; *p != NULL; ++p)
-    {
-	entry_t *entry;
-	int i;
-	char *section, *key, *value, *locale;
-	
-	if (!parse_desktop_entry_line (*p, &section, &key, &value, &locale))
-	    continue;
-
-	if (section != NULL)
-	{
-	    g_free (current_section);
-	    current_section = section;
-	    continue;
-	}
-	
-	entry = &(desktop_entry->priv->entries[0]);
-
-	for (i = 0; i < desktop_entry->priv->num_entries; ++i, ++entry)
-	{
-	    if (strcmp (key, entry->key) == 0)
-	    {
-		if (current_locale && locale)
-		{
-		    int match = xfce_locale_match (current_locale, locale);
-
-		    if (match > locale_matched)
-		    {
-			g_free (entry->translated_value);
-			entry->translated_value = g_strdup (value);
-		    }
-		}
-		else
-		{
-		    g_free (entry->value);
-		    entry->value = g_strdup (value);
-		    result = TRUE;
-		}
-
-		if (current_section) {
-            if (entry->section != NULL)
-                g_free (entry->section);
-		    entry->section = g_strdup (current_section);
-        }
-		
-		break;
-	    }
-	}
-
-	g_free (key);
-	g_free (value);
-    if (locale != NULL)
-        g_free (locale);
-    }
-
-    if (current_locale != NULL) g_free (current_locale);
-    g_free (current_section);
-    g_strfreev (lines);
-
-    return result;
 }
 
 static G_CONST_RETURN entry_t *

@@ -55,6 +55,10 @@ struct _XfceDesktopEntryClass
     void (*_xfce_reserved3) (void);
 };
 
+#ifndef XFCE_DISABLE_DEPRECATED
+gboolean xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry);
+#endif
+
 /* XXX - Remove this ASAP */
 #if TESTING
 void print_desktop_entry_info (XfceDesktopEntry *desktop_entry);
@@ -71,8 +75,6 @@ XfceDesktopEntry *xfce_desktop_entry_new_from_data (const char *data,
 XfceDesktopEntry *xfce_desktop_entry_new (const char *file, 
     					  const char **categories,
 					  int num_categories);
-
-gboolean xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry);
 
 gboolean xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
     				        const char *key,
