@@ -218,7 +218,7 @@ INCLUDES = \
 	-DDEFAULT_XDG_CONFIG_DIRS=\"$(sysconfdir)/xdg:$(sysconfdir)/xfce4:/etc/xdg\" \
 	-DDATADIR=\"$(datadir)\"					\
 	-DG_LOG_DOMAIN=\"libxfce4util\"					\
-	-DKIOSKDIR=\"$(sysconfdir)/xfce4/kiosk\"			\
+	-DKIOSKDIR=\"$(sysconfdir)/xdg/xfce4/kiosk\"			\
 	-DKIOSKDEF=\"ALL\"
 
 lib_LTLIBRARIES = libxfce4util.la
