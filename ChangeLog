@@ -1,3 +1,12 @@
+2004-11-05 18:32  benny
+
+	* libxfce4util/xfce-rc-simple.c: Increase line buffer size, fixes
+	  #469.
+
+2004-10-30 21:03  olivier
+
+	* ChangeLog, ltmain.sh: Global update for 4.1.91 (Xfce 4.2 beta 2)
+
 2004-10-30 14:37  benny
 
 	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
