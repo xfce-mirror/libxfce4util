@@ -31,30 +31,38 @@
 
 #include <stdio.h>
 
+#if defined(__NetBSD__) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
+#define __DBG_FUNC__    __func__
+#else
+#define __DBG_FUNC__    "??"
+#endif
+
 #define DBG(fmt, args...)                                                   \
 {                                                                           \
-    fprintf(stderr, "%s, line %d: ", __FILE__, __LINE__);                   \
+    fprintf(stderr, "DBG[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
     fprintf(stderr, fmt, ##args);                                           \
     fprintf(stderr, "\n");                                                  \
 }
 
 #if defined(DEBUG_TRACE) && DEBUG_TRACE > 0
 
-#define TRACE()                                                             \
+#define TRACE(fmt, args...)                                                             \
 {                                                                           \
-    fprintf(stderr, "TRACE %s, line %d: ", __FILE__, __LINE__);             \
+    fprintf(stderr, "TRACE[%s:%d] %s(): ",__FILE__,__LINE__,__DBG_FUNC__);  \
+    fprintf(stderr, fmt, ##args);                                           \
+    fprintf(stderr, "\n");                                                  \
 }
 
 #else /* !defined(DEBUG_TRACE) || DEBUG_TRACE <= 0 */
 
-#define TRACE()             { do {} while(0); }
+#define TRACE(fmt, args...) { do {} while(0); }
 
 #endif
 
 #else /* !defined(DEBUG) || DEBUG <= 0 */
 
 #define DBG(fmt, args...)   { do {} while(0); }
-#define TRACE()             { do {} while(0); }
+#define TRACE(fmt, args...) { do {} while(0); }
 
 #endif
 
