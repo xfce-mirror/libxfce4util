@@ -393,7 +393,11 @@ xfce_desktop_entry_new_from_data (const char *data, const char **categories,
 	entry->key = g_strdup (categories[i]);
     }
 
-    g_return_val_if_fail (entry_parse(desktop_entry), NULL);
+    if (!entry_parse (desktop_entry)) {
+        g_warning ("Unable to parse .desktop file data");
+        g_object_unref (G_OBJECT (desktop_entry));
+        desktop_entry = NULL;
+    }
 
     return desktop_entry;
 }
@@ -447,7 +451,11 @@ xfce_desktop_entry_new (const char *file, const char **categories,
 	entry->key = g_strdup (categories[i]);
     }
 
-    g_return_val_if_fail (entry_parse(desktop_entry), NULL);
+    if (!entry_parse(desktop_entry)) {
+        g_warning ("Unable to parse .desktop file '%s'", file);
+        g_object_unref (G_OBJECT (desktop_entry));
+        desktop_entry = NULL;
+    }
 
     return desktop_entry;
 }
