@@ -130,6 +130,7 @@ lib_LTLIBRARIES = libxfce4util.la
 libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
 
 libxfce4utilinclude_HEADERS = \
+	debug.h							\
 	filter.h						\
 	i18n.h							\
 	option.h						\

@@ -24,8 +24,8 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __LIBXFCE4UTIL_I18N_H
-#define __LIBXFCE4UTIL_I18N_H
+#ifndef __LIBXFCE4UTIL_I18N_H__
+#define __LIBXFCE4UTIL_I18N_H__
 
 /*
  * gettext macros
@@ -56,4 +56,4 @@
 
 #endif
 
-#endif	/* !__LIBXFCE4UTIL_I18N_H */
+#endif	/* !__LIBXFCE4UTIL_I18N_H__ */

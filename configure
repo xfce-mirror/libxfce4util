@@ -1551,7 +1551,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=libxfce4util
- VERSION=0.0
+ VERSION=0.1
 
 
 cat >>confdefs.h <<_ACEOF
@@ -5721,6 +5721,11 @@ cat >>confdefs.h <<\_ACEOF
 _ACEOF
 
     if test x"$ac_cv_debug" = x"full"; then
+
+cat >>confdefs.h <<\_ACEOF
+#define DEBUG_TRACE 1
+_ACEOF
+
       CFLAGS="$CFLAGS -g3 -Wall -Werror -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"
       echo "$as_me:$LINENO: result: full" >&5
 echo "${ECHO_T}full" >&6
