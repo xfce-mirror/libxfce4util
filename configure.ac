@@ -1,19 +1,13 @@
 dnl configure.ac
+dnl
+dnl Copyright (c) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+dnl
 
 AC_INIT(libxfce4util)
 
 AM_CONFIG_HEADER(config.h)
 
-dnl
-dnl Library settings
-dnl
-LIBXFCE4UTIL_MAJOR=0
-LIBXFCE4UTIL_MINOR=0
-LIBXFCE4UTIL_AGE=0
-LIBXFCE4UTIL_VERSION=$LIBXFCE4UTIL_MAJOR.$LIBXFCE4UTIL_MINOR.$LIBXFCE4UTIL_AGE
-LIBXFCE4UTIL_VERINFO=$LIBXFCE4UTIL_MAJOR:$LIBXFCE4UTIL_MINOR:$LIBXFCE4UTIL_AGE
-
-AM_INIT_AUTOMAKE(libxfce4util, $LIBXFCE4UTIL_VERSION)
+AM_INIT_AUTOMAKE(libxfce4util, 0.0)
 
 AM_MAINTAINER_MODE
 
@@ -34,14 +28,18 @@ AC_CHECK_HEADERS(err.h)
 dnl Check for Glib >= 2.0 installed
 PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.0.0)
 
+dnl libtool versioning
+LIBXFCE4UTIL_VERINFO=0:0
 AC_SUBST(LIBXFCE4UTIL_VERINFO)
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
 
+dnl Build ldflags for pkg-config file
+BM_PKG_LDFLAGS(PKG)
+
 AC_OUTPUT([
 Makefile
-libxfce4util/Makefile
 libxfce4util/libxfce4util-1.0.pc
-libxfce4util.spec
+libxfce4util/Makefile
 ])

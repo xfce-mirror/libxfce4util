@@ -308,7 +308,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL PKG_CONFIG GLIB_CFLAGS GLIB_LIBS LIBXFCE4UTIL_VERINFO LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO AMTAR install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM AWK SET_MAKE MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S RANLIB ac_ct_RANLIB LIBTOOL PKG_CONFIG GLIB_CFLAGS GLIB_LIBS LIBXFCE4UTIL_VERINFO PKG_LDFLAGS LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -859,6 +859,8 @@ Optional Features:
   --enable-debug=yes|no|full
                           Build with debugging support
   --disable-debug         Include no debugging support default
+  --enable-rpath          Specify run path to the ELF linker (default)
+  --disable-rpath         Do not use -rpath (use with care!!)
 
 Optional Packages:
   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
@@ -1285,12 +1287,6 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
           ac_config_headers="$ac_config_headers config.h"
 
 
-LIBXFCE4UTIL_MAJOR=0
-LIBXFCE4UTIL_MINOR=0
-LIBXFCE4UTIL_AGE=0
-LIBXFCE4UTIL_VERSION=$LIBXFCE4UTIL_MAJOR.$LIBXFCE4UTIL_MINOR.$LIBXFCE4UTIL_AGE
-LIBXFCE4UTIL_VERINFO=$LIBXFCE4UTIL_MAJOR:$LIBXFCE4UTIL_MINOR:$LIBXFCE4UTIL_AGE
-
 am__api_version="1.7"
 ac_aux_dir=
 for ac_dir in $srcdir $srcdir/.. $srcdir/../..; do
@@ -1555,7 +1551,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=libxfce4util
- VERSION=$LIBXFCE4UTIL_VERSION
+ VERSION=0.0
 
 
 cat >>confdefs.h <<_ACEOF
@@ -5101,7 +5097,7 @@ test x"$pic_mode" = xno && libtool_flags="$libtool_flags --prefer-non-pic"
 case $host in
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5104 "configure"' > conftest.$ac_ext
+  echo '#line 5100 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -5700,6 +5696,7 @@ echo "$as_me: error: Library requirements (glib-2.0 >= 2.0.0) not met; consider 
   fi
 
 
+LIBXFCE4UTIL_VERINFO=0:0
 
 
 
@@ -5733,7 +5730,42 @@ echo "${ECHO_T}no" >&6
   fi
 
 
-                                        ac_config_files="$ac_config_files Makefile libxfce4util/Makefile libxfce4util/libxfce4util-1.0.pc libxfce4util.spec"
+
+  # Check whether --enable-rpath or --disable-rpath was given.
+if test "${enable_rpath+set}" = set; then
+  enableval="$enable_rpath"
+  ac_cv_rpath=$enableval
+else
+  ac_cv_rpath=yes
+fi;
+  echo "$as_me:$LINENO: checking whether to use -rpath" >&5
+echo $ECHO_N "checking whether to use -rpath... $ECHO_C" >&6
+  LD_RPATH=
+  if test "x$ac_cv_rpath" != "xno"; then
+    LD_RPATH="-Wl,-R"
+    echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+  else
+    LD_RPATH=""
+    echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+  fi
+
+
+
+  echo "$as_me:$LINENO: checking which pkg-config LDFLAGS to use" >&5
+echo $ECHO_N "checking which pkg-config LDFLAGS to use... $ECHO_C" >&6
+  if test "x$LD_RPATH" == "x"; then
+    PKG_LDFLAGS="-L\${libdir}"
+  else
+    PKG_LDFLAGS="$LD_RPATH\${libdir} -L\${libdir}"
+  fi
+  echo "$as_me:$LINENO: result: $PKG_LDFLAGS" >&5
+echo "${ECHO_T}$PKG_LDFLAGS" >&6
+
+
+
+                              ac_config_files="$ac_config_files Makefile libxfce4util/libxfce4util-1.0.pc libxfce4util/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure
@@ -6297,9 +6329,8 @@ do
   case "$ac_config_target" in
   # Handling of arguments.
   "Makefile" ) CONFIG_FILES="$CONFIG_FILES Makefile" ;;
-  "libxfce4util/Makefile" ) CONFIG_FILES="$CONFIG_FILES libxfce4util/Makefile" ;;
   "libxfce4util/libxfce4util-1.0.pc" ) CONFIG_FILES="$CONFIG_FILES libxfce4util/libxfce4util-1.0.pc" ;;
-  "libxfce4util.spec" ) CONFIG_FILES="$CONFIG_FILES libxfce4util.spec" ;;
+  "libxfce4util/Makefile" ) CONFIG_FILES="$CONFIG_FILES libxfce4util/Makefile" ;;
   "depfiles" ) CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
   "config.h" ) CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
@@ -6442,6 +6473,7 @@ s,@PKG_CONFIG@,$PKG_CONFIG,;t t
 s,@GLIB_CFLAGS@,$GLIB_CFLAGS,;t t
 s,@GLIB_LIBS@,$GLIB_LIBS,;t t
 s,@LIBXFCE4UTIL_VERINFO@,$LIBXFCE4UTIL_VERINFO,;t t
+s,@PKG_LDFLAGS@,$PKG_LDFLAGS,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF
