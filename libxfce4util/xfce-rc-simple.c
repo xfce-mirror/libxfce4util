@@ -113,21 +113,21 @@ struct _Group
 
 /* local prototypes */
 static Group*   simple_add_group  (XfceRcSimple *simple,
-				   const gchar  *name);
+				                           const gchar  *name);
 static Entry*   simple_add_entry  (XfceRcSimple *simple,
-				   const gchar  *key,
-				   const gchar  *value,
-				   const gchar  *locale);
+                                   const gchar  *key,
+                                   const gchar  *value,
+                                   const gchar  *locale);
 static gboolean simple_parse_line (gchar        *line,
-				   gchar       **section,
-				   gchar       **key,
-				   gchar       **value,
-				   gchar       **locale);
+				                           gchar       **section,
+                        				   gchar       **key,
+                        				   gchar       **value,
+                        				   gchar       **locale);
 static gchar*   simple_escape     (gchar        *buffer,
-				   gsize         size,
-				   const gchar  *string);
+                        				   gsize         size,
+                        				   const gchar  *string);
 static gboolean simple_write      (XfceRcSimple *simple,
-				   const gchar  *filename);
+                        				   const gchar  *filename);
 
 
 static Group*
@@ -163,9 +163,9 @@ simple_add_group (XfceRcSimple *simple, const gchar *name)
 
 static Entry*
 simple_add_entry (XfceRcSimple *simple,
-		  const gchar  *key,
-		  const gchar  *value,
-		  const gchar  *locale)
+		              const gchar  *key,
+            		  const gchar  *value,
+            		  const gchar  *locale)
 {
   LEntry *lentry_before;
   LEntry *lentry;
@@ -187,17 +187,17 @@ simple_add_entry (XfceRcSimple *simple,
       entry->llast  = NULL;
 
       if (simple->group->efirst == NULL)
-	{
-	  entry->next = entry->prev = NULL;
-	  simple->group->efirst = simple->group->elast = entry;
-	}
+        {
+          entry->next = entry->prev = NULL;
+          simple->group->efirst = simple->group->elast = entry;
+        }
       else
-	{
-	  entry->next = NULL;
-	  entry->prev = simple->group->elast;
-	  simple->group->elast->next = entry;
-	  simple->group->elast = entry;
-	}
+        {
+          entry->next = NULL;
+          entry->prev = simple->group->elast;
+          simple->group->elast->next = entry;
+          simple->group->elast = entry;
+        }
 
       return entry;
     }
@@ -206,7 +206,7 @@ simple_add_entry (XfceRcSimple *simple,
     {
       /* overwrite existing value */
       if (G_LIKELY (strcmp (entry->value, value) != 0))
-	entry->value = g_string_chunk_insert (simple->string_chunk, value);
+	      entry->value = g_string_chunk_insert (simple->string_chunk, value);
     }
   else
     {
@@ -221,55 +221,55 @@ simple_add_entry (XfceRcSimple *simple,
        */
       lentry_before = NULL;
       for (lentry = entry->llast; lentry != NULL; lentry = lentry->prev)
-	{
-	  result = strcmp (lentry->locale, locale);
+        {
+          result = strcmp (lentry->locale, locale);
 
-	  if (result == 0)
-	    break;
-	  else if (result < 0)
-	    {
-	      lentry_before = lentry;
-	      lentry = NULL;
-	      break;
-	    }
-	}
+          if (result == 0)
+            break;
+          else if (result < 0)
+            {
+              lentry_before = lentry;
+              lentry = NULL;
+              break;
+            }
+        }
 
       if (G_LIKELY (lentry == NULL))
-	{
-	  /* create new localized entry */
-	  lentry         = g_chunk_new (LEntry, simple->lentry_chunk);
-	  lentry->locale = g_string_chunk_insert (simple->string_chunk, locale);
-	  lentry->value  = g_string_chunk_insert (simple->string_chunk, value);
+        {
+          /* create new localized entry */
+          lentry         = g_chunk_new (LEntry, simple->lentry_chunk);
+          lentry->locale = g_string_chunk_insert (simple->string_chunk, locale);
+          lentry->value  = g_string_chunk_insert (simple->string_chunk, value);
 
-	  if (G_UNLIKELY (entry->lfirst == NULL))
-	    {
-	      lentry->next = lentry->prev = NULL;
-	      entry->lfirst = entry->llast = lentry;
-	    }
-	  else if (lentry_before != NULL)
-	    {
-	      lentry->next = lentry_before->next;
-	      lentry->prev = lentry_before;
-	      if (G_UNLIKELY (lentry_before->next != NULL))
-		lentry_before->next->prev = lentry;
-	      else
-		entry->llast = lentry;
-	      lentry_before->next = lentry;
-	    }
-	  else
-	    {
-	      lentry->next = NULL;
-	      lentry->prev = entry->llast;
-	      entry->llast->next = lentry;
-	      entry->llast = lentry;
-	    }
-	}
+          if (G_UNLIKELY (entry->lfirst == NULL))
+            {
+              lentry->next = lentry->prev = NULL;
+              entry->lfirst = entry->llast = lentry;
+            }
+          else if (lentry_before != NULL)
+            {
+              lentry->next = lentry_before->next;
+              lentry->prev = lentry_before;
+              if (G_UNLIKELY (lentry_before->next != NULL))
+                lentry_before->next->prev = lentry;
+              else
+                entry->llast = lentry;
+              lentry_before->next = lentry;
+            }
+          else
+            {
+              lentry->next = NULL;
+              lentry->prev = entry->llast;
+              entry->llast->next = lentry;
+              entry->llast = lentry;
+            }
+        }
       else
-	{
-	  /* overwrite value in existing localized entry */
-	  if (G_LIKELY (strcmp (lentry->value, value) != 0))
-	    lentry->value = g_string_chunk_insert (simple->string_chunk, value);
-	}
+        {
+          /* overwrite value in existing localized entry */
+          if (G_LIKELY (strcmp (lentry->value, value) != 0))
+            lentry->value = g_string_chunk_insert (simple->string_chunk, value);
+        }
     }
 
   return entry;
@@ -278,10 +278,10 @@ simple_add_entry (XfceRcSimple *simple,
 
 static gboolean
 simple_parse_line (gchar  *line,
-		   gchar **section,
-		   gchar **key,
-		   gchar **value,
-		   gchar **locale)
+                   gchar **section,
+                   gchar **key,
+                   gchar **value,
+                   gchar **locale)
 {
   gchar *p, *q, *r, *s;
 
@@ -301,98 +301,98 @@ simple_parse_line (gchar  *line,
   if (*p == '[')
     {
       for (q = ++p; *q != '\0' && *q != ']'; ++q)
-	;
+	      ;
 
       if (G_LIKELY (*q == ']'))
-	{
-	  *section = p;
-	  *q = '\0';
-	  return TRUE;
-	}
+        {
+          *section = p;
+          *q = '\0';
+          return TRUE;
+        }
     }
   else
     {
       for (q = p + 1; *q != '=' && *q != '\0'; ++q)
-	;
+	      ;
       if (G_UNLIKELY (*q != '='))
-	return FALSE;
+      	return FALSE;
 
       r = q + 1;
 
       for (--q; g_ascii_isspace (*q); --q)
-	;
+      	;
 
       if (G_UNLIKELY (q == p))
-	return FALSE;
+      	return FALSE;
 
       if (*q == ']')
-	{
-	  for (s = q - 1; *s != '[' && s > p; --s)
-	    ;
-	  if (G_UNLIKELY (*s != '['))
-	    return FALSE;
+        {
+          for (s = q - 1; *s != '[' && s > p; --s)
+            ;
+          if (G_UNLIKELY (*s != '['))
+            return FALSE;
 
-	  *key = p;
-	  *s = '\0';
+          *key = p;
+          *s = '\0';
 
-	  *locale = s + 1;
-	  *q = '\0';
+          *locale = s + 1;
+          *q = '\0';
 
-	  if (G_UNLIKELY (**key == '\0' || **locale == '\0'))
-	    return FALSE;
-	}
+          if (G_UNLIKELY (**key == '\0' || **locale == '\0'))
+            return FALSE;
+        }
       else
-	{
-	  ++q;
-	  *key = p;
-	  *q = '\0';
-	}
+        {
+          ++q;
+          *key = p;
+          *q = '\0';
+        }
 
       while (g_ascii_isspace (*r))
-	++r;
+        ++r;
 
       q = r + strlen (r);
 
       while (q > r && (g_ascii_isspace (*(q-1)) || ((*(q-1)) == '\r')))
-	--q;
+        --q;
 
       *value = r;
       *q = '\0';
 
       /* unescape \n, \t, \r and \\ */
       for (p = r; *r != '\0'; )
-	{
-	  if (G_UNLIKELY (*r == '\\'))
-	    {
-	      switch (*(r+1))
-		{
-		case 'n':
-		  *p++ = '\n';
-		  break;
+        {
+          if (G_UNLIKELY (*r == '\\'))
+            {
+              switch (*(r+1))
+                {
+                case 'n':
+                  *p++ = '\n';
+                  break;
 
-		case 't':
-		  *p++ = '\t';
-		  break;
+                case 't':
+                  *p++ = '\t';
+                  break;
 
-		case 'r':
-		  *p++ = '\r';
-		  break;
+                case 'r':
+                  *p++ = '\r';
+                  break;
 
-		case '\\':
-		  *p++ = '\\';
-		  break;
+                case '\\':
+                  *p++ = '\\';
+                  break;
 
-		default:
-		  *p++ = '\\';
-		  *p++ = *(r+1);
-		  break;
-		}
+                default:
+                  *p++ = '\\';
+                  *p++ = *(r+1);
+                  break;
+                }
 
-	      r += 2;
-	    }
-	  else
-	    *p++ = *r++;
-	}
+              r += 2;
+            }
+          else
+            *p++ = *r++;
+        }
       *p = '\0';
 
       return TRUE;

@@ -46,6 +46,9 @@
 #ifdef HAVE_MEMORY_H
 #include <memory.h>
 #endif
+#ifdef HAVE_PWD_H
+#include <pwd.h>
+#endif
 #ifdef HAVE_STAD_ARG_H
 #include <stdarg.h>
 #elif HAVE_VARARGS_H
@@ -485,10 +488,11 @@ xfce_unsetenv (const gchar *name)
  *            variables have higher priority than the ones in the process's
  *            environment.
  *
- * Expands shell like environment variables and tilde in @command. XXX 
- * - complete me!
+ * Expands shell like environment variables and tilde (~/ and ~user/ are both supported)
+ * in @command. 
  *
- * Return value: the string, use g_free().
+ * Return value: %NULL on error, else the string, which should be freed using
+ *               g_free() when no longer needed.
  *
  * Since: 4.2
  **/
@@ -496,27 +500,54 @@ gchar*
 xfce_expand_variables (const gchar *command,
                        gchar      **envp)
 {
-  const gchar *value;
-  gchar        variable[256];
-  gchar        buffer[2048];
-  gchar       *bp;
-  gchar       *vp;
-  gchar      **ep;
-  guint        len;
+#ifdef HAVE_GETPWNAM
+  struct passwd *pw;
+#endif
+  const gchar   *value;
+  gchar          variable[256];
+  gchar          buffer[2048];
+  gchar         *bend = buffer + 2047;
+  gchar         *bp;
+  gchar         *vend = variable + 255;
+  gchar         *vp;
+  gchar        **ep;
+  guint          len;
 
   g_return_val_if_fail (command != NULL, NULL);
   
   if (*command == '~')
     {
-      /* XXX - add support for "~user" syntax */
-      g_strlcpy (buffer, xfce_get_homedir (), 2048);
-      bp = buffer + strlen (buffer);
-      ++command;
+      if (*++command == '/' || *command == '\0')
+        {
+          /* ~/ syntax */
+          g_strlcpy (buffer, xfce_get_homedir (), 2048);
+          bp = buffer + strlen (buffer);
+        }
+#ifdef HAVE_GETPWNAM
+      else
+        {
+          /* ~user/ syntax */
+          for (vp = variable; g_ascii_isalnum (*command) && vp < vend; )
+            *vp++ = *command++;
+
+          if (vp != variable)
+            {
+              *vp = '\0';
+
+              pw = getpwnam (variable);
+              if (pw != NULL && pw->pw_dir != NULL)
+                {
+                  g_strlcpy (buffer, pw->pw_dir, 2048);
+                  bp = buffer + strlen (buffer);
+                }
+            }
+        }
+#endif
     }
   else
     bp = buffer;
   
-  while (*command != '\0')
+  while (*command != '\0' && bp < bend)
     {
       if (*command != '$')
         *bp++ = *command++;
@@ -524,7 +555,7 @@ xfce_expand_variables (const gchar *command,
         {
           ++command;
           
-          for (vp = variable; g_ascii_isalnum (*command) && vp < variable + 255; )
+          for (vp = variable; g_ascii_isalnum (*command) && vp < vend; )
             *vp++ = *command++;
           
           if (vp == variable)
@@ -549,13 +580,13 @@ xfce_expand_variables (const gchar *command,
 
           if (value != NULL)
             {
-              while (*value != '\0')
+              while (*value != '\0' && bp < bend)
                 *bp++ = *value++;
             }
           else
             {
               *bp++ = '$';
-              for (vp = variable; *vp != '\0'; )
+              for (vp = variable; *vp != '\0' && bp < bend; )
                 *bp++ = *vp++;
             }
         }

@@ -11,11 +11,11 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:4:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
-m4_define([libxfce4util_version_micro], [11])
+m4_define([libxfce4util_version_micro], [12])
 m4_define([libxfce4util_version], [libxfce4util_version_major.libxfce4util_version_minor.libxfce4util_version_micro])
 
 dnl Overall XFce version, modify this when making releases
-m4_define([xfce_version_string], [4.1.0])
+m4_define([xfce_version_string], [4.1.1])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -66,9 +66,9 @@ AC_PROG_LIBTOOL
 
 dnl check for standard header files
 AC_HEADER_STDC
-AC_CHECK_HEADERS([err.h errno.h limits.h locale.h sys/stat.h sys/types.h \
-  sys/utsname.h sys/wait.h unistd.h])
-AC_CHECK_FUNCS([gethostname setenv setlocale strdup unsetenv])
+AC_CHECK_HEADERS([err.h errno.h limits.h locale.h pwd.h sys/stat.h sys/types.h \
+                  sys/utsname.h sys/wait.h unistd.h])
+AC_CHECK_FUNCS([gethostname getpwnam setenv setlocale strdup unsetenv])
 
 dnl Check for GObject >= 2.0.0 installed (GObject in turn depends on GLib)
 BM_DEPEND([GOBJECT], [gobject-2.0], [2.0.0])
