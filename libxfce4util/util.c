@@ -74,8 +74,7 @@
 /* */
 #define XFCE4DIR		".xfce4"
 
-/**
- * environment variable the user can set to change the path to
+/* environment variable the user can set to change the path to
  * the users .xfce4 directory. If not set, the xfce_userdir defaults
  * to "$HOME/.xfce4".
  */
@@ -87,9 +86,6 @@ G_LOCK_DEFINE_STATIC(_lock);
 static const gchar *xfce_homedir = NULL;/* path to users home directory */
 static const gchar *xfce_userdir = NULL;/* path to users .xfce4 directory */
 
-/**
- * Wrapper around gtk_init to to some stuff required for Xfce4 apps
- */
 static void
 internal_initialize(void)
 {
@@ -142,12 +138,32 @@ internal_get_file_r(const gchar *dir, gchar *buffer, size_t len,
 	return(buffer);
 }
 
+/**
+ * xfce_version_string:
+ *
+ * Queries the version string of the installed Xfce desktop environment.
+ *
+ * Return value: the overall version information of the installed Xfce desktop.
+ */
 G_CONST_RETURN gchar *
 xfce_version_string(void)
 {
   return(XFCE_VERSION_STRING);
 }
 
+/**
+ * xfce_get_homedir:
+ * 
+ * Similar to g_get_homedir() in functionality but will never return NULL.
+ * While g_get_homedir() may return NULL under certain circumstances, this
+ * function is garantied to never ever return NULL, but always return a
+ * valid character pointer with the absolute path to the user's home directory.
+ *
+ * The returned string is owned by libxfce4util and must not be freed by
+ * the caller.
+ *
+ * Return value: the path to the current user's home directory.
+ **/
 G_CONST_RETURN gchar *
 xfce_get_homedir(void)
 {
@@ -159,6 +175,22 @@ xfce_get_homedir(void)
 	return(xfce_homedir);
 }
 
+/**
+ * xfce_get_homefile_r:
+ * @buffer: pointer to a user provided destination buffer.
+ * @length: size of @buffer in bytes.
+ * @format: printf style format string.
+ * @Varargs: the arguments to substitute in the output.
+ *
+ * Similar in functionality to #xfce_get_homefile, but uses a user
+ * defined @buffer instead of allocating a new buffer.
+ *
+ * xfce_get_homefile_r uses safe string operations, that says, it garanties
+ * that the resulting string is always zero terminated, as long as the
+ * @length is greater than zero.
+ *
+ * Return value: pointer to @buffer.
+ **/
 G_CONST_RETURN gchar *
 xfce_get_homefile_r(gchar *buffer, size_t len, const gchar *format, ...)
 {
@@ -172,6 +204,21 @@ xfce_get_homefile_r(gchar *buffer, size_t len, const gchar *format, ...)
 	return(ptr);
 }
 
+/**
+ * xfce_get_userdir:
+ *
+ * Safe way to retrieve the path to the user's ".xfce4" directory. The path
+ * to the current user's ".xfce4" directory is either taken from the
+ * environment variable XFCE4HOME if defined, or if unset, is gained by
+ * concatenating the path to the user's home directory and the ".xfce4".
+ * That says, it will, by default, return the path "$HOME/.xfce4", where
+ * $HOME is replaced with the absolute path to the user's home directory.
+ *
+ * The returned string is managed by libxfce4util and must not be freed by
+ * the caller.
+ *
+ * Return value: the path to the current user's ".xfce4" directory.
+ */
 G_CONST_RETURN gchar *
 xfce_get_userdir(void)
 {
@@ -183,19 +230,40 @@ xfce_get_userdir(void)
 	return(xfce_userdir);
 }
 
+/**
+ * xfce_get_userfile_r:
+ * @buffer: user provided destination buffer.
+ * @length: size of @buffer in bytes.
+ * @format: printf style format string.
+ * @Varargs: arguments to substitute in the output.
+ *
+ * Return value: pointer to @buffer.
+ **/
 G_CONST_RETURN gchar *
-xfce_get_userfile_r(gchar *buffer, size_t len, const gchar *format, ...)
+xfce_get_userfile_r(gchar *buffer, size_t length, const gchar *format, ...)
 {
 	G_CONST_RETURN gchar *ptr;
 	va_list ap;
 
 	va_start(ap, format);
-	ptr = internal_get_file_r(xfce_get_userdir(), buffer, len, format, ap);
+	ptr = internal_get_file_r(xfce_get_userdir(), buffer, length, format, ap);
 	va_end(ap);
 
 	return(ptr);
 }
 
+/**
+ * xfce_strjoin:
+ * @separator:
+ * @strings:
+ * @count:
+ *
+ * Joins the @count character strings pointed to by @strings using @separator
+ * to a single string.
+ *
+ * Return value: the joined string. The string has to be freed by the caller
+ *               using g_free() when no longer needed.
+ **/
 gchar *
 xfce_strjoin(gchar *separator, gchar **strings, gint count)
 {
@@ -224,8 +292,18 @@ xfce_strjoin(gchar *separator, gchar **strings, gint count)
 	return(result);
 }
 
+/**
+ * xfce_gethostname:
+ * 
+ * Portable way to query the hostname of the node running the process. This
+ * function does not every return NULL, but always returns a string containing
+ * the current node's hostname.
+ *
+ * Return value: the current node's hostname. The string has to be freed
+ *               by the caller using g_free().
+ **/
 gchar *
-xfce_gethostname(void)
+xfce_gethostname (void)
 {
 #if defined(HAVE_GETHOSTNAME)
 #ifndef MAXHOSTNAMELEN
@@ -246,10 +324,22 @@ xfce_gethostname(void)
 	return(NULL);
 }
 
-/*
- */
-int
-xfce_putenv(const gchar *string)
+/**
+ * xfce_putenv:
+ * @string: Character string in the form "name=value".
+ *
+ * Portable replacement for the Unix putenv() library function. @string has
+ * to have the form "name=value". Calling xfce_putenv() this way is equal to
+ * calling xfce_setenv("name", "value", TRUE).
+ *
+ * Return value: 0 if the operation was successful; otherwise the global
+ *               variable errno is set to indicate the error and a value
+ *               of -1 is returned.
+ *
+ * Since: 4.1.1
+ **/
+gint
+xfce_putenv (const gchar *string)
 {
 #ifdef HAVE_BROKEN_PUTENV
   gchar* buffer;
@@ -273,13 +363,33 @@ xfce_putenv(const gchar *string)
 #endif /* !HAVE_BROKEN_PUTENV */
 }
 
-/*
- * Provide a setenv function for systems that lack it
- */
-int
-xfce_setenv(const gchar *name, const gchar *value, gboolean overwrite)
+/**
+ * xfce_setenv:
+ * @name: the name of the environment variable to set, must not contain '='.
+ * @value: the value to set the variable to.
+ * @overwrite: whether to change the variable if it already exists.
+ *
+ * If the variable @name does not exists in the list of environment variables,
+ * it is inserted with its value being set to @value. If the variable does
+ * exist, then its value is only changed to @value if @overwrite is TRUE.
+ *
+ * On plattforms that provide a working native setenv() library call, this
+ * functions is used, on all other plattforms setenv() is emulated using
+ * xfce_putenv(). That says, xfce_setenv() is not subject to the limitations
+ * that apply to some setenv() implementations and seem also to apply to
+ * g_setenv() in Glib 2.4.
+ *
+ * Return value: 0 if the operation was successful; otherwise the global
+ *               variable errno is set to indicate the error and a value
+ *               of -1 is returned.
+ *
+ * Since: 4.1.1
+ **/
+gint
+xfce_setenv (const gchar *name, const gchar *value, gboolean overwrite)
 {
-#ifndef HAVE_SETENV
+  /* Plattforms with broken putenv() are unlikely to have a working setenv() */
+#if defined(HAVE_SETENV) || defined(HAVE_BROKEN_PUTENV)
   int result = 0;
 	gchar *buf;
 

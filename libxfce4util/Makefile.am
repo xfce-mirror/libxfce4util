@@ -6,21 +6,23 @@ libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
 libxfce4utilinclude_HEADERS =					\
 	debug.h							\
 	i18n.h							\
+	libxfce4util.h						\
 	utf8.h							\
 	util.h							\
+	xfce-desktopentry.h					\
 	xfce_desktop_entry.h
 
 libxfce4util_la_SOURCES =					\
 	debug.h							\
 	i18n.c							\
 	i18n.h							\
-	licenses-texts.c						\
+	licenses-texts.c					\
 	utf8.c							\
 	utf8.h							\
 	util.c							\
 	util.h							\
-	xfce_desktop_entry.c					\
-	xfce_desktop_entry.h
+	xfce-desktopentry.c					\
+	xfce-desktopentry.h
 
 libxfce4util_la_LDFLAGS =					\
 	-export-dynamic						\

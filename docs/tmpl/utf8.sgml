@@ -1,0 +1,40 @@
+<!-- ##### SECTION Title ##### -->
+utf8
+
+<!-- ##### SECTION Short_Description ##### -->
+Unicode support functions.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+</para>
+
+<!-- ##### FUNCTION xfce_utf8_remove_controls ##### -->
+<para>
+
+</para>
+
+@str: 
+@max_len: 
+@end: 
+@Returns: 
+
+
+<!-- ##### FUNCTION utf8_string_remove_controls ##### -->
+<para>
+
+</para>
+
+@str: 
+@max_len: 
+@end: 
+@Returns: 
+<!-- # Unused Parameters # -->
+@Param1: 
+@Param2: 
+@Param3: 
+
+

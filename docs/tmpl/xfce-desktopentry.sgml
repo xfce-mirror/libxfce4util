@@ -1,0 +1,84 @@
+<!-- ##### SECTION Title ##### -->
+XfceDesktopEntry
+
+<!-- ##### SECTION Short_Description ##### -->
+A GObject that wraps a .desktop file.
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+XfceDesktopEntry is a wrapper for a so-called desktop entry file. The
+desktop entry format is defined on <ulink
+url="http://www.freedesktop.org/">Freedesktop.org</ulink>.
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT XfceDesktopEntry ##### -->
+<para>
+All the fields in the XfceDesktopEntry structure are private to the
+XfceDesktopEntry implementation and should never be accessed directly.
+Instead, you should use the functions listed below.
+</para>
+
+
+<!-- ##### FUNCTION xfce_desktop_entry_new ##### -->
+<para>
+Create a new #XfceDesktopEntry object.
+</para>
+
+@file: full path to the desktop entry file to use.
+@categories: array of categories, not necessarily NULL terminated.
+@num_categories: number of items in @categories.
+@Returns: newly created #XfceDesktopEntry or NULL if something goes wrong.
+
+
+<!-- ##### FUNCTION xfce_desktop_entry_parse ##### -->
+<para>
+Parses the desktop entry file and fills in the values for all categories.
+</para>
+
+@desktop_entry: an #XfceDesktopEntry.
+@Returns: TRUE on success, FALSE on failure.
+
+
+<!-- ##### FUNCTION xfce_desktop_entry_get_file ##### -->
+<para>
+Obtain the path to the desktop entry file associated with the
+#XfceDesktopEntry.
+</para>
+
+@desktop_entry: an #XfceDesktopEntry.
+@Returns: path of the desktop entry file used to create @desktop_entry. The
+          return value should be considered read-only and must not be freed
+	  by the caller.
+
+
+<!-- ##### FUNCTION xfce_desktop_entry_get_string ##### -->
+<para>
+Finds the value for @key. When @translated is TRUE the function will use
+the translated value (using the current locale settings) if available or
+the untranslated value if no translation can be found.
+</para>
+
+@desktop_entry: an #XfceDesktopEntry
+@key: category to find value for.
+@translated: set to TRUE if the translated value is preferred.
+@value: location for the value, which will be newly allocated.
+@Returns: TRUE on success, FALSE on failure. @value must be freed.
+
+
+<!-- ##### FUNCTION xfce_desktop_entry_get_int ##### -->
+<para>
+Gets a value from @desktop_entry as integer. Therefore finds the value for
+@key and returns its integer representation.
+</para>
+
+@desktop_entry: an #XfceDesktopEntry.
+@key: category to find value for.
+@value: location for the value.
+@Returns: TRUE on success, FALSE on failure.
+
+

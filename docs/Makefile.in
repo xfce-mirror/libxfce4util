@@ -13,7 +13,6 @@
 # PARTICULAR PURPOSE.
 
 @SET_MAKE@
-
 srcdir = @srcdir@
 top_srcdir = @top_srcdir@
 VPATH = @srcdir@
@@ -35,8 +34,9 @@ NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_triplet = @host@
-subdir = i18n
-DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
+subdir = docs
+DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+	$(srcdir)/version.xml.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/debug.m4 \
 	$(top_srcdir)/m4/depends.m4 $(top_srcdir)/configure.ac
@@ -44,12 +44,9 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = version.xml
 SOURCES =
 DIST_SOURCES =
-am__installdirs = $(DESTDIR)$(i18ndir)
-i18nDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(i18n_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
@@ -158,12 +155,92 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-i18ndir = $(datadir)/xfce4/i18n
-i18n_DATA = \
-	nls.alias
 
+# The name of the module.
+DOC_MODULE = libxfce4util
+
+# The top-level SGML file.
+DOC_MAIN_SGML_FILE = libxfce4util-docs.sgml
+
+# The directory containing the source code. Relative to $(srcdir)
+DOC_SOURCE_DIR = ../libxfce4util
+
+# Extra options to supply to gtkdoc-scan
+SCAN_OPTIONS = --deprecated-guards="XFCE_DISABLE_DEPRECATED"
+
+# Extra options to supply to gtkdoc-mkdb
+MKDB_OPTIONS = --sgml-mode --output-format=xml
+
+# Extra options to supply to gtkdoc-fixref
+FIXXREF_OPTIONS = 
+
+# Used for dependencies
+HFILE_GLOB = $(top_srcdir)/libxfce4util/*.h
+CFILE_GLOB = $(top_srcdir)/libxfce4util/*.c
+
+# Header files to ignore when scanning
+IGNORE_HFILES = \
+	licenses-texts.c
+
+
+# Extra files to add when scanning (relative to $srcdir)
+EXTRA_HFILES = 
+
+# Images to copy into HTML directory
+HTML_IMAGES = 
+
+# Extra SGML files that are included by DOC_MAIN_SGML_FILE
+content_files = \
+	version.xml
+
+
+# Other files to distribute
+extra_files = version.xml.in
+
+# CFLAGS and LDFLAGS for compiling scan program. Only needed
+# if $(DOC_MODULE).types is non-empty.
+GTKDOC_CFLAGS = \
+	-I$(top_srcdir) 				\
+	-I$(top_builddir) 				\
+	@GOBJECT_CFLAGS@
+
+GTKDOC_LIBS = \
+	$(top_builddir)/libxfce4util/libxfce4util.la
+
+
+# Commands for compiling and linking 
+GTKDOC_CC = $(LIBTOOL) --mode=compile $(CC)
+GTKDOC_LD = $(LIBTOOL) --mode=link $(CC)
+
+####################################
+# Everything below here is generic #
+####################################
+
+# We set GPATH here; this gives us semantics for GNU make
+# which are more like other make's VPATH, when it comes to
+# whether a source that is a target of one rule is then
+# searched for in VPATH/GPATH.
+#
+GPATH = $(srcdir)
+TARGET_DIR = $(HTML_DIR)/$(DOC_MODULE)
 EXTRA_DIST = \
-	$(i18n_DATA)
+	$(content_files)		\
+	$(extra_files)			\
+	$(HTML_IMAGES)			\
+	$(DOC_MAIN_SGML_FILE)		\
+	$(DOC_MODULE).types		\
+	$(DOC_MODULE)-sections.txt	\
+	$(DOC_MODULE)-overrides.txt
+
+DOC_STAMPS = scan-build.stamp tmpl-build.stamp sgml-build.stamp html-build.stamp \
+	   $(srcdir)/tmpl.stamp $(srcdir)/sgml.stamp $(srcdir)/html.stamp
+
+SCANOBJ_FILES = \
+	$(DOC_MODULE).args 	 \
+	$(DOC_MODULE).hierarchy  \
+	$(DOC_MODULE).interfaces \
+	$(DOC_MODULE).prerequisites \
+	$(DOC_MODULE).signals
 
 all: all-am
 
@@ -177,9 +254,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign  i18n/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign  docs/Makefile'; \
 	cd $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign  i18n/Makefile
+	  $(AUTOMAKE) --foreign  docs/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -197,6 +274,8 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
+version.xml: $(top_builddir)/config.status $(srcdir)/version.xml.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -207,23 +286,6 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
-install-i18nDATA: $(i18n_DATA)
-	@$(NORMAL_INSTALL)
-	$(mkdir_p) $(DESTDIR)$(i18ndir)
-	@list='$(i18n_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " $(i18nDATA_INSTALL) $$d$$p $(DESTDIR)$(i18ndir)/$$f"; \
-	  $(i18nDATA_INSTALL) $$d$$p $(DESTDIR)$(i18ndir)/$$f; \
-	done
-
-uninstall-i18nDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(i18n_DATA)'; for p in $$list; do \
-	  f="`echo $$p | sed -e 's|^.*/||'`"; \
-	  echo " rm -f $(DESTDIR)$(i18ndir)/$$f"; \
-	  rm -f $(DESTDIR)$(i18ndir)/$$f; \
-	done
 tags: TAGS
 TAGS:
 
@@ -258,11 +320,13 @@ distdir: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
+	$(MAKE) $(AM_MAKEFLAGS) \
+	  top_distdir="$(top_distdir)" distdir="$(distdir)" \
+	  dist-hook
 check-am: all-am
 check: check-am
-all-am: Makefile $(DATA)
+all-am: Makefile all-local
 installdirs:
-	$(mkdir_p) $(DESTDIR)$(i18ndir)
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -289,7 +353,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libtool mostlyclean-am
+clean-am: clean-generic clean-libtool clean-local mostlyclean-am
 
 distclean: distclean-am
 	-rm -f Makefile
@@ -305,7 +369,7 @@ info: info-am
 
 info-am:
 
-install-data-am: install-i18nDATA
+install-data-am: install-data-local
 
 install-exec-am:
 
@@ -317,7 +381,8 @@ installcheck-am:
 
 maintainer-clean: maintainer-clean-am
 	-rm -f Makefile
-maintainer-clean-am: distclean-am maintainer-clean-generic
+maintainer-clean-am: distclean-am maintainer-clean-generic \
+	maintainer-clean-local
 
 mostlyclean: mostlyclean-am
 
@@ -331,18 +396,113 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-i18nDATA uninstall-info-am
+uninstall-am: uninstall-info-am
 
-.PHONY: all all-am check check-am clean clean-generic clean-libtool \
-	distclean distclean-generic distclean-libtool distdir dvi \
-	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-exec install-exec-am \
-	install-i18nDATA install-info install-info-am install-man \
-	install-strip installcheck installcheck-am installdirs \
-	maintainer-clean maintainer-clean-generic mostlyclean \
+.PHONY: all all-am all-local check check-am clean clean-generic \
+	clean-libtool clean-local distclean distclean-generic \
+	distclean-libtool distdir dvi dvi-am html html-am info info-am \
+	install install-am install-data install-data-am \
+	install-data-local install-exec install-exec-am install-info \
+	install-info-am install-man install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
+	maintainer-clean-generic maintainer-clean-local mostlyclean \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	uninstall uninstall-am uninstall-i18nDATA uninstall-info-am
+	uninstall uninstall-am uninstall-info-am
 
+
+@ENABLE_GTK_DOC_TRUE@all-local: html-build.stamp
+
+#### scan ####
+
+@ENABLE_GTK_DOC_TRUE@scan-build.stamp: $(HFILE_GLOB)
+@ENABLE_GTK_DOC_TRUE@	@echo '*** Scanning header files ***'
+@ENABLE_GTK_DOC_TRUE@	if grep -l '^..*$$' $(srcdir)/$(DOC_MODULE).types > /dev/null ; then \
+@ENABLE_GTK_DOC_TRUE@	    CC="$(GTKDOC_CC)" LD="$(GTKDOC_LD)" CFLAGS="$(GTKDOC_CFLAGS)" LDFLAGS="$(GTKDOC_LIBS)" gtkdoc-scangobj --module=$(DOC_MODULE) --output-dir=$(srcdir) ; \
+@ENABLE_GTK_DOC_TRUE@	else \
+@ENABLE_GTK_DOC_TRUE@	    cd $(srcdir) ; \
+@ENABLE_GTK_DOC_TRUE@	    for i in $(SCANOBJ_FILES) ; do \
+@ENABLE_GTK_DOC_TRUE@               test -f $$i || touch $$i ; \
+@ENABLE_GTK_DOC_TRUE@	    done \
+@ENABLE_GTK_DOC_TRUE@	fi
+@ENABLE_GTK_DOC_TRUE@	cd $(srcdir) && \
+@ENABLE_GTK_DOC_TRUE@	  gtkdoc-scan --module=$(DOC_MODULE) --source-dir=$(DOC_SOURCE_DIR) --ignore-headers="$(IGNORE_HFILES)" $(SCAN_OPTIONS) $(EXTRA_HFILES)
+@ENABLE_GTK_DOC_TRUE@	touch scan-build.stamp
+
+@ENABLE_GTK_DOC_TRUE@$(DOC_MODULE)-decl.txt $(SCANOBJ_FILES): scan-build.stamp
+@ENABLE_GTK_DOC_TRUE@	@true
+
+#### templates ####
+
+@ENABLE_GTK_DOC_TRUE@tmpl-build.stamp: $(DOC_MODULE)-decl.txt $(SCANOBJ_FILES) $(DOC_MODULE)-sections.txt $(DOC_MODULE)-overrides.txt
+@ENABLE_GTK_DOC_TRUE@	@echo '*** Rebuilding template files ***'
+@ENABLE_GTK_DOC_TRUE@	cd $(srcdir) && gtkdoc-mktmpl --module=$(DOC_MODULE)
+@ENABLE_GTK_DOC_TRUE@	touch tmpl-build.stamp
+
+@ENABLE_GTK_DOC_TRUE@tmpl.stamp: tmpl-build.stamp
+@ENABLE_GTK_DOC_TRUE@	@true
+
+#### sgml ####
+
+@ENABLE_GTK_DOC_TRUE@sgml-build.stamp: tmpl.stamp $(CFILE_GLOB) $(srcdir)/tmpl/*.sgml
+@ENABLE_GTK_DOC_TRUE@	@echo '*** Building SGML ***'
+@ENABLE_GTK_DOC_TRUE@	cd $(srcdir) && \
+@ENABLE_GTK_DOC_TRUE@	gtkdoc-mkdb --module=$(DOC_MODULE) --source-dir=$(DOC_SOURCE_DIR) $(MKDB_OPTIONS)
+@ENABLE_GTK_DOC_TRUE@	touch sgml-build.stamp
+
+@ENABLE_GTK_DOC_TRUE@sgml.stamp: sgml-build.stamp
+@ENABLE_GTK_DOC_TRUE@	@true
+
+#### html ####
+
+@ENABLE_GTK_DOC_TRUE@html-build.stamp: sgml.stamp $(DOC_MAIN_SGML_FILE) $(content_files)
+@ENABLE_GTK_DOC_TRUE@	@echo '*** Building HTML ***'
+@ENABLE_GTK_DOC_TRUE@	rm -rf $(srcdir)/html 
+@ENABLE_GTK_DOC_TRUE@	mkdir $(srcdir)/html
+@ENABLE_GTK_DOC_TRUE@	cd $(srcdir)/html && gtkdoc-mkhtml $(DOC_MODULE) ../$(DOC_MAIN_SGML_FILE)
+@ENABLE_GTK_DOC_TRUE@	test "x$(HTML_IMAGES)" = "x" || ( cd $(srcdir) && cp $(HTML_IMAGES) html )
+@ENABLE_GTK_DOC_TRUE@	@echo '-- Fixing Crossreferences' 
+@ENABLE_GTK_DOC_TRUE@	cd $(srcdir) && gtkdoc-fixxref --module-dir=html --html-dir=$(HTML_DIR) $(FIXXREF_OPTIONS)
+@ENABLE_GTK_DOC_TRUE@	touch html-build.stamp
+
+##############
+
+clean-local:
+	rm -f *~ *.bak $(SCANOBJ_FILES) *-unused.txt $(DOC_STAMPS)
+
+maintainer-clean-local: clean
+	cd $(srcdir) && rm -rf sgml html $(DOC_MODULE)-decl-list.txt $(DOC_MODULE)-decl.txt
+
+install-data-local:
+	$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR)
+	(installfiles=`echo $(srcdir)/html/*`; \
+	if test "$$installfiles" = '$(srcdir)/html/*'; \
+	then echo '-- Nothing to install' ; \
+	else \
+	  for i in $$installfiles; do \
+	    echo '-- Installing '$$i ; \
+	    $(INSTALL_DATA) $$i $(DESTDIR)$(TARGET_DIR); \
+	  done; \
+	  echo '-- Installing $(srcdir)/html/index.sgml' ; \
+	  $(INSTALL_DATA) $(srcdir)/html/index.sgml $(DESTDIR)$(TARGET_DIR); \
+	fi)
+
+#
+# Require gtk-doc when making dist
+#
+@ENABLE_GTK_DOC_TRUE@dist-check-gtkdoc:
+@ENABLE_GTK_DOC_FALSE@dist-check-gtkdoc:
+@ENABLE_GTK_DOC_FALSE@	@echo "*** gtk-doc must be installed and enabled in order to make dist"
+@ENABLE_GTK_DOC_FALSE@	@false
+
+dist-hook: dist-check-gtkdoc dist-hook-local
+	mkdir $(distdir)/tmpl
+	mkdir $(distdir)/xml
+	mkdir $(distdir)/html
+	-cp $(srcdir)/tmpl/*.sgml $(distdir)/tmpl
+	-cp $(srcdir)/xml/*.xml $(distdir)/xml
+	-cp $(srcdir)/html/* $(distdir)/html
+
+.PHONY : dist-hook-local
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

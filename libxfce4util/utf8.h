@@ -1,5 +1,6 @@
-/*
- * Copyright (c) 2003 Olivier Fourdan (fourdan@xfce.org)
+/* $Id$ */
+/*-
+ * Copyright (c) 2003 Olivier Fourdan <fourdan@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,8 +30,18 @@
 
 #include <glib.h>
 
-#include <libxfce4util/debug.h>
+G_BEGIN_DECLS
 
-extern gchar	*utf8_string_remove_controls(gchar *, gssize, const gchar *);
+#ifndef XFCE_DISABLE_DEPRECATED
+gchar	*utf8_string_remove_controls (gchar *str,
+                                    gssize max_len,
+                                    const gchar *end);
+#endif
+
+gchar	*xfce_utf8_remove_controls (gchar *str,
+                                  gssize max_len,
+                                  const gchar *end);
+
+G_END_DECLS
 
 #endif	/* !__LIBXFCE4UTIL_UTF8_H__ */

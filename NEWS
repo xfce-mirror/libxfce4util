@@ -1,3 +1,12 @@
+20040212:
+---------
+
+	- Version 4.1.3
+	- Code cleanups (Yes, consistency is important)
+	- Switched to gtk-doc, cause of doxygen being unable to handle
+	  GObject's
+	- Mark some functions as DEPRECATED.
+
 20040129:
 ---------
 

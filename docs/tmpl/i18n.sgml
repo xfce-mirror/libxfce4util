@@ -1,0 +1,139 @@
+<!-- ##### SECTION Title ##### -->
+i18n
+
+<!-- ##### SECTION Short_Description ##### -->
+Internationalization and Localization Support Functions
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### MACRO _ ##### -->
+<para>
+Convience macro for the #gettext function.
+</para>
+
+@s: string to translate.
+
+
+<!-- ##### MACRO N_ ##### -->
+<para>
+
+</para>
+
+@s: 
+
+
+<!-- ##### MACRO xfce_textdomain ##### -->
+<para>
+
+</para>
+
+@package: 
+@localedir: 
+@encoding: 
+
+
+<!-- ##### MACRO textdomain ##### -->
+<para>
+
+</para>
+
+@s: 
+
+
+<!-- ##### MACRO gettext ##### -->
+<para>
+
+</para>
+
+@s: 
+
+
+<!-- ##### MACRO dgettext ##### -->
+<para>
+
+</para>
+
+@domain: 
+@s: 
+
+
+<!-- ##### MACRO dcgettext ##### -->
+<para>
+
+</para>
+
+@domain: 
+@s: 
+@type: 
+
+
+<!-- ##### MACRO bindtextdomain ##### -->
+<para>
+
+</para>
+
+@domain: 
+@directory: 
+
+
+<!-- ##### FUNCTION xfce_get_file_localized ##### -->
+<para>
+
+</para>
+
+@Param1: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_get_dir_localized ##### -->
+<para>
+
+</para>
+
+@Param1: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_get_file_localized_r ##### -->
+<para>
+
+</para>
+
+@Param1: 
+@Param2: 
+@Param3: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_get_dir_localized_r ##### -->
+<para>
+
+</para>
+
+@Param1: 
+@Param2: 
+@Param3: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_get_path_localized ##### -->
+<para>
+
+</para>
+
+@Param1: 
+@Param2: 
+@Param3: 
+@Param4: 
+@Param5: 
+@Returns: 
+
+

@@ -1,6 +1,6 @@
-/* xfce4
- *  
- * Copyright (C) 2004 Jasper Huijsmans (jasper@xfce.org)
+/* $Id$ */
+/*-
+ * Copyright (C) 2004 Jasper Huijsmans <jasper@xfce.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -16,15 +16,15 @@
  * License along with this library; if not, write to the
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
- * 
-*/
+ */
 
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
 
 #include <glib.h>
-#include "xfce_desktop_entry.h"
+
+#include <libxfce4util/xfce-desktopentry.h>
 
 typedef struct
 {
@@ -285,8 +285,7 @@ parse_desktop_entry_line (const char *line, char **section,
     }
 }
 
-/**
- * @brief Match current locale against locale string.
+/* @brief Match current locale against locale string.
  * 
  * @param current_locale : current locale value
  * @param locale	   : locale value to match against
@@ -299,9 +298,9 @@ parse_desktop_entry_line (const char *line, char **section,
  * probably be fixed.
  *
  * @return : integer value ranging from 0 (no match) to 4 (full match).
- **/
+ */
 static int
-match_locale (const char *current_locale, const char*locale)
+match_locale (const char *current_locale, const char *locale)
 {
     char *p;
     
@@ -393,12 +392,11 @@ xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 		    result = TRUE;
 		}
 
-		if (current_section)
-		{
-		    if (entry->section)
-		        g_free (entry->section);
+		if (current_section) {
+            if (entry->section != NULL)
+                g_free (entry->section);
 		    entry->section = g_strdup (current_section);
-		}
+        }
 		
 		break;
 	    }
@@ -406,10 +404,11 @@ xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
 
 	g_free (key);
 	g_free (value);
-	if (locale) g_free (locale);
+    if (locale != NULL)
+        g_free (locale);
     }
 
-    if (current_locale) g_free (current_locale);
+    if (current_locale != NULL) g_free (current_locale);
     g_free (current_section);
     g_strfreev (lines);
 

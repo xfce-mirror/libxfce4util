@@ -1,0 +1,149 @@
+<!-- ##### SECTION Title ##### -->
+util
+
+<!-- ##### SECTION Short_Description ##### -->
+Miscellaneous utility functions
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+<!-- ##### MACRO XFCE_LICENSE_BSD ##### -->
+<para>
+Contains the text of the BSD license.
+</para>
+
+
+
+<!-- ##### MACRO XFCE_LICENSE_GPL ##### -->
+<para>
+Contains the text of the GNU General Public License.
+</para>
+
+
+
+<!-- ##### MACRO XFCE_LICENSE_LGPL ##### -->
+<para>
+Contains the text of the GNU Lesser General Public License.
+</para>
+
+
+
+<!-- ##### FUNCTION xfce_version_string ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_get_homedir ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### MACRO xfce_get_homefile ##### -->
+<para>
+Returns the path to a file in the user's home directory by taking a
+NULL terminated list of strings and appending them to the absolute
+path of the current user's home directory.
+</para>
+
+@first_element...: NULL terminated list of path components.
+@Returns: the absolute path to the specified file in the current user's
+          home directory. The caller is responsible for freeing the
+	  returned string using g_free().
+
+
+<!-- ##### FUNCTION xfce_get_homefile_r ##### -->
+<para>
+
+</para>
+
+@buffer: 
+@length: 
+@format: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_get_userdir ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### MACRO xfce_get_userfile ##### -->
+<para>
+Returns the absolute path to a file within the user's ".xfce4" directory,
+formed by a NULL terminated list of path components.
+</para>
+
+@first_element...: NULL terminated list of path components.
+@Returns: the absolute path to the specified file in the user's ".xfce4"
+          directory. The caller is responsible for freeing the returned
+	  string using g_free().
+
+
+<!-- ##### FUNCTION xfce_get_userfile_r ##### -->
+<para>
+
+</para>
+
+@buffer: 
+@length: 
+@format: 
+@Varargs: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_strjoin ##### -->
+<para>
+
+</para>
+
+@separator: 
+@strings: 
+@count: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_gethostname ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_putenv ##### -->
+<para>
+
+</para>
+
+@string: 
+@Returns: 
+
+
+<!-- ##### FUNCTION xfce_setenv ##### -->
+<para>
+
+</para>
+
+@name: 
+@value: 
+@overwrite: 
+@Returns: 
+
+

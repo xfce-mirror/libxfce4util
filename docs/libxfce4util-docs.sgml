@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY libxfce4util-Desktop-Entries SYSTEM "xml/xfce-desktopentry.xml">
+<!ENTITY libxfce4util-Internationalization SYSTEM "xml/i18n.xml">
+<!ENTITY libxfce4util-Unicode-Functions SYSTEM "xml/utf8.xml">
+<!ENTITY libxfce4util-Utility-Functions SYSTEM "xml/util.xml">
+<!ENTITY version SYSTEM "version.xml">
+]>
+
+<book id="index">
+	<bookinfo>
+		<title>libxfce4util Reference Manual</title>
+		<releaseinfo>for libxfce4util &version;</releaseinfo>
+	</bookinfo>
+
+	<chapter id="reference">
+		<title>libxfce4util Overview</title>
+		<para>
+			libxfce4util is a general-purpose utility library
+			with core application support for the Xfce Desktop
+			Environment.
+		</para>
+	</chapter>
+
+	<chapter id="libxfce4util-fundamentals">
+		<title>Xfce Fundamentals</title>
+		&libxfce4util-Internationalization;
+	</chapter>
+
+	<chapter id="libxfce4util-utilities">
+		<title>Xfce Utilities</title>
+		&libxfce4util-Unicode-Functions;
+		&libxfce4util-Utility-Functions;
+	</chapter>
+
+	<chapter id="libxfce4util-desktop">
+		<title>Xfce Desktop Support</title>
+		&libxfce4util-Desktop-Entries;
+	</chapter>
+
+</book>

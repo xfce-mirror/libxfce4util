@@ -1,5 +1,6 @@
-/*
- * Copyright (c) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+/* $Id$ */
+/*-
+ * Copyright (c) 2003,2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -268,10 +269,17 @@ xfce_get_dir_localized_r(gchar *buffer, gsize length, const gchar *directory)
 	return(__localize_path(buffer, length, directory, G_FILE_TEST_IS_DIR));
 }
 
-/*
- * paths is a ':'-separated list of pathnames.
+/**
+ * xfce_get_path_localized:
+ * @dst: destination buffer.
+ * @size: size of @dst in bytes.
+ * @paths:
+ * @filename:
+ * @test:
  *
- *	%F	- The filename
+ * @paths is a ':'-separated list of pathnames.
+ *
+ *	%F	- The @filename
  *	%L	- The language string, as returned by 
  *		  setlocale(LC_MESSAGES, NULL)
  *	%l	- The language component of the language string
@@ -280,7 +288,9 @@ xfce_get_dir_localized_r(gchar *buffer, gsize length, const gchar *directory)
  * Example paths:
  *
  *	/usr/local/lib/%L/%F:/usr/local/share/%N/%l/%F
- */
+ *
+ * Return value:
+ **/
 gchar *
 xfce_get_path_localized(gchar *dst, gsize size, const gchar *paths,
 		        const gchar *filename, GFileTest test)

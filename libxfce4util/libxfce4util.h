@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003 Olivier Fourdan <fourdan@xfce.org>
+ * Copyright (c) 2003,2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -25,42 +25,13 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
+#define __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
+
+#include <libxfce4util/debug.h>
+#include <libxfce4util/i18n.h>
 #include <libxfce4util/utf8.h>
+#include <libxfce4util/util.h>
+#include <libxfce4util/xfce-desktopentry.h>
 
-/* Around for compatibility. DEPRECATED! */
-gchar *
-utf8_string_remove_controls(gchar *str, gssize max_len, const gchar *end)
-{
-  return xfce_utf8_remove_controls (str, max_len, end);
-}
-
-/**
- * xfce_utf8_remove_controls:
- * @str: target string.
- * @max_len:
- * @end:
- *
- * Removes all control characters from @str.
- *
- * Return value: pointer to @str.
- *
- * Since: 4.1.3
- **/
-gchar *
-xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
-{
-    gchar *p;
-    
-    g_return_val_if_fail (str != NULL, NULL);
-    
-    p = (gchar *) str;
-    while (p && *p && (!end || p < end) && (max_len < 0 || (p - str) < max_len))
-    {
-        if ((*p > 0) && (*p < 32))
-            *p = ' ';
-        p = g_utf8_find_next_char(p, end);
-    }
-
-    return (gchar *) str;
-}
-
+#endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */

@@ -1,13 +1,13 @@
 dnl $Id$
 dnl
 dnl Copyright (c) 2002-2004
-dnl         The XFce development team. All rights reserved.
+dnl         The Xfce development team. All rights reserved.
 dnl
-dnl Written for XFce by Benedikt Meurer <benny@xfce.org>.
+dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>.
 dnl
 
 dnl Version information
-m4_define([libxfce4util_verinfo], [1:2:0])
+m4_define([libxfce4util_verinfo], [1:3:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [1])
 m4_define([libxfce4util_version_micro], [3])
@@ -18,7 +18,7 @@ m4_define([xfce_version_string], [4.1.0])
 
 dnl Initialize autoconf
 AC_COPYRIGHT([Copyright (c) 2002-2004
-        The XFce development team. All rights reserved.
+        The Xfce development team. All rights reserved.
 
 Written for XFce by Benedikt Meurer <benny@xfce.org>.])
 AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
@@ -57,6 +57,9 @@ AC_CHECK_FUNCS([__unaliasname gethostname setenv setlocale strlcat strlcpy])
 dnl Check for GObject >= 2.0.0 installed (GObject in turn depends on GLib)
 BM_DEPEND([GOBJECT], [gobject-2.0], [2.0.0])
 
+dnl Check for gtk-doc
+GTK_DOC_CHECK([1.0])
+
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
 
@@ -84,6 +87,8 @@ int main(int argc, char *argv[])
 
 AC_OUTPUT([
 Makefile
+docs/version.xml
+docs/Makefile
 i18n/Makefile
 libxfce4util.spec
 libxfce4util/libxfce4util-1.0.pc
