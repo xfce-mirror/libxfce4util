@@ -58,14 +58,14 @@
 
 #else /* !defined(DEBUG_TRACE) || DEBUG_TRACE <= 0 */
 
-#define TRACE(fmt, args...) { do {} while(0); }
+#define TRACE(fmt, args...) do {} while(0)
 
 #endif
 
 #else /* !defined(DEBUG) || DEBUG <= 0 */
 
-#define DBG(fmt, args...)   { do {} while(0); }
-#define TRACE(fmt, args...) { do {} while(0); }
+#define DBG(fmt, args...)   do {} while(0)
+#define TRACE(fmt, args...) do {} while(0)
 
 #endif
 
