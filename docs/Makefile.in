@@ -469,6 +469,7 @@ uninstall-am: uninstall-info-am
 @ENABLE_GTK_DOC_TRUE@	@echo '-- Fixing Crossreferences' 
 @ENABLE_GTK_DOC_TRUE@	cd $(srcdir) && gtkdoc-fixxref --module-dir=html --html-dir=$(HTML_DIR) $(FIXXREF_OPTIONS)
 @ENABLE_GTK_DOC_TRUE@	touch html-build.stamp
+@ENABLE_GTK_DOC_FALSE@all-local:
 
 ##############
 
