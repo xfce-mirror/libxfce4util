@@ -1,3 +1,29 @@
+2004-09-27 19:54  jasper
+
+	* configure, configure.ac: Update version to 4.1.90
+
+2004-09-26 12:30  jasper
+
+	* aclocal.m4, configure: autogen for jean-francois
+
+2004-09-26 12:18  pollux
+
+	* configure.ac: bump version in libxfce4util to 4.1.17 and make
+	  xfwm4 depends on it
+
+2004-09-24 10:40  benny
+
+	* libxfce4util/xfce-rc-simple.c: Fixed get_entries.
+
+2004-09-24 09:33  pollux
+
+	* libxfce4util/xfce-rc-simple.c: fix _xfce_rc_simple_get_entries
+	  when name = NULL, benny let me know if it's correct
+
+2004-09-21 00:22  olivier
+
+	* ChangeLog: Update all ChangeLogs
+
 2004-09-18 23:38  benny
 
 	* libxfce4util/: xfce-rc-config.c, xfce-rc-private.h: Implemented
