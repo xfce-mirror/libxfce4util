@@ -40,10 +40,15 @@
 
 #include <libintl.h>
 
-#undef	_
+#ifdef _
+#undef _
+#endif
 #define	_(s)			(dgettext(GETTEXT_PACKAGE, s))
 
 #ifdef gettext_noop
+#ifdef N_
+#undef N_
+#endif
 #define N_(s)			(gettext_noop(s))
 #else
 #define N_(s)			(s)
@@ -74,8 +79,30 @@ do {									\
 #warning "National language support requested but GETTEXT_PACKAGE undefined"
 #endif
 
+#ifdef _
+#undef _
+#endif
 #define _(s)	(s)
+#ifdef N_
+#undef N_
+#endif
 #define N_(s)	(s)
+
+#ifdef textdomain
+#undef textdomain
+#endif
+#ifdef bindtextdomain
+#undef bindtextdomain
+#endif
+#ifdef gettext
+#undef gettext
+#endif
+#ifdef dgettext
+#undef dgettext
+#endif
+#ifdef dcgettext
+#undef dcgettext
+#endif
 
 #define textdomain(s)				(s)
 #define gettext(s)				(s)
