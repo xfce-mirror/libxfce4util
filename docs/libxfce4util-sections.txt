@@ -30,6 +30,18 @@ xfce_locale_match
 
 
 <SECTION>
+<TITLE>Xfce Generics</TITLE>
+<FILE>xfce-generics</FILE>
+XFCE_GENERIC_STACK
+xfce_stack_new
+xfce_stack_free
+xfce_stack_top
+xfce_stack_pop
+xfce_stack_push
+</SECTION>
+
+
+<SECTION>
 <TITLE>Xfce Kiosk functions</TITLE>
 <FILE>xfce-kiosk</FILE>
 XfceKiosk

@@ -22,6 +22,7 @@ libxfce4utilinclude_HEADERS =						\
 	util.h								\
 	xfce-desktopentry.h						\
 	xfce-fileutils.h						\
+	xfce-generics.h							\
 	xfce-kiosk.h							\
 	xfce-miscutils.h						\
 	xfce-rc.h							\
@@ -38,6 +39,7 @@ libxfce4util_la_SOURCES =						\
 	xfce-desktopentry.h						\
 	xfce-fileutils.c						\
 	xfce-fileutils.h						\
+	xfce-generics.h							\
 	xfce-kiosk.c							\
 	xfce-kiosk.h							\
 	xfce-miscutils.c						\

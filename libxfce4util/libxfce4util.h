@@ -35,6 +35,7 @@
 #include <libxfce4util/utf8.h>
 #include <libxfce4util/xfce-desktopentry.h>
 #include <libxfce4util/xfce-fileutils.h>
+#include <libxfce4util/xfce-generics.h>
 #include <libxfce4util/xfce-kiosk.h>
 #include <libxfce4util/xfce-miscutils.h>
 #include <libxfce4util/xfce-rc.h>
