@@ -111,9 +111,6 @@ EGREP = @EGREP@
 EXEEXT = @EXEEXT@
 F77 = @F77@
 FFLAGS = @FFLAGS@
-GLIB_CFLAGS = @GLIB_CFLAGS@
-GLIB_LIBS = @GLIB_LIBS@
-GLIB_REQUIRED_VERSION = @GLIB_REQUIRED_VERSION@
 GOBJECT_CFLAGS = @GOBJECT_CFLAGS@
 GOBJECT_LIBS = @GOBJECT_LIBS@
 GOBJECT_REQUIRED_VERSION = @GOBJECT_REQUIRED_VERSION@
@@ -213,13 +210,11 @@ libxfce4util_la_LDFLAGS = \
 	-export-symbols-regex "^[^_].*"
 
 libxfce4util_la_LIBADD = \
-	@GLIB_LIBS@						\
 	@GOBJECT_LIBS@
 
 libxfce4util_la_CFLAGS = \
 	-I$(top_srcdir)						\
 	-DNLS_ALIAS_DB=\"$(datadir)/xfce4/i18n/nls.alias\"	\
-	@GLIB_CFLAGS@						\
 	@GOBJECT_CFLAGS@
 
 pkgconfigdir = $(libdir)/pkgconfig

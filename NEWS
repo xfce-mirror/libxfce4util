@@ -1,3 +1,10 @@
+20040129:
+---------
+
+	- Version 4.1.1
+	- added xfce_setenv(), xfce_putenv()
+	- Started doxygen documentation of the code
+
 20030614:
 ---------
 

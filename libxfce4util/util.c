@@ -1,5 +1,6 @@
-/*
- * Copyright (c) 2003 Benedikt Meurer <benedikt.meurer@unix-ag.uni-siegen.de>
+/* $Id$ */
+/*-
+ * Copyright (c) 2003,2004 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -141,9 +142,6 @@ internal_get_file_r(const gchar *dir, gchar *buffer, size_t len,
 	return(buffer);
 }
 
-/**
- * This is garantied to never return NULL, unlike g_get_home_dir()
- */
 G_CONST_RETURN gchar *
 xfce_get_homedir(void)
 {
@@ -241,3 +239,53 @@ xfce_gethostname(void)
 	/* NOT REACHED */
 	return(NULL);
 }
+
+/*
+ */
+int
+xfce_putenv(const gchar *string)
+{
+#ifdef HAVE_BROKEN_PUTENV
+  gchar* buffer;
+  int result, sverrno;
+  
+  if ((buffer = g_strdup(string)) != NULL) {
+    if ((result = putenv(buffer)) < 0) {
+      sverrno = errno;
+      g_free(buffer);
+      errno = sverrno;
+    }
+  }
+  else {
+    errno = ENOMEM;
+    result = -1;
+  }
+
+  return(result);
+#else /* !HAVE_BROKEN_PUTENV */
+  return(putenv(string));
+#endif /* !HAVE_BROKEN_PUTENV */
+}
+
+/*
+ * Provide a setenv function for systems that lack it
+ */
+int
+xfce_setenv(const gchar *name, const gchar *value, gboolean overwrite)
+{
+#ifndef HAVE_SETENV
+  int result = 0;
+	gchar *buf;
+
+  if (g_getenv(name) == NULL || overwrite) {
+	  buf = g_strdup_printf("%s=%s", name, value);
+	  result = xfce_putenv(buf);
+  }
+
+  return(result);
+#else
+  return(setenv(name, value, overwrite));
+#endif	/* !HAVE_SETENV */
+}
+
+
