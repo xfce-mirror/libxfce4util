@@ -725,17 +725,22 @@ _xfce_rc_simple_get_entries (const XfceRc *rc, const gchar *name)
   guint               size;
   guint               pos;
 
-  for (group = simple->gfirst; group != NULL; group = group->next)
-    if (strcmp (group->name, name) == 0)
-      break;
+  if (name)
+    {
+      for (group = simple->gfirst; group != NULL; group = group->next)
+	if (strcmp (group->name, name) == 0)
+	  break;
 
-  if (group == NULL)
-    return NULL;
-
+      if (group == NULL)
+	return NULL;
+    }
+  else
+    group = simple->gfirst;
+  
   result = g_new (gchar *, 11);
   size   = 10;
   pos    = 0;
-
+  
   for (entry = group->efirst; entry != NULL; entry = entry->next)
     {
       if (size == pos)
