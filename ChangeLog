@@ -1,3 +1,37 @@
+2003-04-02  bmeurer
+
+	* aclocal.m4, configure, m4/debug.m4, m4/rpath.m4: left-over
+	autostuff for libxfce*, xfcs-mcs-* and xfce4
+
+2003-04-02  bmeurer
+
+	* libxfce4util/: Makefile.am, Makefile.in, filter.h, i18n.h,
+	util.h: Put i18n support code into libxfce4util.
+
+2003-04-02  bmeurer
+
+	* aclocal.m4, config.h.in, configure, configure.ac,
+	libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	libxfce4util/filter.c, m4/debug.m4, m4/depends.m4: Large autotools
+	update. Should fix James problems with unsubstituted @PKG_LDFLAGS@
+	in .pc files. Should also make it easier to port XFce4 to a
+	non-POSIX (or even non-UNIX) plattform, using autoconf.
+
+2003-04-01  bmeurer
+
+	* aclocal.m4, configure, ltcf-c.sh, ltconfig, ltmain.sh,
+	m4/debug.m4, m4/rpath.m4: Updates of the m4 files (test's have some
+	problems).
+
+2003-03-31  bmeurer
+
+	* libxfce4util/: filter.c, option.c, test.c, util.c: Header files
+	are now only included if found by configure.
+
+2003-03-27  xfce
+
+	* ChangeLog: Update ChangeLog
+
 2003-03-23  xfce
 
 	* ChangeLog: Update ChangeLog
