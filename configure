@@ -2011,7 +2011,7 @@ LIBXFCE4UTIL_VERINFO=1:6:0
 
 
 cat >>confdefs.h <<\_ACEOF
-#define XFCE_VERSION_STRING "4.2.0"
+#define XFCE_VERSION_STRING "4.2.1"
 _ACEOF
 
 
