@@ -1899,7 +1899,7 @@ fi
 
 
 
-LIBXFCE4UTIL_VERINFO=0:4:0
+LIBXFCE4UTIL_VERINFO=0:5:0
 
 
 DEPDIR="${am__leading_dot}deps"
