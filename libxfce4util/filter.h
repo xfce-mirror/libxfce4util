@@ -35,8 +35,9 @@ typedef struct _XfceFilterList	XfceFilterList;
 
 struct _XfceFilter
 {
-	gchar	*command;
+	gint	argc;
 	gchar	**argv;
+	gchar	*command;
 };
 
 struct _XfceFilterList
@@ -46,14 +47,13 @@ struct _XfceFilterList
 };
 
 /* filter function prototypes */
-extern XfceFilter	*xfce_filter_new(gchar *, gchar **);
+extern XfceFilter	*xfce_filter_new(const gchar *);
 extern void		xfce_filter_free(XfceFilter *);
+extern void		xfce_filter_add(XfceFilter *, const gchar *, ...);
 
 /* filterlist function prototypes */
 extern XfceFilterList	*xfce_filterlist_new(void);
 extern void		xfce_filterlist_free(XfceFilterList *);
-extern void		xfce_filterlist_append(XfceFilterList *, XfceFilter *);
-extern void		xfce_filterlist_prepend(XfceFilterList *, XfceFilter *);
 extern XfceFilter	*xfce_filterlist_first(XfceFilterList *);
 extern XfceFilter	*xfce_filterlist_next(XfceFilterList *);
 

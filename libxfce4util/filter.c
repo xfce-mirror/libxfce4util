@@ -28,6 +28,7 @@
 #include <config.h>
 #endif /* !HAVE_CONFIG_H */
 
+#include <sys/types.h>
 #include <sys/wait.h>
 
 #include <errno.h>
@@ -36,21 +37,26 @@
 #include "filter.h"
 
 
+/* create a new filter */
 XfceFilter *
-xfce_filter_new(gchar *cmd, gchar **argv)
+xfce_filter_new(const gchar *command)
 {
 	XfceFilter *filter;
 
-	g_return_val_if_fail(argv != NULL, NULL);
-	g_return_val_if_fail(cmd != NULL, NULL);
+	g_return_val_if_fail(command != NULL, NULL);
 
 	filter = g_new0(XfceFilter, 1);
-	filter->command = cmd;
-	filter->argv = argv;
+
+	/* XXX */
+	filter->argv = g_new0(gchar *, 40);
+
+	filter->argv[0] = g_path_get_basename(command);
+	filter->command = g_strdup(command);
 
 	return(filter);
 }
 
+/* free a filter and all memory associated with it */
 void
 xfce_filter_free(XfceFilter *filter)
 {
@@ -58,16 +64,27 @@ xfce_filter_free(XfceFilter *filter)
 
 	g_return_if_fail(filter != NULL);
 
-	if (filter->argv) {
-		for (p = filter->argv; *p; p++)
-			g_free(*p);
-		g_free(filter->argv);
-	}
+	for (p = filter->argv; *p; p++)
+		g_free(*p);
 
+	g_free(filter->argv);
 	g_free(filter->command);
 	g_free(filter);
 }
 
+/* add a new command line option to the filter */
+void
+xfce_filter_add(XfceFilter *filter, const gchar *format, ...)
+{
+	va_list ap;
+
+	g_return_if_fail(filter != NULL);
+	g_return_if_fail(format != NULL);
+
+	va_start(ap, format);
+	filter->argv[++filter->argc] = g_strdup_printf(format, ap);
+	va_end(ap);
+}
 
 XfceFilterList *
 xfce_filterlist_new(void)
@@ -75,6 +92,7 @@ xfce_filterlist_new(void)
 	return(g_new0(XfceFilterList, 1));
 }
 
+/* free a list of filters (frees the filters itself too) */
 void
 xfce_filterlist_free(XfceFilterList *filters)
 {
@@ -103,7 +121,7 @@ xfce_filterlist_prepend(XfceFilterList *filters, XfceFilter *filter)
 	filters->filters = g_list_prepend(filters->filters, filter);
 }
 
-XfceFilter *
+static XfceFilter *
 xfce_filterlist_first(XfceFilterList *filters)
 {
 	g_return_val_if_fail(filters != NULL, NULL);
@@ -113,7 +131,7 @@ xfce_filterlist_first(XfceFilterList *filters)
 	return(filters->cursor ? (XfceFilter *)filters->cursor->data : NULL);
 }
 
-XfceFilter *
+static XfceFilter *
 xfce_filterlist_next(XfceFilterList *filters)
 {
 	g_return_val_if_fail(filters != NULL, NULL);
