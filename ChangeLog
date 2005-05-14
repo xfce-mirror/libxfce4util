@@ -1,75 +1,62 @@
+2005-05-10 20:34  olivier
+
+	* configure.ac: Version update
+
+2005-05-04 20:50  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2005-04-12 14:58  jasper
 
-	* libxfce4util/branches/xfce_4_2/Makefile.in,
-	  libxfce4util/branches/xfce_4_2/aclocal.m4,
-	  libxfce4util/branches/xfce_4_2/autogen.sh,
-	  libxfce4util/branches/xfce_4_2/compile,
-	  libxfce4util/branches/xfce_4_2/config.guess,
-	  libxfce4util/branches/xfce_4_2/config.h.in,
-	  libxfce4util/branches/xfce_4_2/config.sub,
-	  libxfce4util/branches/xfce_4_2/configure,
-	  libxfce4util/branches/xfce_4_2/depcomp,
-	  libxfce4util/branches/xfce_4_2/docs/Makefile.in,
-	  libxfce4util/branches/xfce_4_2/gtk-doc.make,
-	  libxfce4util/branches/xfce_4_2/install-sh,
-	  libxfce4util/branches/xfce_4_2/libxfce4util/Makefile.in,
-	  libxfce4util/branches/xfce_4_2/ltmain.sh,
-	  libxfce4util/branches/xfce_4_2/m4/Makefile.in,
-	  libxfce4util/branches/xfce_4_2/missing,
-	  libxfce4util/branches/xfce_4_2/mkinstalldirs,
-	  libxfce4util/branches/xfce_4_2/xfce4-kiosk-query/Makefile.in: Make
-	  xfce_4_2 branch use dev tools and remove generated files
+	* Makefile.in, aclocal.m4, autogen.sh, compile, config.guess,
+	  config.h.in, config.sub, configure, depcomp, docs/Makefile.in,
+	  gtk-doc.make, install-sh, libxfce4util/Makefile.in, ltmain.sh,
+	  m4/Makefile.in, missing, mkinstalldirs,
+	  xfce4-kiosk-query/Makefile.in: Make xfce_4_2 branch use dev tools
+	  and remove generated files
 
 2005-04-06 11:49  jasper
 
-	* libxfce4util/branches/xfce_4_2/docs/.cvsignore,
-	  libxfce4util/branches/xfce_4_2/xfce4-kiosk-query/.cvsignore:
-	  Removing .cvsignore files from 4.2 branch. At least now the active
-	  branches are cleaned.
+	* docs/.cvsignore, xfce4-kiosk-query/.cvsignore: Removing .cvsignore
+	  files from 4.2 branch. At least now the active branches are
+	  cleaned.
 
 2005-03-14 18:26  olivier
 
-	* libxfce4util/branches/xfce_4_2/configure,
-	  libxfce4util/branches/xfce_4_2/configure.ac: Proper version string
+	* configure, configure.ac: Proper version string
 
 2005-03-12 14:52  olivier
 
-	* libxfce4util/branches/xfce_4_2/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2005-03-12 14:18  olivier
 
-	* libxfce4util/branches/xfce_4_2/configure,
-	  libxfce4util/branches/xfce_4_2/configure.ac,
-	  libxfce4util/branches/xfce_4_2/ltmain.sh: Mass update for 4.2.1
+	* configure, configure.ac, ltmain.sh: Mass update for 4.2.1
 
 2005-02-02 22:17  benny
 
-	* libxfce4util/branches/xfce_4_2/libxfce4util/xfce-fileutils.c:
-	  Backport #724 bug fix from HEAD: Make xfce_mkdirhier() always
-	  verify if the directory was actually created or already existed,
-	  instead of checking for special errno results if mkdir() failed.
-	  All tabs have been expanded to spaces.
+	* libxfce4util/xfce-fileutils.c: Backport #724 bug fix from HEAD:
+	  Make xfce_mkdirhier() always verify if the directory was actually
+	  created or already existed, instead of checking for special errno
+	  results if mkdir() failed. All tabs have been expanded to spaces.
 
 2005-01-17 01:52  kelnos
 
-	* libxfce4util/branches/xfce_4_2/libxfce4util/xfce-desktopentry.c:
-	  fix another csm crash - methinks this is x86_64-related
+	* libxfce4util/xfce-desktopentry.c: fix another csm crash - methinks
+	  this is x86_64-related
 
 2005-01-10 17:03  benny
 
-	* libxfce4util/branches/xfce_4_2/ChangeLog: Final touch before the
-	  tag
+	* ChangeLog: Final touch before the tag
 
 2005-01-05 21:33  benny
 
-	* libxfce4util/branches/xfce_4_2/ChangeLog,
-	  libxfce4util/branches/xfce_4_2/configure,
-	  libxfce4util/branches/xfce_4_2/ltmain.sh: Final updates.
+	* ChangeLog, configure, ltmain.sh: Final updates.
 
 2005-01-02 12:51  
 
-	* libxfce4util/branches/xfce_4_2: This commit was manufactured by
-	  cvs2svn to create branch 'xfce_4_2'.
+	* .: This commit was manufactured by cvs2svn to create branch
+	  'xfce_4_2'.
 
 2005-01-02 12:51  olivier
 
