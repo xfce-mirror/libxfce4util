@@ -1,156 +1,116 @@
+2005-05-04 20:50  olivier
+
+	* ChangeLog: Update ChangeLog
+
 2004-07-09 11:30  olivier
 
-	* libxfce4util/branches/xfce_4_0/configure: Fix some automake tools
-	  missing the exec bit.
+	* configure: Fix some automake tools missing the exec bit.
 
 2004-07-09 09:32  olivier
 
-	* libxfce4util/branches/xfce_4_0/ChangeLog: Update ChangeLog
+	* ChangeLog: Update ChangeLog
 
 2004-07-09 08:59  olivier
 
-	* libxfce4util/branches/xfce_4_0/configure,
-	  libxfce4util/branches/xfce_4_0/configure.ac: Update versions.
+	* configure, configure.ac: Update versions.
 
 2004-07-09 07:53  olivier
 
-	* libxfce4util/branches/xfce_4_0/ChangeLog: Update ChangeLogs for
-	  4.0.6
+	* ChangeLog: Update ChangeLogs for 4.0.6
 
 2004-06-20 16:35  benny
 
-	* libxfce4util/branches/xfce_4_0/libxfce4util/i18n.c: Fix #232.
+	* libxfce4util/i18n.c: Fix #232.
 
 2004-05-03 22:13  olivier
 
-	* libxfce4util/branches/xfce_4_0/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/aclocal.m4,
-	  libxfce4util/branches/xfce_4_0/config.guess,
-	  libxfce4util/branches/xfce_4_0/config.sub,
-	  libxfce4util/branches/xfce_4_0/configure,
-	  libxfce4util/branches/xfce_4_0/i18n/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/install-sh,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/ltmain.sh,
-	  libxfce4util/branches/xfce_4_0/m4/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/mkinstalldirs: Update zh_TW
-	  translations by umm <umm@pchome.com.tw>
+	* Makefile.in, aclocal.m4, config.guess, config.sub, configure,
+	  i18n/Makefile.in, install-sh, libxfce4util/Makefile.in, ltmain.sh,
+	  m4/Makefile.in, mkinstalldirs: Update zh_TW translations by umm
+	  <umm@pchome.com.tw>
 
 2004-04-13 21:32  olivier
 
-	* libxfce4util/branches/xfce_4_0/configure,
-	  libxfce4util/branches/xfce_4_0/configure.ac: Fix version number on
-	  some packages
+	* configure, configure.ac: Fix version number on some packages
 
 2004-04-13 20:41  olivier
 
-	* libxfce4util/branches/xfce_4_0/configure: Prepare 4.0.5
+	* configure: Prepare 4.0.5
 
 2004-03-21 20:06  olivier
 
-	* libxfce4util/branches/xfce_4_0/aclocal.m4,
-	  libxfce4util/branches/xfce_4_0/ltmain.sh: autogen
+	* aclocal.m4, ltmain.sh: autogen
 
 2004-03-20 13:07  benny
 
-	* libxfce4util/branches/xfce_4_0/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/configure,
-	  libxfce4util/branches/xfce_4_0/configure.ac,
-	  libxfce4util/branches/xfce_4_0/i18n/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/Makefile.am,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/debug.h,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/i18n.h,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/libxfce4util-config.h.in,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/libxfce4util.h,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/utf8.h,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/util.h,
-	  libxfce4util/branches/xfce_4_0/m4/Makefile.in: Backport
+	* Makefile.in, configure, configure.ac, i18n/Makefile.in,
+	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/debug.h, libxfce4util/i18n.h,
+	  libxfce4util/libxfce4util-config.h.in,
+	  libxfce4util/libxfce4util.h, libxfce4util/utf8.h,
+	  libxfce4util/util.h, m4/Makefile.in: Backport
 	  LIBXFCE4UTIL_CHECK_VERSION to stable branch.
 
 2004-03-18 13:25  benny
 
-	* libxfce4util/branches/xfce_4_0/aclocal.m4,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/Makefile.am,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/libxfce4util.h,
-	  libxfce4util/branches/xfce_4_0/ltmain.sh: Added
+	* aclocal.m4, libxfce4util/Makefile.am, libxfce4util/Makefile.in,
+	  libxfce4util/libxfce4util.h, ltmain.sh: Added
 	  <libxfce4util/libxfce4util.h> header for smoother transition to
 	  4.2.
 
 2004-03-18 11:55  benny
 
-	* libxfce4util/branches/xfce_4_0/libxfce4util/debug.h,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/i18n.c,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/i18n.h,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/utf8.c,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/utf8.h,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/util.c,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/util.h: Backport sun
-	  forte cc fix and update email address.
+	* libxfce4util/debug.h, libxfce4util/i18n.c, libxfce4util/i18n.h,
+	  libxfce4util/utf8.c, libxfce4util/utf8.h, libxfce4util/util.c,
+	  libxfce4util/util.h: Backport sun forte cc fix and update email
+	  address.
 
 2004-03-17 22:34  
 
-	* libxfce4util/branches/xfce_4_0/libxfce4util/libxfce4util-config.h.in,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/libxfce4util.h: This
-	  commit was manufactured by cvs2svn to create branch 'xfce_4_0'.
+	* libxfce4util/libxfce4util-config.h.in,
+	  libxfce4util/libxfce4util.h: This commit was manufactured by
+	  cvs2svn to create branch 'xfce_4_0'.
 
 2004-03-09 12:43  benny
 
-	* libxfce4util/branches/xfce_4_0/m4/depends.m4: XFCE_MCS_PLUGIN was
-	  missing from here for some weird reason!
+	* m4/depends.m4: XFCE_MCS_PLUGIN was missing from here for some
+	  weird reason!
 
 2004-01-25 00:09  olivier
 
-	* libxfce4util/branches/xfce_4_0/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/aclocal.m4,
-	  libxfce4util/branches/xfce_4_0/compile,
-	  libxfce4util/branches/xfce_4_0/config.guess,
-	  libxfce4util/branches/xfce_4_0/config.sub,
-	  libxfce4util/branches/xfce_4_0/configure,
-	  libxfce4util/branches/xfce_4_0/configure.ac,
-	  libxfce4util/branches/xfce_4_0/depcomp,
-	  libxfce4util/branches/xfce_4_0/i18n/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/install-sh,
-	  libxfce4util/branches/xfce_4_0/libxfce4util/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/ltmain.sh,
-	  libxfce4util/branches/xfce_4_0/m4/Makefile.in,
-	  libxfce4util/branches/xfce_4_0/missing,
-	  libxfce4util/branches/xfce_4_0/mkinstalldirs: Update libtool and
-	  other automake, autoconf and gettext.
+	* Makefile.in, aclocal.m4, compile, config.guess, config.sub,
+	  configure, configure.ac, depcomp, i18n/Makefile.in, install-sh,
+	  libxfce4util/Makefile.in, ltmain.sh, m4/Makefile.in, missing,
+	  mkinstalldirs: Update libtool and other automake, autoconf and
+	  gettext.
 
 2004-01-07 20:38  olivier
 
-	* libxfce4util/branches/xfce_4_0/ChangeLog: Huge update before 4.0.3
-	  release, mainly: ChangeLog update, Version number updates.
+	* ChangeLog: Huge update before 4.0.3 release, mainly: ChangeLog
+	  update, Version number updates.
 
 2003-12-29 15:19  olivier
 
-	* libxfce4util/branches/xfce_4_0/ChangeLog,
-	  libxfce4util/branches/xfce_4_0/configure,
-	  libxfce4util/branches/xfce_4_0/configure.ac: Update version
-	  number, Update ChangeLog Fix missing CHARSET in potfiles
+	* ChangeLog, configure, configure.ac: Update version number, Update
+	  ChangeLog Fix missing CHARSET in potfiles
 
 2003-12-17 23:00  olivier
 
-	* libxfce4util/branches/xfce_4_0/ChangeLog: Update ChangeLog(s)
+	* ChangeLog: Update ChangeLog(s)
 
 2003-12-16 22:36  olivier
 
-	* libxfce4util/branches/xfce_4_0/configure,
-	  libxfce4util/branches/xfce_4_0/configure.ac: Resync, update
-	  version number
+	* configure, configure.ac: Resync, update version number
 
 2003-11-11 18:35  jasper
 
-	* libxfce4util/branches/xfce_4_0/configure,
-	  libxfce4util/branches/xfce_4_0/configure.ac: Update po files, just
-	  in case something changed ...
+	* configure, configure.ac: Update po files, just in case something
+	  changed ...
 
 2003-11-11 18:35  
 
-	* libxfce4util/branches/xfce_4_0: This commit was manufactured by
-	  cvs2svn to create branch 'xfce_4_0'.
+	* .: This commit was manufactured by cvs2svn to create branch
+	  'xfce_4_0'.
 
 2003-09-22 20:52  huysmans
 
