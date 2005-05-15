@@ -12,7 +12,7 @@ BuildRequires: 	glib2-devel >= @GOBJECT_REQUIRED_VERSION@
 BuildRequires:	gtk-doc
 
 %description
-Basic utility non-GUI functions for XFce4.
+Basic utility non-GUI functions for Xfce4.
 
 %package devel
 Summary:	developpment tools for libxfce4util library
