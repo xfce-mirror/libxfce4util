@@ -32,7 +32,8 @@ libxfce4utilinclude_HEADERS =						\
 	xfce-kiosk.h							\
 	xfce-miscutils.h						\
 	xfce-rc.h							\
-	$(util_headers)
+	$(util_headers)                                                 \
+	$(util_built_headers)
 
 libxfce4util_la_SOURCES =						\
 	debug.h								\
