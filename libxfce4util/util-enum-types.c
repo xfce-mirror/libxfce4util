@@ -2,7 +2,7 @@
 /* Generated data (by glib-mkenums) */
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/util-enum-types.h>
+
 
 /* enumerations from "xfce-resource.h" */
 GType
