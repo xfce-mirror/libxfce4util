@@ -102,7 +102,7 @@ stamp-util-enum-types.h: $(util_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#ifndef __XFCE_UTIL_ENUM_TYPES_H__\n#define __XFCE_UTIL_ENUM_TYPES_H__\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
-		--vhead "GType @enum_name@_get_type (void);\n#define UTIL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
+		--vhead "GType @enum_name@_get_type (void);\n#define XFCE_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 		--ftail "#endif /* __XFCE_UTIL_ENUM_TYPES_H__ */" \
 		$(util_headers) ) > xgen-utilh \
 	&& (cmp -s xgen-utilh util-enum-types.h || cp xgen-utilh util-enum-types.h) \
