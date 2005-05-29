@@ -28,7 +28,7 @@
 #ifndef __LIBXFCE4UTIL_XFCE_RESOURCE_H__
 #define __LIBXFCE4UTIL_XFCE_RESOURCE_H__
 
-typedef enum
+typedef enum /*< prefix=XFCE_RESOURCE_ >*/
 {
   XFCE_RESOURCE_DATA   = 0,
   XFCE_RESOURCE_CONFIG = 1,
