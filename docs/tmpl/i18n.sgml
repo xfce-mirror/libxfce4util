@@ -18,6 +18,9 @@ gettext macro and the #xfce_strip_context function.
 Internationalization</ulink>
 </para>
 
+<!-- ##### SECTION Stability_Level ##### -->
+
+
 <!-- ##### MACRO _ ##### -->
 <para>
 Marks a string for translation, gets replaced with the translated string at runtime.

@@ -14,6 +14,9 @@ miscellaneous file-related utility functions.
 <ulink url="http://developer.gnome.org/doc/API/2.0/glib/glib-File-Utilities.html">GLib File Utilities</ulink>
 </para>
 
+<!-- ##### SECTION Stability_Level ##### -->
+
+
 <!-- ##### FUNCTION xfce_mkdirhier ##### -->
 <para>
 

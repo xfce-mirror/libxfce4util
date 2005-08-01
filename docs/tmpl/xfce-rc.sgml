@@ -24,6 +24,9 @@ as soon as possible after loading configuration data from the object.
 
 </para>
 
+<!-- ##### SECTION Stability_Level ##### -->
+
+
 <!-- ##### STRUCT XfceRc ##### -->
 <para>
 Opaque struct that encapsulates the resource config data.
