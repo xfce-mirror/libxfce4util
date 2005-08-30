@@ -14,9 +14,6 @@ These macros provide a few commonly-used features.
 <ulink url="http://developer.gnome.org/doc/API/2.0/glib/glib-Standard-Macros.html">GLib Standard Macros</ulink>
 </para>
 
-<!-- ##### SECTION Stability_Level ##### -->
-
-
 <!-- ##### MACRO LIBXFCE4UTIL_MAJOR_VERSION ##### -->
 <para>
 The major version number of the libxfce4util.
