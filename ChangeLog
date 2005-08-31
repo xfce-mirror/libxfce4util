@@ -1,5 +1,10 @@
 2005-08-31	Benedikt Meurer <benny@xfce.org>
 
+	* Makefile.am: Remove unnecessary extra dist files.
+	* Makefile.am: Setup automake options properly.
+
+2005-08-31	Benedikt Meurer <benny@xfce.org>
+
 	* autogen.sh, configure.in.in: Merge build framework changes from
 	  libexo.
 	* COPYING, libxfce4util.spec.in, libxfce4util/*.{c,h}: Change overall

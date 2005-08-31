@@ -1,7 +1,13 @@
+# $Id$
+
 SUBDIRS =								\
 	libxfce4util							\
 	docs								\
 	xfce4-kiosk-query
+
+AUTOMAKE_OPTIONS =							\
+	1.8								\
+	dist-bzip2
 
 distclean-local:
 	rm -rf libxfce4util.spec *.cache *~
@@ -11,15 +17,7 @@ rpm: dist
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
 
 EXTRA_DIST =								\
-	AUTHORS								\
-	COPYING								\
-	COPYING.BSD							\
-	COPYING.LGPL							\
-	ChangeLog							\
 	ChangeLog.pre-4.2.0						\
-	INSTALL								\
-	NEWS								\
-	README								\
 	README.Kiosk							\
 	TODO								\
 	gtk-doc.make							\
@@ -27,10 +25,4 @@ EXTRA_DIST =								\
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
 
-dist-bz2: dist
-	zcat $(PACKAGE)-$(VERSION).tar.gz | \
-	 bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
-
-distcheck-bz2: distcheck
-	zcat $(PACKAGE)-$(VERSION).tar.gz | \
-	 bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+# vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
