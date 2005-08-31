@@ -7,15 +7,21 @@ dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
 dnl Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.
 dnl
 
-dnl Version information
+dnl ***************************
+dnl *** Version information ***
+dnl ***************************
 m4_define([libxfce4util_verinfo], [2:0:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [3])
 m4_define([libxfce4util_version_micro], [0])
 m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
-m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano])])
+m4_define([libxfce4util_version_build], [r@REVISION@])
+m4_define([libxfce4util_version_tag], [svn])
+m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano()])ifelse(libxfce4util_version_tag(), [], [], [libxfce4util_version_tag()-libxfce4util_version_build()])])
 
-dnl Overall Xfce version, modify this when making releases
+dnl **************************************************************
+dnl *** Overall Xfce version, modify this when making releases ***
+dnl **************************************************************
 m4_define([xfce_version_string], [4.3.0])
 
 
@@ -23,7 +29,9 @@ dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
 dnl # YOU ARE DOING.
 
 
-dnl Initialize autoconf
+dnl ***************************
+dnl *** Initialize autoconf ***
+dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2002-2005
         The Xfce development team. All rights reserved.
 
@@ -33,21 +41,29 @@ AC_INIT([libxfce4util], [libxfce4util_version()], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
 
-dnl Initialize automake
+dnl ***************************
+dnl *** Initialize automake ***
+dnl ***************************
 LIBXFCE4UTIL_VERSION=libxfce4util_version()
 AM_INIT_AUTOMAKE([libxfce4util], [$LIBXFCE4UTIL_VERSION])
 AM_CONFIG_HEADER([config.h])
 AM_MAINTAINER_MODE
 
-dnl libtool versioning
+dnl **************************
+dnl *** Libtool versioning ***
+dnl **************************
 LIBXFCE4UTIL_VERINFO=libxfce4util_verinfo()
 AC_SUBST([LIBXFCE4UTIL_VERINFO])
 
-dnl Subst overall XFce version
+dnl **********************************
+dnl *** Subst overall Xfce version ***
+dnl **********************************
 AC_DEFINE([XFCE_VERSION_STRING], ["xfce_version_string"],
   [Overall XFce version])
 
-dnl Subst libxfce4util version
+dnl **********************************
+dnl *** Subst libxfce4util version ***
+dnl **********************************
 LIBXFCE4UTIL_VERSION_MAJOR=libxfce4util_version_major()
 LIBXFCE4UTIL_VERSION_MINOR=libxfce4util_version_minor()
 LIBXFCE4UTIL_VERSION_MICRO=libxfce4util_version_micro()
@@ -55,37 +71,47 @@ AC_SUBST([LIBXFCE4UTIL_VERSION_MAJOR])
 AC_SUBST([LIBXFCE4UTIL_VERSION_MINOR])
 AC_SUBST([LIBXFCE4UTIL_VERSION_MICRO])
 
-dnl check for UNIX variants
-AC_AIX
-AC_ISC_POSIX
-AC_MINIX
+dnl *******************************
+dnl *** Check for UNIX variants ***
+dnl *******************************
+AC_AIX()
+AC_ISC_POSIX()
+AC_MINIX()
 AM_CONDITIONAL([HAVE_CYGWIN], [test "`uname | grep \"CYGWIN\"`" != ""])
 
-dnl check for basic programs
-AC_PROG_CC
-AC_PROG_INSTALL
-AC_PROG_LIBTOOL
+dnl ********************************
+dnl *** Check for basic programs ***
+dnl ********************************
+AC_PROG_CC()
+AC_PROG_INSTALL()
+AC_PROG_LIBTOOL()
+AC_CHECK_PROGS([PERL], [perl5 perl])
 
-dnl check for standard header files
-AC_HEADER_STDC
+dnl ***************************************
+dnl *** Check for standard header files ***
+dnl ***************************************
+AC_HEADER_STDC()
 AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
                   sys/stat.h sys/types.h sys/utsname.h \
                   sys/wait.h time.h unistd.h])
 AC_CHECK_FUNCS([gethostname getpwnam setenv setlocale strdup unsetenv])
 
-dnl Check for GObject >= 2.2.0 installed (GObject in turn depends on GLib)
+dnl ******************************************************************************
+dnl *** Check for GObject >= 2.2.0 installed (GObject in turn depends on GLib) ***
+dnl ******************************************************************************
 XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.2.0])
 
-dnl Check for gtk-doc
+dnl *************************
+dnl *** Check for gtk-doc ***
+dnl *************************
 GTK_DOC_CHECK([1.0])
 
-dnl Check for debugging support
-BM_DEBUG_SUPPORT
-
-# Check for a broken putenv(3) implementation that requires strings
-# to be malloc'd and not freed after a successfully call to putenv(3).
-# Solaris is known to have such an implementation, also glibc seems to
-# be hit by this problem.
+dnl ****************************************************************************
+dnl *** Check for a broken putenv(3) implementation that requires strings    ***
+dnl *** to be malloc'd and not freed after a successfully call to putenv(3). ***
+dnl *** Solaris is known to have such an implementation, also glibc seems to ***
+dnl *** be hit by this problem.                                              ***
+dnl ****************************************************************************
 AC_MSG_CHECKING([whether putenv() implementation is broken])
 AC_ARG_WITH([broken-putenv],
   [  --with-broken-putenv=[[auto/yes/no]] broken putenv(3) [default=auto]])
@@ -109,6 +135,13 @@ if test x"$with_broken_putenv" = x"yes"; then
 fi
 AC_MSG_RESULT([$with_broken_putenv])
 
+dnl ***********************************
+dnl *** Check for debugging support ***
+dnl ***********************************
+BM_DEBUG_SUPPORT()
+dnl *****************************
+dnl *** Generate output files ***
+dnl *****************************
 AC_OUTPUT([
 Makefile
 docs/version.xml
