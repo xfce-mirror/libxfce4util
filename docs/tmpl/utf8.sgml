@@ -13,6 +13,9 @@ functions operating on Unicode characters and UTF-8 strings.
 <ulink url="http://developer.gnome.org/doc/API/2.0/glib/glib-Unicode-Manipulation.html">Glib Unicode Manipulation</ulink>
 </para>
 
+<!-- ##### SECTION Stability_Level ##### -->
+
+
 <!-- ##### FUNCTION xfce_utf8_remove_controls ##### -->
 <para>
 

@@ -18,6 +18,10 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#if !defined(LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
+#error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
+#endif
+
 #ifndef __LIBXFCE4UTIL_XFCE_DESKTOPENTRY_H__
 #define __LIBXFCE4UTIL_XFCE_DESKTOPENTRY_H__
 

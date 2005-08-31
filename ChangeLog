@@ -2,6 +2,12 @@
 
 	* autogen.sh, configure.in.in: Merge build framework changes from
 	  libexo.
+	* COPYING, libxfce4util.spec.in, libxfce4util/*.{c,h}: Change overall
+	  license to LGPL.
+	* libxfce4util/*.h: Make sure only libxfce4util/libxfce4util.h can be
+	  included directly.
+	* docs/tmpl/*.sgml: Update to newer gtk-doc, which adds stability level
+	  to the interfaces.
 
 2005-08-30	Benedikt Meurer <benny@xfce.org>
 

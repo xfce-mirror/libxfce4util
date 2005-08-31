@@ -8,7 +8,8 @@ INCLUDES =								\
 	-DSYSCONFDIR=\"$(sysconfdir)\"					\
 	-DG_LOG_DOMAIN=\"libxfce4util\"					\
 	-DKIOSKDIR=\"$(sysconfdir)/xdg/xfce4/kiosk\"			\
-	-DKIOSKDEF=\"ALL\"
+	-DKIOSKDEF=\"ALL\"						\
+	-DLIBXFCE4UTIL_COMPILATION
 
 lib_LTLIBRARIES = libxfce4util.la
 

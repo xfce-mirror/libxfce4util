@@ -16,6 +16,9 @@ url="http://www.freedesktop.org/">Freedesktop.org</ulink>.
 
 </para>
 
+<!-- ##### SECTION Stability_Level ##### -->
+
+
 <!-- ##### STRUCT XfceDesktopEntry ##### -->
 <para>
 All the fields in the XfceDesktopEntry structure are private to the
