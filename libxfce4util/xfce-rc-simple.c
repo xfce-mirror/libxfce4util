@@ -173,8 +173,7 @@ simple_add_entry (XfceRcSimple *simple,
 
   if (G_UNLIKELY (entry == NULL))
     {
-      return NULL;    
-      /* g_return_val_if_fail (locale == NULL, NULL); aborts */
+      g_return_val_if_fail (locale == NULL, NULL);
 
       entry         = g_chunk_new (Entry, simple->entry_chunk);
       entry->key    = g_string_chunk_insert (simple->string_chunk, key);
