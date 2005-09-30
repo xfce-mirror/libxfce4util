@@ -11,7 +11,7 @@ dnl Version information
 m4_define([libxfce4util_verinfo], [1:7:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [2])
-m4_define([libxfce4util_version_micro], [2])
+m4_define([libxfce4util_version_micro], [3])
 m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano])])
 
