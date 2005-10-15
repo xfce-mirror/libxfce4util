@@ -284,7 +284,7 @@ entry_parse (XfceDesktopEntry * desktop_entry)
     int locale_matched = 0;
     char **lines, **p;
     char *current_section = NULL;
-    gboolean result = FALSE;
+    gboolean in_d_e_section = FALSE, result = FALSE;
 
     g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
 
@@ -298,6 +298,17 @@ entry_parse (XfceDesktopEntry * desktop_entry)
 	int i;
 	char *section, *key, *value, *locale;
 	
+    /* some .desktop files have multiple sections.  we're only interested
+     * in the "[Desktop Entry]" section */
+    if (!in_d_e_section) {
+        if (!g_ascii_strncasecmp(*p, "[Desktop Entry]", 15))
+            in_d_e_section = TRUE;
+    } else if (**p == '[' && g_ascii_strncasecmp(*p, "[Desktop Entry]", 15))
+        in_d_e_section = FALSE;
+    
+    if (!in_d_e_section)
+        continue;
+    
 	if (!parse_desktop_entry_line (*p, &section, &key, &value, &locale))
 	    continue;
 
