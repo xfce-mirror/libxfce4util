@@ -1,7 +1,7 @@
 /* Auto generated file, do not edit */
 
 /* Keep the license stuff in one section if possible */
-#if defined(__GNUC__)
+#if defined(__GNUC__) && !defined(__APPLE__)
 #define SECTION __attribute__((section(".xfce.LICENSES")))
 #else
 #define SECTION
