@@ -1,3 +1,11 @@
+2005-11-05 16:50  olivier
+
+	* libxfce4util/tags/xfce_4_2_3: *** Version xfce_4_2_3 ***
+
+2005-11-05 14:12  olivier
+
+	* libxfce4util/branches/xfce_4_2/ChangeLog: Update ChangeLog
+
 2005-10-15 11:19  kelnos
 
 	* libxfce4util/branches/xfce_4_2/libxfce4util/xfce-desktopentry.c,
