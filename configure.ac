@@ -8,15 +8,15 @@ dnl Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.
 dnl
 
 dnl Version information
-m4_define([libxfce4util_verinfo], [1:8:0])
+m4_define([libxfce4util_verinfo], [1:9:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [2])
 m4_define([libxfce4util_version_micro], [3])
-m4_define([libxfce4util_version_nano], [1])   dnl leave this empty to have no nano version
+m4_define([libxfce4util_version_nano], [2])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano])])
 
 dnl Overall Xfce version, modify this when making releases
-m4_define([xfce_version_string], [4.2.3.1])
+m4_define([xfce_version_string], [4.2.3.2])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
