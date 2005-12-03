@@ -1,3 +1,8 @@
+2005-12-03	Benedikt Meurer <benny@xfce.org>
+
+	* libxfce4util/i18n.h: Add ngettext(), dngettext() and dcngettext()
+	  macros for the case that ENABLE_NLS is not defined.
+
 2005-08-31	Benedikt Meurer <benny@xfce.org>
 
 	* Makefile.am: Remove unnecessary extra dist files.
