@@ -63,3 +63,32 @@ xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
     return str;
 }
 
+/**
+ * xfce_utf8_strndup:
+ * @src     : target string.
+ * @max_len : max characters to duplicate or -1 for no character limit.
+ *
+ * Duplicates the @src string up to @max_len characters 
+ * (note that characters does not mean bytes with UTF-8).
+ *
+ * Return value: pointer to the newly allocated string.
+ *
+ * Since: 4.4
+ **/
+gchar *
+xfce_utf8_strndup (const gchar *src, gssize max_len)
+{
+    const gchar *s = src;
+
+    if (max_len <= 0)
+	return g_strdup (src);
+
+    while (max_len && *s)
+    {
+	s = g_utf8_next_char (s);
+	max_len--;
+    }
+
+    return g_strndup (src, s - src);
+}
+

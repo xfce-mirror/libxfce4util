@@ -40,6 +40,9 @@ gchar *xfce_utf8_remove_controls   (gchar       *str,
                                     gssize       max_len,
                                     const gchar *end);
 
+gchar *xfce_utf8_strndup           (const gchar *src, 
+                                    gssize       max_len);
+
 G_END_DECLS
 
 #endif	/* !__LIBXFCE4UTIL_UTF8_H__ */
