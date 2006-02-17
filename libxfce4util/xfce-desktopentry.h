@@ -89,6 +89,9 @@ gboolean xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
     				     const char *key,
 				     int *value);
 
+gboolean xfce_desktop_entry_has_translated_entry (XfceDesktopEntry *desktop_entry,
+                                                  const char *key);
+
 G_END_DECLS
 
 #endif  /* !__LIBXFCE4UTIL_XFCE_DESKTOPENTRY_H__ */

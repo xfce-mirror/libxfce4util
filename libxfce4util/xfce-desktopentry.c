@@ -583,3 +583,41 @@ xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
 
     return FALSE;
 }
+
+/**
+ * xfce_desktop_entry_has_translated_entry:
+ * @desktop_entry: an #XfceDesktopEntry.
+ * @key: the key to check.
+ * @Returns: %TRUE if there is a translated key, %FALSE otherwise.
+ *
+ * Checks to see if @desktop_entry has a value for @key translated into
+ * the current locale.
+ *
+ * Since: 4.3
+ **/
+gboolean
+xfce_desktop_entry_has_translated_entry (XfceDesktopEntry *desktop_entry,
+                                         const char *key)
+{
+    const entry_t *entry;
+    const char *current_locale;
+    
+    g_return_val_if_fail(XFCE_IS_DESKTOP_ENTRY(desktop_entry)
+                         && key && *key, FALSE);
+    
+    if(!(entry = xfce_desktop_entry_get_entry(desktop_entry, key)))
+        return FALSE;
+    
+    if(!entry->value || !strlen(entry->value))
+        return FALSE;
+    
+    current_locale = setlocale(LC_MESSAGES, NULL);
+    
+    if(!entry->translated_value && !xfce_locale_match(current_locale, "C")
+       && !xfce_locale_match(current_locale, "POSIX"))
+    {
+        return FALSE;
+    }
+    
+    return TRUE;
+}

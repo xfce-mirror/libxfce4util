@@ -1,3 +1,10 @@
+2006-02-17  Brian Tarricone <bjt23@cornell.edu
+
+    * libxfce4util/xfce-desktopentry.[ch]: Add
+      xfce_desktop_entry_has_translated_entry() to report if the particular
+      key has a value transalated into the current locale.
+    * configure.in.in: Bump version to 4.3.1.
+
 2005-12-03	Benedikt Meurer <benny@xfce.org>
 
 	* libxfce4util/i18n.h: Add ngettext(), dngettext() and dcngettext()
