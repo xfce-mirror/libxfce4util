@@ -369,19 +369,24 @@ simple_parse_line (gchar  *line,
 
       q = r + strlen (r);
 
-      while (q > r && (g_ascii_isspace (*(q-1)) || ((*(q-1)) == '\r')))
+      /* "\ " at the end of the string will not be removed */
+      while (q > r && ((g_ascii_isspace (*(q-1)) && *(q-2) != '\\') || ((*(q-1)) == '\r')))
         --q;
 
       *value = r;
       *q = '\0';
 
-      /* unescape \n, \t, \r and \\ */
+      /* unescape \ , \n, \t, \r and \\ */
       for (p = r; *r != '\0'; )
         {
           if (G_UNLIKELY (*r == '\\'))
             {
               switch (*(r+1))
                 {
+                case ' ':
+                  *p++ = ' ';
+                  break;
+
                 case 'n':
                   *p++ = '\n';
                   break;
@@ -421,11 +426,29 @@ simple_parse_line (gchar  *line,
 static gchar*
 simple_escape (gchar *buffer, gsize size, const gchar *string)
 {
-  gchar *p;
+  const gchar *s;
+  gchar       *p;
 
   for (p = buffer; p - buffer < size - 2 && *string != '\0'; ++string)
     switch (*string)
       {
+      case ' ':
+        /* check if any non whitespace characters follow */
+        for (s = string + 1; g_ascii_isspace (*s); ++s)
+          ;
+        if (*s == '\0')
+          {
+            /* need to escape the space */
+            *p++ = '\\';
+            *p++ = ' ';
+          }
+        else
+          {
+            /* still non-whitespace, no need to escape */
+            *p++ = ' ';
+          }
+        break;
+
       case '\n':
         *p++ = '\\';
         *p++ = 'n';
