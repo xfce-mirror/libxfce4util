@@ -429,7 +429,14 @@ simple_escape (gchar *buffer, gsize size, const gchar *string)
   const gchar *s;
   gchar       *p;
 
-  for (p = buffer; p - buffer < size - 2 && *string != '\0'; ++string)
+  /* escape all whitespace at the beginning of the string */
+  for (p = buffer; p - buffer < size - 2 && *string == ' '; ++string)
+    {
+      *p++ = '\\';
+      *p++ = ' ';
+    }
+
+  for (; p - buffer < size - 2 && *string != '\0'; ++string)
     switch (*string)
       {
       case ' ':

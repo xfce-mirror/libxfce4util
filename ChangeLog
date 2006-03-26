@@ -1,3 +1,8 @@
+2006-03-26	Benedikt Meurer <benny@xfce.org>
+
+	* libxfce4util/xfce-rc-simple.c(simple_escape): Same for leading
+	  whitespace.
+
 2006-03-25	Benedikt Meurer <benny@xfce.org>
 
 	* libxfce4util/xfce-rc-simple.c: Properly handle trailing whitespace 
