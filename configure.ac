@@ -1,6 +1,6 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2002-2004
+dnl Copyright (c) 2002-2006
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
@@ -8,15 +8,15 @@ dnl Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.
 dnl
 
 dnl Version information
-m4_define([libxfce4util_verinfo], [1:9:0])
+m4_define([libxfce4util_verinfo], [1:10:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [2])
-m4_define([libxfce4util_version_micro], [3])
-m4_define([libxfce4util_version_nano], [2])   dnl leave this empty to have no nano version
+m4_define([libxfce4util_version_micro], [4])
+m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano])])
 
 dnl Overall Xfce version, modify this when making releases
-m4_define([xfce_version_string], [4.2.3.2])
+m4_define([xfce_version_string], [4.2.4])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -24,7 +24,7 @@ dnl # YOU ARE DOING.
 
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2002-2004
+AC_COPYRIGHT([Copyright (c) 2002-2006
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
