@@ -1,3 +1,8 @@
+2006-04-16	Benedikt Meurer <benny@xfce.org>
+
+	* libxfce4util/xfce-resource.c(_res_split_and_append): Be sure to strip
+	  off invalid paths from XDG_DATA_DIRS and XDG_CONFIG_DIRS.
+
 2006-03-26	Benedikt Meurer <benny@xfce.org>
 
 	* libxfce4util/xfce-rc-simple.c(simple_escape): Same for leading

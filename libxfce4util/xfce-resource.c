@@ -81,7 +81,10 @@ _res_split_and_append (const gchar     *dir_list,
   dirs = g_strsplit (dir_list, ":", -1);
   for (n = 0; dirs[n] != NULL; ++n)
     {
-      _list[type] = g_list_append (_list[type], dirs[n]);
+      if (g_path_is_absolute (dirs[n]))
+        _list[type] = g_list_append (_list[type], dirs[n]);
+      else
+        g_free (dirs[n]);
     }
   g_free (dirs);
 }
