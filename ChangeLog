@@ -1,5 +1,14 @@
 2006-04-16	Benedikt Meurer <benny@xfce.org>
 
+	* === Released 4.3.90.1 ===
+	* configure.in.in: Bump version.
+	* configure.in.in: Depend on GObject >= 2.6.0.
+	* configure.in.in: Do not add revision to version unless the tag is svn.
+	* libxfce4util.spec.in: Update RPM spec file.
+	* AUTHORS: Add Olivier Fourdan to the authors list.
+
+2006-04-16	Benedikt Meurer <benny@xfce.org>
+
 	* libxfce4util/xfce-resource.c(_res_split_and_append): Be sure to strip
 	  off invalid paths from XDG_DATA_DIRS and XDG_CONFIG_DIRS.
 

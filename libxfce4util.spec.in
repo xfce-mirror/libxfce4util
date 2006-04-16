@@ -1,4 +1,4 @@
-Summary: 	Utility library for the XFce4 desktop environment
+Summary: 	Utility library for the Xfce desktop environment
 Name: 		@PACKAGE_TARNAME@
 Version: 	@PACKAGE_VERSION@
 Release: 	1
@@ -12,7 +12,7 @@ BuildRequires: 	glib2-devel >= @GOBJECT_REQUIRED_VERSION@
 BuildRequires:	gtk-doc
 
 %description
-Basic utility non-GUI functions for XFce4.
+Basic utility non-GUI functions for the Xfce desktop environment.
 
 %package devel
 Summary:	developpment tools for libxfce4util library
@@ -26,7 +26,7 @@ Static libraries and header files for the libxfce4util library.
 %setup -q
 
 %build
-%configure --enable-gtk-doc
+%configure --enable-final --enable-gtk-doc
 make
 
 %install
