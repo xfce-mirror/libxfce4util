@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -42,8 +42,12 @@
 #include <string.h>
 #endif
 
+
+
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4util/xfce-rc-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
+
 
 
 /* called by _xfce_rc_{simple,config}_new */
@@ -66,6 +70,7 @@ _xfce_rc_init (XfceRc *rc)
     }
 #endif
 }
+
 
 
 /**
@@ -114,6 +119,7 @@ xfce_rc_simple_open (const gchar *filename,
 }
 
 
+
 /**
  * xfce_rc_config_open:
  * @type     :
@@ -135,6 +141,7 @@ xfce_rc_config_open (XfceResourceType type,
 
   return XFCE_RC (config);
 }
+
 
 
 /**
@@ -165,6 +172,7 @@ xfce_rc_close (XfceRc *rc)
 }
 
 
+
 /**
  * xfce_rc_flush:
  * @rc : an #XfceRc object.
@@ -185,6 +193,7 @@ xfce_rc_flush (XfceRc *rc)
 }
 
 
+
 /**
  * xfce_rc_rollback:
  * @rc : an #XfceRc object.
@@ -203,6 +212,7 @@ xfce_rc_rollback (XfceRc *rc)
   if (rc->rollback != NULL)
     (*rc->rollback) (rc);
 }
+
 
 
 /**
@@ -227,6 +237,7 @@ xfce_rc_is_dirty (const XfceRc *rc)
 }
 
 
+
 /**
  * xfce_rc_is_readonly:
  * @rc : an #XfceRc object.
@@ -249,6 +260,7 @@ xfce_rc_is_readonly (const XfceRc *rc)
 }
 
 
+
 /**
  * xfce_rc_get_locale:
  * @rc : an #XfceRc object.
@@ -269,6 +281,7 @@ xfce_rc_get_locale (const XfceRc *rc)
   else
     return rc->locale;
 }
+
 
 
 /**
@@ -294,6 +307,7 @@ xfce_rc_get_groups (const XfceRc *rc)
 
   return (*rc->get_groups) (rc);
 }
+
 
 
 /**
@@ -325,6 +339,7 @@ xfce_rc_get_entries (const XfceRc *rc, const gchar *group)
 }
 
 
+
 /**
  * xfce_rc_delete_group:
  * @rc     : an #XfceRc object.
@@ -353,6 +368,7 @@ xfce_rc_delete_group (XfceRc *rc, const gchar *group, gboolean global)
 }
 
 
+
 /**
  * xfce_rc_get_group:
  * @rc : an #XfceRc object.
@@ -375,6 +391,7 @@ xfce_rc_get_group (const XfceRc *rc)
 }
 
 
+
 /**
  * xfce_rc_has_group:
  * @rc    : an #XfceRc object.
@@ -394,6 +411,7 @@ xfce_rc_has_group (const XfceRc *rc, const gchar *group)
 
   return (*rc->has_group) (rc, group);
 }
+
 
 
 /**
@@ -420,6 +438,7 @@ xfce_rc_set_group (XfceRc *rc, const gchar *group)
 }
 
 
+
 /**
  * xfce_rc_delete_entry:
  * @rc     : an #XfceRc object.
@@ -440,6 +459,7 @@ xfce_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
   if (rc->delete_entry != NULL)
     (*rc->delete_entry) (rc, key, global);
 }
+
 
 
 /**
@@ -464,6 +484,7 @@ xfce_rc_has_entry (const XfceRc *rc, const gchar *key)
   else
     return (*rc->read_entry) (rc, key, FALSE) != NULL;
 }
+
 
 
 /**
@@ -492,6 +513,7 @@ xfce_rc_read_entry (const XfceRc *rc, const gchar *key, const gchar *fallback)
     value = fallback;
   return value;
 }
+
 
 
 /**
@@ -526,6 +548,7 @@ xfce_rc_read_entry_untranslated (const XfceRc *rc,
 }
 
 
+
 /**
  * xfce_rc_read_bool_entry:
  * @rc       : an #XfceRc object.
@@ -555,6 +578,7 @@ xfce_rc_read_bool_entry (const XfceRc *rc, const gchar *key, gboolean fallback)
 
   return fallback;
 }
+
 
 
 /**
@@ -593,6 +617,7 @@ xfce_rc_read_int_entry (const XfceRc *rc, const gchar *key, gint fallback)
 }
 
 
+
 /**
  * xfce_rc_read_list_entry:
  * @rc        : an #XfceRc object.
@@ -625,6 +650,7 @@ xfce_rc_read_list_entry (const XfceRc *rc, const gchar *key, const gchar *delimi
 }
 
 
+
 /**
  * xfce_rc_write_entry:
  * @rc    : an #XfceRc object.
@@ -653,6 +679,7 @@ xfce_rc_write_entry (XfceRc *rc, const gchar *key, const gchar *value)
 }
 
 
+
 /**
  * xfce_rc_write_bool_entry:
  * @rc    : an #XfceRc object.
@@ -668,6 +695,7 @@ xfce_rc_write_bool_entry (XfceRc *rc, const gchar *key, gboolean value)
 {
   xfce_rc_write_entry (rc, key, value ? "true" : "false");
 }
+
 
 
 /**
@@ -688,6 +716,7 @@ xfce_rc_write_int_entry (XfceRc *rc, const gchar *key, gint value)
   g_snprintf (buffer, 32, "%d", value);
   xfce_rc_write_entry (rc, key, buffer);
 }
+
 
 
 /**
@@ -721,6 +750,5 @@ xfce_rc_write_list_entry (XfceRc      *rc,
 
 
 
-
-
-
+#define __XFCE_RC_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

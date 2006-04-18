@@ -1,3 +1,19 @@
+2006-04-18	Benedikt Meurer <benny@xfce.org>
+
+	* libxfce4util/libxfce4util-config.{c,h.in}, libxfce4util/Makefile.am,
+	  libxfce4util/{BSD,GPL,LGPL}, libxfce4util/licenses-texts.c,
+	  libxfce4util/licenses-to-c.sh: Use the short versions of the GPL/LGPL
+	  license texts and move them to libxfce4util-config.
+	* libxfce4util/, configure.in.in: Apply outstanding patch to fix various
+	  memory leaks, reduce PLT entries and cleanup source code.
+	* libxfce4util/xfce-i18n.{c,h}, TODO: Turn xfce_textdomain() into a
+	  function.
+	* docs/: Update the API documentation.
+
+2006-04-16	Benedikt Meurer <benny@xfce.org>
+
+	* configure.in.in: Post-release version bump.
+
 2006-04-16	Benedikt Meurer <benny@xfce.org>
 
 	* === Released 4.3.90.1 ===

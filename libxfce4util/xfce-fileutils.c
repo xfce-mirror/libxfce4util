@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -38,6 +38,8 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
+
 
 
 /**
@@ -59,9 +61,9 @@
  * Since: 4.2
  **/
 gboolean
-xfce_mkdirhier (const gchar  *whole_path,
-                unsigned long omode,
-                GError      **error)
+xfce_mkdirhier (const gchar *whole_path,
+                gulong       omode,
+                GError     **error)
 {
   /* Stolen from FreeBSD's mkdir(1) with modifications to make it
    * work properly with NFS on Solaris */
@@ -153,3 +155,7 @@ xfce_mkdirhier (const gchar  *whole_path,
   return retval;
 }
 
+
+
+#define __XFCE_FILEUTILS_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

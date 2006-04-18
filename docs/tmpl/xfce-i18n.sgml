@@ -6,10 +6,12 @@ Internationalization and Localization Support Functions
 
 <!-- ##### SECTION Long_Description ##### -->
 <para>
-Provides functions and preprocessor macros to aid the application developers
-making his software localizable. It also offers functionality similar to the
-one introduced in GLib 2.4 and referenced as gi18n. This includes the #Q_
-gettext macro and the #xfce_strip_context function.
+Provides functions to aid application developers making their software
+localizable. It extends the basic internationalization support provided
+by GLib 2.4 (and newer). See the <ulink
+url="http://developer.gnome.org/doc/API/2.0/glib/glib-I18N.html">GLib
+Internationalization</ulink> documentation for the information about the
+basic functions and macros.
 </para>
 
 <!-- ##### SECTION See_Also ##### -->
@@ -21,43 +23,7 @@ Internationalization</ulink>
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### MACRO _ ##### -->
-<para>
-Marks a string for translation, gets replaced with the translated string at runtime.
-</para>
-
-@s: string to translate.
-
-
-<!-- ##### MACRO N_ ##### -->
-<para>
-Marks a string for translation, gets replaced with the untranslated string at runtime.
-This is useful in situations where the translated strings can't be directly used, e.g.
-in string array initializers.
-</para>
-
-@s: the string to be translated.
-
-
-<!-- ##### MACRO Q_ ##### -->
-<para>
-Like _(), but applies xfce_strip_context() to the translation. This has the advantage that
-the string can be adorned with a prefix to guarantee uniqueness and provide context to
-the package translator.
-</para>
-<para>
-One use case given in the gettext manual is GUI translation, where one could e.g.
-disambiguate two "Open" menu entries as "File|Open" and "Printer|Open". Another use case
-is the string "Russian" which may have to be translated differently depending on whether
-it is the name of a character set or a language. This could be solved by using
-"charset|Russian" and "language|Russian". 
-</para>
-
-@s: the string to be translated, with a '|'-separated prefix which must not be
-    translated by the package translators.
-
-
-<!-- ##### MACRO xfce_textdomain ##### -->
+<!-- ##### FUNCTION xfce_textdomain ##### -->
 <para>
 Binds the current text domain for @package to @localedir and sets @encoding.
 </para>

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -27,15 +27,15 @@
 #include <libxfce4util/libxfce4util-config.h>
 
 #include <libxfce4util/debug.h>
-#include <libxfce4util/i18n.h>
-#include <libxfce4util/utf8.h>
 #include <libxfce4util/xfce-desktopentry.h>
 #include <libxfce4util/xfce-fileutils.h>
 #include <libxfce4util/xfce-generics.h>
+#include <libxfce4util/xfce-i18n.h>
 #include <libxfce4util/xfce-kiosk.h>
 #include <libxfce4util/xfce-miscutils.h>
 #include <libxfce4util/xfce-rc.h>
 #include <libxfce4util/xfce-resource.h>
+#include <libxfce4util/xfce-utf8.h>
 
 #define LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -59,9 +59,8 @@
 #include <unistd.h>
 #endif
 
-#include <glib.h>
-
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 #define XFCE4DIR		".xfce4"
@@ -77,6 +76,8 @@ G_LOCK_DEFINE_STATIC(_lock);
 
 static gchar *xfce_homedir = NULL; /* path to users home directory */
 static gchar *xfce_userdir = NULL; /* path to users .xfce4 directory */
+
+
 
 static void
 internal_initialize(void)
@@ -114,6 +115,7 @@ internal_initialize(void)
 }
 
 
+
 static gchar*
 internal_get_file_r (const gchar *dir,
                      gchar       *buffer,
@@ -140,6 +142,7 @@ internal_get_file_r (const gchar *dir,
 }
 
 
+
 /**
  * xfce_version_string:
  *
@@ -154,6 +157,7 @@ xfce_version_string (void)
 {
   return XFCE_VERSION_STRING;
 }
+
 
 
 /**
@@ -179,6 +183,8 @@ xfce_get_homedir (void)
 	
   return xfce_homedir;
 }
+
+
 
 /**
  * xfce_get_homefile_r:
@@ -208,6 +214,7 @@ xfce_get_homefile_r (gchar *buffer, size_t len, const gchar *format, ...)
 
   return ptr;
 }
+
 
 
 /**
@@ -243,6 +250,7 @@ xfce_get_userdir (void)
 }
 
 
+
 /**
  * xfce_get_userfile_r:
  * @buffer  : user provided destination buffer.
@@ -264,6 +272,7 @@ xfce_get_userfile_r (gchar *buffer, size_t length, const gchar *format, ...)
 
   return ptr;
 }
+
 
 
 /**
@@ -309,6 +318,7 @@ xfce_strjoin (const gchar *separator,
 }
 
 
+
 /**
  * xfce_gethostname:
  * 
@@ -340,6 +350,7 @@ xfce_gethostname (void)
   /* NOT REACHED */
   return NULL;
 }
+
 
 
 /**
@@ -396,6 +407,7 @@ xfce_putenv (const gchar *string)
 }
 
 
+
 /**
  * xfce_setenv:
  * @name: the name of the environment variable to set, must not contain '='.
@@ -419,7 +431,9 @@ xfce_putenv (const gchar *string)
  * Since: 4.2
  **/
 gint
-xfce_setenv (const gchar *name, const gchar *value, gboolean overwrite)
+xfce_setenv (const gchar *name,
+             const gchar *value,
+             gboolean     overwrite)
 {
   /* Plattforms with broken putenv() are unlikely to have a working setenv() */
 #if !defined(HAVE_SETENV) || defined(HAVE_BROKEN_PUTENV)
@@ -438,6 +452,7 @@ xfce_setenv (const gchar *name, const gchar *value, gboolean overwrite)
   return setenv (name, value, overwrite);
 #endif	/* !HAVE_SETENV */
 }
+
 
 
 /**
@@ -477,7 +492,8 @@ xfce_unsetenv (const gchar *name)
 
   *envp2 = NULL;
 #endif
-} 
+}
+
 
 
 /**
@@ -594,3 +610,7 @@ xfce_expand_variables (const gchar *command,
   return g_strdup (buffer);
 }
 
+
+
+#define __XFCE_MISCUTILS_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

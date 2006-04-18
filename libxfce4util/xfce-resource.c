@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -31,13 +31,19 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
+
+/* some systems don't define PATH_MAX */
 #ifndef PATH_MAX
-#define PATH_MAX  1024
+#define PATH_MAX 4096
 #endif
 
+
+
 #define TYPE_VALID(t) ((t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
+
 
 
 static gchar*   _save[5] = { NULL, NULL, NULL, NULL, NULL };
@@ -45,9 +51,10 @@ static GList*   _list[5] = { NULL, NULL, NULL, NULL, NULL };
 static gboolean _inited = FALSE;
 
 
+
 static const gchar*
 _res_getenv (const gchar *variable,
-	     const gchar *fallback)
+       const gchar *fallback)
 {
   static gchar buffer[PATH_MAX];
   const gchar *result;
@@ -71,9 +78,10 @@ _res_getenv (const gchar *variable,
 }
 
 
+
 static void
 _res_split_and_append (const gchar     *dir_list,
-		                   XfceResourceType type)
+                       XfceResourceType type)
 {
   gchar **dirs;
   gint    n;
@@ -90,6 +98,7 @@ _res_split_and_append (const gchar     *dir_list,
 }
 
 
+
 static GList*
 _res_remove_duplicates (GList *list)
 {
@@ -100,18 +109,19 @@ _res_remove_duplicates (GList *list)
   for (lp = list; lp != NULL; lp = lp->next)
     {
       for (pp = ll; pp != NULL; pp = pp->next)
-      	if (strcmp ((const gchar *) pp->data, (const gchar *) lp->data) == 0)
-      	  break;
+        if (strcmp ((const gchar *) pp->data, (const gchar *) lp->data) == 0)
+          break;
 
       if (pp == NULL)
-	      ll = g_list_append (ll, lp->data);
+        ll = g_list_append (ll, lp->data);
       else
-      	g_free (lp->data);
+        g_free (lp->data);
     }
 
   g_list_free (list);
   return ll;
 }
+
 
 
 static void
@@ -133,12 +143,10 @@ _res_init (void)
   dir = _res_getenv ("XDG_CACHE_HOME", DEFAULT_XDG_CACHE_HOME);
   if (!xfce_mkdirhier (dir, 0700, NULL))
     {
-      g_warning ("Invalid XDG_CACHE_HOME directory `%s', program may "
-		 "behave incorrectly.", dir);
+      g_warning ("Invalid XDG_CACHE_HOME directory `%s', program may behave incorrectly.", dir);
     }
   _save[XFCE_RESOURCE_CACHE] = g_strdup (dir);
-  _list[XFCE_RESOURCE_CACHE] = g_list_prepend (_list[XFCE_RESOURCE_CACHE],
-					       g_strdup (dir));
+  _list[XFCE_RESOURCE_CACHE] = g_list_prepend (_list[XFCE_RESOURCE_CACHE], g_strdup (dir));
 
   /*
    * Data home
@@ -146,12 +154,10 @@ _res_init (void)
   dir = _res_getenv ("XDG_DATA_HOME", DEFAULT_XDG_DATA_HOME);
   if (!xfce_mkdirhier (dir, 0700, NULL))
     {
-      g_warning ("Invalid XDG_DATA_HOME directory `%s', program may "
-		 "behave incorrectly.", dir);
+      g_warning ("Invalid XDG_DATA_HOME directory `%s', program may behave incorrectly.", dir);
     }
   _save[XFCE_RESOURCE_DATA] = g_strdup (dir);
-  _list[XFCE_RESOURCE_DATA] = g_list_prepend (_list[XFCE_RESOURCE_DATA],
-					      g_strdup (dir));
+  _list[XFCE_RESOURCE_DATA] = g_list_prepend (_list[XFCE_RESOURCE_DATA], g_strdup (dir));
 
   /*
    * Config home
@@ -159,12 +165,10 @@ _res_init (void)
   dir = _res_getenv ("XDG_CONFIG_HOME", DEFAULT_XDG_CONFIG_HOME);
   if (!xfce_mkdirhier (dir, 0700, NULL))
     {
-      g_warning ("Invalid XDG_CONFIG_HOME directory `%s', program may "
-		 "behave incorrectly.", dir);
+      g_warning ("Invalid XDG_CONFIG_HOME directory `%s', program may behave incorrectly.", dir);
     }
   _save[XFCE_RESOURCE_CONFIG] = g_strdup (dir);
-  _list[XFCE_RESOURCE_CONFIG] = g_list_prepend (_list[XFCE_RESOURCE_CONFIG],
-						g_strdup (dir));
+  _list[XFCE_RESOURCE_CONFIG] = g_list_prepend (_list[XFCE_RESOURCE_CONFIG], g_strdup (dir));
 
   /*
    * Data dirs
@@ -195,19 +199,15 @@ _res_init (void)
   for (l = _list[XFCE_RESOURCE_DATA]; l != NULL; l = l->next)
     {
       path = g_build_filename ((const gchar *) l->data, "icons", NULL);
-      _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS],
-						  path);
+      _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], path);
     }
 
   /* XDG fallback */
-  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS],
-					      "/usr/share/pixmaps");
+  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], "/usr/share/pixmaps");
 
   /* fallback for system which that don't install everything in /usr */
-  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS],
-                                              "/usr/local/share/pixmaps");
-  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS],
-                                              DATADIR "/share/pixmaps");
+  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], "/usr/local/share/pixmaps");
+  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], DATADIR "/share/pixmaps");
 
   /*
    * Themes dirs
@@ -219,8 +219,7 @@ _res_init (void)
   for (l = _list[XFCE_RESOURCE_DATA]; l != NULL; l = l->next)
     {
       path = g_build_filename ((const gchar *) l->data, "themes", NULL);
-      _list[XFCE_RESOURCE_THEMES] = g_list_append (_list[XFCE_RESOURCE_THEMES],
-                                                   path);
+      _list[XFCE_RESOURCE_THEMES] = g_list_append (_list[XFCE_RESOURCE_THEMES], path);
     }
 
   /* remove duplicates from the lists */
@@ -234,10 +233,11 @@ _res_init (void)
 }
 
 
+
 static gboolean
 _res_splitup_pattern (const gchar *pattern,
-		      gchar      **current,
-		      gchar      **child)
+          gchar      **current,
+          gchar      **child)
 {
   const gchar *p;
 
@@ -262,11 +262,12 @@ _res_splitup_pattern (const gchar *pattern,
 }
 
 
+
 static GList*
 _res_match_path (const gchar *path,
-		 const gchar *relpath,
-		 const gchar *pattern,
-		 GList       *entries)
+     const gchar *relpath,
+     const gchar *pattern,
+     GList       *entries)
 {
   GPatternSpec *spec;
   const gchar  *entry;
@@ -294,10 +295,10 @@ _res_match_path (const gchar *path,
       guint end = strlen (pattern_this) - 1;
 
       if (pattern_this[end] == '/')
-	{
-	  file_test = G_FILE_TEST_IS_DIR;
-	  pattern_this[end] = '\0';
-	}
+  {
+    file_test = G_FILE_TEST_IS_DIR;
+    pattern_this[end] = '\0';
+  }
     }
 
   spec = g_pattern_spec_new (pattern_this);
@@ -305,33 +306,33 @@ _res_match_path (const gchar *path,
   while ((entry = g_dir_read_name (dp)) != NULL)
     {
       if (strcmp (entry, ".") == 0 || strcmp (entry, "..") == 0)
-	continue;
+        continue;
 
       if (!g_pattern_match_string (spec, entry))
-	continue;
+        continue;
 
       filename = g_build_filename (path, entry, NULL);
 
       if (pattern_child != NULL)
-	{
-	  if (g_file_test (filename, G_FILE_TEST_IS_DIR))
-	    {
-	      child_relpath = g_strconcat (relpath, entry, "/", NULL);
-	      list = _res_match_path (filename, child_relpath, pattern_child, list);
-	      g_free (child_relpath);
-	    }
-	}
+        {
+          if (g_file_test (filename, G_FILE_TEST_IS_DIR))
+            {
+              child_relpath = g_strconcat (relpath, entry, "/", NULL);
+              list = _res_match_path (filename, child_relpath, pattern_child, list);
+              g_free (child_relpath);
+            }
+        }
       else if (g_file_test (filename, file_test))
-	{
-	  if (file_test == G_FILE_TEST_IS_DIR)
-	    {
-	      entries = g_list_append (entries, g_strconcat (relpath, entry, "/", NULL));
-	    }
-	  else
-	    {
-	      entries = g_list_append (entries, g_strconcat (relpath, entry, NULL));
-	    }
-	}
+        {
+          if (file_test == G_FILE_TEST_IS_DIR)
+            {
+              entries = g_list_append (entries, g_strconcat (relpath, entry, "/", NULL));
+            }
+          else
+            {
+              entries = g_list_append (entries, g_strconcat (relpath, entry, NULL));
+            }
+        }
 
       g_free (filename);
     }
@@ -347,6 +348,7 @@ _res_match_path (const gchar *path,
 }
 
 
+
 /**
  * xfce_resource_dirs:
  * @type : type of the resource.
@@ -356,8 +358,8 @@ _res_match_path (const gchar *path,
  * of the directories returned in the list are garantied to exist.
  *
  * This function should be rarely used. You should consider using
- * #xfce_resource_lookup, #xfce_resource_lookup_dirs or
- *  #xfce_resource_match instead.
+ * xfce_resource_lookup(), xfce_resource_lookup_dirs() or
+ * xfce_resource_match() instead.
  *
  * The returned list must be freed using g_strfreev().
  *
@@ -384,10 +386,10 @@ xfce_resource_dirs (XfceResourceType type)
   for (l = _list[type]; l != NULL; l = l->next)
     {
       if (pos == size)
-	{
-	  size *= 2;
-	  paths = g_realloc (paths, (size + 1) * sizeof (*paths));
-	}
+        {
+          size *= 2;
+          paths = g_realloc (paths, (size + 1) * sizeof (*paths));
+        }
 
       paths[pos] = g_strdup ((const gchar *) l->data);
       ++pos;
@@ -396,6 +398,7 @@ xfce_resource_dirs (XfceResourceType type)
 
   return paths;
 }
+
 
 
 /**
@@ -408,6 +411,9 @@ xfce_resource_dirs (XfceResourceType type)
  * it must not end with a slash character ('/'), or a directory, when
  * @filename contains a trailing slash character ('/').
  *
+ * The caller is responsible to free the returned string using g_free()
+ * when no longer needed.
+ *
  * Return value: the absolute path to the first file or directory in the
  *               search path, that matches @filename or %NULL if no such
  *               file or directory could be found.
@@ -416,7 +422,7 @@ xfce_resource_dirs (XfceResourceType type)
  **/
 gchar*
 xfce_resource_lookup (XfceResourceType type,
-		      const gchar     *filename)
+          const gchar     *filename)
 {
   GFileTest test;
   gchar     path[PATH_MAX];
@@ -437,13 +443,12 @@ xfce_resource_lookup (XfceResourceType type,
       g_snprintf (path, PATH_MAX, "%s/%s", (const gchar *) l->data, filename);
 
       if (g_file_test (path, test))
-	{
-	  return g_strdup (path);
-	}
+        return g_strdup (path);
     }
 
   return NULL;
 }
+
 
 
 /**
@@ -453,8 +458,11 @@ xfce_resource_lookup (XfceResourceType type,
  *             it is taken to reference a directory, else it is taken to reference
  *             a file.
  *
- * Similar to #xfce_resource_lookup, but returns all resource of the specified @type,
+ * Similar to xfce_resource_lookup(), but returns all resource of the specified @type,
  * that whose name is @filename.
+ *
+ * The caller is responsible to free the returned string array using g_strfreev()
+ * when no longer needed.
  *
  * Return value:
  *
@@ -462,7 +470,7 @@ xfce_resource_lookup (XfceResourceType type,
  **/
 gchar**
 xfce_resource_lookup_all (XfceResourceType type,
-			  const gchar     *filename)
+                          const gchar     *filename)
 {
   GFileTest test;
   gchar     path[PATH_MAX];
@@ -490,22 +498,23 @@ xfce_resource_lookup_all (XfceResourceType type,
       g_snprintf (path, PATH_MAX, "%s/%s", (const gchar *) l->data, filename);
 
       if (g_file_test (path, test))
-	{
-	  if (pos == size)
-	    {
-	      size *= 2;
-	      paths = g_realloc (paths, (size + 1) * sizeof (*paths));
-	    }
+        {
+          if (pos == size)
+            {
+              size *= 2;
+              paths = g_realloc (paths, (size + 1) * sizeof (*paths));
+            }
 
-	  paths[pos] = g_strdup (path);
-	  ++pos;
-	}
+          paths[pos] = g_strdup (path);
+          ++pos;
+        }
     }
 
   paths[pos] = NULL;
 
   return paths;
 }
+
 
 
 /**
@@ -537,8 +546,8 @@ xfce_resource_lookup_all (XfceResourceType type,
  **/
 gchar**
 xfce_resource_match (XfceResourceType type,
-		     const gchar     *pattern,
-		     gboolean         unique)
+                     const gchar     *pattern,
+                     gboolean         unique)
 {
   gchar **paths;
   GList  *result = NULL;
@@ -566,6 +575,7 @@ xfce_resource_match (XfceResourceType type,
 }
 
 
+
 /**
  * xfce_resource_match_custom:
  * @type      : type of the resource to locate directories for.
@@ -575,15 +585,18 @@ xfce_resource_match (XfceResourceType type,
  *
  * Yet to be implemented!
  *
+ * The caller is responsible to free the returned string array using g_strfreev()
+ * when no longer needed.
+ *
  * Return value:
  *
  * Since: 4.2
  **/
 gchar**
 xfce_resource_match_custom (XfceResourceType type,
-			    gboolean         unique,
-			    XfceMatchFunc    func,
-			    gpointer         user_data)
+                            gboolean         unique,
+                            XfceMatchFunc    func,
+                            gpointer         user_data)
 {
   gchar **paths;
   GList  *result = NULL;
@@ -608,6 +621,7 @@ xfce_resource_match_custom (XfceResourceType type,
 }
 
 
+
 /**
  * xfce_resource_push_path:
  * @type : type of the resource which search list should be expanded.
@@ -618,15 +632,15 @@ xfce_resource_match_custom (XfceResourceType type,
  * MCS plugins.
  *
  * For example, if you need to add a specific path to the search path list
- * in your MCS, you should call #xfce_resource_push_path prior to calling
- * one of the resource search functions and call #xfce_resource_pop_path
+ * in your MCS, you should call xfce_resource_push_path() prior to calling
+ * one of the resource search functions and call xfce_resource_pop_path()
  * right afterwards.
  *
  * Since: 4.2
  **/
 void
 xfce_resource_push_path (XfceResourceType type,
-			 const gchar     *path)
+                         const gchar     *path)
 {
   g_return_if_fail (TYPE_VALID (type));
   g_return_if_fail (path != NULL);
@@ -637,13 +651,14 @@ xfce_resource_push_path (XfceResourceType type,
 }
 
 
+
 /**
  * xfce_resource_pop_path:
  * @type : type of the resource which search list should be shrinked.
  *
- * Undoes the effect of the latest call to #xfce_resource_push_path. You
- * should take special care to call #xfce_resource_pop_path exactly same
- * times as #xfce_resource_push_path, everything else might result in
+ * Undoes the effect of the latest call to xfce_resource_push_path(). You
+ * should take special care to call xfce_resource_pop_path() exactly same
+ * times as xfce_resource_push_path(), everything else might result in
  * unwanted and maybe even undefined behaviour. You have been warned!
  *
  * Since: 4.2
@@ -666,13 +681,14 @@ xfce_resource_pop_path (XfceResourceType type)
 }
 
 
+
 /**
  * xfce_resource_save_location:
  * @type    : type of location to return.
  * @relpath : relative path of the resource.
  * @create  : whether to create missing directory.
  *
- * If @relpath contains a trailing slash ('/') character, #xfce_resource_save_location 
+ * If @relpath contains a trailing slash ('/') character, xfce_resource_save_location()
  * finds the directory to save files into for the given type in the user's
  * home directory. All directories needed (including those given by
  * @relpath) will be created on demand if @create if %TRUE.
@@ -693,8 +709,8 @@ xfce_resource_pop_path (XfceResourceType type)
  **/
 gchar*
 xfce_resource_save_location (XfceResourceType type,
-			     const gchar     *relpath,
-			     gboolean         create)
+                             const gchar     *relpath,
+                             gboolean         create)
 {
   gchar *path;
   gchar *dir;
@@ -711,22 +727,26 @@ xfce_resource_save_location (XfceResourceType type,
   if (relpath[strlen (relpath) - 1] == G_DIR_SEPARATOR)
     {
       if (create && !xfce_mkdirhier (path, 0700, NULL))
-	{
-	  g_free (path);
-	  path = NULL;
-	}
+  {
+    g_free (path);
+    path = NULL;
+  }
     }
   else
     {
       dir = g_path_get_dirname (path);
       if (create && !xfce_mkdirhier (dir, 0700, NULL))
-	{
-	  g_free (path);
-	  path = NULL;
-	}
+        {
+          g_free (path);
+          path = NULL;
+        }
       g_free (dir);
     }
 
   return path;
 }
 
+
+
+#define __XFCE_RESOURCE_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

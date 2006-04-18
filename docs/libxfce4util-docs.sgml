@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
                "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-<!ENTITY libxfce4util-StandardMacros SYSTEM "xml/standard-macros.xml">
-<!ENTITY libxfce4util-Internationalization SYSTEM "xml/i18n.xml">
+<!ENTITY libxfce4util-StandardMacros SYSTEM "xml/libxfce4util-config.xml">
+<!ENTITY libxfce4util-Internationalization SYSTEM "xml/xfce-i18n.xml">
 <!ENTITY libxfce4util-Kiosk SYSTEM "xml/xfce-kiosk.xml">
 <!ENTITY libxfce4util-Resource SYSTEM "xml/xfce-resource.xml">
 <!ENTITY libxfce4util-RcParser SYSTEM "xml/xfce-rc.xml">
 <!ENTITY libxfce4util-FileUtils-Functions SYSTEM "xml/xfce-fileutils.xml">
 <!ENTITY libxfce4util-MiscUtils-Functions SYSTEM "xml/xfce-miscutils.xml">
-<!ENTITY libxfce4util-Unicode-Functions SYSTEM "xml/utf8.xml">
+<!ENTITY libxfce4util-Unicode-Functions SYSTEM "xml/xfce-utf8.xml">
 <!ENTITY libxfce4util-Desktop-Entries SYSTEM "xml/xfce-desktopentry.xml">
 <!ENTITY libxfce4util-Generics SYSTEM "xml/xfce-generics.xml">
 <!ENTITY version SYSTEM "version.xml">

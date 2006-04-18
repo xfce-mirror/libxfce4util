@@ -1,9 +1,10 @@
-
 <INCLUDE>libxfce4util/libxfce4util.h</INCLUDE>
 
 <SECTION>
-<TITLE>Standard Macros</TITLE>
-<FILE>standard-macros</FILE>
+<TITLE>Version Information</TITLE>
+<FILE>libxfce4util-config</FILE>
+xfce_version_string
+<SUBSECTION>
 LIBXFCE4UTIL_MAJOR_VERSION
 LIBXFCE4UTIL_MINOR_VERSION
 LIBXFCE4UTIL_MICRO_VERSION
@@ -12,10 +13,7 @@ LIBXFCE4UTIL_CHECK_VERSION
 
 <SECTION>
 <TITLE>Internationalisation</TITLE>
-<FILE>i18n</FILE>
-_
-N_
-Q_
+<FILE>xfce-i18n</FILE>
 xfce_textdomain
 xfce_strip_context
 xfce_get_file_localized
@@ -98,8 +96,9 @@ xfce_rc_write_list_entry
 
 <SECTION>
 <TITLE>Unicode Support Functions</TITLE>
-<FILE>utf8</FILE>
+<FILE>xfce-utf8</FILE>
 xfce_utf8_remove_controls
+xfce_utf8_strndup
 </SECTION>
 
 <SECTION>
@@ -114,7 +113,6 @@ xfce_mkdirhier
 XFCE_LICENSE_BSD
 XFCE_LICENSE_GPL
 XFCE_LICENSE_LGPL
-xfce_version_string
 xfce_get_homedir
 xfce_get_homefile
 xfce_get_homefile_r
@@ -136,18 +134,19 @@ xfce_expand_variables
 XfceDesktopEntry
 xfce_desktop_entry_new
 xfce_desktop_entry_new_from_data
-xfce_desktop_entry_parse
 xfce_desktop_entry_get_file
 xfce_desktop_entry_get_string
 xfce_desktop_entry_get_int
+xfce_desktop_entry_has_translated_entry
 <SUBSECTION Standard>
 XFCE_DESKTOP_ENTRY
 XFCE_IS_DESKTOP_ENTRY
 XFCE_TYPE_DESKTOP_ENTRY
-xfce_desktop_entry_get_type
 XFCE_DESKTOP_ENTRY_CLASS
 XFCE_IS_DESKTOP_ENTRY_CLASS
 XFCE_DESKTOP_ENTRY_GET_CLASS
+<SUBSECTION Private>
+xfce_desktop_entry_get_type
 </SECTION>
 
 

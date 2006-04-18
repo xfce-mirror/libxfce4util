@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -23,8 +23,8 @@
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_CONFIG_H__
-#define __LIBXFCE4UTIL_LIBXFCE4UTIL_CONFIG_H__
+#ifndef __LIBXFCE4UTIL_CONFIG_H__
+#define __LIBXFCE4UTIL_CONFIG_H__
 
 #include <glib.h>
 
@@ -42,6 +42,15 @@ G_BEGIN_DECLS;
        && LIBXFCE4UTIL_MINOR_VERSION == (minor) \
        && LIBXFCE4UTIL_MICRO_VERSION >= (micro)))
 
+
+extern const gchar xfce_builtin_license_BSD[];
+extern const gchar xfce_builtin_license_GPL[];
+extern const gchar xfce_builtin_license_LGPL[];
+
+#define XFCE_LICENSE_BSD  xfce_builtin_license_BSD
+#define XFCE_LICENSE_GPL  xfce_builtin_license_GPL
+#define XFCE_LICENSE_LGPL xfce_builtin_license_LGPL
+
 G_END_DECLS;
 
-#endif	/* !__LIBXFCE4UTIL_LIBXFCE4UTIL_CONFIG_H__ */
+#endif	/* !__LIBXFCE4UTIL_CONFIG_H__ */

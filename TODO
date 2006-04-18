@@ -1,9 +1,6 @@
 Todo list for libxfce4util (> 4.0):
 -----------------------------------
 
-	- Make xfce_textdomain() a C function and check for gettext framework
-	  in libxfce4util's configure
-	
 	- Add a xfce_timer_fire_once(time, func) that fires a timeout after
 	  a specified amount of time and automatically removes the timeout
 	  afterwards.

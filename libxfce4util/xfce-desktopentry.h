@@ -1,6 +1,7 @@
 /* $Id$ */
 /*-
- * Copyright (C) 2004 Jasper Huijsmans <jasper@xfce.org>
+ * Copyright (c) 2004 Jasper Huijsmans <jasper@xfce.org>
+ * Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -22,13 +23,16 @@
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __LIBXFCE4UTIL_XFCE_DESKTOPENTRY_H__
-#define __LIBXFCE4UTIL_XFCE_DESKTOPENTRY_H__
+#ifndef __XFCE_DESKTOPENTRY_H__
+#define __XFCE_DESKTOPENTRY_H__
 
-#include <glib.h>
 #include <glib-object.h>
 
 G_BEGIN_DECLS
+
+typedef struct _XfceDesktopEntryPrivate XfceDesktopEntryPrivate;
+typedef struct _XfceDesktopEntryClass   XfceDesktopEntryClass;
+typedef struct _XfceDesktopEntry        XfceDesktopEntry;
 
 #define XFCE_TYPE_DESKTOP_ENTRY            (xfce_desktop_entry_get_type ())
 #define XFCE_DESKTOP_ENTRY(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), XFCE_TYPE_DESKTOP_ENTRY, XfceDesktopEntry))
@@ -37,62 +41,47 @@ G_BEGIN_DECLS
 #define XFCE_IS_DESKTOP_ENTRY_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), XFCE_TYPE_DESKTOP_ENTRY))
 #define XFCE_DESKTOP_ENTRY_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), XFCE_TYPE_DESKTOP_ENTRY, XfceDesktopEntryClass))
 
-typedef struct _XfceDesktopEntry XfceDesktopEntry;
-typedef struct _XfceDesktopEntryClass XfceDesktopEntryClass;
-typedef struct _XfceDesktopEntryPrivate XfceDesktopEntryPrivate;
-
 struct _XfceDesktopEntry
 {
-    GObject parent;
-
-    /*< private >*/
-    XfceDesktopEntryPrivate *priv;
+  /*< private >*/
+  GObject                  __parent__;
+  XfceDesktopEntryPrivate *priv;
 };
 
 struct _XfceDesktopEntryClass
 {
-    GObjectClass parent_class;
+  /*< private >*/
+  GObjectClass __parent__;
 
-    /* Padding for future expansion */
-    void (*_xfce_reserved1) (void);
-    void (*_xfce_reserved2) (void);
-    void (*_xfce_reserved3) (void);
+  /* Padding for future expansion */
+  void (*reserved1) (void);
+  void (*reserved2) (void);
+  void (*reserved3) (void);
 };
 
-#ifndef XFCE_DISABLE_DEPRECATED
-gboolean xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry);
-#endif
+GType                  xfce_desktop_entry_get_type              (void) G_GNUC_CONST;
 
-/* XXX - Remove this ASAP */
-#if TESTING
-void print_desktop_entry_info (XfceDesktopEntry *desktop_entry);
-#endif /* TESTING */
+XfceDesktopEntry      *xfce_desktop_entry_new                   (const gchar      *file, 
+                                                                 const gchar     **categories,
+                                                                 gint              num_categories) G_GNUC_MALLOC;
+XfceDesktopEntry      *xfce_desktop_entry_new_from_data         (const gchar      *data,
+                                                                 const gchar     **categories,
+                                                                 gint              num_categories) G_GNUC_MALLOC;
 
-GType xfce_desktop_entry_get_type (void) G_GNUC_CONST;
+G_CONST_RETURN gchar  *xfce_desktop_entry_get_file              (XfceDesktopEntry *desktop_entry);
 
-G_CONST_RETURN 
-char *xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry);
+gboolean               xfce_desktop_entry_get_int               (XfceDesktopEntry *desktop_entry,
+                                                                 const gchar      *key,
+                                                                 gint             *value_return);
+gboolean               xfce_desktop_entry_get_string            (XfceDesktopEntry *desktop_entry,
+                                                                 const gchar      *key,
+                                                                 gboolean          translated,
+                                                                 gchar           **value_return);
 
-XfceDesktopEntry *xfce_desktop_entry_new_from_data (const char *data,
-						    const char **categories,
-						    int num_categories);
-XfceDesktopEntry *xfce_desktop_entry_new (const char *file, 
-    					  const char **categories,
-					  int num_categories);
-
-gboolean xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
-    				        const char *key,
-					gboolean translated,
-					char **value);
-
-gboolean xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
-    				     const char *key,
-				     int *value);
-
-gboolean xfce_desktop_entry_has_translated_entry (XfceDesktopEntry *desktop_entry,
-                                                  const char *key);
+gboolean               xfce_desktop_entry_has_translated_entry  (XfceDesktopEntry *desktop_entry,
+                                                                 const gchar      *key);
 
 G_END_DECLS
 
-#endif  /* !__LIBXFCE4UTIL_XFCE_DESKTOPENTRY_H__ */
+#endif  /* !__XFCE_DESKTOPENTRY_H__ */
 

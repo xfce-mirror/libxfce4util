@@ -1,6 +1,7 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003 Olivier Fourdan <fourdan@xfce.org>
+ * Copyright (c) 2003      Olivier Fourdan <fourdan@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,14 +20,14 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <libxfce4util/libxfce4util.h>
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
-/* Around for compatibility. DEPRECATED! */
-gchar*
-utf8_string_remove_controls (gchar *str, gssize max_len, const gchar *end)
-{
-  return xfce_utf8_remove_controls (str, max_len, end);
-}
+#include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
+
+
 
 /**
  * xfce_utf8_remove_controls:
@@ -48,20 +49,21 @@ utf8_string_remove_controls (gchar *str, gssize max_len, const gchar *end)
 gchar*
 xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
 {
-    gchar *p;
-    
-    g_return_val_if_fail (str != NULL, NULL);
-    
-    p = str;
-    while (p && *p && (!end || p < end) && (max_len < 0 || (p - str) < max_len))
+  gchar *p;
+  
+  g_return_val_if_fail (str != NULL, NULL);
+  
+  for (p = str; p != NULL && *p != '\0' && (!end || p < end) && (max_len < 0 || (p - str) < max_len); )
     {
-        if ((*p > 0) && (*p < 32))
-            *p = ' ';
-        p = g_utf8_find_next_char(p, end);
+      if ((*p > 0) && (*p < 32))
+          *p = ' ';
+      p = g_utf8_find_next_char (p, end);
     }
 
-    return str;
+  return str;
 }
+
+
 
 /**
  * xfce_utf8_strndup:
@@ -71,24 +73,29 @@ xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
  * Duplicates the @src string up to @max_len characters 
  * (note that characters does not mean bytes with UTF-8).
  *
+ * The caller is responsible to free the returned string
+ * using g_free() when no longer needed.
+ *
  * Return value: pointer to the newly allocated string.
  *
- * Since: 4.4
+ * Since: 4.3
  **/
 gchar *
-xfce_utf8_strndup (const gchar *src, gssize max_len)
+xfce_utf8_strndup (const gchar *src,
+                   gssize       max_len)
 {
-    const gchar *s = src;
+  const gchar *s;
 
-    if (max_len <= 0)
-	return g_strdup (src);
+  if (max_len <= 0)
+    return g_strdup (src);
 
-    while (max_len && *s)
-    {
-	s = g_utf8_next_char (s);
-	max_len--;
-    }
+  for (s = src; max_len > 0 && *s != '\0'; --max_len)
+    s = g_utf8_next_char (s);
 
-    return g_strndup (src, s - src);
+  return g_strndup (src, s - src);
 }
 
+
+
+#define __XFCE_UTF8_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

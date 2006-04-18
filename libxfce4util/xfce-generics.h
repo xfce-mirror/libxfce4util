@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -23,8 +23,8 @@
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __LIBXFCE4UTIL_XFCE_GENERICS_H__
-#define __LIBXFCE4UTIL_XFCE_GENERICS_H__
+#ifndef __XFCE_GENERICS_H__
+#define __XFCE_GENERICS_H__
 
 #include <glib.h>
 
@@ -95,4 +95,4 @@ G_BEGIN_DECLS;
 
 G_END_DECLS;
 
-#endif /* !__LIBXFCE4UTIL_XFCE_GENERICS_H__ */
+#endif /* !__XFCE_GENERICS_H__ */

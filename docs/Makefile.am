@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-AUTOMAKE_OPTIONS = 1.6
+AUTOMAKE_OPTIONS = 1.8
 
 # The name of the module.
 DOC_MODULE=libxfce4util
@@ -25,8 +25,7 @@ HFILE_GLOB=$(top_srcdir)/libxfce4util/*.h
 CFILE_GLOB=$(top_srcdir)/libxfce4util/*.c
 
 # Header files to ignore when scanning
-IGNORE_HFILES=			\
-	licenses-texts.c
+IGNORE_HFILES=
 
 # Extra files to add when scanning (relative to $srcdir)
 EXTRA_HFILES=
@@ -43,6 +42,7 @@ content_files = 		\
 GTKDOC_CFLAGS = 					\
 	-I$(top_srcdir) 				\
 	-I$(top_builddir) 				\
+	$(CPPFLAGS)					\
 	$(GOBJECT_CFLAGS)
 
 GTKDOC_LIBS =  						\

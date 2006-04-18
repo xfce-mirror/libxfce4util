@@ -1,6 +1,7 @@
 /* $Id$ */
 /*-
- * Copyright (C) 2004 Jasper Huijsmans <jasper@xfce.org>
+ * Copyright (c) 2004 Jasper Huijsmans <jasper@xfce.org>
+ * Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -28,596 +29,576 @@
 #ifdef HAVE_LOCALE_H
 #include <locale.h>
 #endif
+#ifdef HAVE_MEMORY_H
+#include <memory.h>
+#endif
+#ifdef HAVE_STDLIB_H
 #include <stdlib.h>
+#endif
+#ifdef HAVE_STRING_H
 #include <string.h>
+#endif
 
-#include <glib.h>
+
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
-typedef struct
-{
-    char *key;
-    char *value;
-    char *translated_value;
-    char *section;
-}
-entry_t;
+
+
+/* fallback for g_intern_static_string() with GLib < 2.9.0 */
+#if !GLIB_CHECK_VERSION(2,9,0)
+#define g_intern_static_string(string) (g_quark_to_string (g_quark_from_static_string ((string))))
+#endif
+
+
+
+#define XFCE_DESKTOP_ENTRY_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), XFCE_TYPE_DESKTOP_ENTRY, XfceDesktopEntryPrivate))
+
+
+
+typedef struct _XfceDesktopEntryItem XfceDesktopEntryItem;
+
+
+
+static void                        xfce_desktop_entry_class_init (XfceDesktopEntryClass *klass);
+static void                        xfce_desktop_entry_init       (XfceDesktopEntry      *desktop_entry);
+static void                        xfce_desktop_entry_finalize   (GObject               *object);
+static const XfceDesktopEntryItem *xfce_desktop_entry_lookup     (XfceDesktopEntry      *desktop_entry,
+                                                                     const gchar        *key);
+static gboolean                    xfce_desktop_entry_parse      (XfceDesktopEntry      *desktop_entry);
+
+
 
 struct _XfceDesktopEntryPrivate
 {
-    char *file;
-    char *locale;
-    gchar *data;
-    entry_t *entries;
-    int num_entries;
+  gchar                *file;
+  gchar                *locale;
+  gchar                *data;
+
+  XfceDesktopEntryItem *items;
+  gint                  num_items;
 };
 
-static void xfce_desktop_entry_class_init (XfceDesktopEntryClass * klass);
-
-static void xfce_desktop_entry_init (XfceDesktopEntry * desktop_entry);
-
-static void xfce_desktop_entry_finalize (GObject *object);
-
-GObjectClass *parent_class = NULL;
-
-#if TESTING /* set in header file */
-static void
-print_entry_info (entry_t *entry)
+struct _XfceDesktopEntryItem
 {
-    g_print ("Key         : %s\n", entry->key);
-    g_print ("Value       : %s\n", entry->value);
-    if (entry->translated_value)
-	g_print ("Translation : %s\n", entry->translated_value);
-    if (entry->section)
-	g_print ("Section     : %s\n", entry->section);
-    g_print ("\n");
-}
+  gchar *key;
+  gchar *value;
+  gchar *section;
+  gchar *translated_value;
+};
 
-void
-print_desktop_entry_info (XfceDesktopEntry *desktop_entry)
-{
-    entry_t *entry;
-    int i;
 
-    g_print ("[%s]\n", desktop_entry->priv->file);
 
-    entry = &(desktop_entry->priv->entries[0]);
+static GObject *xfce_desktop_entry_parent_class;
 
-    for (i = 0; i < desktop_entry->priv->num_entries; ++i, entry++)
-    {
-	print_entry_info (entry);
-    }
-}
-#endif /* TESTING */
+
 
 GType
 xfce_desktop_entry_get_type (void)
 {
-    static GType type = 0;
+  static GType type = G_TYPE_INVALID;
 
-    if (!type)
+  if (G_UNLIKELY (type == G_TYPE_INVALID))
     {
-	static const GTypeInfo type_info = {
-	    sizeof (XfceDesktopEntryClass),
-	    (GBaseInitFunc) NULL,
-	    (GBaseFinalizeFunc) NULL,
-	    (GClassInitFunc) xfce_desktop_entry_class_init,
-	    (GClassFinalizeFunc) NULL,
-	    NULL,
-	    sizeof (XfceDesktopEntry),
-	    0,			/* n_preallocs */
-	    (GInstanceInitFunc) xfce_desktop_entry_init,
-	};
+      static const GTypeInfo info =
+      {
+        sizeof (XfceDesktopEntryClass),
+        NULL,
+        NULL,
+        (GClassInitFunc) xfce_desktop_entry_class_init,
+        NULL, 
+        NULL,
+        sizeof (XfceDesktopEntry),
+        0,
+        (GInstanceInitFunc) xfce_desktop_entry_init,
+        NULL,
+      };
 
-	type = g_type_register_static (G_TYPE_OBJECT,
-				       "XfceDesktopEntry", &type_info, 0);
+      type = g_type_register_static (G_TYPE_OBJECT, g_intern_static_string ("XfceDesktopEntry"), &info, 0);
     }
 
-    return type;
+  return type;
 }
+
+
 
 static void
 xfce_desktop_entry_class_init (XfceDesktopEntryClass * klass)
 {
-    parent_class = g_type_class_peek_parent (klass);
+  GObjectClass *gobject_class;
 
-    G_OBJECT_CLASS (klass)->finalize = xfce_desktop_entry_finalize;
+  /* install private data for the type */
+  g_type_class_add_private (klass, sizeof (XfceDesktopEntryPrivate));
+
+  /* determine the parent type class */
+  xfce_desktop_entry_parent_class = g_type_class_peek_parent (klass);
+
+  gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class->finalize = xfce_desktop_entry_finalize;
 }
+
+
 
 static void
-xfce_desktop_entry_init (XfceDesktopEntry * desktop_entry)
+xfce_desktop_entry_init (XfceDesktopEntry *desktop_entry)
 {
-    desktop_entry->priv = g_new0 (XfceDesktopEntryPrivate, 1);
+  desktop_entry->priv = XFCE_DESKTOP_ENTRY_GET_PRIVATE (desktop_entry);
 }
 
-static void
-free_entry (entry_t * entry)
-{
-    g_free (entry->key);
-    g_free (entry->value);
-    g_free (entry->translated_value);
-    g_free (entry->section);
-}
+
 
 static void
 xfce_desktop_entry_finalize (GObject *object)
 {
-    XfceDesktopEntry * desktop_entry = XFCE_DESKTOP_ENTRY (object);
-    XfceDesktopEntryPrivate *priv = desktop_entry->priv;
-    int i;
+  XfceDesktopEntry *desktop_entry = XFCE_DESKTOP_ENTRY (object);
+  gint              n;
 
-    g_free (priv->file);
-    g_free (priv->data);
-
-    for (i = 0; i < priv->num_entries; i++)
+  /* release the items */
+  for (n = 0; n < desktop_entry->priv->num_items; ++n)
     {
-	free_entry (&(priv->entries[i]));
+      g_free (desktop_entry->priv->items[n].translated_value);
+      g_free (desktop_entry->priv->items[n].section);
+      g_free (desktop_entry->priv->items[n].value);
+      g_free (desktop_entry->priv->items[n].key);
     }
 
-    g_free (priv->entries);
-    g_free (priv);
+  g_free (desktop_entry->priv->items);
+  g_free (desktop_entry->priv->file);
+  g_free (desktop_entry->priv->data);
 
-    parent_class->finalize (G_OBJECT (desktop_entry));
+  (*G_OBJECT_CLASS (xfce_desktop_entry_parent_class)->finalize) (object);
 }
 
-/**
- * xfce_desktop_entry_get_file:
- * @desktop_entry: an #XfceDesktopEntry.
- * @Returns: path of the desktop entry file used to create @desktop_entry. The
- *           return value should be considered read-only and must not be freed
- *           by the caller.
- *
- * Obtain the path to the desktop entry file associated with the
- * #XfceDesktopEntry.
- *
- * Since: 4.2
- **/
-G_CONST_RETURN char *
-xfce_desktop_entry_get_file (XfceDesktopEntry * desktop_entry)
+
+
+static const XfceDesktopEntryItem*
+xfce_desktop_entry_lookup (XfceDesktopEntry *desktop_entry,
+                           const gchar      *key)
 {
-    g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), NULL);
+  XfceDesktopEntryItem *item;
+  gint                  n;
 
-    return desktop_entry->priv->file;
+  for (item = desktop_entry->priv->items, n = 0; n < desktop_entry->priv->num_items; ++item, ++n)
+    if (strcmp (item->key, key) == 0)
+      return item;
+
+  return NULL;
 }
+
+
 
 static gboolean
-parse_desktop_entry_line (const char *line, char **section, 
-			  char **key, char **value, char **locale)
+parse_desktop_entry_line (const gchar *line,
+                          gchar      **section_return,
+                          gchar      **key_return,
+                          gchar      **value_return,
+                          gchar      **locale_return)
 {
-    char *p, *q;
+  const gchar *p = line;
+  const gchar *q;
+  const gchar *r;
+  const gchar *s;
+ 
+  /* initialize to NULL, so we don't have tho think about it anymore */
+  *section_return = NULL;
+  *key_return = NULL;
+  *value_return = NULL;
+  *locale_return = NULL;
+  
+  /* skip whitespace */
+  while (g_ascii_isspace (*p))
+    ++p;
 
-    p = (char *)line;
-    
-    /* initialize to NULL, so we don't have tho think about it anymore */
-    *section = NULL;
-    *key = NULL;
-    *value = NULL;
-    *locale = NULL;
-    
-    while (g_ascii_isspace (*p))
-	++p;
-
-    if (*p == '#' || *p == '\n' || *p == '\0')
-	return FALSE;
-    
-    if (*p == '[')
+  if (*p == '#' || *p == '\n' || *p == '\0')
+    return FALSE;
+  
+  if (*p == '[')
     {
-	++p;
-	if ((q = strchr (p, ']')) == NULL)
-	    return FALSE;
+      ++p;
 
-	*section = g_new (char, q - p + 1);
-	strncpy (*section, p, q - p);
-	(*section)[q - p] = '\0';
-	
-	return TRUE;
+      q = strchr (p, ']');
+      if (G_UNLIKELY (q == NULL))
+        return FALSE;
+
+      *section_return = g_strndup (p, q - p);
     }
-    else
+  else
     {
-	char *r;
-	
-	if ((q = strchr (p, '=')) == NULL)
-	    return FALSE;
-	
-	r = q + 1;
-	--q;
+      q = strchr (p, '=');
+      if (G_UNLIKELY (q == NULL))
+        return FALSE;
 
-	while (g_ascii_isspace (*q))
-	    --q;
+      r = q + 1;
 
-	if (*q == ']')
-	{
-	    char *s;
+      for (--q; g_ascii_isspace (*q); )
+        --q;
 
-	    if ((s = strchr (p, '[')) == NULL)
-		return FALSE;
-	    
-	    *key = g_new (char, s - p + 1);
-	    strncpy (*key, p, s - p);
-	    (*key)[s - p] = '\0';
+      if (*q == ']')
+        {
+          s = strchr (p, '[');
+          if (G_UNLIKELY (s == NULL))
+            return FALSE;
+          
+          *key_return = g_strndup (p, s - p);
 
-	    ++s;
-	    *locale = g_new (char, q - s + 1);
-	    strncpy (*locale, s, q - s);
-	    (*locale)[q - s] = '\0';
-	}
-	else
-	{
-	    ++q;
-	    *key = g_new (char, q - p + 1);
-	    strncpy (*key, p, q - p);
-	    (*key)[q - p] = '\0';
-	}
+          ++s;
 
-	while (g_ascii_isspace (*r))
-	    ++r;
-	
-	q = r + strlen (r);
-
-	while (
-	    q > r 
-	&&
-	    (
-	        g_ascii_isspace (*(q-1)) 
-	    || 
-	        ((*(q-1)) == '\r')) /* kde... */
-	)
-	    --q;
-
-	if (q > r) {
-	    *value = g_new (char, q - r + 1);
-	    strncpy (*value, r, q - r);
-	    (*value) [q - r] = '\0';
-	} else {
-	    *value = g_new0 (char, 1);
-	}
-	
-	return TRUE;
-    }
-}
-
-static gboolean
-entry_parse (XfceDesktopEntry * desktop_entry)
-{
-    char *current_locale;
-    int locale_matched = 0;
-    char **lines, **p;
-    char *current_section = NULL;
-    gboolean in_d_e_section = FALSE, result = FALSE;
-
-    g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
-
-    current_locale = g_strdup (setlocale (LC_MESSAGES, NULL));
-
-    lines = g_strsplit (desktop_entry->priv->data, "\n", -1);
-    
-    for (p = lines; *p != NULL; ++p)
-    {
-	entry_t *entry;
-	int i;
-	char *section, *key, *value, *locale;
-	
-    /* some .desktop files have multiple sections.  we're only interested
-     * in the "[Desktop Entry]" section */
-    if (!in_d_e_section) {
-        if (!g_ascii_strncasecmp(*p, "[Desktop Entry]", 15))
-            in_d_e_section = TRUE;
-    } else if (**p == '[' && g_ascii_strncasecmp(*p, "[Desktop Entry]", 15))
-        in_d_e_section = FALSE;
-    
-    if (!in_d_e_section)
-        continue;
-    
-	if (!parse_desktop_entry_line (*p, &section, &key, &value, &locale))
-	    continue;
-
-	if (section != NULL)
-	{
-	    g_free (current_section);
-	    current_section = section;
-	    continue;
-	}
-	
-	entry = &(desktop_entry->priv->entries[0]);
-
-	for (i = 0; i < desktop_entry->priv->num_entries; ++i, ++entry)
-	{
-	    if (key && entry->key && strcmp (key, entry->key) == 0)
-	    {
-		if (current_locale && locale)
-		{
-		    int match = xfce_locale_match (current_locale, locale);
-
-		    if (match > locale_matched)
-		    {
-			g_free (entry->translated_value);
-			entry->translated_value = g_strdup (value);
-		    }
-		}
-		else
-		{
-		    g_free (entry->value);
-		    entry->value = g_strdup (value);
-		    result = TRUE;
-		}
-
-		if (current_section) {
-            if (entry->section != NULL)
-                g_free (entry->section);
-		    entry->section = g_strdup (current_section);
+          *locale_return = g_strndup (s, q - s);
         }
-		
-		break;
-	    }
-	}
+      else
+        {
+            *key_return = g_strndup (p, (q + 1) - p);
+        }
+      
+      while (g_ascii_isspace (*r))
+        ++r;
 
-	g_free (key);
-	g_free (value);
-    if (locale != NULL)
-        g_free (locale);
+      q = r + strlen (r);
+
+      while (q > r && (g_ascii_isspace (*(q - 1)) || ((*(q - 1)) == '\r')))
+        --q;
+
+      if (q > r)
+        *value_return = g_strndup (r, q - r);
+      else
+        *value_return = g_new0 (gchar, 1);
     }
 
-    if (current_locale != NULL) g_free (current_locale);
-    g_free (current_section);
-    g_strfreev (lines);
-
-    return result;
+  return TRUE;
 }
 
-/**
- * xfce_desktop_entry_new_from_data:
- * @data           : pointer to the desktop entry inline data.
- * @categories     : array of categories, not necessarily NULL terminated.
- * @num_categories : number of items in @categories.
- * @Returns: newly created #XfceDesktopEntry or NULL if something goes wrong.
- *
- * Create a new XfceDesktopEntry object from a desktop entry stored in memory.
- *
- * Since: 4.2
- **/
-XfceDesktopEntry *
-xfce_desktop_entry_new_from_data (const char *data, const char **categories,
-				  int num_categories)
+
+
+static gboolean
+xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry)
 {
-    XfceDesktopEntry *desktop_entry;
-    XfceDesktopEntryPrivate *priv;
-    int i;
-    entry_t *entry;
+  XfceDesktopEntryItem *item;
+  const gchar          *current_locale;
+  gboolean              in_d_e_section = FALSE;
+  gboolean              result = FALSE;
+  gchar                *current_section = NULL;
+  gchar                *section;
+  gchar                *locale;
+  gchar                *value;
+  gchar                *key;
+  gchar               **lines;
+  gchar               **p;
+  gint                  locale_matched = 0;
+  gint                  i;
 
-    g_return_val_if_fail (data != NULL, NULL);
-    g_return_val_if_fail (categories != NULL, NULL);
+  current_locale = setlocale (LC_MESSAGES, NULL);
 
-    desktop_entry = g_object_new (XFCE_TYPE_DESKTOP_ENTRY, NULL);
-
-    priv = desktop_entry->priv;
-
-    priv->file = g_strdup (""); /* or "data" or ... */
-    priv->data = g_strdup (data);
-    priv->entries = g_new0 (entry_t, num_categories);
-    priv->num_entries = num_categories;
-
-    entry = &(priv->entries[0]);
-
-    for (i = 0; i < priv->num_entries; ++i, entry++)
+  lines = g_strsplit (desktop_entry->priv->data, "\n", -1);
+  for (p = lines; *p != NULL; ++p)
     {
-	entry->key = g_strdup (categories[i]);
+      /* some .desktop files have multiple sections.  we're only interested
+       * in the "[Desktop Entry]" section */
+      if (!in_d_e_section)
+        {
+          if (!g_ascii_strncasecmp (*p, "[Desktop Entry]", 15))
+            in_d_e_section = TRUE;
+        }
+      else if (**p == '[' && g_ascii_strncasecmp(*p, "[Desktop Entry]", 15))
+        in_d_e_section = FALSE;
+  
+      if (!in_d_e_section)
+        continue;
+      
+      if (!parse_desktop_entry_line (*p, &section, &key, &value, &locale))
+        continue;
+
+      if (G_UNLIKELY (section != NULL))
+        {
+          g_free (current_section);
+          current_section = section;
+          continue;
+        }
+      
+      item = desktop_entry->priv->items;
+
+      for (i = 0; i < desktop_entry->priv->num_items; ++i, ++item)
+        {
+          if (key != NULL && item->key != NULL && strcmp (key, item->key) == 0)
+            {
+              if (current_locale != NULL && locale != NULL)
+                {
+                  gint match = xfce_locale_match (current_locale, locale);
+                  if (match > locale_matched)
+                    {
+                      g_free (item->translated_value);
+                      item->translated_value = g_strdup (value);
+                    }
+                }
+              else
+                {
+                  g_free (item->value);
+                  item->value = g_strdup (value);
+                  result = TRUE;
+                }
+              
+              if (current_section != NULL)
+                {
+                  g_free (item->section);
+                  item->section = g_strdup (current_section);
+                }
+
+              break;
+            }
+        }
+      
+      g_free (value);
+      g_free (key);
+      g_free (locale);
     }
 
-    if (!entry_parse (desktop_entry)) {
-        g_object_unref (G_OBJECT (desktop_entry));
-        desktop_entry = NULL;
-    }
+  g_free (current_section);
+  g_strfreev (lines);
 
-    return desktop_entry;
+  return result;
 }
+
+
 
 /**
  * xfce_desktop_entry_new:
  * @file           : full path to the desktop entry file to use.
  * @categories     : array of categories, not necessarily NULL terminated.
  * @num_categories : number of items in @categories.
- * @Returns: newly created #XfceDesktopEntry or NULL if something goes wrong.
  *
- * Create a new XfceDesktopEntry object from a desktop entry stored in memory.
+ * Create a new #XfceDesktopEntry object from a desktop entry stored in memory.
+ *
+ * The caller is responsible to free the returned object (if any) using
+ * g_object_unref() when no longer needed.
+ *
+ * Return value: newly created #XfceDesktopEntry or NULL if something goes wrong.
  *
  * Since: 4.2
  **/
-XfceDesktopEntry *
-xfce_desktop_entry_new (const char *file, const char **categories,
-			int num_categories)
+XfceDesktopEntry*
+xfce_desktop_entry_new (const gchar  *file,
+                        const gchar **categories,
+                        gint          num_categories)
 {
-    XfceDesktopEntry *desktop_entry;
-    XfceDesktopEntryPrivate *priv;
-    int i;
-    entry_t *entry;
+  XfceDesktopEntryItem *item;
+  XfceDesktopEntry     *desktop_entry;
+  gint                  n;
 
-    g_return_val_if_fail (file != NULL, NULL);
-    g_return_val_if_fail (categories != NULL, NULL);
+  g_return_val_if_fail (file != NULL, NULL);
+  g_return_val_if_fail (categories != NULL, NULL);
 
-    desktop_entry = g_object_new (XFCE_TYPE_DESKTOP_ENTRY, NULL);
+  desktop_entry = g_object_new (XFCE_TYPE_DESKTOP_ENTRY, NULL);
+  desktop_entry->priv->file = g_strdup (file);
+  desktop_entry->priv->items = g_new0 (XfceDesktopEntryItem, num_categories);
+  desktop_entry->priv->num_items = num_categories;
 
-    priv = desktop_entry->priv;
-
-    priv->file = g_strdup (file);
-    priv->entries = g_new0 (entry_t, num_categories);
-    priv->num_entries = num_categories;
-
-    g_return_val_if_fail (g_file_test (priv->file, 
-			               G_FILE_TEST_EXISTS), NULL);
-   
-    if (!g_file_get_contents (priv->file, &(priv->data), NULL, NULL))
+  if (!g_file_get_contents (desktop_entry->priv->file, &(desktop_entry->priv->data), NULL, NULL))
     {
-	g_warning ("Could not get contents of file %s",
-		   priv->file);
-	
-	return NULL;
+      g_warning ("Could not get contents of file %s", desktop_entry->priv->file);
+      g_object_unref (G_OBJECT (desktop_entry));
+      return NULL;
     }
 
-    entry = &(priv->entries[0]);
+  for (item = desktop_entry->priv->items, n = 0; n < desktop_entry->priv->num_items; ++item, ++n)
+    item->key = g_strdup (categories[n]);
 
-    for (i = 0; i < priv->num_entries; ++i, entry++)
+  if (!xfce_desktop_entry_parse (desktop_entry))
     {
-	entry->key = g_strdup (categories[i]);
+      g_object_unref (G_OBJECT (desktop_entry));
+      desktop_entry = NULL;
     }
 
-    if (!entry_parse(desktop_entry)) {
-        g_object_unref (G_OBJECT (desktop_entry));
-        desktop_entry = NULL;
-    }
-
-    return desktop_entry;
+  return desktop_entry;
 }
+
+
 
 /**
- * xfce_desktop_entry_parse:
- * @desktop_entry: an #XfceDesktopEntry.
- * @Returns: TRUE on success, FALSE on failure.
+ * xfce_desktop_entry_new_from_data:
+ * @data           : pointer to the desktop entry inline data.
+ * @categories     : array of categories, not necessarily NULL terminated.
+ * @num_categories : number of items in @categories.
  *
- * Parses the desktop entry file and fills in the values for all categories. 
+ * Create a new #XfceDesktopEntry object from a desktop entry stored in memory.
+ *
+ * The caller is responsible to free the returned object (if any) using
+ * g_object_unref() when no longer needed.
+ *
+ * Return value: newly created #XfceDesktopEntry or NULL if something goes wrong.
  *
  * Since: 4.2
-**/
-gboolean
-xfce_desktop_entry_parse (XfceDesktopEntry * desktop_entry)
+ **/
+XfceDesktopEntry*
+xfce_desktop_entry_new_from_data (const gchar  *data,
+                                  const gchar **categories,
+                                  gint          num_categories)
 {
-  /* already done in _new and _new_from_data : do nothing */
-  return TRUE;
-}
+  XfceDesktopEntryItem *item;
+  XfceDesktopEntry     *desktop_entry;
+  gint                  n;
 
-static G_CONST_RETURN entry_t *
-xfce_desktop_entry_get_entry (XfceDesktopEntry * desktop_entry,
-			      const char *key)
-{
-    entry_t *entry;
-    int i;
+  g_return_val_if_fail (data != NULL, NULL);
+  g_return_val_if_fail (categories != NULL, NULL);
 
-    entry = &(desktop_entry->priv->entries[0]);
+  desktop_entry = g_object_new (XFCE_TYPE_DESKTOP_ENTRY, NULL);
+  desktop_entry->priv->file = g_strdup (""); /* or "data" or ... */
+  desktop_entry->priv->data = g_strdup (data);
+  desktop_entry->priv->items = g_new0 (XfceDesktopEntryItem, num_categories);
+  desktop_entry->priv->num_items = num_categories;
 
-    for (i = 0; i < desktop_entry->priv->num_entries; ++i, entry++)
+  for (item = desktop_entry->priv->items, n = 0; n < desktop_entry->priv->num_items; ++item, ++n)
+    item->key = g_strdup (categories[n]);
+
+  if (!xfce_desktop_entry_parse (desktop_entry))
     {
-        if (strcmp (entry->key, key) == 0)
-        {
-            return entry;
-        }
+      g_object_unref (G_OBJECT (desktop_entry));
+      desktop_entry = NULL;
     }
 
-    return NULL;
+  return desktop_entry;
 }
+
+
+
+/**
+ * xfce_desktop_entry_get_file:
+ * @desktop_entry: an #XfceDesktopEntry.
+ *
+ * Obtain the path to the desktop entry file associated with the
+ * #XfceDesktopEntry.
+ *
+ * Return value: path of the desktop entry file used to create @desktop_entry. The
+ *               return value should be considered read-only and must not be freed
+ *               by the caller.
+ * Since: 4.2
+ **/
+G_CONST_RETURN gchar*
+xfce_desktop_entry_get_file (XfceDesktopEntry *desktop_entry)
+{
+    g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), NULL);
+    return desktop_entry->priv->file;
+}
+
+
 
 /**
  * xfce_desktop_entry_get_string:
- * @desktop_entry: an #XfceDesktopEntry
- * @key: category to find value for.
- * @translated: set to TRUE if the translated value is preferred.
- * @value: location for the value, which will be newly allocated.
- * @Returns: TRUE on success, FALSE on failure. @value must be freed.
+ * @desktop_entry : an #XfceDesktopEntry
+ * @key           : category to find value for.
+ * @translated    : set to TRUE if the translated value is preferred.
+ * @value_return  : location for the value, which will be newly allocated.
  *
  * Finds the value for @key. When @translated is TRUE the function will use
  * the translated value (using the current locale settings) if available or
  * the untranslated value if no translation can be found.
  *
+ * Return value: TRUE on success, FALSE on failure. @value_return must be freed.
+ *
  * Since: 4.2
 **/
 gboolean
-xfce_desktop_entry_get_string (XfceDesktopEntry * desktop_entry,
-			       const char *key, gboolean translated,
-			       char **value)
+xfce_desktop_entry_get_string (XfceDesktopEntry *desktop_entry,
+                               const gchar      *key,
+                               gboolean          translated,
+                               gchar           **value_return)
 {
-    const entry_t *entry;
-    char *temp;
+  const XfceDesktopEntryItem *item;
 
-    g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
-    g_return_val_if_fail (key != NULL, FALSE);
-    g_return_val_if_fail (value != NULL, FALSE);
+  g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
+  g_return_val_if_fail (value_return != NULL, FALSE);
+  g_return_val_if_fail (key != NULL, FALSE);
 
-    if (!(entry = xfce_desktop_entry_get_entry (desktop_entry, key)))
-        return FALSE;
+  item = xfce_desktop_entry_lookup (desktop_entry, key);
+  if (G_UNLIKELY (item == NULL || item->value == NULL || *item->value == '\0'))
+    return FALSE;
 
-    if (!entry->value || !strlen(entry->value))
-        return FALSE;
+  if (translated && item->translated_value != NULL)
+    *value_return = g_strdup (item->translated_value);
+  else
+    *value_return = g_strdup (item->value);
 
-    temp = entry->value;
-    if (translated && entry->translated_value != NULL)
-    {
-        temp = entry->translated_value;
-    }
-
-    *value = g_strdup (temp);
-    return TRUE;
+  return TRUE;
 }
+
+
 
 /**
  * xfce_desktop_entry_get_int:
- * @desktop_entry: an #XfceDesktopEntry.
- * @key: category to find value for.
- * @value: location for the value.
- * @Returns: TRUE on success, FALSE on failure.
+ * @desktop_entry : an #XfceDesktopEntry.
+ * @key           : category to find value for.
+ * @value_return  : location for the value.
  *
  * Gets a value from @desktop_entry as integer. Therefore finds the value for
  * @key and returns its integer representation.
  *
+ * Return value: TRUE on success, FALSE on failure.
+ *
  * Since: 4.2
-**/
+ **/
 gboolean
-xfce_desktop_entry_get_int (XfceDesktopEntry * desktop_entry,
-			    const char *key, int *value)
+xfce_desktop_entry_get_int (XfceDesktopEntry *desktop_entry,
+                            const gchar      *key,
+                            gint             *value_return)
 {
-    const entry_t *entry;
-    char *endptr;
+  const XfceDesktopEntryItem *item;
+  gchar                      *endptr;
 
-    g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
-    g_return_val_if_fail (key != NULL, FALSE);
-    g_return_val_if_fail (value != NULL, FALSE);
+  g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
+  g_return_val_if_fail (value_return != NULL, FALSE);
+  g_return_val_if_fail (key != NULL, FALSE);
 
-    if (!(entry = xfce_desktop_entry_get_entry (desktop_entry, key)))
-		return FALSE;
-
-    if (!entry->value || !strlen(entry->value))
-		return FALSE;
-
-    *value = (int)strtol (entry->value, &endptr, 10);
-    
-    if (*endptr == '\0')
-        return TRUE;
-
+  item = xfce_desktop_entry_lookup (desktop_entry, key);
+  if (G_UNLIKELY (item == NULL || item->value == NULL || *item->value == '\0'))
     return FALSE;
+
+  *value_return = strtol (item->value, &endptr, 10);
+  if (*endptr == '\0')
+    return TRUE;
+
+  return FALSE;
 }
+
+
 
 /**
  * xfce_desktop_entry_has_translated_entry:
- * @desktop_entry: an #XfceDesktopEntry.
- * @key: the key to check.
- * @Returns: %TRUE if there is a translated key, %FALSE otherwise.
+ * @desktop_entry : an #XfceDesktopEntry.
+ * @key           : the key to check.
  *
  * Checks to see if @desktop_entry has a value for @key translated into
  * the current locale.
+ *
+ * Return Value: %TRUE if there is a translated key, %FALSE otherwise.
  *
  * Since: 4.3
  **/
 gboolean
 xfce_desktop_entry_has_translated_entry (XfceDesktopEntry *desktop_entry,
-                                         const char *key)
+                                         const gchar      *key)
 {
-    const entry_t *entry;
-    const char *current_locale;
-    
-    g_return_val_if_fail(XFCE_IS_DESKTOP_ENTRY(desktop_entry)
-                         && key && *key, FALSE);
-    
-    if(!(entry = xfce_desktop_entry_get_entry(desktop_entry, key)))
-        return FALSE;
-    
-    if(!entry->value || !strlen(entry->value))
-        return FALSE;
-    
-    current_locale = setlocale(LC_MESSAGES, NULL);
-    
-    if(!entry->translated_value && !xfce_locale_match(current_locale, "C")
-       && !xfce_locale_match(current_locale, "POSIX"))
-    {
-        return FALSE;
-    }
-    
-    return TRUE;
+  const XfceDesktopEntryItem *item;
+  const gchar                *current_locale;
+  
+  g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
+  g_return_val_if_fail (key != NULL, FALSE);
+  
+  item = xfce_desktop_entry_lookup (desktop_entry, key);
+  if (G_UNLIKELY (item == NULL || item->value == NULL || *item->value == '\0'))
+    return FALSE;
+
+  current_locale = setlocale (LC_MESSAGES, NULL);
+  
+  if (item->translated_value == NULL
+      && !xfce_locale_match (current_locale, "C")
+      && !xfce_locale_match (current_locale, "POSIX"))
+  {
+      return FALSE;
+  }
+  
+  return TRUE;
 }
+
+
+
+#define __XFCE_DESKTOPENTRY_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

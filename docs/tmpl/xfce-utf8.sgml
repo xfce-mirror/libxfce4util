@@ -27,3 +27,13 @@ functions operating on Unicode characters and UTF-8 strings.
 @Returns: 
 
 
+<!-- ##### FUNCTION xfce_utf8_strndup ##### -->
+<para>
+
+</para>
+
+@src: 
+@max_len: 
+@Returns: 
+
+

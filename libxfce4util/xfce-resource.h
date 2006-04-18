@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -23,9 +23,17 @@
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __LIBXFCE4UTIL_XFCE_RESOURCE_H__
-#define __LIBXFCE4UTIL_XFCE_RESOURCE_H__
+#ifndef __XFCE_RESOURCE_H__
+#define __XFCE_RESOURCE_H__
 
+/**
+ * XfceResourceType:
+ * @XFCE_RESOURCE_DATA   : where applications store data.
+ * @XFCE_RESOURCE_CONFIG : configuration files.
+ * @XFCE_RESOURCE_CACHE  : cached information.
+ * @XFCE_RESOURCE_ICONS  : icon search path.
+ * @XFCE_RESOURCE_THEMES : themes search path.
+ **/
 typedef enum /*< prefix=XFCE_RESOURCE_ >*/
 {
   XFCE_RESOURCE_DATA   = 0,
@@ -35,27 +43,35 @@ typedef enum /*< prefix=XFCE_RESOURCE_ >*/
   XFCE_RESOURCE_THEMES = 4,
 } XfceResourceType;
 
+/**
+ * XfceMatchFunc:
+ * @basedir   :
+ * @relpath   :
+ * @user_data : additional user data passed to xfce_resource_match_custom().
+ *
+ * Return value :
+ **/
 typedef gboolean (*XfceMatchFunc)   (const gchar *basedir,
-				     const gchar *relpath,
-				     gpointer     user_data);
+                                     const gchar *relpath,
+                                     gpointer     user_data);
 
-gchar** xfce_resource_dirs          (XfceResourceType type);
+gchar** xfce_resource_dirs          (XfceResourceType type) G_GNUC_MALLOC;
 gchar*  xfce_resource_lookup        (XfceResourceType type,
-				     const gchar     *filename);
+                                     const gchar     *filename) G_GNUC_MALLOC;
 gchar** xfce_resource_lookup_all    (XfceResourceType type,
-				     const gchar     *filename);
+                                     const gchar     *filename) G_GNUC_MALLOC;
 gchar** xfce_resource_match         (XfceResourceType type,
-				     const gchar     *pattern,
-				     gboolean         unique);
+                                     const gchar     *pattern,
+                                     gboolean         unique) G_GNUC_MALLOC;
 gchar** xfce_resource_match_custom  (XfceResourceType type,
-				     gboolean         unique,
-				     XfceMatchFunc    func,
-				     gpointer         user_data);
+                                     gboolean         unique,
+                                     XfceMatchFunc    func,
+                                     gpointer         user_data) G_GNUC_MALLOC;
 void    xfce_resource_push_path     (XfceResourceType type,
-				     const gchar     *path);
+                                     const gchar     *path);
 void    xfce_resource_pop_path      (XfceResourceType type);
 gchar*  xfce_resource_save_location (XfceResourceType type,
-				     const gchar     *relpath,
-				     gboolean         create);
+                                     const gchar     *relpath,
+                                     gboolean         create) G_GNUC_MALLOC;
 
-#endif /* !__LIBXFCE4UTIL_XFCE_RESOURCE_H__ */
+#endif /* !__XFCE_RESOURCE_H__ */

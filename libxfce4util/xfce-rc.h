@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -23,8 +23,8 @@
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __LIBXFCE4UTIL_XFCE_RC_H__
-#define __LIBXFCE4UTIL_XFCE_RC_H__
+#ifndef __XFCE_RC_H__
+#define __XFCE_RC_H__
 
 #include <libxfce4util/xfce-resource.h>
 
@@ -34,11 +34,11 @@ typedef struct _XfceRc XfceRc;
 #define XFCE_RC_CONST(obj) ((const XfceRc *) (obj))
 
 XfceRc*      xfce_rc_simple_open             (const gchar     *filename,
-					      gboolean         readonly);
+                                              gboolean         readonly) G_GNUC_MALLOC;
 
 XfceRc*      xfce_rc_config_open             (XfceResourceType type,
-					      const gchar     *resource,
-					      gboolean         readonly);
+                                              const gchar     *resource,
+                                              gboolean         readonly) G_GNUC_MALLOC;
 
 void         xfce_rc_close                   (XfceRc *rc);
 void         xfce_rc_flush                   (XfceRc *rc);
@@ -51,52 +51,52 @@ const gchar* xfce_rc_get_locale              (const XfceRc *rc);
 
 gchar**      xfce_rc_get_groups              (const XfceRc *rc);
 gchar**      xfce_rc_get_entries             (const XfceRc *rc,
-					      const gchar  *group);
+                                              const gchar  *group);
 
 void         xfce_rc_delete_group            (XfceRc       *rc,
                                               const gchar  *group,
                                               gboolean      global);
 const gchar* xfce_rc_get_group               (const XfceRc *rc);
 gboolean     xfce_rc_has_group               (const XfceRc *rc,
-					      const gchar  *group);
+                                              const gchar  *group);
 void         xfce_rc_set_group               (XfceRc       *rc,
-					      const gchar  *group);
+                                              const gchar  *group);
 
 void         xfce_rc_delete_entry            (XfceRc       *rc,
                                               const gchar  *key,
                                               gboolean      global);
 gboolean     xfce_rc_has_entry               (const XfceRc *rc,
-					      const gchar  *key);
+                                              const gchar  *key);
 
 const gchar* xfce_rc_read_entry              (const XfceRc *rc,
-					      const gchar  *key,
-					      const gchar  *fallback);
+                                              const gchar  *key,
+                                              const gchar  *fallback);
 const gchar* xfce_rc_read_entry_untranslated (const XfceRc *rc,
-					      const gchar  *key,
-					      const gchar  *fallback);
+                                              const gchar  *key,
+                                              const gchar  *fallback);
 gboolean     xfce_rc_read_bool_entry         (const XfceRc *rc,
-					      const gchar  *key,
-					      gboolean      fallback);
+                                              const gchar  *key,
+                                              gboolean      fallback);
 gint         xfce_rc_read_int_entry          (const XfceRc *rc,
-					      const gchar  *key,
-					      gint          fallback);
+                                              const gchar  *key,
+                                              gint          fallback);
 gchar**      xfce_rc_read_list_entry         (const XfceRc *rc,
-					      const gchar  *key,
-					      const gchar  *delimiter);
+                                              const gchar  *key,
+                                              const gchar  *delimiter) G_GNUC_MALLOC;
 void         xfce_rc_write_entry             (XfceRc       *rc,
-					      const gchar  *key,
-					      const gchar  *value);
+                                              const gchar  *key,
+                                              const gchar  *value);
 void         xfce_rc_write_bool_entry        (XfceRc       *rc,
-					      const gchar  *key,
-					      gboolean      value);
+                                              const gchar  *key,
+                                              gboolean      value);
 void         xfce_rc_write_int_entry         (XfceRc       *rc,
-					      const gchar  *key,
-					      gint          value);
+                                              const gchar  *key,
+                                              gint          value);
 void         xfce_rc_write_list_entry        (XfceRc       *rc,
-					      const gchar  *key,
-					      gchar       **value,
-					      const gchar  *separator);
-					      
+                                              const gchar  *key,
+                                              gchar       **value,
+                                              const gchar  *separator);
+                
 
-#endif /* !__LIBXFCE4UTIL_XFCE_RC_H__ */
+#endif /* !__XFCE_RC_H__ */
 

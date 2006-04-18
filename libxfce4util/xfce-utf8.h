@@ -1,5 +1,6 @@
 /* $Id$ */
 /*-
+ * Copyright (c) 2003      Olivier Fourdan <fourdan@xfce.org>
  * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
@@ -23,23 +24,20 @@
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __XFCE_KIOSK_H__
-#define __XFCE_KIOSK_H__
+#ifndef __XFCE_UTF8_H__
+#define __XFCE_UTF8_H__
 
 #include <glib.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
-#define XFCE_KIOSK(obj) ((XfceKiosk *)(obj))
+gchar *xfce_utf8_remove_controls  (gchar       *str,
+                                   gssize       max_len,
+                                   const gchar *end);
 
-typedef struct _XfceKiosk XfceKiosk;
+gchar *xfce_utf8_strndup          (const gchar *src, 
+                                   gssize       max_len) G_GNUC_MALLOC;
 
+G_END_DECLS
 
-XfceKiosk *xfce_kiosk_new   (const gchar     *module) G_GNUC_MALLOC;
-gboolean   xfce_kiosk_query (const XfceKiosk *kiosk,
-                             const gchar     *capability);
-void       xfce_kiosk_free  (XfceKiosk       *kiosk);
-
-G_END_DECLS;
-
-#endif /* !__XFCE_KIOSK_H__ */
+#endif	/* !__XFCE_UTF8_H__ */

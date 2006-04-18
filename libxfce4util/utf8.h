@@ -1,6 +1,7 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003 Olivier Fourdan <fourdan@xfce.org>
+ * Copyright (c) 2003      Olivier Fourdan <fourdan@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -22,27 +23,3 @@
 #if !defined(LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
-
-#ifndef __LIBXFCE4UTIL_UTF8_H__
-#define __LIBXFCE4UTIL_UTF8_H__
-
-#include <glib.h>
-
-G_BEGIN_DECLS
-
-#ifndef XFCE_DISABLE_DEPRECATED
-gchar *utf8_string_remove_controls (gchar       *str,
-                                    gssize       max_len,
-                                    const gchar *end) G_GNUC_DEPRECATED;
-#endif
-
-gchar *xfce_utf8_remove_controls   (gchar       *str,
-                                    gssize       max_len,
-                                    const gchar *end);
-
-gchar *xfce_utf8_strndup           (const gchar *src, 
-                                    gssize       max_len);
-
-G_END_DECLS
-
-#endif	/* !__LIBXFCE4UTIL_UTF8_H__ */

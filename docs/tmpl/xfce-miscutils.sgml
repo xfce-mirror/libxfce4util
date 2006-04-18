@@ -38,14 +38,6 @@ Contains the text of the GNU Lesser General Public License.
 
 
 
-<!-- ##### FUNCTION xfce_version_string ##### -->
-<para>
-
-</para>
-
-@Returns: 
-
-
 <!-- ##### FUNCTION xfce_get_homedir ##### -->
 <para>
 

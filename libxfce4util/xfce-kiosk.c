@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -50,6 +50,8 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
+
 
 
 #define KIOSKRC (KIOSKDIR "/kioskrc")
@@ -342,3 +344,6 @@ mtime (const gchar *path)
 }
 
 
+
+#define __XFCE_KIOSK_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>
