@@ -101,6 +101,11 @@ AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
                   sys/wait.h time.h unistd.h])
 AC_CHECK_FUNCS([gethostname getpwnam setenv setlocale strdup unsetenv])
 
+dnl ******************************
+dnl *** Check for i18n support ***
+dnl ******************************
+XDT_I18N([@LINGUAS@])
+
 dnl ******************************************************************************
 dnl *** Check for GObject >= 2.6.0 installed (GObject in turn depends on GLib) ***
 dnl ******************************************************************************
@@ -213,5 +218,6 @@ libxfce4util.spec
 libxfce4util/libxfce4util-1.0.pc
 libxfce4util/libxfce4util-config.h
 libxfce4util/Makefile
+po/Makefile.in
 xfce4-kiosk-query/Makefile
 ])

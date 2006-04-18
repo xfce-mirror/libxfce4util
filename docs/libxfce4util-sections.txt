@@ -4,6 +4,9 @@
 <TITLE>Version Information</TITLE>
 <FILE>libxfce4util-config</FILE>
 xfce_version_string
+libxfce4util_major_version
+libxfce4util_minor_version
+libxfce4util_micro_version
 <SUBSECTION>
 LIBXFCE4UTIL_MAJOR_VERSION
 LIBXFCE4UTIL_MINOR_VERSION
@@ -94,6 +97,7 @@ xfce_rc_write_int_entry
 xfce_rc_write_list_entry
 </SECTION>
 
+
 <SECTION>
 <TITLE>Unicode Support Functions</TITLE>
 <FILE>xfce-utf8</FILE>
@@ -101,18 +105,30 @@ xfce_utf8_remove_controls
 xfce_utf8_strndup
 </SECTION>
 
+
 <SECTION>
 <TITLE>File Utilities</TITLE>
 <FILE>xfce-fileutils</FILE>
 xfce_mkdirhier
 </SECTION>
 
+
 <SECTION>
-<TITLE>Miscellaneous Utilities</TITLE>
-<FILE>xfce-miscutils</FILE>
+<TITLE>Software Licenses</TITLE>
+<FILE>xfce-license</FILE>
 XFCE_LICENSE_BSD
 XFCE_LICENSE_GPL
 XFCE_LICENSE_LGPL
+XfceLicenseTextType
+xfce_get_license_text
+<SUBSECTION Private>
+xfce_license_text_type_get_type
+</SECTION>
+
+
+<SECTION>
+<TITLE>Miscellaneous Utilities</TITLE>
+<FILE>xfce-miscutils</FILE>
 xfce_get_homedir
 xfce_get_homefile
 xfce_get_homefile_r

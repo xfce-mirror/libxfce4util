@@ -23,29 +23,32 @@
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 
-#ifndef __LIBXFCE4UTIL_CONFIG_H__
-#define __LIBXFCE4UTIL_CONFIG_H__
-
-#include <glib.h>
+#ifndef __XFCE_LICENSE_H__
+#define __XFCE_LICENSE_H__
 
 G_BEGIN_DECLS;
 
-#define LIBXFCE4UTIL_MAJOR_VERSION	@LIBXFCE4UTIL_VERSION_MAJOR@
-#define LIBXFCE4UTIL_MINOR_VERSION	@LIBXFCE4UTIL_VERSION_MINOR@
-#define LIBXFCE4UTIL_MICRO_VERSION	@LIBXFCE4UTIL_VERSION_MICRO@
+/**
+ * XfceLicenseTextType:
+ * @XFCE_LICENSE_TEXT_BSD  : the BSD License.
+ * @XFCE_LICENSE_TEXT_GPL  : the GNU General Public License.
+ * @XFCE_LICENSE_TEXT_LGPL : the GNU Lesser General Public License.
+ *
+ * The license text to return from xfce_get_license_text().
+ **/
+typedef enum /*< enum >*/
+{
+  XFCE_LICENSE_TEXT_BSD,
+  XFCE_LICENSE_TEXT_GPL,
+  XFCE_LICENSE_TEXT_LGPL,
+} XfceLicenseTextType;
 
-#define LIBXFCE4UTIL_CHECK_VERSION(major,minor,micro) \
-  (LIBXFCE4UTIL_MAJOR_VERSION > (major) \
-   || (LIBXFCE4UTIL_MAJOR_VERSION == (major) \
-       && LIBXFCE4UTIL_MINOR_VERSION > (minor)) \
-   || (LIBXFCE4UTIL_MAJOR_VERSION == (major) \
-       && LIBXFCE4UTIL_MINOR_VERSION == (minor) \
-       && LIBXFCE4UTIL_MICRO_VERSION >= (micro)))
+const gchar *xfce_get_license_text (XfceLicenseTextType license_type) G_GNUC_PURE;
 
-extern const guint libxfce4util_major_version;
-extern const guint libxfce4util_minor_version;
-extern const guint libxfce4util_micro_version;
+#define XFCE_LICENSE_BSD  (xfce_get_license_text (XFCE_LICENSE_TEXT_BSD))
+#define XFCE_LICENSE_GPL  (xfce_get_license_text (XFCE_LICENSE_TEXT_GPL))
+#define XFCE_LICENSE_LGPL (xfce_get_license_text (XFCE_LICENSE_TEXT_LGPL))
 
 G_END_DECLS;
 
-#endif	/* !__LIBXFCE4UTIL_CONFIG_H__ */
+#endif /* !__XFCE_LICENSE_H__ */

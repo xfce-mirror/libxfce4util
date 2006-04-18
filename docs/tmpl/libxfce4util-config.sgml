@@ -25,6 +25,24 @@ These macros provide a few commonly-used features.
 @Returns: 
 
 
+<!-- ##### VARIABLE libxfce4util_major_version ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### VARIABLE libxfce4util_minor_version ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### VARIABLE libxfce4util_micro_version ##### -->
+<para>
+
+</para>
+
+
 <!-- ##### MACRO LIBXFCE4UTIL_MAJOR_VERSION ##### -->
 <para>
 The major version number of the libxfce4util.

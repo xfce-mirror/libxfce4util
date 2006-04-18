@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,26 +19,27 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
-#define __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
 
-#define LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
+#include <libxfce4util/libxfce4util-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
-#include <libxfce4util/libxfce4util-config.h>
-#include <libxfce4util/libxfce4util-enum-types.h>
 
-#include <libxfce4util/debug.h>
-#include <libxfce4util/xfce-desktopentry.h>
-#include <libxfce4util/xfce-fileutils.h>
-#include <libxfce4util/xfce-generics.h>
-#include <libxfce4util/xfce-i18n.h>
-#include <libxfce4util/xfce-kiosk.h>
-#include <libxfce4util/xfce-license.h>
-#include <libxfce4util/xfce-miscutils.h>
-#include <libxfce4util/xfce-rc.h>
-#include <libxfce4util/xfce-resource.h>
-#include <libxfce4util/xfce-utf8.h>
 
-#define LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
+/**
+ * _xfce_i18n_init:
+ *
+ * Initializes the libxfce4util i18n support.
+ **/
+void
+_xfce_i18n_init (void)
+{
+  xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, NULL);
+}
 
-#endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */
+
+
+#define __LIBXFCE4UTIL_PRIVATE_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

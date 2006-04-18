@@ -25,7 +25,7 @@ Internationalization</ulink>
 
 <!-- ##### FUNCTION xfce_textdomain ##### -->
 <para>
-Binds the current text domain for @package to @localedir and sets @encoding.
+
 </para>
 
 @package: 

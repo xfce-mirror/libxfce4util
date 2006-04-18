@@ -3,6 +3,7 @@
 SUBDIRS =								\
 	libxfce4util							\
 	docs								\
+	po								\
 	xfce4-kiosk-query
 
 AUTOMAKE_OPTIONS =							\
@@ -23,6 +24,7 @@ EXTRA_DIST =								\
 	gtk-doc.make							\
 	libxfce4util.spec
 
-DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc
+DISTCHECK_CONFIGURE_FLAGS =						\
+	--enable-gtk-doc
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

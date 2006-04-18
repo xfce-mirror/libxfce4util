@@ -37,7 +37,7 @@
 #include <unistd.h>
 #endif
 
-#include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-private.h>
 #include <libxfce4util/libxfce4util-alias.h>
 
 
@@ -146,6 +146,9 @@ xfce_mkdirhier (const gchar *whole_path,
 
   if (!retval && error != NULL)
     {
+      /* be sure to initialize the i18n support */
+      _xfce_i18n_init ();
+
       g_set_error (error, G_FILE_ERROR,
                    g_file_error_from_errno (errno),
                    _("Error creating directory '%s': %s"),

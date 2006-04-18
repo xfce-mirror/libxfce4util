@@ -17,27 +17,6 @@ Miscellaneous utility functions
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### MACRO XFCE_LICENSE_BSD ##### -->
-<para>
-Contains the text of the BSD license.
-</para>
-
-
-
-<!-- ##### MACRO XFCE_LICENSE_GPL ##### -->
-<para>
-Contains the text of the GNU General Public License.
-</para>
-
-
-
-<!-- ##### MACRO XFCE_LICENSE_LGPL ##### -->
-<para>
-Contains the text of the GNU Lesser General Public License.
-</para>
-
-
-
 <!-- ##### FUNCTION xfce_get_homedir ##### -->
 <para>
 

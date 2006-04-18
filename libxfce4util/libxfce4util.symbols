@@ -38,9 +38,9 @@
 #if IN_HEADER(__LIBXFCE4UTIL_CONFIG_H__)
 #if IN_SOURCE(__LIBXFCE4UTIL_CONFIG_C__)
 #ifdef INCLUDE_VARIABLES
-xfce_builtin_license_BSD
-xfce_builtin_license_GPL
-xfce_builtin_license_LGPL
+libxfce4util_major_version
+libxfce4util_minor_version
+libxfce4util_micro_version
 #endif
 #endif
 #endif
@@ -48,6 +48,7 @@ xfce_builtin_license_LGPL
 /* libxfce4util-enum-types functions */
 #if IN_HEADER(__LIBXFCE4UTIL_ENUM_TYPES_H__)
 #if IN_SOURCE(__LIBXFCE4UTIL_ENUM_TYPES_C__)
+xfce_license_text_type_get_type G_GNUC_CONST
 xfce_resource_type_get_type G_GNUC_CONST
 #endif
 #endif
@@ -74,7 +75,7 @@ xfce_mkdirhier
 
 /* xfce-i18n functions */
 #if IN_HEADER(__XFCE_I18N_H__)
-#if IN_SOURCE(__XFCE_I18N_H__)
+#if IN_SOURCE(__XFCE_I18N_C__)
 xfce_textdomain
 xfce_strip_context
 xfce_get_file_localized G_GNUC_MALLOC
@@ -92,6 +93,18 @@ xfce_locale_match
 xfce_kiosk_new G_GNUC_MALLOC
 xfce_kiosk_query
 xfce_kiosk_free
+#endif
+#endif
+
+/* xfce-license variables/functions */
+#if IN_HEADER(__XFCE_LICENSE_H__)
+#if IN_SOURCE(__XFCE_LICENSE_C__)
+#ifdef INCLUDE_VARIABLES
+xfce_builtin_license_BSD
+xfce_builtin_license_GPL
+xfce_builtin_license_LGPL
+#endif
+xfce_get_license_text G_GNUC_PURE
 #endif
 #endif
 

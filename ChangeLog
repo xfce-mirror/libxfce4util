@@ -1,5 +1,13 @@
 2006-04-18	Benedikt Meurer <benny@xfce.org>
 
+	* libxfce4util/Makefile.am, libxfce4util/libxfce4util.symbols: Fix typos
+	  introduced with the previous commit.
+	* libxfce4util/, po/, Makefile.am, configure.in.in, autogen.sh: Add i18n
+	  support. This way the software licenses can be translated.
+	* docs/: Update the API documentation.
+
+2006-04-18	Benedikt Meurer <benny@xfce.org>
+
 	* libxfce4util/libxfce4util-config.{c,h.in}, libxfce4util/Makefile.am,
 	  libxfce4util/{BSD,GPL,LGPL}, libxfce4util/licenses-texts.c,
 	  libxfce4util/licenses-to-c.sh: Use the short versions of the GPL/LGPL

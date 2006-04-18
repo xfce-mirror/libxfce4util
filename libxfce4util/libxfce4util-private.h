@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,26 +19,19 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
-#define __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
+#if !defined(LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
+#error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
+#endif
 
-#define LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
+#ifndef __LIBXFCE4UTIL_PRIVATE_H__
+#define __LIBXFCE4UTIL_PRIVATE_H__
 
-#include <libxfce4util/libxfce4util-config.h>
-#include <libxfce4util/libxfce4util-enum-types.h>
+#include <libxfce4util/libxfce4util.h>
 
-#include <libxfce4util/debug.h>
-#include <libxfce4util/xfce-desktopentry.h>
-#include <libxfce4util/xfce-fileutils.h>
-#include <libxfce4util/xfce-generics.h>
-#include <libxfce4util/xfce-i18n.h>
-#include <libxfce4util/xfce-kiosk.h>
-#include <libxfce4util/xfce-license.h>
-#include <libxfce4util/xfce-miscutils.h>
-#include <libxfce4util/xfce-rc.h>
-#include <libxfce4util/xfce-resource.h>
-#include <libxfce4util/xfce-utf8.h>
+G_BEGIN_DECLS;
 
-#define LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
+void _xfce_i18n_init (void) G_GNUC_INTERNAL;
 
-#endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */
+G_END_DECLS;
+
+#endif /* !__LIBXFCE4UTIL_PRIVATE_H__ */
