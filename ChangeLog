@@ -1,5 +1,9 @@
 2006-04-18	Benedikt Meurer <benny@xfce.org>
 
+	* po/de.po: Add german translation of the GPL license text.
+
+2006-04-18	Benedikt Meurer <benny@xfce.org>
+
 	* libxfce4util/Makefile.am, libxfce4util/libxfce4util.symbols: Fix typos
 	  introduced with the previous commit.
 	* libxfce4util/, po/, Makefile.am, configure.in.in, autogen.sh: Add i18n

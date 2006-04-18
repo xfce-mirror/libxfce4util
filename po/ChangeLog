@@ -1,5 +1,9 @@
 2006-04-18  Benedikt Meurer <benny@xfce.org>
 
+	* de.po: Add german translation of the GPL license text.
+
+2006-04-18  Benedikt Meurer <benny@xfce.org>
+
 	* LINGUAS, POTFILES.in, de.po, libexo.pot: Make libxfce4util
 	  translatable.
 
