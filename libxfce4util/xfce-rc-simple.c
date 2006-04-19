@@ -894,12 +894,12 @@ _xfce_rc_simple_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
       if (strcmp (entry->key, key) == 0)
         {
           if (entry->prev != NULL)
-            entry->prev = entry->next;
+            entry->prev->next = entry->next;
           else
             simple->group->efirst = entry->next;
 
           if (entry->next != NULL)
-            entry->next = entry->prev;
+            entry->next->prev = entry->prev;
           else
             simple->group->elast = entry->prev;
 
