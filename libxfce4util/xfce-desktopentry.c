@@ -366,7 +366,7 @@ xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry)
  * @categories     : array of categories, not necessarily NULL terminated.
  * @num_categories : number of items in @categories.
  *
- * Create a new #XfceDesktopEntry object from a desktop entry stored in memory.
+ * Create a new #XfceDesktopEntry object from a desktop entry stored in a file on disk.
  *
  * The caller is responsible to free the returned object (if any) using
  * g_object_unref() when no longer needed.
