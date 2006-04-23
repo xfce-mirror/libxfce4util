@@ -1,3 +1,20 @@
+2006-04-23  Daichi Kawahata <daichi@xfce.org>
+
+	* LINGUAS, ja.po: Added Japanese translation.
+	* LINGUAS: Added `uk'.
+
+2006-04-22  Yuval Tanny <tanai@int.gov.il>
+
+	* LINGUAS, he.po: Hebrew translation for libxfce4util
+
+2006-04-20  Maxim Dziumanenko <mvd@mylinux.ua>
+
+	* uk.po: Updated Ukrainian translation.
+
+2006-04-19  Jari Rahkonen <jari.rahkonen@pp1.inet.fi>
+
+	* LINGUAS, fi.po: Finnish translation of libxfce4util.
+
 2006-04-18  Benedikt Meurer <benny@xfce.org>
 
 	* de.po: Add german translation of the GPL license text.
