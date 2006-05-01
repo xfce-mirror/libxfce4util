@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util\n"
+"Project-Id-Version: libxfce4util 4.3.90.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-18 23:34+0200\n"
 "PO-Revision-Date: 2006-04-22 13:41+0300\n"
@@ -130,4 +130,3 @@ msgstr ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 59 Temple Place - Suite 330, \n"
 "Boston, MA  02111-1307  USA.\n"
-
