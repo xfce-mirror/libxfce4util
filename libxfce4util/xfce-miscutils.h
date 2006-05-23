@@ -39,12 +39,21 @@
   xfce_builtin_license_##name; \
 })
 
-#define XFCE_LICENSE_BSD  _BUILTIN_LICENSE_TEXT(BSD)
+#if defined (__sun)
+	extern const char xfce_builtin_license_BSD[];
+	extern const char xfce_builtin_license_GPL[];
+	extern const char xfce_builtin_license_LGPL[];
 
-#define XFCE_LICENSE_GPL  _BUILTIN_LICENSE_TEXT(GPL)
+	#define XFCE_LICENSE_BSD  xfce_builtin_license_BSD
+	#define XFCE_LICENSE_GPL  xfce_builtin_license_GPL
+	#define XFCE_LICENSE_LGPL xfce_builtin_license_LGPL
+#else
 
-#define XFCE_LICENSE_LGPL _BUILTIN_LICENSE_TEXT(LGPL)
+	#define XFCE_LICENSE_BSD  _BUILTIN_LICENSE_TEXT(BSD)
+	#define XFCE_LICENSE_GPL  _BUILTIN_LICENSE_TEXT(GPL)
+	#define XFCE_LICENSE_LGPL _BUILTIN_LICENSE_TEXT(LGPL)
 
+#endif
 
 const gchar* xfce_version_string (void) G_GNUC_PURE;
 
