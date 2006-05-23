@@ -1,7 +1,7 @@
 # Translation of libxfce4util into Finnish.
 # This file is distributed under the same license as the libxfce4util package.
 # Copyright (C) 2003-2006 Benedikt Meurer <benny@xfce.org>
-# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2006.
+# Jari Rahkonen <jari.rahkonen@pp2.inet.fi>, 2005-2006.
 #
 msgid ""
 msgstr ""
