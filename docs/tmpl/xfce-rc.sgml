@@ -268,7 +268,5 @@ Opaque struct that encapsulates the resource config data.
 @key: 
 @value: 
 @separator: 
-<!-- # Unused Parameters # -->
-@delimiter: 
 
 

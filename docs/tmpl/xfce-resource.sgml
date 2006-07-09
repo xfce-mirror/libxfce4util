@@ -117,7 +117,5 @@ Resource lookup functions
 @relpath: 
 @create: 
 @Returns: 
-<!-- # Unused Parameters # -->
-@subdir: 
 
 

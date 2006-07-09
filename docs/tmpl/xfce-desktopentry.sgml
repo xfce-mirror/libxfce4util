@@ -68,8 +68,6 @@ Instead, you should use the functions listed below.
 @translated: 
 @value_return: 
 @Returns: 
-<!-- # Unused Parameters # -->
-@value: 
 
 
 <!-- ##### FUNCTION xfce_desktop_entry_get_int ##### -->
@@ -81,8 +79,6 @@ Instead, you should use the functions listed below.
 @key: 
 @value_return: 
 @Returns: 
-<!-- # Unused Parameters # -->
-@value: 
 
 
 <!-- ##### FUNCTION xfce_desktop_entry_has_translated_entry ##### -->
