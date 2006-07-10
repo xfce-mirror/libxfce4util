@@ -1,7 +1,11 @@
+2006-07-10  Benedikt Meurer <benny@xfce.org>
+
+	* *.po: Update Project-Id-Version.
+
 2006-07-09  Jean-François Wauthy <pollux@xfce.org>
 
 	* fr.po: Add French translations by Maximilian Schleiss
-	<maxschleiss@bluewin.ch>
+	  <maxschleiss@bluewin.ch>
 
 2006-06-08  Piarres Beobide <pi@beobide.net>
 
@@ -9,8 +13,8 @@
 
 2006-05-15  Pau Rul-lan Ferragut <paurullan@bulma.net>
 
-        * ca.po: updated catalan translation by
-        Carles Muñoz Gorriz <carlesmu@internautas.org>
+	* ca.po: updated catalan translation by
+	  Carles Muñoz Gorriz <carlesmu@internautas.org>
 
 2006-05-13  Daichi Kawahata <daichi@xfce.org>
 
