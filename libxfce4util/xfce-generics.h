@@ -61,11 +61,15 @@ G_BEGIN_DECLS;
   G_STMT_END
 
 
+#ifdef __GNUC__
 #define xfce_stack_top(stack)                                               \
   ({                                                                        \
     g_assert (stack->top >= 0);                                             \
     stack->elements[stack->top];                                            \
   })
+#else
+#define xfce_stack_top(stack) ((stack)->elements[(stack)->top])
+#endif
 
 
 #define xfce_stack_pop(stack)                                               \
