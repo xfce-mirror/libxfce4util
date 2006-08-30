@@ -39,6 +39,7 @@ G_BEGIN_DECLS;
   }
 
 
+#ifdef __GNUC__
 #define xfce_stack_new(StackType)                                           \
   ({                                                                        \
     StackType *stack;                                                       \
@@ -50,6 +51,20 @@ G_BEGIN_DECLS;
                                                                             \
     stack;                                                                  \
   })
+#else
+static inline gpointer
+xfce_stack_alloc (gsize element_size)
+{
+  typedef struct { gpointer elements; gint nelements; gint top; } Stack;
+  Stack *stack = g_new (Stack, 1);
+  stack->elements = g_malloc (20 * element_size);
+  stack->nelements = 20;
+  stack->top = -1;
+  return stack;
+}
+#define xfce_stack_new(StackType)                                           \
+  ((StackType *) xfce_stack_alloc (sizeof (*(((StackType *) 0)->elements))))
+#endif
 
 
 #define xfce_stack_free(stack)                                              \
