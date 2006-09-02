@@ -1,44 +1,45 @@
-20040301:
----------
+4.3.99.1
+========
+- Enable compilation with compilers other than gcc (Bug #1851).
+- Updated translations: Fabian Nowak (de)
+- New translations: Leandro Regueiro (gl), Dimitri Gogelia (ka)
 
-	- Version 4.1.6
-	- Added LIBXFCE4UTIL_*_VERSION macros.
 
-20040224:
----------
+4.1.6
+=====
+- Added LIBXFCE4UTIL_*_VERSION macros.
 
-	- Version 4.1.5
-	- Added XDG Base Directory Implementation (version 0.6) and updated
-	  documentation.
-	- Small fixes to make gcc happy and first steps with Intel C compiler
-	  on FreeBSD.
 
-20040220:
----------
+4.1.5
+=====
+- Added XDG Base Directory Implementation (version 0.6) and updated
+  documentation.
+- Small fixes to make gcc happy and first steps with Intel C compiler
+  on FreeBSD.
 
-	- Version 4.1.4
-	- Several bugfixes
-	- Added --with-broken-putenv=[auto/no/yes] to configure to make
-	  libxfce4util cross-compilable again.
 
-20040212:
----------
+4.1.4
+=====
+- Several bugfixes
+- Added --with-broken-putenv=[auto/no/yes] to configure to make
+  libxfce4util cross-compilable again.
 
-	- Version 4.1.3
-	- Code cleanups (Yes, consistency is important)
-	- Switched to gtk-doc, cause of doxygen being unable to handle
-	  GObject's
-	- Mark some functions as DEPRECATED.
 
-20040129:
----------
+4.1.3
+=====
+- Code cleanups (Yes, consistency is important)
+- Switched to gtk-doc, cause of doxygen being unable to handle
+  GObject's
+- Mark some functions as DEPRECATED.
 
-	- Version 4.1.1
-	- added xfce_setenv(), xfce_putenv()
-	- Started doxygen documentation of the code
 
-20030614:
----------
+4.1.1
+=====
+- added xfce_setenv(), xfce_putenv()
+- Started doxygen documentation of the code
 
-	- Added xfce_textdomain(package, localedir, encoding) to avoid
-	  problems with gettext binding in the future.
+
+4.1.0
+=====
+- Added xfce_textdomain(package, localedir, encoding) to avoid
+  problems with gettext binding in the future.

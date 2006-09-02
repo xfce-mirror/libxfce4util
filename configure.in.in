@@ -13,16 +13,16 @@ dnl ***************************
 m4_define([libxfce4util_verinfo], [4:0:0])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [3])
-m4_define([libxfce4util_version_micro], [90])
-m4_define([libxfce4util_version_nano], [3])   dnl leave this empty to have no nano version
+m4_define([libxfce4util_version_micro], [99])
+m4_define([libxfce4util_version_nano], [1])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version_build], [r@REVISION@])
-m4_define([libxfce4util_version_tag], [svn])
+m4_define([libxfce4util_version_tag], [])
 m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano()])ifelse(libxfce4util_version_tag(), [svn], [libxfce4util_version_tag()-libxfce4util_version_build()], [])])
 
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
 dnl **************************************************************
-m4_define([xfce_version_string], [4.3.90.2])
+m4_define([xfce_version_string], [4.3.99.1])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
@@ -153,7 +153,9 @@ AC_HELP_STRING([--enable-debug=@<:@no/minimum/yes@:>@], [Turn on debugging @<:@d
   [], [enable_debug=libxfce4util_debug_default])
 AC_MSG_CHECKING([whether to enable debugging support])
 if test x"$enable_debug" = x"yes" -o x"$enable_debug" = x"full"; then
-  CFLAGS="$CFLAGS -O0 -g3 -Werror -Wall"
+  if test x"$GCC" = x"yes"; then
+    CFLAGS="$CFLAGS -O0 -g3 -Werror -Wall"
+  fi
 else
   CFLAGS="$CFLAGS -DG_DISABLE_CAST_CHECKS"
 

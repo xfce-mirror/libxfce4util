@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util 4.3.90.2\n"
+"Project-Id-Version: libxfce4util 4.3.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-10 12:43+0200\n"
+"POT-Creation-Date: 2006-04-18 23:34+0200\n"
 "PO-Revision-Date: 2006-05-07 19:50+0200\n"
 "Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
