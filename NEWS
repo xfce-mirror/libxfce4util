@@ -1,3 +1,10 @@
+4.3.99.2
+========
+- Updated translations: Pau Rul-lan Ferragut (ca), Maximilian Schleiss (fr)
+- New translations: Michal Várady (cs), Tenzin Dendup (dz), ByungHyun Choi (ko),
+  Stephan Arts (nl)
+
+
 4.3.99.1
 ========
 - Enable compilation with compilers other than gcc (Bug #1851).

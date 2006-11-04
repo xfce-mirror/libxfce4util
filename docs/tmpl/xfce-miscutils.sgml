@@ -32,14 +32,13 @@ NULL terminated list of strings and appending them to the absolute
 path of the current user's home directory.
 </para>
 
-@...:
-
-@...:
-
 @...: 
 @Returns: the absolute path to the specified file in the current user's
           home directory. The caller is responsible for freeing the
 	  returned string using g_free().
+<!-- # Unused Parameters # -->
+@...: 
+@...: 
 @first_element...: NULL terminated list of path components.
 
 
@@ -69,14 +68,13 @@ Returns the absolute path to a file within the user's ".xfce4" directory,
 formed by a NULL terminated list of path components.
 </para>
 
-@...:
-
-@...:
-
 @...: 
 @Returns: the absolute path to the specified file in the user's ".xfce4"
           directory. The caller is responsible for freeing the returned
 	  string using g_free().
+<!-- # Unused Parameters # -->
+@...: 
+@...: 
 @first_element...: NULL terminated list of path components.
 
 
