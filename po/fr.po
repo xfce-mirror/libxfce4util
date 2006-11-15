@@ -1,4 +1,4 @@
-# Translation of libxfce4util into French.
+# French translation of the libxfce4util package.
 # This file is distributed under the same license as the libxfce4util package.
 # Copyright (C) 2003-2006 Benedikt Meurer <benny@xfce.org>
 # Maximilian Schleiss <maxschleiss@bluewin.ch>, 2006.

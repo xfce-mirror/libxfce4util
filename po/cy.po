@@ -1,8 +1,8 @@
-# translation of libxfce4util to Welsh
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-#
+# Welsh translation of the libxfce4util package.
+# This file is distributed under the same license as the libxfce4util package.
+# Copyright (C) 2003-2006 Benedikt Meurer <benny@xfce.org>
 # Geraint Rowlands <ansbaradigeidfran@gmail.com>, 2006.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: cy\n"
