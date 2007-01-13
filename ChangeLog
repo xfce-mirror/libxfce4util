@@ -1,7 +1,28 @@
+2006-05-23 14:34  benny
+
+	* libxfce4util/xfce-miscutils.h: Apply SunStudio patch from William
+	  Bonnet <william@wbonnet.net>.
+
+2006-04-15 22:46  benny
+
+	* libxfce4util/xfce-resource.c: Backport from trunk.
+
+2006-04-03 21:02  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2006-04-03 20:42  olivier
+
+	* ChangeLog: Update ChangeLog
+
+2006-04-03 20:18  olivier
+
+	* configure.ac: Update version.
+
 2006-03-26 10:02  benny
 
-	* libxfce4util/xfce-rc-simple.c: Backport the latest RC file
-	  parser fixes to the 4.2 branch for the upcoming
+	* libxfce4util/xfce-rc-simple.c: Backport the latest RC file parser
+	  fixes to the 4.2 branch for the upcoming
 	  4.2.4 release.
 
 2005-12-15 22:29  dannym
@@ -9,8 +30,8 @@
 	* libxfce4util/xfce-rc-simple.c: fix bug in xfce-rc-simple.c when
 	  you have a "desktop file" which has a key with a
 	  language suffix but no generic key:
-	  libxfce4util-CRITICAL **: simple_add_entry: assertion locale ==
-	  NULL' failed
+	  libxfce4util-CRITICAL **: simple_add_entry: assertion ?\012ocale
+	  == NULL' failed
 	  aborting...
 	  Aborted
 
@@ -28,9 +49,9 @@
 
 2005-11-05 20:00  olivier
 
-	* configure.ac, libxfce4util/licenses-texts.c: Update Xfce
-	  version, apply patch for Darwin 8.2.0/powerpc from Martti
-	  Kuparinen <martti.kuparinen@iki.fi>
+	* configure.ac, libxfce4util/licenses-texts.c: Update Xfce version,
+	  apply patch for Darwin 8.2.0/powerpc from Martti Kuparinen
+	  <martti.kuparinen@iki.fi>
 
 2005-11-05 14:12  olivier
 
@@ -80,8 +101,8 @@
 	  config.h.in, config.sub, configure, depcomp, docs/Makefile.in,
 	  gtk-doc.make, install-sh, libxfce4util/Makefile.in, ltmain.sh,
 	  m4/Makefile.in, missing, mkinstalldirs,
-	  xfce4-kiosk-query/Makefile.in: Make xfce_4_2 branch use dev
-	  tools and remove generated files
+	  xfce4-kiosk-query/Makefile.in: Make xfce_4_2 branch use dev tools
+	  and remove generated files
 
 2005-04-06 11:49  jasper
 
@@ -202,8 +223,8 @@
 
 2004-11-18 23:27  benny
 
-	* libxfce4util/trunk/libxfce4util/xfce-rc-simple.c: Another
-	  attempt to fix #469.
+	* libxfce4util/trunk/libxfce4util/xfce-rc-simple.c: Another attempt
+	  to fix #469.
 
 2004-11-18 22:50  benny
 
@@ -219,8 +240,8 @@
 
 2004-11-14 09:20  benny
 
-	* libxfce4util/trunk/libxfce4util/xfce-kiosk.c: NGROUPS_MAX
-	  doesn't seem to be useful on Glibc based systems. Instead,
+	* libxfce4util/trunk/libxfce4util/xfce-kiosk.c: NGROUPS_MAX doesn't
+	  seem to be useful on Glibc based systems. Instead,
 	  determine the number of groups dynamically (and hope that all
 	  systems
 	  can handle the NULL pointer to getgroups).
@@ -347,14 +368,14 @@
 
 2004-10-16 16:09  benny
 
-	* libxfce4util/trunk/libxfce4util/xfce-kiosk.c: Check parameters
-	  in exported functions.
+	* libxfce4util/trunk/libxfce4util/xfce-kiosk.c: Check parameters in
+	  exported functions.
 
 2004-10-07 20:35  benny
 
 	* libxfce4util/trunk/configure, libxfce4util/trunk/ltmain.sh,
-	  libxfce4util/trunk/m4/debug.m4: Added --enable-final (-O1 for
-	  GNU ld) as per Jaspers request. Added missing
+	  libxfce4util/trunk/m4/debug.m4: Added --enable-final (-O1 for GNU
+	  ld) as per Jaspers request. Added missing
 	  m4 files.
 
 2004-10-02 13:28  olivier
@@ -435,8 +456,8 @@
 2004-08-04 23:16  olivier
 
 	* libxfce4util/trunk/libxfce4util/xfce-resource.c: Fix lib
-	  internals not being initted in push/pop fns causing a crash in
-	  UI plugin.
+	  internals not being initted in push/pop fns causing a crash in UI
+	  plugin.
 
 2004-08-04 14:27  benny
 
@@ -476,8 +497,8 @@
 
 	* libxfce4util/trunk/config.h.in, libxfce4util/trunk/configure,
 	  libxfce4util/trunk/configure.ac,
-	  libxfce4util/trunk/libxfce4util/xfce-kiosk.c: Reload kioskrc
-	  file on-demand
+	  libxfce4util/trunk/libxfce4util/xfce-kiosk.c: Reload kioskrc file
+	  on-demand
 
 2004-07-26 17:38  benny
 
@@ -500,8 +521,8 @@
 	  libxfce4util/trunk/xfce4-kiosk-query/.cvsignore,
 	  libxfce4util/trunk/xfce4-kiosk-query/Makefile.am,
 	  libxfce4util/trunk/xfce4-kiosk-query/Makefile.in,
-	  libxfce4util/trunk/xfce4-kiosk-query/main.c: Added Kiosk mode
-	  for Xfce, supporting modules will have to be changed to
+	  libxfce4util/trunk/xfce4-kiosk-query/main.c: Added Kiosk mode for
+	  Xfce, supporting modules will have to be changed to
 	  use this functions.
 
 2004-07-24 18:52  benny
@@ -542,8 +563,8 @@
 
 2004-07-20 20:53  benny
 
-	* libxfce4util/trunk/m4/depends.m4: Modified panel plugin check,
-	  so one (the installer) can choose to install
+	* libxfce4util/trunk/m4/depends.m4: Modified panel plugin check, so
+	  one (the installer) can choose to install
 	  into a different plugin dir.
 
 2004-07-17 11:45  kelnos
@@ -684,8 +705,8 @@
 	  libxfce4util/trunk/libxfce4util/xfce-rc-simple.c,
 	  libxfce4util/trunk/libxfce4util/xfce-rc.c,
 	  libxfce4util/trunk/ltmain.sh, libxfce4util/trunk/m4/Makefile.in,
-	  libxfce4util/trunk/m4/debug.m4,
-	  libxfce4util/trunk/mkinstalldirs: Bugfixes.
+	  libxfce4util/trunk/m4/debug.m4, libxfce4util/trunk/mkinstalldirs:
+	  Bugfixes.
 
 2004-05-03 21:44  olivier
 
@@ -743,8 +764,8 @@
 	  libxfce4util/trunk/libxfce4util/xfce-rc-private.h,
 	  libxfce4util/trunk/libxfce4util/xfce-rc-simple.c,
 	  libxfce4util/trunk/libxfce4util/xfce-rc.c,
-	  libxfce4util/trunk/libxfce4util/xfce-rc.h: Added
-	  xfce_unsetenv(). Added delete_group()/delete_entry() for XfceRc,
+	  libxfce4util/trunk/libxfce4util/xfce-rc.h: Added xfce_unsetenv().
+	  Added delete_group()/delete_entry() for XfceRc,
 	  currently limited to the simple backend, have to figure out a
 	  nice
 	  way to do this with the config backend. Version is now 4.1.9.
@@ -925,8 +946,8 @@
 	  libxfce4util/trunk/libxfce4util/xdg.c,
 	  libxfce4util/trunk/libxfce4util/xdg.h,
 	  libxfce4util/trunk/libxfce4util/xfce-desktopentry.c: Bumped
-	  version to 4.1.5. Added "XDG Base Directory" implementation;
-	  now, brian, make the theming stuff standards compliant :-)
+	  version to 4.1.5. Added "XDG Base Directory" implementation; now,
+	  brian, make the theming stuff standards compliant :-)
 
 2004-02-20 13:25  benny
 
@@ -946,8 +967,8 @@
 	* libxfce4util/trunk/libxfce4util/xfce-desktopentry.c: atoi() is
 	  deprecated, strtol() should be used instead. In addition the
 	  check
-	  for temp >= 0 prevented negative integer values from being
-	  stored in
+	  for temp >= 0 prevented negative integer values from being stored
+	  in
 	  desktop files.
 
 2004-02-20 11:44  benny
@@ -1102,9 +1123,9 @@
 
 	* libxfce4util/trunk/AUTHORS, libxfce4util/trunk/BSD,
 	  libxfce4util/trunk/COPYING, libxfce4util/trunk/COPYING.BSD,
-	  libxfce4util/trunk/COPYING.LGPL, libxfce4util/trunk/LGPL: I
-	  think the filenames "COPYING.BSD" and "COPYING.LGPL" make more
-	  sense than
+	  libxfce4util/trunk/COPYING.LGPL, libxfce4util/trunk/LGPL: I think
+	  the filenames "COPYING.BSD" and "COPYING.LGPL" make more sense
+	  than
 	  just "BSD" and "LGPL".
 
 2004-01-16 18:09  jasper
@@ -1197,8 +1218,8 @@
 
 2003-08-28 16:09  edscott
 
-	* libxfce4util/trunk/libxfce4util/i18n.h: supress compiler
-	  warnings because of intl macro redefinitions
+	* libxfce4util/trunk/libxfce4util/i18n.h: supress compiler warnings
+	  because of intl macro redefinitions
 
 2003-08-26 07:38  huysmans
 
@@ -1264,6 +1285,9 @@
 2003-07-06 19:45  huysmans
 
 	* libxfce4util/trunk/ChangeLog: Updating ChangeLogs
+
+2003-07-06 19:45  huysmans
+
 	* libxfce4util/trunk/ChangeLog: Updating ChangeLogs
 
 2003-07-06 09:15  bmeurer
@@ -1298,8 +1322,8 @@
 2003-07-03 19:57  xfce
 
 	* libxfce4util/trunk/libxfce4util/util.c: Rename fns starting with
-	  __* to internal_* ("__" should be avoided as some linker use
-	  this for their own use)
+	  __* to internal_* ("__" should be avoided as some linker use this
+	  for their own use)
 
 2003-07-02 12:32  bmeurer
 
@@ -1317,8 +1341,8 @@
 	  libxfce4util/trunk/libxfce4util/Makefile.am,
 	  libxfce4util/trunk/libxfce4util/Makefile.in,
 	  libxfce4util/trunk/libxfce4util/utf8.c,
-	  libxfce4util/trunk/libxfce4util/utf8.h: Add utf8 utility (used
-	  in libxfcegui4 and xfwm4)
+	  libxfce4util/trunk/libxfce4util/utf8.h: Add utf8 utility (used in
+	  libxfcegui4 and xfwm4)
 
 2003-06-28 09:46  xfce
 
@@ -1470,8 +1494,8 @@
 
 2003-04-20 10:05  huysmans
 
-	* libxfce4util/trunk/libxfce4util/i18n.h: Fix i18n panel issue:
-	  use GETTEXT_PACKAGE instead of PACKAGE
+	* libxfce4util/trunk/libxfce4util/i18n.h: Fix i18n panel issue: use
+	  GETTEXT_PACKAGE instead of PACKAGE
 
 2003-04-19 21:31  bmeurer
 
@@ -1530,8 +1554,8 @@
 
 2003-04-03 22:08  bmeurer
 
-	* libxfce4util/trunk/m4/depends.m4: Updated BM_DEPEND_CHECK to
-	  make it possible to disable the test
+	* libxfce4util/trunk/m4/depends.m4: Updated BM_DEPEND_CHECK to make
+	  it possible to disable the test
 
 2003-04-03 21:34  bmeurer
 
@@ -1558,8 +1582,8 @@
 	  libxfce4util. As a result of this change
 	  libxfcegui4 now depends on libxfce4util.
 	  Some other updates.
-	  added a hint to the libxfcegui4 README for Xinerama problems
-	  with XFree86.
+	  added a hint to the libxfcegui4 README for Xinerama problems with
+	  XFree86.
 
 2003-04-02 17:33  bmeurer
 
@@ -1583,9 +1607,9 @@
 	  libxfce4util/trunk/libxfce4util/Makefile.am,
 	  libxfce4util/trunk/libxfce4util/Makefile.in,
 	  libxfce4util/trunk/libxfce4util/filter.c,
-	  libxfce4util/trunk/m4/debug.m4,
-	  libxfce4util/trunk/m4/depends.m4: Large autotools update. Should
-	  fix James problems with unsubstituted
+	  libxfce4util/trunk/m4/debug.m4, libxfce4util/trunk/m4/depends.m4:
+	  Large autotools update. Should fix James problems with
+	  unsubstituted
 	  @PKG_LDFLAGS@ in .pc files. Should also make it easier to port
 	  XFce4 to
 	  a non-POSIX (or even non-UNIX) plattform, using autoconf.
@@ -1603,8 +1627,8 @@
 	* libxfce4util/trunk/libxfce4util/filter.c,
 	  libxfce4util/trunk/libxfce4util/option.c,
 	  libxfce4util/trunk/libxfce4util/test.c,
-	  libxfce4util/trunk/libxfce4util/util.c: Header files are now
-	  only included if found by configure.
+	  libxfce4util/trunk/libxfce4util/util.c: Header files are now only
+	  included if found by configure.
 
 2003-03-27 20:32  xfce
 
@@ -1623,8 +1647,8 @@
 
 	* libxfce4util/trunk/ChangeLog, libxfce4util/trunk/aclocal.m4,
 	  libxfce4util/trunk/configure, libxfce4util/trunk/ltcf-c.sh,
-	  libxfce4util/trunk/ltconfig, libxfce4util/trunk/ltmain.sh:
-	  Update ChangeLog
+	  libxfce4util/trunk/ltconfig, libxfce4util/trunk/ltmain.sh: Update
+	  ChangeLog
 	  Update build scripts (ie rerun autogen.sh)
 	  Update xfwm4's microdeck theme
 	  Remove 1 pix border arround xffm menu bar
@@ -1730,6 +1754,6 @@
 
 2003-03-09 22:11  
 
-	* libxfce4util/branches, libxfce4util/tags, libxfce4util/trunk:
-	  New repository initialized by cvs2svn.
+	* libxfce4util/branches, libxfce4util/tags, libxfce4util/trunk: New
+	  repository initialized by cvs2svn.
 
