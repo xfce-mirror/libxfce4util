@@ -4,7 +4,6 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4util/util-enum-types.h>
 
-
 /* enumerations from "xfce-resource.h" */
 GType
 xfce_resource_type_get_type (void)
@@ -23,7 +22,6 @@ xfce_resource_type_get_type (void)
   }
   return etype;
 }
-
 
 /* Generated data ends here */
 
