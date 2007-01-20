@@ -1,11 +1,11 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Piarres Beobide <pi@beobide.net, 2006.
+# Basque translations of the libxfce4util package.
+# Copyright (C) 2003-2007 Benedikt Meurer <benny@xfce.org>.
+# This file is distributed under the same license as the libxfce4util package.
+# Piarres Beobide <pi@beobide.net>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util 4.3.99.2\n"
+"Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-18 23:34+0200\n"
 "PO-Revision-Date: 2006-15-15 12:24\n"

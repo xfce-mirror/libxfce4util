@@ -1,3 +1,10 @@
+2007-01-20	Benedikt Meurer <benny@xfce.org>
+
+	* === Released 4.4.0 ===
+	* NEWS, configure.in.in: Bump version.
+	* po/*.po: Update Project-Id-Version.
+	* THANKS, Makefile.am: Add translator credits.
+
 2006-11-04	Benedikt Meurer <benny@xfce.org>
 
 	* configure.in.in: Post-release version bump.

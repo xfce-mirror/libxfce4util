@@ -20,6 +20,7 @@ rpm: dist
 EXTRA_DIST =								\
 	ChangeLog.pre-4.2.0						\
 	README.Kiosk							\
+	THANKS								\
 	TODO								\
 	gtk-doc.make							\
 	libxfce4util.spec

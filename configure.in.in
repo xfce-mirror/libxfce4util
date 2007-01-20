@@ -1,6 +1,6 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2002-2006
+dnl Copyright (c) 2002-2007
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
@@ -37,7 +37,7 @@ m4_define([libxfce4util_debug_default], [ifelse(libxfce4util_version_tag(), [svn
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2002-2006
+AC_COPYRIGHT([Copyright (c) 2002-2007
         The Xfce development team. All rights reserved.
 
 Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
