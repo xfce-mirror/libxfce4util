@@ -62,6 +62,7 @@ libxfce4util_la_SOURCES =						\
 	xfce-kiosk.c							\
 	xfce-license.c							\
 	xfce-miscutils.c						\
+	xfce-private.h							\
 	xfce-rc.c							\
 	xfce-rc-config.c						\
 	xfce-rc-private.h						\

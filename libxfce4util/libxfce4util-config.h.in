@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2007 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -45,6 +45,15 @@ G_BEGIN_DECLS;
 extern const guint libxfce4util_major_version;
 extern const guint libxfce4util_minor_version;
 extern const guint libxfce4util_micro_version;
+
+/* verify that G_GNUC_WARN_UNUSED_RESULT is defined */
+#if !defined(G_GNUC_WARN_UNUSED_RESULT)
+#if __GNUC__ > 3 || (__GNUC__ == 3 && __GNUC_MINOR__ >= 4)
+#define G_GNUC_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
+#else
+#define G_GNUC_WARN_UNUSED_RESULT
+#endif /* __GNUC__ */
+#endif /* !defined(G_GNUC_WARN_UNUSED_RESULT) */
 
 G_END_DECLS;
 

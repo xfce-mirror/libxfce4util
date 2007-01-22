@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2007 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -37,7 +37,9 @@
 #include <unistd.h>
 #endif
 
+#include <libxfce4util/xfce-private.h>
 #include <libxfce4util/xfce-rc-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 #ifndef PATH_MAX
@@ -57,14 +59,34 @@ typedef struct _Entry  Entry;
 typedef struct _LEntry LEntry;
 typedef struct _Group  Group;
 
+
+
+static Group*   simple_add_group  (XfceRcSimple *simple,
+                                   const gchar  *name);
+static Entry*   simple_add_entry  (XfceRcSimple *simple,
+                                   const gchar  *key,
+                                   const gchar  *value,
+                                   const gchar  *locale);
+static gboolean simple_parse_line (gchar        *line,
+                                   gchar       **section,
+                                   gchar       **key,
+                                   gchar       **value,
+                                   gchar       **locale);
+static gchar*   simple_escape     (gchar        *buffer,
+                                   gsize         size,
+                                   const gchar  *string);
+static gboolean simple_write      (XfceRcSimple *simple,
+                                   const gchar  *filename);
+static void     simple_entry_free (Entry        *entry);
+static void     simple_group_free (Group        *group);
+
+
+
 struct _XfceRcSimple
 {
   XfceRc        __parent__;
 
   gboolean      shared_chunks;
-  GMemChunk    *entry_chunk;
-  GMemChunk    *lentry_chunk;
-  GMemChunk    *group_chunk;
   GStringChunk *string_chunk;
 
   gchar        *filename;
@@ -76,7 +98,6 @@ struct _XfceRcSimple
   gboolean      dirty;
   gboolean      readonly;
 };
-
 
 struct _Entry
 {
@@ -106,27 +127,10 @@ struct _Group
 };
 
 
-/* local prototypes */
-static Group*   simple_add_group  (XfceRcSimple *simple,
-				                           const gchar  *name);
-static Entry*   simple_add_entry  (XfceRcSimple *simple,
-                                   const gchar  *key,
-                                   const gchar  *value,
-                                   const gchar  *locale);
-static gboolean simple_parse_line (gchar        *line,
-				                           gchar       **section,
-                        				   gchar       **key,
-                        				   gchar       **value,
-                        				   gchar       **locale);
-static gchar*   simple_escape     (gchar        *buffer,
-                        				   gsize         size,
-                        				   const gchar  *string);
-static gboolean simple_write      (XfceRcSimple *simple,
-                        				   const gchar  *filename);
-
 
 static Group*
-simple_add_group (XfceRcSimple *simple, const gchar *name)
+simple_add_group (XfceRcSimple *simple,
+                  const gchar  *name)
 {
   Group *group;
 
@@ -134,7 +138,7 @@ simple_add_group (XfceRcSimple *simple, const gchar *name)
     if (strcmp (group->name, name) == 0)
       return group;
 
-  group         = g_chunk_new (Group, simple->group_chunk);
+  group         = _xfce_slice_new (Group);
   group->name   = g_string_chunk_insert (simple->string_chunk, name);
   group->efirst = NULL;
   group->elast  = NULL;
@@ -156,11 +160,12 @@ simple_add_group (XfceRcSimple *simple, const gchar *name)
 }
 
 
+
 static Entry*
 simple_add_entry (XfceRcSimple *simple,
-		              const gchar  *key,
-            		  const gchar  *value,
-            		  const gchar  *locale)
+                  const gchar  *key,
+                  const gchar  *value,
+                  const gchar  *locale)
 {
   LEntry *lentry_before;
   LEntry *lentry;
@@ -196,7 +201,7 @@ simple_add_entry (XfceRcSimple *simple,
       }
       /* why you annoying macro, will you stop borking libxfceutil? thanks. DO NOT DO THAT: g_return_val_if_fail (locale == NULL, NULL); */
 
-      entry         = g_chunk_new (Entry, simple->entry_chunk);
+      entry         = _xfce_slice_new (Entry);
       entry->key    = g_string_chunk_insert (simple->string_chunk, key);
       entry->value  = g_string_chunk_insert (simple->string_chunk, value);
       entry->lfirst = NULL;
@@ -222,7 +227,7 @@ simple_add_entry (XfceRcSimple *simple,
     {
       /* overwrite existing value */
       if (G_LIKELY (strcmp (entry->value, value) != 0))
-	      entry->value = g_string_chunk_insert (simple->string_chunk, value);
+        entry->value = g_string_chunk_insert (simple->string_chunk, value);
     }
   else
     {
@@ -253,7 +258,7 @@ simple_add_entry (XfceRcSimple *simple,
       if (G_LIKELY (lentry == NULL))
         {
           /* create new localized entry */
-          lentry         = g_chunk_new (LEntry, simple->lentry_chunk);
+          lentry         = _xfce_slice_new (LEntry);
           lentry->locale = g_string_chunk_insert (simple->string_chunk, locale);
           lentry->value  = g_string_chunk_insert (simple->string_chunk, value);
 
@@ -292,6 +297,7 @@ simple_add_entry (XfceRcSimple *simple,
 }
 
 
+
 static gboolean
 simple_parse_line (gchar  *line,
                    gchar **section,
@@ -317,7 +323,7 @@ simple_parse_line (gchar  *line,
   if (*p == '[')
     {
       for (q = ++p; *q != '\0' && *q != ']'; ++q)
-	      ;
+        ;
 
       if (G_LIKELY (*q == ']'))
         {
@@ -329,17 +335,17 @@ simple_parse_line (gchar  *line,
   else
     {
       for (q = p + 1; *q != '=' && *q != '\0'; ++q)
-	      ;
+        ;
       if (G_UNLIKELY (*q != '='))
-      	return FALSE;
+        return FALSE;
 
       r = q + 1;
 
       for (--q; g_ascii_isspace (*q); --q)
-      	;
+        ;
 
       if (G_UNLIKELY (q == p))
-      	return FALSE;
+        return FALSE;
 
       if (*q == ']')
         {
@@ -423,6 +429,7 @@ simple_parse_line (gchar  *line,
 }
 
 
+
 static gchar*
 simple_escape (gchar *buffer, gsize size, const gchar *string)
 {
@@ -486,6 +493,7 @@ simple_escape (gchar *buffer, gsize size, const gchar *string)
 }
 
 
+
 static gboolean
 simple_write (XfceRcSimple *simple, const gchar *filename)
 {
@@ -498,9 +506,7 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
   fp = fopen (filename, "w");
   if (G_UNLIKELY (fp == NULL))
     {
-      g_critical ("Unable to open file %s for writing: %s",
-		  filename,
-		  g_strerror (errno));
+      g_critical ("Unable to open file %s for writing: %s", filename, g_strerror (errno));
       return FALSE;
     }
 
@@ -508,31 +514,30 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
     {
       /* don't store empty groups */
       if (group->efirst == NULL)
-	      continue;
+        continue;
 
       /* NULL_GROUP has no header */
       if (strcmp (group->name, NULL_GROUP) != 0)
-      	fprintf (fp, "[%s]\n", group->name);
+        fprintf (fp, "[%s]\n", group->name);
 
       for (entry = group->efirst; entry != NULL; entry = entry->next)
-      	{
+        {
           simple_escape (buffer, LINE_MAX, entry->value);
-      	  fprintf (fp, "%s=%s\n", entry->key, buffer);
+          fprintf (fp, "%s=%s\n", entry->key, buffer);
 
-      	  for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
-	          {
+          for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
+            {
               simple_escape (buffer, LINE_MAX, lentry->value);
-      	      fprintf (fp, "%s[%s]=%s\n", entry->key, lentry->locale, buffer);
-	          }
-      	}
+              fprintf (fp, "%s[%s]=%s\n", entry->key, lentry->locale, buffer);
+            }
+        }
 
       fprintf (fp, "\n");
     }
 
   if (ferror (fp))
     {
-      g_critical ("Unable to write to file %s: Unexpected internal error",
-		              filename);
+      g_critical ("Unable to write to file %s: Unexpected internal error", filename);
       fclose (fp);
       unlink (filename);
       return FALSE;
@@ -543,14 +548,59 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
 }
 
 
+
+static void
+simple_entry_free (Entry *entry)
+{
+  LEntry *lentry;
+  LEntry *next;
+
+  /* release all lentries */
+  for (lentry = entry->lfirst; lentry != NULL; lentry = next)
+    {
+      /* determine the next lentry */
+      next = lentry->next;
+
+      /* release this lentry */
+      _xfce_slice_free (LEntry, lentry);
+    }
+
+  /* release the entry */
+  _xfce_slice_free (Entry, entry);
+}
+
+
+
+static void
+simple_group_free (Group *group)
+{
+  Entry *entry;
+  Entry *next;
+
+  /* release all entries */
+  for (entry = group->efirst; entry != NULL; entry = next)
+    {
+      /* determine the next entry */
+      next = entry->next;
+
+      /* release this entry */
+      simple_entry_free (entry);
+    }
+
+  /* release the group */
+  _xfce_slice_free (Group, group);
+}
+
+
+
 XfceRcSimple*
 _xfce_rc_simple_new (XfceRcSimple *shared,
-		     const gchar  *filename,
-		     gboolean      readonly)
+                     const gchar  *filename,
+                     gboolean      readonly)
 {
   XfceRcSimple *simple;
 
-  simple = g_new0 (XfceRcSimple, 1);
+  simple = _xfce_slice_new0 (XfceRcSimple);
 
   _xfce_rc_init (XFCE_RC (simple));
 
@@ -578,17 +628,11 @@ _xfce_rc_simple_new (XfceRcSimple *shared,
   if (shared != NULL)
     {
       simple->shared_chunks = TRUE;
-      simple->entry_chunk   = shared->entry_chunk;
-      simple->lentry_chunk  = shared->lentry_chunk;
-      simple->group_chunk   = shared->group_chunk;
       simple->string_chunk  = shared->string_chunk;
     }
   else
     {
       simple->shared_chunks = FALSE;
-      simple->entry_chunk   = g_mem_chunk_create (Entry, 128, G_ALLOC_ONLY);
-      simple->lentry_chunk  = g_mem_chunk_create (LEntry, 256, G_ALLOC_ONLY);
-      simple->group_chunk   = g_mem_chunk_create (Group, 32, G_ALLOC_ONLY);
       simple->string_chunk  = g_string_chunk_new (4096);
     }
 
@@ -602,6 +646,7 @@ _xfce_rc_simple_new (XfceRcSimple *shared,
 }
 
 
+
 gboolean
 _xfce_rc_simple_parse (XfceRcSimple *simple)
 {
@@ -613,8 +658,8 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
   gchar   *key;
   FILE    *fp;
 
-  g_return_val_if_fail (simple != NULL, FALSE);
-  g_return_val_if_fail (simple->filename != NULL, FALSE);
+  _xfce_return_val_if_fail (simple != NULL, FALSE);
+  _xfce_return_val_if_fail (simple->filename != NULL, FALSE);
 
   readonly = xfce_rc_is_readonly (XFCE_RC (simple));
 
@@ -625,22 +670,22 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
   while (fgets (line, LINE_MAX, fp) != NULL)
     {
       if (!simple_parse_line (line, &section, &key, &value, &locale))
-	      continue;
+        continue;
 
       if (section != NULL)
-      	{
-      	  simple->group = simple_add_group (simple, section);
-      	  continue;
-      	}
+        {
+          simple->group = simple_add_group (simple, section);
+          continue;
+        }
 
       if (locale == NULL)
-      	{
-      	  simple_add_entry (simple, key, value, NULL);
-      	  continue;
-      	}
+        {
+          simple_add_entry (simple, key, value, NULL);
+          continue;
+        }
 
       if (XFCE_RC (simple)->locale == NULL)
-      	continue;
+        continue;
 
       if (xfce_locale_match (XFCE_RC (simple)->locale, locale) > XFCE_LOCALE_NO_MATCH
           || !readonly)
@@ -655,19 +700,29 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
 }
 
 
+
 void
 _xfce_rc_simple_close (XfceRc *rc)
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
+  Group        *group_next;
+  Group        *group;
 
-  if (!simple->shared_chunks)
+  /* release all memory allocated to the groups */
+  for (group = simple->gfirst; group != NULL; group = group_next)
     {
-      g_mem_chunk_destroy (simple->entry_chunk);
-      g_mem_chunk_destroy (simple->lentry_chunk);
-      g_mem_chunk_destroy (simple->group_chunk);
-      g_string_chunk_free (simple->string_chunk);
+      /* determine the next group */
+      group_next = group->next;
+
+      /* release this group */
+      simple_group_free (group);
     }
+
+  /* release the string chunk */
+  if (!simple->shared_chunks)
+    g_string_chunk_free (simple->string_chunk);
 }
+
 
 
 void
@@ -696,6 +751,7 @@ _xfce_rc_simple_flush (XfceRc *rc)
 }
 
 
+
 void
 _xfce_rc_simple_rollback (XfceRc *rc)
 {
@@ -703,6 +759,7 @@ _xfce_rc_simple_rollback (XfceRc *rc)
 
   simple->dirty = FALSE;
 }
+
 
 
 gboolean
@@ -714,6 +771,7 @@ _xfce_rc_simple_is_dirty (const XfceRc *rc)
 }
 
 
+
 gboolean
 _xfce_rc_simple_is_readonly (const XfceRc *rc)
 {
@@ -723,6 +781,7 @@ _xfce_rc_simple_is_readonly (const XfceRc *rc)
 }
 
 
+
 const gchar*
 _xfce_rc_simple_get_filename (const XfceRc *rc)
 {
@@ -730,6 +789,7 @@ _xfce_rc_simple_get_filename (const XfceRc *rc)
 
   return simple->filename;
 }
+
 
 
 gchar**
@@ -748,10 +808,10 @@ _xfce_rc_simple_get_groups (const XfceRc *rc)
   for (group = simple->gfirst; group != NULL; group = group->next)
     {
       if (pos == size)
-	{
-	  size *= 2;
-	  result = g_realloc (result, (size + 1) * sizeof (*result));
-	}
+  {
+    size *= 2;
+    result = g_realloc (result, (size + 1) * sizeof (*result));
+  }
       result[pos] = g_strdup (group->name);
       ++pos;
     }
@@ -761,8 +821,10 @@ _xfce_rc_simple_get_groups (const XfceRc *rc)
 }
 
 
+
 gchar**
-_xfce_rc_simple_get_entries (const XfceRc *rc, const gchar *name)
+_xfce_rc_simple_get_entries (const XfceRc *rc,
+                             const gchar  *name)
 {
   const XfceRcSimple *simple = XFCE_RC_SIMPLE_CONST (rc);
   const Group        *group;
@@ -788,10 +850,10 @@ _xfce_rc_simple_get_entries (const XfceRc *rc, const gchar *name)
   for (entry = group->efirst; entry != NULL; entry = entry->next)
     {
       if (size == pos)
-	{
-	  size *= 2;
-	  result = g_realloc (result, (size + 1) * sizeof (*result));
-	}
+        {
+          size *= 2;
+          result = g_realloc (result, (size + 1) * sizeof (*result));
+        }
       result[pos] = g_strdup (entry->key);
       ++pos;
     }
@@ -802,8 +864,11 @@ _xfce_rc_simple_get_entries (const XfceRc *rc, const gchar *name)
 }
 
 
+
 void
-_xfce_rc_simple_delete_group (XfceRc *rc, const gchar *name, gboolean global)
+_xfce_rc_simple_delete_group (XfceRc      *rc,
+                              const gchar *name,
+                              gboolean     global)
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
   Group        *group;
@@ -833,11 +898,15 @@ _xfce_rc_simple_delete_group (XfceRc *rc, const gchar *name, gboolean global)
                 simple->glast = group->prev;
             }
 
+          /* delete this group */
+          simple_group_free (group);
+
           simple->dirty = TRUE;
           break;
         }
     }
 }
+
 
 
 const gchar*
@@ -852,8 +921,10 @@ _xfce_rc_simple_get_group (const XfceRc *rc)
 }
 
 
+
 gboolean
-_xfce_rc_simple_has_group (const XfceRc *rc, const gchar *name)
+_xfce_rc_simple_has_group (const XfceRc *rc,
+                           const gchar  *name)
 {
   const XfceRcSimple *simple = XFCE_RC_SIMPLE_CONST (rc);
   const Group        *group;
@@ -870,8 +941,10 @@ _xfce_rc_simple_has_group (const XfceRc *rc, const gchar *name)
 }
 
 
+
 void
-_xfce_rc_simple_set_group (XfceRc *rc, const gchar *name)
+_xfce_rc_simple_set_group (XfceRc      *rc,
+                           const gchar *name)
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
 
@@ -883,8 +956,11 @@ _xfce_rc_simple_set_group (XfceRc *rc, const gchar *name)
 }
 
 
+
 void
-_xfce_rc_simple_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
+_xfce_rc_simple_delete_entry (XfceRc      *rc,
+                              const gchar *key,
+                              gboolean     global)
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
   Entry        *entry;
@@ -903,6 +979,9 @@ _xfce_rc_simple_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
           else
             simple->group->elast = entry->prev;
 
+          /* delete this entry */
+          simple_entry_free (entry);
+
           simple->dirty = TRUE;
           break;
         }
@@ -910,9 +989,10 @@ _xfce_rc_simple_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
 }
 
 
+
 gboolean
 _xfce_rc_simple_has_entry (const XfceRc *rc,
-			   const gchar  *key)
+                           const gchar  *key)
 {
   const XfceRcSimple *simple = XFCE_RC_SIMPLE_CONST (rc);
   const Entry        *entry;
@@ -925,10 +1005,11 @@ _xfce_rc_simple_has_entry (const XfceRc *rc,
 }
 
 
+
 const gchar*
 _xfce_rc_simple_read_entry (const XfceRc *rc,
-			    const gchar  *key,
-			    gboolean      translated)
+                            const gchar  *key,
+                            gboolean      translated)
 {
   const XfceRcSimple *simple = XFCE_RC_SIMPLE_CONST (rc);
   LEntry             *lentry;
@@ -945,30 +1026,30 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
     {
       /* check for localized entry (best fit!) */
       if (G_LIKELY (translated && rc->locale != NULL))
-	{
-	  best_match = XFCE_LOCALE_NO_MATCH;
-	  best_value = NULL;
+        {
+          best_match = XFCE_LOCALE_NO_MATCH;
+          best_value = NULL;
 
-	  for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
-	    {
-	      match = xfce_locale_match (rc->locale, lentry->locale);
-	      if (match == XFCE_LOCALE_FULL_MATCH)
-		{
-		  /* FULL MATCH */
-		  return lentry->value;
-		}
-	      else if (match > best_match)
-		{
-		  best_match = match;
-		  best_value = lentry->value;
-		}
-	    }
+          for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
+            {
+              match = xfce_locale_match (rc->locale, lentry->locale);
+              if (match == XFCE_LOCALE_FULL_MATCH)
+                {
+                  /* FULL MATCH */
+                  return lentry->value;
+                }
+              else if (match > best_match)
+                {
+                  best_match = match;
+                  best_value = lentry->value;
+                }
+            }
 
-	  if (best_value != NULL)
-	    return best_value;
+          if (best_value != NULL)
+            return best_value;
 
-	  /* FALL-THROUGH */
-	}
+          /* FALL-THROUGH */
+        }
 
       return entry->value;
     }
@@ -977,10 +1058,11 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
 }
 
 
+
 void
 _xfce_rc_simple_write_entry (XfceRc      *rc,
-			     const gchar *key,
-			     const gchar *value)
+                             const gchar *key,
+                             const gchar *value)
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
   Entry        *result;
@@ -990,3 +1072,7 @@ _xfce_rc_simple_write_entry (XfceRc      *rc,
     simple->dirty = TRUE;
 }
 
+
+
+#define __XFCE_RC_SIMPLE_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

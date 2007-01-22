@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2005 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2007 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -31,24 +31,29 @@
 #include <string.h>
 #endif
 
+#include <libxfce4util/xfce-private.h>
 #include <libxfce4util/xfce-rc-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
+
+
+
+static gchar **merge_arrays (gchar **source1,
+                             gchar **source2);
+
 
 
 struct _XfceRcConfig
 {
   XfceRc  __parent__;
-
   XfceRc *save;
-  GList  *rclist;
+  GSList *rclist;
 };
 
 
-/* local prototypes */
-static gchar** merge_arrays (gchar **source1, gchar **source2);
-
 
 static gchar**
-merge_arrays (gchar **source1, gchar **source2)
+merge_arrays (gchar **source1,
+              gchar **source2)
 {
   gchar **result;
   gchar **rp;
@@ -63,10 +68,10 @@ merge_arrays (gchar **source1, gchar **source2)
   for (sp = source1; *sp != NULL; ++sp)
     {
       if (pos == size)
-	{
-	  size *= 2;
-	  result = g_realloc (result, (size + 1) * sizeof (*result));
-	}
+        {
+          size *= 2;
+          result = g_realloc (result, (size + 1) * sizeof (*result));
+        }
       result[pos] = *sp;
       ++pos;
     }
@@ -74,20 +79,20 @@ merge_arrays (gchar **source1, gchar **source2)
   for (sp = source2; *sp != NULL; ++sp)
     {
       for (rp = result; rp < result + pos; ++rp)
-	if (strcmp (*rp, *sp) == 0)
-	  break;
+        if (strcmp (*rp, *sp) == 0)
+          break;
 
       if (rp == result + pos)
-	{
-	  g_free (*sp);
-	  continue;
-	}
+        {
+          g_free (*sp);
+          continue;
+        }
 
       if (pos == size)
-	{
-	  size += 2;
-	  result = g_realloc (result, (size + 1) * sizeof (*result));
-	}
+        {
+          size += 2;
+          result = g_realloc (result, (size + 1) * sizeof (*result));
+        }
       result[pos] = *sp;
       ++pos;
     }
@@ -101,10 +106,11 @@ merge_arrays (gchar **source1, gchar **source2)
 }
 
 
+
 XfceRcConfig*
 _xfce_rc_config_new (XfceResourceType type,
-		     const gchar     *resource,
-		     gboolean         readonly)
+                     const gchar     *resource,
+                     gboolean         readonly)
 {
   XfceRcConfig *config;
   XfceRcSimple *simple = NULL;
@@ -123,25 +129,25 @@ _xfce_rc_config_new (XfceResourceType type,
   g_assert (user != NULL);
   g_assert (paths != NULL);
 
-  config = g_new0 (XfceRcConfig, 1);
+  config = _xfce_slice_new0 (XfceRcConfig);
 
   /* system files first */
   for (p = paths; *p != NULL; ++p)
     {
       if (strcmp (*p, user) == 0)
-	{
-	  user_present = TRUE;
-	  continue;
-	}
+        {
+          user_present = TRUE;
+          continue;
+        }
 
       simple = _xfce_rc_simple_new (simple, *p, TRUE);
       if (!_xfce_rc_simple_parse (simple))
-	{
-	  g_critical ("Failed to parse file %s, ignoring.", *p);
-	  xfce_rc_close (XFCE_RC (simple));
-	  continue;
-	}
-      config->rclist = g_list_append (config->rclist, simple);
+        {
+          g_critical ("Failed to parse file %s, ignoring.", *p);
+          xfce_rc_close (XFCE_RC (simple));
+          continue;
+        }
+      config->rclist = g_slist_append (config->rclist, simple);
     }
 
   /* now the user file */
@@ -151,7 +157,7 @@ _xfce_rc_config_new (XfceResourceType type,
       g_critical ("Failed to parse file %s, ignoring.", user);
     }
   config->save   = XFCE_RC (simple);
-  config->rclist = g_list_prepend (config->rclist, simple);
+  config->rclist = g_slist_prepend (config->rclist, simple);
 
   /* attach callbacks */
   config->__parent__.close        = _xfce_rc_config_close;
@@ -181,16 +187,16 @@ _xfce_rc_config_new (XfceResourceType type,
 }
 
 
+
 void
 _xfce_rc_config_close (XfceRc *rc)
 {
   XfceRcConfig *config = XFCE_RC_CONFIG (rc);
-  GList        *list;
 
-  for (list = config->rclist; list != NULL; list = list->next)
-    xfce_rc_close (XFCE_RC (list->data));
-  g_list_free (config->rclist);
+  g_slist_foreach (config->rclist, (GFunc) xfce_rc_close, NULL);
+  g_slist_free (config->rclist);
 }
+
 
 
 void
@@ -206,16 +212,17 @@ _xfce_rc_config_flush (XfceRc *rc)
       filename = _xfce_rc_simple_get_filename (XFCE_RC_CONST (config->save));
       dir = g_path_get_dirname (filename);
       if (!xfce_mkdirhier (dir, 0700, NULL))
-	{
-	  g_critical ("Unable to create base directory %s. "
-		      "Saving to file %s is likely to fail.",
-		      dir, filename);
-	}
+  {
+    g_critical ("Unable to create base directory %s. "
+          "Saving to file %s is likely to fail.",
+          dir, filename);
+  }
       g_free (dir);
     }
 
   _xfce_rc_simple_flush (XFCE_RC (config->save));
 }
+
 
 
 void
@@ -227,6 +234,7 @@ _xfce_rc_config_rollback (XfceRc *rc)
 }
 
 
+
 gboolean
 _xfce_rc_config_is_dirty (const XfceRc *rc)
 {
@@ -234,6 +242,7 @@ _xfce_rc_config_is_dirty (const XfceRc *rc)
 
   return _xfce_rc_simple_is_dirty (XFCE_RC_CONST (config->save));
 }
+
 
 
 gboolean
@@ -245,24 +254,25 @@ _xfce_rc_config_is_readonly (const XfceRc *rc)
 }
 
 
+
 gchar**
 _xfce_rc_config_get_groups (const XfceRc *rc)
 {
   const XfceRcConfig *config = XFCE_RC_CONFIG_CONST (rc);
   gchar             **result = NULL;
   gchar             **tmp;
-  GList              *list;
+  GSList             *list;
 
   for (list = config->rclist; list != NULL; list = list->next)
     {
       tmp = _xfce_rc_simple_get_groups (XFCE_RC_CONST (list->data));
       if (tmp == NULL)
-	continue;
+        continue;
       
       if (result == NULL)
-	result = tmp;
+        result = tmp;
       else
-	result = merge_arrays (result, tmp);
+        result = merge_arrays (result, tmp);
     }
 
   return result;
@@ -270,27 +280,29 @@ _xfce_rc_config_get_groups (const XfceRc *rc)
 
 
 gchar**
-_xfce_rc_config_get_entries (const XfceRc *rc, const gchar *name)
+_xfce_rc_config_get_entries (const XfceRc *rc,
+                             const gchar  *name)
 {
   const XfceRcConfig *config = XFCE_RC_CONFIG_CONST (rc);
   gchar             **result = NULL;
   gchar             **tmp;
-  GList              *list;
+  GSList             *list;
 
   for (list = config->rclist; list != NULL; list = list->next)
     {
       tmp = _xfce_rc_simple_get_entries (XFCE_RC_CONST (list->data), name);
       if (tmp == NULL)
-	continue;
+        continue;
 
       if (result == NULL)
-	result = tmp;
+        result = tmp;
       else
-	result = merge_arrays (result, tmp);
+        result = merge_arrays (result, tmp);
     }
 
   return result;
 }
+
 
 
 void
@@ -314,11 +326,13 @@ _xfce_rc_config_get_group (const XfceRc *rc)
 }
 
 
+
 gboolean
-_xfce_rc_config_has_group (const XfceRc *rc, const gchar *name)
+_xfce_rc_config_has_group (const XfceRc *rc,
+                           const gchar  *name)
 {
   const XfceRcConfig *config = XFCE_RC_CONFIG_CONST (rc);
-  GList              *list;
+  GSList             *list;
 
   /* atleast one has to have the specified group! */
   for (list = config->rclist; list != NULL; list = list->next)
@@ -329,15 +343,18 @@ _xfce_rc_config_has_group (const XfceRc *rc, const gchar *name)
 }
 
 
+
 void
-_xfce_rc_config_set_group (XfceRc *rc, const gchar *name)
+_xfce_rc_config_set_group (XfceRc      *rc,
+                           const gchar *name)
 {
   XfceRcConfig *config = XFCE_RC_CONFIG (rc);
-  GList        *list;
+  GSList       *list;
 
   for (list = config->rclist; list != NULL; list = list->next)
     _xfce_rc_simple_set_group (XFCE_RC (list->data), name);
 }
+
 
 
 void
@@ -353,10 +370,11 @@ _xfce_rc_config_delete_entry (XfceRc       *rc,
 
 
 gboolean
-_xfce_rc_config_has_entry (const XfceRc *rc, const gchar *key)
+_xfce_rc_config_has_entry (const XfceRc *rc,
+                           const gchar  *key)
 {
   const XfceRcConfig *config = XFCE_RC_CONFIG_CONST (rc);
-  GList              *list;
+  GSList             *list;
 
   /* atleast one has to have the specified entry! */
   for (list = config->rclist; list != NULL; list = list->next)
@@ -367,32 +385,34 @@ _xfce_rc_config_has_entry (const XfceRc *rc, const gchar *key)
 }
 
 
+
 const gchar*
 _xfce_rc_config_read_entry (const XfceRc *rc,
-			    const gchar  *key,
-			    gboolean      translated)
+                            const gchar  *key,
+                            gboolean      translated)
 {
   XfceRcConfig *config = XFCE_RC_CONFIG (rc);
   const gchar  *value;
-  GList        *list;
+  GSList       *list;
 
   for (list = config->rclist; list != NULL; list = list->next)
     {
       value = _xfce_rc_simple_read_entry (XFCE_RC_CONST (list->data),
-					  key,
-					  translated);
+            key,
+            translated);
       if (value != NULL)
-	return value;
+        return value;
     }
 
   return NULL;
 }
 
 
+
 void
 _xfce_rc_config_write_entry (XfceRc      *rc,
-			     const gchar *key,
-			     const gchar *value)
+                             const gchar *key,
+                             const gchar *value)
 {
   XfceRcConfig *config = XFCE_RC_CONFIG (rc);
 
@@ -402,3 +422,6 @@ _xfce_rc_config_write_entry (XfceRc      *rc,
 }
 
 
+
+#define __XFCE_RC_CONFIG_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

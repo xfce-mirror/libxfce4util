@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2003-2006 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2003-2007 Benedikt Meurer <benny@xfce.org>
  * All rights reserved.
  *
  * This library is free software; you can redistribute it and/or
@@ -28,37 +28,39 @@
 
 #include <libxfce4util/xfce-resource.h>
 
+G_BEGIN_DECLS;
+
 typedef struct _XfceRc XfceRc;
 
 #define XFCE_RC(obj)       ((XfceRc *) (obj))
 #define XFCE_RC_CONST(obj) ((const XfceRc *) (obj))
 
 XfceRc*      xfce_rc_simple_open             (const gchar     *filename,
-                                              gboolean         readonly) G_GNUC_MALLOC;
+                                              gboolean         readonly) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
 XfceRc*      xfce_rc_config_open             (XfceResourceType type,
                                               const gchar     *resource,
-                                              gboolean         readonly) G_GNUC_MALLOC;
+                                              gboolean         readonly) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
 void         xfce_rc_close                   (XfceRc *rc);
 void         xfce_rc_flush                   (XfceRc *rc);
 void         xfce_rc_rollback                (XfceRc *rc);
 
-gboolean     xfce_rc_is_dirty                (const XfceRc *rc);
-gboolean     xfce_rc_is_readonly             (const XfceRc *rc);
+gboolean     xfce_rc_is_dirty                (const XfceRc *rc) G_GNUC_WARN_UNUSED_RESULT;
+gboolean     xfce_rc_is_readonly             (const XfceRc *rc) G_GNUC_WARN_UNUSED_RESULT;
 
-const gchar* xfce_rc_get_locale              (const XfceRc *rc);
+const gchar* xfce_rc_get_locale              (const XfceRc *rc) G_GNUC_WARN_UNUSED_RESULT;
 
-gchar**      xfce_rc_get_groups              (const XfceRc *rc);
+gchar**      xfce_rc_get_groups              (const XfceRc *rc) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 gchar**      xfce_rc_get_entries             (const XfceRc *rc,
-                                              const gchar  *group);
+                                              const gchar  *group) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 
 void         xfce_rc_delete_group            (XfceRc       *rc,
                                               const gchar  *group,
                                               gboolean      global);
-const gchar* xfce_rc_get_group               (const XfceRc *rc);
+const gchar* xfce_rc_get_group               (const XfceRc *rc) G_GNUC_WARN_UNUSED_RESULT;
 gboolean     xfce_rc_has_group               (const XfceRc *rc,
-                                              const gchar  *group);
+                                              const gchar  *group) G_GNUC_WARN_UNUSED_RESULT;
 void         xfce_rc_set_group               (XfceRc       *rc,
                                               const gchar  *group);
 
@@ -66,23 +68,23 @@ void         xfce_rc_delete_entry            (XfceRc       *rc,
                                               const gchar  *key,
                                               gboolean      global);
 gboolean     xfce_rc_has_entry               (const XfceRc *rc,
-                                              const gchar  *key);
+                                              const gchar  *key) G_GNUC_WARN_UNUSED_RESULT;
 
 const gchar* xfce_rc_read_entry              (const XfceRc *rc,
                                               const gchar  *key,
-                                              const gchar  *fallback);
+                                              const gchar  *fallback) G_GNUC_WARN_UNUSED_RESULT;
 const gchar* xfce_rc_read_entry_untranslated (const XfceRc *rc,
                                               const gchar  *key,
-                                              const gchar  *fallback);
+                                              const gchar  *fallback) G_GNUC_WARN_UNUSED_RESULT;
 gboolean     xfce_rc_read_bool_entry         (const XfceRc *rc,
                                               const gchar  *key,
-                                              gboolean      fallback);
+                                              gboolean      fallback) G_GNUC_WARN_UNUSED_RESULT;
 gint         xfce_rc_read_int_entry          (const XfceRc *rc,
                                               const gchar  *key,
-                                              gint          fallback);
+                                              gint          fallback) G_GNUC_WARN_UNUSED_RESULT;
 gchar**      xfce_rc_read_list_entry         (const XfceRc *rc,
                                               const gchar  *key,
-                                              const gchar  *delimiter) G_GNUC_MALLOC;
+                                              const gchar  *delimiter) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;
 void         xfce_rc_write_entry             (XfceRc       *rc,
                                               const gchar  *key,
                                               const gchar  *value);
@@ -96,7 +98,8 @@ void         xfce_rc_write_list_entry        (XfceRc       *rc,
                                               const gchar  *key,
                                               gchar       **value,
                                               const gchar  *separator);
-                
+ 
+G_END_DECLS;
 
 #endif /* !__XFCE_RC_H__ */
 
