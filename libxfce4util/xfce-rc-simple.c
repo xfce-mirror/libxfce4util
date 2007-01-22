@@ -872,6 +872,8 @@ _xfce_rc_simple_delete_group (XfceRc      *rc,
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
   Group        *group;
+  Entry        *entry;
+  Entry        *next;
 
   if (name == NULL)
     name = NULL_GROUP;
@@ -883,6 +885,11 @@ _xfce_rc_simple_delete_group (XfceRc      *rc,
           if (simple->group == group || strcmp (name, NULL_GROUP) == 0)
             {
               /* don't delete current group or the default group, just clear them */
+              for (entry = group->efirst; entry != NULL; entry = next)
+                {
+                  next = entry->next;
+                  simple_entry_free (entry);
+                }
               group->efirst = group->elast = NULL;
             }
           else
@@ -896,10 +903,10 @@ _xfce_rc_simple_delete_group (XfceRc      *rc,
                 group->next->prev = group->prev;
               else
                 simple->glast = group->prev;
-            }
 
-          /* delete this group */
-          simple_group_free (group);
+              /* delete this group */
+              simple_group_free (group);
+            }
 
           simple->dirty = TRUE;
           break;

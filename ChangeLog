@@ -1,5 +1,10 @@
 2007-01-22	Benedikt Meurer <benny@xfce.org>
 
+	* libxfce4util/xfce-rc-simple.c(_xfce_rc_simple_delete_group): Fix
+	  buglet when deleting groups.
+
+2007-01-22	Benedikt Meurer <benny@xfce.org>
+
 	* libxfce4util/: Do not use GMemChunk for XfceRc module as that leaks
 	  all of its memory starting with GLib 2.10. Bug #2427.
 
