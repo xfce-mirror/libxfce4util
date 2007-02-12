@@ -129,7 +129,7 @@ _xfce_rc_config_new (XfceResourceType type,
   g_assert (user != NULL);
   g_assert (paths != NULL);
 
-  config = _xfce_slice_new0 (XfceRcConfig);
+  config = g_new0 (XfceRcConfig, 1);
 
   /* system files first */
   for (p = paths; *p != NULL; ++p)

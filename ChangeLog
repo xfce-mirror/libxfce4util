@@ -1,3 +1,9 @@
+2007-02-12	Benedikt Meurer <benny@xfce.org>
+
+	* libxfce4util/xfce-rc-config.c, libxfce4util/xfce-rc.c,
+	  libxfce4util/xfce-rc-simple.c: Fix invalid g_slice_free1() in
+	  XfceRc code. Bug #2854.
+
 2007-01-22	Benedikt Meurer <benny@xfce.org>
 
 	* libxfce4util/xfce-rc-simple.c(_xfce_rc_simple_delete_group): Fix
