@@ -168,7 +168,7 @@ xfce_rc_close (XfceRc *rc)
   if (rc->locale != NULL)
     g_free (rc->locale);
 
-  _xfce_slice_free (XfceRc, rc);
+  g_free (rc);
 }
 
 

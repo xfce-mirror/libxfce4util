@@ -600,7 +600,7 @@ _xfce_rc_simple_new (XfceRcSimple *shared,
 {
   XfceRcSimple *simple;
 
-  simple = _xfce_slice_new0 (XfceRcSimple);
+  simple = g_new0 (XfceRcSimple, 1);
 
   _xfce_rc_init (XFCE_RC (simple));
 
