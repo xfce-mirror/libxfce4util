@@ -1,15 +1,15 @@
 # $Id$
 #
 # Japanese translations for libxfce4util package.
-# Copyright (C) 2003-2006 Benedikt Meurer.
+# Copyright (C) 2003-2007 Benedikt Meurer.
 # This file is distributed under the same license as the libxfce4util package.
-# Daichi Kawahata <daichi@xfce.org>, 2006.
+# Daichi Kawahata <daichi@xfce.org>, 2006-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-18 23:34+0200\n"
+"POT-Creation-Date: 2007-03-26 01:42+0900\n"
 "PO-Revision-Date: 2006-04-23 16:27+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: libxfce4util/xfce-fileutils.c:154
+#: ../libxfce4util/xfce-fileutils.c:154
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "フォルダ「%s」の作成中にエラーが発生しました: %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -67,7 +67,7 @@ msgstr ""
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -101,7 +101,7 @@ msgstr ""
 "Temple\n"
 "Place, Suite 330, Boston, MA  02111-1307  USA.\n"
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
