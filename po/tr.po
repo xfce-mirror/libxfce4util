@@ -1,11 +1,11 @@
-# Turkish translation of libxfce4util.
-# Copyright (C) 2007 THE libxfce4util'S COPYRIGHT HOLDER
+# Turkish translation of the libxfce4util package.
+# Copyright (C) 2003-2006 Benedikt Meurer <benny@xfce.org>
 # This file is distributed under the same license as the libxfce4util package.
 # Eren Türkay <turkay.eren@gmail.com>, 2007.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util 4.4\n"
+"Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-07 11:07+0200\n"
 "PO-Revision-Date: 2007-02-28 19:25+0200\n"

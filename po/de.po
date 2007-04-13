@@ -1,4 +1,4 @@
-# German translations for the libxfce4util package.
+# German translation of the libxfce4util package.
 # Copyright (C) 2003-2006 Benedikt Meurer <benny@xfce.org>
 # This file is distributed under the same license as the libxfce4util package.
 # Benedikt Meurer <benny@xfce.org>, 2006.
