@@ -1,3 +1,8 @@
+2007-05-05  Brian Tarricone <bjt23@cornell.edu>
+
+        * configure.in.in: Bump version to 4.5.0, otherwise 4.4.1
+          won't build against trunk!
+
 2007-02-12	Benedikt Meurer <benny@xfce.org>
 
 	* libxfce4util/xfce-rc-config.c, libxfce4util/xfce-rc.c,
