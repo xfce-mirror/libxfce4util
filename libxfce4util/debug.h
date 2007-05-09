@@ -37,6 +37,8 @@
 #define __DBG_FUNC__    __func__
 #elif defined(__GNUC__) && __GNUC__ >= 3
 #define __DBG_FUNC__	__FUNCTION__
+#elif defined(__SVR4) && defined(__sun)
+#define __DBG_FUNC__	__func__
 #else
 #define __DBG_FUNC__    "??"
 #endif
