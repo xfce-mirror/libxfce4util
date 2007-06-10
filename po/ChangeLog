@@ -1,4 +1,4 @@
-2007-03-27  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-03-27  Maximilian Schleiss <maximilian@xfce.org>
 
 	* en_GB.po: Added the British translation
 	by Jeff Bailes <thepizzaking@gmail.com>
@@ -11,7 +11,7 @@
 
 	* tr.po: Updated the Turkish translation.
 
-2007-02-10  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-02-10  Maximilian Schleiss <maximilian@xfce.org>
 
 	* Modified LINGUAS files to include Albanian language,
 	verified all the LINGUAS files.
@@ -21,12 +21,12 @@
 	* ar.po: initial commit.
 	* LINGUAS: adding ar language code
 
-2007-01-24  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-24  Maximilian Schleiss <maximilian@xfce.org>
 
 	* sq.po: Added the Albanian translation by
 	Besnik Bleta <besnik@programeshqip.org>
 
-2007-01-21  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-21  Maximilian Schleiss <maximilian@xfce.org>
 
 	* fr.po: Minor changes to the French translation.
 
@@ -35,17 +35,17 @@
 	* === Released 4.4.0 ===
 	* *.po: Update Project-Id-Version.
 
-2007-01-19  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2007-01-19  Maximilian Schleiss <maximilian@xfce.org>
 
 	* pl.po: Updated the Polish translation by
 	Szymon Kałasz <szymon_maestro@gazeta.pl>
 
-2006-12-25  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2006-12-25  Maximilian Schleiss <maximilian@xfce.org>
 
 	* mk.po: Added the Macedonian translation by
 	Jovan Naumovski <jovan@lugola.net>
 
-2006-11-14  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2006-11-14  Maximilian Schleiss <maximilian@xfce.org>
 
 	* cy.po: Modified description text
 	* fr.po: Modified description text
@@ -59,7 +59,7 @@
 
 	* *.po: Update Project-Id-Version.
 
-2006-10-30  Maximilian Schleiss <maxschleiss@bluewin.ch>
+2006-10-30  Maximilian Schleiss <maximilian@xfce.org>
 
 	* fr.po: Fixed typo in the French translation
 
@@ -110,7 +110,7 @@
 2006-07-09  Jean-François Wauthy <pollux@xfce.org>
 
 	* fr.po: Add French translations by Maximilian Schleiss
-	  <maxschleiss@bluewin.ch>
+	  <maximilian@xfce.org>
 
 2006-06-08  Piarres Beobide <pi@beobide.net>
 
