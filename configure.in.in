@@ -42,7 +42,7 @@ AC_COPYRIGHT([Copyright (c) 2002-2007
 
 Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
 Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.])
-AC_INIT([libxfce4util], [libxfce4util_version()], [xfce4-dev@xfce.org])
+AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
 
