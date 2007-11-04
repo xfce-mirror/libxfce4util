@@ -90,11 +90,10 @@ xfce_mkdirhier (const gchar *whole_path,
         last = 1;
       else if (p[0] != '/')
         continue;
+      else if (p[1] == '\0')
+        last = 1;
 
       *p = '\0';
-
-      if (p[1] == '\0')
-        last = 1;
 
       if (first)
         {
