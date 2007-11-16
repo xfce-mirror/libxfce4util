@@ -1,3 +1,22 @@
+4.4.2
+=====
+- Fix possible buffer overflow (reported by Vegard Nosum on the ml).
+- Remove trailing parens on AC_INIT version info to work around bug
+  in intltool 0.35.x and 0.36.x.
+- Updated translations: Maximilian Schleiss (nl), Dimitri Gogelia (ka),
+  Pablo Vieira and Jose Vitor Lopes e Silva (pt_BR).
+- New translations: Terje Uriansrud (nb_NO), Nuno Miguel (pt_PT),
+  Manatsawin (th), Tegegne Tefera (am), RPrieditis (lv).
+
+
+4.4.1
+=====
+- Fix invalid g_slice_free1() in XfceRc code (Bug #2854).
+- Updated translations: Maximilian Schleiss (fr), Daichi Kawahata (ja).
+- New translations: Besnik Bleta (sq), Eren Turkay (tr), Jeff Bailes (en_GB),
+  Pau Rul-lan Ferragut (it).
+
+
 4.4.0
 =====
 - Updated translations: Szymon Kałasz (pl)
