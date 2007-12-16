@@ -30,6 +30,7 @@ libxfce4util_headers =							\
 	xfce-kiosk.h							\
 	xfce-license.h							\
 	xfce-miscutils.h						\
+	xfce-posix-signal-handler.h					\
 	xfce-rc.h							\
 	xfce-resource.h							\
 	xfce-utf8.h
@@ -62,6 +63,7 @@ libxfce4util_la_SOURCES =						\
 	xfce-kiosk.c							\
 	xfce-license.c							\
 	xfce-miscutils.c						\
+	xfce-posix-signal-handler.c					\
 	xfce-private.h							\
 	xfce-rc.c							\
 	xfce-rc-config.c						\

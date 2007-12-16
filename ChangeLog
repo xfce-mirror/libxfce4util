@@ -1,3 +1,9 @@
+2007-12-15  Brian Tarricone <bjt23@cornell.edu>
+
+    * libxfce4util/xfce-posix-signal-handler.{c,h}: new util functions
+      for setting up safe POSIX signal handling using pipe(),
+      GIOChannel, and the glib main loop.
+
 2007-05-09	Benedikt Meurer <benny@xfce.org>
 
 	* INSTALL, configure.in.in: Update for latest autoconf.

@@ -35,6 +35,7 @@
 #include <libxfce4util/xfce-kiosk.h>
 #include <libxfce4util/xfce-license.h>
 #include <libxfce4util/xfce-miscutils.h>
+#include <libxfce4util/xfce-posix-signal-handler.h>
 #include <libxfce4util/xfce-rc.h>
 #include <libxfce4util/xfce-resource.h>
 #include <libxfce4util/xfce-utf8.h>

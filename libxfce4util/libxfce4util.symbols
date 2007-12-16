@@ -125,6 +125,16 @@ xfce_expand_variables G_GNUC_MALLOC
 #endif
 #endif
 
+/* xfce-posix-signal-handler functions */
+#if IN_HEADER(__XFCE_POSIX_SIGNAL_HANDLER_H__)
+#if IN_SOURCE(__XFCE_POSIX_SIGNAL_HANDLER_C__)
+xfce_posix_signal_handler_init
+xfce_posix_signal_handler_shutdown
+xfce_posix_signal_handler_set_handler
+xfce_posix_signal_handler_restore_handler
+#endif
+#endif
+
 /* xfce-resource functions */
 #if IN_HEADER(__XFCE_RESOURCE_H__)
 #if IN_SOURCE(__XFCE_RESOURCE_C__)
