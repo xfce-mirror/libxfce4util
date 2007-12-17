@@ -165,4 +165,12 @@ XFCE_DESKTOP_ENTRY_GET_CLASS
 xfce_desktop_entry_get_type
 </SECTION>
 
-
+<SECTION>
+<TITLE>POSIX Signal Handling</TITLE>
+<FILE>xfce-posix-signal-handler</FILE>
+XfcePosixSignalHandler
+xfce_posix_signal_handler_init
+xfce_posix_signal_handler_restore_handler
+xfce_posix_signal_handler_set_handler
+xfce_posix_signal_handler_shutdown
+</SECTION>

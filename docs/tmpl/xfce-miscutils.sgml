@@ -37,8 +37,6 @@ path of the current user's home directory.
           home directory. The caller is responsible for freeing the
 	  returned string using g_free().
 <!-- # Unused Parameters # -->
-@...: 
-@...: 
 @first_element...: NULL terminated list of path components.
 
 
@@ -73,8 +71,6 @@ formed by a NULL terminated list of path components.
           directory. The caller is responsible for freeing the returned
 	  string using g_free().
 <!-- # Unused Parameters # -->
-@...: 
-@...: 
 @first_element...: NULL terminated list of path components.
 
 

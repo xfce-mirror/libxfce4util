@@ -1,3 +1,7 @@
+2007-12-17  Brian Tarricone <bjt23@cornell.edu>
+
+    * Fix docs/ stuff to include new signal handling functionality.
+
 2007-12-15  Brian Tarricone <bjt23@cornell.edu>
 
     * libxfce4util/xfce-posix-signal-handler.{c,h}: new util functions
