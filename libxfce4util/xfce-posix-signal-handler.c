@@ -96,7 +96,7 @@ xfce_posix_signal_handler_pipe_io(GIOChannel *source,
             g_error_free(error);
         } else {
             g_critical("Short read from signal pipe (expected %d, got %d)\n",
-                       sizeof(signal), bin);
+                       (int)sizeof(signal), (int)bin);
         }
     }
     
