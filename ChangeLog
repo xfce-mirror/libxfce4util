@@ -1,3 +1,12 @@
+2008-06-29	Jannis Pohlmann <jannis@xfce.org>
+
+	* libxfce4util/xfce-resource.c: Add _res_remove_trailing_slashes().
+	  It is used to support _res_remove_duplicates() in finding paths
+	  which appear multiple times but in fact refer to the same
+	  directory (like e.g. /usr/share/// and /usr/share). Use 
+	  g_build_path() in g_resource_lookup() and g_resource_lookup_all()
+	  instead of concatenating with "%s/%s".
+
 2007-12-17  Brian Tarricone <bjt23@cornell.edu>
 
     * Fix docs/ stuff to include new signal handling functionality.

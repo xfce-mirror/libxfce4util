@@ -124,6 +124,43 @@ _res_remove_duplicates (GList *list)
 
 
 
+static GList*
+_res_remove_trailing_slashes (GList *list)
+{
+  GList       *ll = NULL;
+  GList       *lp;
+  const gchar *path;
+  gint         len;
+
+  for (lp = list; lp != NULL; lp = lp->next)
+    {
+      path = (const gchar *) lp->data;
+      len = strlen (path);
+
+      while (len > 0 && G_IS_DIR_SEPARATOR (path[len-1]))
+        --len;
+
+      if (len <= 0)
+        {
+          /* A string with slashes only => root directory */
+          ll = g_list_append (ll, g_strdup ("/"));
+          g_free (lp->data);
+        }
+      else if (len < strlen (path))
+        {
+          ll = g_list_append (ll, g_strndup (path, len));
+          g_free (lp->data);
+        }
+      else
+        ll = g_list_append (ll, lp->data);
+    }
+
+  g_list_free (list);
+  return ll;
+}
+
+
+
 static void
 _res_init (void)
 {
@@ -221,6 +258,15 @@ _res_init (void)
       path = g_build_filename ((const gchar *) l->data, "themes", NULL);
       _list[XFCE_RESOURCE_THEMES] = g_list_append (_list[XFCE_RESOURCE_THEMES], path);
     }
+
+  /* Remove trailing slashes */
+#define REMOVE_TRAILING_SLASHES(type) { _list[(type)] = _res_remove_trailing_slashes (_list[(type)]); }
+  REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_DATA);
+  REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_CONFIG);
+  REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_CACHE);
+  REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_ICONS);
+  REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_THEMES);
+#undef REMOVE_TRAILING_SLASHES
 
   /* remove duplicates from the lists */
 #define REMOVE_DUPLICATES(type) { _list[(type)] = _res_remove_duplicates (_list[(type)]); }
@@ -425,7 +471,7 @@ xfce_resource_lookup (XfceResourceType type,
           const gchar     *filename)
 {
   GFileTest test;
-  gchar     path[PATH_MAX];
+  gchar    *path;
   GList    *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
@@ -440,10 +486,13 @@ xfce_resource_lookup (XfceResourceType type,
 
   for (l = _list[type]; l != NULL; l = l->next)
     {
-      g_snprintf (path, PATH_MAX, "%s/%s", (const gchar *) l->data, filename);
+
+      path = g_build_path (G_DIR_SEPARATOR_S, (const gchar *) l->data, filename, NULL);
 
       if (g_file_test (path, test))
-        return g_strdup (path);
+        return path;
+      else
+        g_free (path);
     }
 
   return NULL;
@@ -473,7 +522,7 @@ xfce_resource_lookup_all (XfceResourceType type,
                           const gchar     *filename)
 {
   GFileTest test;
-  gchar     path[PATH_MAX];
+  gchar    *path;
   gchar   **paths;
   guint     size;
   guint     pos;
@@ -495,7 +544,7 @@ xfce_resource_lookup_all (XfceResourceType type,
 
   for (l = _list[type]; l != NULL; l = l->next)
     {
-      g_snprintf (path, PATH_MAX, "%s/%s", (const gchar *) l->data, filename);
+      path = g_build_path (G_DIR_SEPARATOR_S, (const gchar *) l->data, filename, NULL);
 
       if (g_file_test (path, test))
         {
@@ -505,9 +554,11 @@ xfce_resource_lookup_all (XfceResourceType type,
               paths = g_realloc (paths, (size + 1) * sizeof (*paths));
             }
 
-          paths[pos] = g_strdup (path);
+          paths[pos] = path;
           ++pos;
         }
+      else
+        g_free (path);
     }
 
   paths[pos] = NULL;
