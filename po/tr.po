@@ -2,7 +2,7 @@
 # Copyright (C) 2007 THE libxfce4util'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the libxfce4util package.
 # Eren Türkay <turkay.eren@gmail.com>, 2007.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4\n"
@@ -80,4 +80,3 @@ msgid ""
 "Free Software Foundation, Inc., 59 Temple Place - Suite 330, \n"
 "Boston, MA  02111-1307  USA.\n"
 msgstr ""
-
