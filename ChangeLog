@@ -1,3 +1,7 @@
+2008-09-04	Jannis Pohlmann <jannis@xfce.org>
+
+	* autogen.sh: Add git svn revision versioning support.
+
 2008-06-29	Jannis Pohlmann <jannis@xfce.org>
 
 	* libxfce4util/xfce-resource.c: Add _res_remove_trailing_slashes().
