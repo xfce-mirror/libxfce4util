@@ -92,7 +92,7 @@ xfce_localize_path_internal (gchar       *buffer,
   if (G_UNLIKELY (lang == NULL))
     lang = getenv ("LANG");
 
-  if (G_LIKELY (lang != NULL && strchr (lang, '/') != NULL))
+  if (G_LIKELY (lang != NULL && strchr (path, '/') != NULL))
     {
       /* ok, we will try four things here
        * - full locale name:         ll_LL@qualifier.encoding
