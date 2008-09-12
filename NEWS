@@ -2,7 +2,7 @@
 ======
 - Do not use GMemChunk for XfceRc due to memory leaks (Bug #2427).
 - Fix buglet when deleting XfceRc groups.
-- Fix invalid g_slice_free1() in XfceRc (Bug #2854).
+- Fix invalid use of g_slice_free1() in XfceRc (Bug #2854).
 - Add support for function names in debug messages on Solaris (Bug #3090).
 - New util functions for setting up POSIX signal handling using pipe(), 
   GIOChannel and the glib main loop.
