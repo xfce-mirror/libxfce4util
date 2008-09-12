@@ -1,3 +1,7 @@
+2008-09-12	Jannis Pohlmann <jannis@xfce.org>
+
+	* NEWS: Updated for the alpha release.
+
 2008-09-11	Brian Tarricone <bjt23@cornell.edu>
 
 	* libxfce4util/xfce-i18n.c: Fix what I can only assume is a typo

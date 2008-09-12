@@ -1,3 +1,19 @@
+4.5.90
+======
+- Do not use GMemChunk for XfceRc due to memory leaks (Bug #2427).
+- Fix buglet when deleting XfceRc groups.
+- Fix invalid g_slice_free1() in XfceRc (Bug #2854).
+- Add support for function names in debug messages on Solaris (Bug #3090).
+- New util functions for setting up POSIX signal handling using pipe(), 
+  GIOChannel and the glib main loop.
+- Strip trailing slashes to avoid directories appearing multiple times in
+  resource lookup functions.
+- Updated translations: Maximilian Schleiss (fr), Besnik Bleta (sq), 
+  Mohamed Magdy (ar), Jeff Bailes (en_GB), Nuno Miguel (pt_PT), Daichi 
+  Kawahata (ja), Terje Uriansrud (nb_NO), Tegegne Tefera (am), Rihards 
+  Priedītis (lv), Muhammad Ali Makki (ur), Rashan Anushka (si), Leandro 
+  Regueiro (gl), Khaled Hosny (ar), Peter Vois (et), 
+
 4.4.0
 =====
 - Updated translations: Szymon Kałasz (pl)
@@ -7,8 +23,8 @@
 4.3.99.2
 ========
 - Updated translations: Pau Rul-lan Ferragut (ca), Maximilian Schleiss (fr)
-- New translations: Michal Várady (cs), Tenzin Dendup (dz), ByungHyun Choi (ko),
-  Stephan Arts (nl)
+- New translations: Michal Várady (cs), Tenzin Dendup (dz), 
+  ByungHyun Choi (ko), Stephan Arts (nl)
 
 
 4.3.99.1
