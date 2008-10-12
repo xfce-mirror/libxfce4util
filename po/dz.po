@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-18 23:34+0200\n"
+"POT-Creation-Date: 2008-10-12 23:32+0200\n"
 "PO-Revision-Date: 2006-10-19 03:15+0530\n"
 "Last-Translator: yangka <yanang_ka@hotmail.com>\n"
 "Language-Team: dzongka <pgeyleg@dit.gov.bt>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Poedit-Country: bhutan\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: libxfce4util/xfce-fileutils.c:154
+#: libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "སྣོད་ཐོ་གསར་བསྐྲུན་འབདཝ་ད་འཛོལ་བ '%s': %s"

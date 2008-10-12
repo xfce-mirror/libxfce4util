@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-19 15:01-0400\n"
+"POT-Creation-Date: 2008-10-12 23:32+0200\n"
 "PO-Revision-Date: 2008-09-19 15:59-0400\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: ../libxfce4util/xfce-fileutils.c:153
+#: libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Erro criando diretório '%s': %s"
 
-#: ../libxfce4util/xfce-license.c:33
+#: libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -47,18 +47,24 @@ msgstr ""
 " Redistribuição e uso na forma de código fonte, com ou sem modificação, são\n"
 " permitidas se observadas as seguintes condições:\n"
 "\n"
-" 1. Redistribuição do código fonte deve mencionar a licença acima, esta lista\n"
+" 1. Redistribuição do código fonte deve mencionar a licença acima, esta "
+"lista\n"
 "    de condições e o aviso de insenção de responsabilidades abaixo;\n"
-" 2. Redistribuição do binário deve mencionar a licença acima, esta lista de condições e\n"
-"    o aviso de insenção de responsabilidades abaixo, em qualquer material que cite ou\n"
+" 2. Redistribuição do binário deve mencionar a licença acima, esta lista de "
+"condições e\n"
+"    o aviso de insenção de responsabilidades abaixo, em qualquer material "
+"que cite ou\n"
 "    utilize o objeto desta licença.\n"
 "\n"
-" ESTE SOFTWARE É FORNECIDO PELO AUTOR NA FORMA EM QUE SE ENCONTRA, INEXISTINDO \n"
-" QUALQUER GARANTIA, EXPRESSA OU IMPLÍCITA, QUANTO A SUA FORMA E CONTEÚDO. O AUTOR\n"
-" SE EXIME DE REPOR QUALQUER DADO, VALOR OU PRESTAR REPAROS POR FATO DECORRENTE DE\n"
+" ESTE SOFTWARE É FORNECIDO PELO AUTOR NA FORMA EM QUE SE ENCONTRA, "
+"INEXISTINDO \n"
+" QUALQUER GARANTIA, EXPRESSA OU IMPLÍCITA, QUANTO A SUA FORMA E CONTEÚDO. O "
+"AUTOR\n"
+" SE EXIME DE REPOR QUALQUER DADO, VALOR OU PRESTAR REPAROS POR FATO "
+"DECORRENTE DE\n"
 " DANO DIRETO OU INDIRETO, PROVOCADO PELA UTILIZAÇÃO DESTE SOFTWARE.\n"
 
-#: ../libxfce4util/xfce-license.c:55
+#: libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -92,8 +98,7 @@ msgstr ""
 "Foundation, Inc.,\n"
 "51 Temple Place, Fifth Floor, Boston, MA 02110-1301 USA\n"
 
-
-#: ../libxfce4util/xfce-license.c:70
+#: libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
