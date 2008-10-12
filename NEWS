@@ -1,3 +1,8 @@
+4.5.91
+======
+- Fix typo in i18n code (check for '/' in lang doesnt make sense)
+- Updated translations: Og Maciel (pt_BR), Abel Martín (es)
+
 4.5.90
 ======
 - Do not use GMemChunk for XfceRc due to memory leaks (Bug #2427).
