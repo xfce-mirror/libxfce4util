@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-07 11:07+0200\n"
+"POT-Creation-Date: 2008-10-26 20:41+0000\n"
 "PO-Revision-Date: 2007-05-30 17:32+0700\n"
 "Last-Translator: Manatsawin <manatsawin@gmail.com>\n"
 "Language-Team: Thai <l10n@opentle.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libxfce4util/xfce-fileutils.c:154
+#: libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "เกิดข้อผิดพลาดในการสร้างโฟล์เดอร์ '%s': %s"

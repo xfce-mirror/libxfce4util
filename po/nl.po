@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-07 11:07+0200\n"
+"POT-Creation-Date: 2008-10-26 20:41+0000\n"
 "PO-Revision-Date: 2007-06-16 21:05+0100\n"
 "Last-Translator: Maximilian Schleiss <maximilian@xfce.org>\n"
 "Language-Team: Dutch <xfce-i18n@xfce.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: libxfce4util/xfce-fileutils.c:154
+#: libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Fout tijdens het maken van map '%s': %s"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-07 11:07+0200\n"
+"POT-Creation-Date: 2008-10-26 20:41+0000\n"
 "PO-Revision-Date: 2007-08-29 17:20-0300\n"
 "Last-Translator: Jose Vitor Lopes e Silva <josevitor@lopesesilva.adv.br>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: libxfce4util/xfce-fileutils.c:154
+#: libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Erro na criação do diretório \"%s\": %s"
