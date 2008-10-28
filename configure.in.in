@@ -10,7 +10,7 @@ dnl
 dnl ***************************
 dnl *** Version information ***
 dnl ***************************
-m4_define([libxfce4util_verinfo], [4:1:0])
+m4_define([libxfce4util_verinfo], [5:1:1])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [5])
 m4_define([libxfce4util_version_micro], [91])
