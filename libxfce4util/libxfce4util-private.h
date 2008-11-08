@@ -30,7 +30,7 @@
 
 G_BEGIN_DECLS;
 
-void _xfce_i18n_init (void) G_GNUC_INTERNAL;
+G_GNUC_INTERNAL void _xfce_i18n_init (void);
 
 G_END_DECLS;
 
