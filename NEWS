@@ -1,3 +1,12 @@
+4.5.92
+======
+- Updated translations: Jari Rahkonen (fi), Abel Martin (es)
+- Increment library version to avoid having a 4.6 library version older then
+  the one in 4.4.
+- Place G_GNUC_INTERNAL before function declaration for Sun Studio 
+  compatibility (bug #4580)
+
+
 4.5.91
 ======
 - Fix typo in i18n code (check for '/' in lang doesnt make sense)
