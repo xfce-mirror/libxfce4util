@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-12 23:32+0200\n"
-"PO-Revision-Date: 2008-09-19 15:59-0400\n"
+"PO-Revision-Date: 2008-11-13 15:59-0400\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Erro criando diretório '%s': %s"
+msgstr "Erro ao criar o diretório \"%s\": %s"
 
 #: libxfce4util/xfce-license.c:33
 msgid ""
