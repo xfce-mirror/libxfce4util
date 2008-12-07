@@ -63,8 +63,8 @@ const gchar xfce_builtin_license_GPL[] =
       "more details.\n"
       "\n"
       "You should have received a copy of the GNU General Public License along with\n"
-      "this program; if not, write to the Free Software Foundation, Inc., 59 Temple\n"
-      "Place, Suite 330, Boston, MA  02111-1307  USA.\n");
+      "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
+      "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n");
 
 const gchar xfce_builtin_license_LGPL[] =
   N_ ("This library is free software; you can redistribute it and/or\n"
@@ -79,8 +79,8 @@ const gchar xfce_builtin_license_LGPL[] =
       "\n"
       "You should have received a copy of the GNU Library General Public\n"
       "License along with this library; if not, write to the \n"
-      "Free Software Foundation, Inc., 59 Temple Place - Suite 330, \n"
-      "Boston, MA  02111-1307  USA.\n");
+      "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
+      "Boston, MA 02110-1301  USA.\n");
 
 
 
