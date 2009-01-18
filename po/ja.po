@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-12 23:32+0200\n"
-"PO-Revision-Date: 2008-12-08 23:41+0900\n"
+"POT-Creation-Date: 2009-01-12 14:25+0900\n"
+"PO-Revision-Date: 2009-01-11 15:24+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "フォルダ \"%s\" の作成中にエラーが発生しました: %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -67,8 +67,7 @@ msgstr ""
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 
-#: libxfce4util/xfce-license.c:55
-#, fuzzy
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -82,9 +81,9 @@ msgid ""
 "\n"
 "You should have received a copy of the GNU General Public License along "
 "with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 59 "
-"Temple\n"
-"Place, Suite 330, Boston, MA  02111-1307  USA.\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 "
+"Franklin\n"
+"Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -102,8 +101,7 @@ msgstr ""
 "Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: libxfce4util/xfce-license.c:70
-#, fuzzy
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -117,8 +115,8 @@ msgid ""
 "\n"
 "You should have received a copy of the GNU Library General Public\n"
 "License along with this library; if not, write to the \n"
-"Free Software Foundation, Inc., 59 Temple Place - Suite 330, \n"
-"Boston, MA  02111-1307  USA.\n"
+"Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
+"Boston, MA 02110-1301  USA.\n"
 msgstr ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
