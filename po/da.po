@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR Per kongstad, 2009.
+# Danish Translation libxfce4util.
+# Copyright (C) 2002-2009 The Xfce development team. All rights reserved.
+# This file is distributed under the same license as the libxfce4util package.
+# Per kongstad <pko@xfce.org>, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util 4.4.2\n"
+"Project-Id-Version: libxfce4util 4.5.92\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-04-07 11:07+0200\n"
-"PO-Revision-Date: 2008-10-22 14:01+0100\n"
+"PO-Revision-Date: 2009-01-22 16:00+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
