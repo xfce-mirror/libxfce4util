@@ -1,3 +1,82 @@
+2009-01-25 00:33  jannis
+
+	* configure.in.in:
+	  == 4.5.99.1 released! == configure.in.in: Bump version.
+
+2009-01-24 21:03  pko
+
+	* po/ChangeLog, po/da.po:
+	  * da.po: Danish translation update 4.5.93 (Per Kongstad)
+
+2009-01-24 12:28  majkl
+
+	* po/ChangeLog, po/cs.po:
+	  Czech translation updated
+
+2009-01-24 09:41  nick
+
+	* po/am.po, po/ar.po, po/ca.po, po/cs.po, po/cy.po, po/da.po,
+	  po/de.po, po/dz.po, po/en_GB.po, po/es.po, po/et.po, po/eu.po,
+	  po/fi.po, po/fr.po, po/gl.po, po/he.po, po/id.po, po/ja.po,
+	  po/ka.po, po/ko.po, po/libxfce4util.pot, po/lt.po, po/lv.po,
+	  po/mk.po, po/nb_NO.po, po/nl.po, po/pl.po, po/pt_BR.po,
+	  po/pt_PT.po, po/si.po, po/sq.po, po/sv.po, po/tr.po, po/uk.po,
+	  po/ur.po:
+	  Regenerate po files, as requested by Enrico
+
+2009-01-22 19:20  pko
+
+	* po/ChangeLog, po/da.po:
+	  * da.po: Danish tranlation updated (Per Kongstad) * da.po: Danish
+	  translation update (Per Kongstad)
+
+2009-01-18 18:00  maximilian
+
+	* po/ChangeLog, po/ja.po:
+	  Translations updates - es et fr ja zh_CN
+
+2009-01-18 12:32  eulex
+
+	* po/ChangeLog, po/sv.po:
+	  xfce4-session/trunk/po: * sv.po: Swedish translation update
+	  (Daniel Nylander) xfce4-panel/trunk/po: * sv.po: Swedish
+	  translation update (Daniel Nylander) xfce4-settings/trunk/po: *
+	  sv.po: Swedish translation update (Daniel Nylander)
+	  libxfce4menu/trunk/po: * sv.po: Swedish translation update
+	  (Daniel Nylander) libxfce4util/trunk/po: * sv.po: Swedish
+	  translation update (Daniel Nylander) xfwm4/trunk/po: * sv.po:
+	  Swedish translation update (Daniel Nylander)
+	  xfce4-appfinder/trunk/po: * sv.po: Swedish translation update
+	  (Daniel Nylander) xfconf/trunk/po: * sv.po: Swedish translation
+	  update (Daniel Nylander) libxfcegui4/trunk/po: * sv.po: Swedish
+	  translation update (Daniel Nylander)
+
+2009-01-14 21:10  jannis
+
+	* configure.in.in:
+	  Post-release version bump.
+
+2009-01-11 22:28  maximilian
+
+	* po/ChangeLog, po/es.po:
+	  Translations updates - ca es ja
+
+2009-01-11 14:52  lars
+
+	* po/LINGUAS, po/da.po:
+	  update-po
+
+2009-01-11 14:52  lars
+
+	* po/ChangeLog:
+	  update-po
+
+2009-01-10 23:29  stephan
+
+	* ChangeLog, NEWS, configure.in.in, po/es.po, po/ja.po, po/sv.po:
+	  Update ChangeLog, NEWS and .po files Update version-number and
+	  xfce-version-number
+
 2008-12-13 22:05  maximilian
 
 	* po/ChangeLog, po/ja.po:
@@ -11,47 +90,15 @@
 2008-12-09 23:22  eulex
 
 	* po/ChangeLog, po/LINGUAS, po/sv.po:
-	  * sv.po: Swedish translation update (Daniel Nylander)
-	  
-	  
-	  
-	  
-	  
-	  
-	  * sv.po: Swedish translation update (Daniel Nylander)
-	  
-	  
-	  * sv.po, LINGUAS: Swedish translation added (Daniel Nylander)
-	  
-	  
-	  
-	  * sv.po, LINGUAS: Swedish translation added (Daniel Nylander)
-	  
-	  
-	  
-	  * sv.po, LINGUAS: Swedish translation added (Daniel Nylander)
-	  
-	  * sv.po, LINGUAS: Swedish translation added (Daniel Nylander)
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  * sv.po: Swedish translation update (Daniel Nylander)
-	  
-	  * sv.po: Swedish translation update (Daniel Nylander)
-	  
-	  
-	  
-	  * sv.po: Swedish translation update (Daniel Nylander)
-	  
+	  * sv.po: Swedish translation update (Daniel Nylander) * sv.po:
+	  Swedish translation update (Daniel Nylander) * sv.po, LINGUAS:
+	  Swedish translation added (Daniel Nylander) * sv.po, LINGUAS:
+	  Swedish translation added (Daniel Nylander) * sv.po, LINGUAS:
+	  Swedish translation added (Daniel Nylander) * sv.po, LINGUAS:
+	  Swedish translation added (Daniel Nylander) * sv.po: Swedish
+	  translation update (Daniel Nylander) * sv.po: Swedish translation
+	  update (Daniel Nylander) * sv.po: Swedish translation update
+	  (Daniel Nylander)
 
 2008-12-07 20:01  nick
 
@@ -126,28 +173,25 @@
 	  po/ja.po, po/ka.po, po/ko.po, po/libxfce4util.pot, po/lt.po,
 	  po/lv.po, po/mk.po, po/nb_NO.po, po/nl.po, po/pl.po, po/pt_BR.po,
 	  po/pt_PT.po, po/si.po, po/sq.po, po/tr.po, po/uk.po, po/ur.po:
-	  Update .po files
-	  Update version number for 4.6 beta 1
+	  Update .po files Update version number for 4.6 beta 1
 
 2008-10-05 17:52  maximilian
 
 	* po/ChangeLog, po/LINGUAS, po/es.po:
 	  Updated and added Estonian translations for the libxfcegui4,
 	  terminal and mousepad trunk modules and libxfce4util branch 4.4
-	  module
-	  Updated Indonesian translations for the xfce-utils, xfce4-mixer,
-	  xarchiver, xfwm4, xfcalendar and xfdesktop trunk modules
-	  Updated and added Spanish translations for the xfce4-appfinder,
-	  squeeze, libexo, xfce-utils, libxfce4menu, xfce4-session,
-	  xfce4-mixer, libxfce4util, libxfce4ui, xfce4-icon-theme, thunar,
-	  libxfcegui4, xfce4-panel, xfdesktop, xfce4-trigger-launcher,
-	  terminal, mousepad and xfmedia trunk modules
-	  Updated Russian translation for the xarchiver, libexo and
-	  libxfcegui4 trunk modules
-	  Updated and added German translation of the xfce4-settings and
-	  xfwm4 trunk modules
-	  Updated Japanese translation for the thunar module
-	  Updated Sinhalese translation for the libxfcegui4 trunk module
+	  module Updated Indonesian translations for the xfce-utils,
+	  xfce4-mixer, xarchiver, xfwm4, xfcalendar and xfdesktop trunk
+	  modules Updated and added Spanish translations for the
+	  xfce4-appfinder, squeeze, libexo, xfce-utils, libxfce4menu,
+	  xfce4-session, xfce4-mixer, libxfce4util, libxfce4ui,
+	  xfce4-icon-theme, thunar, libxfcegui4, xfce4-panel, xfdesktop,
+	  xfce4-trigger-launcher, terminal, mousepad and xfmedia trunk
+	  modules Updated Russian translation for the xarchiver, libexo and
+	  libxfcegui4 trunk modules Updated and added German translation of
+	  the xfce4-settings and xfwm4 trunk modules Updated Japanese
+	  translation for the thunar module Updated Sinhalese translation
+	  for the libxfcegui4 trunk module
 
 2008-09-19 20:06  omaciel
 
@@ -175,9 +219,9 @@
 	  2008-09-11 Brian Tarricone <bjt23@cornell.edu>
 	  
 	  * libxfce4util/xfce-i18n.c: Fix what I can only assume is a typo
-	  in xfce_localize_path_internal(). Checking for a '/' character
-	  in $LANG doesn't make sense; presumably it should be checking
-	  for a '/' in the path passed in.
+	  in xfce_localize_path_internal(). Checking for a '/' character in
+	  $LANG doesn't make sense; presumably it should be checking for a
+	  '/' in the path passed in.
 
 2008-09-10 20:56  peetervois
 
@@ -207,8 +251,7 @@
 2008-09-05 22:46  stephan
 
 	* configure.in.in:
-	  Remove -svn tag
-	  Remove xfce 4.6 alpha tag
+	  Remove -svn tag Remove xfce 4.6 alpha tag
 
 2008-09-04 16:16  jannis
 
@@ -225,8 +268,7 @@
 	* configure.in.in, po/am.po, po/en_GB.po, po/fr.po, po/id.po,
 	  po/ja.po, po/lv.po, po/nb_NO.po, po/pt_PT.po, po/sq.po, po/tr.po,
 	  po/ur.po:
-	  Update po-files
-	  Bump version number
+	  Update po-files Bump version number
 
 2008-07-17 10:27  alnokta
 
@@ -237,12 +279,12 @@
 
 	* ChangeLog, INSTALL, libxfce4util/xfce-resource.c:
 	  * libxfce4util/xfce-resource.c: Add
-	  _res_remove_trailing_slashes().
-	  It is used to support _res_remove_duplicates() in finding paths
-	  which appear multiple times but in fact refer to the same
-	  directory (like e.g. /usr/share/// and /usr/share). Use
-	  g_build_path() in g_resource_lookup() and g_resource_lookup_all()
-	  instead of concatenating with "%s/%s".
+	  _res_remove_trailing_slashes(). It is used to support
+	  _res_remove_duplicates() in finding paths which appear multiple
+	  times but in fact refer to the same directory (like e.g.
+	  /usr/share/// and /usr/share). Use g_build_path() in
+	  g_resource_lookup() and g_resource_lookup_all() instead of
+	  concatenating with "%s/%s".
 
 2008-06-26 22:09  maximilian
 
@@ -292,8 +334,7 @@
 	  2007-12-15 Brian Tarricone <bjt23@cornell.edu>
 	  
 	  * libxfce4util/xfce-posix-signal-handler.{c,h}: new util
-	  functions
-	  for setting up safe POSIX signal handling using pipe(),
+	  functions for setting up safe POSIX signal handling using pipe(),
 	  GIOChannel, and the glib main loop.
 
 2007-11-15 09:14  mmassonnet
@@ -322,8 +363,8 @@
 
 	* po/ChangeLog, po/LINGUAS, po/lv.po:
 	  * libexo, libxfce4util, xfcalendar, xfce4-panel, xfce4-session,
-	  xfce-mcs-plugins,
-	  xfdesktop, xfprint, xfwm4: Add Latvian translation.
+	  xfce-mcs-plugins, xfdesktop, xfprint, xfwm4: Add Latvian
+	  translation.
 
 2007-09-06 18:16  maximilian
 
@@ -349,19 +390,16 @@
 
 	* po/ChangeLog, po/LINGUAS, po/pt_PT.po:
 	  * no_NO.po: Norwegian Bokmal translation update for the xfburn
-	  package
-	  * pt_PT.po: European Portuguese translation update for some
-	  packages in trunk
-	  * ka.po: Georgian translation update for the xfce-mcs-manager
-	  package (4.4)
+	  package * pt_PT.po: European Portuguese translation update for
+	  some packages in trunk * ka.po: Georgian translation update for
+	  the xfce-mcs-manager package (4.4)
 
 2007-06-10 23:25  maximilian
 
 	* po/ChangeLog, po/fr.po:
 	  * nb_NO: Updated some Norwegian translations and added one for
-	  Xfmedia
-	  * pt_PT: Added European Portuguese translations
-	  * Changed my email address
+	  Xfmedia * pt_PT: Added European Portuguese translations * Changed
+	  my email address
 
 2007-05-09 18:05  benny
 
@@ -383,22 +421,21 @@
 	* ChangeLog, configure.in.in:
 	  2007-05-05 Brian Tarricone <bjt23@cornell.edu>
 	  
-	  * configure.in.in: Bump version to 4.5.0, otherwise 4.4.1
-	  won't build against trunk!
+	  * configure.in.in: Bump version to 4.5.0, otherwise 4.4.1 won't
+	  build against trunk!
 
 2007-04-09 10:05  maximilian
 
 	* po/fr.po:
 	  * fr.po: Fixed typos and style in the French translation of
-	  Terminal's manual
-	  * Changed my email address in all the fr.po files in trunk and
-	  4.4
+	  Terminal's manual * Changed my email address in all the fr.po
+	  files in trunk and 4.4
 
 2007-03-28 20:51  maximilian
 
 	* po/LINGUAS:
-	  * de.po: Nico Schümann minor fixes to the German translations
-	  * en_GB.po: Jeff Bailes updated the British English translations
+	  * de.po: Nico Schümann minor fixes to the German translations *
+	  en_GB.po: Jeff Bailes updated the British English translations
 	  for trunk and branches
 
 2007-03-27 20:05  maximilian
@@ -463,8 +500,7 @@
 	  2007-01-22 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/xfce-rc-simple.c(_xfce_rc_simple_delete_group):
-	  Fix
-	  buglet when deleting groups.
+	  Fix buglet when deleting groups.
 
 2007-01-22 14:12  benny
 
@@ -476,20 +512,16 @@
 	  2007-01-22 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/: Do not use GMemChunk for XfceRc module as that
-	  leaks
-	  all of its memory starting with GLib 2.10. Bug #2427.
+	  leaks all of its memory starting with GLib 2.10. Bug #2427.
 
 2007-01-21 14:08  maximilian
 
 	* po/ChangeLog, po/fr.po:
-	  * fr.po: Minor changes to the French translations
-	  in xfce-utils, libxfce4util and mousepad
-	  * pl.po: Updated the Polish translation by Szymon Kałasz
-	  <szymon_maestro@gazeta.pl>
-	  in thunar and mousepad.
-	  * ro.po: Updated the Romanian translation by Mişu Moldovan
-	  <dumol@gnome.ro>
-	  in most core packages.
+	  * fr.po: Minor changes to the French translations in xfce-utils,
+	  libxfce4util and mousepad * pl.po: Updated the Polish translation
+	  by Szymon Kałasz <szymon_maestro@gazeta.pl> in thunar and
+	  mousepad. * ro.po: Updated the Romanian translation by Mişu
+	  Moldovan <dumol@gnome.ro> in most core packages.
 
 2007-01-20 09:57  benny
 
@@ -514,10 +546,9 @@
 	  po/pt_BR.po, po/uk.po:
 	  2007-01-20 Benedikt Meurer <benny@xfce.org>
 	  
-	  * === Released 4.4.0 ===
-	  * NEWS, configure.in.in: Bump version.
-	  * po/*.po: Update Project-Id-Version.
-	  * THANKS, Makefile.am: Add translator credits.
+	  * === Released 4.4.0 === * NEWS, configure.in.in: Bump version. *
+	  po/*.po: Update Project-Id-Version. * THANKS, Makefile.am: Add
+	  translator credits.
 
 2007-01-19 23:38  maximilian
 
@@ -552,11 +583,9 @@
 
 	* po/ChangeLog, po/cy.po, po/fr.po:
 	  Updated the Spanish translations by Rudy Godoy for the following
-	  packages
-	  xfce4-panel; xfce4-session
-	  Modified the description text of the translation files for fr cy
-	  and es
-	  Fixed typo in French translation of thunar
+	  packages xfce4-panel; xfce4-session Modified the description text
+	  of the translation files for fr cy and es Fixed typo in French
+	  translation of thunar
 
 2006-11-14 12:00  pollux
 
@@ -579,10 +608,9 @@
 	  po/ko.po, po/lt.po, po/nl.po, po/pl.po, po/pt_BR.po, po/uk.po:
 	  2006-11-04 Benedikt Meurer <benny@xfce.org>
 	  
-	  * === Released 4.3.99.2 ===
-	  * NEWS, configure.in.in: Bump version.
-	  * docs/tmpl/xfce-miscutils.sgml: Regenerate API docs.
-	  * po/*.po: Update Project-Id-Version.
+	  * === Released 4.3.99.2 === * NEWS, configure.in.in: Bump
+	  version. * docs/tmpl/xfce-miscutils.sgml: Regenerate API docs. *
+	  po/*.po: Update Project-Id-Version.
 
 2006-10-30 22:13  maximilian
 
@@ -636,11 +664,9 @@
 	  po/ja.po, po/ka.po, po/lt.po, po/pl.po, po/pt_BR.po, po/uk.po:
 	  2006-09-02 Benedikt Meurer <benny@xfce.org>
 	  
-	  * === Released 4.3.99.1 ===
-	  * configure.in.in: Do not set gcc specific flags unless gcc is
-	  used.
-	  * NEWS, configure.in.in: Bump version.
-	  * po/*.po: Update Project-Id-Version.
+	  * === Released 4.3.99.1 === * configure.in.in: Do not set gcc
+	  specific flags unless gcc is used. * NEWS, configure.in.in: Bump
+	  version. * po/*.po: Update Project-Id-Version.
 
 2006-08-30 10:20  benny
 
@@ -648,8 +674,7 @@
 	  2006-08-30 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/xfce-generics.h: Enable compilation with Sun
-	  Studio
-	  Pro. Bug #1851.
+	  Studio Pro. Bug #1851.
 
 2006-08-27 20:54  pollux
 
@@ -682,8 +707,7 @@
 	  2006-08-12 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/xfce-generics.h(xfce_stack_top): Enable
-	  compilation
-	  with compilers other than gcc. Bug #1851.
+	  compilation with compilers other than gcc. Bug #1851.
 
 2006-07-10 10:46  benny
 
@@ -699,9 +723,8 @@
 	  po/pl.po, po/pt_BR.po, po/uk.po:
 	  2006-07-10 Benedikt Meurer <benny@xfce.org>
 	  
-	  * === Released 4.3.90.2 ===
-	  * configure.in.in: Bump version.
-	  * po/*.po: Update Project-Id-Version.
+	  * === Released 4.3.90.2 === * configure.in.in: Bump version. *
+	  po/*.po: Update Project-Id-Version.
 
 2006-07-09 21:34  pollux
 
@@ -733,8 +756,7 @@
 2006-05-15 17:27  paurullan
 
 	* po/ChangeLog, po/ca.po:
-	  [i18n] catalan
-	  little libxfce4util update
+	  [i18n] catalan little libxfce4util update
 
 2006-05-13 04:56  daichi
 
@@ -766,9 +788,8 @@
 2006-04-30 12:49  paurullan
 
 	* po/ca.po:
-	  [i18n] catalan
-	  added some new files. There are most empty but this way I will
-	  notice them
+	  [i18n] catalan added some new files. There are most empty but
+	  this way I will notice them
 
 2006-04-28 03:36  adriano
 
@@ -813,9 +834,8 @@
 	  2006-04-19 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/xfce-rc-simple.c(_xfce_rc_simple_delete_entry):
-	  Fix
-	  deletion of entries from an XfceRc object, as pointed out by Juha
-	  Kautto <kautto.juha@kolumbus.fi>.
+	  Fix deletion of entries from an XfceRc object, as pointed out by
+	  Juha Kautto <kautto.juha@kolumbus.fi>.
 
 2006-04-19 14:55  jari
 
@@ -847,12 +867,10 @@
 	  2006-04-18 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/Makefile.am, libxfce4util/libxfce4util.symbols:
-	  Fix typos
-	  introduced with the previous commit.
-	  * libxfce4util/, po/, Makefile.am, configure.in.in, autogen.sh:
-	  Add i18n
-	  support. This way the software licenses can be translated.
-	  * docs/: Update the API documentation.
+	  Fix typos introduced with the previous commit. * libxfce4util/,
+	  po/, Makefile.am, configure.in.in, autogen.sh: Add i18n support.
+	  This way the software licenses can be translated. * docs/: Update
+	  the API documentation.
 
 2006-04-18 19:35  benny
 
@@ -888,31 +906,25 @@
 	  2006-04-18 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/libxfce4util-config.{c,h.in},
-	  libxfce4util/Makefile.am,
-	  libxfce4util/{BSD,GPL,LGPL}, libxfce4util/licenses-texts.c,
-	  libxfce4util/licenses-to-c.sh: Use the short versions of the
-	  GPL/LGPL
-	  license texts and move them to libxfce4util-config.
-	  * libxfce4util/, configure.in.in: Apply outstanding patch to fix
-	  various
-	  memory leaks, reduce PLT entries and cleanup source code.
-	  * libxfce4util/xfce-i18n.{c,h}, TODO: Turn xfce_textdomain() into
-	  a
-	  function.
-	  * docs/: Update the API documentation.
+	  libxfce4util/Makefile.am, libxfce4util/{BSD,GPL,LGPL},
+	  libxfce4util/licenses-texts.c, libxfce4util/licenses-to-c.sh: Use
+	  the short versions of the GPL/LGPL license texts and move them to
+	  libxfce4util-config. * libxfce4util/, configure.in.in: Apply
+	  outstanding patch to fix various memory leaks, reduce PLT entries
+	  and cleanup source code. * libxfce4util/xfce-i18n.{c,h}, TODO:
+	  Turn xfce_textdomain() into a function. * docs/: Update the API
+	  documentation.
 
 2006-04-16 08:09  benny
 
 	* AUTHORS, ChangeLog, configure.in.in, libxfce4util.spec.in:
 	  2006-04-16 Benedikt Meurer <benny@xfce.org>
 	  
-	  * === Released 4.3.90.1 ===
-	  * configure.in.in: Bump version.
-	  * configure.in.in: Depend on GObject >= 2.6.0.
-	  * configure.in.in: Do not add revision to version unless the tag
-	  is svn.
-	  * libxfce4util.spec.in: Update RPM spec file.
-	  * AUTHORS: Add Olivier Fourdan to the authors list.
+	  * === Released 4.3.90.1 === * configure.in.in: Bump version. *
+	  configure.in.in: Depend on GObject >= 2.6.0. * configure.in.in:
+	  Do not add revision to version unless the tag is svn. *
+	  libxfce4util.spec.in: Update RPM spec file. * AUTHORS: Add
+	  Olivier Fourdan to the authors list.
 
 2006-04-15 22:45  benny
 
@@ -920,8 +932,7 @@
 	  2006-04-16 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/xfce-resource.c(_res_split_and_append): Be sure to
-	  strip
-	  off invalid paths from XDG_DATA_DIRS and XDG_CONFIG_DIRS.
+	  strip off invalid paths from XDG_DATA_DIRS and XDG_CONFIG_DIRS.
 
 2006-04-15 17:39  benny
 
@@ -947,8 +958,7 @@
 	  2006-03-25 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/xfce-rc-simple.c: Properly handle trailing
-	  whitespace
-	  when saving string values.
+	  whitespace when saving string values.
 
 2006-02-25 06:00  daichi
 
@@ -963,9 +973,8 @@
 	  
 	  * libxfce4util/xfce-desktopentry.[ch]: Add
 	  xfce_desktop_entry_has_translated_entry() to report if the
-	  particular
-	  key has a value transalated into the current locale.
-	  * configure.in.in: Bump version to 4.3.1.
+	  particular key has a value transalated into the current locale. *
+	  configure.in.in: Bump version to 4.3.1.
 
 2005-12-28 21:33  olivier
 
@@ -989,8 +998,7 @@
 	  2005-12-03 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/i18n.h: Add ngettext(), dngettext() and
-	  dcngettext()
-	  macros for the case that ENABLE_NLS is not defined.
+	  dcngettext() macros for the case that ENABLE_NLS is not defined.
 
 2005-11-05 20:02  olivier
 
@@ -1008,17 +1016,13 @@
 
 	* libxfce4util/xfce-rc-simple.c:
 	  ok ... sending to the mailinglist doesn't work for me and Brian
-	  isnt around in irc, so cant discuss first.
-	  however, this is fixing a crasher bug (again), so I guess its ok
-	  to commit.
-	  Please direct complaints my way :)
-	  I also added an explaination to the file now.
-	  More details:
-	  Such Desktop Files DO get created (for example by Wine and
-	  Cedega), so it isn't theorethical at all.
-	  Brian: sorry, didn't break it on purpose :)
-	  Anyways, it should work now.
-	  
+	  isnt around in irc, so cant discuss first. however, this is
+	  fixing a crasher bug (again), so I guess its ok to commit. Please
+	  direct complaints my way :) I also added an explaination to the
+	  file now. More details: Such Desktop Files DO get created (for
+	  example by Wine and Cedega), so it isn't theorethical at all.
+	  Brian: sorry, didn't break it on purpose :) Anyways, it should
+	  work now.
 
 2005-09-04 09:47  kelnos
 
@@ -1033,56 +1037,44 @@
 	  
 	  example file:
 	  
-	  [Desktop Entry]
-	  Version=1.0
-	  Encoding=UTF-8
-	  Name=Halo
-	  Exec=cedega -workdir "/home/dannym/.transgaming/c_drive/Program
+	  [Desktop Entry] Version=1.0 Encoding=UTF-8 Name=Halo Exec=cedega
+	  -workdir "/home/dannym/.transgaming/c_drive/Program Files/Halo"
+	  "C:/Program Files/Halo/halo.exe" Type=Application Comment=Halo:
+	  Combat Evolved Path="/home/dannym/.transgaming/c_drive/Program
 	  Files/Halo"
-	  "C:/Program Files/Halo/halo.exe"
-	  Type=Application
-	  Comment=Halo: Combat Evolved
-	  Path="/home/dannym/.transgaming/c_drive/Program Files/Halo"
 	  Icon=/home/dannym/.kde/share/applnk/TransGaming/Halo.xpm
 	  GenericName[de_AT]=
 	  
-	  bt:
-	  (gdb) bt
-	  #0 0xffffe410 in __kernel_vsyscall ()
-	  #1 0xb77819b1 in raise () from /lib/tls/i686/cmov/libc.so.6
-	  #2 0xb77832c9 in abort () from /lib/tls/i686/cmov/libc.so.6
-	  #3 0xb78c7774 in g_logv () from /usr/lib/libglib-2.0.so.0
-	  #4 0xb78c77a8 in g_log () from /usr/lib/libglib-2.0.so.0
-	  #5 0xb78c78e4 in g_return_if_fail_warning () from
-	  /usr/lib/libglib-2.0.so.0
-	  #6 0xb7c96fed in simple_add_entry (simple=0x82578c8,
-	  key=0xb72a30cc "GenericName", value=0xb72a30e0 "",
-	  locale=0xb72a30d8 "de_AT") at xfce-rc-simple.c:176
-	  #7 0xb7c975bb in _xfce_rc_simple_parse (simple=0x82578c8) at
-	  xfce-rc-simple.c:597
-	  #8 0xb7c95999 in xfce_rc_simple_open (filename=0x8257a48
+	  bt: (gdb) bt #0 0xffffe410 in __kernel_vsyscall () #1 0xb77819b1
+	  in raise () from /lib/tls/i686/cmov/libc.so.6 #2 0xb77832c9 in
+	  abort () from /lib/tls/i686/cmov/libc.so.6 #3 0xb78c7774 in
+	  g_logv () from /usr/lib/libglib-2.0.so.0 #4 0xb78c77a8 in g_log
+	  () from /usr/lib/libglib-2.0.so.0 #5 0xb78c78e4 in
+	  g_return_if_fail_warning () from /usr/lib/libglib-2.0.so.0 #6
+	  0xb7c96fed in simple_add_entry (simple=0x82578c8, key=0xb72a30cc
+	  "GenericName", value=0xb72a30e0 "", locale=0xb72a30d8 "de_AT") at
+	  xfce-rc-simple.c:176 #7 0xb7c975bb in _xfce_rc_simple_parse
+	  (simple=0x82578c8) at xfce-rc-simple.c:597 #8 0xb7c95999 in
+	  xfce_rc_simple_open (filename=0x8257a48
 	  "/home/dannym/Desktop/Halo.desktop", readonly=1) at xfce-rc.c:107
 	  #9 0xb7fb6ace in IA__thunar_vfs_info_new_for_uri (uri=0x80c1d48,
-	  error=0x0) at thunar-vfs-info.c:219
-	  #10 0xb7fb8f0f in thunar_vfs_listdir_job_execute (job=0x8201d30)
-	  at thunar-vfs-listdir-job.c:208
-	  #11 0xb7fb847b in thunar_vfs_job_execute (data=0x8201d30,
-	  user_data=0x0) at thunar-vfs-job.c:187
-	  #12 0xb78dc522 in g_thread_pool_free () from
-	  /usr/lib/libglib-2.0.so.0
-	  #13 0xb78da844 in g_static_private_free () from
-	  /usr/lib/libglib-2.0.so.0
-	  #14 0xb788c361 in start_thread () from
-	  /lib/tls/i686/cmov/libpthread.so.0
-	  #15 0xb7821bde in clone () from /lib/tls/i686/cmov/libc.so.6
+	  error=0x0) at thunar-vfs-info.c:219 #10 0xb7fb8f0f in
+	  thunar_vfs_listdir_job_execute (job=0x8201d30) at
+	  thunar-vfs-listdir-job.c:208 #11 0xb7fb847b in
+	  thunar_vfs_job_execute (data=0x8201d30, user_data=0x0) at
+	  thunar-vfs-job.c:187 #12 0xb78dc522 in g_thread_pool_free () from
+	  /usr/lib/libglib-2.0.so.0 #13 0xb78da844 in g_static_private_free
+	  () from /usr/lib/libglib-2.0.so.0 #14 0xb788c361 in start_thread
+	  () from /lib/tls/i686/cmov/libpthread.so.0 #15 0xb7821bde in
+	  clone () from /lib/tls/i686/cmov/libc.so.6
 
 2005-08-31 10:23  benny
 
 	* ., ChangeLog, Makefile.am:
 	  2005-08-31 Benedikt Meurer <benny@xfce.org>
 	  
-	  * Makefile.am: Remove unnecessary extra dist files.
-	  * Makefile.am: Setup automake options properly.
+	  * Makefile.am: Remove unnecessary extra dist files. *
+	  Makefile.am: Setup automake options properly.
 
 2005-08-31 10:19  benny
 
@@ -1108,16 +1100,11 @@
 	  2005-08-31 Benedikt Meurer <benny@xfce.org>
 	  
 	  * autogen.sh, configure.in.in: Merge build framework changes from
-	  libexo.
-	  * COPYING, libxfce4util.spec.in, libxfce4util/*.{c,h}: Change
-	  overall
-	  license to LGPL.
-	  * libxfce4util/*.h: Make sure only libxfce4util/libxfce4util.h
-	  can be
-	  included directly.
-	  * docs/tmpl/*.sgml: Update to newer gtk-doc, which adds stability
-	  level
-	  to the interfaces.
+	  libexo. * COPYING, libxfce4util.spec.in, libxfce4util/*.{c,h}:
+	  Change overall license to LGPL. * libxfce4util/*.h: Make sure
+	  only libxfce4util/libxfce4util.h can be included directly. *
+	  docs/tmpl/*.sgml: Update to newer gtk-doc, which adds stability
+	  level to the interfaces.
 
 2005-08-31 09:58  benny
 
@@ -1205,22 +1192,19 @@
 	  2005-02-02 Benedikt Meurer <benny@xfce.org>
 	  
 	  * libxfce4util/xfce-fileutils.c(xfce_mkdirhier): Make function
-	  always
-	  verify if the directory was actually created or already existed,
-	  instead of checking for special errno results if mkdir() failed.
-	  This fixes bug #724 (xfce fails on automounted NFS
-	  home-directories).
-	  All tabs have been expanded to spaces.
+	  always verify if the directory was actually created or already
+	  existed, instead of checking for special errno results if mkdir()
+	  failed. This fixes bug #724 (xfce fails on automounted NFS
+	  home-directories). All tabs have been expanded to spaces.
 
 2005-01-26 22:07  benny
 
 	* ChangeLog, autogen.sh, gtk-doc.make:
 	  2005-01-26 Benedikt Meurer <benny@xfce.org>
 	  
-	  * autogen.sh: Send all command line parameters to xdt-autogen.
-	  * gtk-doc.make: Removed, as its autogenerated by gtkdocize.
-	  Although,
-	  the autogenerated version lacks a `gmake dist' fix.
+	  * autogen.sh: Send all command line parameters to xdt-autogen. *
+	  gtk-doc.make: Removed, as its autogenerated by gtkdocize.
+	  Although, the autogenerated version lacks a `gmake dist' fix.
 
 2005-01-26 21:18  benny
 
@@ -1233,19 +1217,15 @@
 	  2005-01-26 Benedikt Meurer <benny@xfce.org>
 	  
 	  * ChangeLog.pre-4.2.0: This file now contains the change log
-	  messages
-	  generated by cvs2cl. Do NOT ever run cvs2cl in libxfce4util/
-	  again!
-	  * autogen.sh: Use xdt-autogen (from the xfce4-dev-tools package).
-	  * m4/: Removed, those files are now included with the
-	  xfce4-dev-tools
-	  packages.
-	  * configure.ac: Use new macros. Bumped version to 4.3.0. Bumped
-	  shared object major version to 2.
-	  * Makefile.am: Include the old ChangeLog file with dists. Removed
-	  obsolete sub directory m4. Removed obsolete aclocal flags.
-	  * libxfce4util.spec.in: Removed m4/ directory from the files
-	  section.
+	  messages generated by cvs2cl. Do NOT ever run cvs2cl in
+	  libxfce4util/ again! * autogen.sh: Use xdt-autogen (from the
+	  xfce4-dev-tools package). * m4/: Removed, those files are now
+	  included with the xfce4-dev-tools packages. * configure.ac: Use
+	  new macros. Bumped version to 4.3.0. Bumped shared object major
+	  version to 2. * Makefile.am: Include the old ChangeLog file with
+	  dists. Removed obsolete sub directory m4. Removed obsolete
+	  aclocal flags. * libxfce4util.spec.in: Removed m4/ directory from
+	  the files section.
 
 2005-01-17 01:55  kelnos
 
@@ -1320,10 +1300,8 @@
 
 	* libxfce4util/i18n.h:
 	  Use glib/gi18n-lib.h instead, because glib/gi18n.h is unsuitable,
-	  since it
-	  defines _(s) to gettext(s), which in turn uses the default
-	  translation
-	  domain.
+	  since it defines _(s) to gettext(s), which in turn uses the
+	  default translation domain.
 
 2004-11-18 23:27  benny
 
@@ -1346,10 +1324,8 @@
 
 	* libxfce4util/xfce-kiosk.c:
 	  NGROUPS_MAX doesn't seem to be useful on Glibc based systems.
-	  Instead,
-	  determine the number of groups dynamically (and hope that all
-	  systems
-	  can handle the NULL pointer to getgroups).
+	  Instead, determine the number of groups dynamically (and hope
+	  that all systems can handle the NULL pointer to getgroups).
 
 2004-11-13 18:01  olivier
 
@@ -1365,8 +1341,7 @@
 
 	* libxfce4util/xfce-kiosk.c:
 	  xfce_kiosk_new() always returns a valid XfceKiosk object now.
-	  xfce_kiosk_init()
-	  is a bit more verbose about whats wrong.
+	  xfce_kiosk_init() is a bit more verbose about whats wrong.
 
 2004-11-11 13:12  olivier
 
@@ -1398,9 +1373,8 @@
 	  install-sh, libxfce4util/Makefile.in, m4/Makefile.in, missing,
 	  xfce4-kiosk-query/Makefile.in:
 	  Update automake/autoconf/libtool/gettext versions to generate the
-	  configure scripts and Makefiles,
-	  Update versions of all packages to 4.1.99.1 (ie 4.2 RC1),
-	  Update ChangeLogs.
+	  configure scripts and Makefiles, Update versions of all packages
+	  to 4.1.99.1 (ie 4.2 RC1), Update ChangeLogs.
 
 2004-11-05 17:32  benny
 
@@ -1457,8 +1431,7 @@
 
 	* configure, ltmain.sh, m4/debug.m4:
 	  Added --enable-final (-O1 for GNU ld) as per Jaspers request.
-	  Added missing
-	  m4 files.
+	  Added missing m4 files.
 
 2004-10-02 13:28  olivier
 
@@ -1545,8 +1518,8 @@
 	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
 	  libxfce4util/libxfce4util.h, libxfce4util/xfce-generics.h:
 	  Added a generic stack data type, usefull for keeping state while
-	  parsing xml
-	  files using the Glib XML parser. Version is now 4.1.15.
+	  parsing xml files using the Glib XML parser. Version is now
+	  4.1.15.
 
 2004-07-29 21:18  benny
 
@@ -1561,8 +1534,7 @@
 
 	* m4/depends.m4:
 	  Fixed (module)_FOUND bug reported by brian. Hopefully nothing
-	  else broke
-	  this time.
+	  else broke this time.
 
 2004-07-26 18:33  benny
 
@@ -1582,15 +1554,13 @@
 	  xfce4-kiosk-query/.cvsignore, xfce4-kiosk-query/Makefile.am,
 	  xfce4-kiosk-query/Makefile.in, xfce4-kiosk-query/main.c:
 	  Added Kiosk mode for Xfce, supporting modules will have to be
-	  changed to
-	  use this functions.
+	  changed to use this functions.
 
 2004-07-24 18:52  benny
 
 	* m4/depends.m4:
 	  Readded XFCE_MCS_PLUGIN() again, dunno how I manage to remove it
-	  everytime
-	  I edit depends.m4!
+	  everytime I edit depends.m4!
 
 2004-07-24 17:30  benny
 
@@ -1622,8 +1592,7 @@
 
 	* m4/depends.m4:
 	  Modified panel plugin check, so one (the installer) can choose to
-	  install
-	  into a different plugin dir.
+	  install into a different plugin dir.
 
 2004-07-17 11:45  kelnos
 
@@ -1685,8 +1654,8 @@
 
 	* docs/libxfce4util-sections.txt, docs/tmpl/xfce-desktopentry.sgml,
 	  docs/tmpl/xfce-fileutils.sgml:
-	  - correct a little error from benny (Param2 needed to be omode)
-	  - add doc for xfce_desktop_entry_new_from_data
+	  - correct a little error from benny (Param2 needed to be omode) -
+	  add doc for xfce_desktop_entry_new_from_data
 
 2004-05-27 11:49  benny
 
@@ -1710,9 +1679,9 @@
 
 	* libxfce4util/xfce-desktopentry.c,
 	  libxfce4util/xfce-desktopentry.h:
-	  - xfce_desktop_entry_parse deprecated
-	  - xfce_desktop_entry_new and xfce_desktop_entry_new_from_data
-	  directly call xfce_desktop_entry_parse (what happens if
+	  - xfce_desktop_entry_parse deprecated - xfce_desktop_entry_new
+	  and xfce_desktop_entry_new_from_data directly call
+	  xfce_desktop_entry_parse (what happens if
 	  xfce_desktop_entry_parse is still called after ?)
 
 2004-05-26 20:33  pollux
@@ -1769,8 +1738,7 @@
 	* configure, libxfce4util/Makefile.am, libxfce4util/Makefile.in,
 	  libxfce4util/xfce-resource.c, m4/depends.m4:
 	  Added more icon fallback dirs for systems that doesn't install
-	  everything
-	  in /usr (why doesn't the icon spec cover this?).
+	  everything in /usr (why doesn't the icon spec cover this?).
 
 2004-03-31 19:40  benny
 
@@ -1784,8 +1752,7 @@
 	  libxfce4util/xfce-miscutils.h, libxfce4util/xfce-rc.c,
 	  libxfce4util/xfce-rc.h:
 	  Misused gcc function attributes, thanks to danny for figuring
-	  out.
-	  Problems fixed now.
+	  out. Problems fixed now.
 
 2004-03-29 20:14  benny
 
@@ -1801,10 +1768,9 @@
 	  libxfce4util/xfce-rc-private.h, libxfce4util/xfce-rc-simple.c,
 	  libxfce4util/xfce-rc.c, libxfce4util/xfce-rc.h:
 	  Added xfce_unsetenv(). Added delete_group()/delete_entry() for
-	  XfceRc,
-	  currently limited to the simple backend, have to figure out a
-	  nice
-	  way to do this with the config backend. Version is now 4.1.9.
+	  XfceRc, currently limited to the simple backend, have to figure
+	  out a nice way to do this with the config backend. Version is now
+	  4.1.9.
 
 2004-03-18 11:09  benny
 
@@ -1822,9 +1788,8 @@
 	  libxfce4util/xfce-fileutils.c, libxfce4util/xfce-fileutils.h,
 	  libxfce4util/xfce-miscutils.c, libxfce4util/xfce-miscutils.h:
 	  Some rearrangements, splitting up stuff is better. Applications
-	  should
-	  include <libxfce4util/libxfce4util.h> to be unaffected by such
-	  rearrangements.
+	  should include <libxfce4util/libxfce4util.h> to be unaffected by
+	  such rearrangements.
 
 2004-03-17 21:42  benny
 
@@ -1851,10 +1816,8 @@
 
 	* libxfce4util/i18n.c, libxfce4util/i18n.h:
 	  Undeprecate xfce_get_{dir,file}_localized* on jaspers request.
-	  Remove
-	  unneccessary copyright notice, as we don't include the
-	  __unaliasname()
-	  function any longer.
+	  Remove unneccessary copyright notice, as we don't include the
+	  __unaliasname() function any longer.
 
 2004-03-14 22:33  benny
 
@@ -1914,25 +1877,19 @@
 	  libxfce4util/Makefile.in, libxfce4util/libxfce4util-config.h.in,
 	  libxfce4util/libxfce4util.h, m4/Makefile.in:
 	  Added gtk-doc framework to libxfcegui4, more documentation soon
-	  to come (as
-	  usual :). Added version checks to both libxfce4util and
-	  libxfcegui4, namely
-	  LIBXFCE4UTIL_CHECK_VERSION and LIBXFCEGUI4_CHECK_VERSION similar
-	  to the
-	  ones in glib/gtk. Updated spec files to include the gtk-doc
-	  files. Bumped
-	  versions of both libs to 4.1.6. Started renaming some of the
-	  libxfcegui4
+	  to come (as usual :). Added version checks to both libxfce4util
+	  and libxfcegui4, namely LIBXFCE4UTIL_CHECK_VERSION and
+	  LIBXFCEGUI4_CHECK_VERSION similar to the ones in glib/gtk.
+	  Updated spec files to include the gtk-doc files. Bumped versions
+	  of both libs to 4.1.6. Started renaming some of the libxfcegui4
 	  functions include the xfce_ prefix (ok'd with jasper). Maybe
-	  things will
-	  still work after this commit ;-).
+	  things will still work after this commit ;-).
 
 2004-03-01 21:09  benny
 
 	* m4/debug.m4:
 	  Added --enable-gcov to compile xfce with support for coverage
-	  tests. Very
-	  useful.
+	  tests. Very useful.
 
 2004-02-24 20:50  benny
 
@@ -1962,21 +1919,16 @@
 
 	* libxfce4util/xfce-desktopentry.c:
 	  atoi() is deprecated, strtol() should be used instead. In
-	  addition the check
-	  for temp >= 0 prevented negative integer values from being stored
-	  in
-	  desktop files.
+	  addition the check for temp >= 0 prevented negative integer
+	  values from being stored in desktop files.
 
 2004-02-20 11:44  benny
 
 	* libxfce4util/util.c:
 	  Be sure to use the plattform malloc() in our putenv(), cause we
-	  don't
-	  know about the evil interna of putenv() and g_malloc() need not
-	  to use
-	  malloc() on this plattform. Fixed bug in xfce_setenv() where
-	  memory
-	  was not freed after the call to xfce_putenv().
+	  don't know about the evil interna of putenv() and g_malloc() need
+	  not to use malloc() on this plattform. Fixed bug in xfce_setenv()
+	  where memory was not freed after the call to xfce_putenv().
 
 2004-02-15 22:02  jasper
 
@@ -2014,8 +1966,7 @@
 
 	* autogen.sh:
 	  Always append --enable-maintainer-mode if configure is invoked by
-	  autogen.sh,
-	  since this makes more sense to me.
+	  autogen.sh, since this makes more sense to me.
 
 2004-02-09 01:47  kelnos
 
@@ -2083,8 +2034,7 @@
 
 	* AUTHORS, BSD, COPYING, COPYING.BSD, COPYING.LGPL, LGPL:
 	  I think the filenames "COPYING.BSD" and "COPYING.LGPL" make more
-	  sense than
-	  just "BSD" and "LGPL".
+	  sense than just "BSD" and "LGPL".
 
 2004-01-16 18:09  jasper
 
@@ -2094,9 +2044,7 @@
 2004-01-12 22:52  dannym
 
 	* libxfce4util/xfce_desktop_entry.c:
-	  fix crash with some kde desktop files with
-	  1) empty "name="
-	  and
+	  fix crash with some kde desktop files with 1) empty "name=" and
 	  2) "name=\r"
 
 2004-01-12 07:20  jasper
@@ -2143,8 +2091,8 @@
 2003-09-21 22:19  xfce
 
 	* configure, configure.ac:
-	  Update version number to 4.0.0
-	  Improve focus change for modal dialogs in xfwm4
+	  Update version number to 4.0.0 Improve focus change for modal
+	  dialogs in xfwm4
 
 2003-09-14 22:06  xfce
 
@@ -2303,9 +2251,8 @@
 	* Makefile.in, aclocal.m4, config.h.in, configure, configure.ac,
 	  i18n/Makefile.in, libxfce4util/Makefile.in, ltmain.sh,
 	  m4/Makefile.in:
-	  Update to libtool-1.5
-	  Use proper complete CURRENT:REVISION:AGE scheme for lib
-	  versionning
+	  Update to libtool-1.5 Use proper complete CURRENT:REVISION:AGE
+	  scheme for lib versionning
 
 2003-06-21 20:18  bmeurer
 
@@ -2412,8 +2359,7 @@
 	  m4/Makefile.am, m4/Makefile.in, m4/X11.m4, m4/depends.m4,
 	  m4/i18n.m4:
 	  Updated depends.m4 and added macro for use with panel plugins.
-	  Updated
-	  libxfce4util to install the common m4 files into
+	  Updated libxfce4util to install the common m4 files into
 	  $(datadir)/xfce4/m4.
 
 2003-04-20 10:05  huysmans
@@ -2427,42 +2373,37 @@
 	  libxfce4util/Makefile.in, libxfce4util/libxfce4util-1.0.pc.in,
 	  m4/rpath.m4:
 	  Added system tray support to libxfcegui4 and frontend to
-	  xftaskbar4.
-	  Lots of cleanups in the autotools stuff.
+	  xftaskbar4. Lots of cleanups in the autotools stuff.
 
 2003-04-09 20:39  bmeurer
 
 	* aclocal.m4, configure, m4/debug.m4:
 	  Improved debug.m4:
 	  
-	  1) --disable-debug no longer disables assert()'s
-	  2) --enable-profiling now enables profiling code
-	  3) --disable-asserts allows disabling of assert()'s
+	  1) --disable-debug no longer disables assert()'s 2)
+	  --enable-profiling now enables profiling code 3)
+	  --disable-asserts allows disabling of assert()'s
 
 2003-04-05 21:30  bmeurer
 
 	* config.h.in, configure, configure.ac, libxfce4util/util.c:
-	  Fixed libxfce4util libtool verinfo.
-	  Updated to automake 1.7.3.
+	  Fixed libxfce4util libtool verinfo. Updated to automake 1.7.3.
 
 2003-04-05 17:21  bmeurer
 
 	* configure, configure.ac, libxfce4util/util.c,
 	  libxfce4util/util.h:
 	  Added xfce_get_homefile_r() and xfce_get_userfile_r() for use
-	  with
-	  static buffers. Raise version to 0.2.
+	  with static buffers. Raise version to 0.2.
 
 2003-04-05 00:09  xfce
 
 	* libxfce4util/debug.h:
 	  Revert last change in debug.h, use "??" instead of ((__const char
-	  *)0)
-	  Replace DBG() statements with TRACE() in libxfcegui4 and xfwm4
-	  because it was generating far too much logs in simple debug mode
-	  (use --enable-debug=full to get full traces)
-	  Add params to TRACE() (just like in DBG())
-	  Remove trailing CR in log messages
+	  *)0) Replace DBG() statements with TRACE() in libxfcegui4 and
+	  xfwm4 because it was generating far too much logs in simple debug
+	  mode (use --enable-debug=full to get full traces) Add params to
+	  TRACE() (just like in DBG()) Remove trailing CR in log messages
 
 2003-04-04 22:36  bmeurer
 
@@ -2497,11 +2438,9 @@
 	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
 	  libxfce4util/i18n.h, m4/debug.m4:
 	  Debugging stuff now provided by libxfce4util. As a result of this
-	  change
-	  libxfcegui4 now depends on libxfce4util.
-	  Some other updates.
-	  added a hint to the libxfcegui4 README for Xinerama problems with
-	  XFree86.
+	  change libxfcegui4 now depends on libxfce4util. Some other
+	  updates. added a hint to the libxfcegui4 README for Xinerama
+	  problems with XFree86.
 
 2003-04-02 17:33  bmeurer
 
@@ -2520,10 +2459,9 @@
 	  libxfce4util/Makefile.am, libxfce4util/Makefile.in,
 	  libxfce4util/filter.c, m4/debug.m4, m4/depends.m4:
 	  Large autotools update. Should fix James problems with
-	  unsubstituted
-	  @PKG_LDFLAGS@ in .pc files. Should also make it easier to port
-	  XFce4 to
-	  a non-POSIX (or even non-UNIX) plattform, using autoconf.
+	  unsubstituted @PKG_LDFLAGS@ in .pc files. Should also make it
+	  easier to port XFce4 to a non-POSIX (or even non-UNIX) plattform,
+	  using autoconf.
 
 2003-04-01 18:37  bmeurer
 
@@ -2555,10 +2493,9 @@
 2003-03-18 22:33  xfce
 
 	* ChangeLog, aclocal.m4, configure, ltcf-c.sh, ltconfig, ltmain.sh:
-	  Update ChangeLog
-	  Update build scripts (ie rerun autogen.sh)
-	  Update xfwm4's microdeck theme
-	  Remove 1 pix border arround xffm menu bar
+	  Update ChangeLog Update build scripts (ie rerun autogen.sh)
+	  Update xfwm4's microdeck theme Remove 1 pix border arround xffm
+	  menu bar
 
 2003-03-15 10:07  bmeurer
 
