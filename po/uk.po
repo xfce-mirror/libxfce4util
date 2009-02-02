@@ -103,8 +103,7 @@ msgstr ""
 "\n"
 "З цією програмою ви мали отримати копію ліцензії GNU General Public "
 "License;\n"
-"якщо це не так, напишіть Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"якщо це не так, напишіть Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: libxfce4util/xfce-license.c:70
@@ -138,4 +137,3 @@ msgstr ""
 "разом з цією бібліотекою, якщо ж ні, напишіть для\n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-

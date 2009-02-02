@@ -1,3 +1,28 @@
+2009-01-31 17:38  erenturkay
+
+	* po/ChangeLog, po/tr.po:
+	  Turkish translation update by Gokmen Gorgen and Samed Beyribey
+
+2009-01-26 20:39  maximilian
+
+	* po/ChangeLog, po/ca.po, po/fr.po, po/uk.po:
+	  Translations updates - ca fr uk
+
+2009-01-25 16:34  omaciel
+
+	* po/ChangeLog, po/pt_BR.po:
+	  Updated Brazilian Portuguese translation.
+
+2009-01-25 08:10  jari
+
+	* po/ChangeLog, po/fi.po:
+	  Update Finnish translations.
+
+2009-01-25 01:00  stephan
+
+	* ChangeLog, NEWS:
+	  Update NEWS, ChangeLog
+
 2009-01-25 00:33  jannis
 
 	* configure.in.in:

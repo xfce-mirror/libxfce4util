@@ -14,7 +14,7 @@ m4_define([libxfce4util_verinfo], [5:1:1])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [5])
 m4_define([libxfce4util_version_micro], [99])
-m4_define([libxfce4util_version_nano], [1])   dnl leave this empty to have no nano version
+m4_define([libxfce4util_version_nano], [2])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version_build], [r@REVISION@])
 m4_define([libxfce4util_version_tag], [])
 m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano()])ifelse(libxfce4util_version_tag(), [svn], [libxfce4util_version_tag()-libxfce4util_version_build()], [])])
@@ -22,7 +22,7 @@ m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_ver
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
 dnl **************************************************************
-m4_define([xfce_version_string], [4.5.99.1])
+m4_define([xfce_version_string], [4.5.99.2])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
