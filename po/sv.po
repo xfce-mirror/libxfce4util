@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 10:40+0100\n"
-"PO-Revision-Date: 2009-01-18 12:33+0100\n"
+"POT-Creation-Date: 2009-02-09 00:15+0100\n"
+"PO-Revision-Date: 2009-02-09 00:23+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Fel vid skapande av katalogen \"%s\": %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -53,11 +53,9 @@ msgstr ""
 "\n"
 " 1. Återdistribution av källkod måste bibehålla ovanstående copyrightnotis,\n"
 "    denna lista över villkor och följande friskrivningsklausul.\n"
-" 2. Återdistribution i binär form måste reproducera ovanstående "
-"copyrightnotis,\n"
+" 2. Återdistribution i binär form måste reproducera ovanstående copyrightnotis,\n"
 "    denna lista över villkor och följande friskrivningsklausul i\n"
-"    dokumentationen och/eller andra material som levererats med "
-"distributionen.\n"
+"    dokumentationen och/eller andra material som levererats med distributionen.\n"
 "\n"
 " THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR\n"
 " IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES\n"
@@ -70,7 +68,7 @@ msgstr ""
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -82,10 +80,8 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "Följande text är en informell översättning som enbart tillhandahålls i\n"
@@ -106,7 +102,7 @@ msgstr ""
 "med detta program. Om inte, skriv till Free Software Foundation, Inc.,\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -142,3 +138,19 @@ msgstr ""
 "tillsammans med detta bibliotek. Om inte, skriv till Free Software\n"
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, \n"
 "MA 02110-1301  USA.\n"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#, c-format
+msgid "pipe() failed: %s"
+msgstr "pipe() misslyckades: %s"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
+msgid "xfce_posix_signal_handler_init() must be called first"
+msgstr "xfce_posix_signal_handler_init() måste anropas först"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr "sigaction() misslyckades: %s\n"
+
