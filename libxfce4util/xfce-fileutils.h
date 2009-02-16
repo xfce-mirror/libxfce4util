@@ -28,8 +28,12 @@
 
 #include <glib.h>
 
+G_BEGIN_DECLS
+
 gboolean xfce_mkdirhier (const gchar *whole_path,
                          gulong       mode,
                          GError     **error);
+
+G_END_DECLS
 
 #endif /* !__XFCE_FILEUTILS_H__ */

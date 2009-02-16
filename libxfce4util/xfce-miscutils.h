@@ -30,6 +30,8 @@
 
 #include <libxfce4util/debug.h>
 
+G_BEGIN_DECLS
+
 const gchar* xfce_version_string (void) G_GNUC_PURE;
 
 const gchar* xfce_get_homedir    (void) G_GNUC_PURE;
@@ -93,5 +95,7 @@ void    xfce_unsetenv         (const gchar *name);
 
 gchar*  xfce_expand_variables (const gchar *command,
                                gchar      **envp) G_GNUC_MALLOC;
+
+G_END_DECLS
 
 #endif	/* __XFCE_MISCUTILS_H__ */

@@ -26,6 +26,8 @@
 #ifndef __XFCE_RESOURCE_H__
 #define __XFCE_RESOURCE_H__
 
+G_BEGIN_DECLS
+
 /**
  * XfceResourceType:
  * @XFCE_RESOURCE_DATA   : where applications store data.
@@ -73,5 +75,7 @@ void    xfce_resource_pop_path      (XfceResourceType type);
 gchar*  xfce_resource_save_location (XfceResourceType type,
                                      const gchar     *relpath,
                                      gboolean         create) G_GNUC_MALLOC;
+
+G_END_DECLS
 
 #endif /* !__XFCE_RESOURCE_H__ */

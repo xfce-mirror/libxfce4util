@@ -1,3 +1,7 @@
+4.x.xx
+======
+- Add missing C++ wrappers in header files (patch by Jens Luedicke).
+
 4.5.99.2
 ========
 - Updated translations: Gokmen Gorgen and Samed Beyribey (tr),  
