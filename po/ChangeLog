@@ -1,3 +1,9 @@
+2009-02-20  Maximilian Schleiss <maximilian@xfce.org>
+
+	* gl.po: Galician translation update (Leandro Regueiro)
+	* pt_PT.po: European Portuguese translation update (Nuno Miguel)
+	* zh_CN, LINGUAS: Simplified Chinese translation added (Chris K. Zhang)
+
 2009-02-13 Og Maciel <ogmaciel@gnome.org>
 
 	* pt_BR.po: Updated Brazilian Portuguese translation.
