@@ -1,12 +1,13 @@
-4.x.xx
+4.6.0
 ======
 - Add missing C++ wrappers in header files (patch by Jens Luedicke).
-
-4.5.99.2
-========
-- Updated translations: Gokmen Gorgen and Samed Beyribey (tr),  
-  Jari Rahkonen (fi), Og Maciel (pt_BR), Carles Muñoz Gorriz (ca), 
-  Maximilian Schleiss (fr), Dimitri Nikitin (uk)
+- Updated translations: Carles Muñoz Gorriz (ca), Enrico Tröger (de), 
+  Jeff Bailes (en_GB), Abel Martín (es), Jari Rahkonen (fi), 
+  Maximilian Schleiss (fr), Leandro Regueiro (gl), Andhika Padmawan (id),
+  Masato Hashimoto (ja), Terje Uriansrud (nb_NO), Szymon Kałasz (pl),
+  Og Maciel (pt_BR), Nuno Miguel (pt_PT), Daniel Nylander (sv), 
+  Gokmen Gorgen and Samed Beyribey (tr), Dimitri Nikitin (uk), 
+  Chris K. Zhang (zh_CN)
 
 4.5.99.1
 ========

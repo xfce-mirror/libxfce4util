@@ -1,3 +1,58 @@
+2009-02-22 12:42  mmassonnet
+
+	* po/ChangeLog, po/ja.po:
+	  update japanese translation
+
+2009-02-22 10:28  mmassonnet
+
+	* po/ChangeLog, po/LINGUAS, po/ro.po:
+	  update translations
+
+2009-02-20 23:58  maximilian
+
+	* po/ChangeLog, po/LINGUAS, po/gl.po, po/pt_PT.po, po/zh_CN.po:
+	  Translations Updates - ca es gl id it pt_PT zh_CN
+
+2009-02-16 18:17  nick
+
+	* NEWS, libxfce4util/xfce-fileutils.h,
+	  libxfce4util/xfce-miscutils.h, libxfce4util/xfce-resource.h:
+	  Add missing C++ wrappers in header files (patch by Jens
+	  Luedicke).
+
+2009-02-14 00:19  omaciel
+
+	* po/ChangeLog, po/POTFILES.in, po/pt_BR.po:
+	  Updated Brazilian Portuguese translation.
+
+2009-02-09 00:43  eulex
+
+	* po/ChangeLog, po/sv.po:
+	  xfprint/trunk/po: * sv.po: Swedish translation update (Daniel
+	  Nylander) xfce4-settings/trunk/po: * sv.po: Swedish translation
+	  update (Daniel Nylander) xfce4-mixer/trunk/po: * sv.po: Swedish
+	  translation update (Daniel Nylander) squeeze/trunk/po: * sv.po:
+	  Swedish translation update (Daniel Nylander)
+	  libxfce4util/trunk/po: * sv.po: Swedish translation update
+	  (Daniel Nylander) libxfce4ui/trunk/po: * sv.po: Swedish
+	  translation update (Daniel Nylander)
+
+2009-02-08 08:20  maximilian
+
+	* po/ChangeLog, po/de.po, po/id.po:
+	  Translations udaptes - de id ja nb pl zh_CN
+
+2009-02-03 21:07  maximilian
+
+	* po/ChangeLog, po/en_GB.po, po/es.po:
+	  Translations updates - en_GB es
+
+2009-02-02 23:23  stephan
+
+	* ChangeLog, NEWS, configure.in.in, po/cs.po, po/da.po, po/fi.po,
+	  po/fr.po, po/pt_BR.po, po/tr.po, po/uk.po:
+	  Bump Version number Update NEWS Update ChangeLog
+
 2009-01-31 17:38  erenturkay
 
 	* po/ChangeLog, po/tr.po:
