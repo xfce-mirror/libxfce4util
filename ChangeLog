@@ -1,6 +1,14 @@
-2009-02-24  stephan
+2008-02-24 00:43  stephan
 
-	* :==== Xfce 4.6.0 Released! ====
+	* ChangeLog, po/ro.po:
+	  ==== Xfce 4.6.0 Released! ====
+
+2009-02-24 00:28  stephan
+
+	* ChangeLog, NEWS, configure.in.in, po/de.po, po/en_GB.po,
+	  po/es.po, po/gl.po, po/id.po, po/ja.po, po/pt_BR.po, po/pt_PT.po,
+	  po/sv.po:
+	  Update .po files Update ChangeLog Update version info Update NEWS
 
 2009-02-22 12:42  mmassonnet
 
