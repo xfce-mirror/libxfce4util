@@ -1,3 +1,7 @@
+4.6.1
+======
+- Updated translations: Abel Martín (es), Masato Hashimoto (ja), Leandro Regueiro (gl), Alan Pepelko (sl), Piotr Sokół (po), Mișu Moldovan (ro)
+
 4.6.0
 ======
 - Add missing C++ wrappers in header files (patch by Jens Luedicke).
