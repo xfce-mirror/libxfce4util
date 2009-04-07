@@ -1,4 +1,60 @@
-2008-02-24 00:43  stephan
+2009-04-07 20:19  stephan
+
+	* NEWS, configure.in.in:
+	  === Xfce 4.6.1 Released ===
+
+2009-03-29 22:03  maximilian
+
+	* po/ChangeLog, po/es.po:
+	  Translations updates - es it ku
+
+2009-03-19 15:02  hashimo
+
+	* po/ChangeLog, po/ja.po:
+	  * ja.po: Japanese translation update (Masato Hashimoto) * ja.po:
+	  Japanese translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto) * ja.po: Japanese
+	  translation update (Masato Hashimoto)
+
+2009-03-14 14:55  maximilian
+
+	* po/ChangeLog, po/gl.po:
+	  Translations updates - da es fr gl it nn
+
+2009-03-05 14:52  mmassonnet
+
+	* po/ChangeLog, po/LINGUAS, po/nb.po, po/nb_NO.po, po/pt.po,
+	  po/pt_PT.po:
+	  Renamed pt_PT to pt and nb_NO to nb (bug #4574)
+
+2009-03-03 20:54  maximilian
+
+	* po/ChangeLog, po/LINGUAS, po/sl.po:
+	  Translations updates - sl it
+
+2009-03-01 22:47  maximilian
+
+	* po/ChangeLog, po/es.po, po/pl.po:
+	  Translations updates - es pl uk
+
+2009-02-24 00:46  stephan
+
+	* ChangeLog:
+	  Update ChangeLog
+
+2009-02-24 00:43  stephan
 
 	* ChangeLog, po/ro.po:
 	  ==== Xfce 4.6.0 Released! ====
