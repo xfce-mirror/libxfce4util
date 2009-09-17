@@ -1,4 +1,6 @@
-## Process this file with automake to produce Makefile.in
+# Process this file with automake to produce Makefile.in
+# 
+# vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
 
 AUTOMAKE_OPTIONS = 1.8
 
@@ -54,3 +56,10 @@ include $(top_srcdir)/gtk-doc.make
 EXTRA_DIST +=						\
 	version.xml.in
 
+if MAINTAINER_MODE
+%.1: %.xml
+	xsltproc -nonet http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
+endif
+
+# required for gtk-doc
+dist-hook: all
