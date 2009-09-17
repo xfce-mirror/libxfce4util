@@ -14,10 +14,10 @@ m4_define([libxfce4util_verinfo], [5:1:1])
 m4_define([libxfce4util_version_major], [4])
 m4_define([libxfce4util_version_minor], [7])
 m4_define([libxfce4util_version_micro], [0])
-m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
+m4_define([libxfce4util_version_nano], [git])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version_build], [r@REVISION@])
 m4_define([libxfce4util_version_tag], [])
-m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano()])ifelse(libxfce4util_version_tag(), [svn], [libxfce4util_version_tag()-libxfce4util_version_build()], [])])
+m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano()])ifelse(libxfce4util_version_tag(), [git], [libxfce4util_version_tag()-libxfce4util_version_build()], [])])
 
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
@@ -32,7 +32,7 @@ dnl # YOU ARE DOING.
 dnl ********************************************
 dnl *** Full debug support for SVN snapshots ***
 dnl ********************************************
-m4_define([libxfce4util_debug_default], [ifelse(libxfce4util_version_tag(), [svn], [full], [minimum])])
+m4_define([libxfce4util_debug_default], [ifelse(libxfce4util_version_tag(), [git], [full], [minimum])])
 
 dnl ***************************
 dnl *** Initialize autoconf ***
