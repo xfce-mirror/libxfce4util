@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-25 11:27+0200\n"
+"POT-Creation-Date: 2009-01-24 10:40+0100\n"
 "PO-Revision-Date: 2009-07-25 11:32+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at gnome dot hu>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: ../libxfce4util/xfce-fileutils.c:153
+#: libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Hiba a(z) „%s” könyvtár létrehozása során: %s"
 
-#: ../libxfce4util/xfce-license.c:33
+#: libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -75,7 +75,7 @@ msgstr ""
 "EGYEBET), AKKOR IS, HA AZ ILYEN\n"
 " KÁR LEHETŐSÉGÉRE FELHÍVTÁK A FIGYELMET.\n"
 
-#: ../libxfce4util/xfce-license.c:55
+#: libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -106,7 +106,7 @@ msgstr ""
 "ha nem kapta meg, írjon a Free Software Foundation Inc.-nek.\n"
 "Levélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: ../libxfce4util/xfce-license.c:70
+#: libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -138,18 +138,11 @@ msgstr ""
 "ha nem kapta meg, írjon a Free Software Foundation Inc.-nek.\n"
 "Levélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:132
-#, c-format
-msgid "pipe() failed: %s"
-msgstr "A pipe() hívás meghiúsult: %s"
+#~ msgid "pipe() failed: %s"
+#~ msgstr "A pipe() hívás meghiúsult: %s"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:205
-#, c-format
-msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "először az xfce_posix_signal_handler_init() függvényt kell meghívni"
+#~ msgid "xfce_posix_signal_handler_init() must be called first"
+#~ msgstr "először az xfce_posix_signal_handler_init() függvényt kell meghívni"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:231
-#, c-format
-msgid "sigaction() failed: %s\n"
-msgstr "a sigaction() meghiúsult: %s\n"
-
+#~ msgid "sigaction() failed: %s\n"
+#~ msgstr "a sigaction() meghiúsult: %s\n"
