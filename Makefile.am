@@ -23,7 +23,15 @@ EXTRA_DIST =								\
 	THANKS								\
 	TODO								\
 	gtk-doc.make							\
+	intltool-extract.in						\
+	intltool-merge.in						\
+	intltool-update.in						\
 	libxfce4util.spec
+
+DISTCLEANFILES =							\
+	intltool-extract						\
+	intltool-merge							\
+	intltool-update	
 
 DISTCHECK_CONFIGURE_FLAGS =						\
 	--enable-gtk-doc
