@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 typedef void (*XfcePosixSignalHandler)(gint signal, gpointer user_data);
 
 gboolean xfce_posix_signal_handler_init(GError **error);
-void xfce_posix_signal_handler_shutdown();
+void xfce_posix_signal_handler_shutdown(void);
 
 gboolean xfce_posix_signal_handler_set_handler(gint signal,
                                                XfcePosixSignalHandler handler,
