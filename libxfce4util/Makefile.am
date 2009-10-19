@@ -13,7 +13,8 @@ INCLUDES =								\
 	-DG_LOG_DOMAIN=\"libxfce4util\"					\
 	-DKIOSKDIR=\"$(sysconfdir)/xdg/xfce4/kiosk\"			\
 	-DKIOSKDEF=\"ALL\"						\
-	-DLIBXFCE4UTIL_COMPILATION
+	-DLIBXFCE4UTIL_COMPILATION					\
+	$(PLATFORM_CPPFLAGS)
 
 lib_LTLIBRARIES =							\
 	libxfce4util.la
@@ -71,13 +72,15 @@ libxfce4util_la_SOURCES =						\
 	xfce-utf8.c
 
 libxfce4util_la_CFLAGS = 						\
-	$(GOBJECT_CFLAGS)
+	$(GOBJECT_CFLAGS)						\
+	$(PLATFORM_CFLAGS)
 
 libxfce4util_la_LDFLAGS =						\
 	-export-dynamic							\
 	-version-info $(LIBXFCE4UTIL_VERINFO)				\
 	-export-symbols-regex "^[^_].*"					\
-	-no-undefined
+	-no-undefined							\
+	$(PLATFORM_LDFLAGS)
 
 libxfce4util_la_LIBADD =						\
 	$(GOBJECT_LIBS)
