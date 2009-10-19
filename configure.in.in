@@ -30,7 +30,7 @@ dnl # YOU ARE DOING.
 
 
 dnl ********************************************
-dnl *** Full debug support for SVN snapshots ***
+dnl *** Full debug support for GIT snapshots ***
 dnl ********************************************
 m4_define([libxfce4util_debug_default], [ifelse(libxfce4util_version_tag(), [git], [full], [minimum])])
 
@@ -52,7 +52,8 @@ dnl ***************************
 LIBXFCE4UTIL_VERSION=libxfce4util_version()
 AM_INIT_AUTOMAKE([libxfce4util], [$LIBXFCE4UTIL_VERSION])
 AM_CONFIG_HEADER([config.h])
-AM_MAINTAINER_MODE
+AM_MAINTAINER_MODE()
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 dnl **************************
 dnl *** Libtool versioning ***
@@ -100,7 +101,7 @@ dnl ***************************************
 AC_HEADER_STDC()
 AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
                   signal.h sys/stat.h sys/types.h sys/utsname.h \
-                  sys/wait.h time.h unistd.h])
+                  sys/wait.h time.h unistd.h varargs.h])
 AC_CHECK_FUNCS([gethostname getpwnam setenv setlocale strdup unsetenv])
 
 dnl ******************************
@@ -120,7 +121,7 @@ GTK_DOC_CHECK([1.0])
 
 dnl ****************************************************************************
 dnl *** Check for a broken putenv(3) implementation that requires strings    ***
-dnl *** to be malloc'd and not freed after a successfully call to putenv(3). ***
+dnl *** to be malloced and not freed after a successfully call to putenv(3). ***
 dnl *** Solaris is known to have such an implementation, also glibc seems to ***
 dnl *** be hit by this problem.                                              ***
 dnl ****************************************************************************
@@ -150,66 +151,18 @@ AC_MSG_RESULT([$with_broken_putenv])
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
-AC_ARG_ENABLE([debug],
-AC_HELP_STRING([--enable-debug=@<:@no/minimum/yes@:>@], [Turn on debugging @<:@default=libxfce4util_debug_default@:>@]),
-  [], [enable_debug=libxfce4util_debug_default])
-AC_MSG_CHECKING([whether to enable debugging support])
-if test x"$enable_debug" = x"yes" -o x"$enable_debug" = x"full"; then
-  if test x"$GCC" = x"yes"; then
-    CFLAGS="$CFLAGS -O0 -g3 -Werror -Wall"
-  fi
-else
-  CFLAGS="$CFLAGS -DG_DISABLE_CAST_CHECKS"
-
-  if test x"$enable_debug" = x"no"; then
-    CFLAGS="$CFLAGS -DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"
-  fi
-fi
-AC_MSG_RESULT([$enable_debug])
+XDT_FEATURE_DEBUG([libxfce4util_debug_default])
 
 dnl **************************************
 dnl *** Check for linker optimizations ***
 dnl **************************************
-AC_MSG_CHECKING([whether $LD accepts -O1])
-case `$LD -O1 -v 2>&1 </dev/null` in
-*GNU* | *'with BFD'*)
-  LDFLAGS="$LDFLAGS -Wl,-O1"
-  AC_MSG_RESULT([yes])
-  ;;
-*)
-  AC_MSG_RESULT([no])
-  ;;
-esac
+XDT_FEATURE_LINKER_OPTS()
 
-dnl ****************************************
-dnl *** Check for ELF visibility support ***
-dnl ****************************************
-AC_ARG_ENABLE([visibility], AC_HELP_STRING([--disable-visibility], [Don't use ELF visibility attributes]), [], [enable_visibility=yes])
-have_gnuc_visibility=no
-if test x"$enable_visibility" != x"no"; then
-  dnl Check whether the compiler supports the visibility attribute
-  save_CFLAGS="$CFLAGS"
-  CFLAGS="$CFLAGS -Wall -Werror"
-  AC_MSG_CHECKING([whether $CC supports the GNUC visibility attribute])
-  AC_COMPILE_IFELSE(AC_LANG_SOURCE(
-  [
-    void __attribute__ ((visibility("default"))) test_default (void) {}
-    void __attribute__ ((visibility("hidden"))) test_hidden (void) {}
-    int main (int argc, char **argv) { test_default (); test_hidden (); return 0; }
-  ]),
-  [
-    have_gnuc_visibility=yes
-    AC_MSG_RESULT([yes])
-  ],
-  [
-    AC_MSG_RESULT([no])
-  ])
-  CFLAGS="$save_CFLAGS"
-fi
-if test x"$have_gnuc_visibility" = x"yes"; then
-  CPPFLAGS="$CPPFLAGS -DHAVE_GNUC_VISIBILITY"
-fi
-AM_CONDITIONAL([HAVE_GNUC_VISIBILITY], [test x"$have_gnuc_visibility" = x"yes"])
+dnl *************************************
+dnl *** Compensate for broken gtk-doc ***
+dnl *************************************
+XDT_SUPPORTED_FLAGS([GTK_DOC_EXTRA_CFLAGS], [-Wno-sign-compare])
+AC_SUBST([GTK_DOC_EXTRA_CFLAGS])
 
 dnl *****************************
 dnl *** Generate output files ***

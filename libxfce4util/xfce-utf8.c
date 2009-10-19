@@ -25,7 +25,6 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -94,8 +93,3 @@ xfce_utf8_strndup (const gchar *src,
 
   return g_strndup (src, s - src);
 }
-
-
-
-#define __XFCE_UTF8_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

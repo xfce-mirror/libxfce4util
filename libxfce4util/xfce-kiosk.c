@@ -50,7 +50,6 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -251,18 +250,18 @@ xfce_kiosk_init (void)
   int            gidsetlen;
   int            n;
   int            m;
-  time_t         time;
+  time_t         timestamp;
 
   G_LOCK (kiosk_lock);
 
   /* reload kioskrc */
-  time = mtime (KIOSKRC);
-  if (time > kiosktime || kioskdef == NULL)
+  timestamp = mtime (KIOSKRC);
+  if (timestamp > kiosktime || kioskdef == NULL)
     {
       if (kioskrc != NULL)
         xfce_rc_close (kioskrc);
 
-      kiosktime = time;
+      kiosktime = timestamp;
       kioskrc = xfce_rc_simple_open (KIOSKRC, TRUE);
       if (kioskrc != NULL)
         {
@@ -342,8 +341,3 @@ mtime (const gchar *path)
 
   return sb.st_mtime;
 }
-
-
-
-#define __XFCE_KIOSK_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

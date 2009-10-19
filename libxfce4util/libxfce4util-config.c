@@ -24,15 +24,9 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 
 const guint libxfce4util_major_version = LIBXFCE4UTIL_MAJOR_VERSION;
 const guint libxfce4util_minor_version = LIBXFCE4UTIL_MINOR_VERSION;
 const guint libxfce4util_micro_version = LIBXFCE4UTIL_MICRO_VERSION;
-
-
-
-#define __LIBXFCE4UTIL_CONFIG_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

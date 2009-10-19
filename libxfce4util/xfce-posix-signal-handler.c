@@ -42,21 +42,20 @@
 #include <glib.h>
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 #define SIGNAL_PIPE_READ   __signal_pipe[0]
 #define SIGNAL_PIPE_WRITE  __signal_pipe[1]
 
 typedef struct
 {
-    gint signal;
+    gint signal_id;
     XfcePosixSignalHandler handler;
     gpointer user_data;
     struct sigaction old_sa;
 } XfcePosixSignalHandlerData;
 
 static gboolean __inited = FALSE;
-static int __signal_pipe[2] = { -1, -1 };
+static gint __signal_pipe[2] = { -1, -1 };
 static GHashTable *__handlers = NULL;
 static GIOChannel *__signal_io = NULL;
 static guint __io_watch_id = 0;
@@ -68,7 +67,7 @@ xfce_posix_signal_handler_data_free(XfcePosixSignalHandlerData *hdata)
     if(!hdata)
         return;
     
-    sigaction(hdata->signal, &hdata->old_sa, NULL);
+    sigaction(hdata->signal_id, &hdata->old_sa, NULL);
     g_free(hdata);
 }
 
@@ -77,26 +76,26 @@ xfce_posix_signal_handler_pipe_io(GIOChannel *source,
                                   GIOCondition condition,
                                   gpointer data)
 {
-    int signal = 0;
+    gint signal_id = 0;
     GError *error = NULL;
     gsize bin = 0;
     XfcePosixSignalHandlerData *hdata;
     
-    if(G_IO_STATUS_NORMAL == g_io_channel_read_chars(source, (gchar *)&signal,
-                                                     sizeof(signal), &bin,
+    if(G_IO_STATUS_NORMAL == g_io_channel_read_chars(source, (gchar *)&signal_id,
+                                                     sizeof(signal_id), &bin,
                                                      &error)
-       && bin == sizeof(signal))
+       && bin == sizeof(signal_id))
     {
-        hdata = g_hash_table_lookup(__handlers, GINT_TO_POINTER(signal));
+        hdata = g_hash_table_lookup(__handlers, GINT_TO_POINTER(signal_id));
         if(hdata)
-            hdata->handler(signal, hdata->user_data);
+            hdata->handler(signal_id, hdata->user_data);
     } else {
         if(error) {
             g_critical("Signal pipe read failed: %s\n", error->message);
             g_error_free(error);
         } else {
             g_critical("Short read from signal pipe (expected %d, got %d)\n",
-                       (int)sizeof(signal), (int)bin);
+                       (int)sizeof(signal_id), (int)bin);
         }
     }
     
@@ -104,9 +103,9 @@ xfce_posix_signal_handler_pipe_io(GIOChannel *source,
 }
 
 static void
-xfce_posix_signal_handler(int signal)
+xfce_posix_signal_handler(gint signal_id)
 {
-    write(SIGNAL_PIPE_WRITE, &signal, sizeof(signal));
+    write(SIGNAL_PIPE_WRITE, &signal_id, sizeof(signal_id));
 }
 
 
@@ -155,7 +154,7 @@ xfce_posix_signal_handler_init(GError **error)
  * and restores all default signal handlers.
  **/
 void
-xfce_posix_signal_handler_shutdown()
+xfce_posix_signal_handler_shutdown(void)
 {
     if(G_UNLIKELY(!__inited))
         return;
@@ -178,7 +177,7 @@ xfce_posix_signal_handler_shutdown()
 
 /**
  * xfce_posix_signal_handler_set_handler:
- * @signal: A POSIX signal id number.
+ * @signal_id: A POSIX signal id number.
  * @handler: A callback function.
  * @user_data: Arbitrary data that will be passed to @handler.
  * @error: Location of a #GError to store any possible errors.
@@ -191,7 +190,7 @@ xfce_posix_signal_handler_shutdown()
  *          @error will be set.
  **/
 gboolean
-xfce_posix_signal_handler_set_handler(gint signal,
+xfce_posix_signal_handler_set_handler(gint signal_id,
                                       XfcePosixSignalHandler handler,
                                       gpointer user_data,
                                       GError **error)
@@ -209,15 +208,15 @@ xfce_posix_signal_handler_set_handler(gint signal,
     
     if(!handler) {
         g_warning("NULL signal handler supplied; removing existing handler");
-        xfce_posix_signal_handler_restore_handler(signal);
+        xfce_posix_signal_handler_restore_handler(signal_id);
         return TRUE;
     }
     
-    if(g_hash_table_lookup(__handlers, GINT_TO_POINTER(signal)))
-        xfce_posix_signal_handler_restore_handler(signal);
+    if(g_hash_table_lookup(__handlers, GINT_TO_POINTER(signal_id)))
+        xfce_posix_signal_handler_restore_handler(signal_id);
     
     hdata = g_new0(XfcePosixSignalHandlerData, 1);
-    hdata->signal = signal;
+    hdata->signal_id = signal_id;
     hdata->handler = handler;
     hdata->user_data = user_data;
     
@@ -225,7 +224,7 @@ xfce_posix_signal_handler_set_handler(gint signal,
     sa.sa_handler = xfce_posix_signal_handler;
     sa.sa_flags = SA_RESTART;
     
-    if(sigaction(signal, &sa, &hdata->old_sa)) {
+    if(sigaction(signal_id, &sa, &hdata->old_sa)) {
         if(error) {
             g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
                         _("sigaction() failed: %s\n"), strerror(errno));
@@ -234,27 +233,22 @@ xfce_posix_signal_handler_set_handler(gint signal,
         return FALSE;
     }
     
-    g_hash_table_insert(__handlers, GINT_TO_POINTER(signal), hdata);
+    g_hash_table_insert(__handlers, GINT_TO_POINTER(signal_id), hdata);
     
     return TRUE;
 }
 
 /**
  * xfce_posix_signal_handler_restore_handler:
- * @signal: A POSIX signal id number.
+ * @signal_id: A POSIX signal id number.
  *
  * Restores the default handler for @signal.
  **/
 void
-xfce_posix_signal_handler_restore_handler(gint signal)
+xfce_posix_signal_handler_restore_handler(gint signal_id)
 {
     if(G_UNLIKELY(!__inited))
         return;
     
-    g_hash_table_remove(__handlers, GINT_TO_POINTER(signal));
+    g_hash_table_remove(__handlers, GINT_TO_POINTER(signal_id));
 }
-
-
-
-#define __XFCE_POSIX_SIGNAL_HANDLER_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

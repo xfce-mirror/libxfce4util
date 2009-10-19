@@ -39,7 +39,6 @@
 
 #include <libxfce4util/xfce-private.h>
 #include <libxfce4util/xfce-rc-private.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 #ifndef PATH_MAX
@@ -73,7 +72,7 @@ static gboolean simple_parse_line (gchar        *line,
                                    gchar       **value,
                                    gchar       **locale);
 static gchar*   simple_escape     (gchar        *buffer,
-                                   gsize         size,
+                                   gssize        size,
                                    const gchar  *string);
 static gboolean simple_write      (XfceRcSimple *simple,
                                    const gchar  *filename);
@@ -431,7 +430,7 @@ simple_parse_line (gchar  *line,
 
 
 static gchar*
-simple_escape (gchar *buffer, gsize size, const gchar *string)
+simple_escape (gchar *buffer, gssize size, const gchar *string)
 {
   const gchar *s;
   gchar       *p;
@@ -1078,8 +1077,3 @@ _xfce_rc_simple_write_entry (XfceRc      *rc,
   if (G_LIKELY (result != NULL))
     simple->dirty = TRUE;
 }
-
-
-
-#define __XFCE_RC_SIMPLE_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

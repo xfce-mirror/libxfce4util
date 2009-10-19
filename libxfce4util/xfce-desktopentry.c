@@ -42,7 +42,6 @@
 
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -597,8 +596,3 @@ xfce_desktop_entry_has_translated_entry (XfceDesktopEntry *desktop_entry,
   
   return TRUE;
 }
-
-
-
-#define __XFCE_DESKTOPENTRY_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

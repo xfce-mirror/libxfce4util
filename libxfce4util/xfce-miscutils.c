@@ -45,7 +45,7 @@
 #endif
 #ifdef HAVE_STAD_ARG_H
 #include <stdarg.h>
-#elif HAVE_VARARGS_H
+#elif defined (HAVE_VARARGS_H)
 #include <varargs.h>
 #endif
 #include <stdio.h>
@@ -60,7 +60,6 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 #define XFCE4DIR		".xfce4"
@@ -135,7 +134,7 @@ internal_get_file_r (const gchar *dir,
   if ((n = g_strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
     return NULL;
 
-  if (g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)
+  if ((size_t) g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)
     return NULL;
 
   return buffer;
@@ -609,8 +608,3 @@ xfce_expand_variables (const gchar *command,
 
   return g_strdup (buffer);
 }
-
-
-
-#define __XFCE_MISCUTILS_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

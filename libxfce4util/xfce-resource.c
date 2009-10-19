@@ -31,7 +31,6 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -42,7 +41,7 @@
 
 
 
-#define TYPE_VALID(t) ((t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
+#define TYPE_VALID(t) (((gint) t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
 
 
 
@@ -130,7 +129,7 @@ _res_remove_trailing_slashes (GList *list)
   GList       *ll = NULL;
   GList       *lp;
   const gchar *path;
-  gint         len;
+  gsize        len;
 
   for (lp = list; lp != NULL; lp = lp->next)
     {
@@ -796,8 +795,3 @@ xfce_resource_save_location (XfceResourceType type,
 
   return path;
 }
-
-
-
-#define __XFCE_RESOURCE_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

@@ -45,7 +45,6 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -81,7 +80,7 @@ xfce_localize_path_internal (gchar       *buffer,
   const gchar       *lang;
   gchar             *langext;
   gchar             *p;
-  gint               n;
+  guint              n;
 
 #ifdef HAVE_SETLOCALE
   lang = setlocale (LC_MESSAGES, NULL);
@@ -179,6 +178,12 @@ xfce_textdomain (const gchar *package,
  *
  * Deprecated:4.4: Use g_strip_context() instead.
  **/
+#ifdef XFCE_DISABLE_DEPRECATED
+/* work around compiler warning */
+G_CONST_RETURN gchar *xfce_strip_context (const gchar *msgid,
+                                          const gchar *msgval);
+#endif
+
 G_CONST_RETURN gchar*
 xfce_strip_context (const gchar *msgid,
                     const gchar *msgval)
@@ -319,7 +324,7 @@ xfce_get_path_localized (gchar       *dst,
   gchar             *d = dst;
   gchar             *langext;
   gchar             *buffer;
-  gint               n;
+  guint              n;
 
   g_return_val_if_fail (paths != NULL, NULL);
   g_return_val_if_fail (dst != NULL, NULL);
@@ -519,8 +524,3 @@ xfce_locale_match (const gchar *locale1,
 
   return XFCE_LOCALE_NO_MATCH;
 }
-
-
-
-#define __XFCE_I18N_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>

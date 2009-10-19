@@ -45,7 +45,8 @@ GTKDOC_CFLAGS = 					\
 	-I$(top_srcdir) 				\
 	-I$(top_builddir) 				\
 	$(CPPFLAGS)					\
-	$(GOBJECT_CFLAGS)
+	$(GOBJECT_CFLAGS) 				\
+	$(GTK_DOC_EXTRA_CFLAGS)
 
 GTKDOC_LIBS =  						\
 	$(top_builddir)/libxfce4util/libxfce4util.la

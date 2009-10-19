@@ -34,7 +34,7 @@
 #include <libxfce4util/libxfce4util.h>
 
 
-static void
+G_GNUC_NORETURN static void
 usage (gboolean error)
 {
   FILE *fp = error ? stderr : stdout;

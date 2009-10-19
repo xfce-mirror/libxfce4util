@@ -24,7 +24,6 @@
 #endif
 
 #include <libxfce4util/libxfce4util-private.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -109,8 +108,3 @@ xfce_get_license_text (XfceLicenseTextType license_type)
     default:                    return _(xfce_builtin_license_LGPL);
     }
 }
-
-
-
-#define __XFCE_LICENSE_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
