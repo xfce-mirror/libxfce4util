@@ -50,6 +50,7 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -341,3 +342,8 @@ mtime (const gchar *path)
 
   return sb.st_mtime;
 }
+
+
+
+#define __XFCE_KIOSK_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

@@ -31,6 +31,7 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -41,7 +42,7 @@
 
 
 
-#define TYPE_VALID(t) (((gint) t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
+#define TYPE_VALID(t) ((gint)(t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
 
 
 
@@ -795,3 +796,8 @@ xfce_resource_save_location (XfceResourceType type,
 
   return path;
 }
+
+
+
+#define __XFCE_RESOURCE_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

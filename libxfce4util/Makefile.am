@@ -13,8 +13,7 @@ INCLUDES =								\
 	-DG_LOG_DOMAIN=\"libxfce4util\"					\
 	-DKIOSKDIR=\"$(sysconfdir)/xdg/xfce4/kiosk\"			\
 	-DKIOSKDEF=\"ALL\"						\
-	-DLIBXFCE4UTIL_COMPILATION					\
-	$(PLATFORM_CPPFLAGS)
+	-DLIBXFCE4UTIL_COMPILATION
 
 lib_LTLIBRARIES =							\
 	libxfce4util.la
@@ -41,6 +40,8 @@ libxfce4util_built_public_sources =					\
 
 libxfce4util_built_sources =						\
 	$(libxfce4util_built_public_sources)				\
+	libxfce4util-alias.h						\
+	libxfce4util-aliasdef.c						\
 	libxfce4util-enum-types.c
 
 libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
@@ -72,15 +73,13 @@ libxfce4util_la_SOURCES =						\
 	xfce-utf8.c
 
 libxfce4util_la_CFLAGS = 						\
-	$(GOBJECT_CFLAGS)						\
-	$(PLATFORM_CFLAGS)
+	$(GOBJECT_CFLAGS)
 
 libxfce4util_la_LDFLAGS =						\
 	-export-dynamic							\
 	-version-info $(LIBXFCE4UTIL_VERINFO)				\
 	-export-symbols-regex "^[^_].*"					\
-	-no-undefined							\
-	$(PLATFORM_LDFLAGS)
+	-no-undefined
 
 libxfce4util_la_LIBADD =						\
 	$(GOBJECT_LIBS)
@@ -112,13 +111,21 @@ DISTCLEANFILES =							\
 BUILT_SOURCES =								\
 	$(libxfce4util_built_sources)
 
+if HAVE_GNUC_VISIBILITY
 TESTS =									\
 	abicheck.sh
+endif
+
+libxfce4util-alias.h: make-libxfce4util-alias.pl libxfce4util.symbols
+	$(PERL) $(srcdir)/make-libxfce4util-alias.pl < $(srcdir)/libxfce4util.symbols > libxfce4util-alias.h
+
+libxfce4util-aliasdef.c: make-libxfce4util-alias.pl libxfce4util.symbols
+	$(PERL) $(srcdir)/make-libxfce4util-alias.pl -def < $(srcdir)/libxfce4util.symbols > libxfce4util-aliasdef.c
 
 libxfce4util-enum-types.h: stamp-libxfce4util-enum-types.h
 	@true
 stamp-libxfce4util-enum-types.h: $(libxfce4util_headers) Makefile
-	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
+	( cd $(srcdir) && glib-mkenums \
 		--fhead "#ifndef __LIBXFCE4UTIL_ENUM_TYPES_H__\n#define __LIBXFCE4UTIL_ENUM_TYPES_H__\n#include <glib-object.h>\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
 		--vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define XFCE_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
@@ -129,12 +136,13 @@ stamp-libxfce4util-enum-types.h: $(libxfce4util_headers) Makefile
 	&& echo timestamp > $(@F)
 
 libxfce4util-enum-types.c: $(libxfce4util_headers) Makefile
-	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
-		--fhead "#include <libxfce4util/libxfce4util.h>\n" \
+	( cd $(srcdir) && glib-mkenums \
+		--fhead "#include <libxfce4util/libxfce4util.h>\n#include <libxfce4util/libxfce4util-alias.h>\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
 		--vprod "      { @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
 		--vtail "      { 0, NULL, NULL }\n    };\n    etype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n  return etype;\n}\n" \
+		--ftail "\n#define __LIBXFCE4UTIL_ENUM_TYPES_C__\n#include <libxfce4util/libxfce4util-aliasdef.c>\n" \
 		$(libxfce4util_headers) ) >> xgen-letc \
 	&& cp xgen-letc libxfce4util-enum-types.c \
 	&& rm -f xgen-letc
@@ -145,6 +153,9 @@ dist-hook: all
 
 EXTRA_DIST =								\
 	abicheck.sh							\
-	libxfce4util.symbols
+	libxfce4util.symbols						\
+	libxfce4util-alias.h						\
+	libxfce4util-aliasdef.c						\
+	make-libxfce4util-alias.pl
 
 # vi:set ts=8 sw=8 noet ai nocindent:

@@ -38,6 +38,7 @@
 #endif
 
 #include <libxfce4util/libxfce4util-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -155,3 +156,8 @@ xfce_mkdirhier (const gchar *whole_path,
 
   return retval;
 }
+
+
+
+#define __XFCE_FILEUTILS_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

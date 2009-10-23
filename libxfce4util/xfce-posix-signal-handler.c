@@ -42,6 +42,7 @@
 #include <glib.h>
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 #define SIGNAL_PIPE_READ   __signal_pipe[0]
 #define SIGNAL_PIPE_WRITE  __signal_pipe[1]
@@ -55,7 +56,7 @@ typedef struct
 } XfcePosixSignalHandlerData;
 
 static gboolean __inited = FALSE;
-static gint __signal_pipe[2] = { -1, -1 };
+static int __signal_pipe[2] = { -1, -1 };
 static GHashTable *__handlers = NULL;
 static GIOChannel *__signal_io = NULL;
 static guint __io_watch_id = 0;
@@ -252,3 +253,8 @@ xfce_posix_signal_handler_restore_handler(gint signal_id)
     
     g_hash_table_remove(__handlers, GINT_TO_POINTER(signal_id));
 }
+
+
+
+#define __XFCE_POSIX_SIGNAL_HANDLER_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

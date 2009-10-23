@@ -47,6 +47,7 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4util/xfce-private.h>
 #include <libxfce4util/xfce-rc-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -761,3 +762,8 @@ xfce_rc_write_list_entry (XfceRc      *rc,
   xfce_rc_write_entry (rc, key, list);
   g_free (list);
 }
+
+
+
+#define __XFCE_RC_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

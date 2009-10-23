@@ -24,6 +24,7 @@
 #endif
 
 #include <libxfce4util/libxfce4util-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -37,3 +38,8 @@ _xfce_i18n_init (void)
 {
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, NULL);
 }
+
+
+
+#define __LIBXFCE4UTIL_PRIVATE_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

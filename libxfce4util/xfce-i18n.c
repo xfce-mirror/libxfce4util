@@ -45,6 +45,7 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -178,12 +179,6 @@ xfce_textdomain (const gchar *package,
  *
  * Deprecated:4.4: Use g_strip_context() instead.
  **/
-#ifdef XFCE_DISABLE_DEPRECATED
-/* work around compiler warning */
-G_CONST_RETURN gchar *xfce_strip_context (const gchar *msgid,
-                                          const gchar *msgval);
-#endif
-
 G_CONST_RETURN gchar*
 xfce_strip_context (const gchar *msgid,
                     const gchar *msgval)
@@ -524,3 +519,8 @@ xfce_locale_match (const gchar *locale1,
 
   return XFCE_LOCALE_NO_MATCH;
 }
+
+
+
+#define __XFCE_I18N_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

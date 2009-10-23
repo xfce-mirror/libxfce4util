@@ -39,6 +39,7 @@
 
 #include <libxfce4util/xfce-private.h>
 #include <libxfce4util/xfce-rc-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 #ifndef PATH_MAX
@@ -1077,3 +1078,8 @@ _xfce_rc_simple_write_entry (XfceRc      *rc,
   if (G_LIKELY (result != NULL))
     simple->dirty = TRUE;
 }
+
+
+
+#define __XFCE_RC_SIMPLE_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

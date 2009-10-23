@@ -61,70 +61,71 @@ struct _XfceRc
 #define XFCE_RC_SIMPLE_CONST(obj) ((const XfceRcSimple *) (obj))
 
 
-void          _xfce_rc_init                (XfceRc           *rc);
+G_GNUC_INTERNAL void          _xfce_rc_init               (XfceRc       *rc);
 
-XfceRcSimple* _xfce_rc_simple_new          (XfceRcSimple     *shared,
-                                            const gchar      *filename,
-                                            gboolean          readonly);
-gboolean      _xfce_rc_simple_parse        (XfceRcSimple     *simple);
-void          _xfce_rc_simple_close        (XfceRc           *rc);
-void          _xfce_rc_simple_flush        (XfceRc           *rc);
-void          _xfce_rc_simple_rollback     (XfceRc           *rc);
-gboolean      _xfce_rc_simple_is_dirty     (const XfceRc     *rc) G_GNUC_CONST;
-gboolean      _xfce_rc_simple_is_readonly  (const XfceRc     *rc) G_GNUC_CONST;
-const gchar*  _xfce_rc_simple_get_filename (const XfceRc     *rc) G_GNUC_CONST;
-gchar**       _xfce_rc_simple_get_groups   (const XfceRc     *rc) G_GNUC_CONST;
-gchar**       _xfce_rc_simple_get_entries  (const XfceRc     *rc,
-                                            const gchar      *name) G_GNUC_CONST;
-void          _xfce_rc_simple_delete_group (XfceRc           *rc,
-                                            const gchar      *name,
-                                            gboolean          global);
-const gchar*  _xfce_rc_simple_get_group    (const XfceRc     *rc) G_GNUC_CONST;
-gboolean      _xfce_rc_simple_has_group    (const XfceRc     *rc,
-                                            const gchar      *name) G_GNUC_CONST;
-void          _xfce_rc_simple_set_group    (XfceRc           *rc,
-                                            const gchar      *name);
-void          _xfce_rc_simple_delete_entry (XfceRc           *rc,
-                                            const gchar      *key,
-                                            gboolean          global);
-gboolean      _xfce_rc_simple_has_entry    (const XfceRc     *rc,
-                                            const gchar      *key) G_GNUC_CONST;
-const gchar*  _xfce_rc_simple_read_entry   (const XfceRc     *rc,
-                                            const gchar      *key,
-                                            gboolean          translated) G_GNUC_CONST;
-void          _xfce_rc_simple_write_entry  (XfceRc           *rc,
-                                            const gchar      *key,
-                                            const gchar      *value);
+G_GNUC_INTERNAL XfceRcSimple* _xfce_rc_simple_new         (XfceRcSimple *shared,
+                                           const gchar  *filename,
+                                           gboolean      readonly);
+G_GNUC_INTERNAL gboolean      _xfce_rc_simple_parse       (XfceRcSimple *simple);
+G_GNUC_INTERNAL void          _xfce_rc_simple_close       (XfceRc       *rc);
+G_GNUC_INTERNAL void          _xfce_rc_simple_flush       (XfceRc       *rc);
+G_GNUC_INTERNAL void          _xfce_rc_simple_rollback    (XfceRc       *rc);
+G_GNUC_INTERNAL gboolean      _xfce_rc_simple_is_dirty    (const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL gboolean      _xfce_rc_simple_is_readonly (const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL const gchar*  _xfce_rc_simple_get_filename(const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL gchar**       _xfce_rc_simple_get_groups  (const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL gchar**       _xfce_rc_simple_get_entries (const XfceRc *rc,
+                                           const gchar  *name) G_GNUC_CONST;
+G_GNUC_INTERNAL void          _xfce_rc_simple_delete_group(XfceRc       *rc,
+                                           const gchar  *name,
+                                           gboolean      global);
+const gchar*  _xfce_rc_simple_get_group   (const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL gboolean      _xfce_rc_simple_has_group   (const XfceRc *rc,
+                                           const gchar  *name) G_GNUC_CONST;
+G_GNUC_INTERNAL void          _xfce_rc_simple_set_group   (XfceRc       *rc,
+                                           const gchar  *name);
+G_GNUC_INTERNAL void          _xfce_rc_simple_delete_entry(XfceRc       *rc,
+                                           const gchar  *key,
+                                           gboolean      global);
+G_GNUC_INTERNAL gboolean      _xfce_rc_simple_has_entry   (const XfceRc *rc,
+                                           const gchar  *key) G_GNUC_CONST;
+G_GNUC_INTERNAL const gchar*  _xfce_rc_simple_read_entry  (const XfceRc *rc,
+                                           const gchar  *key,
+                                           gboolean      translated) G_GNUC_CONST;
+G_GNUC_INTERNAL void          _xfce_rc_simple_write_entry (XfceRc       *rc,
+                                           const gchar  *key,
+                                           const gchar  *value);
 
-XfceRcConfig* _xfce_rc_config_new          (XfceResourceType  type,
-                                            const gchar      *resource,
-                                            gboolean          readonly);
-void          _xfce_rc_config_close        (XfceRc           *rc);
-void          _xfce_rc_config_flush        (XfceRc           *rc);
-void          _xfce_rc_config_rollback     (XfceRc           *rc);
-gboolean      _xfce_rc_config_is_dirty     (const XfceRc     *rc) G_GNUC_CONST;
-gboolean      _xfce_rc_config_is_readonly  (const XfceRc     *rc) G_GNUC_CONST;
-gchar**       _xfce_rc_config_get_groups   (const XfceRc     *rc) G_GNUC_CONST;
-gchar**       _xfce_rc_config_get_entries  (const XfceRc     *rc,
-                                            const gchar      *name) G_GNUC_CONST;
-void          _xfce_rc_config_delete_group (XfceRc           *rc,
-                                            const gchar      *name,
-                                            gboolean          global);
-const gchar*  _xfce_rc_config_get_group    (const XfceRc     *rc) G_GNUC_CONST;
-gboolean      _xfce_rc_config_has_group    (const XfceRc     *rc,
-                                            const gchar      *name) G_GNUC_CONST;
-void          _xfce_rc_config_set_group    (XfceRc           *rc,
-                                            const gchar      *name);
-void          _xfce_rc_config_delete_entry (XfceRc           *rc,
-                                            const gchar      *key,
-                                            gboolean          global);
-gboolean      _xfce_rc_config_has_entry    (const XfceRc     *rc,
-                                            const gchar      *key) G_GNUC_CONST;
-const gchar*  _xfce_rc_config_read_entry   (const XfceRc     *rc,
-                                            const gchar      *key,
-                                            gboolean          translated) G_GNUC_CONST;
-void          _xfce_rc_config_write_entry  (XfceRc           *rc,
-                                            const gchar      *key,
-                                            const gchar      *value);
+G_GNUC_INTERNAL XfceRcConfig* _xfce_rc_config_new         (XfceResourceType type,
+                                           const gchar  *resource,
+                                           gboolean      readonly);
+G_GNUC_INTERNAL void          _xfce_rc_config_close       (XfceRc       *rc);
+G_GNUC_INTERNAL void          _xfce_rc_config_flush       (XfceRc       *rc);
+G_GNUC_INTERNAL void          _xfce_rc_config_rollback    (XfceRc       *rc);
+G_GNUC_INTERNAL gboolean      _xfce_rc_config_is_dirty    (const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL gboolean      _xfce_rc_config_is_readonly (const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL gchar**       _xfce_rc_config_get_groups  (const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL gchar**       _xfce_rc_config_get_entries (const XfceRc *rc,
+                                           const gchar  *name) G_GNUC_CONST;
+G_GNUC_INTERNAL void          _xfce_rc_config_delete_group(XfceRc       *rc,
+                                           const gchar  *name,
+                                           gboolean      global);
+G_GNUC_INTERNAL const gchar*  _xfce_rc_config_get_group   (const XfceRc *rc) G_GNUC_CONST;
+G_GNUC_INTERNAL gboolean      _xfce_rc_config_has_group   (const XfceRc *rc,
+                                           const gchar  *name) G_GNUC_CONST;
+G_GNUC_INTERNAL void          _xfce_rc_config_set_group   (XfceRc       *rc,
+                                           const gchar  *name);
+G_GNUC_INTERNAL void          _xfce_rc_config_delete_entry(XfceRc       *rc,
+                                           const gchar  *key,
+                                           gboolean      global);
+G_GNUC_INTERNAL gboolean      _xfce_rc_config_has_entry   (const XfceRc *rc,
+                                           const gchar  *key) G_GNUC_CONST;
+G_GNUC_INTERNAL const gchar*  _xfce_rc_config_read_entry  (const XfceRc *rc,
+                                           const gchar  *key,
+                                           gboolean      translated) G_GNUC_CONST;
+G_GNUC_INTERNAL void          _xfce_rc_config_write_entry (XfceRc       *rc,
+                                           const gchar  *key,
+                                           const gchar  *value);
+
 
 #endif /* !__LIBXFCE4UTIL_XFCE_RC_PRIVATE_H__ */

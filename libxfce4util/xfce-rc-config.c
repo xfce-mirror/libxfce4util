@@ -33,6 +33,7 @@
 
 #include <libxfce4util/xfce-private.h>
 #include <libxfce4util/xfce-rc-private.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 
@@ -419,3 +420,8 @@ _xfce_rc_config_write_entry (XfceRc      *rc,
   if (!_xfce_rc_simple_is_readonly (XFCE_RC (config->save)))
     _xfce_rc_simple_write_entry (XFCE_RC (config->save), key, value);
 }
+
+
+
+#define __XFCE_RC_CONFIG_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>

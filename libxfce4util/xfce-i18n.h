@@ -69,7 +69,7 @@ void                  xfce_textdomain           (const gchar *package,
                                                  const gchar *localedir,
                                                  const gchar *encoding);
 
-#if !defined(XFCE_DISABLE_DEPRECATED)
+#if defined(LIBXFCE4UTIL_COMPILATION) || !defined(XFCE_DISABLE_DEPRECATED)
 G_CONST_RETURN gchar* xfce_strip_context        (const gchar *msgid,
                                                  const gchar *msgval);
 #endif

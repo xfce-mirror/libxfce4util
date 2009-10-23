@@ -60,6 +60,7 @@
 #endif
 
 #include <libxfce4util/libxfce4util.h>
+#include <libxfce4util/libxfce4util-alias.h>
 
 
 #define XFCE4DIR		".xfce4"
@@ -118,11 +119,11 @@ internal_initialize(void)
 static gchar*
 internal_get_file_r (const gchar *dir,
                      gchar       *buffer,
-                     size_t       len,
+                     gsize        len,
                      const gchar *format,
                      va_list      ap)
 {
-  size_t n;
+  gsize n;
 
   g_return_val_if_fail(buffer != NULL, NULL);
   g_return_val_if_fail(format != NULL, NULL);
@@ -134,7 +135,7 @@ internal_get_file_r (const gchar *dir,
   if ((n = g_strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
     return NULL;
 
-  if ((size_t) g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)
+  if ((gsize) g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)
     return NULL;
 
   return buffer;
@@ -608,3 +609,8 @@ xfce_expand_variables (const gchar *command,
 
   return g_strdup (buffer);
 }
+
+
+
+#define __XFCE_MISCUTILS_C__
+#include <libxfce4util/libxfce4util-aliasdef.c>
