@@ -120,12 +120,12 @@ libxfce4util-alias.h: make-libxfce4util-alias.pl libxfce4util.symbols
 	$(PERL) $(srcdir)/make-libxfce4util-alias.pl < $(srcdir)/libxfce4util.symbols > libxfce4util-alias.h
 
 libxfce4util-aliasdef.c: make-libxfce4util-alias.pl libxfce4util.symbols
-	$(PERL) $(srcdir)/make-libxfce4util-alias.pl -def < $(srcdir)/libxfce4util.symbols > libxfce4util-aliasdef.c
+	$(AM_V_GEN) $(PERL) $(srcdir)/make-libxfce4util-alias.pl -def < $(srcdir)/libxfce4util.symbols > libxfce4util-aliasdef.c
 
 libxfce4util-enum-types.h: stamp-libxfce4util-enum-types.h
 	@true
 stamp-libxfce4util-enum-types.h: $(libxfce4util_headers) Makefile
-	( cd $(srcdir) && glib-mkenums \
+	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
 		--fhead "#ifndef __LIBXFCE4UTIL_ENUM_TYPES_H__\n#define __LIBXFCE4UTIL_ENUM_TYPES_H__\n#include <glib-object.h>\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
 		--vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n#define XFCE_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
@@ -136,7 +136,7 @@ stamp-libxfce4util-enum-types.h: $(libxfce4util_headers) Makefile
 	&& echo timestamp > $(@F)
 
 libxfce4util-enum-types.c: $(libxfce4util_headers) Makefile
-	( cd $(srcdir) && glib-mkenums \
+	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
 		--fhead "#include <libxfce4util/libxfce4util.h>\n#include <libxfce4util/libxfce4util-alias.h>\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n  static GType etype = 0;\n  if (etype == 0) {\n    static const G@Type@Value values[] = {" \
