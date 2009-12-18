@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 10:40+0100\n"
+"POT-Creation-Date: 2009-12-18 11:59+0100\n"
 "PO-Revision-Date: 2009-02-12 10:15+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Wystąpił błąd podczas tworzenia katalogu „%s”: %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -70,7 +70,7 @@ msgstr ""
 " KONTRAKTEM HANDLOWYM LUB POPEŁNIENIEM PRZESTĘPSTWA, A UŻYTKOWNIK ZOSTAŁ\n"
 " POINFORMOWANY O MOŻLIWOŚCI ODNIESIENIA SZKODY.\n"
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -108,7 +108,7 @@ msgstr ""
 "do Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,\n"
 "MA 02110-130159 USA.\n"
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -146,3 +146,18 @@ msgstr ""
 "napisać\n"
 "do Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,\n"
 "MA 02110-130159 USA.\n"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#, c-format
+msgid "pipe() failed: %s"
+msgstr ""
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
+msgid "xfce_posix_signal_handler_init() must be called first"
+msgstr ""
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr ""

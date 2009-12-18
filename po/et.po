@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce 4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 10:40+0100\n"
+"POT-Creation-Date: 2009-12-18 11:59+0100\n"
 "PO-Revision-Date: 2008-09-08 06:51-0800\n"
 "Last-Translator: Kristjan Siimson <epost@ksiimson.se>\n"
 "Language-Team: Estonian\n"
@@ -18,12 +18,12 @@ msgstr ""
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-Country: ESTONIA\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Viga luues kataloogi \"%s\": %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -72,7 +72,7 @@ msgstr ""
 " TÕTTU, KUI SEE TEKIB ÜKSKÕIK MISSUGUSEL TEEL SELLE TARKVARA KASUTAMISE\n"
 " TAGAJÄRJEL, ISEGI KUI ON TEATATUD SELLISE KAHJU TEKKIMISE VÕIMALUSEST.\n"
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 #, fuzzy
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
@@ -107,7 +107,7 @@ msgstr ""
 "Foundation'iga, 59 Temple Place - Suite 330, Boston,\n"
 "MA 02111-1307, USA.\n"
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 #, fuzzy
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
@@ -140,3 +140,18 @@ msgstr ""
 "koopia koos selle teegiga, kui ei, siis kontakteeruge Free Software\n"
 "Foundation'iga, 59 Temple Place - Suite 330, Boston,\n"
 "MA 02111-1307, USA.\n"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#, c-format
+msgid "pipe() failed: %s"
+msgstr ""
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
+msgid "xfce_posix_signal_handler_init() must be called first"
+msgstr ""
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr ""
