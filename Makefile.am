@@ -27,7 +27,6 @@ ChangeLog: Makefile
 dist-hook: ChangeLog
 
 EXTRA_DIST =								\
-	ChangeLog.pre-4.2.0						\
 	README.Kiosk							\
 	THANKS								\
 	TODO								\
