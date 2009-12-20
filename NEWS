@@ -1,26 +1,38 @@
+4.7.0
+=====
+- Build ChangeLog during make dist.
+- Silent the build.
+- Fix some compiler warnings.
+- Use new xdt macros, xfce-dev-tools 4.7.2 is required.
+- Various build changes for GIT.
+- Misc other small changes.
+- Translation updates (ca, zh_CN, es, da, gl, pa, ru, sq, lv, sk,
+  kk, hu, ast, ur_PK, ur, tl_PH,
+
 4.6.1
 ======
-- Updated translations: Abel Martín (es), Masato Hashimoto (ja), Leandro Regueiro (gl), Alan Pepelko (sl), Piotr Sokół (po), Mișu Moldovan (ro)
+- Updated translations: Abel Martín (es), Masato Hashimoto (ja),
+  Leandro Regueiro (gl), Alan Pepelko (sl), Piotr Sokół (po), Mișu Moldovan (ro)
 
 4.6.0
 ======
 - Add missing C++ wrappers in header files (patch by Jens Luedicke).
-- Updated translations: Carles Muñoz Gorriz (ca), Enrico Tröger (de), 
-  Jeff Bailes (en_GB), Abel Martín (es), Jari Rahkonen (fi), 
+- Updated translations: Carles Muñoz Gorriz (ca), Enrico Tröger (de),
+  Jeff Bailes (en_GB), Abel Martín (es), Jari Rahkonen (fi),
   Maximilian Schleiss (fr), Leandro Regueiro (gl), Andhika Padmawan (id),
   Masato Hashimoto (ja), Terje Uriansrud (nb_NO), Szymon Kałasz (pl),
-  Og Maciel (pt_BR), Nuno Miguel (pt_PT), Daniel Nylander (sv), 
-  Gokmen Gorgen and Samed Beyribey (tr), Dimitri Nikitin (uk), 
+  Og Maciel (pt_BR), Nuno Miguel (pt_PT), Daniel Nylander (sv),
+  Gokmen Gorgen and Samed Beyribey (tr), Dimitri Nikitin (uk),
   Chris K. Zhang (zh_CN)
 
 4.5.99.1
 ========
-- Updated translations: Per Kongstad (da), Michal Várady (cs), 
+- Updated translations: Per Kongstad (da), Michal Várady (cs),
   Masato Hashimoto  (ja), Daniel Nylander (sv)
 
 4.5.93
 ======
-- Updated translations: Og Maciel (pt_BR), Abel Martin (es), 
+- Updated translations: Og Maciel (pt_BR), Abel Martin (es),
   Maxamilian Schleiss (fr), Daniel Nylander (sv), Masato Hashimoto (jp)
 
 4.5.92
@@ -28,7 +40,7 @@
 - Updated translations: Jari Rahkonen (fi), Abel Martin (es)
 - Increment library version to avoid having a 4.6 library version older then
   the one in 4.4.
-- Place G_GNUC_INTERNAL before function declaration for Sun Studio 
+- Place G_GNUC_INTERNAL before function declaration for Sun Studio
   compatibility (bug #4580)
 
 
@@ -43,15 +55,15 @@
 - Fix buglet when deleting XfceRc groups.
 - Fix invalid use of g_slice_free1() in XfceRc (Bug #2854).
 - Add support for function names in debug messages on Solaris (Bug #3090).
-- New util functions for setting up POSIX signal handling using pipe(), 
+- New util functions for setting up POSIX signal handling using pipe(),
   GIOChannel and the glib main loop.
 - Strip trailing slashes to avoid directories appearing multiple times in
   resource lookup functions.
-- Updated translations: Maximilian Schleiss (fr), Besnik Bleta (sq), 
-  Mohamed Magdy (ar), Jeff Bailes (en_GB), Nuno Miguel (pt_PT), Daichi 
-  Kawahata (ja), Terje Uriansrud (nb_NO), Tegegne Tefera (am), Rihards 
-  Priedītis (lv), Muhammad Ali Makki (ur), Rashan Anushka (si), Leandro 
-  Regueiro (gl), Khaled Hosny (ar), Peter Vois (et), 
+- Updated translations: Maximilian Schleiss (fr), Besnik Bleta (sq),
+  Mohamed Magdy (ar), Jeff Bailes (en_GB), Nuno Miguel (pt_PT), Daichi
+  Kawahata (ja), Terje Uriansrud (nb_NO), Tegegne Tefera (am), Rihards
+  Priedītis (lv), Muhammad Ali Makki (ur), Rashan Anushka (si), Leandro
+  Regueiro (gl), Khaled Hosny (ar), Peter Vois (et),
 
 4.4.0
 =====
@@ -62,7 +74,7 @@
 4.3.99.2
 ========
 - Updated translations: Pau Rul-lan Ferragut (ca), Maximilian Schleiss (fr)
-- New translations: Michal Várady (cs), Tenzin Dendup (dz), 
+- New translations: Michal Várady (cs), Tenzin Dendup (dz),
   ByungHyun Choi (ko), Stephan Arts (nl)
 
 
