@@ -1,13 +1,13 @@
 # European Portuguese translations for libxfce4util package.
 # Copyright (C) 2003-2006 Benedikt Meurer
 # This file is distributed under the same license as the libxfce4util package.
-# Nuno Miguel <nunis@netcabo.pt>, 2007.
+# Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util 4.4.0\n"
+"Project-Id-Version: libxfce4util 4.7.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 11:59+0100\n"
+"POT-Creation-Date: 2009-12-18 14:38+0000\n"
 "PO-Revision-Date: 2009-02-15 21:35+0100\n"
 "Last-Translator: Nuno Miguel <nunis@netcabo.pt>\n"
 "Language-Team: \n"
@@ -19,7 +19,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Erro ao criar pasta '%s': %s"
+msgstr "Erro ao criar directório '%s': %s"
 
 #: ../libxfce4util/xfce-license.c:33
 msgid ""
@@ -134,14 +134,13 @@ msgstr ""
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr ""
+msgstr "pipe() falhou: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
-#, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr ""
+msgstr "xfce_posix_signal_handler_init() tem de ser chamada primeiro"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr ""
+msgstr "sigaction() falhou: %s\n"
