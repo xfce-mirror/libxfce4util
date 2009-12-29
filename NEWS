@@ -1,3 +1,8 @@
+4.7.1
+=====
+- Remove po/LINGUAS file so it does not override the languages defined
+  in the configure file.
+
 4.7.0
 =====
 - Build ChangeLog during make dist.
