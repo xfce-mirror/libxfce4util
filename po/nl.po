@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-11 09:10-0500\n"
+"POT-Creation-Date: 2010-01-14 12:08+0100\n"
 "PO-Revision-Date: 2006-10-03 23:54+0200\n"
 "Last-Translator: Stephan Arts <psybsd@gmail.com>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -22,6 +22,7 @@ msgid "Error creating directory '%s': %s"
 msgstr "Fout tijdens het maken van map '%s': %s"
 
 #: ../libxfce4util/xfce-license.c:33
+#, fuzzy
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -43,7 +44,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
+msgstr "Herdistributie en gebruik in bron-en binaire vorm, met of zonder \\ n wijzigingen, is toegestaan mits aan de volgende voorwaarden \\ n vervuld zijn: \\ n \\ n 1. Herdistributie van de broncode moeten de bovenstaande copyright \\ n bericht, deze lijst van voorwaarden en de volgende disclaimer. \\ N 2. Bij herdistributie in binaire vorm moet de bovenstaande copyright \\ n bericht, deze lijst van voorwaarden en de volgende disclaimer in de \\ n documentatie en / of andere materialen die bij de distributie. \\ N \\ n DEZE SOFTWARE WORDT DOOR DE AUTEUR `` AS IS''EN ENIGE EXPLICIETE OF \\ n STILZWIJGENDE GARANTIES, INCLUSIEF MAAR NIET BEPERKT TOT DE IMPLICIETE GARANTIES \\ n VAN VERHANDELBAARHEID EN GESCHIKTHEID VOOR EEN BEPAALD DOEL WORDEN GEWEZEN. \\ n IN GEEN GEVAL IS DE AUTEUR AANSPRAKELIJK VOOR ENIGE DIRECTE, INDIRECTE , \\ n INCIDENTELE, SPECIALE, MORELE OF GEVOLGSCHADE (INCLUSIEF, MAAR \\ n NIET BEPERKT TOT VERWERVING VAN VERVANGENDE GOEDEREN OF SERVICES; VERLIES VAN GEBRUIK \\ n GEGEVENS OF WINSTEN, OF ONDERBREKING VAN DE BEDRIJFSVOERING) OOK VEROORZAAKT EN OP ELKE \\ n THEORIE VAN AANSPRAKELIJKHEID, HETZIJ IN CONTRACT, STRIKTE AANSPRAKELIJKHEID OF ONRECHTMATIGE DAAD \\ n (WAARONDER NALATIGHEID OF ANDERS) OP ENIGE WIJZE VOORTVLOEIEND UIT HET GEBRUIK VAN \\ n DEZE SOFTWARE, ZELFS INDIEN IS GEWEZEN OP DE MOGELIJKHEID VAN DERGELIJKE SCHADE. \\ n"
 
 #: ../libxfce4util/xfce-license.c:55
 msgid ""
@@ -61,9 +62,20 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
+"Dit programma is gratis software, je kunt het verspreiden en/of wijzigen \n"
+"onder de voorwaarden van de GNU General Public License zoals gepubliceerd door de Free Software Foundation; versie 2 van de Licentie, of (naar keuze) \n"
+"een later versie. \n"
+"\n"
+"Dit programma wordt verspreid in de hoop dat het nuttig zal zijn, maar ZONDER \n"
+"ENIGE GARANTIE; zonder zelfs de impliciete garantie van VERKOOPBAARHEID of \n"
+"BRUIKBAARHEID VOOR EEN BEPAALD DOEL. Zie de GNU General Public License voor\n"
+" meer details. \n"
+" \n"
+" U moet hierbij een kopie van de GNU General Public License ontvangen hebben samen met \n"
+"Dit programma; zo niet, schrijf naar de Free Software Foundation, Inc., 51 Franklin\n"
+"Street, Fifth Floor, Boston, MA 02110-1301, USA. \n"
 
 #: ../libxfce4util/xfce-license.c:70
-#, fuzzy
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -80,20 +92,28 @@ msgid ""
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
 msgstr ""
-"Deze bibliotheek is vrije software, je kunt het verspreiden en/of\\aanpassen onder de voorwaarden van de GNU General Public \\ nLicense zoals gepubliceerd door de Free Software Foundation; ofwel \\ nversion 2 van de Licentie, of (naar keuze) een latere versie. \n"
+"Deze bibliotheek is gratis software, je kunt het verspreiden en/of wijzigen \n"
+"onder de voorwaarden van de GNU General Public License zoals gepubliceerd door de Free Software Foundation; versie 2 van de Licentie, of (naar keuze) \n"
+"een later versie. \n"
 "\n"
-" Dit bibliotheek wordt verspreid in de hoop dat het van nut zal zijn, \n"
-"but ZONDER ENIGE GARANTIE; zonder zelfs de impliciete garantie van \\ nMERCHANTABILITY of GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de GNU \\ nLibrary General Public License voor meer details. \\ N \\ nU moeten ontvangen een kopie van de GNU General Public \\ nLicense samen met de bibliotheek, zo niet, schrijf naar de \\ nFree Software Foundation, Inc, 51 Franklin Street, Fifth Floor, \\ nBoston, MA 02110-1301 USA. \\ n"
+"Dit programma wordt verspreid in de hoop dat het nuttig zal zijn, maar ZONDER \n"
+"ENIGE GARANTIE; zonder zelfs de impliciete garantie van VERKOOPBAARHEID of \n"
+"BRUIKBAARHEID VOOR EEN BEPAALD DOEL. Zie de GNU General Public License voor\n"
+" meer details. \n"
+" \n"
+" U moet hierbij een kopie van de GNU General Public License ontvangen hebben samen met \n"
+"Dit programma; zo niet, schrijf naar de Free Software Foundation, Inc., 51 Franklin\n"
+"Street, Fifth Floor, Boston, MA 02110-1301, USA. \n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr "pijp () mislukt: %s"
+msgstr "pipe () mislukt: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "xfce_posix_signal_handler_init () moet eerst worden geactiveert"
+msgstr "xfce_posix_signal_handler_init () moet eerst worden aangeroepen"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
