@@ -130,7 +130,7 @@ msgstr ""
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr "échec pipe() : %s"
+msgstr "Échec pipe() : %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
@@ -140,4 +140,4 @@ msgstr "xfce_posix_signal_handler_init() doit d'abord être appelé"
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr "échec sigaction() : %s\n"
+msgstr "Échec sigaction() : %s\n"
