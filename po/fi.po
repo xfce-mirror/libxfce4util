@@ -1,14 +1,14 @@
 # Translation of libxfce4util into Finnish.
 # This file is distributed under the same license as the libxfce4util package.
 # Copyright (C) 2003-2006 Benedikt Meurer <benny@xfce.org>
-# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2009.
+# Jari Rahkonen <jari.rahkonen@pp1.inet.fi>, 2005-2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 11:59+0100\n"
-"PO-Revision-Date: 2009-01-25 09:27+0200\n"
+"POT-Creation-Date: 2010-01-25 06:03+0100\n"
+"PO-Revision-Date: 2010-01-25 12:58+0200\n"
 "Last-Translator: jari <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -132,14 +132,14 @@ msgstr ""
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr ""
+msgstr "pipe() epäonnistui: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr ""
+msgstr "xfce_posix_signal_handler_init() täytyy kutsua ensin"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr ""
+msgstr "sigaction() epäonnistui: %s\n"
