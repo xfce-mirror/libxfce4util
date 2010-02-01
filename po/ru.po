@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.6\n"
-"Report-Msgid-Bugs-To: http://bugzilla.xfce.org\n"
-"POT-Creation-Date: 2010-01-05 17:03+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-02-01 12:03+0100\n"
 "PO-Revision-Date: 2009-10-02 10:40+0400\n"
 "Last-Translator: Denis Koryavov <dkoryavov@yandex.ru>\n"
 "Language-Team: Russian\n"
@@ -144,14 +144,14 @@ msgstr ""
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr "Ошибка pipe() в %s"
-
-#: ../libxfce4util/xfce-posix-signal-handler.c:231
-#, c-format
-msgid "sigaction() failed: %s\n"
-msgstr "Ошибка sigaction() в %s\n"
+msgstr "Ошибка pipe(): %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
 msgstr "Сначала должен быть вызван xfce_posix_signal_handler_init()"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr "Ошибка sigaction(): %s\n"
