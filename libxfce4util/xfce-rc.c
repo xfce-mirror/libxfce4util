@@ -576,8 +576,8 @@ xfce_rc_read_bool_entry (const XfceRc *rc,
   value = xfce_rc_read_entry (rc, key, NULL);
   if (value != NULL)
     {
-      return g_ascii_strcasecmp (value, "on") == 0
-          || g_ascii_strcasecmp (value, "true") == 0
+      return g_ascii_strcasecmp (value, "true") == 0
+          || g_ascii_strcasecmp (value, "on") == 0
           || g_ascii_strcasecmp (value, "yes") == 0;
     }
 
