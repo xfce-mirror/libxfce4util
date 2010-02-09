@@ -27,6 +27,9 @@
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #endif
+#ifdef HAVE_LIBINTL_H
+#include <libintl.h>
+#endif
 #ifdef HAVE_LOCALE_H
 #include <locale.h>
 #endif

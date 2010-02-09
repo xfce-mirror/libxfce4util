@@ -23,6 +23,13 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_LIBINTL_H
+#include <libintl.h>
+#endif
+#ifdef HAVE_LOCALE_H
+#include <locale.h>
+#endif
+
 #include <libxfce4util/libxfce4util-private.h>
 #include <libxfce4util/libxfce4util-alias.h>
 
@@ -31,12 +38,29 @@
 /**
  * _xfce_i18n_init:
  *
- * Initializes the libxfce4util i18n support.
+ * Initializes the libxfce4util i18n support. We don't call
+ * xfce_textdomain() here because we don't want to become the
+ * default domain for future gettext() calls (which is what
+ * textdomain does), because then we break apps that make
+ * gettext calls afterwards.
  **/
 void
 _xfce_i18n_init (void)
 {
-  xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, NULL);
+  static gboolean inited = FALSE;
+
+  if (G_UNLIKELY (!inited))
+    {
+      inited = TRUE;
+
+      /* bind the text domain for the package to the given directory */
+      bindtextdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR);
+
+      /* setup the encoding for the package */
+#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
+      bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+#endif
+    }
 }
 
 

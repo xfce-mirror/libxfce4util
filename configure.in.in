@@ -101,8 +101,9 @@ dnl ***************************************
 AC_HEADER_STDC()
 AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
                   signal.h sys/stat.h sys/types.h sys/utsname.h \
-                  sys/wait.h time.h unistd.h varargs.h])
-AC_CHECK_FUNCS([gethostname getpwnam setenv setlocale strdup unsetenv])
+                  sys/wait.h time.h unistd.h varargs.h libintl.h])
+AC_CHECK_FUNCS([gethostname getpwnam setenv setlocale strdup unsetenv\
+                bind_textdomain_codeset])
 
 dnl ******************************
 dnl *** Check for i18n support ***
