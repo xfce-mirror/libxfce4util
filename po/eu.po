@@ -2,12 +2,12 @@
 # Copyright (C) 2003-2007 Benedikt Meurer <benny@xfce.org>.
 # This file is distributed under the same license as the libxfce4util package.
 # Piarres Beobide <pi@beobide.net>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 11:59+0100\n"
+"POT-Creation-Date: 2010-02-09 06:03+0100\n"
 "PO-Revision-Date: 2006-15-15 12:24\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Librezale <Librezale@librezale.org>\n"
@@ -56,10 +56,8 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 
@@ -84,14 +82,14 @@ msgstr ""
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr ""
+msgstr "kanalizazioak() huts egin du: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr ""
+msgstr "xfce_posix_signal_handler_init() deitu behar da lehendabizi"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr ""
+msgstr "sigaction()-ek huts egin du: %s\n"
