@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 11:59+0100\n"
-"PO-Revision-Date: 2009-01-24 08:57+0100\n"
+"POT-Creation-Date: 2010-02-19 12:03+0100\n"
+"PO-Revision-Date: 2010-02-20 16:51+0100\n"
 "Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -143,16 +143,16 @@ msgstr ""
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
-#, c-format
+#, c-format, fuzzy
 msgid "pipe() failed: %s"
-msgstr ""
+msgstr "pipe() fehlgeschlagen: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr ""
+msgstr "xfce_posix_signal_handler_init() muss vorher ausgeführt werden."
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr ""
+msgstr "sigaction() fehlgeschlagen: %s\n"
