@@ -2,13 +2,13 @@
 # Copyright (C) 2002-2006 The Xfce development team.
 # This file is distributed under the same license as the libxfcegui4 package.
 # Maxim V. Dziumanenko <mvd@mylinux.ua>, 2006.
-#
+# 
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 10:40+0100\n"
+"POT-Creation-Date: 2010-03-18 06:10+0100\n"
 "PO-Revision-Date: 2009-01-26 11:30+0200\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -16,12 +16,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Помилка створення каталогу '%s': %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -47,33 +47,25 @@ msgstr ""
 " Розповсюдження використання у тексту програм чи у двійковому вигляді, зі\n"
 " змінами чи без змін, дозволено за дотримання наступних умов:\n"
 "\n"
-" 1. Текст програм, що розповсюджується має містити згадану вище примітку "
-"про\n"
+" 1. Текст програм, що розповсюджується має містити згадану вище примітку про\n"
 "    авторські права, цей перелік умов та наступне відречення.\n"
-" 2. При розповсюдженні у двійковому вигляді, програма повинна містити "
-"згадану\n"
-"    вище примітку про авторські права, цей перелік умов та наступне "
-"відречення у\n"
+" 2. При розповсюдженні у двійковому вигляді, програма повинна містити згадану\n"
+"    вище примітку про авторські права, цей перелік умов та наступне відречення у\n"
 "    документації та/або інших матеріалах, що постачаються з у комплекті.\n"
 "\n"
-" ЦЕ ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ ПОСТАЧАЄТЬСЯ ``ЯК Є'' БЕЗ БУДЬ-ЯКИХ ВИСЛОВЛЕНИХ "
-"ЧИ\n"
+" ЦЕ ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ ПОСТАЧАЄТЬСЯ ``ЯК Є'' БЕЗ БУДЬ-ЯКИХ ВИСЛОВЛЕНИХ ЧИ\n"
 " НЕЯВНИХ ГАРАНТІЙ, ВКЛЮЧАЮЧИ, АЛЕ НЕ ОБМЕЖУЮЧИСЬ, НЕЯВНУ ПРИДАТНОСТІ ДО\n"
 " ПРОДАЖУ ЧИ ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ.\n"
 " НІ У ЯКОМУ РАЗІ АВТОР НЕ ВІДПОВІДАЄ ЗА БУДЬ-ЯКІ ПРЯМІ, НЕПРЯМІ,\n"
-" ВИПАДКОВІ, НАВМИСНІ, ТИПОВІ ЧИ ЛОГІЧНО ВИПЛИВАЮЧІ ПОШКОДЖЕННЯ (ВКЛЮЧАЮЧИ, "
-"АЛЕ\n"
-" НЕ ОБМЕЖУЮЧИСЬ, ПОСТАЧАННЯ ЗАМІННИКІВ ТОВАРАМ ЧИ СЛУЖБАМ; ЗБИТКИ ВІД "
-"ВИКОРИСТАННЯ,\n"
-" ДАНИХ, ЧИ ДОХОДУ; ЧИ ПЕРЕШКОДИ БІЗНЕСУ) НЕ ЗАЛЕЖНО ВІД ТОГО, ЧИМ ВОНИ "
-"ВИКЛИКАНІ,\n"
+" ВИПАДКОВІ, НАВМИСНІ, ТИПОВІ ЧИ ЛОГІЧНО ВИПЛИВАЮЧІ ПОШКОДЖЕННЯ (ВКЛЮЧАЮЧИ, АЛЕ\n"
+" НЕ ОБМЕЖУЮЧИСЬ, ПОСТАЧАННЯ ЗАМІННИКІВ ТОВАРАМ ЧИ СЛУЖБАМ; ЗБИТКИ ВІД ВИКОРИСТАННЯ,\n"
+" ДАНИХ, ЧИ ДОХОДУ; ЧИ ПЕРЕШКОДИ БІЗНЕСУ) НЕ ЗАЛЕЖНО ВІД ТОГО, ЧИМ ВОНИ ВИКЛИКАНІ,\n"
 " ТА ЗА БУДЬ-ЯКОГО ЗАКОНОДАВСТВА ЧИ ГРОМАДЯНСЬКОЇ ВІДПОВІДАЛЬНОСТІ\n"
-" (ВКЛЮЧАЮЧИ ХАЛАТНІСТЬ) ЩО ВИНИКЛИ БЕЗВІДНОСНО ЧИ ВНАСЛІДОК ВИКОРИСТАННЯ "
-"ЦІЄЇ\n"
+" (ВКЛЮЧАЮЧИ ХАЛАТНІСТЬ) ЩО ВИНИКЛИ БЕЗВІДНОСНО ЧИ ВНАСЛІДОК ВИКОРИСТАННЯ ЦІЄЇ\n"
 " ПРОГРАМИ, НАВІТЬ ЯКЩО СТОРОНИ, МОЖЛИВО, БУЛИ ПРОІНФОРМОВАНІ ПРО МОЖЛИВІСТЬ\n"
 " ТАКИХ ЗБИТКІВ.\n"
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -85,10 +77,8 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "Ця програма є вільною; дозволяється розповсюджувати та/або змінювати її\n"
@@ -101,12 +91,11 @@ msgstr ""
 "ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ. Докладніше про це дивіться текст GNU\n"
 "General Public License.\n"
 "\n"
-"З цією програмою ви мали отримати копію ліцензії GNU General Public "
-"License;\n"
+"З цією програмою ви мали отримати копію ліцензії GNU General Public License;\n"
 "якщо це не так, напишіть Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -137,3 +126,18 @@ msgstr ""
 "разом з цією бібліотекою, якщо ж ні, напишіть для\n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#, c-format
+msgid "pipe() failed: %s"
+msgstr "pipe() невдача: %s"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
+msgid "xfce_posix_signal_handler_init() must be called first"
+msgstr "xfce_posix_signal_handler_init() мусить бути викликана першою"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr "sigaction() невдача: %s\n"
