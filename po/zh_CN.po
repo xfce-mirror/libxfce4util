@@ -2,12 +2,12 @@
 # Copyright (C) 2009 The Xfce development team.
 # This file is distributed under the same license as the libxfce4util package.
 # Chris K. Zhang <plutino@gmail.com>, 2009
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 10:40+0100\n"
+"POT-Creation-Date: 2010-04-07 04:11+0000\n"
 "PO-Revision-Date: 2009-02-10 23:35-0800\n"
 "Last-Translator: Chris K. Zhang <plutino@gmail.com>\n"
 "Language-Team: Simplified Chinese <xfce-i18n@xfce.org>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "无法创建目录“%s”：%s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -57,7 +57,7 @@ msgstr ""
 "后保障服务；相关物品损失，数据损失，以及利润损失；业务终止等）；即使作者\n"
 "已被告知程序有此类损失的可能性也是如此。\n"
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -69,10 +69,8 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "本程序为自由软件；您可依据自由软件基金会所发表的 GNU GPL 授权条款，对本\n"
@@ -88,7 +86,7 @@ msgstr ""
 "51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301, USA\n"
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -117,3 +115,18 @@ msgstr ""
 "Free Software Foundation, Inc.\n"
 "51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301, USA\n"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#, c-format
+msgid "pipe() failed: %s"
+msgstr "pipe() 失败: %s"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
+msgid "xfce_posix_signal_handler_init() must be called first"
+msgstr "xfce_posix_signal_handler_init() 必须先被调用"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr "sigaction() 失败: %s\n"
