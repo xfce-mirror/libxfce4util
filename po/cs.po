@@ -138,7 +138,7 @@ msgstr "volání pipe() selhalo: %s"
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "xfce_posix_signal_handler_init() musí být volán jako první"
+msgstr "xfce_posix_signal_handler_init() musí být volána jako první"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
