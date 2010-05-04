@@ -1,17 +1,17 @@
 # Galician translation of libxfce4util
 # Copyright (C) 2008, 2009 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-#
+# 
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009.
-#
+# 
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 11:59+0100\n"
+"POT-Creation-Date: 2010-05-04 16:04+0000\n"
 "PO-Revision-Date: 2009-11-14 14:12+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -68,8 +68,7 @@ msgstr ""
 " DANO DIRECTO, INDIRECTO, INCIDENTAL, ESPECIAL, OU DERIVADOS\n"
 " (O QUE INCLÚE, AÍNDA QUE SEN RESTRICIÓN, A SUBSTITUCIÓN DE\n"
 " BENS OU SERVIZOS; PERDAS NO USO, DATOS, OU BENEFICIOS; OU\n"
-" INTERRUPCIÓN DE NEGOCIO) POLA RAZÓN QUE SEXA E DE CALQUERA "
-"RESPONSABILIDADE, XA SEXA CONTRACTUAL OU DOUTRO TIPO\n"
+" INTERRUPCIÓN DE NEGOCIO) POLA RAZÓN QUE SEXA E DE CALQUERA RESPONSABILIDADE, XA SEXA CONTRACTUAL OU DOUTRO TIPO\n"
 "(INCLUINDO NEGLIXENCIA OU OUTRA) DERIVADA DE CALQUERA USO\n"
 "DESTE SOFTWARE, MESMO SE FOSEN ADVERTIDOS DA POSIBILIDADE\n"
 "DE QUE SE PRODUCISEN OS DANOS DESCRITOS ANTERIORMENTE.\n"
@@ -89,10 +88,8 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "Este programa é software libre e, xa que logo, vostede pode\n"
@@ -151,14 +148,14 @@ msgstr ""
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr ""
+msgstr "Fallou pipe(): %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr ""
+msgstr "Debe chamarse antes a xfce_posix_signal_handler_init()"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr ""
+msgstr "Fallou sigaction(): %s\n"
