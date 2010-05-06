@@ -2,12 +2,12 @@
 # Copyright (C) 2003-2007 Benedikt Meurer <benny@xfce.org>.
 # This file is distributed under the same license as the libxfce4util package.
 # Piarres Beobide <pi@beobide.net>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 10:40+0100\n"
+"POT-Creation-Date: 2010-05-06 04:10+0000\n"
 "PO-Revision-Date: 2006-15-15 12:24\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Librezale <Librezale@librezale.org>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Errorea '%s' direktorioa sortzerakoan: %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -44,7 +44,7 @@ msgid ""
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 msgstr ""
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -56,14 +56,12 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -80,3 +78,18 @@ msgid ""
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
 msgstr ""
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#, c-format
+msgid "pipe() failed: %s"
+msgstr "pipe() errorea: %s"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
+msgid "xfce_posix_signal_handler_init() must be called first"
+msgstr "xfce_posix_signal_handler_init() lehenengo deitu behar da"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr "sigaction() errorea: %s\n"
