@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the libxfce4util package.
 # Copyright (C) 2003-2006 Benedikt Meurer <benny@xfce.org>
 # Maximilian Schleiss <maximilian@xfce.org>, 2006-2007.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 10:40+0100\n"
+"POT-Creation-Date: 2010-05-13 10:13+0000\n"
 "PO-Revision-Date: 2009-01-27 22:03+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Galat membuat direktori '%s': %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -66,7 +66,7 @@ msgstr ""
 "  SEBALIKNYA) YANG MENGAKIBATKAN KERUSAKAN PERANTI LUNAK INI, BAHKAN JIKA\n"
 "  TERCANTUM ADANYA KEMUNGKINAN KERUSAKAN SEPERTI ITU.\n"
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -78,29 +78,24 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "Program ini adalah peranti lunak bebas; anda dapat mendistribusikan ulang\n"
 "dan/atau memodifikasinya di bawah Lisensi Publik Umum GNU yang diterbitkan\n"
-"oleh Free Software Foundation; baik versi 2 dari Lisensi; atau (sesuai "
-"pilihan\n"
+"oleh Free Software Foundation; baik versi 2 dari Lisensi; atau (sesuai pilihan\n"
 "anda) versi manapun setelahnya.\n"
 "\n"
 "Program ini didistribusikan dengan harapan dapat berguna; tapi TANPA\n"
 "GARANSI APAPUN; tanpa pula garansi implisit dari PENJUALAN atau PENGGUNAAN\n"
-"UNTUK TUJUAN KHUSUS. Lihat Lisensi Publik Umum GNU untuk detail lebih "
-"lanjut.\n"
+"UNTUK TUJUAN KHUSUS. Lihat Lisensi Publik Umum GNU untuk detail lebih lanjut.\n"
 "\n"
 "Anda seharusnya menerima salinan dari Lisensi Publik Umum GNU bersama\n"
-"dengan program ini; jika tidak, kirim surat ke Free Software Foundation, "
-"Inc., \n"
+"dengan program ini; jika tidak, kirim surat ke Free Software Foundation, Inc., \n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -131,3 +126,18 @@ msgstr ""
 "GNU bersama dengan pustaka ini; jika tidak, kirim surat ke\n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#, c-format
+msgid "pipe() failed: %s"
+msgstr "pipe() gagal: %s"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
+msgid "xfce_posix_signal_handler_init() must be called first"
+msgstr "xfce_posix_signal_handler_init() harus dipanggil terlebih dahulu"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr "sigaction() gagal: %s\n"
