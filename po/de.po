@@ -4,12 +4,12 @@
 # Benedikt Meurer <benny@xfce.org>, 2006.
 # Fabian Nowak <timystery@arcor.de>, 2006.
 # Enrico Tröger <enrico@xfce.org>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 10:40+0100\n"
+"POT-Creation-Date: 2010-05-14 10:13+0000\n"
 "PO-Revision-Date: 2009-01-24 08:57+0100\n"
 "Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: libxfce4util/xfce-fileutils.c:153
+#: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Fehler beim Anlegen des Verzeichnisses »%s«: %s"
 
-#: libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:33
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -47,8 +47,7 @@ msgid ""
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 msgstr ""
 "Weitergabe und Verwendung in Form von Quelltexten sowie binärer Form, mit\n"
-"oder ohne Veränderung, werden unter den folgenden Voraussetzungen "
-"gestattet:\n"
+"oder ohne Veränderung, werden unter den folgenden Voraussetzungen gestattet:\n"
 "\n"
 " 1. Bei Weitergabe des Quelltextes muss die obige Bermerkung zum\n"
 "    Kopierschutz, diese Liste an Bedingungen und die folgende\n"
@@ -62,18 +61,16 @@ msgstr ""
 " AUSDRÜCKLICHE ZUSICHERUNG ODER GESETZLICHE GEWÄHRLEISTUNG UND EIGNUNG FÜR\n"
 " EINEN BESONDEREN ZWECK WERDEN ABGELEHNT.\n"
 " UNTER KEINEN UMSTÄNDEN DARF DER AUTOR FÜR UNMITTELBARE, INDIREKTE,\n"
-" ZUFÄLLIGE, BESONDERE, BESIPIELHAFTE ODER NACHFOLGENDE SCHÄDEN, DIE "
-"BELIEBIG\n"
+" ZUFÄLLIGE, BESONDERE, BESIPIELHAFTE ODER NACHFOLGENDE SCHÄDEN, DIE BELIEBIG\n"
 " VERURSACHT WERDEN (EINSCHLIEßLICH, ABER NICHT DARAUF BESCHRÄNKT, BESORGUNG\n"
-" VON ERSATZWAREN ODER DIENSTEN; VERLUST AN NUTZEN, DATEN ODER ERTRÄGEN; "
-"ODER\n"
+" VON ERSATZWAREN ODER DIENSTEN; VERLUST AN NUTZEN, DATEN ODER ERTRÄGEN; ODER\n"
 " GESCHÄFTSUNTERBRECHUNG), UND FÜR JEDWEDE THEORETISCHE HAFTBARKEIT, OB IM\n"
 " VETRAG, STRIKTER HAFTUNG ODER VERGEHEN (EINSCHLIEßLICH FAHRLÄSSIGKEIT ODER\n"
 " ANDERWEITIG), DIE AUF BELIEBIGE ART UND WEISE AUS DER VERWENDUNG DIESER\n"
 " SOFTWARE ENTSTEHEN, SELBST WENN MAN ÜBER DIE MÖGLICHKEIT EINES SOLCHEN\n"
 " SCHADENS AUFGEKLÄRT WÜRDE, HAFTBAR GEMACHT WERDEN.\n"
 
-#: libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:55
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -85,10 +82,8 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "Dieses Programm ist freie Software. Sie können es unter den Bedingungen\n"
@@ -107,7 +102,7 @@ msgstr ""
 "Software Foundation, Inc.\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:70
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -125,8 +120,7 @@ msgid ""
 "Boston, MA 02110-1301  USA.\n"
 msgstr ""
 "Diese Bibliothek ist freie Software. Sie können es unter den Bedingungen\n"
-"der GNU Library General Public License, wie von der Free Software "
-"Foundation\n"
+"der GNU Library General Public License, wie von der Free Software Foundation\n"
 "veröffentlicht, weitergeben und/oder modifizieren, entweder gemäß\n"
 "Version 2 der Lizenz oder (nach Ihrer Option) jeder späteren Version.\n"
 "\n"
@@ -136,8 +130,22 @@ msgstr ""
 "FÜR EINEN BESTIMMTEN ZWECK. Details finden Sie in der GNU Library General\n"
 "Public License.\n"
 "\n"
-"Sie sollten ein Exemplar der GNU Library General Public License zusammen "
-"mit\n"
+"Sie sollten ein Exemplar der GNU Library General Public License zusammen mit\n"
 "dieser Bibliothek erhalten haben. Falls nicht, schreiben Sie an die Free\n"
 "Software Foundation, Inc.\n"
 "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#, c-format
+msgid "pipe() failed: %s"
+msgstr "pipe() schlug fehl: %s"
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
+msgid "xfce_posix_signal_handler_init() must be called first"
+msgstr "xfce_posix_signal_handler_init() muss zunächst ausgeführt werden."
+
+#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#, c-format
+msgid "sigaction() failed: %s\n"
+msgstr "sigaction() schlug fehl: %s\n"
