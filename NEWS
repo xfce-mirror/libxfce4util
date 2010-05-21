@@ -1,6 +1,17 @@
+4.6.2
+=====
+- Fix broken translations in applications using libxfce4util.
+- Build fixes for GIT.
+- Fix make distcheck.
+- Translation updates (es, sl, pl, gl, lv, ur, ur_PK, ro, hu, ast,
+  ru, da, ca, pt, nl, fr, uk, kk, zh_CN, ug, cs, eu, fi, id, de, es,
+  it).
+
 4.6.1
 ======
-- Updated translations: Abel Martín (es), Masato Hashimoto (ja), Leandro Regueiro (gl), Alan Pepelko (sl), Piotr Sokół (po), Mișu Moldovan (ro)
+- Updated translations: Abel Martín (es), Masato Hashimoto (ja), 
+  Leandro Regueiro (gl), Alan Pepelko (sl), Piotr Sokół (po), 
+  Mișu Moldovan (ro)
 
 4.6.0
 ======
