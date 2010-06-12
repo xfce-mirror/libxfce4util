@@ -26,6 +26,8 @@
 #ifndef __XFCE_DESKTOPENTRY_H__
 #define __XFCE_DESKTOPENTRY_H__
 
+#if defined(LIBXFCE4UTIL_COMPILATION) || !defined(XFCE_DISABLE_DEPRECATED)
+
 #include <glib-object.h>
 
 G_BEGIN_DECLS
@@ -83,5 +85,7 @@ gboolean               xfce_desktop_entry_has_translated_entry  (XfceDesktopEntr
 
 G_END_DECLS
 
-#endif  /* !__XFCE_DESKTOPENTRY_H__ */
+#endif /* !XFCE_DISABLE_DEPRECATED */
+
+#endif /* !__XFCE_DESKTOPENTRY_H__ */
 
