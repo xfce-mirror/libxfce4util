@@ -44,6 +44,7 @@ content_files = 		\
 GTKDOC_CFLAGS = 					\
 	-I$(top_srcdir) 				\
 	-I$(top_builddir) 				\
+	-DLIBXFCE4UTIL_COMPILATION			\
 	$(CPPFLAGS)					\
 	$(GOBJECT_CFLAGS)				\
 	$(GTK_DOC_EXTRA_CFLAGS)

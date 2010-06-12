@@ -374,6 +374,8 @@ xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry)
  * Return value: newly created #XfceDesktopEntry or NULL if something goes wrong.
  *
  * Since: 4.2
+ *
+ * Deprecated: 4.8: Use #XfceRc instead.
  **/
 XfceDesktopEntry*
 xfce_desktop_entry_new (const gchar  *file,
@@ -427,6 +429,8 @@ xfce_desktop_entry_new (const gchar  *file,
  * Return value: newly created #XfceDesktopEntry or NULL if something goes wrong.
  *
  * Since: 4.2
+ *
+ * Deprecated: 4.8: Use #XfceRc instead.
  **/
 XfceDesktopEntry*
 xfce_desktop_entry_new_from_data (const gchar  *data,
@@ -471,6 +475,8 @@ xfce_desktop_entry_new_from_data (const gchar  *data,
  *               return value should be considered read-only and must not be freed
  *               by the caller.
  * Since: 4.2
+ *
+ * Deprecated: 4.8: Use #XfceRc instead.
  **/
 G_CONST_RETURN gchar*
 xfce_desktop_entry_get_file (XfceDesktopEntry *desktop_entry)
@@ -495,6 +501,8 @@ xfce_desktop_entry_get_file (XfceDesktopEntry *desktop_entry)
  * Return value: TRUE on success, FALSE on failure. @value_return must be freed.
  *
  * Since: 4.2
+ *
+ * Deprecated: 4.8: Use #XfceRc instead.
 **/
 gboolean
 xfce_desktop_entry_get_string (XfceDesktopEntry *desktop_entry,
@@ -534,6 +542,8 @@ xfce_desktop_entry_get_string (XfceDesktopEntry *desktop_entry,
  * Return value: TRUE on success, FALSE on failure.
  *
  * Since: 4.2
+ *
+ * Deprecated: 4.8: Use #XfceRc instead.
  **/
 gboolean
 xfce_desktop_entry_get_int (XfceDesktopEntry *desktop_entry,
@@ -571,6 +581,8 @@ xfce_desktop_entry_get_int (XfceDesktopEntry *desktop_entry,
  * Return Value: %TRUE if there is a translated key, %FALSE otherwise.
  *
  * Since: 4.3
+ *
+ * Deprecated: 4.8: Use #XfceRc instead.
  **/
 gboolean
 xfce_desktop_entry_has_translated_entry (XfceDesktopEntry *desktop_entry,

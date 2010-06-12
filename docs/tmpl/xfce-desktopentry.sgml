@@ -26,6 +26,8 @@ XfceDesktopEntry implementation and should never be accessed directly.
 Instead, you should use the functions listed below.
 </para>
 
+@Deprecated: 4.8: Use #XfceRc instead.
+
 
 <!-- ##### FUNCTION xfce_desktop_entry_new ##### -->
 <para>
