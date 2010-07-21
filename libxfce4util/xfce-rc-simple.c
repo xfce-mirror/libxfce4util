@@ -130,7 +130,7 @@ struct _Group
 
 /* because strcmp is by far the most called function in this code, 
  * we inline the comparison of the first character */
-#define simple_strcmp(a,b) (*(a) != *(b) ? *(a) - *(b) : strcmp ((a), (b)))
+#define str_is_equal(a,b) (*(a) != *(b) ? FALSE : strcmp ((a), (b)) == 0)
 
 
 
@@ -141,7 +141,7 @@ simple_add_group (XfceRcSimple *simple,
   Group *group;
 
   for (group = simple->gfirst; group != NULL; group = group->next)
-    if (simple_strcmp (group->name, name) == 0)
+    if (str_is_equal (group->name, name))
       return group;
 
   group         = _xfce_slice_new (Group);
@@ -179,7 +179,7 @@ simple_add_entry (XfceRcSimple *simple,
   gint    result;
 
   for (entry = simple->group->efirst; entry != NULL; entry = entry->next)
-    if (simple_strcmp (entry->key, key) == 0)
+    if (str_is_equal (entry->key, key))
       break;
 
   if (G_UNLIKELY (entry == NULL))
@@ -232,7 +232,7 @@ simple_add_entry (XfceRcSimple *simple,
   if (G_UNLIKELY (locale == NULL))
     {
       /* overwrite existing value */
-      if (G_LIKELY (simple_strcmp (entry->value, value) != 0))
+      if (!str_is_equal (entry->value, value))
         entry->value = g_string_chunk_insert (simple->string_chunk, value);
     }
   else
@@ -249,7 +249,7 @@ simple_add_entry (XfceRcSimple *simple,
       lentry_before = NULL;
       for (lentry = entry->llast; lentry != NULL; lentry = lentry->prev)
         {
-          result = simple_strcmp (lentry->locale, locale);
+          result = strcmp (lentry->locale, locale);
 
           if (result == 0)
             break;
@@ -294,7 +294,7 @@ simple_add_entry (XfceRcSimple *simple,
       else
         {
           /* overwrite value in existing localized entry */
-          if (G_LIKELY (simple_strcmp (lentry->value, value) != 0))
+          if (G_LIKELY (!str_is_equal (lentry->value, value)))
             lentry->value = g_string_chunk_insert (simple->string_chunk, value);
         }
     }
@@ -523,7 +523,7 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
         continue;
 
       /* NULL_GROUP has no header */
-      if (simple_strcmp (group->name, NULL_GROUP) != 0)
+      if (!str_is_equal (group->name, NULL_GROUP))
         fprintf (fp, "[%s]\n", group->name);
 
       for (entry = group->efirst; entry != NULL; entry = entry->next)
@@ -843,7 +843,7 @@ _xfce_rc_simple_get_entries (const XfceRc *rc,
     name = NULL_GROUP;
 
   for (group = simple->gfirst; group != NULL; group = group->next)
-    if (simple_strcmp (group->name, name) == 0)
+    if (str_is_equal (group->name, name))
       break;
 
   if (group == NULL)
@@ -886,9 +886,9 @@ _xfce_rc_simple_delete_group (XfceRc      *rc,
 
   for (group = simple->gfirst; group != NULL; group = group->next)
     {
-      if (simple_strcmp (group->name, name) == 0)
+      if (str_is_equal (group->name, name))
         {
-          if (simple->group == group || simple_strcmp (name, NULL_GROUP) == 0)
+          if (simple->group == group || str_is_equal (name, NULL_GROUP))
             {
               /* don't delete current group or the default group, just clear them */
               for (entry = group->efirst; entry != NULL; entry = next)
@@ -927,7 +927,7 @@ _xfce_rc_simple_get_group (const XfceRc *rc)
 {
   const XfceRcSimple *simple = XFCE_RC_SIMPLE_CONST (rc);
 
-  if (simple_strcmp (simple->group->name, NULL_GROUP) == 0)
+  if (str_is_equal (simple->group->name, NULL_GROUP))
     return NULL;
   else
     return simple->group->name;
@@ -947,7 +947,7 @@ _xfce_rc_simple_has_group (const XfceRc *rc,
     return TRUE;
 
   for (group = simple->gfirst; group != NULL; group = group->next)
-    if (simple_strcmp (group->name, name) == 0)
+    if (str_is_equal (group->name, name))
       break;
 
   return group != NULL;
@@ -964,7 +964,7 @@ _xfce_rc_simple_set_group (XfceRc      *rc,
   if (name == NULL)
     name = NULL_GROUP;
 
-  if (simple_strcmp (simple->group->name, name) != 0)
+  if (!str_is_equal (simple->group->name, name))
     simple->group = simple_add_group (simple, name);
 }
 
@@ -980,7 +980,7 @@ _xfce_rc_simple_delete_entry (XfceRc      *rc,
 
   for (entry = simple->group->efirst; entry != NULL; entry = entry->next)
     {
-      if (simple_strcmp (entry->key, key) == 0)
+      if (str_is_equal (entry->key, key))
         {
           if (entry->prev != NULL)
             entry->prev->next = entry->next;
@@ -1011,7 +1011,7 @@ _xfce_rc_simple_has_entry (const XfceRc *rc,
   const Entry        *entry;
 
   for (entry = simple->group->efirst; entry != NULL; entry = entry->next)
-    if (simple_strcmp (entry->key, key) == 0)
+    if (str_is_equal (entry->key, key))
       break;
 
   return entry != NULL;
@@ -1032,7 +1032,7 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
   guint               match;
 
   for (entry = simple->group->efirst; entry != NULL; entry = entry->next)
-    if (simple_strcmp (entry->key, key) == 0)
+    if (str_is_equal (entry->key, key))
       break;
 
   if (G_LIKELY (entry != NULL))
