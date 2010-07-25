@@ -1,3 +1,12 @@
+4.7.2
+=====
+- Optimize xfce_rc_read_bool_entry().
+- Optimize strcmp in xfce-rc-simple.
+- Fix broken translations in applications using libxfce4util (bug #5842).
+- Deprecate XfceDesktopEntry.
+- Translation updates (ru, cs, lv, fi, eu, de, bn, de, uk, si, kk,
+  pa, gl, zh_TW, sk, ug, fr, id, it).
+
 4.7.1
 =====
 - Remove po/LINGUAS file so it does not override the languages defined
