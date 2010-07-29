@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) 2003-2006 Benedikt Meurer <benny@xfce.org>
 # Yuval Tanny <tanai@int.gov.il>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 11:59+0100\n"
+"POT-Creation-Date: 2010-07-29 10:05+0000\n"
 "PO-Revision-Date: 2006-04-22 13:41+0300\n"
 "Last-Translator: Yuval Tanny <tanai@int.gov.il>\n"
 "Language-Team: Hebrew\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "שגיאה ביצירת תיקייה \"%s\": %s"
+msgstr "שגיאה ביצירת התיקייה \"%s\": %s"
 
 #: ../libxfce4util/xfce-license.c:33
 msgid ""
@@ -66,7 +66,6 @@ msgstr ""
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 
 #: ../libxfce4util/xfce-license.c:55
-#, fuzzy
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -78,10 +77,8 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "This program is free software; you can redistribute it and/or modify it\n"
@@ -94,14 +91,11 @@ msgstr ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 59 "
-"Temple\n"
-"Place, Suite 330, Boston, MA  02111-1307  USA.\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
+"Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:70
-#, fuzzy
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -130,20 +124,20 @@ msgstr ""
 "\n"
 "You should have received a copy of the GNU Library General Public\n"
 "License along with this library; if not, write to the \n"
-"Free Software Foundation, Inc., 59 Temple Place - Suite 330, \n"
-"Boston, MA  02111-1307  USA.\n"
+"Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
+"Boston, MA 02110-1301  USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr ""
+msgstr "פקודת ה־pipe() כשלה: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr ""
+msgstr "יש לקרוא ל־xfce_posix_signal_handler_init() תחילה"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr ""
+msgstr "הפקודה sigaction() כשלה: %s\n"
