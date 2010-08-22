@@ -191,7 +191,6 @@ simple_add_entry (XfceRcSimple *simple,
              
              [Desktop Entry]
              Version=1.0
-             Encoding=UTF-8
              Name=xyz
              GenericName[de_AT]=Test
              
