@@ -546,6 +546,8 @@ xfce_expand_variables (const gchar *command,
 
   for (p = command; *p != '\0'; ++p)
     {
+      continue_without_increase:
+
       if (*p == '~'
           && (p == command
               || xfce_is_valid_tilde_prefix (p - 1)))
@@ -573,6 +575,9 @@ xfce_expand_variables (const gchar *command,
 #endif
                 buf = g_string_append_len (buf, start - 1, p - start + 1);
             }
+
+          /* we are either at the end of the string or *p is a separator,
+           * so continue to add it to the result buffer */
         }
       else if (*p == '$')
         {
@@ -611,14 +616,19 @@ xfce_expand_variables (const gchar *command,
                 }
               else
                 {
-                  /* unable the parse the string, reset and continue
-                   * adding the characters */
-                  p = start - 1;
+                  /* the variable name was valid, but no value was
+                   * found, insert nothing and continue */
                 }
+
+              /* *p is at the start of the charater after the variable,
+               * so continue scanning without advancing the string offset
+               * so two variables are replaced properly */
+              goto continue_without_increase;
             }
           else
             {
-              /* add the $ character and continue */
+              /* invalid variable format, add the
+               * $ character and continue */
               --p;
             }
         }
