@@ -50,6 +50,7 @@ GTKDOC_CFLAGS = 					\
 	$(GTK_DOC_EXTRA_CFLAGS)
 
 GTKDOC_LIBS =  						\
+	$(GOBJECT_LIBS)					\
 	$(top_builddir)/libxfce4util/libxfce4util.la
 
 include $(top_srcdir)/gtk-doc.make
