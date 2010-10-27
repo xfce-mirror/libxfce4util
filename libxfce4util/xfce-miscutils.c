@@ -62,7 +62,6 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4util/libxfce4util-alias.h>
 
-
 #define XFCE4DIR		".xfce4"
 
 /* environment variable the user can set to change the path to
@@ -496,118 +495,138 @@ xfce_unsetenv (const gchar *name)
 
 
 
+static inline gboolean
+xfce_is_valid_tilde_prefix (const gchar *p)
+{
+  if (g_ascii_isspace (*p) /* thunar ~/music */
+      || *p == '=' /* terminal --working-directory=~/ */
+      || *p == '\'' || *p == '"') /* terminal --working-directory '~my music' */
+    return TRUE;
+
+  return FALSE;
+}
+
+
+
 /**
  * xfce_expand_variables:
- * @command : Input string.
+ * @command : Input string or %NULL.
  * @envp    : Addition environment variables to take into account. These
  *            variables have higher priority than the ones in the process's
  *            environment.
  *
  * Expands shell like environment variables and tilde (~/ and ~user/ are both supported)
- * in @command. 
+ * in @command.
  *
  * Return value: %NULL on error, else the string, which should be freed using
  *               g_free() when no longer needed.
  *
  * Since: 4.2
  **/
-gchar*
+gchar *
 xfce_expand_variables (const gchar *command,
                        gchar      **envp)
 {
+  GString        *buf;
+  const gchar    *start;
+  gchar          *variable;
+  const gchar    *p;
+  const gchar    *value;
+  gchar         **ep;
+  guint           len;
 #ifdef HAVE_GETPWNAM
-  struct passwd *pw;
+  struct passwd  *pw;
+  gchar          *username;
 #endif
-  const gchar   *value;
-  gchar          variable[256];
-  gchar          buffer[2048];
-  gchar         *bend = buffer + 2047;
-  gchar         *bp = buffer;
-  gchar         *vend = variable + 255;
-  gchar         *vp;
-  gchar        **ep;
-  guint          len;
 
-  g_return_val_if_fail (command != NULL, NULL);
-  
-  if (*command == '~')
+  if (G_UNLIKELY (command == NULL))
+    return NULL;
+
+  buf = g_string_sized_new (strlen (command));
+
+  for (p = command; *p != '\0'; ++p)
     {
-      if (*++command == '/' || *command == '\0')
+      if (*p == '~'
+          && (p == command
+              || xfce_is_valid_tilde_prefix (p - 1)))
         {
-          /* ~/ syntax */
-          g_strlcpy (buffer, xfce_get_homedir (), 2048);
-          bp = buffer + strlen (buffer);
-        }
-#ifdef HAVE_GETPWNAM
-      else
-        {
-          /* ~user/ syntax */
-          for (vp = variable; g_ascii_isalnum (*command) && vp < vend; )
-            *vp++ = *command++;
+          /* walk to the end of the string or to a directory separator */
+          for (start = ++p; *p != '\0' && *p != G_DIR_SEPARATOR; ++p);
 
-          if (vp != variable)
+          if (G_LIKELY (start == p))
             {
-              *vp = '\0';
-
-              pw = getpwnam (variable);
-              if (pw != NULL && pw->pw_dir != NULL)
-                {
-                  g_strlcpy (buffer, pw->pw_dir, 2048);
-                  bp = buffer + strlen (buffer);
-                }
-            }
-        }
-#endif
-    }
-  
-  while (*command != '\0' && bp < bend)
-    {
-      if (*command != '$')
-        *bp++ = *command++;
-      else
-        {
-          ++command;
-          
-          for (vp = variable; g_ascii_isalnum (*command) && vp < vend; )
-            *vp++ = *command++;
-          
-          if (vp == variable)
-            continue;
-
-          *vp = '\0';
-          len = vp - variable;
-          value = NULL;
-          
-          if (envp != NULL)
-            {
-              for (ep = envp; *ep != NULL; ++ep)
-                if (strncmp (*ep, variable, len) == 0 && (*ep)[len] == '=')
-                  {
-                    value = (*ep) + len + 1;
-                    break;
-                  }
-            }
-          
-          if (value == NULL)
-            value = g_getenv (variable);
-
-          if (value != NULL)
-            {
-              while (*value != '\0' && bp < bend)
-                *bp++ = *value++;
+              /* add the current user directory */
+              buf = g_string_append (buf, xfce_get_homedir ());
             }
           else
             {
-              *bp++ = '$';
-              for (vp = variable; *vp != '\0' && bp < bend; )
-                *bp++ = *vp++;
+#ifdef HAVE_GETPWNAM
+              username = g_strndup (start, p - start);
+              pw = getpwnam (username);
+              g_free (username);
+
+              /* add the users' home directory if found, fallback to the
+               * not-expanded string */
+              if (pw != NULL && pw->pw_dir != NULL)
+                buf = g_string_append (buf, pw->pw_dir);
+              else
+#endif
+                buf = g_string_append_len (buf, start - 1, p - start + 1);
             }
         }
+      else if (*p == '$')
+        {
+          /* walk to the end of a valid variable name */
+          for (start = ++p; *p != '\0' && (g_ascii_isalnum (*p) || *p == '_'); ++p);
+          
+          if (start < p)
+            {
+              value = NULL;
+              len = p - start;
+
+              /* lookup the variable in the environment supplied by the user */
+              if (envp != NULL)
+                {
+                  /* format is NAME=VALUE */
+                  for (ep = envp; *ep != NULL; ++ep)
+                    if (strncmp (*ep, start, len) == 0
+                        && (*ep)[len] == '=')
+                      {
+                        value = (*ep) + len + 1;
+                        break;
+                      }
+                }
+
+              /* fallback to the environment */
+              if (value == NULL)
+                {
+                  variable = g_strndup (start, len);
+                  value = g_getenv (variable);
+                  g_free (variable);
+                }
+
+              if (G_LIKELY (value != NULL))
+                {
+                  buf = g_string_append (buf, value);
+                }
+              else
+                {
+                  /* unable the parse the string, reset and continue
+                   * adding the characters */
+                  p = start - 1;
+                }
+            }
+          else
+            {
+              /* add the $ character and continue */
+              --p;
+            }
+        }
+
+      buf = g_string_append_c (buf, *p);
     }
 
-  *bp = '\0';
-
-  return g_strdup (buffer);
+  return g_string_free (buf, FALSE);
 }
 
 
