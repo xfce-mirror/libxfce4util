@@ -1,3 +1,10 @@
+4.7.3
+=====
+- Explicitly link to gobject for the gtkdocs.
+- Expand tilde in more situations in xfce_expand_variables().
+- Remove encoding key from comment.
+- Translation updates (he, kk, de, zh_TW, el, gl, pt).
+
 4.7.2
 =====
 - Optimize xfce_rc_read_bool_entry().
