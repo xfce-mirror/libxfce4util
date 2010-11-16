@@ -65,7 +65,7 @@ dnl **********************************
 dnl *** Subst overall Xfce version ***
 dnl **********************************
 AC_DEFINE([XFCE_VERSION_STRING], ["xfce_version_string"],
-  [Overall XFce version])
+  [Overall Xfce version])
 
 dnl **********************************
 dnl *** Subst libxfce4util version ***
