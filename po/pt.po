@@ -2,12 +2,12 @@
 # Copyright (C) 2003-2006 Benedikt Meurer
 # This file is distributed under the same license as the libxfce4util package.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-03 17:06+0000\n"
+"POT-Creation-Date: 2010-12-01 11:07+0000\n"
 "PO-Revision-Date: 2010-11-03 19:10-0000\n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: \n"
@@ -93,7 +93,7 @@ msgstr ""
 "Veja a GNU Library General Public License para mais informações.\n"
 "\n"
 "Deve ter recebido uma cópia da GNU Library General Public License\n"
-"juntamente com esta biblioteca; se tal não aconteceu, escreve para\n"
+"juntamente com esta biblioteca; se tal não aconteceu, escreva para\n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
 
@@ -121,11 +121,11 @@ msgstr ""
 "\n"
 "Esta biblioteca é disponibilizada no intuito de lhe ser útil,\n"
 "mas SEM QUALQUER GARANTIA; nem mesmo a garantia implícita de\n"
-"COMERCIALIZAÇÃO ou ADEQUAÇÃO A UM OBJECTOVO ESPECÍFICO.\n"
+"COMERCIALIZAÇÃO ou ADEQUAÇÃO A UM OBJECTIVO ESPECÍFICO.\n"
 "Veja a GNU Library General Public License para mais informações.\n"
 "\n"
 "Deve ter recebido uma cópia da GNU Library General Public License\n"
-"juntamente com esta biblioteca; se tal não aconteceu, escreve para\n"
+"juntamente com esta biblioteca; se tal não aconteceu, escreva para\n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
 
@@ -142,5 +142,4 @@ msgstr "Antes, tem que invocar \"xfce_posix_signal_handler_init()\""
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr "falha de \"sigaction()\": %s\n"
-
+msgstr "Falha de \"sigaction()\": %s\n"
