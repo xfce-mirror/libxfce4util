@@ -43,7 +43,7 @@
 #ifdef HAVE_PWD_H
 #include <pwd.h>
 #endif
-#ifdef HAVE_STAD_ARG_H
+#ifdef HAVE_STDARG_H
 #include <stdarg.h>
 #elif defined (HAVE_VARARGS_H)
 #include <varargs.h>
