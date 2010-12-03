@@ -1,3 +1,9 @@
+4.7.4
+=====
+- Fix wrong capitalization of Xfce.
+- Fix stdarg.h include (bug #6897).
+- Translation updates (pt).
+
 4.7.3
 =====
 - Explicitly link to gobject for the gtkdocs.
