@@ -28,7 +28,7 @@
 
 
 
-/* change these variables to static once we break the ABI next time */
+/* TODO change these variables to static once we break the ABI next time */
 const gchar xfce_builtin_license_BSD[] =
   N_ (" Redistribution and use in source and binary forms, with or without\n"
       " modification, are permitted provided that the following conditions\n"
