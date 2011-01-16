@@ -1,0 +1,36 @@
+<!-- ##### SECTION ./tmpl/debug.sgml:Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/debug.sgml:See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION ./tmpl/debug.sgml:Short_Description ##### -->
+
+
+
+<!-- ##### SECTION ./tmpl/debug.sgml:Title ##### -->
+debug
+
+
+<!-- ##### MACRO DBG ##### -->
+<para>
+
+</para>
+
+@fmt: 
+@args...: 
+
+<!-- ##### MACRO TRACE ##### -->
+<para>
+
+</para>
+
+@fmt: 
+@args...: 
+

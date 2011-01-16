@@ -17,11 +17,15 @@ These macros provide a few commonly-used features.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### FUNCTION xfce_version_string ##### -->
 <para>
 
 </para>
 
+@void: 
 @Returns: 
 
 

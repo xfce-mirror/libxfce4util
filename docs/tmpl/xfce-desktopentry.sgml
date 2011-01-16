@@ -19,6 +19,9 @@ url="http://www.freedesktop.org/">Freedesktop.org</ulink>.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### STRUCT XfceDesktopEntry ##### -->
 <para>
 All the fields in the XfceDesktopEntry structure are private to the
@@ -27,7 +30,6 @@ Instead, you should use the functions listed below.
 </para>
 
 @Deprecated: 4.8: Use #XfceRc instead.
-
 
 <!-- ##### FUNCTION xfce_desktop_entry_new ##### -->
 <para>

@@ -2,15 +2,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR Rashan Anushka <rashan.uoc@gmail.com>, 2007.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-10 00:03+0100\n"
+"POT-Creation-Date: 2011-01-16 15:34+0100\n"
 "PO-Revision-Date: 2008-02-09 21:09+0530\n"
 "Last-Translator: Rashan Anushka <rashan.uoc@gmail.com>\n"
 "Language-Team: Sinhala <en@li.org>\n"
+"Language: si\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -78,8 +79,10 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
+"You should have received a copy of the GNU General Public License along "
+"with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 "
+"Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 

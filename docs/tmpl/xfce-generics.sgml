@@ -43,6 +43,9 @@ mistakes will surely be caught by the C compiler).
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### MACRO XFCE_GENERIC_STACK ##### -->
 <para>
 This macro is used to create a new stack data type which elements are of

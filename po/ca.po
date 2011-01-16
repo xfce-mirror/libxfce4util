@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-18 14:38+0000\n"
+"POT-Creation-Date: 2011-01-16 15:34+0100\n"
 "PO-Revision-Date: 2009-12-19 11:04+0100\n"
 "Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: catalan\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -146,6 +147,7 @@ msgid "pipe() failed: %s"
 msgstr "«pipe()» ha fallat: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
+#, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
 msgstr "s'ha de cridar primer »xfce_posix_signal_handler_init()»"
 

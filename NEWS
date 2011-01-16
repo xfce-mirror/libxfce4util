@@ -1,3 +1,7 @@
+4.8.0
+=====
+- Translation updates: Arabic, Greek, Polish, Romanian, Turkish.
+
 4.7.5
 =====
 - Fix ABI check on ppc (bug #7004).

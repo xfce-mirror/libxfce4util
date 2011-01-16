@@ -22,6 +22,9 @@ data) for any signal.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### USER_FUNCTION XfcePosixSignalHandler ##### -->
 <para>
 A function signature to use for POSIX signal handler functions.
@@ -65,5 +68,6 @@ A function signature to use for POSIX signal handler functions.
 
 </para>
 
+@void: 
 
 

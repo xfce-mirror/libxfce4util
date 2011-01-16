@@ -17,11 +17,15 @@ Miscellaneous utility functions
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### FUNCTION xfce_get_homedir ##### -->
 <para>
 
 </para>
 
+@void: 
 @Returns: 
 
 
@@ -57,6 +61,7 @@ path of the current user's home directory.
 
 </para>
 
+@void: 
 @Returns: 
 
 
@@ -102,6 +107,7 @@ formed by a NULL terminated list of path components.
 
 </para>
 
+@void: 
 @Returns: 
 
 

@@ -16,6 +16,9 @@ functions operating on Unicode characters and UTF-8 strings.
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### FUNCTION xfce_utf8_remove_controls ##### -->
 <para>
 

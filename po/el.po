@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the libxfce4util package.
 # Evaggelos Balaskas <ebalaskas@ebalaskas.gr>, 2009.
 # Stavros Giannouris <stavrosg@gmail.com>, 2011.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util git VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-12 11:08+0000\n"
+"POT-Creation-Date: 2011-01-16 15:34+0100\n"
 "PO-Revision-Date: 2009-08-30 20:25+0200\n"
 "Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -81,8 +82,10 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
+"You should have received a copy of the GNU General Public License along "
+"with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 "
+"Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr ""
 "Το πρόγραμμα αυτό είναι ελεύθερο λογισμικό. Επιτρέπεται\n"

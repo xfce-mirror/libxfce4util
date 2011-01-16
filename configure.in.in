@@ -1,6 +1,6 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2002-2009
+dnl Copyright (c) 2002-2011
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
@@ -12,11 +12,11 @@ dnl *** Version information ***
 dnl ***************************
 m4_define([libxfce4util_verinfo], [5:1:1])
 m4_define([libxfce4util_version_major], [4])
-m4_define([libxfce4util_version_minor], [7])
-m4_define([libxfce4util_version_micro], [5])
+m4_define([libxfce4util_version_minor], [8])
+m4_define([libxfce4util_version_micro], [0])
 m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version_build], [@REVISION@])
-m4_define([libxfce4util_version_tag], [git])
+m4_define([libxfce4util_version_tag], [])
 m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano()])ifelse(libxfce4util_version_tag(), [git], [libxfce4util_version_tag()-libxfce4util_version_build()], [])])
 
 dnl **************************************************************
@@ -37,11 +37,8 @@ m4_define([libxfce4util_debug_default], [ifelse(libxfce4util_version_tag(), [git
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2002-2009
-        The Xfce development team. All rights reserved.
-
-Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
-Huijsmans <jasper@xfce.org> and Olivier Fourdan <fourdan@xfce.org>.])
+AC_COPYRIGHT([Copyright (c) 2002-2011
+        The Xfce development team. All rights reserved.])
 AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
