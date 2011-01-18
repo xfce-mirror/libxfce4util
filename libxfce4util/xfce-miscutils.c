@@ -295,7 +295,7 @@ xfce_strjoin (const gchar *separator,
   gint   length;
   gint   n;
 
-  g_return_val_if_fail (count < 1, NULL);
+  g_return_val_if_fail (count > 0, NULL);
   g_return_val_if_fail (strings != NULL, NULL);
 
   for (length = 1, n = 0; n < count; n++)
