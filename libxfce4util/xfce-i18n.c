@@ -295,7 +295,7 @@ xfce_get_dir_localized_r (gchar *buffer, gsize length, const gchar *directory)
  * @paths is a ':'-separated list of pathnames.
  *
  *  %F  - The @filename
- *  %L  - The language string, as returned by 
+ *  %L  - The language string, as returned by
  *      setlocale(LC_MESSAGES, NULL)
  *  %l  - The language component of the language string
  *  %N  - application name
@@ -392,7 +392,7 @@ xfce_get_path_localized (gchar       *dst,
             {
               return dst;
             }
-          
+
           if (*paths == ':')
             {
               d = dst;
@@ -400,7 +400,7 @@ xfce_get_path_localized (gchar       *dst,
               need_lang = FALSE;
               continue;
             }
-          
+
           break;
         }
 
@@ -408,7 +408,7 @@ xfce_get_path_localized (gchar       *dst,
         {
           if (paths[1] == 'F')
             {
-              /* 
+              /*
                * if "filename" is NULL, then simply skip
                * the %F.
                */
@@ -452,12 +452,12 @@ xfce_get_path_localized (gchar       *dst,
                   while (*f && d < dstlast)
                     *d++ = *f++;
                 }
-              
+
               paths += 2;
               continue;
             }
         }
-      
+
       *d++ = *paths++;
     }
 

@@ -67,7 +67,7 @@ xfce_posix_signal_handler_data_free(XfcePosixSignalHandlerData *hdata)
 {
     if(!hdata)
         return;
-    
+
     sigaction(hdata->signal_id, &hdata->old_sa, NULL);
     g_free(hdata);
 }
@@ -81,7 +81,7 @@ xfce_posix_signal_handler_pipe_io(GIOChannel *source,
     GError *error = NULL;
     gsize bin = 0;
     XfcePosixSignalHandlerData *hdata;
-    
+
     if(G_IO_STATUS_NORMAL == g_io_channel_read_chars(source, (gchar *)&signal_id,
                                                      sizeof(signal_id), &bin,
                                                      &error)
@@ -99,7 +99,7 @@ xfce_posix_signal_handler_pipe_io(GIOChannel *source,
                        (int)sizeof(signal_id), (int)bin);
         }
     }
-    
+
     return TRUE;
 }
 
@@ -125,7 +125,7 @@ xfce_posix_signal_handler_init(GError **error)
 {
     if(G_UNLIKELY(__inited))
         return TRUE;
-    
+
     if(pipe(__signal_pipe)) {
         if(error) {
             g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
@@ -133,17 +133,17 @@ xfce_posix_signal_handler_init(GError **error)
         }
         return FALSE;
     }
-    
+
     __handlers = g_hash_table_new_full(g_direct_hash, g_direct_equal, NULL,
                                        (GDestroyNotify)xfce_posix_signal_handler_data_free);
-    
+
     __signal_io = g_io_channel_unix_new(SIGNAL_PIPE_READ);
     g_io_channel_set_close_on_unref(__signal_io, FALSE);
     g_io_channel_set_encoding(__signal_io, NULL, NULL);
     g_io_channel_set_buffered(__signal_io, FALSE);
     __io_watch_id = g_io_add_watch(__signal_io, G_IO_IN,
                                    xfce_posix_signal_handler_pipe_io, NULL);
-    
+
     __inited = TRUE;
     return TRUE;
 }
@@ -159,20 +159,20 @@ xfce_posix_signal_handler_shutdown(void)
 {
     if(G_UNLIKELY(!__inited))
         return;
-    
+
     g_source_remove(__io_watch_id);
     __io_watch_id = 0;
     g_io_channel_unref(__signal_io);
     __signal_io = NULL;
-    
+
     g_hash_table_destroy(__handlers);
     __handlers = NULL;
-    
+
     close(SIGNAL_PIPE_READ);
     SIGNAL_PIPE_READ = -1;
     close(SIGNAL_PIPE_WRITE);
     SIGNAL_PIPE_WRITE = -1;
-    
+
     __inited = FALSE;
 }
 
@@ -198,7 +198,7 @@ xfce_posix_signal_handler_set_handler(gint signal_id,
 {
     XfcePosixSignalHandlerData *hdata;
     struct sigaction sa;
-    
+
     if(G_UNLIKELY(!__inited)) {
         if(error) {
             g_set_error(error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
@@ -206,25 +206,25 @@ xfce_posix_signal_handler_set_handler(gint signal_id,
         }
         return FALSE;
     }
-    
+
     if(!handler) {
         g_warning("NULL signal handler supplied; removing existing handler");
         xfce_posix_signal_handler_restore_handler(signal_id);
         return TRUE;
     }
-    
+
     if(g_hash_table_lookup(__handlers, GINT_TO_POINTER(signal_id)))
         xfce_posix_signal_handler_restore_handler(signal_id);
-    
+
     hdata = g_new0(XfcePosixSignalHandlerData, 1);
     hdata->signal_id = signal_id;
     hdata->handler = handler;
     hdata->user_data = user_data;
-    
+
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = xfce_posix_signal_handler;
     sa.sa_flags = SA_RESTART;
-    
+
     if(sigaction(signal_id, &sa, &hdata->old_sa)) {
         if(error) {
             g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
@@ -233,9 +233,9 @@ xfce_posix_signal_handler_set_handler(gint signal_id,
         g_free(hdata);
         return FALSE;
     }
-    
+
     g_hash_table_insert(__handlers, GINT_TO_POINTER(signal_id), hdata);
-    
+
     return TRUE;
 }
 
@@ -250,7 +250,7 @@ xfce_posix_signal_handler_restore_handler(gint signal_id)
 {
     if(G_UNLIKELY(!__inited))
         return;
-    
+
     g_hash_table_remove(__handlers, GINT_TO_POINTER(signal_id));
 }
 

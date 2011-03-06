@@ -62,13 +62,13 @@
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4util/libxfce4util-alias.h>
 
-#define XFCE4DIR		".xfce4"
+#define XFCE4DIR ".xfce4"
 
 /* environment variable the user can set to change the path to
  * the users .xfce4 directory. If not set, the xfce_userdir defaults
  * to "$HOME/.xfce4".
  */
-#define	XFCE4HOME_ENVVAR	"XFCE4HOME"
+#define XFCE4HOME_ENVVAR "XFCE4HOME"
 
 G_LOCK_DEFINE_STATIC(_lock);
 
@@ -161,7 +161,7 @@ xfce_version_string (void)
 
 /**
  * xfce_get_homedir:
- * 
+ *
  * Similar to g_get_homedir() in functionality but will never return NULL.
  * While g_get_homedir() may return NULL under certain circumstances, this
  * function is garantied to never ever return NULL, but always return a
@@ -179,7 +179,7 @@ xfce_get_homedir (void)
   if (!xfce_homedir)
     internal_initialize ();
   G_UNLOCK (_lock);
-	
+
   return xfce_homedir;
 }
 
@@ -320,7 +320,7 @@ xfce_strjoin (const gchar *separator,
 
 /**
  * xfce_gethostname:
- * 
+ *
  * Portable way to query the hostname of the node running the process. This
  * function does not ever return %NULL, but always returns a string containing
  * the current node's hostname.
@@ -333,7 +333,7 @@ xfce_gethostname (void)
 {
 #if defined(HAVE_GETHOSTNAME)
 #ifndef MAXHOSTNAMELEN
-#define MAXHOSTNAMELEN		256
+#define MAXHOSTNAMELEN 256
 #endif
   char hostname[MAXHOSTNAMELEN];
 
@@ -372,7 +372,7 @@ xfce_putenv (const gchar *string)
 #ifdef HAVE_BROKEN_PUTENV
   gchar* buffer;
   int result, sverrno;
-  
+
   /*
    * We need to use plattform malloc() here, cause g_malloc() need not
    * to use malloc(), and we don't know about the evil interna of this
@@ -387,11 +387,11 @@ xfce_putenv (const gchar *string)
       strcpy(buffer, string);
 #endif
       if ((result = putenv (buffer)) < 0)
-	{
-	  sverrno = errno;
-	  free (buffer);
-	  errno = sverrno;
-	}
+        {
+          sverrno = errno;
+          free (buffer);
+          errno = sverrno;
+        }
     }
   else
     {
@@ -449,7 +449,7 @@ xfce_setenv (const gchar *name,
   return result;
 #else
   return setenv (name, value, overwrite);
-#endif	/* !HAVE_SETENV */
+#endif /* !HAVE_SETENV */
 }
 
 
@@ -482,9 +482,9 @@ xfce_unsetenv (const gchar *name)
   char **envp1;
   char **envp2;
   int    length;
-  
+
   length = strlen (name);
-  
+
   for (envp1 = envp2 = environ; *envp1 != NULL; ++envp1)
     if (strncmp (*envp1, name, length) != 0 || (*envp1)[length] != '=')
       *envp2++ = *envp1;
@@ -583,7 +583,7 @@ xfce_expand_variables (const gchar *command,
         {
           /* walk to the end of a valid variable name */
           for (start = ++p; *p != '\0' && (g_ascii_isalnum (*p) || *p == '_'); ++p);
-          
+
           if (start < p)
             {
               value = NULL;

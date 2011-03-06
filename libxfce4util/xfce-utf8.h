@@ -35,9 +35,9 @@ gchar *xfce_utf8_remove_controls  (gchar       *str,
                                    gssize       max_len,
                                    const gchar *end);
 
-gchar *xfce_utf8_strndup          (const gchar *src, 
+gchar *xfce_utf8_strndup          (const gchar *src,
                                    gssize       max_len) G_GNUC_MALLOC;
 
 G_END_DECLS
 
-#endif	/* !__XFCE_UTF8_H__ */
+#endif /* !__XFCE_UTF8_H__ */

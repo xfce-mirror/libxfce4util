@@ -128,7 +128,7 @@ struct _Group
 
 
 
-/* because strcmp is by far the most called function in this code, 
+/* because strcmp is by far the most called function in this code,
  * we inline the comparison of the first character */
 #define str_is_equal(a,b) (*(a) != *(b) ? FALSE : strcmp ((a), (b)) == 0)
 
@@ -188,18 +188,18 @@ simple_add_entry (XfceRcSimple *simple,
         /* this point is reached when there is a .desktop file that lists a language specific key for something that had no language-neutral key yet.
            Example:
              b.desktop
-             
+
              [Desktop Entry]
              Version=1.0
              Name=xyz
              GenericName[de_AT]=Test
-             
+
            here GenericName[de_AT] will end up here.
            The previous way with g_return_val_if_fail would call an assertion failure and terminate the _whole application_(!!).
-           
+
            Saner ways to react are either just ignoring GenericName[de_AT] altogether, or, alternatively, just set the normal GenericName
            to Test too (i.e. imply GenericName=Test).
-           
+
            For now, we are just ignoring the line altogether. But we aren't assert-failing anymore and the apps dont crash anymore.
            */
         return NULL;
@@ -847,11 +847,11 @@ _xfce_rc_simple_get_entries (const XfceRc *rc,
 
   if (group == NULL)
     return NULL;
-  
+
   result = g_new (gchar *, 11);
   size   = 10;
   pos    = 0;
-  
+
   for (entry = group->efirst; entry != NULL; entry = entry->next)
     {
       if (size == pos)

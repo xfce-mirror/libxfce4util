@@ -36,9 +36,9 @@
 #if defined(__NetBSD__) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
 #define __DBG_FUNC__    __func__
 #elif defined(__GNUC__) && __GNUC__ >= 3
-#define __DBG_FUNC__	__FUNCTION__
+#define __DBG_FUNC__    __FUNCTION__
 #elif defined(__SVR4) && defined(__sun)
-#define __DBG_FUNC__	__func__
+#define __DBG_FUNC__    __func__
 #else
 #define __DBG_FUNC__    "??"
 #endif
@@ -96,4 +96,4 @@
 
 #endif
 
-#endif	/* !__LIBXFCE4UTIL_DEBUG_H__ */
+#endif /* !__LIBXFCE4UTIL_DEBUG_H__ */

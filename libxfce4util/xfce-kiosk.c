@@ -338,7 +338,7 @@ mtime (const gchar *path)
   struct stat sb;
 
   if (G_UNLIKELY (path == NULL) || stat (path, &sb) < 0)
-    return (time_t) 0; 
+    return (time_t) 0;
 
   return sb.st_mtime;
 }

@@ -37,14 +37,14 @@ const gchar* xfce_version_string (void) G_GNUC_PURE;
 const gchar* xfce_get_homedir    (void) G_GNUC_PURE;
 
 gchar*       xfce_get_homefile_r (gchar *buffer,
-                                  size_t length, 
+                                  size_t length,
                                   const gchar *format,
                                   ...);
 
 const gchar* xfce_get_userdir    (void) G_GNUC_PURE;
 
 gchar*       xfce_get_userfile_r (gchar *buffer,
-                                  size_t length, 
+                                  size_t length,
                                   const gchar *format,
                                   ...);
 
@@ -58,10 +58,10 @@ gchar*       xfce_get_userfile_r (gchar *buffer,
 
 #elif defined(G_HAVE_GNUC_VARARGS)
 
-#define xfce_get_homefile(first_element...)	               \
+#define xfce_get_homefile(first_element...)                \
   (g_build_filename (xfce_get_homedir (), ## first_element))
 
-#define xfce_get_userfile(first_element...)	               \
+#define xfce_get_userfile(first_element...)                \
   (g_build_filename (xfce_get_userdir (), ## first_element))
 
 #else
@@ -98,4 +98,4 @@ gchar*  xfce_expand_variables (const gchar *command,
 
 G_END_DECLS
 
-#endif	/* __XFCE_MISCUTILS_H__ */
+#endif /* __XFCE_MISCUTILS_H__ */

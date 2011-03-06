@@ -107,7 +107,7 @@ xfce_desktop_entry_get_type (void)
         NULL,
         NULL,
         (GClassInitFunc) xfce_desktop_entry_class_init,
-        NULL, 
+        NULL,
         NULL,
         sizeof (XfceDesktopEntry),
         0,
@@ -199,20 +199,20 @@ parse_desktop_entry_line (const gchar *line,
   const gchar *q;
   const gchar *r;
   const gchar *s;
- 
+
   /* initialize to NULL, so we don't have tho think about it anymore */
   *section_return = NULL;
   *key_return = NULL;
   *value_return = NULL;
   *locale_return = NULL;
-  
+
   /* skip whitespace */
   while (g_ascii_isspace (*p))
     ++p;
 
   if (*p == '#' || *p == '\n' || *p == '\0')
     return FALSE;
-  
+
   if (*p == '[')
     {
       ++p;
@@ -239,7 +239,7 @@ parse_desktop_entry_line (const gchar *line,
           s = strchr (p, '[');
           if (G_UNLIKELY (s == NULL))
             return FALSE;
-          
+
           *key_return = g_strndup (p, s - p);
 
           ++s;
@@ -250,7 +250,7 @@ parse_desktop_entry_line (const gchar *line,
         {
             *key_return = g_strndup (p, (q + 1) - p);
         }
-      
+
       while (g_ascii_isspace (*r))
         ++r;
 
@@ -301,10 +301,10 @@ xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry)
         }
       else if (**p == '[' && g_ascii_strncasecmp(*p, "[Desktop Entry]", 15))
         in_d_e_section = FALSE;
-  
+
       if (!in_d_e_section)
         continue;
-      
+
       if (!parse_desktop_entry_line (*p, &section, &key, &value, &locale))
         continue;
 
@@ -314,7 +314,7 @@ xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry)
           current_section = section;
           continue;
         }
-      
+
       item = desktop_entry->priv->items;
 
       for (i = 0; i < desktop_entry->priv->num_items; ++i, ++item)
@@ -336,7 +336,7 @@ xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry)
                   item->value = g_strdup (value);
                   result = TRUE;
                 }
-              
+
               if (current_section != NULL)
                 {
                   g_free (item->section);
@@ -346,7 +346,7 @@ xfce_desktop_entry_parse (XfceDesktopEntry *desktop_entry)
               break;
             }
         }
-      
+
       g_free (value);
       g_free (key);
       g_free (locale);
@@ -590,23 +590,23 @@ xfce_desktop_entry_has_translated_entry (XfceDesktopEntry *desktop_entry,
 {
   const XfceDesktopEntryItem *item;
   const gchar                *current_locale;
-  
+
   g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), FALSE);
   g_return_val_if_fail (key != NULL, FALSE);
-  
+
   item = xfce_desktop_entry_lookup (desktop_entry, key);
   if (G_UNLIKELY (item == NULL || item->value == NULL || *item->value == '\0'))
     return FALSE;
 
   current_locale = setlocale (LC_MESSAGES, NULL);
-  
+
   if (item->translated_value == NULL
       && !xfce_locale_match (current_locale, "C")
       && !xfce_locale_match (current_locale, "POSIX"))
   {
       return FALSE;
   }
-  
+
   return TRUE;
 }
 
