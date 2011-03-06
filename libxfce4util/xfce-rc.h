@@ -98,7 +98,7 @@ void         xfce_rc_write_list_entry        (XfceRc       *rc,
                                               const gchar  *key,
                                               gchar       **value,
                                               const gchar  *separator);
- 
+
 G_END_DECLS;
 
 #endif /* !__XFCE_RC_H__ */

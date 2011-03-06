@@ -93,7 +93,7 @@ xfce_mkdirhier (const gchar *whole_path,
       else if (p[1] == '\0')
         last = 1;
 
-      *p = '\0';      
+      *p = '\0';
 
       if (first)
         {

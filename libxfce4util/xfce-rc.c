@@ -315,7 +315,7 @@ xfce_rc_get_groups (const XfceRc *rc)
  * @rc    : an #XfceRc object.
  * @group : the name of the group to get entries from.
  *
- * Returns the names of all entries in @group if any. 
+ * Returns the names of all entries in @group if any.
  *
  * %NULL is a valid input value for @group. #xfce_rc_get_entries will
  * then return all entries in the so called "NULL group". Though this
@@ -455,7 +455,7 @@ xfce_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
 {
   g_return_if_fail (rc != NULL);
   g_return_if_fail (key != NULL);
-  
+
   if (rc->delete_entry != NULL)
     (*rc->delete_entry) (rc, key, global);
 }
@@ -467,7 +467,7 @@ xfce_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
  * @rc  : an #XfceRc object.
  * @key : the key to search for.
  *
- * Checks whether the @key has an entry in the current group. 
+ * Checks whether the @key has an entry in the current group.
  *
  * Return value: %TRUE if the @key is available, else %FALSE.
  *

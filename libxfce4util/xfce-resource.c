@@ -58,7 +58,7 @@ _res_getenv (const gchar *variable,
 {
   static gchar buffer[PATH_MAX];
   const gchar *result;
-  
+
   result = g_getenv (variable);
   if (result == NULL)
     {

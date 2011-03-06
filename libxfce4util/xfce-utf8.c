@@ -50,9 +50,9 @@ gchar*
 xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
 {
   gchar *p;
-  
+
   g_return_val_if_fail (str != NULL, NULL);
-  
+
   for (p = str; p != NULL && *p != '\0' && (!end || p < end) && (max_len < 0 || (p - str) < max_len); )
     {
       if ((*p > 0) && (*p < 32))
@@ -70,7 +70,7 @@ xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
  * @src     : target string.
  * @max_len : max characters to duplicate or -1 for no character limit.
  *
- * Duplicates the @src string up to @max_len characters 
+ * Duplicates the @src string up to @max_len characters
  * (note that characters does not mean bytes with UTF-8).
  *
  * The caller is responsible to free the returned string

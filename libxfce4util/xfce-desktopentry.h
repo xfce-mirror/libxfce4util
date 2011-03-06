@@ -63,7 +63,7 @@ struct _XfceDesktopEntryClass
 
 GType                  xfce_desktop_entry_get_type              (void) G_GNUC_CONST;
 
-XfceDesktopEntry      *xfce_desktop_entry_new                   (const gchar      *file, 
+XfceDesktopEntry      *xfce_desktop_entry_new                   (const gchar      *file,
                                                                  const gchar     **categories,
                                                                  gint              num_categories) G_GNUC_MALLOC;
 XfceDesktopEntry      *xfce_desktop_entry_new_from_data         (const gchar      *data,

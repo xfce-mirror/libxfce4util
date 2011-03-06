@@ -268,7 +268,7 @@ _xfce_rc_config_get_groups (const XfceRc *rc)
       tmp = _xfce_rc_simple_get_groups (XFCE_RC_CONST (list->data));
       if (tmp == NULL)
         continue;
-      
+
       if (result == NULL)
         result = tmp;
       else
