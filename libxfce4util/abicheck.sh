@@ -20,5 +20,5 @@
 #
 
 cpp -P -DINCLUDE_INTERNAL_SYMBOLS -DINCLUDE_VARIABLES -DALL_FILES ${srcdir:-.}/libxfce4util.symbols | sed -e '/^$/d' -e 's/ G_GNUC.*$//' -e 's/ PRIVATE//' | sort > expected-abi
-nm -D .libs/libxfce4util.so | grep " T\|R\|G " | cut -d ' ' -f 3 | grep -v '^_.*' | grep -v '^ *$' | sort > actual-abi
+nm -D .libs/libxfce4util.so | grep " [TRGD] " | cut -d ' ' -f 3 | grep -v '^_.*' | grep -v '^ *$' | sort > actual-abi
 diff -u expected-abi actual-abi && rm expected-abi actual-abi
