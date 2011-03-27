@@ -28,7 +28,7 @@
 
 #include <glib.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define XFCE_KIOSK(obj) ((XfceKiosk *)(obj))
 
@@ -40,6 +40,6 @@ gboolean   xfce_kiosk_query (const XfceKiosk *kiosk,
                              const gchar     *capability);
 void       xfce_kiosk_free  (XfceKiosk       *kiosk);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__XFCE_KIOSK_H__ */

@@ -28,7 +28,7 @@
 
 #include <glib.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define LIBXFCE4UTIL_MAJOR_VERSION	@LIBXFCE4UTIL_VERSION_MAJOR@
 #define LIBXFCE4UTIL_MINOR_VERSION	@LIBXFCE4UTIL_VERSION_MINOR@
@@ -55,6 +55,6 @@ extern const guint libxfce4util_micro_version;
 #endif /* __GNUC__ */
 #endif /* !defined(G_GNUC_WARN_UNUSED_RESULT) */
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif	/* !__LIBXFCE4UTIL_CONFIG_H__ */

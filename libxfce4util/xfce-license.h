@@ -26,7 +26,7 @@
 #ifndef __XFCE_LICENSE_H__
 #define __XFCE_LICENSE_H__
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 /**
  * XfceLicenseTextType:
@@ -49,6 +49,6 @@ const gchar *xfce_get_license_text (XfceLicenseTextType license_type) G_GNUC_PUR
 #define XFCE_LICENSE_GPL  (xfce_get_license_text (XFCE_LICENSE_TEXT_GPL))
 #define XFCE_LICENSE_LGPL (xfce_get_license_text (XFCE_LICENSE_TEXT_LGPL))
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__XFCE_LICENSE_H__ */

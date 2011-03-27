@@ -28,7 +28,7 @@
 
 #include <libxfce4util/xfce-resource.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 typedef struct _XfceRc XfceRc;
 
@@ -99,7 +99,7 @@ void         xfce_rc_write_list_entry        (XfceRc       *rc,
                                               gchar       **value,
                                               const gchar  *separator);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__XFCE_RC_H__ */
 
