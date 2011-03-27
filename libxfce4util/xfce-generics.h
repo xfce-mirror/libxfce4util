@@ -28,7 +28,7 @@
 
 #include <glib.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define XFCE_GENERIC_STACK(Type)                                            \
   struct                                                                    \
@@ -112,6 +112,6 @@ xfce_stack_alloc (gsize element_size)
     }                                                                       \
   G_STMT_END
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__XFCE_GENERICS_H__ */
