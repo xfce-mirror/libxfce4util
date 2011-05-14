@@ -93,7 +93,8 @@ msgstr ""
 "ENIGE GARANTIE; zelfs zonder de impliciete garantie van VERKOOPBAARHEID of\n"
 "GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de Gnu General Public License voor meer details.\n"
 "\n"
-"U zou een exemplaar van de GNU General Public License samen met dit programma moeten hebben ontvangen; indien niet, schrijf naar de Free Software Foundation, Inc., 51 Franklin\n"
+"U zou een exemplaar van de GNU General Public License samen met dit programma moeten hebben\n"
+"ontvangen; indien niet, schrijf naar de Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:70
@@ -122,7 +123,8 @@ msgstr ""
 "ENIGE GARANTIE; zelfs zonder de impliciete garantie van VERKOOPBAARHEID of\n"
 "GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de Gnu General Public License voor meer details.\n"
 "\n"
-"U zou een exemplaar van de GNU General Public License samen met dit programma moeten hebben ontvangen; indien niet, schrijf naar de Free Software Foundation, Inc., 51 Franklin\n"
+"U zou een exemplaar van de GNU General Public License samen met dit programma moeten hebben\n"
+"ontvangen; indien niet, schrijf naar de Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
