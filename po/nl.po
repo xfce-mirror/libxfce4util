@@ -1,13 +1,14 @@
 # Dutch translations for libxfce4util package.
-# Copyright (C) 2006 THE libxfce4util'S COPYRIGHT HOLDER
+# Copyright (C) The Xfce development team.
 # This file is distributed under the same license as the libxfce4util package.
 # Stephan Arts <psybsd@gmail.com>, 2006.
+# Pjotr, 2011.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util 4.4.0\n"
+"Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-26 16:31+0000\n"
+"POT-Creation-Date: 2011-05-27 04:31+0000\n"
 "PO-Revision-Date: 2006-10-03 23:54+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -45,7 +46,8 @@ msgid ""
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 msgstr ""
-" LET OP: om juridische fouten te voorkomen, is de onderstaande tekst slechts\n"
+" LET OP: om juridische fouten te voorkomen, is de onderstaande tekst "
+"slechts\n"
 " gedeeltelijk vertaald in het Nederlands!\n"
 "\n"
 " Herdistributie en gebruik in bronvorm en in binaire vormen, met of zonder\n"
@@ -125,7 +127,8 @@ msgid ""
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
 msgstr ""
-"Dit bibliotheekbestand is vrije programmatuur; u kunt haar herverdelen en/of\n"
+"Dit bibliotheekbestand is vrije programmatuur; u kunt haar herverdelen en/"
+"of\n"
 "aanpassen\n"
 "onder de voorwaarden van de GNU General Public License zoals die is\n"
 "gepubliceerd door de Free\n"
