@@ -25,7 +25,6 @@
 #define LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 
 #include <libxfce4util/libxfce4util-config.h>
-#include <libxfce4util/libxfce4util-enum-types.h>
 
 #include <libxfce4util/debug.h>
 #include <libxfce4util/xfce-fileutils.h>

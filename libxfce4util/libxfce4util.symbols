@@ -45,14 +45,6 @@ libxfce4util_micro_version
 #endif
 #endif
 
-/* libxfce4util-enum-types functions */
-#if IN_HEADER(__LIBXFCE4UTIL_ENUM_TYPES_H__)
-#if IN_SOURCE(__LIBXFCE4UTIL_ENUM_TYPES_C__)
-xfce_license_text_type_get_type G_GNUC_CONST
-xfce_resource_type_get_type G_GNUC_CONST
-#endif
-#endif
-
 /* xfce-fileutils functions */
 #if IN_HEADER(__XFCE_FILEUTILS_H__)
 #if IN_SOURCE(__XFCE_FILEUTILS_C__)
