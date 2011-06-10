@@ -36,16 +36,6 @@ Internationalization</ulink>
 @encoding: 
 
 
-<!-- ##### FUNCTION xfce_strip_context ##### -->
-<para>
-
-</para>
-
-@msgid: 
-@msgval: 
-@Returns: 
-
-
 <!-- ##### FUNCTION xfce_get_file_localized ##### -->
 <para>
 

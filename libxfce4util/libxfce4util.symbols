@@ -77,7 +77,6 @@ xfce_mkdirhier
 #if IN_HEADER(__XFCE_I18N_H__)
 #if IN_SOURCE(__XFCE_I18N_C__)
 xfce_textdomain
-xfce_strip_context
 xfce_get_file_localized G_GNUC_MALLOC
 xfce_get_file_localized_r
 xfce_get_dir_localized G_GNUC_MALLOC

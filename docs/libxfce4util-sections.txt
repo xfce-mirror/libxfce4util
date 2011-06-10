@@ -18,7 +18,6 @@ LIBXFCE4UTIL_CHECK_VERSION
 <TITLE>Internationalisation</TITLE>
 <FILE>xfce-i18n</FILE>
 xfce_textdomain
-xfce_strip_context
 xfce_get_file_localized
 xfce_get_file_localized_r
 xfce_get_dir_localized

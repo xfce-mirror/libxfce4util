@@ -69,11 +69,6 @@ void                  xfce_textdomain           (const gchar *package,
                                                  const gchar *localedir,
                                                  const gchar *encoding);
 
-#if defined(LIBXFCE4UTIL_COMPILATION) || !defined(XFCE_DISABLE_DEPRECATED)
-G_CONST_RETURN gchar* xfce_strip_context        (const gchar *msgid,
-                                                 const gchar *msgval);
-#endif
-
 gchar*                xfce_get_file_localized   (const gchar *filename) G_GNUC_MALLOC;
 gchar*                xfce_get_file_localized_r (gchar       *buffer,
                                                  gsize        length,

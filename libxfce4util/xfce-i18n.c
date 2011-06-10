@@ -163,33 +163,6 @@ xfce_textdomain (const gchar *package,
 }
 
 
-/**
- * xfce_strip_context:
- * @msgid  : a string that may be translated.
- * @msgval : a possible translation for @msgid or the same as @msgid.
- *
- * Portable replacement for g_strip_context() introduced in GLib 2.4. You
- * prefer this method over g_strip_context() cause it allows your software
- * to be used with older versions of GLib as well, though libxfce4util also
- * defines a macro named g_strip_context() that simply calls xfce_strip_context()
- * if an older GLib version is detected.
- *
- * Return value: @msgval, unless @msgval is identical to @msgid and contains a
- *               '|' character, in which case a pointer to the substring of @msgid
- *               after the first '|' character is returned
- *
- * Since: 4.2
- *
- * Deprecated:4.4: Use g_strip_context() instead.
- **/
-G_CONST_RETURN gchar*
-xfce_strip_context (const gchar *msgid,
-                    const gchar *msgval)
-{
-  return g_strip_context (msgid, msgval);
-}
-
-
 
 /**
  * xfce_get_file_localized:
