@@ -26,7 +26,7 @@
 #ifndef __XFCE_PRIVATE_H__
 #define __XFCE_PRIVATE_H__
 
-#include <glib-object.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
@@ -58,28 +58,6 @@ G_BEGIN_DECLS
 #define _xfce_slice_new(type)                     (g_new (type, 1))
 #define _xfce_slice_new0(type)                    (g_new0 (type, 1))
 #define _xfce_slice_free(type, ptr)               G_STMT_START{ g_free ((ptr)); }G_STMT_END
-#endif
-
-/* avoid trivial g_value_get_*() function calls */
-#ifdef NDEBUG
-#define g_value_get_boolean(v)  (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_char(v)     (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_uchar(v)    (((const GValue *) (v))->data[0].v_uint)
-#define g_value_get_int(v)      (((const GValue *) (v))->data[0].v_int)
-#define g_value_get_uint(v)     (((const GValue *) (v))->data[0].v_uint)
-#define g_value_get_long(v)     (((const GValue *) (v))->data[0].v_long)
-#define g_value_get_ulong(v)    (((const GValue *) (v))->data[0].v_ulong)
-#define g_value_get_int64(v)    (((const GValue *) (v))->data[0].v_int64)
-#define g_value_get_uint64(v)   (((const GValue *) (v))->data[0].v_uint64)
-#define g_value_get_enum(v)     (((const GValue *) (v))->data[0].v_long)
-#define g_value_get_flags(v)    (((const GValue *) (v))->data[0].v_ulong)
-#define g_value_get_float(v)    (((const GValue *) (v))->data[0].v_float)
-#define g_value_get_double(v)   (((const GValue *) (v))->data[0].v_double)
-#define g_value_get_string(v)   (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_param(v)    (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_boxed(v)    (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_pointer(v)  (((const GValue *) (v))->data[0].v_pointer)
-#define g_value_get_object(v)   (((const GValue *) (v))->data[0].v_pointer)
 #endif
 
 G_END_DECLS

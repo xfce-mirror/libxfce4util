@@ -9,7 +9,7 @@ xfce4_kiosk_query_SOURCES =						\
 	main.c
 
 xfce4_kiosk_query_CFLAGS =						\
-	$(GOBJECT_CFLAGS)
+	$(GLIB_CFLAGS)
 
 xfce4_kiosk_query_DEPENDENCIES =					\
 	$(top_builddir)/libxfce4util/libxfce4util.la

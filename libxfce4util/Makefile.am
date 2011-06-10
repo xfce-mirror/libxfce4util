@@ -63,7 +63,7 @@ libxfce4util_la_SOURCES =						\
 	xfce-utf8.c
 
 libxfce4util_la_CFLAGS = 						\
-	$(GOBJECT_CFLAGS)
+	$(GLIB_CFLAGS)
 
 libxfce4util_la_LDFLAGS =						\
 	-export-dynamic							\
@@ -72,7 +72,7 @@ libxfce4util_la_LDFLAGS =						\
 	-no-undefined
 
 libxfce4util_la_LIBADD =						\
-	$(GOBJECT_LIBS)
+	$(GLIB_LIBS)
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libxfce4util-1.0.pc

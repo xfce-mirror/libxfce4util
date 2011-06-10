@@ -36,28 +36,12 @@ EXTRA_HFILES=
 HTML_IMAGES =
 
 # Extra SGML files that are included by DOC_MAIN_SGML_FILE
-content_files = 		\
-	version.xml
-
-# CFLAGS and LDFLAGS for compiling scan program. Only needed
-# if $(DOC_MODULE).types is non-empty.
-GTKDOC_CFLAGS = 					\
-	-I$(top_srcdir) 				\
-	-I$(top_builddir) 				\
-	-DLIBXFCE4UTIL_COMPILATION			\
-	$(CPPFLAGS)					\
-	$(GOBJECT_CFLAGS)				\
-	$(GTK_DOC_EXTRA_CFLAGS)
-
-GTKDOC_LIBS =  						\
-	$(GOBJECT_LIBS)					\
-	$(top_builddir)/libxfce4util/libxfce4util.la
+content_files = version.xml
 
 include $(top_srcdir)/gtk-doc.make
 
 # Other files to distribute
-EXTRA_DIST +=						\
-	version.xml.in
+EXTRA_DIST += version.xml.in
 
 if MAINTAINER_MODE
 %.1: %.xml
