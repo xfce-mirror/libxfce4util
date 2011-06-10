@@ -20,9 +20,6 @@ lib_LTLIBRARIES =							\
 
 libxfce4util_headers =							\
 	debug.h								\
-	i18n.h								\
-	utf8.h								\
-	util.h								\
 	xfce-desktopentry.h						\
 	xfce-fileutils.h						\
 	xfce-generics.h							\
