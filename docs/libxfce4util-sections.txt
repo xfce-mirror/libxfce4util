@@ -144,27 +144,6 @@ xfce_expand_variables
 
 
 <SECTION>
-<TITLE>Desktop entries</TITLE>
-<FILE>xfce-desktopentry</FILE>
-XfceDesktopEntry
-xfce_desktop_entry_new
-xfce_desktop_entry_new_from_data
-xfce_desktop_entry_get_file
-xfce_desktop_entry_get_string
-xfce_desktop_entry_get_int
-xfce_desktop_entry_has_translated_entry
-<SUBSECTION Standard>
-XFCE_DESKTOP_ENTRY
-XFCE_IS_DESKTOP_ENTRY
-XFCE_TYPE_DESKTOP_ENTRY
-XFCE_DESKTOP_ENTRY_CLASS
-XFCE_IS_DESKTOP_ENTRY_CLASS
-XFCE_DESKTOP_ENTRY_GET_CLASS
-<SUBSECTION Private>
-xfce_desktop_entry_get_type
-</SECTION>
-
-<SECTION>
 <TITLE>POSIX Signal Handling</TITLE>
 <FILE>xfce-posix-signal-handler</FILE>
 XfcePosixSignalHandler

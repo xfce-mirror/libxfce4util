@@ -1,5 +1,4 @@
 libxfce4util/libxfce4util-config.c
-libxfce4util/xfce-desktopentry.c
 libxfce4util/xfce-fileutils.c
 libxfce4util/xfce-i18n.c
 libxfce4util/xfce-kiosk.c

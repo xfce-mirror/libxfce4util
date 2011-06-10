@@ -1,3 +1,2 @@
 #include <libxfce4util/libxfce4util.h>
 
-xfce_desktop_entry_get_type

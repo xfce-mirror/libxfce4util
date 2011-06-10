@@ -53,19 +53,6 @@ xfce_resource_type_get_type G_GNUC_CONST
 #endif
 #endif
 
-/* XfceDesktopEntry methods */
-#if IN_HEADER(__XFCE_DESKTOPENTRY_H__)
-#if IN_SOURCE(__XFCE_DESKTOPENTRY_C__)
-xfce_desktop_entry_get_type G_GNUC_CONST
-xfce_desktop_entry_new G_GNUC_MALLOC
-xfce_desktop_entry_new_from_data G_GNUC_MALLOC
-xfce_desktop_entry_get_file
-xfce_desktop_entry_get_int
-xfce_desktop_entry_get_string
-xfce_desktop_entry_has_translated_entry
-#endif
-#endif
-
 /* xfce-fileutils functions */
 #if IN_HEADER(__XFCE_FILEUTILS_H__)
 #if IN_SOURCE(__XFCE_FILEUTILS_C__)

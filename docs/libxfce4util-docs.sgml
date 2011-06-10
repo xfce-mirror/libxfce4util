@@ -10,7 +10,6 @@
 <!ENTITY libxfce4util-FileUtils-Functions SYSTEM "xml/xfce-fileutils.xml">
 <!ENTITY libxfce4util-MiscUtils-Functions SYSTEM "xml/xfce-miscutils.xml">
 <!ENTITY libxfce4util-Unicode-Functions SYSTEM "xml/xfce-utf8.xml">
-<!ENTITY libxfce4util-Desktop-Entries SYSTEM "xml/xfce-desktopentry.xml">
 <!ENTITY libxfce4util-Generics SYSTEM "xml/xfce-generics.xml">
 <!ENTITY libxfce4util-Signal-Handling SYSTEM "xml/xfce-posix-signal-handler.xml">
 <!ENTITY version SYSTEM "version.xml">
@@ -40,7 +39,6 @@
 
 	<chapter id="libxfce4util-core">
 		<title>Xfce Core Application support</title>
-		&libxfce4util-Desktop-Entries;
 		&libxfce4util-Kiosk;
 		&libxfce4util-Signal-Handling;
 	</chapter>

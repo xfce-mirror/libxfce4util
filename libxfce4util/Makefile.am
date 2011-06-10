@@ -20,7 +20,6 @@ lib_LTLIBRARIES =							\
 
 libxfce4util_headers =							\
 	debug.h								\
-	xfce-desktopentry.h						\
 	xfce-fileutils.h						\
 	xfce-generics.h							\
 	xfce-i18n.h							\
@@ -54,7 +53,6 @@ libxfce4util_la_SOURCES =						\
 	libxfce4util-config.c						\
 	libxfce4util-private.c						\
 	libxfce4util-private.h						\
-	xfce-desktopentry.c						\
 	xfce-fileutils.c						\
 	xfce-i18n.c							\
 	xfce-kiosk.c							\
