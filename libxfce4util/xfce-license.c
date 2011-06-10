@@ -26,10 +26,14 @@
 #include <libxfce4util/libxfce4util-private.h>
 #include <libxfce4util/libxfce4util-alias.h>
 
-
-
-/* TODO change these variables to static once we break the ABI next time */
-const gchar xfce_builtin_license_BSD[] =
+#ifdef __SUNPRO_C
+#pragma align 4 (xfce_builtin_license_BSD)
+#endif
+#ifdef __GNUC__
+static const char xfce_builtin_license_BSD[] __attribute__ ((__aligned__ (4))) =
+#else
+static const char xfce_builtin_license_BSD[] =
+#endif
   N_ (" Redistribution and use in source and binary forms, with or without\n"
       " modification, are permitted provided that the following conditions\n"
       " are met:\n"
@@ -51,7 +55,14 @@ const gchar xfce_builtin_license_BSD[] =
       " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
       " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n");
 
-const gchar xfce_builtin_license_GPL[] =
+#ifdef __SUNPRO_C
+#pragma align 4 (xfce_builtin_license_GPL)
+#endif
+#ifdef __GNUC__
+static const char xfce_builtin_license_GPL[] __attribute__ ((__aligned__ (4))) =
+#else
+static const char xfce_builtin_license_GPL[] =
+#endif
   N_ ("This program is free software; you can redistribute it and/or modify it\n"
       "under the terms of the GNU General Public License as published by the Free\n"
       "Software Foundation; either version 2 of the License, or (at your option)\n"
@@ -66,7 +77,14 @@ const gchar xfce_builtin_license_GPL[] =
       "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
       "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n");
 
-const gchar xfce_builtin_license_LGPL[] =
+#ifdef __SUNPRO_C
+#pragma align 4 (xfce_builtin_license_LGPL)
+#endif
+#ifdef __GNUC__
+static const char xfce_builtin_license_LGPL[] __attribute__ ((__aligned__ (4))) =
+#else
+static const char xfce_builtin_license_LGPL[] =
+#endif
   N_ ("This library is free software; you can redistribute it and/or\n"
       "modify it under the terms of the GNU Library General Public\n"
       "License as published by the Free Software Foundation; either\n"

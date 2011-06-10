@@ -99,11 +99,6 @@ xfce_kiosk_free
 /* xfce-license variables/functions */
 #if IN_HEADER(__XFCE_LICENSE_H__)
 #if IN_SOURCE(__XFCE_LICENSE_C__)
-#ifdef INCLUDE_VARIABLES
-xfce_builtin_license_BSD
-xfce_builtin_license_GPL
-xfce_builtin_license_LGPL
-#endif
 xfce_get_license_text G_GNUC_PURE
 #endif
 #endif
