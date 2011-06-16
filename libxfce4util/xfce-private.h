@@ -43,23 +43,6 @@ G_BEGIN_DECLS
 #define _xfce_return_val_if_fail(expr, val) G_STMT_START{ (void)0; }G_STMT_END
 #endif
 
-/* support macros for the slice allocator */
-#if GLIB_CHECK_VERSION(2,10,0)
-#define _xfce_slice_alloc(block_size)             (g_slice_alloc ((block_size)))
-#define _xfce_slice_alloc0(block_size)            (g_slice_alloc0 ((block_size)))
-#define _xfce_slice_free1(block_size, mem_block)  G_STMT_START{ g_slice_free1 ((block_size), (mem_block)); }G_STMT_END
-#define _xfce_slice_new(type)                     (g_slice_new (type))
-#define _xfce_slice_new0(type)                    (g_slice_new0 (type))
-#define _xfce_slice_free(type, ptr)               G_STMT_START{ g_slice_free (type, (ptr)); }G_STMT_END
-#else
-#define _xfce_slice_alloc(block_size)             (g_malloc ((block_size)))
-#define _xfce_slice_alloc0(block_size)            (g_malloc0 ((block_size)))
-#define _xfce_slice_free1(block_size, mem_block)  G_STMT_START{ g_free ((mem_block)); }G_STMT_END
-#define _xfce_slice_new(type)                     (g_new (type, 1))
-#define _xfce_slice_new0(type)                    (g_new0 (type, 1))
-#define _xfce_slice_free(type, ptr)               G_STMT_START{ g_free ((ptr)); }G_STMT_END
-#endif
-
 G_END_DECLS
 
 #endif /* !__XFCE_RC_H__ */
