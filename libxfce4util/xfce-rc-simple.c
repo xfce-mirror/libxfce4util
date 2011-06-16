@@ -144,7 +144,7 @@ simple_add_group (XfceRcSimple *simple,
     if (str_is_equal (group->name, name))
       return group;
 
-  group         = _xfce_slice_new (Group);
+  group         = g_slice_new (Group);
   group->name   = g_string_chunk_insert (simple->string_chunk, name);
   group->efirst = NULL;
   group->elast  = NULL;
@@ -206,7 +206,7 @@ simple_add_entry (XfceRcSimple *simple,
       }
       /* why you annoying macro, will you stop borking libxfceutil? thanks. DO NOT DO THAT: g_return_val_if_fail (locale == NULL, NULL); */
 
-      entry         = _xfce_slice_new (Entry);
+      entry         = g_slice_new (Entry);
       entry->key    = g_string_chunk_insert (simple->string_chunk, key);
       entry->value  = g_string_chunk_insert (simple->string_chunk, value);
       entry->lfirst = NULL;
@@ -263,7 +263,7 @@ simple_add_entry (XfceRcSimple *simple,
       if (G_LIKELY (lentry == NULL))
         {
           /* create new localized entry */
-          lentry         = _xfce_slice_new (LEntry);
+          lentry         = g_slice_new (LEntry);
           lentry->locale = g_string_chunk_insert (simple->string_chunk, locale);
           lentry->value  = g_string_chunk_insert (simple->string_chunk, value);
 
@@ -567,11 +567,11 @@ simple_entry_free (Entry *entry)
       next = lentry->next;
 
       /* release this lentry */
-      _xfce_slice_free (LEntry, lentry);
+      g_slice_free (LEntry, lentry);
     }
 
   /* release the entry */
-  _xfce_slice_free (Entry, entry);
+  g_slice_free (Entry, entry);
 }
 
 
@@ -593,7 +593,7 @@ simple_group_free (Group *group)
     }
 
   /* release the group */
-  _xfce_slice_free (Group, group);
+  g_slice_free (Group, group);
 }
 
 
