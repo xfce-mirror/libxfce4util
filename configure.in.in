@@ -156,9 +156,13 @@ dnl *** Check for linker optimizations ***
 dnl **************************************
 XDT_FEATURE_LINKER_OPTS()
 
-dnl ****************************************
-dnl *** Check for ELF visibility support ***
-dnl ****************************************
+dnl *****************************************
+dnl *** Check for ELF visibility support  ***
+dnl *****************************************
+dnl *** Do not replace with the Xdt macro ***
+dnl *** because it cannot cope with the   ***
+dnl *** libxfce4util_*_version variables  ***
+dnl *****************************************
 AC_ARG_ENABLE([visibility], AC_HELP_STRING([--disable-visibility], [Do not use ELF visibility attributes]), [], [enable_visibility=yes])
 have_gnuc_visibility=no
 if test x"$enable_visibility" != x"no"; then
