@@ -38,6 +38,6 @@
 #include <libxfce4util/xfce-resource.h>
 #include <libxfce4util/xfce-utf8.h>
 
-#define LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
+#undef LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 
 #endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */
