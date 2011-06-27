@@ -557,18 +557,8 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
 static void
 simple_entry_free (Entry *entry)
 {
-  LEntry *lentry;
-  LEntry *next;
-
   /* release all lentries */
-  for (lentry = entry->lfirst; lentry != NULL; lentry = next)
-    {
-      /* determine the next lentry */
-      next = lentry->next;
-
-      /* release this lentry */
-      g_slice_free (LEntry, lentry);
-    }
+  g_slice_free_chain (LEntry, entry->lfirst, next);
 
   /* release the entry */
   g_slice_free (Entry, entry);
