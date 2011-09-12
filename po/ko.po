@@ -133,14 +133,14 @@ msgstr ""
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr "pipe() failed: %s"
+msgstr "pipe() 실패: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "xfce_posix_signal_handler_init() must be called first"
+msgstr "xfce_posix_signal_handler_init()가 먼저 호출되어야 합니다"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr "sigaction() failed: %s\n"
+msgstr "sigaction() 실패: %s\n"
