@@ -2,29 +2,30 @@
 # Copyright (C) 2008 THE libxfce'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the libxfce package.
 # Kristjan Siimson <kristjan.siimson@gmail.com>, 2008.
+# Allar Kiristaja <aquastus@gmail.com>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce 4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 15:34+0100\n"
-"PO-Revision-Date: 2008-09-08 06:51-0800\n"
-"Last-Translator: Kristjan Siimson <epost@ksiimson.se>\n"
-"Language-Team: Estonian\n"
+"POT-Creation-Date: 2011-10-29 16:06+0000\n"
+"PO-Revision-Date: 2011-10-30 00:44+0300\n"
+"Last-Translator: Allar Kiristaja <aquastus@gmail.com>\n"
+"Language-Team: Eesti <>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Content-Transfer-Encoding: 8bits\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Poedit-Language: Estonian\n"
 "X-Poedit-Country: ESTONIA\n"
 
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Viga luues kataloogi \"%s\": %s"
+msgstr "Kataloogi „%s“ loomisel tekkis viga: %s"
 
-#: ../libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:37
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -73,8 +74,7 @@ msgstr ""
 " TÕTTU, KUI SEE TEKIB ÜKSKÕIK MISSUGUSEL TEEL SELLE TARKVARA KASUTAMISE\n"
 " TAGAJÄRJEL, ISEGI KUI ON TEATATUD SELLISE KAHJU TEKKIMISE VÕIMALUSEST.\n"
 
-#: ../libxfce4util/xfce-license.c:55
-#, fuzzy
+#: ../libxfce4util/xfce-license.c:66
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -105,11 +105,9 @@ msgstr ""
 "\n"
 "Te peaks olema saanud GNU Üldise Avaliku Litsentsi\n"
 "koopia koos selle programmiga, kui ei, siis kontakteeruge Free Software\n"
-"Foundation'iga, 59 Temple Place - Suite 330, Boston,\n"
-"MA 02111-1307, USA.\n"
+"Foundation'iga, 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA\n"
 
-#: ../libxfce4util/xfce-license.c:70
-#, fuzzy
+#: ../libxfce4util/xfce-license.c:88
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -139,20 +137,20 @@ msgstr ""
 "\n"
 "Te peaks olema saanud GNU Üldise Avaliku Teegilitsentsi\n"
 "koopia koos selle teegiga, kui ei, siis kontakteeruge Free Software\n"
-"Foundation'iga, 59 Temple Place - Suite 330, Boston,\n"
-"MA 02111-1307, USA.\n"
+"Foundation'iga, 51 Franklin Street, Fifth Floor, \n"
+"Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr ""
+msgstr "pipe() ebaõnnestus: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr ""
+msgstr "esmalt peab olema kutsutud xfce_posix_signal_handler_init()"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr ""
+msgstr "sigaction() ebaõnnestus: %s\n"
