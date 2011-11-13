@@ -207,7 +207,6 @@ AC_OUTPUT([
 Makefile
 docs/version.xml
 docs/Makefile
-libxfce4util.spec
 libxfce4util/libxfce4util-1.0.pc
 libxfce4util/libxfce4util-config.h
 libxfce4util/Makefile

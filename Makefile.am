@@ -8,14 +8,11 @@ SUBDIRS =								\
 
 AUTOMAKE_OPTIONS =							\
 	1.8								\
-	dist-bzip2
+	dist-bzip2							\
+	no-dist-gzip
 
 distclean-local:
-	rm -rf libxfce4util.spec *.cache *~
-
-rpm: dist
-	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
-	@rm -f $(PACKAGE)-$(VERSION).tar.gz
+	rm -rf *.cache *~
 
 .PHONY: ChangeLog
 
@@ -33,8 +30,7 @@ EXTRA_DIST =								\
 	gtk-doc.make							\
 	intltool-extract.in						\
 	intltool-merge.in						\
-	intltool-update.in						\
-	libxfce4util.spec
+	intltool-update.in
 
 DISTCLEANFILES =							\
 	intltool-extract						\
