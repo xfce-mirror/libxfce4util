@@ -144,7 +144,8 @@ if test x"$with_broken_putenv" != x"yes" -a x"$with_broken_putenv" != x"no"; the
     return(strcmp(getenv("foo"), "bar") == 0 ? 0 : 1);
   }],
   [with_broken_putenv=no],
-  [with_broken_putenv=yes])
+  [with_broken_putenv=yes],
+  [with_broken_putenv=cross])
 fi
 if test x"$with_broken_putenv" = x"yes"; then
   AC_DEFINE([HAVE_BROKEN_PUTENV], [1], [Define if putenv(3) is broken])
