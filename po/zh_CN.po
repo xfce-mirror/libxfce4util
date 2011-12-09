@@ -1,5 +1,7 @@
-# Simplified Chinese translation for the libxfce4util.
-# This file is distributed under the same license as the libxfce4util package.
+# Simplified Chinese translations for
+# the libxfce4util package.
+# This file is distributed under the same license as
+# the libxfce4util package.
 # Chris K. Zhang <plutino@gmail.com>, 2009.
 # Aron Xu <aronmalache@163.com>, 2009.
 # Hunt Xu <huntxu@live.cn>, 2009.
@@ -12,7 +14,7 @@ msgstr ""
 "POT-Creation-Date: 2011-12-07 09:21+0000\n"
 "PO-Revision-Date: 2009-12-19 01:47+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
-"Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
+"Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
