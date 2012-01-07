@@ -327,10 +327,8 @@ simple_parse_line (gchar  *line,
 
   if (*p == '[')
     {
-      for (q = ++p; *q != '\0' && *q != ']'; ++q)
-        ;
-
-      if (G_LIKELY (*q == ']'))
+      q = strrchr (++p, ']');
+      if (G_LIKELY (q != NULL))
         {
           *section = p;
           *q = '\0';
@@ -339,9 +337,8 @@ simple_parse_line (gchar  *line,
     }
   else
     {
-      for (q = p + 1; *q != '=' && *q != '\0'; ++q)
-        ;
-      if (G_UNLIKELY (*q != '='))
+      q = strchr (p + 1, '=');
+      if (G_UNLIKELY (q == NULL))
         return FALSE;
 
       r = q + 1;
@@ -803,10 +800,10 @@ _xfce_rc_simple_get_groups (const XfceRc *rc)
   for (group = simple->gfirst; group != NULL; group = group->next)
     {
       if (pos == size)
-  {
-    size *= 2;
-    result = g_realloc (result, (size + 1) * sizeof (*result));
-  }
+        {
+          size *= 2;
+          result = g_realloc (result, (size + 1) * sizeof (*result));
+        }
       result[pos] = g_strdup (group->name);
       ++pos;
     }
