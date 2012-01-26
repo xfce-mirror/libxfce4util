@@ -119,9 +119,8 @@ _xfce_rc_config_new (XfceResourceType type,
   gchar       **paths;
   gchar       **p;
 
-  g_return_val_if_fail (resource != NULL, NULL);
-  g_return_val_if_fail (strlen (resource) > 0, NULL);
-  g_return_val_if_fail (resource[strlen (resource) - 1] != '/', NULL);
+  g_return_val_if_fail (resource != NULL && *resource != '\0', NULL);
+  g_return_val_if_fail (resource[strlen (resource) - 1] != G_DIR_SEPARATOR, NULL);
 
   user = xfce_resource_save_location (type, resource, FALSE);
   paths = xfce_resource_lookup_all (type, resource);

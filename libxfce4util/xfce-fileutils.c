@@ -81,14 +81,14 @@ xfce_mkdirhier (const gchar *whole_path,
   oumask = 0;
   retval = TRUE;
 
-  if (p[0] == '/')              /* Skip leading '/'. */
+  if (p[0] == G_DIR_SEPARATOR) /* Skip leading '/'. */
     ++p;
 
   for (first = 1, last = 0; !last ; ++p)
     {
       if (p[0] == '\0')
         last = 1;
-      else if (p[0] != '/')
+      else if (p[0] != G_DIR_SEPARATOR)
         continue;
       else if (p[1] == '\0')
         last = 1;
@@ -137,7 +137,7 @@ xfce_mkdirhier (const gchar *whole_path,
         }
 
       if (!last)
-        *p = '/';
+        *p = G_DIR_SEPARATOR;
     }
 
   if (!first && !last)

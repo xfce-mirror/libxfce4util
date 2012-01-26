@@ -143,7 +143,7 @@ _res_remove_trailing_slashes (GList *list)
       if (len <= 0)
         {
           /* A string with slashes only => root directory */
-          ll = g_list_append (ll, g_strdup ("/"));
+          ll = g_list_append (ll, g_strdup (G_DIR_SEPARATOR_S));
           g_free (lp->data);
         }
       else if (len < strlen (path))
@@ -287,10 +287,10 @@ _res_splitup_pattern (const gchar *pattern,
 {
   const gchar *p;
 
-  if (*pattern == '\0' || *pattern == '/')
+  if (*pattern == '\0' || *pattern == G_DIR_SEPARATOR)
     return FALSE;
 
-  p = strchr (pattern, '/');
+  p = strchr (pattern, G_DIR_SEPARATOR);
 
   if (p == NULL || *(p + 1) == '\0')
     {
@@ -340,7 +340,7 @@ _res_match_path (const gchar *path,
     {
       guint end = strlen (pattern_this) - 1;
 
-      if (pattern_this[end] == '/')
+      if (pattern_this[end] == G_DIR_SEPARATOR)
   {
     file_test = G_FILE_TEST_IS_DIR;
     pattern_this[end] = '\0';
@@ -363,7 +363,7 @@ _res_match_path (const gchar *path,
         {
           if (g_file_test (filename, G_FILE_TEST_IS_DIR))
             {
-              child_relpath = g_strconcat (relpath, entry, "/", NULL);
+              child_relpath = g_strconcat (relpath, entry, G_DIR_SEPARATOR_S, NULL);
               list = _res_match_path (filename, child_relpath, pattern_child, list);
               g_free (child_relpath);
             }
@@ -372,7 +372,7 @@ _res_match_path (const gchar *path,
         {
           if (file_test == G_FILE_TEST_IS_DIR)
             {
-              entries = g_list_append (entries, g_strconcat (relpath, entry, "/", NULL));
+              entries = g_list_append (entries, g_strconcat (relpath, entry, G_DIR_SEPARATOR_S, NULL));
             }
           else
             {
@@ -475,7 +475,7 @@ xfce_resource_lookup (XfceResourceType type,
   GList    *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
-  g_return_val_if_fail (filename != NULL && strlen (filename) > 0, NULL);
+  g_return_val_if_fail (filename != NULL && *filename != '\0', NULL);
 
   _res_init ();
 
@@ -529,7 +529,7 @@ xfce_resource_lookup_all (XfceResourceType type,
   GList    *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
-  g_return_val_if_fail (filename != NULL && strlen (filename) > 0, NULL);
+  g_return_val_if_fail (filename != NULL && *filename != '\0', NULL);
 
   _res_init ();
 
