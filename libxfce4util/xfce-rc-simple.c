@@ -86,7 +86,6 @@ struct _XfceRcSimple
 {
   XfceRc        __parent__;
 
-  gboolean      shared_chunks;
   GStringChunk *string_chunk;
 
   gchar        *filename;
@@ -95,8 +94,9 @@ struct _XfceRcSimple
   Group        *glast;
   Group        *group;
 
-  gboolean      dirty;
-  gboolean      readonly;
+  guint         shared_chunks : 1;
+  guint         dirty : 1;
+  guint         readonly : 1;
 };
 
 struct _Entry

@@ -46,10 +46,6 @@ struct _XfceRc
                               gboolean translated);
   /* write_entry == NULL means readonly */
   void (*write_entry) (XfceRc *rc, const gchar *key, const gchar *value);
-  void (*reserved1) (void);
-  void (*reserved2) (void);
-  void (*reserved3) (void);
-  void (*reserved4) (void);
 
   gchar   *locale;
 };
