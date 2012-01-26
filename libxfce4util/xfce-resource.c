@@ -47,7 +47,7 @@
 
 
 static gchar*   _save[5] = { NULL, NULL, NULL, NULL, NULL };
-static GList*   _list[5] = { NULL, NULL, NULL, NULL, NULL };
+static GSList*  _list[5] = { NULL, NULL, NULL, NULL, NULL };
 static gboolean _inited = FALSE;
 
 
@@ -90,7 +90,7 @@ _res_split_and_append (const gchar     *dir_list,
   for (n = 0; dirs[n] != NULL; ++n)
     {
       if (g_path_is_absolute (dirs[n]))
-        _list[type] = g_list_append (_list[type], dirs[n]);
+        _list[type] = g_slist_append (_list[type], dirs[n]);
       else
         g_free (dirs[n]);
     }
@@ -99,12 +99,12 @@ _res_split_and_append (const gchar     *dir_list,
 
 
 
-static GList*
-_res_remove_duplicates (GList *list)
+static GSList*
+_res_remove_duplicates (GSList *list)
 {
-  GList *ll = NULL;
-  GList *pp;
-  GList *lp;
+  GSList *ll = NULL;
+  GSList *pp;
+  GSList *lp;
 
   for (lp = list; lp != NULL; lp = lp->next)
     {
@@ -113,22 +113,22 @@ _res_remove_duplicates (GList *list)
           break;
 
       if (pp == NULL)
-        ll = g_list_append (ll, lp->data);
+        ll = g_slist_append (ll, lp->data);
       else
         g_free (lp->data);
     }
 
-  g_list_free (list);
+  g_slist_free (list);
   return ll;
 }
 
 
 
-static GList*
-_res_remove_trailing_slashes (GList *list)
+static GSList*
+_res_remove_trailing_slashes (GSList *list)
 {
-  GList       *ll = NULL;
-  GList       *lp;
+  GSList      *ll = NULL;
+  GSList      *lp;
   const gchar *path;
   gsize        len;
 
@@ -143,19 +143,19 @@ _res_remove_trailing_slashes (GList *list)
       if (len <= 0)
         {
           /* A string with slashes only => root directory */
-          ll = g_list_append (ll, g_strdup (G_DIR_SEPARATOR_S));
+          ll = g_slist_append (ll, g_strdup (G_DIR_SEPARATOR_S));
           g_free (lp->data);
         }
       else if (len < strlen (path))
         {
-          ll = g_list_append (ll, g_strndup (path, len));
+          ll = g_slist_append (ll, g_strndup (path, len));
           g_free (lp->data);
         }
       else
-        ll = g_list_append (ll, lp->data);
+        ll = g_slist_append (ll, lp->data);
     }
 
-  g_list_free (list);
+  g_slist_free (list);
   return ll;
 }
 
@@ -167,7 +167,7 @@ _res_init (void)
   const gchar *dirs;
   const gchar *dir;
   gchar       *path;
-  GList       *l;
+  GSList      *l;
 
   if (_inited)
     return;
@@ -183,7 +183,7 @@ _res_init (void)
       g_warning ("Invalid XDG_CACHE_HOME directory `%s', program may behave incorrectly.", dir);
     }
   _save[XFCE_RESOURCE_CACHE] = g_strdup (dir);
-  _list[XFCE_RESOURCE_CACHE] = g_list_prepend (_list[XFCE_RESOURCE_CACHE], g_strdup (dir));
+  _list[XFCE_RESOURCE_CACHE] = g_slist_prepend (_list[XFCE_RESOURCE_CACHE], g_strdup (dir));
 
   /*
    * Data home
@@ -194,7 +194,7 @@ _res_init (void)
       g_warning ("Invalid XDG_DATA_HOME directory `%s', program may behave incorrectly.", dir);
     }
   _save[XFCE_RESOURCE_DATA] = g_strdup (dir);
-  _list[XFCE_RESOURCE_DATA] = g_list_prepend (_list[XFCE_RESOURCE_DATA], g_strdup (dir));
+  _list[XFCE_RESOURCE_DATA] = g_slist_prepend (_list[XFCE_RESOURCE_DATA], g_strdup (dir));
 
   /*
    * Config home
@@ -205,7 +205,7 @@ _res_init (void)
       g_warning ("Invalid XDG_CONFIG_HOME directory `%s', program may behave incorrectly.", dir);
     }
   _save[XFCE_RESOURCE_CONFIG] = g_strdup (dir);
-  _list[XFCE_RESOURCE_CONFIG] = g_list_prepend (_list[XFCE_RESOURCE_CONFIG], g_strdup (dir));
+  _list[XFCE_RESOURCE_CONFIG] = g_slist_prepend (_list[XFCE_RESOURCE_CONFIG], g_strdup (dir));
 
   /*
    * Data dirs
@@ -227,36 +227,36 @@ _res_init (void)
   /* local icons dir first */
   path = g_build_filename (_save[XFCE_RESOURCE_DATA], "icons", NULL);
   _save[XFCE_RESOURCE_ICONS] = g_strdup (path);
-  _list[XFCE_RESOURCE_ICONS] = g_list_prepend (_list[XFCE_RESOURCE_ICONS], path);
+  _list[XFCE_RESOURCE_ICONS] = g_slist_prepend (_list[XFCE_RESOURCE_ICONS], path);
 
   /* backward compatibility */
   path = xfce_get_homefile (".icons", NULL);
-  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], path);
+  _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], path);
 
   for (l = _list[XFCE_RESOURCE_DATA]; l != NULL; l = l->next)
     {
       path = g_build_filename ((const gchar *) l->data, "icons", NULL);
-      _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], path);
+      _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], path);
     }
 
   /* XDG fallback */
-  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], "/usr/share/pixmaps");
+  _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], "/usr/share/pixmaps");
 
   /* fallback for system which that don't install everything in /usr */
-  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], "/usr/local/share/pixmaps");
-  _list[XFCE_RESOURCE_ICONS] = g_list_append (_list[XFCE_RESOURCE_ICONS], DATADIR "/share/pixmaps");
+  _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], "/usr/local/share/pixmaps");
+  _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], DATADIR "/share/pixmaps");
 
   /*
    * Themes dirs
    */
   path = xfce_get_homefile (".themes", NULL);
   _save[XFCE_RESOURCE_THEMES] = g_strdup (path);
-  _list[XFCE_RESOURCE_THEMES] = g_list_prepend (_list[XFCE_RESOURCE_THEMES], path);
+  _list[XFCE_RESOURCE_THEMES] = g_slist_prepend (_list[XFCE_RESOURCE_THEMES], path);
 
   for (l = _list[XFCE_RESOURCE_DATA]; l != NULL; l = l->next)
     {
       path = g_build_filename ((const gchar *) l->data, "themes", NULL);
-      _list[XFCE_RESOURCE_THEMES] = g_list_append (_list[XFCE_RESOURCE_THEMES], path);
+      _list[XFCE_RESOURCE_THEMES] = g_slist_append (_list[XFCE_RESOURCE_THEMES], path);
     }
 
   /* Remove trailing slashes */
@@ -309,11 +309,11 @@ _res_splitup_pattern (const gchar *pattern,
 
 
 
-static GList*
+static GSList*
 _res_match_path (const gchar *path,
-     const gchar *relpath,
-     const gchar *pattern,
-     GList       *entries)
+                 const gchar *relpath,
+                 const gchar *pattern,
+                 GSList      *entries)
 {
   GPatternSpec *spec;
   const gchar  *entry;
@@ -322,7 +322,7 @@ _res_match_path (const gchar *path,
   gchar        *pattern_child;
   gchar        *filename;
   gchar        *child_relpath;
-  GList        *list = NULL;
+  GSList       *list = NULL;
   GDir         *dp;
 
   dp = g_dir_open (path, 0, NULL);
@@ -372,11 +372,11 @@ _res_match_path (const gchar *path,
         {
           if (file_test == G_FILE_TEST_IS_DIR)
             {
-              entries = g_list_append (entries, g_strconcat (relpath, entry, G_DIR_SEPARATOR_S, NULL));
+              entries = g_slist_append (entries, g_strconcat (relpath, entry, G_DIR_SEPARATOR_S, NULL));
             }
           else
             {
-              entries = g_list_append (entries, g_strconcat (relpath, entry, NULL));
+              entries = g_slist_append (entries, g_strconcat (relpath, entry, NULL));
             }
         }
 
@@ -390,7 +390,7 @@ _res_match_path (const gchar *path,
     g_free (pattern_child);
   g_free (pattern_this);
 
-  return g_list_concat (entries, list);
+  return g_slist_concat (entries, list);
 }
 
 
@@ -419,7 +419,7 @@ xfce_resource_dirs (XfceResourceType type)
   gchar **paths;
   guint   size;
   guint   pos;
-  GList  *l;
+  GSList *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
 
@@ -468,11 +468,11 @@ xfce_resource_dirs (XfceResourceType type)
  **/
 gchar*
 xfce_resource_lookup (XfceResourceType type,
-          const gchar     *filename)
+                      const gchar     *filename)
 {
   GFileTest test;
   gchar    *path;
-  GList    *l;
+  GSList   *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
   g_return_val_if_fail (filename != NULL && *filename != '\0', NULL);
@@ -526,7 +526,7 @@ xfce_resource_lookup_all (XfceResourceType type,
   gchar   **paths;
   guint     size;
   guint     pos;
-  GList    *l;
+  GSList   *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
   g_return_val_if_fail (filename != NULL && *filename != '\0', NULL);
@@ -601,8 +601,8 @@ xfce_resource_match (XfceResourceType type,
                      gboolean         unique)
 {
   gchar **paths;
-  GList  *result = NULL;
-  GList  *l;
+  GSList *result = NULL;
+  GSList *l;
   guint   n;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
@@ -616,11 +616,11 @@ xfce_resource_match (XfceResourceType type,
   if (unique)
     result = _res_remove_duplicates (result);
 
-  paths = g_new (gchar *, g_list_length (result) + 1);
+  paths = g_new (gchar *, g_slist_length (result) + 1);
   for (l = result, n = 0; l != NULL; l = l->next, ++n)
     paths[n] = (gchar *) l->data;
   paths[n] = NULL;
-  g_list_free (result);
+  g_slist_free (result);
 
   return paths;
 }
@@ -650,8 +650,8 @@ xfce_resource_match_custom (XfceResourceType type,
                             gpointer         user_data)
 {
   gchar **paths;
-  GList  *result = NULL;
-  GList  *l;
+  GSList *result = NULL;
+  GSList *l;
   guint   n;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
@@ -662,11 +662,11 @@ xfce_resource_match_custom (XfceResourceType type,
   if (unique)
     result = _res_remove_duplicates (result);
 
-  paths = g_new (gchar *, g_list_length (result) + 1);
+  paths = g_new (gchar *, g_slist_length (result) + 1);
   for (l = result, n = 0; l != NULL; l = l->next, ++n)
     paths[n] = (gchar *) l->data;
   paths[n] = NULL;
-  g_list_free (result);
+  g_slist_free (result);
 
   return paths;
 }
@@ -698,7 +698,7 @@ xfce_resource_push_path (XfceResourceType type,
 
   _res_init ();
 
-  _list[type] = g_list_append (_list[type], g_strdup (path));
+  _list[type] = g_slist_append (_list[type], g_strdup (path));
 }
 
 
@@ -717,17 +717,17 @@ xfce_resource_push_path (XfceResourceType type,
 void
 xfce_resource_pop_path (XfceResourceType type)
 {
-  GList *l;
+  GSList *l;
 
   g_return_if_fail (TYPE_VALID (type));
 
   _res_init ();
 
-  l = g_list_last (_list[type]);
+  l = g_slist_last (_list[type]);
   if (G_LIKELY (l != NULL))
     {
       g_free (l->data);
-      _list[type] = g_list_delete_link (_list[type], l);
+      _list[type] = g_slist_delete_link (_list[type], l);
     }
 }
 
