@@ -5,13 +5,13 @@
 # Chris K. Zhang <plutino@gmail.com>, 2009.
 # Aron Xu <aronmalache@163.com>, 2009.
 # Hunt Xu <huntxu@live.cn>, 2009.
-# Chipong Luo <chipong_l@yahoo.com>, 2011, 2012.
+# Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-30 05:03+0000\n"
+"POT-Creation-Date: 2012-02-08 03:39+0000\n"
 "PO-Revision-Date: 2009-12-19 01:47+0800\n"
 "Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n@xfce.org>\n"
@@ -151,9 +151,7 @@ msgstr "无法 pipe()：%s"
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr ""
-"必须先调用 "
-"xfce_posix_signal_handler_init()"
+msgstr "必须先调用 xfce_posix_signal_handler_init()"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
