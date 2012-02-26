@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libxfce4util 4.4.0\n"
 "Report-Msgid-Bugs-To: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
 "POT-Creation-Date: 2011-09-12 22:11+0000\n"
-"PO-Revision-Date: 2011-09-13 07:23+0900\n"
+"PO-Revision-Date: 2012-02-26 21:13+0900\n"
 "Last-Translator: Seong-ho, Cho <darkcircle.0426@gmail.com>\n"
 "Language-Team: xfce4-users-kr-i18n <xfce4-users-kr-i18n@lists.sourceforge.net>\n"
 "Language: Ko\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "디렉토리 '%s'을(를) 만드는데 오류가 발생했습니다: %s"
+msgstr "'%s'디렉터리를 만드는데 오류가 발생했습니다: %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
@@ -119,14 +119,12 @@ msgstr ""
 "\n"
 "이 프로그램은 유용화 되길 바라며 배포되지만 그 어떤 보증도 할 수 없으며\n"
 " 심지어는 일부 목적에 대한 상업성 혹은 적합성에 대한 암묵적 보증도 할 수\n"
-"\r\n"
 "없습니다. 더 자세한 사항은 GNU General Public License를 보시기 바랍니다.\n"
 "\n"
 "이 프로그램과 함께 GNU General Public License의 복사본을 받으셔야 합니다.\n"
 "만약 못 받으셨다면 자유 소프트웨어 재단으로 요청하여 주십시오\n"
-"\r\n"
-"51 Franklin\n"
-"Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+"\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
