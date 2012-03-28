@@ -1,3 +1,38 @@
+4.9.0
+=====
+- Make licenses static. You can only use
+  xfce_get_license_text(...).
+- Remove unused .h files.
+- Remove xfce_strip_context(), use g_strip_context().
+- Remove XfceDesktopEntry.
+- Don't generate enum types.
+- Only link against glib.
+- Set version string to 4.10.
+- Remove spec file and rpm build.
+- Missing fallback for AC_RUN_IF_ELSE() when cross-compiling (bug #8166).
+- Fix XfceRc group parsing with brackets in name (bug #8150).
+- Reduce XfceRc structure size from from 216 to 176 bytes.
+- Use some macros and drop unneeded strlen's in XfceRc.
+- Use GSList in xfce-resource.
+- Bump verinfo to 6:0:0.
+- Translation updates (ar, et, eu, is, ko, lt, nl, nn, pt, ru,
+  sk, zh_CN, zh_TW).
+
+4.8.2
+=====
+- Change the version string to 4.8.
+- Fixed incorrect assertion in xfce_strjoin (bug #7122).
+- Fix "empty declaration" compiler warnings.
+- Update FSF address and add missing licenses.
+- Fix undef in libxfce4util.h header.
+- Remove the internal slice allocator macros.
+- Use chain to free slice instead of a loop.
+- Translation updates (ko, ru, sk, zh_CN, nl).
+
+4.8.1
+=====
+- Set xfce_version_string to 4.8.0.
+
 4.8.0
 =====
 - Translation updates: Arabic, Greek, Polish, Romanian, Turkish.
