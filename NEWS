@@ -1,3 +1,8 @@
+4.9.1
+=====
+- Bump glib to 2.24.
+- Translation updates: German, Japanese, Korean, Portuguese.
+
 4.9.0
 =====
 - Make licenses static. You can only use
