@@ -80,18 +80,8 @@ xfce_get_userfile (const gchar *first_element, ...)
 
 #endif
 
-gchar*  xfce_strjoin          (const gchar *separator,
-                               gchar      **strings,
-                               gint         count) G_GNUC_MALLOC;
-
 gchar*  xfce_gethostname      (void) G_GNUC_MALLOC;
 
-gint    xfce_putenv           (const gchar *string);
-
-gint    xfce_setenv           (const gchar *name,
-                               const gchar *value,
-                               gboolean     overwrite);
-void    xfce_unsetenv         (const gchar *name);
 
 gchar*  xfce_expand_variables (const gchar *command,
                                gchar      **envp) G_GNUC_MALLOC;

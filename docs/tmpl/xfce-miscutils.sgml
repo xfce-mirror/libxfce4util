@@ -91,17 +91,6 @@ formed by a NULL terminated list of path components.
 @Returns: 
 
 
-<!-- ##### FUNCTION xfce_strjoin ##### -->
-<para>
-
-</para>
-
-@separator: 
-@strings: 
-@count: 
-@Returns: 
-
-
 <!-- ##### FUNCTION xfce_gethostname ##### -->
 <para>
 
@@ -109,34 +98,6 @@ formed by a NULL terminated list of path components.
 
 @void: 
 @Returns: 
-
-
-<!-- ##### FUNCTION xfce_putenv ##### -->
-<para>
-
-</para>
-
-@string: 
-@Returns: 
-
-
-<!-- ##### FUNCTION xfce_setenv ##### -->
-<para>
-
-</para>
-
-@name: 
-@value: 
-@overwrite: 
-@Returns: 
-
-
-<!-- ##### FUNCTION xfce_unsetenv ##### -->
-<para>
-
-</para>
-
-@name: 
 
 
 <!-- ##### FUNCTION xfce_expand_variables ##### -->

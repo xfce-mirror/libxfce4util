@@ -89,11 +89,7 @@ xfce_get_homedir G_GNUC_PURE
 xfce_get_homefile_r
 xfce_get_userdir G_GNUC_PURE
 xfce_get_userfile_r
-xfce_strjoin G_GNUC_MALLOC
 xfce_gethostname G_GNUC_MALLOC
-xfce_putenv
-xfce_setenv
-xfce_unsetenv
 xfce_expand_variables G_GNUC_MALLOC
 #endif
 #endif

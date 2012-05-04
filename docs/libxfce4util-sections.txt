@@ -134,11 +134,7 @@ xfce_get_homefile_r
 xfce_get_userdir
 xfce_get_userfile
 xfce_get_userfile_r
-xfce_strjoin
 xfce_gethostname
-xfce_putenv
-xfce_setenv
-xfce_unsetenv
 xfce_expand_variables
 </SECTION>
 
