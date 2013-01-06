@@ -1,6 +1,6 @@
 # $Id$
 
-INCLUDES =								\
+AM_CPPFLAGS =								\
 	-I$(top_srcdir)							\
 	-DDEFAULT_XDG_CACHE_HOME=\"~/.cache\"				\
 	-DDEFAULT_XDG_DATA_HOME=\"~/.local/share\"			\
