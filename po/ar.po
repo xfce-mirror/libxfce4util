@@ -1,14 +1,15 @@
 # translation of ar.po to Arabic
 # Khaled Hosny <khaledhosny@eglug.org>, 2007.
 # محمد الحرقان <malham1@gmail.com>, 2012.
+# كريم أولاد الشلحة <herr.linux88@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-11-18 00:06+0000\n"
-"PO-Revision-Date: 2012-11-18 10:51+0300\n"
-"Last-Translator: محمد الحرقان <malham1@gmail.com>\n"
-"Language-Team: http://www.vertaal.com.ar/files/factory/ar/list/\n"
+"PO-Revision-Date: 2013-02-03 11:43+0100\n"
+"Last-Translator: كريم أولاد الشلحة <herr.linux88@gmail.com>\n"
+"Language-Team: فريق تعريب إكسفس\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
