@@ -144,6 +144,7 @@ _xfce_rc_config_new (XfceResourceType type,
         {
           g_critical ("Failed to parse file %s, ignoring.", *p);
           xfce_rc_close (XFCE_RC (simple));
+          simple = NULL;
           continue;
         }
       config->rclist = g_slist_append (config->rclist, simple);
