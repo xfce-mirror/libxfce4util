@@ -1,3 +1,8 @@
+4.10.1
+======
+- Don't used freed rc file to avoid crash (bug #9026).
+- Autotools updates.
+
 4.10.0
 ======
 - Translation updates: Romanian, Chinese (China).
