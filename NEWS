@@ -1,3 +1,14 @@
+4.11.0
+======
+- Autotools updates.
+- Don't use freed rc file to avoid crash (bug #9026).
+- Remove unused or unrequired API functions: xfce_strjoin,
+  xfce_gethostname, xfce_putenv, xfce_setenv, xfce_unsetenv.
+- Translation updates: Arabic, Bulgarian, Welsh, Dzongkha, English
+  (Australia), Georgian, Korean, Macedonian, Malay, Dutch (Flemish),
+  Occitan (post 1500), Slovenian, Serbian, Thai, Tagalog (Philippines),
+  Uyghur, Chinese (Hong Kong).
+
 4.10.0
 ======
 - Translation updates: Romanian, Chinese (China).
