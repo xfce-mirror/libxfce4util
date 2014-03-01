@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2014-02-28 23:26+0000\n"
+"PO-Revision-Date: 2014-03-01 20:47+0000\n"
 "Last-Translator: schizo <eveskovic@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/projects/p/xfce/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
+msgstr "Redistribucija i korištenje u izvornom ili binarnom obliku, modificirani ili\nne, su dopušteni uz uvjet da su poštivani slijedeći uvjeti:\n\n1. Redistribucija izvornog koda mora zadržati gorenavedenu bilješku\no pravima korištenja, listu uvjeta i izjavu koja slijedi.\n2. Redistribucija binarne forme mora stvoriti gorenavedenu bilješku\no pravima korištenja, listu uvjeta i izjavu koja slijedi u dokumentaciji i/ili \ndrugim materijalima dostavljenim s paketom.\n\nOvaj softver je osiguran od strane autora ``kakav je'' i bilo kakva izražena ili\nimplicirana jamstva, uključujući, ali ne i ograničena s impliciranim jamstvima\nmogućnosti prodaje i sposobnosti za određenu funkciju, su isključena.\nU nijednom slučaju autor neće biti odgovoran za bilo kakvu direktnu ili\nindirektnu, slučajnu, posebnu, primjerenu ili posljedičnu štetu (uključujući,\nali ne i ograničenu s  nabavkom zamjenskih dobara ili usluga; gubitak\nupotrebljivosti, podataka ili profita; ili poslovnog prekida) bilo kako uzrokovanu\ni po bilo kojoj teoriji odgovornu, bilo po ugovoru, striktnoj odgovornosti ili\nprekršaju (uključujući nemar ili suprotno) koja proizlazi na bilo koji način iz\nupotrebe ovog softvera, čak i kada je upozoreno na mogućnost takve štete.\n"
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
@@ -62,7 +62,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr ""
+msgstr "Ovaj program je slobodan; možete ga redistribuirati i/ili modificirati pod\nuvjetima GNU General Public licence objevljane od strane Free Software\nfondacije; bilo verzije 2 licence ili neke kasnije (po vlastitom izboru).\n\nOvaj program se dijeli u nadi da će biti koristan, ali bez IKAKVOG JAMSTVA;\ntako i onog impliciranog mogućnošću prodaje ili sposobnosti za određenu\nfunkciju. Vidi GNU General Public licencu za više detalja.\n\nTrebali ste dobiti kopiju GNU General Public licence uz ovaj softver; ako niste\nobavijestite Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,\nBoston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -80,19 +80,19 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr ""
+msgstr "Ovaj program je slobodan; možete ga redistribuirati i/ili modificirati\npod uvjetima GNU General Public licence objevljane od strane Free\nSoftware fondacije; bilo verzije 2 licence ili neke kasnije (po vlastitom\nizboru).\n\nOvaj program se dijeli u nadi da će biti koristan, ali bez IKAKVOG\nJAMSTVA; tako i onog impliciranog mogućnošću prodaje ili sposobnosti\nza određenu funkciju. Vidi GNU General Public licencu za više detalja.\n\nTrebali ste dobiti kopiju GNU General Public licence uz ovaj softver;\nako niste obavijestite Free Software Foundation, Inc., 51 Franklin Street,\nFifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr "pipe() failed: %s"
+msgstr "pipe() neuspjelo: %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "xfce_posix_signal_handler_init() must be called first"
+msgstr "xfce_posix_signal_handler_init() mora biti prvo pozvan"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr "sigaction() failed: %s\n"
+msgstr "sigaction() neuspjelo: %s\n"
