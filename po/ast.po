@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Tornes Llume <l.lumex03.tornes@gmail.com>, 2014
+# Ḷḷumex03 <tornes@opmbx.org>, 2014
+# Ḷḷumex03 <tornes@opmbx.org>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:01+0200\n"
-"PO-Revision-Date: 2014-04-13 01:07+0000\n"
-"Last-Translator: Tornes Llume <l.lumex03.tornes@gmail.com>\n"
-"Language-Team: Asturian (http://www.transifex.com/projects/p/xfce/language/ast/)\n"
+"PO-Revision-Date: 2014-10-25 19:46+0000\n"
+"Last-Translator: Ḷḷumex03 <tornes@opmbx.org>\n"
+"Language-Team: Asturian (http://www.transifex.com/projects/p/libxfce4util/language/ast/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,7 +22,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Fallu al criar el direutoriu '%s': %s"
+msgstr "Fallu creando'l direutoriu '%s': %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
@@ -45,7 +46,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr " Permítese la redistribución y usu en forma de fontes y binarios, con\n o ensin modificación, si se cumplen les siguientes condiciones:\n\n 1. Les redistribuciones del códigu fonte tienen de caltener l'anterior nota de copyright,\n     esta llista de condiciones y la siguiente declaración de descargu.\n 2. Les redistribuciones en formatu binariu tienden de reproducir l'anterior nota de copyright,\n     esta llista de condiciones y la siguiente declaración de descargu na documentación\n     y/u otros materiales proporcionaos cola distribución.\n\n ESTI SOFTWARE PROPORCIÓNASE POL AUTOR Y DEMÁS CONTRIBUYENTES \"COMO YE\"\n ENSIN GARANTÍES DE DENGÚN TIPU. L'AUTOR Y DEMÁS CONTRIBUYENTES REFUGUEN DE TOLES\n GARANTÍES, YÁ SEYAN ESPLÍCITES O IMPLÍCITES, INCLUYENDO, PERO ENSIN LLIMITASE A, GARANTÍES\n IMPLÍCITES DE COMERCIABILIDÁ YA IDONEIDÁ PA UN ENVÍS EN PARTICULAR. EN DENGÚN\n CASU SE FADRÁ AL AUTOR O DEMÁS CONTRIBUYENTES RESPONSABLES DE DAÑOS DIREUTOS,\n INDIREUTOS, ESPECIALES, ACCIDENTALES, O EMERXENTES (INCLUYENDO, PERO ENSIN LLIMITASE A,\n ALQUISICIÓN DE SUSTITUTOS DE BIENES O SERVICIOS; PÉRDA DEL USU, DATOS O LLUCRU, O\n INTERRUPCIÓN DE NEGOCIOS) ENSIN IMPORTAR LES CAUSES NIN CUALESQUIER RESPONSABILIDÁ, YÁ SEYA\n QUE SE DIESEN BAXO CONTRATU, POR NEGLIGENCIA U OTRA AICIÓN, QUE DERIVASEN DE O SE\n RELLACIONASEN AL USU D'ESTI SOFTWARE, ENTÁ SI SE NOTIFICÓ DE LA POSIBILIDÁ\n DE TALOS DAÑOS.\n"
+msgstr " Permítese la redistribución y usu en forma de fontes y binarios, con\n o ensin modificación, si se cumplen les condiciones siguientes:\n\n 1. Les redistribuciones del códigu fonte tienen de caltener l'anterior nota de copyright, esta llista de condiciones y la declaración siguiente de renuncia.\n 2. Les redistribuciones en formatu binariu tienen de reproducir la nota de copyright d'enriba, esta llista de condiciones y la declaración siguiente de renuncia na documentación y/u otros materiales apurríos cola distribución.\n\nESTI SOFTWARE TA APURRÍU PENTE L'AUTOR \"COMO YE\" Y CUALESQUIER ESPRESU O\nGARANTÍES IMPLÍCITES, INCLUYENDO, PERO NON LLIMITAES A, GRANATÍES IMPLÍCITES\nDE COMERCIABILIDÁ YA IDONEIDÁ PA UN UN ENVÍS EN PARTICULAR.\nEN DENGÚN CASU SE FADRÁ AL AUTOR O DEMÁS CONTRIBUYENTES RESPONSABLES DE DAÑOS DIREUTOS, INDIREUTOS,\nESPECIALES, ACCIDENTALES, EXEMPLARES Ó EMERXENTES (INCLUYENDO, PERO\nENSIN LLIMITASE A, L'ALQUISICIÓN DE TROQUEOS DE BIENES O SERVICIOS; PÉRDA D'USU,\nDATOS O LLUCRU, O INTERRUPCIÓN DE NEGOCIOS) ENSIN IMPORTAR LES CAUSES NIN CUALESQUIER RESPONSABILIDÁ,\nYA SÍA QUE SE DIESEN BAXO CONTRATU, POR NEGLIGENCIA OTRA AICIÓN, QUE DERIVASEN DE O SE RELLACIONASEN AL USU\nD'ESTI SOFTWARE, ENTÁ SI SE NOTIFICÓ DE LA POSIBILIDAD DE TALOS DAÑOS.\n"
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
@@ -90,7 +91,7 @@ msgstr "pipe() falló: %s"
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "xfce_posix_signal_handler_init() tien de llamar primero"
+msgstr "Tien de llamase primero a xfce_posix_signal_handler_init()"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
