@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Abel Martín <abel.martin.ruiz@gmail.com>, 2008
-# Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>, 2014
+# Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2014-12-25 19:16+0000\n"
+"PO-Revision-Date: 2015-02-19 15:04+0000\n"
 "Last-Translator: Pablo Roberto Francisco Lezaeta Reyes <prflr88@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/libxfce4util/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Esta biblioteca es software libre; usted puede redistribuirla y/o\nmodificarla bajo los términos de la Licencia Pública General para\nBibliotecas de GNU tal y como ha sido publicada por la Free Software\nFoundation; o bien la versión 2.1 de la licencia, o (a su discreción)\ncualquier versión posterior.\n\nEsta biblioteca se distribuye con la esperanza de que sea útil, pero SIN\nNINGUNA GARANTÍA, incluso sin la garantía MERCANTIL implícita o la de\nCONVENIENCIA PARA UN PROPÓSITO PARTICULAR. Véase la Licencia Pública\nGeneral para Bibliotecas de GNU para más detalles.\n\nDebe haber recibido una copia de la Licencia Pública General\npara Bibliotecas de GNU junto con este programa; si no, escriba a la\nFree Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
+msgstr "Esta biblioteca es software libre; usted puede redistribuirla y/o\nmodificarla bajo los términos de la Licencia Pública General para\nBibliotecas de GNU tal y como ha sido publicada por la Free Software\nFoundation; o bien la versión 2 de la licencia, o (a su discreción)\ncualquier versión posterior.\n\nEsta biblioteca se distribuye con la esperanza de que sea útil, pero SIN\nNINGUNA GARANTÍA, incluso sin la garantía MERCANTIL implícita o la de\nCONVENIENCIA PARA UN PROPÓSITO PARTICULAR. Véase la Licencia Pública\nGeneral para Bibliotecas de GNU para más detalles.\n\nDebe haber recibido una copia de la Licencia Pública General\npara Bibliotecas de GNU junto con este programa; si no, escriba a la\nFree Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
