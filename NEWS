@@ -1,6 +1,7 @@
 4.12.1
 ======
 - Set xfce_version_string to 4.12 (oops!).
+
 4.12.0
 ======
 - Update libtool version to reflect dropped symbols (bug #10737)
