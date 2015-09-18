@@ -1,32 +1,30 @@
-# Galician translation of libxfce4util
-# Copyright (C) 2008, 2009 Leandro Regueiro
-# This file is distributed under the same license as the xfce package.
-#
-# Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009.
-#
-# Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
-# colaborar connosco, podes atopar máis información en <http://trasno.net>
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Leandro Regueiro <leandro.regueiro@gmail.com>, 2006,2008-2009
+# Xosé <xosecalvo@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util 4.4.0\n"
+"Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 15:34+0100\n"
-"PO-Revision-Date: 2010-10-19 18:07+0100\n"
-"Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
-"Language: gl\n"
+"POT-Creation-Date: 2013-07-02 22:35+0200\n"
+"PO-Revision-Date: 2015-09-18 20:08+0000\n"
+"Last-Translator: Xosé <xosecalvo@gmail.com>\n"
+"Language-Team: Galician (http://www.transifex.com/xfce/libxfce4util/language/gl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Language: gl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Produciuse un erro ao crear o directorio '%s': %s"
+msgstr "Produciuse un erro ao crear o directorio «%s»: %s"
 
-#: ../libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:37
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -48,37 +46,9 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
-"A redistribución e o uso xa sexa en forma binaria ou de código fonte,\n"
-"con ou sen modificacións, está permitida se se cumpren as seguintes\n"
-"condicións:\n"
-"\n"
-" 1. As redistribucións do código fonte deben manter o aviso de\n"
-"    copyright de enriba, ademais desta lista de condicións e a seguinte\n"
-"    renuncia.\n"
-" 2. As redistribucións en forma binaria deben reproducir o aviso de\n"
-"    copyright de enriba, xunto con esta lista de condicións e a seguinte\n"
-"    renuncia na documentación e/ou outros materiais fornecidos na\n"
-"    distribución.\n"
-"\n"
-" O AUTOR CEDE ESTE SOFTWARE \"TAL CAL\" SEN NINGÚN TIPO DE\n"
-" GARANTÍA, NIN EXPLÍCITA NIN IMPLÍCITA, INCLUÍDAS, AÍNDA QUE SEN\n"
-" EXCLUSIVIDADE, AS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDADE E\n"
-" IDONEIDADE PARA UN DETERMINADO FIN. EN NINGÚN CASO SE LLE\n"
-" ESIXIRÁ RESPONSABILIDADE AO AUTOR POR CALQUERA PERDA OU\n"
-" DANO DIRECTO, INDIRECTO, INCIDENTAL, ESPECIAL, OU DERIVADOS\n"
-" (O QUE INCLÚE, AÍNDA QUE SEN RESTRICIÓN, A SUBSTITUCIÓN DE\n"
-" BENS OU SERVIZOS; PERDAS NO USO, DATOS, OU BENEFICIOS; OU\n"
-" INTERRUPCIÓN DE NEGOCIO) POLA RAZÓN QUE SEXA E DE CALQUERA\n"
-"RESPONSABILIDADE, XA SEXA CONTRACTUAL OU DOUTRO TIPO\n"
-"(INCLUINDO NEGLIXENCIA OU OUTRA) DERIVADA DE CALQUERA USO\n"
-"DESTE SOFTWARE, MESMO SE FOSEN ADVERTIDOS DA POSIBILIDADE\n"
-"DE QUE SE PRODUCISEN OS DANOS DESCRITOS ANTERIORMENTE.\n"
-"\n"
-"CONSULTE O TEXTO EN INGLÉS, XA QUE ESTA TRADUCIÓN PODE NON\n"
-"SER EXACTA.\n"
+msgstr "A redistribución e o uso, xa sexa en forma binaria ou de código fonte,\ncon ou sen modificacións, está permitida se se cumpren as seguintes\ncondicións:\n\n 1. As redistribucións do código fonte deben manter o aviso de\n    copyright de enriba, ademais desta lista de condicións e a seguinte\n    renuncia.\n 2. As redistribucións en forma binaria deben reproducir o aviso de\n    copyright de enriba, xunto con esta lista de condicións e a seguinte\n    renuncia na documentación e/ou outros materiais fornecidos na\n    distribución.\n\n O AUTOR CEDE ESTE SOFTWARE «TAL CAL», SEN NINGÚN TIPO DE\n GARANTÍA, NIN EXPLÍCITA NIN IMPLÍCITA, INCLUÍDAS, AÍNDA QUE SEN\n EXCLUSIVIDADE, AS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDADE E\n IDONEIDADE PARA UN DETERMINADO FIN. EN NINGÚN CASO SE LLE\n ESIXIRÁ RESPONSABILIDADE AO AUTOR POR CALQUERA PERDA OU\n DANO DIRECTO, INDIRECTO, INCIDENTAL, ESPECIAL, OU DERIVADOS\n (O QUE INCLÚE, AÍNDA QUE SEN RESTRICIÓN, A SUBSTITUCIÓN DE\n BENS OU SERVIZOS; PERDAS NO USO, DATOS, OU BENEFICIOS; OU\n INTERRUPCIÓN DE NEGOCIO) POLA RAZÓN QUE SEXA E DE CALQUERA\nRESPONSABILIDADE, XA SEXA CONTRACTUAL OU DOUTRO TIPO\n(INCLUINDO NEGLIXENCIA OU OUTRA) DERIVADA DE CALQUERA USO\nDESTE SOFTWARE, MESMO SE FOSEN ADVERTIDOS DA POSIBILIDADE\nDE QUE SE PRODUCISEN OS DANOS DESCRITOS ANTERIORMENTE.\n\nCONSULTE O TEXTO EN INGLÉS, XA QUE ESTA TRADUCIÓN PODE NON\nSER EXACTA.\n"
 
-#: ../libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:66
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -90,31 +60,12 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr ""
-"Este programa é software libre e, xa que logo, vostede pode\n"
-"redistribuílo e/ou modificalo consonte os termos establecidos\n"
-"na Licenza pública xeral de GNU segundo a súa publicación\n"
-"pola Free Software Foundation. Pode escoller a versión 2 da\n"
-"licenza ou, se prefire, calquera outra versión posterior.\n"
-"\n"
-"Este programa distribúese coa esperanza de que resulte útil,\n"
-"se ben NON TEN NINGUNHA GARANTÍA, nin sequera a garantía\n"
-"implícita de COMERCIABILIDADE ou IDONEIDADE PARA UN\n"
-"DETERMINADO FIN. Para obter información máis detallada pode\n"
-"consultar a licenza pública xeral de GNU.\n"
-"\n"
-"Dáse por sentado que recibiu unha copia da licenza pública\n"
-"xeral de GNU xunto con este programa. Se non for así, pode\n"
-"solicitarlla por escrito á Free Software Foundation, Inc. no\n"
-"enderezo seguinte: 51 Franklin Street, Fifth Floor, Boston, MA\n"
-"02110-1301 USA.\n"
+msgstr "Este programa é software libre e, xa que logo, vostede pode\nredistribuílo e/ou modificalo consonte os termos establecidos\nna Licenza pública xeral de GNU segundo a súa publicación\npola Free Software Foundation. Pode escoller a versión 2 da\nlicenza ou, se prefire, calquera outra versión posterior.\n\nEste programa distribúese coa esperanza de que resulte útil,\nse ben NON TEN NINGUNHA GARANTÍA, nin sequera a garantía\nimplícita de COMERCIABILIDADE ou IDONEIDADE PARA UN\nDETERMINADO FIN. Para obter información máis detallada pode\nconsultar a licenza pública xeral de GNU.\n\nDáse por sentado que recibiu unha copia da licenza pública\nxeral de GNU xunto con este programa. Se non for así, pode\nsolicitarlla por escrito á Free Software Foundation, Inc. no\nenderezo seguinte: 51 Franklin Street, Fifth Floor, Boston, MA\n02110-1301 USA.\n"
 
-#: ../libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:88
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -130,24 +81,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr ""
-"Esta librería é software libre e, xa que logo, vostede pode\n"
-"redistribuíla e/ou modificala consonte os termos establecidos\n"
-"na Licenza pública xeral de GNU segundo a súa publicación\n"
-"pola Free Software Foundation. Pode escoller a versión 2 da\n"
-"licenza ou, se prefire, calquera outra versión posterior.\n"
-"\n"
-"Esta librería distribúese coa esperanza de que resulte útil,\n"
-"se ben NON TEN NINGUNHA GARANTÍA, nin sequera a garantía\n"
-"implícita de COMERCIABILIDADE ou IDONEIDADE PARA UN\n"
-"DETERMINADO FIN. Para obter información máis detallada pode\n"
-"consultar a licenza pública xeral de GNU.\n"
-"\n"
-"Dáse por sentado que recibiu unha copia da licenza pública\n"
-"xeral de GNU xunto con esta librería. Se non for así, pode\n"
-"solicitarlla por escrito á Free Software Foundation, Inc. no\n"
-"enderezo seguinte: 51 Franklin Street, Fifth Floor, Boston, MA\n"
-"02110-1301 USA.\n"
+msgstr "Esta librería é software libre e, xa que logo, vostede pode\nredistribuíla e/ou modificala consonte os termos establecidos\nna Licenza pública xeral de GNU segundo a súa publicación\npola Free Software Foundation. Pode escoller a versión 2 da\nlicenza ou, se prefire, calquera outra versión posterior.\n\nEsta librería distribúese coa esperanza de que resulte útil,\nse ben NON TEN NINGUNHA GARANTÍA, nin sequera a garantía\nimplícita de COMERCIABILIDADE ou IDONEIDADE PARA UN\nDETERMINADO FIN. Para obter información máis detallada pode\nconsultar a licenza pública xeral de GNU.\n\nDáse por sentado que recibiu unha copia da licenza pública\nxeral de GNU xunto con esta librería. Se non for así, pode\nsolicitarlla por escrito á Free Software Foundation, Inc. no\nenderezo seguinte: 51 Franklin Street, Fifth Floor, Boston, MA\n02110-1301 USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
