@@ -1,5 +1,8 @@
 # $Id$
 
+ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+DISTCHECK_CONFIGURE_FLAGS = --enable-introspection
+
 SUBDIRS =								\
 	libxfce4util							\
 	docs								\
@@ -25,7 +28,8 @@ EXTRA_DIST =								\
 	gtk-doc.make							\
 	intltool-extract.in						\
 	intltool-merge.in						\
-	intltool-update.in
+	intltool-update.in						\
+	m4/introspection.m4
 
 DISTCLEANFILES =							\
 	intltool-extract						\

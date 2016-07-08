@@ -27,10 +27,12 @@
 #define __XFCE_KIOSK_H__
 
 #include <glib.h>
+#include <glib-object.h>
 
 G_BEGIN_DECLS
 
-#define XFCE_KIOSK(obj) ((XfceKiosk *)(obj))
+#define XFCE_TYPE_KIOSK xfce_kiosk_get_type ()
+G_DECLARE_FINAL_TYPE (XfceKiosk, xfce_kiosk, XFCE, KIOSK, GObject)
 
 typedef struct _XfceKiosk XfceKiosk;
 

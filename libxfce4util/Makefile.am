@@ -63,7 +63,8 @@ libxfce4util_la_SOURCES =						\
 	xfce-utf8.c
 
 libxfce4util_la_CFLAGS = 						\
-	$(GLIB_CFLAGS)
+	$(GLIB_CFLAGS) \
+	$(GOBJECT_CFLAGS)
 
 libxfce4util_la_LDFLAGS =						\
 	-export-dynamic							\
@@ -72,7 +73,8 @@ libxfce4util_la_LDFLAGS =						\
 	-no-undefined
 
 libxfce4util_la_LIBADD =						\
-	$(GLIB_LIBS)
+	$(GLIB_LIBS) \
+	$(GOBJECT_LIBS)
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libxfce4util-1.0.pc
@@ -103,6 +105,40 @@ libxfce4util-alias.h: make-libxfce4util-alias.pl libxfce4util.symbols
 
 libxfce4util-aliasdef.c: make-libxfce4util-alias.pl libxfce4util.symbols
 	$(AM_V_GEN) $(PERL) $(srcdir)/make-libxfce4util-alias.pl -def < $(srcdir)/libxfce4util.symbols > libxfce4util-aliasdef.c
+
+include $(INTROSPECTION_MAKEFILE)
+INTROSPECTION_GIRS =
+INTROSPECTION_SCANNER_ENV = CC="$(CC)"
+INTROSPECTION_SCANNER_ARGS = \
+	--add-include-path=$(srcdir) \
+	--warn-all \
+	--identifier-prefix=xfce \
+	--identifier-prefix=Xfce \
+	--identifier-prefix=libxfce
+INTROSPECTION_COMPILER_ARGS = \
+	--includedir=$(srcdir) \
+	--includedir=.
+
+if HAVE_INTROSPECTION
+introspection_sources = $(filter-out %private.h %.c, $(libxfce4util_la_SOURCES))
+
+libxfce4util-1.0.gir: libxfce4util.la Makefile
+libxfce4util_1_0_gir_INCLUDES = GObject-2.0 GLib-2.0
+libxfce4util_1_0_gir_CFLAGS = $(AM_CPPFLAGS)
+libxfce4util_1_0_gir_LIBS = libxfce4util.la
+libxfce4util_1_0_gir_FILES = $(introspection_sources)
+libxfce4util_1_0_gir_EXPORT_PACKAGES = libxfce4util-1.0
+INTROSPECTION_GIRS += libxfce4util-1.0.gir
+
+girdir = $(datadir)/gir-1.0
+gir_DATA = $(INTROSPECTION_GIRS)
+
+typelibdir = $(libdir)/girepository-1.0
+typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
+
+CLEANFILES += $(gir_DATA) $(typelib_DATA)
+endif
+
 endif
 
 # required for gtk-doc
