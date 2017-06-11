@@ -47,7 +47,7 @@ usage (gboolean error)
            "\n"
            "Queries the given capabilities of <module> for the current user\n"
            "and reports whether the user has the capabilities or not. This\n"
-           "tool is mainly ment for system administrators to test their\n"
+           "tool is mainly meant for system administrators to test their\n"
            "Kiosk setup.\n");
 
   exit (error ? EXIT_FAILURE : EXIT_SUCCESS);
