@@ -70,6 +70,7 @@ xfce_locale_match
 #if IN_SOURCE(__XFCE_KIOSK_C__)
 xfce_kiosk_new G_GNUC_MALLOC
 xfce_kiosk_query
+xfce_kiosk_get_type
 xfce_kiosk_free
 #endif
 #endif
