@@ -1,6 +1,6 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2002-2014
+dnl Copyright (c) 2002-2017
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
@@ -12,11 +12,11 @@ dnl *** Version information ***
 dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
 m4_define([libxfce4util_version_major], [4])
-m4_define([libxfce4util_version_minor], [12])
-m4_define([libxfce4util_version_micro], [1])
+m4_define([libxfce4util_version_minor], [13])
+m4_define([libxfce4util_version_micro], [0])
 m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
 m4_define([libxfce4util_version_build], [@REVISION@])
-m4_define([libxfce4util_version_tag], [git])
+m4_define([libxfce4util_version_tag], [])
 m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano()])ifelse(libxfce4util_version_tag(), [git], [libxfce4util_version_tag()-libxfce4util_version_build()], [])])
 
 dnl **************************************************************
