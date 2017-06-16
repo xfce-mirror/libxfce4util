@@ -1,7 +1,6 @@
 # $Id$
 
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
-DISTCHECK_CONFIGURE_FLAGS = --enable-introspection
 
 SUBDIRS =								\
 	libxfce4util							\
@@ -37,6 +36,7 @@ DISTCLEANFILES =							\
 	intltool-update	
 
 DISTCHECK_CONFIGURE_FLAGS =						\
-	--enable-gtk-doc
+	--enable-gtk-doc                                                \
+	--enable-introspection
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
