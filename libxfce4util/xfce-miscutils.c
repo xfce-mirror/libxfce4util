@@ -190,7 +190,7 @@ xfce_get_homedir (void)
  * @buffer  : pointer to a user provided destination buffer.
  * @length  : size of @buffer in bytes.
  * @format  : printf style format string.
- * @Varargs : the arguments to substitute in the output.
+ * @...     : the arguments to substitute in the output.
  *
  * Similar in functionality to #xfce_get_homefile, but uses a user
  * defined @buffer instead of allocating a new buffer.
@@ -255,7 +255,7 @@ xfce_get_userdir (void)
  * @buffer  : user provided destination buffer.
  * @length  : size of @buffer in bytes.
  * @format  : printf style format string.
- * @Varargs : arguments to substitute in the output.
+ * @...     : arguments to substitute in the output.
  *
  * Return value: pointer to @buffer.
  **/

@@ -96,7 +96,7 @@ INTROSPECTION_COMPILER_ARGS = \
 	--includedir=.
 
 if HAVE_INTROSPECTION
-introspection_sources = $(filter-out %private.h %.c, $(libxfce4util_la_SOURCES))
+introspection_sources = $(filter-out %private.h, $(libxfce4util_la_SOURCES))
 
 libxfce4util-1.0.gir: libxfce4util.la Makefile
 libxfce4util_1_0_gir_INCLUDES = GObject-2.0 GLib-2.0

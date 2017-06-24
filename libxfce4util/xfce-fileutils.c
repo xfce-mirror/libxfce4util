@@ -45,7 +45,7 @@
 /**
  * xfce_mkdirhier:
  * @whole_path : path to the directory to create.
- * @omode      : file permissions to use for the newly created directories.
+ * @mode       : file permissions to use for the newly created directories.
  * @error      : location where to store GError object to, error are returned
  *               in the %G_FILE_ERROR domain.
  *
@@ -62,7 +62,7 @@
  **/
 gboolean
 xfce_mkdirhier (const gchar *whole_path,
-                gulong       omode,
+                gulong       mode,
                 GError     **error)
 {
   /* Stolen from FreeBSD's mkdir(1) with modifications to make it
@@ -118,7 +118,7 @@ xfce_mkdirhier (const gchar *whole_path,
       if (last)
         umask(oumask);
 
-      if (mkdir (path, last ? omode : S_IRWXU | S_IRWXG | S_IRWXO) < 0)
+      if (mkdir (path, last ? mode : S_IRWXU | S_IRWXG | S_IRWXO) < 0)
         {
           sverrno = errno;
 

@@ -93,10 +93,12 @@ xfce_kiosk_class_init (XfceKioskClass *klass)
 }
 
 /**
- * xfce_kiosk_new:
- * @module:
+ * xfce_kiosk_new: (constructor)
+ * @module: The Xfce project to query about
  *
- * FIXME
+ * Creates and returns a new instance of #XfceKiosk.
+ *
+ * Return value: (transfer full): a new instance of #XfceKiosk.
  *
  * Since: 4.2
  **/
@@ -107,7 +109,7 @@ xfce_kiosk_new (const gchar *module)
   gchar      path[1024];
 
   g_return_val_if_fail (module != NULL, NULL);
-  g_return_val_if_fail (strcmp (module, "General") != 0, NULL);
+  g_return_val_if_fail (g_strcmp0 (module, "General") != 0, NULL);
 
   g_snprintf (path, 1024, "%s/%s.kioskrc", KIOSKDIR, module);
 
@@ -206,6 +208,7 @@ xfce_kiosk_finalize (GObject *object)
  * @kiosk: A #XfceKiosk.
  *
  * Frees the @kiosk object.
+ * In 4.13 and above, this is equivalent to calling g_clear_object.
  *
  * Since: 4.2
  */
@@ -214,7 +217,7 @@ xfce_kiosk_free (XfceKiosk *kiosk)
 {
   /* finalize takes care of things in case the consumer calls unref
    * themselves instead of this function */
-  g_object_unref (kiosk);
+  g_clear_object (&kiosk);
 }
 
 

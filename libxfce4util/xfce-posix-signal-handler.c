@@ -112,7 +112,7 @@ xfce_posix_signal_handler(gint signal_id)
 
 /**
  * xfce_posix_signal_handler_init:
- * @error: Location of a #GError to store any possible errors.
+ * @error: (out) (allow-none) (transfer full): Location of a #GError to store any possible errors.
  *
  * Initializes the POSIX signal handler system.  Must be called
  * before setting any POSIX signal handlers.
@@ -178,10 +178,10 @@ xfce_posix_signal_handler_shutdown(void)
 
 /**
  * xfce_posix_signal_handler_set_handler:
- * @signal_id: A POSIX signal id number.
- * @handler: A callback function.
+ * @signal: A POSIX signal id number.
+ * @handler: (scope call): A callback function.
  * @user_data: Arbitrary data that will be passed to @handler.
- * @error: Location of a #GError to store any possible errors.
+ * @error: (out) (allow-none) (transfer full): Location of a #GError to store any possible errors.
  *
  * Sets @handler to be called whenever @signal is caught by the
  * application.  The @user_data parameter will be passed as an argument
@@ -191,7 +191,7 @@ xfce_posix_signal_handler_shutdown(void)
  *          @error will be set.
  **/
 gboolean
-xfce_posix_signal_handler_set_handler(gint signal_id,
+xfce_posix_signal_handler_set_handler(gint signal,
                                       XfcePosixSignalHandler handler,
                                       gpointer user_data,
                                       GError **error)
@@ -209,15 +209,15 @@ xfce_posix_signal_handler_set_handler(gint signal_id,
 
     if(!handler) {
         g_warning("NULL signal handler supplied; removing existing handler");
-        xfce_posix_signal_handler_restore_handler(signal_id);
+        xfce_posix_signal_handler_restore_handler(signal);
         return TRUE;
     }
 
-    if(g_hash_table_lookup(__handlers, GINT_TO_POINTER(signal_id)))
-        xfce_posix_signal_handler_restore_handler(signal_id);
+    if(g_hash_table_lookup(__handlers, GINT_TO_POINTER(signal)))
+        xfce_posix_signal_handler_restore_handler(signal);
 
     hdata = g_new0(XfcePosixSignalHandlerData, 1);
-    hdata->signal_id = signal_id;
+    hdata->signal_id = signal;
     hdata->handler = handler;
     hdata->user_data = user_data;
 
@@ -225,7 +225,7 @@ xfce_posix_signal_handler_set_handler(gint signal_id,
     sa.sa_handler = xfce_posix_signal_handler;
     sa.sa_flags = SA_RESTART;
 
-    if(sigaction(signal_id, &sa, &hdata->old_sa)) {
+    if(sigaction(signal, &sa, &hdata->old_sa)) {
         if(error) {
             g_set_error(error, G_FILE_ERROR, g_file_error_from_errno(errno),
                         _("sigaction() failed: %s\n"), strerror(errno));
@@ -234,24 +234,24 @@ xfce_posix_signal_handler_set_handler(gint signal_id,
         return FALSE;
     }
 
-    g_hash_table_insert(__handlers, GINT_TO_POINTER(signal_id), hdata);
+    g_hash_table_insert(__handlers, GINT_TO_POINTER(signal), hdata);
 
     return TRUE;
 }
 
 /**
  * xfce_posix_signal_handler_restore_handler:
- * @signal_id: A POSIX signal id number.
+ * @signal: A POSIX signal id number.
  *
  * Restores the default handler for @signal.
  **/
 void
-xfce_posix_signal_handler_restore_handler(gint signal_id)
+xfce_posix_signal_handler_restore_handler(gint signal)
 {
     if(G_UNLIKELY(!__inited))
         return;
 
-    g_hash_table_remove(__handlers, GINT_TO_POINTER(signal_id));
+    g_hash_table_remove(__handlers, GINT_TO_POINTER(signal));
 }
 
 

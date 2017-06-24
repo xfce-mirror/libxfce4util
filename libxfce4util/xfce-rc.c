@@ -90,7 +90,7 @@ _xfce_rc_init (XfceRc *rc)
  * does not exists. In this case you'll start with a fresh config, which contains
  * only the default group and no entries.
  *
- * Return value: the newly created #XfceRc object, or %NULL on error.
+ * Return value: (transfer full): the newly created #XfceRc object, or %NULL on error.
  *
  * Since: 4.2
  **/
@@ -121,11 +121,20 @@ xfce_rc_simple_open (const gchar *filename,
 
 /**
  * xfce_rc_config_open:
- * @type     :
- * @resource :
- * @readonly :
+ * @type     : The resource type being opened
+ * @resource : The resource name to open
+ * @readonly : whether to open @resource readonly.
  *
- * Return value:
+ * If @readonly is %TRUE parsing is generally faster, because only untranslated
+ * entries and entries that match the current locale will be loaded. Also if
+ * you pass %TRUE for @readonly, #xfce_rc_config will fail if @resource
+ * does not reference a regular file.
+ *
+ * It is no error if @readonly is %FALSE and the file referenced by @resource
+ * does not exists. In this case you'll start with a fresh config, which contains
+ * only the default group and no entries.
+ *
+ * Return value: (transfer full): the newly created #XfceRc object, or %NULL on error.
  *
  * Since: 4.2
  **/
@@ -294,7 +303,7 @@ xfce_rc_get_locale (const XfceRc *rc)
  * returned with this functions. But it does not matter at all, since the
  * default group is known to always exist.
  *
- * Return value: a NULL-terminated string array will the names of all groups in
+ * Return value: (transfer full): a NULL-terminated string array will the names of all groups in
  *               @rc. Should be freed using g_strfreev() when no longer needed.
  *
  * Since: 4.2
@@ -322,7 +331,7 @@ xfce_rc_get_groups (const XfceRc *rc)
  * "NULL group" should only be used for backward compatibility with old
  * applications. You should not use it in newly written code.
  *
- * Return value: a NULL-terminated string array with all entries in @group. Has to
+ * Return value: (transfer full): a NULL-terminated string array with all entries in @group. Has to
  *               be freed using g_strfreev() if no longer needed. If the specified
  *               @group does not exists, %NULL is returned. If the @group has no entries,
  *               an empty string array is returned.
@@ -636,7 +645,7 @@ xfce_rc_read_int_entry (const XfceRc *rc,
  * Reads a list of strings in the entry specified by key in the current group.
  * The returned list has to be freed using g_strfreev() when no longer needed.
  *
- * Return value: the list or NULL if the entry does not exist.
+ * Return value: (transfer full): the list or NULL if the entry does not exist.
  *
  * Since: 4.2
  **/
