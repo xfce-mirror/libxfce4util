@@ -47,3 +47,5 @@ libxfce4util/libxfce4util-config.h
 libxfce4util/test-suite.log
 xfce4-kiosk-query/xfce4-kiosk-query
 xfce4-kiosk-query/xfce4_kiosk_query-main.o
+
+python-example/html/
