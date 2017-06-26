@@ -1,3 +1,11 @@
+4.13.1
+======
+[Please note that this is a development release.]
+- Fix a minor typo: ment → meant
+- Fix some autotools warnings, default debug to yes
+- Fix duplicate DISTCHECK_CONFIGURE_FLAGS
+- Improve gobject-introspection annotations
+
 4.13.0
 ======
 [Please note that this is a development release.]
