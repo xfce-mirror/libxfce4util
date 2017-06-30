@@ -5,13 +5,13 @@
 # Translators:
 # Algimantas Margevičius <margevicius.algimantas@gmail.com>, 2012
 # mantas <mantaz@users.sourceforge.net>, 2006
-# Moo, 2015-2016
+# Moo, 2015-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2016-12-08 20:09+0000\n"
+"PO-Revision-Date: 2017-06-30 15:14+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/libxfce4util/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr " Redistribution and use in source and binary forms, with or without\n modification, are permitted provided that the following conditions\n are met:\n\n 1. Redistributions of source code must retain the above copyright\n    notice, this list of conditions and the following disclaimer.\n 2. Redistributions in binary form must reproduce the above copyright\n    notice, this list of conditions and the following disclaimer in the\n    documentation and/or other materials provided with the distribution.\n\n THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR\n IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES\n OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\n IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,\n INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\n NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+msgstr " Perskirstymas ir naudojimas šaltinio ar dvejetainėse formose, su ar be\nmodifikacijų yra leidžiamas, jeigu yra laikomasi šių sąlygų:\n\n 1. Pradinio kodo perskirstyme privalo būti išsaugotas aukščiau esantis\nautorių teisių pranešimas, šis sąlygų sąrašas ir šis atsakomybės ribojimas.\n 2. Perskirstymuose dvejetainėse formose, distribucijos dokumentacijoje ir/ar\nkitoje su distribucija pateikiamoje medžiagoje privalo išlikti aukščiau esantis\nautorių teisių pranešimas, šis sąlygų sąrašas ir šis atsakomybės ribojimas.\n\n ŠI PROGRAMINĖ ĮRANGA YRA PATEIKIAMA AUTORIAUS \"TOKIA, KOKIA\nYRA\" IR BET KOKIOS IŠREIKŠTOS AR NUMANOMOS GARANTIJOS,\nĮSKAITANT, TAČIAU NEAPSIRIBOJANT NUMANOMOMIS PARDAVIMO AR\nTINKAMUMO TAM TIKRAM TIKSLUI GARANTIJOMIS, YRA PANEIGIAMOS.\n JOKIU ATVEJU AUTORIUS NĖRA ATSAKINGAS UŽ JOKIĄ TIESIOGINĘ,\nNETIESIOGINĘ, ATSITIKTINĘ, SPECIALIĄ, PAVYZDINĘ AR LOGIŠKAI\nIŠPLAUKIANČIĄ ŽALĄ (ĮSKAITANT, TAČIAU NEAPSIRIBOJANT SUBSTITUCINIŲ\nPRODUKTŲ AR PASLAUGŲ ĮSIGIJIMU; NAUDOJIMO, DUOMENŲ AR PELNO\nPRARADIMU, AR VERSLO TRUKDYMU), SUKELTĄ BET KOKIU BŪDU IR\nBET KOKIU ATSAKOMYBĖS PAVIDALU, AR TAI KONTRAKTU, AR GRIEŽTAIS\nĮSIPAREIGOJIMAIS AR DELIKTU (ĮSKAITANT APLAIDUMĄ AR KITUS\nPAVIDALUS), BET KOKIU BŪDU KYLANČIU DĖL ŠIOS PROGRAMINĖS\nĮRANGOS NAUDOJIMO, NETGI JEIGU APIE TOKIOS ŽALOS GALIMYBĘ\nBUVO ĮSPĖTA.\n"
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
@@ -64,7 +64,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU General Public License as published by the Free\nSoftware Foundation; either version 2 of the License, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT\nANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\nFITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\nmore details.\n\nYou should have received a copy of the GNU General Public License along with\nthis program; if not, write to the Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Ši programa yra laisvoji programinė įranga; jūs galite ją platinti ir/ar\nmodifikuoti pagal Free Software Foundation paskelbtas GNU Bendrosios\nViešosios Licencijos, versijos 2 arba (jūsų pasirinkimu) bet kurios velesnės\nversijos, sąlygas.\n\nŠi programa yra platinama tikintis, kad ji bus naudinga, tačiau BE JOKIŲ\nGARANTIJŲ; netgi be numanomos PARDAVIMO ar TINKAMUMO TAM\nTIKRAM TIKSLUI GARANTIJOS.  Išsamesnei informacijai, žiūrėkite GNU\nBendrąją Viešąją Licenciją.\n\nKartu su šia programa, turėjote gauti ir GNU Bendrosios Viešosios\nLicencijos kopiją; jeigu negavote, rašykite į Free Software Foundation, Inc.,\nadresu 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -82,7 +82,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "This library is free software; you can redistribute it and/or\nmodify it under the terms of the GNU Library General Public\nLicense as published by the Free Software Foundation; either\nversion 2 of the License, or (at your option) any later version.\n\nThis library is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this library; if not, write to the \nFree Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
+msgstr "Ši biblioteka yra laisvoji programinė įranga; jūs galite ją platinti ir/ar\nmodifikuoti pagal Free Software Foundation paskelbtas GNU Bibliotekų\nBendrosios Viešosios Licencijos, versijos 2 arba (jūsų pasirinkimu)\nbet kurios velesnės versijos, sąlygas.\n\nŠi biblioteka yra platinama tikintis, kad ji bus naudinga, tačiau BE JOKIŲ\nGARANTIJŲ; netgi be numanomos PARDAVIMO ar TINKAMUMO TAM\nTIKRAM TIKSLUI GARANTIJOS.  Išsamesnei informacijai, žiūrėkite GNU\nBibliotekų Bendrąją Viešąją Licenciją.\n\nKartu su šia biblioteka, turėjote gauti ir GNU Bibliotekų Bendrosios Viešosios\nLicencijos kopiją; jeigu negavote, rašykite į Free Software Foundation, Inc.,\nadresu 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
