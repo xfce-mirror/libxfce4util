@@ -41,6 +41,7 @@ libxfce4util/abicheck.sh.trs
 libxfce4util/libxfce4util-1.0.gir
 libxfce4util/libxfce4util-1.0.pc
 libxfce4util/libxfce4util-1.0.typelib
+libxfce4util/libxfce4util-1.0.vapi
 libxfce4util/libxfce4util-alias.h
 libxfce4util/libxfce4util-aliasdef.c
 libxfce4util/libxfce4util-config.h

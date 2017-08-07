@@ -153,6 +153,25 @@ EXTRA_DIST =								\
 	libxfce4util-aliasdef.c						\
 	make-libxfce4util-alias.pl
 
+if ENABLE_VAPIGEN
+-include $(VAPIGEN_MAKEFILE)
+
+libxfce4util-1.0.vapi: libxfce4util-1.0.gir
+
+VAPIGEN_VAPIS = libxfce4util-1.0.vapi
+VAPIGEN_GIRDIRS = $(prefix)/share/gir-1.0
+
+## libxfce4util_1_0_vapi_DEPS = libxfce4util-1.0
+libxfce4util_1_0_vapi_METADATADIRS = $(srcdir)
+libxfce4util_1_0_vapi_FILES = libxfce4util-1.0.gir
+
+vapidir = $(datadir)/vala/vapi
+vapi_DATA = $(VAPIGEN_VAPIS)
+## $(VAPIGEN_VAPIS:.vapi=.deps)
+
+EXTRA_DIST += libxfce4util-1.0.metadata
+endif
+
 if HAVE_GNUC_VISIBILITY
 TESTS = abicheck.sh
 endif
