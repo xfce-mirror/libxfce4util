@@ -90,7 +90,8 @@ INTROSPECTION_SCANNER_ARGS = \
 	--warn-all \
 	--identifier-prefix=Xfce \
 	--identifier-prefix=xfce \
-	--identifier-prefix=libxfce
+	--identifier-prefix=libxfce \
+	--c-include=libxfce4util.h
 INTROSPECTION_COMPILER_ARGS = \
 	--includedir=$(srcdir) \
 	--includedir=.
