@@ -88,8 +88,8 @@ INTROSPECTION_SCANNER_ENV = CC="$(CC)"
 INTROSPECTION_SCANNER_ARGS = \
 	--add-include-path=$(srcdir) \
 	--warn-all \
-	--identifier-prefix=xfce \
 	--identifier-prefix=Xfce \
+	--identifier-prefix=xfce \
 	--identifier-prefix=libxfce
 INTROSPECTION_COMPILER_ARGS = \
 	--includedir=$(srcdir) \
