@@ -6,15 +6,15 @@
 # Benedikt Meurer <benny@xfce.org>, 2006
 # Enrico Tröger <enrico@xfce.org>, 2009
 # Fabian Nowak <timystery@arcor.de>, 2006
-# Tobias Bannert, 2014
+# Tobias Bannert <tobannert@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2014-09-01 18:53+0000\n"
-"Last-Translator: Tobias Bannert\n"
-"Language-Team: German (http://www.transifex.com/projects/p/libxfce4util/language/de/)\n"
+"PO-Revision-Date: 2017-09-19 18:02+0000\n"
+"Last-Translator: Tobias Bannert <tobannert@gmail.com>\n"
+"Language-Team: German (http://www.transifex.com/xfce/libxfce4util/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
