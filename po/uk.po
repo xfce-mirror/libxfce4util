@@ -1,28 +1,30 @@
-# Ukrainian translation to libxfce4util.
-# Copyright (C) 2002-2006 The Xfce development team.
-# This file is distributed under the same license as the libxfcegui4 package.
-# Maxim V. Dziumanenko <mvd@mylinux.ua>, 2006.
-#
-# Dmitry Nikitin <luckas_fb@mail.ru>, 2008.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Dmitry Nikitin <luckas_fb@mail.ru>, 2008
+# Maxim V. Dziumanenko <mvd@mylinux.ua>, 2006
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util\n"
+"Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 15:34+0100\n"
-"PO-Revision-Date: 2009-01-26 11:30+0200\n"
-"Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
-"Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
-"Language: uk\n"
+"POT-Creation-Date: 2013-07-02 22:35+0200\n"
+"PO-Revision-Date: 2017-09-19 18:02+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/xfce/libxfce4util/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Помилка створення каталогу '%s': %s"
 
-#: ../libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:37
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -44,37 +46,9 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
-" Розповсюдження використання у тексту програм чи у двійковому вигляді, зі\n"
-" змінами чи без змін, дозволено за дотримання наступних умов:\n"
-"\n"
-" 1. Текст програм, що розповсюджується має містити згадану вище примітку "
-"про\n"
-"    авторські права, цей перелік умов та наступне відречення.\n"
-" 2. При розповсюдженні у двійковому вигляді, програма повинна містити "
-"згадану\n"
-"    вище примітку про авторські права, цей перелік умов та наступне "
-"відречення у\n"
-"    документації та/або інших матеріалах, що постачаються з у комплекті.\n"
-"\n"
-" ЦЕ ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ ПОСТАЧАЄТЬСЯ ``ЯК Є'' БЕЗ БУДЬ-ЯКИХ ВИСЛОВЛЕНИХ "
-"ЧИ\n"
-" НЕЯВНИХ ГАРАНТІЙ, ВКЛЮЧАЮЧИ, АЛЕ НЕ ОБМЕЖУЮЧИСЬ, НЕЯВНУ ПРИДАТНОСТІ ДО\n"
-" ПРОДАЖУ ЧИ ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ.\n"
-" НІ У ЯКОМУ РАЗІ АВТОР НЕ ВІДПОВІДАЄ ЗА БУДЬ-ЯКІ ПРЯМІ, НЕПРЯМІ,\n"
-" ВИПАДКОВІ, НАВМИСНІ, ТИПОВІ ЧИ ЛОГІЧНО ВИПЛИВАЮЧІ ПОШКОДЖЕННЯ (ВКЛЮЧАЮЧИ, "
-"АЛЕ\n"
-" НЕ ОБМЕЖУЮЧИСЬ, ПОСТАЧАННЯ ЗАМІННИКІВ ТОВАРАМ ЧИ СЛУЖБАМ; ЗБИТКИ ВІД "
-"ВИКОРИСТАННЯ,\n"
-" ДАНИХ, ЧИ ДОХОДУ; ЧИ ПЕРЕШКОДИ БІЗНЕСУ) НЕ ЗАЛЕЖНО ВІД ТОГО, ЧИМ ВОНИ "
-"ВИКЛИКАНІ,\n"
-" ТА ЗА БУДЬ-ЯКОГО ЗАКОНОДАВСТВА ЧИ ГРОМАДЯНСЬКОЇ ВІДПОВІДАЛЬНОСТІ\n"
-" (ВКЛЮЧАЮЧИ ХАЛАТНІСТЬ) ЩО ВИНИКЛИ БЕЗВІДНОСНО ЧИ ВНАСЛІДОК ВИКОРИСТАННЯ "
-"ЦІЄЇ\n"
-" ПРОГРАМИ, НАВІТЬ ЯКЩО СТОРОНИ, МОЖЛИВО, БУЛИ ПРОІНФОРМОВАНІ ПРО МОЖЛИВІСТЬ\n"
-" ТАКИХ ЗБИТКІВ.\n"
+msgstr " Розповсюдження використання у тексту програм чи у двійковому вигляді, зі\n змінами чи без змін, дозволено за дотримання наступних умов:\n\n 1. Текст програм, що розповсюджується має містити згадану вище примітку про\n    авторські права, цей перелік умов та наступне відречення.\n 2. При розповсюдженні у двійковому вигляді, програма повинна містити згадану\n    вище примітку про авторські права, цей перелік умов та наступне відречення у\n    документації та/або інших матеріалах, що постачаються з у комплекті.\n\n ЦЕ ПРОГРАМНЕ ЗАБЕЗПЕЧЕННЯ ПОСТАЧАЄТЬСЯ ``ЯК Є'' БЕЗ БУДЬ-ЯКИХ ВИСЛОВЛЕНИХ ЧИ\n НЕЯВНИХ ГАРАНТІЙ, ВКЛЮЧАЮЧИ, АЛЕ НЕ ОБМЕЖУЮЧИСЬ, НЕЯВНУ ПРИДАТНОСТІ ДО\n ПРОДАЖУ ЧИ ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ.\n НІ У ЯКОМУ РАЗІ АВТОР НЕ ВІДПОВІДАЄ ЗА БУДЬ-ЯКІ ПРЯМІ, НЕПРЯМІ,\n ВИПАДКОВІ, НАВМИСНІ, ТИПОВІ ЧИ ЛОГІЧНО ВИПЛИВАЮЧІ ПОШКОДЖЕННЯ (ВКЛЮЧАЮЧИ, АЛЕ\n НЕ ОБМЕЖУЮЧИСЬ, ПОСТАЧАННЯ ЗАМІННИКІВ ТОВАРАМ ЧИ СЛУЖБАМ; ЗБИТКИ ВІД ВИКОРИСТАННЯ,\n ДАНИХ, ЧИ ДОХОДУ; ЧИ ПЕРЕШКОДИ БІЗНЕСУ) НЕ ЗАЛЕЖНО ВІД ТОГО, ЧИМ ВОНИ ВИКЛИКАНІ,\n ТА ЗА БУДЬ-ЯКОГО ЗАКОНОДАВСТВА ЧИ ГРОМАДЯНСЬКОЇ ВІДПОВІДАЛЬНОСТІ\n (ВКЛЮЧАЮЧИ ХАЛАТНІСТЬ) ЩО ВИНИКЛИ БЕЗВІДНОСНО ЧИ ВНАСЛІДОК ВИКОРИСТАННЯ ЦІЄЇ\n ПРОГРАМИ, НАВІТЬ ЯКЩО СТОРОНИ, МОЖЛИВО, БУЛИ ПРОІНФОРМОВАНІ ПРО МОЖЛИВІСТЬ\n ТАКИХ ЗБИТКІВ.\n"
 
-#: ../libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:66
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -86,28 +60,12 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr ""
-"Ця програма є вільною; дозволяється розповсюджувати та/або змінювати її\n"
-"на умовах ліцензії GNU General Public License, що опублікована Free\n"
-"Software Foundation; версії 2 цієї ліцензії, або (на ваш розсуд)\n"
-"будь-якою пізнішою версією.\n"
-"\n"
-"Програма розповсюджується із сподіванням, що буде корисною, але БЕЗ\n"
-"БУДЬ-ЯКИХ ГАРАНТІЙ; навіть без неявної гарантії ПРИДАТНОСТІ ДО ПРОДАЖУ чи\n"
-"ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ. Докладніше про це дивіться текст GNU\n"
-"General Public License.\n"
-"\n"
-"З цією програмою ви мали отримати копію ліцензії GNU General Public "
-"License;\n"
-"якщо це не так, напишіть Free Software Foundation, Inc., 51 Franklin\n"
-"Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Ця програма є вільною; дозволяється розповсюджувати та/або змінювати її\nна умовах ліцензії GNU General Public License, що опублікована Free\nSoftware Foundation; версії 2 цієї ліцензії, або (на ваш розсуд)\nбудь-якою пізнішою версією.\n\nПрограма розповсюджується із сподіванням, що буде корисною, але БЕЗ\nБУДЬ-ЯКИХ ГАРАНТІЙ; навіть без неявної гарантії ПРИДАТНОСТІ ДО ПРОДАЖУ чи\nВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ. Докладніше про це дивіться текст GNU\nGeneral Public License.\n\nЗ цією програмою ви мали отримати копію ліцензії GNU General Public License;\nякщо це не так, напишіть Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: ../libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:88
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -123,21 +81,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr ""
-"Ця бібліотека є вільною, Ви можете розповсюджувати її та/або\n"
-"змінювати її на умовах ліцензії GNU Library General Public\n"
-"License, що опублікована Free Software Foundation; також\n"
-"версії 2 цієї ліцензіїse, або (на Ваш розсуд) будь якої пізньої.\n"
-"\n"
-"Бібліотека розповсюджується із сподіванням, що буде корисною,\n"
-"але БЕЗ БУДЬ-ЯКИХ ГАРАНТІЙ, навіть без наявної гарантії\n"
-"ПРИДАТНОСТІ ДО ПРОДАЖУ чи ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ. Дивіться GNU\n"
-"Library General Public License детальніше.\n"
-"\n"
-"Ви мали отримати копію GNU Library General Public License\n"
-"разом з цією бібліотекою, якщо ж ні, напишіть для\n"
-"Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
-"Boston, MA 02110-1301  USA.\n"
+msgstr "Ця бібліотека є вільною, Ви можете розповсюджувати її та/або\nзмінювати її на умовах ліцензії GNU Library General Public\nLicense, що опублікована Free Software Foundation; також\nверсії 2 цієї ліцензіїse, або (на Ваш розсуд) будь якої пізньої.\n\nБібліотека розповсюджується із сподіванням, що буде корисною,\nале БЕЗ БУДЬ-ЯКИХ ГАРАНТІЙ, навіть без наявної гарантії\nПРИДАТНОСТІ ДО ПРОДАЖУ чи ВІДПОВІДНОСТІ ПЕВНІЙ МЕТІ. Дивіться GNU\nLibrary General Public License детальніше.\n\nВи мали отримати копію GNU Library General Public License\nразом з цією бібліотекою, якщо ж ні, напишіть для\nFree Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
