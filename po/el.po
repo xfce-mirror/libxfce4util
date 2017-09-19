@@ -1,32 +1,30 @@
-# Greek translation for libxfce4util package.
-# Copyright (C) 2009 THE libxfce4util'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the libxfce4util package.
-# Evaggelos Balaskas <ebalaskas@ebalaskas.gr>, 2009.
-# Stavros Giannouris <stavrosg@gmail.com>, 2011.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# ebal <ebalaskas@ebalaskas.gr>, 2009
+# Stavros Giannouris <stavrosg@gmail.com>, 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util git VERSION\n"
+"Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 15:34+0100\n"
-"PO-Revision-Date: 2009-08-30 20:25+0200\n"
-"Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
-"Language-Team: Greek <nls@tux.hellug.gr>\n"
-"Language: el\n"
+"POT-Creation-Date: 2013-07-02 22:35+0200\n"
+"PO-Revision-Date: 2017-09-19 18:02+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"Language-Team: Greek (http://www.transifex.com/xfce/libxfce4util/language/el/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Language: Greek\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-Country: GREECE\n"
 
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Σφάλμα δημιουργίας του καταλόγου '%s': %s"
 
-#: ../libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:37
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -48,29 +46,9 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
-" Redistribution and use in source and binary forms, with or without\n"
-" modification, are permitted provided that the following conditions\n"
-" are met:\n"
-"\n"
-" 1. Redistributions of source code must retain the above copyright\n"
-"    notice, this list of conditions and the following disclaimer.\n"
-" 2. Redistributions in binary form must reproduce the above copyright\n"
-"    notice, this list of conditions and the following disclaimer in the\n"
-"    documentation and/or other materials provided with the distribution.\n"
-"\n"
-" THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR\n"
-" IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES\n"
-" OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\n"
-" IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,\n"
-" INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\n"
-" NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n"
-" DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n"
-" THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
-" (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
-" THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+msgstr " Redistribution and use in source and binary forms, with or without\n modification, are permitted provided that the following conditions\n are met:\n\n 1. Redistributions of source code must retain the above copyright\n    notice, this list of conditions and the following disclaimer.\n 2. Redistributions in binary form must reproduce the above copyright\n    notice, this list of conditions and the following disclaimer in the\n    documentation and/or other materials provided with the distribution.\n\n THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR\n IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES\n OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\n IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,\n INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\n NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 
-#: ../libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:66
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -82,32 +60,12 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr ""
-"Το πρόγραμμα αυτό είναι ελεύθερο λογισμικό. Επιτρέπεται\n"
-"η αναδιανομή ή/και τροποποίησή του υπό τους όρους της\n"
-"Γενικής ‘Αδειας Δημόσιας Χρήσης GNU (GNU General Public\n"
-"License), όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου\n"
-"Λογισμικού (Free Software Foundation) -είτε της έκδοσης 2\n"
-"της ‘Αδειας, είτε (κατ' επιλογήν) οποιασδήποτε μεταγενέστερης\n"
-"έκδοσης.\n"
-"Το πρόγραμμα αυτό διανέμεται με την ελπίδα ότι θα αποδειχθεί\n"
-"χρήσιμο, παρόλα αυτά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ –χωρίς ούτε και την\n"
-"σιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ\n"
-"ΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ. Για περισσότερες λεπτομέρειες ανατρέξτε\n"
-"στη Γενική ‘Αδεια Δημόσιας Χρήσης GNU (GNU General Public\n"
-"License).\n"
-"Θα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής ‘Αδειας\n"
-"Δημόσιας Χρήσης GNU (GNU General Public License) μαζί με αυτό\n"
-"το πρόγραμμα. Εάν όχι, επικοινωνήστε γραπτώς με το Ίδρυμα\n"
-"Ελεύθερου Λογισμικού (Free Software Foundation), Inc., 51\n"
-"Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Το πρόγραμμα αυτό είναι ελεύθερο λογισμικό. Επιτρέπεται\nη αναδιανομή ή/και τροποποίησή του υπό τους όρους της\nΓενικής ‘Αδειας Δημόσιας Χρήσης GNU (GNU General Public\nLicense), όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου\nΛογισμικού (Free Software Foundation) -είτε της έκδοσης 2\nτης ‘Αδειας, είτε (κατ' επιλογήν) οποιασδήποτε μεταγενέστερης\nέκδοσης.\nΤο πρόγραμμα αυτό διανέμεται με την ελπίδα ότι θα αποδειχθεί\nχρήσιμο, παρόλα αυτά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ –χωρίς ούτε και την\nσιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ\nΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ. Για περισσότερες λεπτομέρειες ανατρέξτε\nστη Γενική ‘Αδεια Δημόσιας Χρήσης GNU (GNU General Public\nLicense).\nΘα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής ‘Αδειας\nΔημόσιας Χρήσης GNU (GNU General Public License) μαζί με αυτό\nτο πρόγραμμα. Εάν όχι, επικοινωνήστε γραπτώς με το Ίδρυμα\nΕλεύθερου Λογισμικού (Free Software Foundation), Inc., 51\nFranklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: ../libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:88
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -123,24 +81,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr ""
-"Αυτή η βιβλιοθήκη είναι ελεύθερο λογισμικό. Μπορείτε να\n"
-"την αναδιανείμετε και/ή τροποποιήσετε υπό τους όρους της\n"
-"Ελάσσονος Γενικής Άδειας Δημόσιας Χρήσης GNU, όπως\n"
-"εκδόθηκε από το Ίδρυμα Ελεύθερου Λογισμικού (Free Software\n"
-"Foundation), την έκδοση 2.1 της Άδειας, ή (κατ’ επιλογή σας)\n"
-"οποιαδήποτε μεταγενέστερη έκδοση.\n"
-"Αυτή η βιβλιοθήκη διανέμεται με την ελπίδα ότι θα είναι\n"
-"χρήσιμη, αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ. Χωρίς ακόμη\n"
-"και την σιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή\n"
-"ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ.\n"
-"Για περισσότερες λεπτομέρειες δείτε την Ελάσσονα Γενική\n"
-"Άδεια Δημόσιας Χρήσης GNU.\n"
-"Πρέπει να έχετε λάβει ένα αντίγραφο της Ελάσσονος Γενικής\n"
-"Άδειας Δημόσιας Χρήσης μαζί με αυτήν την βιβλιοθήκη. Αν όχι,\n"
-"επικοινωνήστε γραπτώς με το Ίδρυμα Ελεύθερου Λογισμικού\n"
-"(Free Software Foundation), Foundation, Inc., 51 Franklin Street,\n"
-"Fifth Floor, Boston, MA 02110-1301 USA.\n"
+msgstr "Αυτή η βιβλιοθήκη είναι ελεύθερο λογισμικό. Μπορείτε να\nτην αναδιανείμετε και/ή τροποποιήσετε υπό τους όρους της\nΕλάσσονος Γενικής Άδειας Δημόσιας Χρήσης GNU, όπως\nεκδόθηκε από το Ίδρυμα Ελεύθερου Λογισμικού (Free Software\nFoundation), την έκδοση 2.1 της Άδειας, ή (κατ’ επιλογή σας)\nοποιαδήποτε μεταγενέστερη έκδοση.\nΑυτή η βιβλιοθήκη διανέμεται με την ελπίδα ότι θα είναι\nχρήσιμη, αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ. Χωρίς ακόμη\nκαι την σιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή\nΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ.\nΓια περισσότερες λεπτομέρειες δείτε την Ελάσσονα Γενική\nΆδεια Δημόσιας Χρήσης GNU.\nΠρέπει να έχετε λάβει ένα αντίγραφο της Ελάσσονος Γενικής\nΆδειας Δημόσιας Χρήσης μαζί με αυτήν την βιβλιοθήκη. Αν όχι,\nεπικοινωνήστε γραπτώς με το Ίδρυμα Ελεύθερου Λογισμικού\n(Free Software Foundation), Foundation, Inc., 51 Franklin Street,\nFifth Floor, Boston, MA 02110-1301 USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
