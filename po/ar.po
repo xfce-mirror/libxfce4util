@@ -1,22 +1,22 @@
-# translation of ar.po to Arabic
-# Khaled Hosny <khaledhosny@eglug.org>, 2007.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Khaled Hosny <khaledhosny@eglug.org>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util\n"
+"Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-23 22:10+0000\n"
-"PO-Revision-Date: 2011-08-24 01:57-0000\n"
-"Last-Translator: كريم أولاد الشلحة <herr.linux88@gmail.com>\n"
-"Language-Team: Arabic Xfce Translation Team <herr.linux88@gmail.com>\n"
+"POT-Creation-Date: 2013-07-02 23:01+0200\n"
+"PO-Revision-Date: 2017-09-19 18:02+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"Language-Team: Arabic (http://www.transifex.com/xfce/libxfce4util/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
-"X-Poedit-Language: Arabic\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
-"X-Poedit-Country: Morocco\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
@@ -45,26 +45,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
-"إعادة توزيغ و إستعمال المصدر أو الصيغ الثنائية, بـ أو بدون تعديل, \n"
-" مرخص له تحت الشروط التالية\n"
-"\n"
-" 1. Redistributions of source code must retain the above copyright\n"
-"    notice, this list of conditions and the following disclaimer.\n"
-" 2. Redistributions in binary form must reproduce the above copyright\n"
-"    notice, this list of conditions and the following disclaimer in the\n"
-"    documentation and/or other materials provided with the distribution.\n"
-"\n"
-" THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR\n"
-" IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES\n"
-" OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\n"
-" IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,\n"
-" INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\n"
-" NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n"
-" DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n"
-" THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
-" (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
-" THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+msgstr "إعادة توزيغ و إستعمال المصدر أو الصيغ الثنائية, بـ أو بدون تعديل, \n مرخص له تحت الشروط التالية\n\n 1. Redistributions of source code must retain the above copyright\n    notice, this list of conditions and the following disclaimer.\n 2. Redistributions in binary form must reproduce the above copyright\n    notice, this list of conditions and the following disclaimer in the\n    documentation and/or other materials provided with the distribution.\n\n THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR\n IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES\n OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\n IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,\n INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\n NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
@@ -81,18 +62,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr ""
-"هذا البرنامج حر، يمكنك توزيعه و/أو تعديله\n"
-"حسب بنود رخصة جنو العمومية كما نشرتها مؤسسة البرامج الحرة،\n"
-"الإصدار الثاني أو أي إصدار أحدث (حسب رغبتك).\n"
-"\n"
-"هذا البرنامج يوزع على أمل أن يكون مفيداً، ولكن دون أية ضمانات،\n"
-"بما في ذلك ضمانات قابلية البرنامج للتسويق أو الملاءمة لغرض معين. انظر نص رخصة جنو العمومية\n"
-"لمزيد من التفاصيل.\n"
-"\n"
-"من المفترض أنك تلقيت نسخة من رخصة جنو العمومية مع هذا البرنامج؛ إذا لم يحدث هذا فاكتب إلى:\n"
-"منظمة البرامج الحرة, Inc., 51 Franklin\n"
-"Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "هذا البرنامج حر، يمكنك توزيعه و/أو تعديله\nحسب بنود رخصة جنو العمومية كما نشرتها مؤسسة البرامج الحرة،\nالإصدار الثاني أو أي إصدار أحدث (حسب رغبتك).\n\nهذا البرنامج يوزع على أمل أن يكون مفيداً، ولكن دون أية ضمانات،\nبما في ذلك ضمانات قابلية البرنامج للتسويق أو الملاءمة لغرض معين. انظر نص رخصة جنو العمومية\nلمزيد من التفاصيل.\n\nمن المفترض أنك تلقيت نسخة من رخصة جنو العمومية مع هذا البرنامج؛ إذا لم يحدث هذا فاكتب إلى:\nمنظمة البرامج الحرة, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -110,18 +80,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr ""
-"هذه المكتبة برمجيّة حرة، يمكنك توزيعها و/أو تعديلها\n"
-" حسب بنود رخصة جنو العمومية كما نشرتها مؤسسة البرامج\n"
-" الحرة، الإصدار الثاني أو أي إصدار أحدث (حسب رغبتك).\n"
-"توزع هذه المكتبة على أمل أن تكون مفيدة، ولكن دون\n"
-"أية ضمانات، بما في ذلك ضمانات قابلية البرنامج للتسويق\n"
-"أو الملاءمة لغرض معين. انظر نص رخصة جنو العمومية\n"
-" لمزيد من التفاصيل.\n"
-"من المفترض أنك تلقيت نسخة من رخصة جنو العمومية\n"
-" مع هذه المكتبة؛ إذا لم يحدث هذا فاكتب إلى:\n"
-"منظمة البرامج الحرة, Inc., 51 Franklin Street, Fifth Floor, \n"
-"Boston, MA 02110-1301  USA.\n"
+msgstr "هذه المكتبة برمجيّة حرة، يمكنك توزيعها و/أو تعديلها\n حسب بنود رخصة جنو العمومية كما نشرتها مؤسسة البرامج\n الحرة، الإصدار الثاني أو أي إصدار أحدث (حسب رغبتك).\nتوزع هذه المكتبة على أمل أن تكون مفيدة، ولكن دون\nأية ضمانات، بما في ذلك ضمانات قابلية البرنامج للتسويق\nأو الملاءمة لغرض معين. انظر نص رخصة جنو العمومية\n لمزيد من التفاصيل.\nمن المفترض أنك تلقيت نسخة من رخصة جنو العمومية\n مع هذه المكتبة؛ إذا لم يحدث هذا فاكتب إلى:\nمنظمة البرامج الحرة, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
@@ -137,4 +96,3 @@ msgstr "يجب أولا الإتصال بـ xfce_posix_signal_handler_init()"
 #, c-format
 msgid "sigaction() failed: %s\n"
 msgstr "فشل sigaction(): %s\n"
-
