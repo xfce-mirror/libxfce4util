@@ -1,29 +1,29 @@
-# Hungarian translation of libxfce4util
-# Copyright (C) 2009. Free Software Foundation, Inc.
-# This file is distributed under the same license as the libxfce4util package.
-#
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2009.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2009
 msgid ""
 msgstr ""
-"Project-Id-Version: libxfce4util\n"
+"Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-16 15:34+0100\n"
-"PO-Revision-Date: 2009-07-25 11:32+0200\n"
-"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
-"Language-Team: Hungarian <gnome at gnome dot hu>\n"
-"Language: \n"
+"POT-Creation-Date: 2013-07-02 22:35+0200\n"
+"PO-Revision-Date: 2017-09-19 18:02+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"Language-Team: Hungarian (http://www.transifex.com/xfce/libxfce4util/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Hiba a(z) „%s” könyvtár létrehozása során: %s"
 
-#: ../libxfce4util/xfce-license.c:33
+#: ../libxfce4util/xfce-license.c:37
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -45,38 +45,9 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
-" A forrás- és bináris formában történő terjesztés, módosítással, vagy "
-"anélkül\n"
-"akkor engedélyezett, ha a következő feltételek teljesülnek:\n"
-"\n"
-"1. A forráskód terjesztésekor meg kell őrizni a fenti szerzői jogi "
-"megjegyzést, ezt a \n"
-"    feltétellistát és a következő nyilatkozatot.\n"
-"2. Bináris formában történő terjesztéskor reprodukálni kell a fenti szerzői "
-"jogi megjegyzést,\n"
-"    ezt a feltétellistát, a következő nyilatkozatot a dokumentációban, "
-"valamint a csomaggal \n"
-"    biztosított egyéb anyagokat.\n"
-" EZT A SZOFTVERT A SZERZŐ ÚGY BIZTOSÍTJA, AHOGY VAN, ÉS SEMMILYEN NYÍLT VAGY "
-"BURKOLT GARANCIA -\n"
-" BELEÉRTVE,  DE NEM ERRE KORLÁTOZVA AZ ELADHATÓSÁGOT VAGY EGY ADOTT CÉLRA "
-"VALÓ ALKALMATOSSÁGOT - NEM\n"
-" ÉRVÉNYESÍTHETŐ. AZ EGYETEM IGAZGATÓTANÁCSÁNAK TAGJAI ÉS A KÜLSŐ MUNKATÁRSAK "
-"NEM VONHATÓK\n"
-" FELELŐSSÉGRE A SZOFTVER HASZNÁLATÁBÓL EREDŐ SEMMILYEN KÖZVETLEN, KÖZVETETT, "
-"VÉLETLENSZERŰ,\n"
-" KÜLÖNLEGES, PÉLDAADÓ VAGY SZÜKSÉGSZERŰ KÁROKÉRT (BELEÉRTVE, DE NEM ERRE "
-"KORLÁTOZVA A HELYETTESÍTŐ\n"
-" TERMÉKEK VAGY SZOLGÁLTATÁSOK BESZERZÉSÉT, ÜZEMKIESÉST, ADATVESZTÉST, "
-"ELMARADT HASZNOT VAGY\n"
-" ÜZLETMENET MEGSZAKADÁSÁT), BÁRHOGY IS KÖVETKEZETT BE, VALAMINT A FELELŐSSÉG "
-"BÁRMILYEN ELMÉLETÉVEL\n"
-" AKÁR SZERZŐDÉSBEN, AKÁR OKOZOTT KÁRBAN (BELEÉRTVE A HANYAGSÁGOT ÉS "
-"EGYEBET), AKKOR IS, HA AZ ILYEN\n"
-" KÁR LEHETŐSÉGÉRE FELHÍVTÁK A FIGYELMET.\n"
+msgstr " A forrás- és bináris formában történő terjesztés, módosítással, vagy anélkül\nakkor engedélyezett, ha a következő feltételek teljesülnek:\n\n1. A forráskód terjesztésekor meg kell őrizni a fenti szerzői jogi megjegyzést, ezt a \n    feltétellistát és a következő nyilatkozatot.\n2. Bináris formában történő terjesztéskor reprodukálni kell a fenti szerzői jogi megjegyzést,\n    ezt a feltétellistát, a következő nyilatkozatot a dokumentációban, valamint a csomaggal \n    biztosított egyéb anyagokat.\n EZT A SZOFTVERT A SZERZŐ ÚGY BIZTOSÍTJA, AHOGY VAN, ÉS SEMMILYEN NYÍLT VAGY BURKOLT GARANCIA -\n BELEÉRTVE,  DE NEM ERRE KORLÁTOZVA AZ ELADHATÓSÁGOT VAGY EGY ADOTT CÉLRA VALÓ ALKALMATOSSÁGOT - NEM\n ÉRVÉNYESÍTHETŐ. AZ EGYETEM IGAZGATÓTANÁCSÁNAK TAGJAI ÉS A KÜLSŐ MUNKATÁRSAK NEM VONHATÓK\n FELELŐSSÉGRE A SZOFTVER HASZNÁLATÁBÓL EREDŐ SEMMILYEN KÖZVETLEN, KÖZVETETT, VÉLETLENSZERŰ,\n KÜLÖNLEGES, PÉLDAADÓ VAGY SZÜKSÉGSZERŰ KÁROKÉRT (BELEÉRTVE, DE NEM ERRE KORLÁTOZVA A HELYETTESÍTŐ\n TERMÉKEK VAGY SZOLGÁLTATÁSOK BESZERZÉSÉT, ÜZEMKIESÉST, ADATVESZTÉST, ELMARADT HASZNOT VAGY\n ÜZLETMENET MEGSZAKADÁSÁT), BÁRHOGY IS KÖVETKEZETT BE, VALAMINT A FELELŐSSÉG BÁRMILYEN ELMÉLETÉVEL\n AKÁR SZERZŐDÉSBEN, AKÁR OKOZOTT KÁRBAN (BELEÉRTVE A HANYAGSÁGOT ÉS EGYEBET), AKKOR IS, HA AZ ILYEN\n KÁR LEHETŐSÉGÉRE FELHÍVTÁK A FIGYELMET.\n"
 
-#: ../libxfce4util/xfce-license.c:55
+#: ../libxfce4util/xfce-license.c:66
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -88,26 +59,12 @@ msgid ""
 "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
 "more details.\n"
 "\n"
-"You should have received a copy of the GNU General Public License along "
-"with\n"
-"this program; if not, write to the Free Software Foundation, Inc., 51 "
-"Franklin\n"
+"You should have received a copy of the GNU General Public License along with\n"
+"this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr ""
-"Ez a program szabad szoftver, terjesztheti és/vagy módosíthatja a Free\n"
-"Software Foundation által kiadott GNU General Public License második (vagy\n"
-"bármely későbbi) változatában foglaltak alapján.\n"
-"\n"
-"Ezt a programot abban a reményben terjesztjük, hogy hasznos lesz, de nem\n"
-"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\n"
-"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE.\n"
-"További részletekért tanulmányozza a GNU GPL licencet.\n"
-"\n"
-"A programhoz a GNU General Public License egy példánya is jár,\n"
-"ha nem kapta meg, írjon a Free Software Foundation Inc.-nek.\n"
-"Levélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Ez a program szabad szoftver, terjesztheti és/vagy módosíthatja a Free\nSoftware Foundation által kiadott GNU General Public License második (vagy\nbármely későbbi) változatában foglaltak alapján.\n\nEzt a programot abban a reményben terjesztjük, hogy hasznos lesz, de nem\nvállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\nalkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE.\nTovábbi részletekért tanulmányozza a GNU GPL licencet.\n\nA programhoz a GNU General Public License egy példánya is jár,\nha nem kapta meg, írjon a Free Software Foundation Inc.-nek.\nLevélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: ../libxfce4util/xfce-license.c:70
+#: ../libxfce4util/xfce-license.c:88
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -123,21 +80,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr ""
-"Ez a függvénytár szabad szoftver, terjesztheti és/vagy módosíthatja a Free\n"
-"Software Foundation által kiadott GNU Library General Public License "
-"második\n"
-"(vagy bármely későbbi) változatában foglaltak alapján.\n"
-"\n"
-"Ezt a függvénytárat abban a reményben terjesztjük, hogy hasznos lesz, de "
-"nem\n"
-"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\n"
-"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE.\n"
-"További részletekért tanulmányozza a GNU Library General Public licencet.\n"
-"\n"
-"A függvénytárhoz a GNU Library General Public License egy példánya is jár,\n"
-"ha nem kapta meg, írjon a Free Software Foundation Inc.-nek.\n"
-"Levélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Ez a függvénytár szabad szoftver, terjesztheti és/vagy módosíthatja a Free\nSoftware Foundation által kiadott GNU Library General Public License második\n(vagy bármely későbbi) változatában foglaltak alapján.\n\nEzt a függvénytárat abban a reményben terjesztjük, hogy hasznos lesz, de nem\nvállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program\nalkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE.\nTovábbi részletekért tanulmányozza a GNU Library General Public licencet.\n\nA függvénytárhoz a GNU Library General Public License egy példánya is jár,\nha nem kapta meg, írjon a Free Software Foundation Inc.-nek.\nLevélcímük: 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
