@@ -2,7 +2,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
                "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
 <!ENTITY libxfce4util-StandardMacros SYSTEM "xml/libxfce4util-config.xml">
-<!ENTITY libxfce4util-Internationalization SYSTEM "xml/xfce-i18n.xml">
+<!ENTITY libxfce4util-Internationalisation SYSTEM "xml/xfce-i18n.xml">
 <!ENTITY libxfce4util-License SYSTEM "xml/xfce-license.xml">
 <!ENTITY libxfce4util-Kiosk SYSTEM "xml/xfce-kiosk.xml">
 <!ENTITY libxfce4util-Resource SYSTEM "xml/xfce-resource.xml">
@@ -33,7 +33,7 @@
 	<chapter id="libxfce4util-fundamentals">
 		<title>Xfce Fundamentals</title>
 		&libxfce4util-StandardMacros;
-		&libxfce4util-Internationalization;
+		&libxfce4util-Internationalisation;
 		&libxfce4util-License;
 	</chapter>
 

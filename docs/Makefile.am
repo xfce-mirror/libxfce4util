@@ -8,7 +8,7 @@ AUTOMAKE_OPTIONS = 1.8
 DOC_MODULE=libxfce4util
 
 # The top-level SGML file.
-DOC_MAIN_SGML_FILE=libxfce4util-docs.sgml
+DOC_MAIN_SGML_FILE=libxfce4util-docs.xml
 
 # Extra options to supply to gtkdoc-scan
 SCAN_OPTIONS=--deprecated-guards="XFCE_DISABLE_DEPRECATED"
