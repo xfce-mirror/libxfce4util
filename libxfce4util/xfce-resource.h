@@ -47,8 +47,8 @@ typedef enum /*< prefix=XFCE_RESOURCE_ >*/
 
 /**
  * XfceMatchFunc:
- * @basedir   :
- * @relpath   :
+ * @basedir   : basedir
+ * @relpath   : relpath
  * @user_data : additional user data passed to xfce_resource_match_custom().
  *
  * Return value :

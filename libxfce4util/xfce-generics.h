@@ -141,6 +141,7 @@ xfce_stack_alloc (gsize element_size)
 
 /**
  * xfce_stack_top:
+ * @stack: A stack object.
  *
  * Removes the top element from @stack.
  */
@@ -157,6 +158,7 @@ xfce_stack_alloc (gsize element_size)
 
 /**
  * xfce_stack_pop:
+ * @stack: A stack object.
  *
  *  Removes the top element from @stack.
  */
@@ -171,6 +173,8 @@ xfce_stack_alloc (gsize element_size)
 
 /**
  * xfce_stack_push:
+ * @stack: A stack object.
+ * @value: the value to push
  *
  * Pushes a new @value on top of @stack.
  */

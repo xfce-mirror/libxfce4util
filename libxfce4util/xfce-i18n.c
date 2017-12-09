@@ -272,9 +272,9 @@ xfce_get_dir_localized_r (gchar *buffer, gsize length, const gchar *directory)
  * xfce_get_path_localized:
  * @dst      : destination buffer.
  * @size     : size of @dst in bytes.
- * @paths    :
- * @filename :
- * @test     :
+ * @paths    : the path
+ * @filename : the filename
+ * @test     : test
  *
  * @paths is a ':'-separated list of pathnames.
  *
@@ -288,8 +288,7 @@ xfce_get_dir_localized_r (gchar *buffer, gsize length, const gchar *directory)
  *
  *  /usr/local/lib/%L/%F:/usr/local/share/%N/%l/%F
  *
- * Return value:
- **/
+ */
 gchar*
 xfce_get_path_localized (gchar       *dst,
                          gsize        size,
