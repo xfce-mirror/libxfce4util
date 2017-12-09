@@ -17,6 +17,19 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-posix-signal-handler
+ * @title: POSIX Signal Handling
+ * @short_description: a callback system for handling POSIX signals safely
+ *
+ * Due to reentrancy issues, there is a restricted set of functions/syscalls
+ * that are allowed to be performed inside a POSIX signal handler.  In
+ * general, it's safer to defer any signal-related processing until after the
+ * signal handler has run.  The functionality in this module automatically
+ * handles this, and allows you to set a handler function (with optional user
+ * data) for any signal.
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

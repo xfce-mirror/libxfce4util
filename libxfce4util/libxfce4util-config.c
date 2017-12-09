@@ -19,6 +19,15 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: libxfce4util-config
+ * @title: Version Information
+ * @short_description: Variables and functions to check the libxfce4util version
+ * @see_also: https://developer.gnome.org/glib/stable/glib-Standard-Macros.html
+ *
+ * These macros provide a few commonly-used features.
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

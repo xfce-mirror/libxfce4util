@@ -28,6 +28,12 @@
 
 G_BEGIN_DECLS
 
+/**
+ * XfcePosixSignalHandler:
+ * @signal: The signal that was caught.
+ * @user_data: The @user_data parameter passed when the handler was registered.
+ */
+
 typedef void (*XfcePosixSignalHandler)(gint signal, gpointer user_data);
 
 gboolean xfce_posix_signal_handler_init(GError **error);

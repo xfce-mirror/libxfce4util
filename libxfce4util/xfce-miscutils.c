@@ -19,6 +19,14 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-miscutils
+ * @title: Miscellaneous Utilities
+ * @short_description: miscellaneous file-related utility functions.
+ *
+ * Miscellaneous file-related utility functions.
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

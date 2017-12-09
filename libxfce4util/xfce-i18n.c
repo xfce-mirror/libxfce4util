@@ -20,6 +20,17 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-i18n
+ * @title: Internationalization
+ * @short_description: Internationalization and Localization Support Functions
+ * @see_also: https://developer.gnome.org/glib/stable/glib-I18N.html
+ *
+ * Provides functions to aid application developers making their software
+ * localizable. It extends the basic internationalization support provided
+ * by GLib 2.4 (and newer).
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

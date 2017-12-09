@@ -19,6 +19,31 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION:xfce-generics
+ * @title: Xfce Generics
+ * @short_description: Generic data types and related functions.
+ * @stability: Stable
+ * @include: libxfce4util/libxfce4util.h
+ *
+ * Xfce-dialogs are a collection of helper dialogs to display
+ * the help dialog with link to the docs website, warning, info, and
+ * error dialogs and more.
+ *
+ * Using a generic stack
+ * |[<!-- language="C" -->
+ *   typedef XFCE_GENERIC_STACK(int) IntStack;
+ *   IntStack *stack = xfce_stack_new (IntStack);
+ *   xfce_stack_push (stack, 0);
+ *   xfce_stack_push (stack, 1);
+ *   printf ("Top is %d\n", xfce_stack_top (stack));
+ *   xfce_stack_pop (stack);
+ *   printf ("Top is %d\n", xfce_stack_top (stack));
+ *   xfce_stack_free (stack);
+ * ]|
+ *
+ */
+
 #if !defined(LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
@@ -30,6 +55,22 @@
 
 G_BEGIN_DECLS
 
+/**
+ * XFCE_GENERIC_STACK:
+ * @Type: Data type of the elements that should be handled by the stack. Can be any valid data type from simple int's to complex structures.
+ *
+ *
+ * This macro is used to create a new stack data type which elements are of
+ * @Type. For example, to create a stack type that handles elements of type
+ * %double, you'd write the following
+ *
+ * |[<!-- language="C" -->
+ * typedef XFCE_GENERIC_STACK(double) MyDoubleStack;
+ * ]|
+ * and furtheron refer to your stack type as %MyDoubleStack.
+ *
+ */
+
 #define XFCE_GENERIC_STACK(Type)                                            \
   struct                                                                    \
   {                                                                         \
@@ -39,7 +80,22 @@ G_BEGIN_DECLS
   }
 
 
+/**
+ * xfce_stack_new:
+ * @StackType: Type of stack declared with #XFCE_GENERIC_STACK.
+ *
+ * Creates a new instance of @StackType and returns a pointer to the newly
+ * created instance. For example, imagine you declared a type %MyDoubleStack
+ * as shown above, you can instantiate this type with
+ *
+ * |[<!-- language="C" -->
+ * MyDoubleStack *my_stack = xfce_stack_new (MyDoubleStack);
+ * ]|
+ *
+ */
+
 #ifdef __GNUC__
+
 #define xfce_stack_new(StackType)                                           \
   ({                                                                        \
     StackType *stack;                                                       \
@@ -67,6 +123,14 @@ xfce_stack_alloc (gsize element_size)
 #endif
 
 
+/**
+ * xfce_stack_free:
+ * @stack: A stack object.
+ *
+ * Frees a stack, that was allocated using #xfce_stack_new.
+ *
+ */
+
 #define xfce_stack_free(stack)                                              \
   G_STMT_START                                                              \
     {                                                                       \
@@ -75,6 +139,11 @@ xfce_stack_alloc (gsize element_size)
     }                                                                       \
   G_STMT_END
 
+/**
+ * xfce_stack_top:
+ *
+ * Removes the top element from @stack.
+ */
 
 #ifdef __GNUC__
 #define xfce_stack_top(stack)                                               \
@@ -86,6 +155,11 @@ xfce_stack_alloc (gsize element_size)
 #define xfce_stack_top(stack) ((stack)->elements[(stack)->top])
 #endif
 
+/**
+ * xfce_stack_pop:
+ *
+ *  Removes the top element from @stack.
+ */
 
 #define xfce_stack_pop(stack)                                               \
   G_STMT_START                                                              \
@@ -95,6 +169,11 @@ xfce_stack_alloc (gsize element_size)
     }                                                                       \
   G_STMT_END
 
+/**
+ * xfce_stack_push:
+ *
+ * Pushes a new @value on top of @stack.
+ */
 
 #define xfce_stack_push(stack, value)                                       \
   G_STMT_START                                                              \

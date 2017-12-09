@@ -20,6 +20,15 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-utf8
+ * @title: Unicode Manipulation
+ * @short_description: functions operating on Unicode characters and UTF-8 strings.
+ * @see_also: https://developer.gnome.org/glib/stable/glib-Unicode-Manipulation.html
+ *
+ * Functions operating on Unicode characters and UTF-8 strings.
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

@@ -19,6 +19,15 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-fileutils
+ * @title: File Utilities
+ * @short_description: miscellaneous file-related utility functions.
+ * @see_also: https://developer.gnome.org/glib/stable/glib-File-Utilities.html
+ *
+ * File Utilities
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

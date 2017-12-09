@@ -19,6 +19,14 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-resource
+ * @title: Resource lookup functions
+ * @short_description: Resource lookup functions
+ *
+ * Resource lookup functions
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

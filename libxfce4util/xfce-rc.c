@@ -19,6 +19,22 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-rc
+ * @title: Resource Config File Support
+ * @short_description: functions for reading and writing resource config files.
+ *
+ * Provides support for parsing INI-style resource config files like used by for
+ * example KDE and some Xfce components (like xfwm4, who uses rc files for the
+ * themes).
+ *
+ * The parser itself is optimized for high-performance using memory and string chunks
+ * to reduce the time spent looking for heap memory (a nice side effect of this is the
+ * reduced heap corruption). But due to this fact, an #XfceRc object might consume quite
+ * a lot of memory after some time of usage. Therefore you should close an #XfceRc object
+ * as soon as possible after loading configuration data from the object.
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif

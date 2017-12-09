@@ -19,6 +19,14 @@
  * Boston, MA 02110-1301 USA
  */
 
+/**
+ * SECTION: xfce-kiosk
+ * @title: Xfce Kiosk functions
+ * @short_description: Xfce Kiosk mode support functions.
+ *
+ * This module provides a simple Kiosk mode for Xfce.
+ */
+
 #ifdef HAVE_CONFIG_H
 #include <config.h>
 #endif
