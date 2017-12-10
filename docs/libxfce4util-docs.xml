@@ -1,60 +1,49 @@
 <?xml version="1.0"?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-<!ENTITY libxfce4util-StandardMacros SYSTEM "xml/libxfce4util-config.xml">
-<!ENTITY libxfce4util-Internationalisation SYSTEM "xml/xfce-i18n.xml">
-<!ENTITY libxfce4util-License SYSTEM "xml/xfce-license.xml">
-<!ENTITY libxfce4util-Kiosk SYSTEM "xml/xfce-kiosk.xml">
-<!ENTITY libxfce4util-Resource SYSTEM "xml/xfce-resource.xml">
-<!ENTITY libxfce4util-RcParser SYSTEM "xml/xfce-rc.xml">
-<!ENTITY libxfce4util-FileUtils-Functions SYSTEM "xml/xfce-fileutils.xml">
-<!ENTITY libxfce4util-MiscUtils-Functions SYSTEM "xml/xfce-miscutils.xml">
-<!ENTITY libxfce4util-Unicode-Functions SYSTEM "xml/xfce-utf8.xml">
-<!ENTITY libxfce4util-Generics SYSTEM "xml/xfce-generics.xml">
-<!ENTITY libxfce4util-Signal-Handling SYSTEM "xml/xfce-posix-signal-handler.xml">
-<!ENTITY version SYSTEM "version.xml">
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+                      "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
+[
+  <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
 ]>
 
 <book id="index">
-	<bookinfo>
-		<title>libxfce4util Reference Manual</title>
-		<releaseinfo>for libxfce4util &version;</releaseinfo>
-	</bookinfo>
+    <bookinfo>
+        <title>libxfce4util Reference Manual</title>
+        <releaseinfo>for libxfce4util <xi:include href="version.xml" parse="text"/></releaseinfo>
+    </bookinfo>
 
-	<chapter id="reference">
-		<title>libxfce4util Overview</title>
-		<para>
-			libxfce4util is a general-purpose utility library
-			with core application support for the Xfce Desktop
-			Environment.
-		</para>
-	</chapter>
+    <chapter id="reference">
+        <title>libxfce4util Overview</title>
+        <para>
+            libxfce4util is a general-purpose utility library
+            with core application support for the Xfce Desktop
+            Environment.
+        </para>
+    </chapter>
 
-	<chapter id="libxfce4util-fundamentals">
-		<title>Xfce Fundamentals</title>
-		&libxfce4util-StandardMacros;
-		&libxfce4util-Internationalisation;
-		&libxfce4util-License;
-	</chapter>
+    <chapter id="libxfce4util-fundamentals">
+        <title>Xfce Fundamentals</title>
+        <xi:include href="xml/libxfce4util-config.xml"/>
+        <xi:include href="xml/xfce-i18n.xml"/>
+        <xi:include href="xml/xfce-license.xml"/>
+    </chapter>
 
-	<chapter id="libxfce4util-core">
-		<title>Xfce Core Application support</title>
-		&libxfce4util-Kiosk;
-		&libxfce4util-Signal-Handling;
-	</chapter>
+    <chapter id="libxfce4util-core">
+        <title>Xfce Core Application support</title>
+        <xi:include href="xml/xfce-kiosk.xml"/>
+        <xi:include href="xml/xfce-posix-signal-handler.xml"/>
+    </chapter>
 
-	<chapter id="libxfce4util-utilities">
-		<title>Xfce Utilities</title>
-		&libxfce4util-Resource;
-		&libxfce4util-RcParser;
-		&libxfce4util-FileUtils-Functions;
-		&libxfce4util-MiscUtils-Functions;
-		&libxfce4util-Unicode-Functions;
-	</chapter>
+    <chapter id="libxfce4util-utilities">
+        <title>Xfce Utilities</title>
+        <xi:include href="xml/xfce-resource.xml"/>
+        <xi:include href="xml/xfce-rc.xml"/>
+        <xi:include href="xml/xfce-fileutils.xml"/>
+        <xi:include href="xml/xfce-utf8.xml"/>
+    </chapter>
 
-	<chapter id="libxfce4util-datatypes">
-		<title>Xfce Data types</title>
-		&libxfce4util-Generics;
-	</chapter>
-
+    <chapter id="libxfce4util-datatypes">
+        <title>Xfce Data types</title>
+        <xi:include href="xml/xfce-generics.xml"/>
+    </chapter>
+    <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>
 </book>
