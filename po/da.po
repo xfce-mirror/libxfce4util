@@ -6,13 +6,14 @@
 # Linuxbruger <y.z@live.dk>, 2018
 # Per kongstad <pko@xfce.org>, 2009
 # scootergrisen, 2017
+# scootergrisen, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 23:01+0200\n"
-"PO-Revision-Date: 2018-03-04 15:07+0000\n"
-"Last-Translator: Linuxbruger <y.z@live.dk>\n"
+"PO-Revision-Date: 2018-04-18 18:51+0000\n"
+"Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/libxfce4util/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Fejl under skabelse af mappe '%s': %s"
+msgstr "Fejl under oprettelse af katalog '%s': %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
