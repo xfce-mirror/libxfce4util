@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2018-04-08 12:43+0000\n"
+"PO-Revision-Date: 2018-04-28 07:12+0000\n"
 "Last-Translator: Emanuele Petriglia <inbox@emanuelepetriglia.me>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/libxfce4util/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Errore nella creazione della cartella \"%s\": %s"
+msgstr "Errore durante la creazione della cartella '%s': %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
@@ -46,7 +46,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr "La ridistribuzione e l'utilizzo in forma di codice sorgente o di file binari,\ncon o senza modifiche, sono permesse nell'osservanza delle seguenti\ncondizioni:\n\n 1. la ridistribuzione del codice sorgente deve contenere la suddetta\n     notifica di copyright;\n 2. la ridistribuzione in forma binaria deve riprodurre la suddetta notifica\n     di copyright, questo elenco di condizioni e il seguente disclaimer nella\n     documentazione e/o nell'ulteriore materiale fornito con la distribuzione.\n\n THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR\n IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES\n OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\n IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,\n INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\n NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
+msgstr "La ridistribuzione e l'utilizzo del codice sorgente e dei file binari,\ncon o senza modifiche, sono permesse secondo le seguenti\ncondizioni:\n\n 1. La ridistribuzione del codice sorgente deve contenere la suddetta\n     notifica di copyright;\n 2. La ridistribuzione in forma binaria deve riprodurre la suddetta notifica\n     di copyright, questo elenco di condizioni la seguente dichiarazione di non responsabilità nella\n     documentazione e/o nell'ulteriore materiale fornito con la distribuzione.\n\n THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR\n IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES\n OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\n IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,\n INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT\n NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\n THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
