@@ -184,28 +184,6 @@ simple_add_entry (XfceRcSimple *simple,
 
   if (G_UNLIKELY (entry == NULL))
     {
-      if (locale != NULL) {
-        /* this point is reached when there is a .desktop file that lists a language specific key for something that had no language-neutral key yet.
-           Example:
-             b.desktop
-
-             [Desktop Entry]
-             Version=1.0
-             Name=xyz
-             GenericName[de_AT]=Test
-
-           here GenericName[de_AT] will end up here.
-           The previous way with g_return_val_if_fail would call an assertion failure and terminate the _whole application_(!!).
-
-           Saner ways to react are either just ignoring GenericName[de_AT] altogether, or, alternatively, just set the normal GenericName
-           to Test too (i.e. imply GenericName=Test).
-
-           For now, we are just ignoring the line altogether. But we aren't assert-failing anymore and the apps dont crash anymore.
-           */
-        return NULL;
-      }
-      /* why you annoying macro, will you stop borking libxfceutil? thanks. DO NOT DO THAT: g_return_val_if_fail (locale == NULL, NULL); */
-
       entry         = g_slice_new (Entry);
       entry->key    = g_string_chunk_insert (simple->string_chunk, key);
       entry->value  = g_string_chunk_insert (simple->string_chunk, value);
@@ -225,7 +203,8 @@ simple_add_entry (XfceRcSimple *simple,
           simple->group->elast = entry;
         }
 
-      return entry;
+      if (locale == NULL)
+        return entry;
     }
 
   if (G_UNLIKELY (locale == NULL))
