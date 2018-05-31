@@ -627,12 +627,14 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
   gchar   *locale;
   gchar   *value;
   gchar   *key;
+  XfceRc  *rc;
   FILE    *fp;
 
   _xfce_return_val_if_fail (simple != NULL, FALSE);
   _xfce_return_val_if_fail (simple->filename != NULL, FALSE);
 
-  readonly = xfce_rc_is_readonly (XFCE_RC (simple));
+  rc = XFCE_RC (simple);
+  readonly = xfce_rc_is_readonly (rc);
 
   fp = fopen (simple->filename, "r");
   if (fp == NULL)
@@ -655,14 +657,11 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
           continue;
         }
 
-      if (XFCE_RC (simple)->locale == NULL)
+      if (rc->locale == NULL)
         continue;
 
-      if (xfce_locale_match (XFCE_RC (simple)->locale, locale) > XFCE_LOCALE_NO_MATCH
-          || !readonly)
-        {
-          simple_add_entry (simple, key, value, locale);
-        }
+      if (!readonly || xfce_locale_match (rc->locale, locale) > XFCE_LOCALE_NO_MATCH)
+        simple_add_entry (simple, key, value, locale);
     }
 
   fclose (fp);
