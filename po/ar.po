@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Khaled Hosny <khaledhosny@eglug.org>, 2007
+# Khaled Hosny, 2007
 # كريم أولاد الشلحة <herr.linux88@gmail.com>, 2013
 # محمد الحرقان <malham1@gmail.com>, 2012
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2017-09-19 18:02+0000\n"
+"PO-Revision-Date: 2018-09-14 00:16+0000\n"
 "Last-Translator: Nick Schermer <nick@xfce.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/xfce/libxfce4util/language/ar/)\n"
 "MIME-Version: 1.0\n"
