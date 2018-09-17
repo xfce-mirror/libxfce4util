@@ -699,7 +699,8 @@ void
 _xfce_rc_simple_flush (XfceRc *rc)
 {
   XfceRcSimple *simple = XFCE_RC_SIMPLE (rc);
-  gchar         tmp_path[PATH_MAX];
+  gchar        *filename = simple->filename;
+  gchar         tmp_path[PATH_MAX], buf[PATH_MAX] = {0};
 
   if (G_UNLIKELY (!simple->dirty))
     return;
@@ -707,11 +708,15 @@ _xfce_rc_simple_flush (XfceRc *rc)
   g_snprintf (tmp_path, PATH_MAX, "%s.%d.tmp", simple->filename, (int)getpid ());
   if (simple_write (simple, tmp_path))
     {
-      if (rename (tmp_path, simple->filename) < 0)
+      /* support rc file being a symlink: see bug #14698 */
+      if (readlink (simple->filename, buf, sizeof (buf)-1) != -1)
+        filename = buf;
+
+      if (rename (tmp_path, filename) < 0)
         {
           g_critical ("Unable to rename %s to %s: %s",
                 tmp_path,
-                simple->filename,
+                filename,
                 g_strerror (errno));
           unlink (tmp_path);
         }
