@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Pavel Borecki <pavel.borecki@gmail.com>, 2018
+# Pavel Borecki <pavel.borecki@gmail.com>, 2018-2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2018-08-02 05:54+0000\n"
+"PO-Revision-Date: 2019-01-11 07:59+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/xfce/libxfce4util/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Chyba při vytváření adresáře '%s': %s"
+msgstr "Chyba při vytváření složky „%s“: %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
@@ -62,7 +62,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Tento program je svobodný software. Můžete jej dále distribuovat a/nebo\nupravovat pod podmínkami licence GNU General Public License vydané orga-\nnizací Free Software Foundation, verze licence 2 nebo vyšší (dle Vaší volby).\n\nTento program je distribuován v naději, že bude užitečným, ale\nNEPOSKYTUJE ŽÁDNÉ ZÁRUKY. Bez jakékoli vyplývající záruky\nna OBCHODOVATELNOST nebo VHODNOST PRO KONKRÉTNÍ\nPOUŽITÍ. Pro více podrobností si přečtěte licenci GNU General Public\nLicence.\nS tímto programem byste měli obdržet kopii licence GNU Library General\nPublic License. Není-li tomu tak, napište na adresu  Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Tento program je svobodný software. Můžete jej dále distribuovat a/nebo\nupravovat pod podmínkami licence GNU General Public License vydané orga-\nnizací Free Software Foundation, verze licence 2 nebo vyšší (dle Vaší volby).\n\nTento program je šířen v naději, že bude užitečným, ale\nNEPOSKYTUJE ŽÁDNÉ ZÁRUKY. Bez jakékoli vyplývající záruky\nna OBCHODOVATELNOST nebo VHODNOST PRO KONKRÉTNÍ\nPOUŽITÍ. Pro více podrobností si přečtěte licenci GNU General Public\nLicence.\nS tímto programem byste měli obdržet kopii licence GNU Library General\nPublic License. Pokud tomu tak není, napište na adresu  Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -80,7 +80,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Tato knihovna je svobodný software. Můžete ji dále distribuovat\na/nebo upravovat pod podmínkami licence GNU Library General\nPublic vydané organizací Free Software Foundation, verze licen-\nce 2 nebo vyšší (dle Vaší volby).\n\nTato knihovna je distribuována v naději, že bude užitečná, ale\nNEPOSKYTUJE ŽÁDNÉ ZÁRUKY. Bez jakékoli vyplývající záruky\nna OBCHODOVATELNOST nebo VHODNOST PRO KONKRÉTNÍ\nPOUŽITÍ. Pro více podrobností si přečtěte licenci GNU Library General\nPublic Licence.\nS touto knihovnou byste měli obdržet kopii licence GNU Library General\nPublic License. Není-li tomu tak, napište na adresu Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
+msgstr "Tato knihovna je svobodný software. Můžete ji dále distribuovat\na/nebo upravovat pod podmínkami licence GNU Library General\nPublic vydané organizací Free Software Foundation, verze licen-\nce 2 nebo vyšší (dle Vaší volby).\n\nTato knihovna je šířena v naději, že bude užitečná, ale\nNEPOSKYTUJE ŽÁDNÉ ZÁRUKY. Bez jakékoli vyplývající záruky\nna OBCHODOVATELNOST nebo VHODNOST PRO KONKRÉTNÍ\nPOUŽITÍ. Pro více podrobností si přečtěte licenci GNU Library General\nPublic Licence.\nS touto knihovnou byste měli obdržet kopii licence GNU Library General\nPublic License. Pokud tomu tak není, napište na adresu Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
@@ -90,7 +90,7 @@ msgstr "volání funkce pipe() se nezdařilo: %s"
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "nejdříve je třeba volat funkci xfce_posix_signal_handler_init()"
+msgstr "nejprve je třeba volat funkci xfce_posix_signal_handler_init()"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
