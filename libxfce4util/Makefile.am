@@ -39,7 +39,6 @@ libxfce4util_built_sources =						\
 
 libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
 libxfce4utilinclude_HEADERS =						\
-	$(libxfce4util_built_public_sources)				\
 	$(libxfce4util_headers)						\
 	libxfce4util.h							\
 	libxfce4util-config.h
@@ -91,13 +90,14 @@ INTROSPECTION_SCANNER_ARGS = \
 	--identifier-prefix=Xfce \
 	--identifier-prefix=xfce \
 	--identifier-prefix=libxfce \
-	--c-include=libxfce4util.h
+	-DLIBXFCE4UTIL_COMPILATION \
+	--c-include=libxfce4util/libxfce4util.h
 INTROSPECTION_COMPILER_ARGS = \
 	--includedir=$(srcdir) \
 	--includedir=.
 
 if HAVE_INTROSPECTION
-introspection_sources = $(libxfce4util_la_SOURCES)
+introspection_sources = $(filter-out %private.h, $(libxfce4util_la_SOURCES))
 
 libxfce4util-1.0.gir: libxfce4util.la Makefile
 libxfce4util_1_0_gir_INCLUDES = GObject-2.0 GLib-2.0

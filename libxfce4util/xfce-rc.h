@@ -26,14 +26,18 @@
 #ifndef __XFCE_RC_H__
 #define __XFCE_RC_H__
 
+#include <glib-object.h>
 #include <libxfce4util/xfce-resource.h>
 
 G_BEGIN_DECLS
 
 typedef struct _XfceRc XfceRc;
 
+#define XFCE_TYPE_RC       (xfce_rc_get_type ())
 #define XFCE_RC(obj)       ((XfceRc *) (obj))
 #define XFCE_RC_CONST(obj) ((const XfceRc *) (obj))
+
+GType        xfce_rc_get_type                (void);
 
 XfceRc*      xfce_rc_simple_open             (const gchar     *filename,
                                               gboolean         readonly) G_GNUC_MALLOC G_GNUC_WARN_UNUSED_RESULT;

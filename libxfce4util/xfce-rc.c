@@ -65,7 +65,23 @@
 #include <libxfce4util/xfce-rc-private.h>
 #include <libxfce4util/libxfce4util-alias.h>
 
+static XfceRc *
+xfce_rc_copy (const XfceRc *rc)
+{
+  return g_slice_dup (XfceRc, rc);
+}
 
+static void
+xfce_rc_free (XfceRc *rc)
+{
+  if (G_LIKELY (rc != NULL))
+    {
+      g_slice_free (XfceRc, rc);
+    }
+}
+
+G_DEFINE_BOXED_TYPE (XfceRc, xfce_rc,
+  xfce_rc_copy, xfce_rc_free)
 
 /* called by _xfce_rc_{simple,config}_new */
 void

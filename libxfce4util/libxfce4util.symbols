@@ -122,6 +122,7 @@ xfce_resource_save_location G_GNUC_MALLOC
 /* xfce-rc functions */
 #if IN_HEADER(__XFCE_RC_H__)
 #if IN_SOURCE(__XFCE_RC_C__)
+xfce_rc_get_type
 xfce_rc_simple_open G_GNUC_MALLOC
 xfce_rc_config_open G_GNUC_MALLOC
 xfce_rc_close
