@@ -193,7 +193,7 @@ _xfce_rc_config_close (XfceRc *rc)
 {
   XfceRcConfig *config = XFCE_RC_CONFIG (rc);
 
-  g_slist_foreach (config->rclist, (GFunc) xfce_rc_close, NULL);
+  g_slist_foreach (config->rclist, (GFunc) (void (*)(void)) xfce_rc_close, NULL);
   g_slist_free (config->rclist);
 }
 
