@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Mișu Moldovan <dumol@l10n.ro>, 2015
+# Dumitru Moldovan <dumol@gnome.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
 "PO-Revision-Date: 2017-09-19 18:02+0000\n"
-"Last-Translator: Mișu Moldovan <dumol@l10n.ro>\n"
+"Last-Translator: Dumitru Moldovan <dumol@gnome.org>\n"
 "Language-Team: Romanian (http://www.transifex.com/xfce/libxfce4util/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
