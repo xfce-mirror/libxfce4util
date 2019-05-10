@@ -6,13 +6,13 @@
 # Linuxbruger <y.z@live.dk>, 2018
 # Per kongstad <pko@xfce.org>, 2009
 # scootergrisen, 2017
-# scootergrisen, 2017
+# scootergrisen, 2017,2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2018-04-18 18:51+0000\n"
+"PO-Revision-Date: 2019-05-10 12:02+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/libxfce4util/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Fejl under oprettelse af katalog '%s': %s"
+msgstr "Fejl under oprettelse af mappen '%s': %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
@@ -65,7 +65,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Dette program er fri software. Du kan redistribuere og/eller\nmodificere det under de betingelserne som er angivet i GNU General\nPublic License, som er udgivet af Free Software Foundation. Enten\nversion 2 af licensen eller (efter eget valg) enhver senere version.\n\nDette program distribueres i håb om at det vil vise sig nyttigt, men\nUDEN NOGEN FORM FOR GARANTI, uden selv de underforståede garantier\nomkring SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere\ndetaljer kan læses i GNU General Public License.\n\nDu skulle have modtaget en kopi af GNU General Public License sammen\nmed dette program. Hvis ikke, så skriv til Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Dette program er fri software: du kan videredistribuere det og/eller\nmodificere det under vilkårene i GNU General Public License som udgivet af\nFree Software Foundation, enten version 2 af Licensen, eller\n(efter eget valg) enhver senere version.\n\nDette program er distribueret i håbet om at det vil være nyttigt,\nmen UDEN NOGEN GARANTI; uden selv den underforstået garanti vedrørende\nSALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Se\nGNU General Public License for flere detaljer.\n\nDu skulle have modtaget en kopi af GNU General Public License sammen med\ndette program. Er det ikke sket, så skriv til Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -83,7 +83,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Dette bibliotek er fri software. Du kan redistribuere og/eller\nmodificere det under de betingelserne som er angivet i GNU General\nPublic License, som er udgivet af Free Software Foundation. Enten\nversion 2 af licensen eller (efter eget valg) enhver senere version.\n\nDette bibliotek distribueres i håb om at det vil vise sig nyttigt, men\nUDEN NOGEN FORM FOR GARANTI, uden selv de underforståede garantier\nomkring SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere\ndetaljer kan læses i GNU General Public License.\n\nDu skulle have modtaget en kopi af GNU Library General Public License sammen\nmed dette program. Hvis ikke, så skriv til Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301 USA.\n"
+msgstr "Dette bibliotek er fri software: du kan videredistribuere det og/eller\nmodificere det under vilkårene i GNU Library General Public License som udgivet af\nFree Software Foundation, enten version 2 af Licensen, eller\n(efter eget valg) enhver senere version.\n\nDette bibliotek er distribueret i håbet om at det vil være nyttigt,\nmen UDEN NOGEN GARANTI; uden selv den underforstået garanti vedrørende\nSALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Se\nGNU Library General Public License for flere detaljer.\n\nDu skulle have modtaget en kopi af GNU Library General Public License sammen med\ndette bibliotek. Er det ikke sket, så skriv til Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
