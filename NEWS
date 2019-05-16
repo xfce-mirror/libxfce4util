@@ -1,3 +1,14 @@
+4.13.3
+======
+[Please note that this is a development release.]
+- Add support for rc files as symlinks (bug #14698)
+- Fix GObject Introspection language bindings (bug #14766)
+- Fix compiler error -Wcast-function-type (GCC 8)
+- Bump minimum glib version
+- Fix compilation warnings ""defined" may not be portable"
+- Translation Updates: Arabic, Belarusian, Czech, Danish, French, Galician, Hebrew, Icelandic, Italian,
+  Kazakh, Lithuanian, Malay, Norwegian Bokmål, Occitan (post 1500), Romanian, Slovak, Serbian, Uighur, Ukrainian
+
 4.13.2
 ======
 [Please note that this is a development release.]
