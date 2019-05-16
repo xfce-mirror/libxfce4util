@@ -17,31 +17,3 @@ Installation:
 	by
 
 		./configure --help
-
-
-Notes to cross-compilers:
--------------------------
-
-	The check for "broken putenv" will fail for cross-compiling. Therefore
-	you'll need to supply the --with-broken-putenv option to configure
-	with a parameter of either yes or no (see the ./configure --help
-	output). To determine if your plattform's putenv() is ok or
-	broken, you can use the following test program:
-
-  		#include <stdlib.h>
-		#include <string.h>
-		int main(int argc, char *argv[])
-		{
-		    char *buffer = (char *)malloc(8);
-		    strcpy(buffer, "foo=bar");
-		    putenv(buffer);
-		    strcpy(buffer, "foo=rab");
-		    return(strcmp(getenv("foo"), "bar") == 0 ? 0 : 1);
-		}
-
-	Just compile the program and run it. If it returns 0, then your
-	plattform's putenv() is ok, and you should add --with-broken-putenv=no
-	to ./configure, else you need --with-broken-putenv=yes.
-
-	All glibc based plattforms (nearly all GNU/Linux systems, and GNU/Hurd,
-	etc.) and Solaris plattforms are known to have the putenv() problem.
