@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2019-05-16 22:52+0000\n"
+"PO-Revision-Date: 2019-05-17 08:47+0000\n"
 "Last-Translator: Daniel Muñiz Fontoira <dani@damufo.com>\n"
 "Language-Team: Galician (http://www.transifex.com/xfce/libxfce4util/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -64,7 +64,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Este programa é software libre e, xa que logo, vostede pode\nredistribuílo e/ou modificalo consonte os termos establecidos\nna Licenza pública xeral de GNU segundo a súa publicación\npola Free Software Foundation. Pode escoller a versión 2 da\nlicenza ou, se prefire, calquera outra versión posterior.\n\nEste programa distribúese coa esperanza de que resulte útil,\nse ben NON TEN NINGUNHA GARANTÍA, nin sequera a garantía\nimplícita de COMERCIABILIDADE ou IDONEIDADE PARA UN\nDETERMINADO FIN. Para obter información máis detallada pode\nconsultar a licenza pública xeral de GNU.\n\nDáse por sentado que recibiu unha copia da licenza pública\nxeral de GNU xunto con este programa. Se non for así, pode\nsolicitarlla por escrito á Free Software Foundation, Inc. no\nenderezo seguinte: 51 Franklin Street, Fifth Floor, Boston, MA\n02110-1301 USA.\n"
+msgstr "Este programa é software libre e, xa que logo, vostede pode\nredistribuílo e/ou modificalo consonte os termos establecidos\nna Licenza pública xeral de GNU segundo a súa publicación\npola Free Software Foundation. Pode escoller a versión 2 da\nlicenza ou, (se prefire) calquera outra versión posterior.\n\nEste programa distribúese coa esperanza de que resulte útil,\nse ben NON TEN NINGUNHA GARANTÍA, nin sequera a garantía\nimplícita de COMERCIABILIDADE ou IDONEIDADE PARA UN\nDETERMINADO FIN. Para obter información máis detallada pode\nconsultar a licenza pública xeral de GNU.\n\nDáse por sentado que recibiu unha copia da licenza pública\nxeral de GNU xunto con este programa. Se non for así, pode\nsolicitarlla por escrito á Free Software Foundation, Inc. escribindo\nao seguinte enderezo: 51 Franklin Street, Fifth Floor, Boston, MA\n02110-1301 USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -82,7 +82,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Esta biblioteca é software libre e, xa que logo, vostede pode\nredistribuíla e/ou modificala consonte os termos establecidos\nda Biblioteca Xeral Pública de GNU segundo a súa publicación\npola Free Software Foundation. Pode escoller a versión 2 da\nlicenza ou, se prefire, calquera outra versión posterior.\n\nEsta biblioteca distribúese coa esperanza de que resulte útil,\nse ben NON TEN NINGUNHA GARANTÍA, nin sequera a garantía\nimplícita de COMERCIABILIDADE ou IDONEIDADE PARA UN\nDETERMINADO FIN. Para obter información máis detallada pode\nconsultar a Biblioteca Xeral Pública de GNU.\n\nDáse por sentado que recibiu unha copia da Biblioteca Xeral\nPública de GNU. xunto con esta biblioteca. Se non for así, pode\nsolicitarlla por escrito á Free Software Foundation, Inc. no\nenderezo seguinte: 51 Franklin Street, Fifth Floor, Boston, MA\n02110-1301 USA.\n"
+msgstr "Esta biblioteca é software libre e, xa que logo, vostede pode\nredistribuíla e/ou modificala consonte os termos establecidos\nda Biblioteca Xeral Pública de GNU segundo a súa publicación\npola Free Software Foundation. Pode escoller a versión 2 da\nlicenza ou, (se prefire) calquera outra versión posterior.\n\nEsta biblioteca distribúese coa esperanza de que resulte útil,\nse ben NON TEN NINGUNHA GARANTÍA, nin sequera a garantía\nimplícita de COMERCIABILIDADE ou IDONEIDADE PARA UN\nDETERMINADO FIN. Para obter información máis detallada pode\nconsultar a Biblioteca Xeral Pública de GNU.\n\nDáse por sentado que recibiu unha copia da Biblioteca Xeral\nPública de GNU. xunto con esta biblioteca. Se non for así, pode\nsolicitarlla por escrito á Free Software Foundation, Inc. no\nenderezo seguinte: 51 Franklin Street, Fifth Floor, Boston, MA\n02110-1301 USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
