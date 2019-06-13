@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Hayk Andreasyan <hayk.andreasyan@realschool.am>, 2019
+# Real School <translator_students@realschool.am>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2019-06-10 15:06+0000\n"
-"Last-Translator: Hayk Andreasyan <hayk.andreasyan@realschool.am>\n"
+"PO-Revision-Date: 2019-06-13 07:54+0000\n"
+"Last-Translator: Real School <translator_students@realschool.am>\n"
 "Language-Team: Armenian (Armenia) (http://www.transifex.com/xfce/libxfce4util/language/hy_AM/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +63,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Սա անվճար ծրագրային ապահովում է։ Կարող էք վերամշակել եւ/կամ փոփոխել այն\nFree Software Foundation֊ի կողմից թողարկած GNU հանրային արտաւնագրի\nերկրորդ, կամ՝ (ըստ ձեր ցանկութեան) աւելի նոր տարբերակի համաձայն։\n\n\nԾրագիրը մշակուած է աւգտակար լինելու նպատակով, ՍԱԿԱՅՆ ԱՌԱՆՑ\nՈՐԵՒ ԵՐԱՇԽԻՔԻ, առանց նոյնիսկ ՎԱՃԱՌՔԻ որակի երաշխիքների կամ\nՅԱՏՈՒԿ ՆՊԱՏԱԿԻ ՀԱՄԱՐ ՊԻՏԱՆԵԼԻՈՒԹԵԱՆ։\nՅաւելեալ տեղեկոյթի համար կարող էք ուսումնասիրել GNU հանրային արտաւնագիրը։\n\nGNU հանրային արտաւնագրի պատճէնը\n\nպէտք է տրուած լինի այս ծրագրի հետ միասին, եթե ոչ, դիմէք՝ \n(Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA \n02110-1301, ԱՄՆ):\n"
+msgstr "Սա անվճար ծրագրային ապահովում է։ Կարող էք վերամշակել եւ/կամ փոփոխել այն\nFree Software Foundation֊ի կողմից թողարկած GNU հանրային արտաւնագրի\nերկրորդ, կամ՝ (ըստ ձեր ցանկութեան) աւելի նոր տարբերակի համաձայն (ըստ Ձեր ցանկութեան)։\n\nԾրագիրը մշակուած է աւգտակար լինելու նպատակով, ՍԱԿԱՅՆ ԱՌԱՆՑ\nՈՐԵՒ ԵՐԱՇԽԻՔԻ, առանց նոյնիսկ ՎԱՃԱՌՔԻ որակի երաշխիքների կամ\nՅԱՏՈՒԿ ՆՊԱՏԱԿԻ ՀԱՄԱՐ ՊԻՏԱՆԵԼԻՈՒԹԵԱՆ։\nՅաւելեալ տեղեկոյթի համար կարող էք ուսումնասիրել GNU հանրային արտաւնագիրը։\n\nGNU հանրային արտաւնագրի պատճէնը\n\nպէտք է տրուած լինի այս ծրագրի հետ միասին, եթե ոչ, դիմէք՝ \n(Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA \n02110-1301, ԱՄՆ):\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
