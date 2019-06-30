@@ -1,3 +1,8 @@
+4.13.4
+======
+- Bump the Xfce version to 4.14pre2
+- Translation Updates: Danish, Galician
+
 4.13.3
 ======
 [Please note that this is a development release.]
@@ -38,7 +43,7 @@
 [Please note that this is a development release.]
 - Fix abicheck to handle ppc64 architecture
 - Add support for GOBJECT-INTROSPECTION Bug #12159
-- Translation updates: ast bg ca da gl he hr lt sv 
+- Translation updates: ast bg ca da gl he hr lt sv
 
 4.12.1
 ======
