@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Abel Martín <abel.martin.ruiz@gmail.com>, 2008
-# Pablo Lezaeta Reyes [pˈaβ̞lo lˌe̞θaˈeta rˈejɛ] <prflr88@gmail.com>, 2017
-# Pablo Lezaeta Reyes [pˈaβ̞lo lˌe̞θaˈeta rˈejɛ] <prflr88@gmail.com>, 2014-2015
+# prflr88 <prflr88@gmail.com>, 2017
+# prflr88 <prflr88@gmail.com>, 2014-2015
+# Toni Estévez <toni.estevez@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2017-09-19 18:02+0000\n"
-"Last-Translator: Pablo Lezaeta Reyes [pˈaβ̞lo lˌe̞θaˈeta rˈejɛ] <prflr88@gmail.com>\n"
+"PO-Revision-Date: 2019-11-17 15:05+0000\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/libxfce4util/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Error al crear el directorio «%s»: %s"
+msgstr "Error al crear la carpeta «%s»: %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
@@ -47,7 +48,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr " Se permite la redistribución y uso en forma de fuentes y binarios, con o sin\n modificación, si se cumplen las siguientes condiciones:\n\n 1. Las redistribuciones del código fuente deben conservar la anterior nota de derechos de autor,\n     esta lista de condiciones y la siguiente declaración de descargo.\n 2. Las redistribuciones en formato binario deben reproducir la anterior nota de derechos de autor,\n     esta lista de condiciones y la siguiente declaración de descargo en la documentación\n     y/u otros materiales proporcionados con la distribución.\n\n ESTE SOFTWARE ES PROPORCIONADO POR EL AUTOR Y DEMÁS CONTRIBUYENTES «COMO ES»\n SIN GARANTÍAS DE NINGÚN TIPO. EL AUTOR Y DEMÁS CONTRIBUYENTES RENUNCIAN A TODAS\n LAS GARANTÍAS, YA SEAN EXPLÍCITAS O IMPLÍCITAS, INCLUYENDO, PERO SIN LIMITARSE A, GARANTÍAS\n IMPLÍCITAS DE COMERCIABILIDAD E IDONEIDAD PARA UN PROPÓSITO EN PARTICULAR. EN NINGÚN\n CASO SE HARÁ AL AUTOR O DEMÁS CONTRIBUYENTES RESPONSABLES DE DAÑOS DIRECTOS,\n INDIRECTOS, ESPECIALES, ACCIDENTALES, O EMERGENTES (INCLUYENDO, PERO SIN LIMITARSE A,\n ADQUISICIÓN DE SUBSTITUTOS DE BIENES O SERVICIOS; PÉRDIDA DEL USO, DATOS O LUCRO, O\n INTERRUPCIÓN DE NEGOCIOS) SIN IMPORTAR LAS CAUSAS NI CUALQUIER RESPONSABILIDAD, YA SEA\n QUE SE DIESEN BAJO CONTRATO, POR NEGLIGENCIA U OTRA ACCIÓN, QUE DERIVASEN DE O SE\n RELACIONASEN AL USO DE ESTE SOFTWARE, AÚN SI HA SIDO NOTIFICADO DE LA POSIBILIDAD\n DE DICHOS DAÑOS.\n"
+msgstr "Se permite la redistribución y el uso en forma de fuentes y binarios, con\no sin modificación, siempre que se cumplan las siguientes condiciones:\n\n1. Las redistribuciones del código fuente deben conservar el aviso de\ncopyright anterior, esta lista de condiciones y la siguiente cláusula\nde exención de responsabilidad.\n2. Las redistribuciones en forma binaria deben reproducir el aviso de\ncopyright anterior, esta lista de condiciones y la siguiente cláusula\nde exención de responsabilidad en la documentación y/u otros materiales\nproporcionados con la distribución.\n\nESTE SOFTWARE ES PROPORCIONADO POR EL AUTOR «TAL CUAL» Y SE EXCLUYE\nCUALQUIER GARANTÍA EXPRESA O IMPLÍCITA, INCLUYENDO, PERO SIN LIMITARSE A,\nLAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD Y ADECUACIÓN PARA UN PROPÓSITO\nPARTICULAR. EN NINGÚN CASO EL AUTOR SERÁ RESPONSABLE DE NINGÚN DAÑO DIRECTO,\nINDIRECTO, ACCIDENTAL, ESPECIAL, EJEMPLAR O EMERGENTE (INCLUYENDO, PERO\nSIN LIMITARSE A, LA ADQUISICIÓN DE BIENES O SERVICIOS SUSTITUTOS, LA PÉRDIDA\nDE USO, DATOS O GANANCIAS O LA INTERRUPCIÓN DE LA ACTIVIDAD COMERCIAL),\nINDEPENDIENTEMENTE DE LA CAUSA Y DEL TIPO DE RESPONSABILIDAD, YA SEA\nCONTRACTUAL, OBJETIVA O EXTRACONTRACTUAL (INCLUIDA LA NEGLIGENCIA O CUALQUIER\nOTRA) QUE SURJA DE CUALQUIER FORMA DEL USO DE ESTE SOFTWARE, INCLUSO SI SE\nAVISA DE LA POSIBILIDAD DE QUE SE PRODUZCAN DICHOS DAÑOS.\n"
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
@@ -64,7 +65,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Este programa es software libre. Puede redistribuirlo y/o modificarlo bajo\nlos términos de la Licencia Pública General de GNU según es publicada por la\nFree Software Foundation, bien de la versión 2 de dicha licencia o bien (según\nsu decisión) cualquier versión posterior.\n\nEste programa se distribuye con la esperanza de que sea útil, pero SIN\nNINGUNA GARANTÍA, incluso sin la garantía MERCANTIL implícita o la de\nCONVENIENCIA PARA UN PROPÓSITO PARTICULAR. Véase la Licencia Pública\nGeneral de GNU para más detalles.\n\nDebe haber recibido una copia de la Licencia Pública General junto con este\nprograma. Si no ha sido así, escriba a la Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Este programa es software libre; puede redistribuirlo y/o modificarlo\nsegún los términos de la Licencia Pública General de GNU publicada\npor la Free Software Foundation; ya sea la versión 2 de la Licencia o\n(a su elección) cualquier versión posterior.\n\nEste programa se distribuye con la esperanza de que sea útil, pero\nSIN NINGUNA GARANTÍA; ni siquiera la garantía implícita de COMERCIALIZACIÓN o ADECUACIÓN A UN PROPÓSITO PARTICULAR. Consulte la Licencia Pública General de GNU para obtener más detalles.\n\nDebería haber recibido una copia de la Licencia Pública General de\nGNU junto con este programa; si no es así, escriba a la Free Software\nFoundation, Inc. 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -82,7 +83,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Esta biblioteca es software libre; usted puede redistribuirla y/o\nmodificarla bajo los términos de la Licencia Pública General para\nBibliotecas de GNU tal y como ha sido publicada por la Free Software\nFoundation; o bien la versión 2 de la licencia, o (a su discreción)\ncualquier versión posterior.\n\nEsta biblioteca se distribuye con la esperanza de que sea útil, pero SIN\nNINGUNA GARANTÍA, incluso sin la garantía MERCANTIL implícita o la de\nCONVENIENCIA PARA UN PROPÓSITO PARTICULAR. Véase la Licencia Pública\nGeneral para Bibliotecas de GNU para más detalles.\n\nDebe haber recibido una copia de la Licencia Pública General\npara Bibliotecas de GNU junto con este programa; si no, escriba a la\nFree Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
+msgstr "Esta biblioteca es software libre; puede redistribuirla y/o modificarla\nsegún los términos de la Licencia Pública General para Bibliotecas\nde GNU publicada por la Free Software Foundation; ya sea la versión\n2 de la Licencia o (a su elección) cualquier versión posterior.\n\nEsta biblioteca se distribuye con la esperanza de que sea útil, pero\nSIN NINGUNA GARANTÍA; ni siquiera la garantía implícita de\nCOMERCIALIZACIÓN o IDONEIDAD PARA UN PROPÓSITO PARTICULAR.\nConsulte la Licencia Pública General para Bibliotecas de GNU para\nobtener más detalles.\n\nDebería haber recibido una copia de la Licencia Pública General para\nBibliotecas de GNU junto con esta biblioteca; si no es así, escriba a la\nFree Software Foundation, Inc. 51 Franklin Street, Fifth Floor, Boston,\nMA 02110-1301 USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
@@ -92,9 +93,9 @@ msgstr "error pipe():  %s"
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "xfce_posix_signal_handler_init() debe ser llamado primero"
+msgstr "xfce_posix_signal_handler_init() se debe llamar primero"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr "error sigaction(): %s\n"
+msgstr "sigaction() ha fallado: %s\n"
