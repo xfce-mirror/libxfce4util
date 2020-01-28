@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2020-01-07 18:52+0000\n"
+"PO-Revision-Date: 2020-01-28 10:36+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/libxfce4util/language/sq/)\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Ky program është software i lirë; mund ta rishpërndani dhe/ose ndryshoni atë\nsipas kushteve të Licencës së Përgjithshme Publike GNU, ashtu si botohet nga\nFree Software Foundation; versioni 2 i kësaj Licence, ose (në dëshirën tuaj)\nçfarëdo version i mëvonshëm.\n\nKy program shpërndahet me shpresën se do të jetë i dobishëm, por PA ASNJË\nGARANCI; madje pa as edhe garancinë e nënkuptuar të TREGTUESHMËRISË ose\nPËRSHTATSHMËRISË PËR NJË QËLLIM TË VEÇANTË.  Për më tepër hollësi, shihni\nlicencën GNU General Public License.\n\nDo të duhej të kishit marrë një kopje të licencës GNU General Public License tok\nme këtë program; nëse jo, shkruajini Free Software Foundation, Inc., 59 Temple\nPlace, Suite 330, Boston, MA  02111-1307  USA.\n"
+msgstr "Ky program është software i lirë; mund ta rishpërndani dhe/ose ndryshoni atë\nsipas kushteve të Licencës së Përgjithshme Publike GNU, ashtu si botohet nga\nFree Software Foundation; versioni 2 i kësaj Licence, ose (në dëshirën tuaj)\nçfarëdo version i mëvonshëm.\n\nKy program shpërndahet me shpresën se do të jetë i dobishëm, por PA ASNJË\nGARANCI; madje pa as edhe garancinë e nënkuptuar të TREGTUESHMËRISË ose\nPËRSHTATSHMËRISË PËR NJË QËLLIM TË VEÇANTË.  Për më tepër hollësi, shihni\nlicencën GNU General Public License.\n\nDo të duhej të kishit marrë një kopje të licencës GNU General Public License tok\nme këtë program; nëse jo, shkruajini Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA  02110-1301  USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -80,7 +80,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Kjo librari është software i lirë; mund ta rishpërndani dhe/ose\nndryshoni atë sipas kushteve të GNU Library General Public License,\nashtu si botohet nga Free Software Foundation; versioni 2 i kësaj\nLicence, ose (në dëshirën tuaj) çfarëdo version i mëvonshëm.\n\nKjo librari shpërndahet me shpresën se do të jetë e dobishme,\npor PA ASNJË GARANCI; madje pa as edhe garancinë e nënkuptuar\ntë TREGTUESHMËRISË ose PËRSHTATSHMËRISË PËR NJË QËLLIM TË VEÇANTË.\nPër më tepër hollësi, shihni GNU Library General Public License.\n\nDo të duhej të kishit marrë një kopje të licencës GNU Library General Public\nme këtë program; nëse jo, shkruajini Free Software Foundation, Inc., 59 Temple\nPlace, Suite 330, Boston, MA  02111-1307  USA.\n"
+msgstr "Kjo librari është software i lirë; mund ta rishpërndani dhe/ose\nndryshoni atë sipas kushteve të GNU Library General Public License,\nashtu si botohet nga Free Software Foundation; versioni 2 i kësaj\nLicence, ose (në dëshirën tuaj) çfarëdo version i mëvonshëm.\n\nKjo librari shpërndahet me shpresën se do të jetë e dobishme,\npor PA ASNJË GARANCI; madje pa as edhe garancinë e nënkuptuar\ntë TREGTUESHMËRISË ose PËRSHTATSHMËRISË PËR NJË QËLLIM TË VEÇANTË.\nPër më tepër hollësi, shihni GNU Library General Public License.\n\nTok me këtë librari, do të duhej të kishit marrë një kopje të licencës\nGNU Library General Public; nëse jo, shkruajini Free Software Foundation,\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
