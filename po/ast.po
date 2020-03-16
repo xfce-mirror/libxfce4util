@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# enolp <enolp@softastur.org>, 2015
+# enolp <enolp@softastur.org>, 2015,2020
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
 # Ḷḷumex03 <tornes@opmbx.org>, 2014
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2017-09-23 19:02+0000\n"
+"PO-Revision-Date: 2020-03-16 01:17+0000\n"
 "Last-Translator: enolp <enolp@softastur.org>\n"
 "Language-Team: Asturian (http://www.transifex.com/xfce/libxfce4util/language/ast/)\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: ../libxfce4util/xfce-fileutils.c:153
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Fallu creando'l direutoriu «%s»: %s"
+msgstr "Fallu al crear el direutoriu «%s»: %s"
 
 #: ../libxfce4util/xfce-license.c:37
 msgid ""
@@ -47,7 +47,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr " Permítese la redistribución y usu en forma de fontes y binarios, con\n o ensin modificación, si se cumplen les condiciones siguientes:\n\n 1. Les redistribuciones del códigu fonte tienen de caltener l'anterior nota de copyright, esta llista de condiciones y la declaración siguiente de renuncia.\n 2. Les redistribuciones en formatu binariu tienen de reproducir la nota de copyright d'enriba, esta llista de condiciones y la declaración siguiente de renuncia na documentación y/u otros materiales apurríos cola distribución.\n\nESTI SOFTWARE TA APURRÍU PENTE L'AUTOR \"COMO YE\" Y CUALESQUIER ESPRESU O\nGARANTÍES IMPLÍCITES, INCLUYENDO, PERO NON LLIMITAES A, GRANATÍES IMPLÍCITES\nDE COMERCIABILIDÁ YA IDONEIDÁ PA UN UN ENVÍS EN PARTICULAR.\nEN DENGÚN CASU SE FADRÁ AL AUTOR O DEMÁS CONTRIBUYENTES RESPONSABLES DE DAÑOS DIREUTOS, INDIREUTOS,\nESPECIALES, ACCIDENTALES, EXEMPLARES Ó EMERXENTES (INCLUYENDO, PERO\nENSIN LLIMITASE A, L'ALQUISICIÓN DE TROQUEOS DE BIENES O SERVICIOS; PÉRDA D'USU,\nDATOS O LLUCRU, O INTERRUPCIÓN DE NEGOCIOS) ENSIN IMPORTAR LES CAUSES NIN CUALESQUIER RESPONSABILIDÁ,\nYA SÍA QUE SE DIESEN BAXO CONTRATU, POR NEGLIGENCIA OTRA AICIÓN, QUE DERIVASEN DE O SE RELLACIONASEN AL USU\nD'ESTI SOFTWARE, ENTÁ SI SE NOTIFICÓ DE LA POSIBILIDAD DE TALOS DAÑOS.\n"
+msgstr ""
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
@@ -64,7 +64,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "This program is free software; you can redistribute it and/or modify it\nunder the terms of the GNU General Public License as published by the Free\nSoftware Foundation; either version 2 of the License, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT\nANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\nFITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\nmore details.\n\nYou should have received a copy of the GNU General Public License along with\nthis program; if not, write to the Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr ""
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -82,7 +82,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "This library is free software; you can redistribute it and/or\nmodify it under the terms of the GNU Library General Public\nLicense as published by the Free Software Foundation; either\nversion 2 of the License, or (at your option) any later version.\n\nThis library is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nLibrary General Public License for more details.\n\nYou should have received a copy of the GNU Library General Public\nLicense along with this library; if not, write to the \nFree Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \nBoston, MA 02110-1301  USA.\n"
+msgstr ""
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
