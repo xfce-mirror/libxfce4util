@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2020-04-21 01:06+0000\n"
+"PO-Revision-Date: 2020-04-30 15:29+0000\n"
 "Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/libxfce4util/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -89,7 +89,7 @@ msgstr "Esta biblioteca es software libre; puede redistribuirla y/o modificarla\
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr "pipe() ha fallado:  %s"
+msgstr "falló pipe():  %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
@@ -99,4 +99,4 @@ msgstr "xfce_posix_signal_handler_init() se debe llamar primero"
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr "sigaction() ha fallado: %s\n"
+msgstr "falló sigaction(): %s\n"
