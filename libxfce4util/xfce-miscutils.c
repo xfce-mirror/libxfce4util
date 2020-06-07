@@ -462,5 +462,94 @@ xfce_expand_variables (const gchar *command,
 
 
 
+void
+xfce_append_quoted (GString     *string,
+                    const gchar *unquoted)
+{
+  gchar *quoted;
+
+  quoted = g_shell_quote (unquoted);
+  g_string_append (string, quoted);
+  g_free (quoted);
+}
+
+
+
+/**
+ * xfce_expand_field_codes:
+ * @command           : Input string (command to expand) or %NULL.
+ * @icon              : Input string (icon field) or %NULL.
+ * @name              : Input string (name field) or %NULL.
+ * @uri               : Input string (uri field) or %NULL.
+ * @requires_terminal : Input boolean.
+ *
+ * Expands field codes in @command according to Freedesktop.org Desktop Entry Specification.
+ *
+ * Return value: %NULL on error, else the string, which should be freed using g_free() when
+ *               no longer needed.
+ **/
+gchar*
+xfce_expand_field_codes (const gchar *command,
+                         const gchar *icon,
+                         const gchar *name,
+                         const gchar *uri,
+                         gboolean     requires_terminal)
+{
+  const gchar *p;
+  GString     *string;
+
+  if (G_UNLIKELY (command == NULL))
+    return NULL;
+
+  string = g_string_sized_new (strlen (command));
+
+  if (requires_terminal)
+    g_string_append (string, "exo-open --launch TerminalEmulator ");
+
+  for (p = command; *p != '\0'; ++p)
+    {
+      if (G_UNLIKELY (p[0] == '%' && p[1] != '\0'))
+        {
+          switch (*++p)
+            {
+            case 'f': case 'F':
+            case 'u': case 'U':
+              /* TODO for dnd, not a regression, xfdesktop never had this */
+              break;
+
+            case 'i':
+              if (! STR_IS_EMPTY (icon))
+                {
+                  g_string_append (string, "--icon ");
+                  xfce_append_quoted (string, icon);
+                }
+              break;
+
+            case 'c':
+              if (! STR_IS_EMPTY (name))
+                xfce_append_quoted (string, name);
+              break;
+
+            case 'k':
+              if (! STR_IS_EMPTY (uri))
+                xfce_append_quoted (string, uri);
+              break;
+
+            case '%':
+              g_string_append_c (string, '%');
+              break;
+            }
+        }
+      else
+        {
+          g_string_append_c (string, *p);
+        }
+    }
+
+  return g_string_free (string, FALSE);
+}
+
+
+
 #define __XFCE_MISCUTILS_C__
 #include <libxfce4util/libxfce4util-aliasdef.c>

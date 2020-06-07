@@ -92,6 +92,8 @@ xfce_get_userdir G_GNUC_PURE
 xfce_get_userfile_r
 xfce_gethostname G_GNUC_MALLOC
 xfce_expand_variables G_GNUC_MALLOC
+xfce_append_quoted
+xfce_expand_field_codes G_GNUC_MALLOC
 #endif
 #endif
 

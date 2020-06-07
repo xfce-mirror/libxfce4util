@@ -30,6 +30,8 @@
 
 #include <libxfce4util/xfce-debug.h>
 
+#define STR_IS_EMPTY(str) ((str) == NULL || *(str) == '\0')
+
 G_BEGIN_DECLS
 
 const gchar* xfce_version_string (void) G_GNUC_PURE;
@@ -80,11 +82,19 @@ xfce_get_userfile (const gchar *first_element, ...)
 
 #endif
 
-gchar*  xfce_gethostname      (void) G_GNUC_MALLOC;
+gchar* xfce_gethostname        (void) G_GNUC_MALLOC;
 
+gchar* xfce_expand_variables   (const gchar *command,
+                                gchar      **envp) G_GNUC_MALLOC;
 
-gchar*  xfce_expand_variables (const gchar *command,
-                               gchar      **envp) G_GNUC_MALLOC;
+void   xfce_append_quoted      (GString     *string,
+                                const gchar *unquoted);
+
+gchar* xfce_expand_field_codes (const gchar *command,
+                                const gchar *icon,
+                                const gchar *name,
+                                const gchar *uri,
+                                gboolean     requires_terminal) G_GNUC_MALLOC;
 
 G_END_DECLS
 
