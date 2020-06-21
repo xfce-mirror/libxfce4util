@@ -38,6 +38,7 @@
         <xi:include href="xml/xfce-resource.xml"/>
         <xi:include href="xml/xfce-rc.xml"/>
         <xi:include href="xml/xfce-fileutils.xml"/>
+        <xi:include href="xml/xfce-miscutils.xml"/>
         <xi:include href="xml/xfce-utf8.xml"/>
     </chapter>
 
