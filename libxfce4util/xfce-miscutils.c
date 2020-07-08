@@ -476,11 +476,12 @@ xfce_append_quoted (GString     *string,
 
 
 /**
- * xfce_expand_field_codes:
+ * xfce_expand_desktop_entry_field_codes:
  * @command           : Input string (command to expand) or %NULL.
+ * @uri_list          : Input string list (filename/URL field) or %NULL.
  * @icon              : Input string (icon field) or %NULL.
  * @name              : Input string (name field) or %NULL.
- * @uri               : Input string (uri field) or %NULL.
+ * @uri               : Input string (URI field) or %NULL.
  * @requires_terminal : Input boolean.
  *
  * Expands field codes in @command according to Freedesktop.org Desktop Entry Specification.
@@ -489,14 +490,17 @@ xfce_append_quoted (GString     *string,
  *               no longer needed.
  **/
 gchar*
-xfce_expand_field_codes (const gchar *command,
-                         const gchar *icon,
-                         const gchar *name,
-                         const gchar *uri,
-                         gboolean     requires_terminal)
+xfce_expand_desktop_entry_field_codes (const gchar *command,
+                                       GSList      *uri_list,
+                                       const gchar *icon,
+                                       const gchar *name,
+                                       const gchar *uri,
+                                       gboolean     requires_terminal)
 {
   const gchar *p;
+  gchar       *filename;
   GString     *string;
+  GSList      *li;
 
   if (G_UNLIKELY (command == NULL))
     return NULL;
@@ -512,13 +516,37 @@ xfce_expand_field_codes (const gchar *command,
         {
           switch (*++p)
             {
-            case 'f': case 'F':
-            case 'u': case 'U':
-              /* TODO for dnd, not a regression, xfdesktop never had this */
+            case 'f':
+            case 'F':
+              for (li = uri_list; li != NULL; li = li->next)
+                {
+                  filename = g_filename_from_uri ((const gchar *) li->data, NULL, NULL);
+                  if (G_LIKELY (filename != NULL))
+                    xfce_append_quoted (string, filename);
+                  g_free (filename);
+
+                  if (*p == 'f')
+                    break;
+                  if (li->next != NULL)
+                    g_string_append_c (string, ' ');
+                }
+              break;
+
+            case 'u':
+            case 'U':
+              for (li = uri_list; li != NULL; li = li->next)
+                {
+                  xfce_append_quoted (string, (const gchar *) li->data);
+
+                  if (*p == 'u')
+                    break;
+                  if (li->next != NULL)
+                    g_string_append_c (string, ' ');
+                }
               break;
 
             case 'i':
-              if (! STR_IS_EMPTY (icon))
+              if (! xfce_str_is_empty (icon))
                 {
                   g_string_append (string, "--icon ");
                   xfce_append_quoted (string, icon);
@@ -526,12 +554,12 @@ xfce_expand_field_codes (const gchar *command,
               break;
 
             case 'c':
-              if (! STR_IS_EMPTY (name))
+              if (! xfce_str_is_empty (name))
                 xfce_append_quoted (string, name);
               break;
 
             case 'k':
-              if (! STR_IS_EMPTY (uri))
+              if (! xfce_str_is_empty (uri))
                 xfce_append_quoted (string, uri);
               break;
 
