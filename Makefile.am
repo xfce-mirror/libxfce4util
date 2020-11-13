@@ -22,6 +22,7 @@ dist-hook: ChangeLog
 
 EXTRA_DIST =								\
 	README.Kiosk							\
+	README.md							\
 	THANKS								\
 	TODO								\
 	gtk-doc.make							\
