@@ -34,9 +34,6 @@ G_BEGIN_DECLS
 #define XFCE_TYPE_KIOSK xfce_kiosk_get_type ()
 G_DECLARE_FINAL_TYPE (XfceKiosk, xfce_kiosk, XFCE, KIOSK, GObject)
 
-typedef struct _XfceKiosk XfceKiosk;
-
-
 XfceKiosk *xfce_kiosk_new   (const gchar     *module) G_GNUC_MALLOC;
 gboolean   xfce_kiosk_query (const XfceKiosk *kiosk,
                              const gchar     *capability);
