@@ -1,3 +1,9 @@
+4.15.5
+======
+- Bump Xfce version to 4.16pre2
+- Add README.md to EXTRA_DIST
+
+
 4.15.4
 ======
 - Create README.md
