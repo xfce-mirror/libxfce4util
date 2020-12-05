@@ -121,6 +121,11 @@ dnl *** Check for GLib installed ***
 dnl ********************************
 XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.42.0])
 
+dnl ********************************
+dnl *** Check for GIO installed ***
+dnl ********************************
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.42.0])
+
 dnl *************************
 dnl *** Check for gtk-doc ***
 dnl *************************

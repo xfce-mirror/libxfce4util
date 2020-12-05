@@ -65,6 +65,7 @@ libxfce4util_la_SOURCES =						\
 
 libxfce4util_la_CFLAGS = 						\
 	$(GLIB_CFLAGS) \
+	$(GIO_CFLAGS) \
 	$(GOBJECT_CFLAGS)
 
 libxfce4util_la_LDFLAGS =						\
@@ -75,6 +76,7 @@ libxfce4util_la_LDFLAGS =						\
 
 libxfce4util_la_LIBADD =						\
 	$(GLIB_LIBS) \
+	$(GIO_LIBS) \
 	$(GOBJECT_LIBS)
 
 pkgconfigdir = $(libdir)/pkgconfig
