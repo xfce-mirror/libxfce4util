@@ -67,6 +67,8 @@
 #include <unistd.h>
 #endif
 
+#include <gio/gio.h>
+
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4util/libxfce4util-alias.h>
 
@@ -501,6 +503,7 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
   gchar       *filename;
   GString     *string;
   GSList      *li;
+  GFile       *file;
 
   if (G_UNLIKELY (command == NULL))
     return NULL;
@@ -520,9 +523,15 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
             case 'F':
               for (li = uri_list; li != NULL; li = li->next)
                 {
-                  filename = g_filename_from_uri (li->data, NULL, NULL);
+                  /* passing through a GFile seems necessary to properly handle
+                   * all URI schemes, in particular g_filename_from_uri() is not
+                   * able to do so */
+                  file = g_file_new_for_uri (li->data);
+                  filename = g_file_get_path (file);
                   if (G_LIKELY (filename != NULL))
                     xfce_append_quoted (string, filename);
+
+                  g_object_unref (file);
                   g_free (filename);
 
                   if (*p == 'f')
