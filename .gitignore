@@ -16,6 +16,8 @@ libtool
 ltmain.sh
 m4/
 missing
+!m4/introspection.m4
+!m4/vapigen.m4
 po/Makefile.in.in
 po/POTFILES
 po/stamp-it
