@@ -81,7 +81,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libxfce4util-1.0.pc
 
 
-include $(INTROSPECTION_MAKEFILE)
+-include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS =
 INTROSPECTION_SCANNER_ENV = CC="$(CC)"
 INTROSPECTION_SCANNER_ARGS = \
@@ -99,13 +99,13 @@ INTROSPECTION_COMPILER_ARGS = \
 if HAVE_INTROSPECTION
 introspection_sources = $(filter-out %private.h, $(libxfce4util_la_SOURCES))
 
-libxfce4util-1.0.gir: libxfce4util.la Makefile
-libxfce4util_1_0_gir_INCLUDES = GObject-2.0 GLib-2.0
-libxfce4util_1_0_gir_CFLAGS = $(AM_CPPFLAGS)
-libxfce4util_1_0_gir_LIBS = libxfce4util.la
-libxfce4util_1_0_gir_FILES = $(introspection_sources)
-libxfce4util_1_0_gir_EXPORT_PACKAGES = libxfce4util-1.0
-INTROSPECTION_GIRS += libxfce4util-1.0.gir
+Libxfce4util-1.0.gir: libxfce4util.la Makefile
+Libxfce4util_1_0_gir_INCLUDES = GObject-2.0 GLib-2.0
+Libxfce4util_1_0_gir_CFLAGS = $(AM_CPPFLAGS)
+Libxfce4util_1_0_gir_LIBS = libxfce4util.la
+Libxfce4util_1_0_gir_FILES = $(introspection_sources)
+Libxfce4util_1_0_gir_EXPORT_PACKAGES = libxfce4util-1.0
+INTROSPECTION_GIRS += Libxfce4util-1.0.gir
 
 girdir = $(datadir)/gir-1.0
 gir_DATA = $(INTROSPECTION_GIRS)
@@ -157,20 +157,19 @@ EXTRA_DIST =								\
 if ENABLE_VAPIGEN
 -include $(VAPIGEN_MAKEFILE)
 
-libxfce4util-1.0.vapi: libxfce4util-1.0.gir
+libxfce4util-1.0.vapi: Libxfce4util-1.0.gir
 
 VAPIGEN_VAPIS = libxfce4util-1.0.vapi
 VAPIGEN_GIRDIRS = $(prefix)/share/gir-1.0
 
 ## libxfce4util_1_0_vapi_DEPS = libxfce4util-1.0
 libxfce4util_1_0_vapi_METADATADIRS = $(srcdir)
-libxfce4util_1_0_vapi_FILES = libxfce4util-1.0.gir
+libxfce4util_1_0_vapi_FILES = Libxfce4util-1.0.gir
 
 vapidir = $(datadir)/vala/vapi
 vapi_DATA = $(VAPIGEN_VAPIS)
 ## $(VAPIGEN_VAPIS:.vapi=.deps)
 
-EXTRA_DIST += libxfce4util-1.0.metadata
 endif
 
 if HAVE_GNUC_VISIBILITY
