@@ -40,7 +40,7 @@ dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2002-2019
         The Xfce development team. All rights reserved.])
 AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
-AC_PREREQ([2.50])
+AC_PREREQ([2.69])
 AC_REVISION([libxfce4util_version_build])
 
 dnl ***************************
@@ -78,8 +78,7 @@ AC_SUBST([LIBXFCE4UTIL_VERSION_MICRO])
 dnl *******************************
 dnl *** Check for UNIX variants ***
 dnl *******************************
-AC_AIX()
-AC_MINIX()
+AC_USE_SYSTEM_EXTENSIONS
 
 dnl ********************************
 dnl *** Check for basic programs ***
@@ -187,7 +186,7 @@ AM_CONDITIONAL([HAVE_GNUC_VISIBILITY], [test x"$have_gnuc_visibility" = x"yes"])
 dnl *****************************
 dnl *** Generate output files ***
 dnl *****************************
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 docs/version.xml
 docs/Makefile
@@ -197,6 +196,7 @@ libxfce4util/Makefile
 po/Makefile.in
 xfce4-kiosk-query/Makefile
 ])
+AC_OUTPUT
 
 dnl ***************************
 dnl *** Print configuration ***

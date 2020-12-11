@@ -14,7 +14,9 @@ install-sh
 intltool-*.in
 libtool
 ltmain.sh
-m4/
+m4/*
+!m4/introspection.m4
+!m4/vapigen.m4
 missing
 po/Makefile.in.in
 po/POTFILES
