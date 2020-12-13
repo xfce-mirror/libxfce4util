@@ -1,3 +1,12 @@
+4.15.6
+======
+- Update configure.ac.in syntax
+- Namespace of the gir needs capital first letter
+- Bump GLib (and gio, gthread, etc) minimum to 2.50.0
+- Remove typedef already defined by G_DECLARE_FINAL_TYPE macro
+  (Fixes #4)
+
+
 4.15.5
 ======
 - Bump Xfce version to 4.16pre2
