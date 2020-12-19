@@ -22,7 +22,7 @@ m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_ver
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
 dnl **************************************************************
-m4_define([xfce_version_string], [4.16pre2])
+m4_define([xfce_version_string], [4.16])
 
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
