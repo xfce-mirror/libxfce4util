@@ -1,3 +1,9 @@
+4.16.0
+======
+- Prepare for 4.16 final release
+- Properly handle URI schemes other than "file"
+
+
 4.15.6
 ======
 - Update configure.ac.in syntax
