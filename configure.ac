@@ -1,6 +1,6 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2002-2019
+dnl Copyright (c) 2002-2020
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
@@ -11,42 +11,29 @@ dnl ***************************
 dnl *** Version information ***
 dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
-m4_define([libxfce4util_version_major], [4])
-m4_define([libxfce4util_version_minor], [16])
-m4_define([libxfce4util_version_micro], [0])
-m4_define([libxfce4util_version_nano], [])   dnl leave this empty to have no nano version
-m4_define([libxfce4util_version_build], [@REVISION@])
-m4_define([libxfce4util_version_tag], [git])
-m4_define([libxfce4util_version], [libxfce4util_version_major().libxfce4util_version_minor().libxfce4util_version_micro()ifelse(libxfce4util_version_nano(), [], [], [.libxfce4util_version_nano()])ifelse(libxfce4util_version_tag(), [git], [libxfce4util_version_tag()-libxfce4util_version_build()], [])])
+XDT_VERSION_INIT([4.16.0], [git])
 
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
 dnl **************************************************************
 m4_define([xfce_version_string], [4.16])
 
-
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
 dnl # YOU ARE DOING.
-
-
-dnl ********************************************
-dnl *** Full debug support for GIT snapshots ***
-dnl ********************************************
-m4_define([libxfce4util_debug_default], [ifelse(libxfce4util_version_tag(), [git], [yes], [minimum])])
 
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2002-2019
+AC_COPYRIGHT([Copyright (c) 2002-2020
         The Xfce development team. All rights reserved.])
-AC_INIT([libxfce4util], [libxfce4util_version], [xfce4-dev@xfce.org])
+AC_INIT([libxfce4util], [xdt_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.69])
-AC_REVISION([libxfce4util_version_build])
+AC_REVISION([xdt_version_build])
 
 dnl ***************************
 dnl *** Initialize automake ***
 dnl ***************************
-LIBXFCE4UTIL_VERSION=libxfce4util_version()
+LIBXFCE4UTIL_VERSION=xdt_version()
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar no-dist-gzip foreign])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIRS([m4])
@@ -68,9 +55,9 @@ AC_DEFINE([XFCE_VERSION_STRING], ["xfce_version_string"],
 dnl **********************************
 dnl *** Subst libxfce4util version ***
 dnl **********************************
-LIBXFCE4UTIL_VERSION_MAJOR=libxfce4util_version_major()
-LIBXFCE4UTIL_VERSION_MINOR=libxfce4util_version_minor()
-LIBXFCE4UTIL_VERSION_MICRO=libxfce4util_version_micro()
+LIBXFCE4UTIL_VERSION_MAJOR=xdt_version_major()
+LIBXFCE4UTIL_VERSION_MINOR=xdt_version_minor()
+LIBXFCE4UTIL_VERSION_MICRO=xdt_version_micro()
 AC_SUBST([LIBXFCE4UTIL_VERSION_MAJOR])
 AC_SUBST([LIBXFCE4UTIL_VERSION_MINOR])
 AC_SUBST([LIBXFCE4UTIL_VERSION_MICRO])
@@ -98,7 +85,6 @@ LT_INIT([disable-static])
 dnl ***************************************
 dnl *** Check for standard header files ***
 dnl ***************************************
-AC_HEADER_STDC()
 AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
                   signal.h sys/stat.h sys/types.h sys/utsname.h \
                   time.h unistd.h stdarg.h varargs.h libintl.h])
@@ -108,7 +94,7 @@ AC_CHECK_FUNCS([gethostname getpwnam setlocale strdup \
 dnl ******************************
 dnl *** Check for i18n support ***
 dnl ******************************
-XDT_I18N([@LINGUAS@])
+XDT_I18N()
 
 dnl ***********************************
 dnl *** Check for GObject installed ***
@@ -143,7 +129,7 @@ VAPIGEN_CHECK()
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
-XDT_FEATURE_DEBUG([libxfce4util_debug_default])
+XDT_FEATURE_DEBUG([xdt_debug_default])
 
 dnl **************************************
 dnl *** Check for linker optimizations ***
@@ -157,7 +143,7 @@ dnl *** Do not replace with the Xdt macro ***
 dnl *** because it cannot cope with the   ***
 dnl *** libxfce4util_*_version variables  ***
 dnl *****************************************
-AC_ARG_ENABLE([visibility], AC_HELP_STRING([--disable-visibility], [Do not use ELF visibility attributes]), [], [enable_visibility=yes])
+AC_ARG_ENABLE([visibility], AS_HELP_STRING([--disable-visibility], [Do not use ELF visibility attributes]), [], [enable_visibility=yes])
 have_gnuc_visibility=no
 if test x"$enable_visibility" != x"no"; then
   dnl Check whether the compiler supports the visibility attribute
