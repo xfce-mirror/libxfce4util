@@ -480,7 +480,7 @@ xfce_append_quoted (GString     *string,
 /**
  * xfce_expand_desktop_entry_field_codes:
  * @command           : Input string (command to expand) or %NULL.
- * @uri_list          : Input string list (filename/URL field) or %NULL.
+ * @uri_list          : (element-type utf8): Input string list (filename/URL field) or %NULL.
  * @icon              : Input string (icon field) or %NULL.
  * @name              : Input string (name field) or %NULL.
  * @uri               : Input string (URI field) or %NULL.
