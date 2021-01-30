@@ -3,14 +3,23 @@
                       "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd"
 [
   <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
+  <!ENTITY % gtkdocentities SYSTEM "xml/gtkdocentities.ent">
+  %gtkdocentities;
 ]>
 
-<book id="index">
-    <bookinfo>
-        <title>libxfce4util Reference Manual</title>
-        <releaseinfo>for libxfce4util <xi:include href="version.xml" parse="text"/></releaseinfo>
-    </bookinfo>
-
+<book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
+  <bookinfo>
+    <title>&package_name; Reference Manual</title>
+    <releaseinfo>
+      For &package_string;. 
+      The latest version of this documentation can be found on-line at
+      <ulink role="online-location" url="https://developer.xfce.org/&package_name;/index.html">https://developer.xfce.org/&package_name;/</ulink>.
+    </releaseinfo>
+    <copyright>
+      <year>2021</year>
+      <holder>The Xfce Development Team</holder>
+    </copyright>
+  </bookinfo>
     <chapter id="reference">
         <title>libxfce4util Overview</title>
         <para>
