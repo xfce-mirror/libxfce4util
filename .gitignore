@@ -7,7 +7,6 @@ config.*
 configure
 configure.ac
 depcomp
-docs/version.xml
 gtk-doc.m4
 gtk-doc.make
 install-sh
@@ -40,9 +39,9 @@ po/libxfce4util.pot
 libxfce4util-*.tar.bz2
 libxfce4util/abicheck.sh.log
 libxfce4util/abicheck.sh.trs
-libxfce4util/libxfce4util-1.0.gir
+libxfce4util/Libxfce4util-1.0.gir
 libxfce4util/libxfce4util-1.0.pc
-libxfce4util/libxfce4util-1.0.typelib
+libxfce4util/Libxfce4util-1.0.typelib
 libxfce4util/libxfce4util-1.0.vapi
 libxfce4util/libxfce4util-alias.h
 libxfce4util/libxfce4util-aliasdef.c
