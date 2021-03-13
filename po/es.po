@@ -7,14 +7,14 @@
 # Ignacio Poggi <ignaciop.3@gmail.com>, 2020
 # prflr88 <prflr88@gmail.com>, 2017
 # prflr88 <prflr88@gmail.com>, 2014-2015
-# Toni Estévez <toni.estevez@gmail.com>, 2019
+# Toni Estévez <toni.estevez@gmail.com>, 2019,2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2020-04-30 15:29+0000\n"
-"Last-Translator: Ignacio Poggi <ignaciop.3@gmail.com>\n"
+"PO-Revision-Date: 2021-03-13 10:59+0000\n"
+"Last-Translator: Toni Estévez <toni.estevez@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/xfce/libxfce4util/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +49,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr "Se permite la redistribución y el uso en forma de fuentes y binarios, con\no sin modificación, siempre que se cumplan las siguientes condiciones:\n\n1. Las redistribuciones del código fuente deben conservar el aviso de\ncopyright anterior, esta lista de condiciones y la siguiente cláusula\nde exención de responsabilidad.\n2. Las redistribuciones en forma binaria deben reproducir el aviso de\ncopyright anterior, esta lista de condiciones y la siguiente cláusula\nde exención de responsabilidad en la documentación y/u otros materiales\nproporcionados con la distribución.\n\nESTE SOFTWARE ES PROPORCIONADO POR EL AUTOR «TAL CUAL» Y SE EXCLUYE\nCUALQUIER GARANTÍA EXPRESA O IMPLÍCITA, INCLUYENDO, PERO SIN LIMITARSE A,\nLAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD Y ADECUACIÓN PARA UN PROPÓSITO\nPARTICULAR. EN NINGÚN CASO EL AUTOR SERÁ RESPONSABLE DE NINGÚN DAÑO DIRECTO,\nINDIRECTO, ACCIDENTAL, ESPECIAL, EJEMPLAR O EMERGENTE (INCLUYENDO, PERO\nSIN LIMITARSE A, LA ADQUISICIÓN DE BIENES O SERVICIOS SUSTITUTOS, LA PÉRDIDA\nDE USO, DATOS O GANANCIAS O LA INTERRUPCIÓN DE LA ACTIVIDAD COMERCIAL),\nINDEPENDIENTEMENTE DE LA CAUSA Y DEL TIPO DE RESPONSABILIDAD, YA SEA\nCONTRACTUAL, OBJETIVA O EXTRACONTRACTUAL (INCLUIDA LA NEGLIGENCIA O CUALQUIER\nOTRA) QUE SURJA DE CUALQUIER FORMA DEL USO DE ESTE SOFTWARE, INCLUSO SI SE\nAVISA DE LA POSIBILIDAD DE QUE SE PRODUZCAN DICHOS DAÑOS.\n"
+msgstr "Se permite la redistribución y el uso en forma de código fuente y binaria,\ncon o sin modificación, siempre que se cumplan las siguientes condiciones:\n\n1. Las redistribuciones del código fuente deben conservar el aviso de\ncopyright anterior, esta lista de condiciones y la siguiente cláusula de\nexención de responsabilidad.\n2. Las redistribuciones en forma binaria deben reproducir el aviso de\ncopyright anterior, esta lista de condiciones y la siguiente cláusula de\nexención de responsabilidad en la documentación y/o en otros materiales\nproporcionados con la distribución.\n\nESTE SOFTWARE ES PROPORCIONADO POR EL AUTOR «TAL CUAL» Y SE\nEXCLUYE CUALQUIER GARANTÍA EXPRESA O IMPLÍCITA, INCLUYENDO,\nPERO SIN LIMITARSE A, LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD\nY ADECUACIÓN PARA UN PROPÓSITO PARTICULAR. EN NINGÚN CASO EL\nAUTOR SERÁ RESPONSABLE DE NINGÚN DAÑO DIRECTO, INDIRECTO,\nACCIDENTAL, ESPECIAL, EJEMPLAR O EMERGENTE (INCLUYENDO, PERO\nSIN LIMITARSE A, LA ADQUISICIÓN DE BIENES O SERVICIOS SUSTITUTIVOS, LA PÉRDIDA DE USO, DATOS O GANANCIAS O LA INTERRUPCIÓN DE LA ACTIVIDAD COMERCIAL), INDEPENDIENTEMENTE DE\nLA CAUSA Y DEL TIPO DE RESPONSABILIDAD, YA SEA CONTRACTUAL,\nOBJETIVA O EXTRACONTRACTUAL (INCLUIDA LA NEGLIGENCIA O CUALQUIER OTRA) QUE SURJA DE CUALQUIER FORMA DEL USO DE ESTE SOFTWARE, INCLUSO SI SE AVISA DE LA POSIBILIDAD DE QUE SE PRODUZCAN DICHOS DAÑOS.\n"
 
 #: ../libxfce4util/xfce-license.c:66
 msgid ""
@@ -89,14 +89,14 @@ msgstr "Esta biblioteca es software libre; puede redistribuirla y/o modificarla\
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
 msgid "pipe() failed: %s"
-msgstr "falló pipe():  %s"
+msgstr "Ha fallado pipe(): %s"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:205
 #, c-format
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "xfce_posix_signal_handler_init() se debe llamar primero"
+msgstr "Primero se debe llamar a xfce_posix_signal_handler_init()"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:231
 #, c-format
 msgid "sigaction() failed: %s\n"
-msgstr "falló sigaction(): %s\n"
+msgstr "Ha fallado sigaction(): %s\n"
