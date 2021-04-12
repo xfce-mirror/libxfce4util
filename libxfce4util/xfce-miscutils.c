@@ -515,7 +515,20 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
 
   for (p = command; *p != '\0'; ++p)
     {
-      if (G_UNLIKELY (p[0] == '%' && p[1] != '\0'))
+      if (G_UNLIKELY (p[0] == '\\' && p[1] != '\0'))
+        {
+          switch (*++p)
+            {
+            case 's':
+              g_string_append_c (string, ' ');
+              break;
+
+            case '\\':
+              g_string_append_c (string, '\\');
+              break;
+            }
+        }
+      else if (G_UNLIKELY (p[0] == '%' && p[1] != '\0'))
         {
           switch (*++p)
             {
