@@ -19,6 +19,17 @@
  * Boston, MA 02110-1301 USA
  */
 
+#if !defined(LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
+#error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
+#endif
+
+#ifndef __XFCE_GENERICS_H__
+#define __XFCE_GENERICS_H__
+
+#include <glib.h>
+
+G_BEGIN_DECLS
+
 /**
  * SECTION:xfce-generics
  * @title: Xfce Generics
@@ -43,17 +54,6 @@
  * ]|
  *
  */
-
-#if !defined(LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
-#error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
-#endif
-
-#ifndef __XFCE_GENERICS_H__
-#define __XFCE_GENERICS_H__
-
-#include <glib.h>
-
-G_BEGIN_DECLS
 
 /**
  * XFCE_GENERIC_STACK:
