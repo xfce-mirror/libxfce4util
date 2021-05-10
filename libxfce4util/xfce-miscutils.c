@@ -588,5 +588,51 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
 
 
 
+/**
+ * xfce_unescape_desktop_entry_value:
+ * @value : Value string to replace escape sequences.
+ *
+ * Unescapes sequences in @value according to Freedesktop.org Desktop Entry Specification.
+ *
+ * Return value: %NULL on error, else the string, which should be freed using g_free() when
+ *               no longer needed.
+ *
+ * Since: 4.18
+ **/
+gchar*
+xfce_unescape_desktop_entry_value (const gchar *value)
+{
+  const gchar *p;
+  GString     *string;
+
+  if (G_UNLIKELY (value == NULL))
+    return NULL;
+
+  string = g_string_sized_new (strlen (value));
+
+  for (p = value; *p != '\0'; ++p)
+    {
+      if (G_UNLIKELY (p[0] == '\\' && p[1] != '\0'))
+        {
+          switch (*++p)
+            {
+            case 's':
+              g_string_append_c (string, ' ');
+              break;
+
+            case '\\':
+              g_string_append_c (string, '\\');
+              break;
+            }
+        }
+      else
+        {
+          g_string_append_c (string, *p);
+        }
+    }
+
+  return g_string_free (string, FALSE);
+}
+
 #define __XFCE_MISCUTILS_C__
 #include <libxfce4util/libxfce4util-aliasdef.c>
