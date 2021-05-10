@@ -94,6 +94,7 @@ xfce_gethostname G_GNUC_MALLOC
 xfce_expand_variables G_GNUC_MALLOC
 xfce_append_quoted
 xfce_expand_desktop_entry_field_codes G_GNUC_MALLOC
+xfce_unescape_desktop_entry_value G_GNUC_MALLOC
 #endif
 #endif
 
