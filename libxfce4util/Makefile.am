@@ -24,6 +24,7 @@ libxfce4util_headers =							\
 	xfce-debug.h							\
 	xfce-fileutils.h						\
 	xfce-generics.h							\
+	xfce-gio-extensions.h						\
 	xfce-i18n.h							\
 	xfce-kiosk.h							\
 	xfce-license.h							\
@@ -50,6 +51,7 @@ libxfce4util_la_SOURCES =						\
 	libxfce4util-private.c						\
 	libxfce4util-private.h						\
 	xfce-fileutils.c						\
+	xfce-gio-extensions.c						\
 	xfce-i18n.c							\
 	xfce-kiosk.c							\
 	xfce-license.c							\
