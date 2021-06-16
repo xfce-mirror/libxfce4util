@@ -25,7 +25,7 @@
  *
  * Common used functions for I/O that are not provided by the Glib library
  *
- * Since: 4.18
+ * Since: 4.17
  **/
 
 
@@ -48,7 +48,7 @@
  *
  * Returns: %TRUE is GVFS-metadata is supported, %FALSE otherwise.
  *
- * Since: 4.18
+ * Since: 4.17
  **/
 gboolean
 xfce_g_file_metadata_is_supported (GFile *file)
@@ -83,7 +83,7 @@ xfce_g_file_metadata_is_supported (GFile *file)
  * Returns: (transfer full) (nullable): Checksum of the @file.
  * Free with g_free().
  *
- * Since: 4.18
+ * Since: 4.17
  **/
 gchar *
 xfce_g_file_digest (GFile *file)
@@ -144,7 +144,7 @@ xfce_g_file_digest (GFile *file)
  * Sets the "safety flag" on if @is_safe.
  *
  * Safety flag is a new concept introduced in
- * XFCE 4.18. It is basically an additional
+ * XFCE 4.17. It is basically an additional
  * execution flag stored in GVFS-metadata.
  * Unlike the execution flag (+x), it is safe
  * to assume that this flag did not come from
@@ -155,7 +155,7 @@ xfce_g_file_digest (GFile *file)
  * would be considered "on" only if checksum
  * matches with the file on execution.
  *
- * Since: 4.18
+ * Since: 4.17
  **/
 void
 xfce_g_file_set_safety_flag (GFile    *file,
@@ -204,7 +204,7 @@ xfce_g_file_set_safety_flag (GFile    *file,
  * Returns: %TRUE if safety flag is verified,
  * %FALSE otherwise.
  *
- * Since: 4.18
+ * Since: 4.17
  **/
 gboolean
 xfce_g_file_is_safety_flag_on (GFile *file)
