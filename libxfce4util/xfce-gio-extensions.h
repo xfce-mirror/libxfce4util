@@ -28,9 +28,9 @@
 #include <gio/gio.h>
 
 gboolean      xfce_g_file_metadata_is_supported   (GFile    *file);
-gchar        *xfce_g_file_digest                  (GFile    *file);
-void          xfce_g_file_set_safety_flag         (GFile    *file,
+gchar        *xfce_g_file_create_checksum         (GFile    *file);
+void          xfce_g_file_set_trusted             (GFile    *file,
                                                    gboolean  is_safe);
-gboolean      xfce_g_file_is_safety_flag_on       (GFile    *file);
+gboolean      xfce_g_file_is_trusted              (GFile    *file);
 
 #endif /*__XFCE_GIO_EXTENSIONS_H__*/

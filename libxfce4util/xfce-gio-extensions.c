@@ -35,7 +35,7 @@
 
 
 
-#define XFCE_ATTRIBUTE_EXECUTABLE_DIGEST "metadata::xfce-exe-hash" /* string */
+#define XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM "metadata::xfce-exe-checksum" /* string */
 
 
 
@@ -58,8 +58,6 @@ xfce_g_file_metadata_is_supported (GFile *file)
 
   g_return_val_if_fail (G_IS_FILE (file), FALSE);
 
-  /* g_return_val_if_fail (G_IS_FILE (file), FALSE); */
-
   info_list = g_file_query_writable_namespaces (file, NULL, NULL);
   if (info_list == NULL)
     return FALSE;
@@ -73,20 +71,20 @@ xfce_g_file_metadata_is_supported (GFile *file)
 
 
 /**
- * xfce_g_file_digest:
+ * xfce_g_file_create_checksum:
  * file: a @GFile.
  *
- * Generates an SHA-256 checksum of the @file.
+ * Generates an SHA-256 hash of the @file.
  * Utilizes g_compute_checksum_for_data() which
  * is present since Glib 2.16.
  *
  * Returns: (transfer full) (nullable): Checksum of the @file.
- * Free with g_free().
+ * If file read fails, returns %NULL. Free with g_free().
  *
  * Since: 4.17
  **/
 gchar *
-xfce_g_file_digest (GFile *file)
+xfce_g_file_create_checksum (GFile *file)
 {
   GFileInfo        *file_info;
   GFileInputStream *stream;
@@ -103,24 +101,33 @@ xfce_g_file_digest (GFile *file)
                                  G_FILE_QUERY_INFO_NONE,
                                  NULL,
                                  NULL);
+  if (file_info == NULL)
+    return NULL;
+
   file_size = g_file_info_get_size (file_info);
   g_object_unref (file_info);
 
+  /* special case : SHA-256 hash of NULL */
+  /* e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 */
   if (file_size == 0)
     return g_compute_checksum_for_data (G_CHECKSUM_SHA256, NULL, 0);
 
   /* allocate buffer */
   contents_buffer = g_malloc (file_size);
+  if (contents_buffer == NULL)
+    return NULL;
 
+  read_successful = FALSE;
   /* read the actual file */
-  stream = g_file_read (file, NULL, NULL);
-  /* TODO : ERR */
-  read_successful = g_input_stream_read_all (G_INPUT_STREAM (stream),
-                                             contents_buffer,
-                                             file_size,
-                                             &file_size_read,
-                                             NULL,
-                                             NULL);
+  if ((stream = g_file_read (file, NULL, NULL)) != NULL)
+    {
+      read_successful = g_input_stream_read_all (G_INPUT_STREAM (stream),
+                                                 contents_buffer,
+                                                 file_size,
+                                                 &file_size_read,
+                                                 NULL,
+                                                 NULL);
+    }
   if (read_successful)
     checksum = g_compute_checksum_for_data (G_CHECKSUM_SHA256,
                                             contents_buffer,
@@ -137,7 +144,7 @@ xfce_g_file_digest (GFile *file)
 
 
 /**
- * xfce_g_file_set_safety_flag:
+ * xfce_g_file_set_trusted:
  * @file: a #Gfile.
  * @is_safe: #TRUE if safe, #FALSE otherwise
  *
@@ -158,10 +165,11 @@ xfce_g_file_digest (GFile *file)
  * Since: 4.17
  **/
 void
-xfce_g_file_set_safety_flag (GFile    *file,
-                             gboolean  is_safe)
+xfce_g_file_set_trusted (GFile    *file,
+                         gboolean  is_safe)
 {
-  gchar *digest_string;
+  gchar   *checksum_string;
+  gboolean attr_set;
 
   g_return_if_fail (G_IS_FILE (file));
 
@@ -170,28 +178,32 @@ xfce_g_file_set_safety_flag (GFile    *file,
 
   if (is_safe)
     {
-      digest_string = xfce_g_file_digest (file);
-      if (digest_string == NULL)
+      checksum_string = xfce_g_file_create_checksum (file);
+      if (checksum_string == NULL)
         return;
     }
   else
-    digest_string = NULL;
+    checksum_string = NULL;
 
-  g_file_set_attribute (file,
-                        XFCE_ATTRIBUTE_EXECUTABLE_DIGEST,
-                        is_safe ? G_FILE_ATTRIBUTE_TYPE_STRING
-                                      : G_FILE_ATTRIBUTE_TYPE_INVALID,
-                        digest_string,
-                        G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE | G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED,
-                        NULL,
-                        NULL);
-  g_free (digest_string);
+  attr_set = g_file_set_attribute (file,
+                                   XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM,
+                                   is_safe ? G_FILE_ATTRIBUTE_TYPE_STRING : G_FILE_ATTRIBUTE_TYPE_INVALID,
+                                   checksum_string,
+                                   G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE | G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED,
+                                   NULL,
+                                   NULL);
+  if (!attr_set)
+    {
+      g_warning ("Failed to set '%s' attribute", XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM);
+      g_warning ("File path : %s", g_file_peek_path (file));
+    }
+  g_free (checksum_string);
 }
 
 
 
 /**
- * xfce_g_file_is_safety_flag_on:
+ * xfce_g_file_is_trusted:
  * @file: a #GFile.
  *
  * Compares the checksum stored in safety flag
@@ -207,12 +219,12 @@ xfce_g_file_set_safety_flag (GFile    *file,
  * Since: 4.17
  **/
 gboolean
-xfce_g_file_is_safety_flag_on (GFile *file)
+xfce_g_file_is_trusted (GFile *file)
 {
   GFileInfo   *file_info;
   gboolean     is_safe;
   const gchar *attribute_string;
-  gchar *digest_string;
+  gchar *checksum_string;
 
   g_return_val_if_fail (G_IS_FILE (file), FALSE);
 
@@ -220,21 +232,23 @@ xfce_g_file_is_safety_flag_on (GFile *file)
     return TRUE;
 
   file_info = g_file_query_info (file,
-                                 XFCE_ATTRIBUTE_EXECUTABLE_DIGEST,
+                                 XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM,
                                  G_FILE_QUERY_INFO_NONE,
                                  NULL,
                                  NULL);
+  if (file_info == NULL)
+    return FALSE;
 
   attribute_string = g_file_info_get_attribute_string (file_info,
-                                                       XFCE_ATTRIBUTE_EXECUTABLE_DIGEST);
+                                                       XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM);
   if (attribute_string != NULL)
     {
-      digest_string = xfce_g_file_digest (file);
-      is_safe = (g_strcmp0 (attribute_string, digest_string) == 0);
+      checksum_string = xfce_g_file_create_checksum (file);
+      is_safe = (g_strcmp0 (attribute_string, checksum_string) == 0);
       g_info ("== Safety flag check ==");
-      g_info ("Attribute hash: %s", attribute_string);
-      g_info ("File hash     : %s", digest_string);
-      g_free (digest_string);
+      g_info ("Attribute checksum: %s", attribute_string);
+      g_info ("File checksum     : %s", checksum_string);
+      g_free (checksum_string);
     }
   else
     is_safe = FALSE;
