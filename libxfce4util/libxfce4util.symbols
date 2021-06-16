@@ -52,6 +52,16 @@ xfce_mkdirhier
 #endif
 #endif
 
+/* xfce-gio-extensions functions */
+#if IN_HEADER(__XFCE_GIO_EXTENSIONS_H__)
+#if IN_SOURCE(__XFCE_GIO_EXTENSIONS_C__)
+xfce_g_file_metadata_is_supported
+xfce_g_file_digest
+xfce_g_file_set_safety_flag
+xfce_g_file_is_safety_flag_on
+#endif
+#endif
+
 /* xfce-i18n functions */
 #if IN_HEADER(__XFCE_I18N_H__)
 #if IN_SOURCE(__XFCE_I18N_C__)
