@@ -37,6 +37,7 @@
 #include <libxfce4util/xfce-rc.h>
 #include <libxfce4util/xfce-resource.h>
 #include <libxfce4util/xfce-utf8.h>
+#include <libxfce4util/xfce-gio-extensions.h>
 
 #undef LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 
