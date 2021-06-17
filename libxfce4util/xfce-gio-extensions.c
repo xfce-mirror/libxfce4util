@@ -72,7 +72,7 @@ xfce_g_file_metadata_is_supported (GFile *file)
 
 /**
  * xfce_g_file_create_checksum:
- * file: a @GFile.
+ * @file: a #GFile.
  *
  * Generates an SHA-256 hash of the @file.
  * Utilizes g_compute_checksum_for_data() which
@@ -145,7 +145,7 @@ xfce_g_file_create_checksum (GFile *file)
 
 /**
  * xfce_g_file_set_trusted:
- * @file: a #Gfile.
+ * @file: a #GFile.
  * @is_safe: #TRUE if safe, #FALSE otherwise
  *
  * Sets the "safety flag" on if @is_safe.
@@ -156,7 +156,7 @@ xfce_g_file_create_checksum (GFile *file)
  * Unlike the execution flag (+x), it is safe
  * to assume that this flag did not come from
  * foreign location (for example, by downloading
- * an tar archive) and set by user.
+ * an tar archive) and is set by user.
  *
  * The checksum of the file is stored, and
  * would be considered "on" only if checksum
@@ -211,7 +211,7 @@ xfce_g_file_set_trusted (GFile    *file,
  * is considered safe.
  *
  * Read the documentation of
- * xfce_g_file_set_safety_flag() for details.
+ * xfce_g_file_set_trusted() for details.
  *
  * Returns: %TRUE if safety flag is verified,
  * %FALSE otherwise.
