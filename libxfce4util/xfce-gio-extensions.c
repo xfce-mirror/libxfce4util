@@ -73,6 +73,8 @@ xfce_g_file_metadata_is_supported (GFile *file)
 /**
  * xfce_g_file_create_checksum:
  * @file: a #GFile.
+ * @cancellable: (nullable): optional #GCancellable object, %NULL to ignore.
+ * @error: (nullable): a #GError
  *
  * Generates an SHA-256 hash of the @file.
  * Utilizes g_compute_checksum_for_data() which
@@ -84,25 +86,31 @@ xfce_g_file_metadata_is_supported (GFile *file)
  * Since: 4.17
  **/
 gchar *
-xfce_g_file_create_checksum (GFile *file)
+xfce_g_file_create_checksum (GFile        *file,
+                             GCancellable *cancellable,
+                             GError      **error)
 {
+  GError           *error_local = NULL;
   GFileInfo        *file_info;
   GFileInputStream *stream;
   guchar           *contents_buffer;
   gchar            *checksum;
   gsize             file_size, file_size_read;
-  gboolean          read_successful;
 
-  g_return_val_if_fail (G_IS_FILE (file), NULL);
+  g_return_val_if_fail (error == NULL || *error == NULL, NULL);
+  g_return_val_if_fail (G_IS_FILE (file),                NULL);
 
   /* query size */
   file_info = g_file_query_info (file,
                                  G_FILE_ATTRIBUTE_STANDARD_SIZE,
                                  G_FILE_QUERY_INFO_NONE,
-                                 NULL,
-                                 NULL);
-  if (file_info == NULL)
-    return NULL;
+                                 cancellable,
+                                 &error_local);
+  if (error_local != NULL)
+    {
+      g_propagate_error (error, error_local);
+      return NULL;
+    }
 
   file_size = g_file_info_get_size (file_info);
   g_object_unref (file_info);
@@ -115,25 +123,39 @@ xfce_g_file_create_checksum (GFile *file)
   /* allocate buffer */
   contents_buffer = g_malloc (file_size);
   if (contents_buffer == NULL)
-    return NULL;
-
-  read_successful = FALSE;
-  /* read the actual file */
-  if ((stream = g_file_read (file, NULL, NULL)) != NULL)
     {
-      read_successful = g_input_stream_read_all (G_INPUT_STREAM (stream),
-                                                 contents_buffer,
-                                                 file_size,
-                                                 &file_size_read,
-                                                 NULL,
-                                                 NULL);
+      if (error != NULL)
+        *error = g_error_new (G_FILE_ERROR,
+                              G_FILE_ERROR_NOMEM,
+                              "Failed to allocate memory to read file '%s'",
+                              g_file_peek_path (file));
+      return NULL;
     }
-  if (read_successful)
-    checksum = g_compute_checksum_for_data (G_CHECKSUM_SHA256,
-                                            contents_buffer,
-                                            file_size_read);
-  else
-    checksum = NULL;
+
+  /* read the actual file */
+  stream = g_file_read (file, cancellable, &error_local);
+  if (error_local != NULL)
+    {
+      g_propagate_error (error, error_local);
+      return NULL;
+    }
+
+  g_input_stream_read_all (G_INPUT_STREAM (stream),
+                           contents_buffer,
+                           file_size,
+                           &file_size_read,
+                           cancellable,
+                           &error_local);
+  if (error_local != NULL)
+    {
+      g_free (contents_buffer);
+      g_propagate_error (error, error_local);
+      return NULL;
+    }
+
+  checksum = g_compute_checksum_for_data (G_CHECKSUM_SHA256,
+                                          contents_buffer,
+                                          file_size_read);
 
   /* free buffer */
   g_free (contents_buffer);
@@ -147,6 +169,8 @@ xfce_g_file_create_checksum (GFile *file)
  * xfce_g_file_set_trusted:
  * @file: a #GFile.
  * @is_safe: #TRUE if safe, #FALSE otherwise
+ * @cancellable: (nullable): optional #GCancellable object, %NULL to ignore.
+ * @error: (nullable): a #GError
  *
  * Sets the "safety flag" on if @is_safe.
  *
@@ -162,42 +186,59 @@ xfce_g_file_create_checksum (GFile *file)
  * would be considered "on" only if checksum
  * matches with the file on execution.
  *
+ * Returns: %TRUE on success, %FALSE on error.
+ *
  * Since: 4.17
  **/
-void
-xfce_g_file_set_trusted (GFile    *file,
-                         gboolean  is_safe)
+gboolean
+xfce_g_file_set_trusted (GFile        *file,
+                         gboolean      is_safe,
+                         GCancellable *cancellable,
+                         GError      **error)
 {
+  GError  *error_local = NULL;
   gchar   *checksum_string;
-  gboolean attr_set;
 
-  g_return_if_fail (G_IS_FILE (file));
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+  g_return_val_if_fail (G_IS_FILE (file),                FALSE);
 
   if (!xfce_g_file_metadata_is_supported(file))
-    return;
+    {
+      if (error != NULL)
+        *error = g_error_new (G_FILE_ERROR,
+                              G_FILE_ERROR_NOSYS,
+                              "GVFS-metadata is not supported for file '%s'",
+                              g_file_peek_path (file));
+      return FALSE;
+    }
 
   if (is_safe)
     {
-      checksum_string = xfce_g_file_create_checksum (file);
-      if (checksum_string == NULL)
-        return;
+      checksum_string = xfce_g_file_create_checksum (file, cancellable, &error_local);
+      if (error_local != NULL)
+        {
+          g_propagate_error (error, error_local);
+          return FALSE;
+        }
     }
   else
     checksum_string = NULL;
 
-  attr_set = g_file_set_attribute (file,
-                                   XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM,
-                                   is_safe ? G_FILE_ATTRIBUTE_TYPE_STRING : G_FILE_ATTRIBUTE_TYPE_INVALID,
-                                   checksum_string,
-                                   G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE | G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED,
-                                   NULL,
-                                   NULL);
-  if (!attr_set)
+  g_file_set_attribute (file,
+                        XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM,
+                        is_safe ? G_FILE_ATTRIBUTE_TYPE_STRING : G_FILE_ATTRIBUTE_TYPE_INVALID,
+                        checksum_string,
+                        G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE | G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED,
+                        cancellable,
+                        &error_local);
+  if (error_local != NULL)
     {
-      g_warning ("Failed to set '%s' attribute", XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM);
-      g_warning ("File path : %s", g_file_peek_path (file));
+      g_propagate_error (error, error_local);
+      g_free (checksum_string);
+      return FALSE;
     }
   g_free (checksum_string);
+  return TRUE;
 }
 
 
@@ -205,6 +246,8 @@ xfce_g_file_set_trusted (GFile    *file,
 /**
  * xfce_g_file_is_trusted:
  * @file: a #GFile.
+ * @cancellable: (nullable): optional #GCancellable object, %NULL to ignore.
+ * @error: (nullable): a #GError
  *
  * Compares the checksum stored in safety flag
  * with the actual file. If it matches, it
@@ -213,29 +256,40 @@ xfce_g_file_set_trusted (GFile    *file,
  * Read the documentation of
  * xfce_g_file_set_trusted() for details.
  *
- * Returns: %TRUE if safety flag is verified,
- * %FALSE otherwise.
+ * Returns: %TRUE if safety flag is verified
+ * or not supported. %FALSE otherwise.
  *
  * Since: 4.17
  **/
 gboolean
-xfce_g_file_is_trusted (GFile *file)
+xfce_g_file_is_trusted (GFile        *file,
+                        GCancellable *cancellable,
+                        GError      **error)
 {
+  GError      *error_local = NULL;
   GFileInfo   *file_info;
   gboolean     is_safe;
   const gchar *attribute_string;
-  gchar *checksum_string;
+  gchar       *checksum_string;
 
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
   g_return_val_if_fail (G_IS_FILE (file), FALSE);
 
   if (!xfce_g_file_metadata_is_supported(file))
-    return TRUE;
+    {
+      if (error != NULL)
+        *error = g_error_new (G_FILE_ERROR,
+                              G_FILE_ERROR_NOSYS,
+                              "GVFS-metadata is not supported for file '%s'",
+                              g_file_peek_path (file));
+      return TRUE;
+    }
 
   file_info = g_file_query_info (file,
                                  XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM,
                                  G_FILE_QUERY_INFO_NONE,
-                                 NULL,
-                                 NULL);
+                                 cancellable,
+                                 &error_local);
   if (file_info == NULL)
     return FALSE;
 
@@ -243,7 +297,7 @@ xfce_g_file_is_trusted (GFile *file)
                                                        XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM);
   if (attribute_string != NULL)
     {
-      checksum_string = xfce_g_file_create_checksum (file);
+      checksum_string = xfce_g_file_create_checksum (file, cancellable, &error_local);
       is_safe = (g_strcmp0 (attribute_string, checksum_string) == 0);
       g_info ("== Safety flag check ==");
       g_info ("Attribute checksum: %s", attribute_string);
