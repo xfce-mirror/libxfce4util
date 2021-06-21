@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2021 The Xfce Development Team
+ * Copyright (c) 2021 Yongha Hwang <mshrimp@sogang.ac.kr>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
