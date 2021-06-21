@@ -32,7 +32,7 @@ gchar        *xfce_g_file_create_checksum         (GFile        *file,
                                                    GCancellable *cancellable,
                                                    GError      **error);
 gboolean      xfce_g_file_set_trusted             (GFile        *file,
-                                                   gboolean      is_safe,
+                                                   gboolean      is_trusted,
                                                    GCancellable *cancellable,
                                                    GError      **error);
 gboolean      xfce_g_file_is_trusted              (GFile        *file,

@@ -136,6 +136,7 @@ xfce_g_file_create_checksum (GFile        *file,
   stream = g_file_read (file, cancellable, &error_local);
   if (error_local != NULL)
     {
+      g_free (contents_buffer);
       g_propagate_error (error, error_local);
       return NULL;
     }
@@ -146,6 +147,8 @@ xfce_g_file_create_checksum (GFile        *file,
                            &file_size_read,
                            cancellable,
                            &error_local);
+  g_object_unref (stream);
+
   if (error_local != NULL)
     {
       g_free (contents_buffer);
@@ -157,7 +160,6 @@ xfce_g_file_create_checksum (GFile        *file,
                                           contents_buffer,
                                           file_size_read);
 
-  /* free buffer */
   g_free (contents_buffer);
 
   return checksum;
@@ -168,11 +170,11 @@ xfce_g_file_create_checksum (GFile        *file,
 /**
  * xfce_g_file_set_trusted:
  * @file: a #GFile.
- * @is_safe: #TRUE if safe, #FALSE otherwise
+ * @is_trusted: #TRUE if trusted, #FALSE if not
  * @cancellable: (nullable): optional #GCancellable object, %NULL to ignore.
  * @error: (nullable): a #GError
  *
- * Sets the "safety flag" on if @is_safe.
+ * Sets the "safety flag" on if @is_trusted.
  *
  * Safety flag is a new concept introduced in
  * XFCE 4.17. It is basically an additional
@@ -192,7 +194,7 @@ xfce_g_file_create_checksum (GFile        *file,
  **/
 gboolean
 xfce_g_file_set_trusted (GFile        *file,
-                         gboolean      is_safe,
+                         gboolean      is_trusted,
                          GCancellable *cancellable,
                          GError      **error)
 {
@@ -202,7 +204,7 @@ xfce_g_file_set_trusted (GFile        *file,
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
   g_return_val_if_fail (G_IS_FILE (file),                FALSE);
 
-  if (!xfce_g_file_metadata_is_supported(file))
+  if (!xfce_g_file_metadata_is_supported (file))
     {
       if (error != NULL)
         *error = g_error_new (G_FILE_ERROR,
@@ -212,7 +214,7 @@ xfce_g_file_set_trusted (GFile        *file,
       return FALSE;
     }
 
-  if (is_safe)
+  if (is_trusted)
     {
       checksum_string = xfce_g_file_create_checksum (file, cancellable, &error_local);
       if (error_local != NULL)
@@ -226,7 +228,7 @@ xfce_g_file_set_trusted (GFile        *file,
 
   g_file_set_attribute (file,
                         XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM,
-                        is_safe ? G_FILE_ATTRIBUTE_TYPE_STRING : G_FILE_ATTRIBUTE_TYPE_INVALID,
+                        is_trusted ? G_FILE_ATTRIBUTE_TYPE_STRING : G_FILE_ATTRIBUTE_TYPE_INVALID,
                         checksum_string,
                         G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE | G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED,
                         cancellable,
@@ -268,14 +270,14 @@ xfce_g_file_is_trusted (GFile        *file,
 {
   GError      *error_local = NULL;
   GFileInfo   *file_info;
-  gboolean     is_safe;
+  gboolean     is_trusted;
   const gchar *attribute_string;
   gchar       *checksum_string;
 
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
   g_return_val_if_fail (G_IS_FILE (file), FALSE);
 
-  if (!xfce_g_file_metadata_is_supported(file))
+  if (!xfce_g_file_metadata_is_supported (file))
     {
       if (error != NULL)
         *error = g_error_new (G_FILE_ERROR,
@@ -298,18 +300,18 @@ xfce_g_file_is_trusted (GFile        *file,
   if (attribute_string != NULL)
     {
       checksum_string = xfce_g_file_create_checksum (file, cancellable, &error_local);
-      is_safe = (g_strcmp0 (attribute_string, checksum_string) == 0);
+      is_trusted = (g_strcmp0 (attribute_string, checksum_string) == 0);
       g_info ("== Safety flag check ==");
       g_info ("Attribute checksum: %s", attribute_string);
       g_info ("File checksum     : %s", checksum_string);
       g_free (checksum_string);
     }
   else
-    is_safe = FALSE;
+    is_trusted = FALSE;
 
   g_object_unref (file_info);
 
-  return is_safe;
+  return is_trusted;
 }
 
 #define __XFCE_GIO_EXTENSIONS_C__
