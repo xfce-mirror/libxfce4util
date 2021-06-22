@@ -292,8 +292,11 @@ xfce_g_file_is_trusted (GFile        *file,
                                  G_FILE_QUERY_INFO_NONE,
                                  cancellable,
                                  &error_local);
-  if (file_info == NULL)
-    return FALSE;
+  if (error_local != NULL)
+    {
+      g_propagate_error (error, error_local);
+      return FALSE;
+    }
 
   attribute_string = g_file_info_get_attribute_string (file_info,
                                                        XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM);
