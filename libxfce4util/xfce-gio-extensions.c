@@ -233,13 +233,13 @@ xfce_g_file_set_trusted (GFile        *file,
                         G_FILE_ATTRIBUTE_INFO_COPY_WITH_FILE | G_FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED,
                         cancellable,
                         &error_local);
+  g_free (checksum_string);
+
   if (error_local != NULL)
     {
       g_propagate_error (error, error_local);
-      g_free (checksum_string);
       return FALSE;
     }
-  g_free (checksum_string);
   return TRUE;
 }
 
