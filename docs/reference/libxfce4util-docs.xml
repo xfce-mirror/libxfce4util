@@ -49,6 +49,7 @@
         <xi:include href="xml/xfce-fileutils.xml"/>
         <xi:include href="xml/xfce-miscutils.xml"/>
         <xi:include href="xml/xfce-utf8.xml"/>
+        <xi:include href="xml/xfce-gio-extensions.xml"/>
     </chapter>
 
     <chapter id="libxfce4util-datatypes">
