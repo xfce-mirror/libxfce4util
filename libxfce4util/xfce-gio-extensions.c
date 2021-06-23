@@ -303,6 +303,12 @@ xfce_g_file_is_trusted (GFile        *file,
   if (attribute_string != NULL)
     {
       checksum_string = xfce_g_file_create_checksum (file, cancellable, &error_local);
+      if (error_local != NULL)
+        {
+          g_object_unref (file_info);
+          g_propagate_error (error, error_local);
+          return FALSE;
+        }
       is_trusted = (g_strcmp0 (attribute_string, checksum_string) == 0);
       g_info ("== Safety flag check ==");
       g_info ("Attribute checksum: %s", attribute_string);
