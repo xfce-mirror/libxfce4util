@@ -148,6 +148,7 @@ xfce_gethostname
 xfce_expand_variables
 xfce_append_quoted
 xfce_expand_desktop_entry_field_codes
+xfce_unescape_desktop_entry_value
 </SECTION>
 
 
