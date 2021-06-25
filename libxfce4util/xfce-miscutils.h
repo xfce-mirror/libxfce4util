@@ -100,6 +100,8 @@ gchar* xfce_expand_desktop_entry_field_codes (const gchar  *command,
                                               const gchar  *uri,
                                               gboolean      requires_terminal) G_GNUC_MALLOC;
 
+gchar* xfce_unescape_desktop_entry_value     (const gchar  *value) G_GNUC_MALLOC;
+
 G_END_DECLS
 
 #endif /* __XFCE_MISCUTILS_H__ */
