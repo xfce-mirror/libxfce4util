@@ -1,3 +1,14 @@
+4.17.0
+======
+- Add xfce_unescape_desktop_entry_value
+- xfce-gio-extensions - management of gvfs trusted attribute
+- libxfce4util needs to be first character Capital
+- Partially revert "Fix (some) GObject introspection warnings"
+- Fix (some) GObject introspection warnings
+- Revamp the documentation to uniformize accross components
+- Translation Updates:
+  Belarusian, Estonian, Norwegian Bokmål, Spanish
+
 4.16.0
 ======
 - Prepare for 4.16 final release
