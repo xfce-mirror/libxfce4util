@@ -168,5 +168,55 @@ xfce_mkdirhier (const gchar *whole_path,
 
 
 
+/**
+ * xfce_create_shared_thumbnail_path:
+ * @uri        : the uri of the file whose shared thumbnail we want to find.
+ * @size       : the thumbnail size (e.g. normal, large).
+ *
+ * Creates the shared thumbnail path for the file that corresponds to the given @uri
+ * and @size. No checks are made regarding the existence of the thumbnail.
+ *
+ * It is the duty of the caller to free the returned string.
+ *
+ * Return value: a string with the thumbnail path.
+ *
+ * Since: 4.17
+ **/
+gchar*
+xfce_create_shared_thumbnail_path (const gchar *uri,
+                                   const gchar *size)
+{
+  GChecksum   *checksum;
+  GFile       *file;
+  GFile       *original_dir_file;
+  gchar       *original_dir_path;
+  gchar       *name;
+  gchar       *filename;
+  gchar       *thumbnail_path;
+
+  file = g_file_new_for_uri (uri);
+  checksum = g_checksum_new (G_CHECKSUM_MD5);
+  name = g_file_get_basename (file);
+  g_checksum_update (checksum, (const guchar *) name, strlen (name));
+
+  filename = g_strconcat (g_checksum_get_string (checksum), ".png", NULL);
+  original_dir_file = g_file_get_parent (file);
+  original_dir_path = g_file_get_path (original_dir_file);
+
+  thumbnail_path = g_build_filename ("/", original_dir_path, ".sh_thumbnails", size,
+                                     filename, NULL);
+
+  /* free memory */
+  g_free (name);
+  g_free (filename);
+  g_free (original_dir_path);
+  g_object_unref (original_dir_file);
+  g_object_unref (file);
+  g_checksum_free (checksum);
+
+  return thumbnail_path;
+}
+
+
 #define __XFCE_FILEUTILS_C__
 #include <libxfce4util/libxfce4util-aliasdef.c>
