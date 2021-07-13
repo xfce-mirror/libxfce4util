@@ -187,13 +187,15 @@ xfce_create_shared_thumbnail_path (const gchar *uri,
                                    const gchar *size)
 {
   GChecksum   *checksum;
+  gchar       *dir_uri;
   gchar       *dir_path;
   gchar       *name;
   gchar       *filename;
   gchar       *thumbnail_path;
 
   name = g_path_get_basename (uri);
-  dir_path = g_path_get_dirname (uri);
+  dir_uri = g_path_get_dirname (uri);
+  dir_path = g_filename_from_uri (dir_uri, NULL, NULL); /* drop file:// */
 
   checksum = g_checksum_new (G_CHECKSUM_MD5);
   g_checksum_update (checksum, (const guchar *) name, strlen (name));
@@ -204,6 +206,7 @@ xfce_create_shared_thumbnail_path (const gchar *uri,
   /* free memory */
   g_free (name);
   g_free (filename);
+  g_free (dir_uri);
   g_free (dir_path);
   g_checksum_free (checksum);
 
