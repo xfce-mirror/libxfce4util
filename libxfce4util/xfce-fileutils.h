@@ -30,9 +30,11 @@
 
 G_BEGIN_DECLS
 
-gboolean xfce_mkdirhier (const gchar *whole_path,
-                         gulong       mode,
-                         GError     **error);
+gboolean  xfce_mkdirhier                    (const gchar *whole_path,
+                                             gulong       mode,
+                                             GError     **error);
+gchar*    xfce_create_shared_thumbnail_path (const gchar *uri,
+                                             const gchar *size);
 
 G_END_DECLS
 
