@@ -1,3 +1,9 @@
+4.17.1
+======
+- Create new function xfce_create_shared_thumbnail_path
+(Required for shared thumbnail support in thunar and tumbler)
+- usage of g_file_peek_path requires glib 2.56
+
 4.17.0
 ======
 - Add xfce_unescape_desktop_entry_value
