@@ -27,6 +27,8 @@
 #include <glib.h>
 #include <gio/gio.h>
 
+G_BEGIN_DECLS
+
 gboolean      xfce_g_file_metadata_is_supported   (GFile        *file);
 gchar        *xfce_g_file_create_checksum         (GFile        *file,
                                                    GCancellable *cancellable,
@@ -38,5 +40,7 @@ gboolean      xfce_g_file_set_trusted             (GFile        *file,
 gboolean      xfce_g_file_is_trusted              (GFile        *file,
                                                    GCancellable *cancellable,
                                                    GError      **error);
+
+G_END_DECLS
 
 #endif /*__XFCE_GIO_EXTENSIONS_H__*/
