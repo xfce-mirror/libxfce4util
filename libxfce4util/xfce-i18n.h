@@ -35,6 +35,8 @@
 #include <glib/gi18n.h>
 #endif
 
+G_BEGIN_DECLS
+
 #if !defined(GETTEXT_PACKAGE)
 
 #ifdef gettext
@@ -90,5 +92,7 @@ gchar*                xfce_get_path_localized   (gchar       *dst,
 
 guint                 xfce_locale_match         (const gchar *locale1,
                                                  const gchar *locale2);
+
+G_END_DECLS
 
 #endif  /* !__XFCE_I18N_H__ */
