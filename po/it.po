@@ -5,14 +5,15 @@
 # Translators:
 # Cristian Marchi <cri.penta@gmail.com>, 2010,2013
 # Emanuele Petriglia <transifex@emanuelepetriglia.com>, 2018
+# Gianvito Cavasoli <gianvito@gmx.it>, 2021
 # Vincenzo Reale <vinx.reale@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2020-05-21 14:20+0000\n"
-"Last-Translator: Vincenzo Reale <vinx.reale@gmail.com>\n"
+"PO-Revision-Date: 2021-09-21 16:20+0000\n"
+"Last-Translator: Gianvito Cavasoli <gianvito@gmx.it>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/libxfce4util/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,7 +65,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Questo programma è software libero; è possibile ridistribuirlo e/o modificarlo\nnel rispetto dei termini della GNU General Public License così come pubblicata\ndalla Free Software Foundation sia essa la versione 2 o (a propria scelta) una\nqualsiasi versione successiva.\n\nQuesto programma è distribuito nella speranza che possa essere utile, ma SENZA\nALCUNA GARANZIA; senza nemmeno la garanzia implicita di VENDIBILITÀ o di\nUTILITÀ PER UN DETERMINATO SCOPO. Consultare la GNU General Public License\nper maggiori dettagli.\n\nCon questo programma dovrebbe essere stata fornita una copia della GNU General Public License; se così non fosse, scrivere alla Free Software Foundation\nInc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA.\n"
+msgstr "Questo programma è software libero; è possibile ridistribuirlo e/o modificarlo\nnel rispetto dei termini della GNU General Public License così come pubblicata\ndalla Free Software Foundation sia essa la versione 2 o (a propria scelta) una\nqualsiasi versione successiva.\n\nQuesto programma è distribuito nella speranza che possa essere utile, ma SENZA\nALCUNA GARANZIA; senza nemmeno la garanzia implicita di VENDIBILITÀ o di\nUTILITÀ PER UN DETERMINATO SCOPO. Consultare la GNU General Public License\nper maggiori dettagli.\n\nCon questo programma dovrebbe essere stata fornita una copia della GNU General\nPublic License; se così non fosse, scrivere alla Free Software FoundationInc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
