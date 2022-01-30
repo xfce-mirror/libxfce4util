@@ -37,36 +37,6 @@
 
 G_BEGIN_DECLS
 
-#if !defined(GETTEXT_PACKAGE)
-
-#ifdef gettext
-#undef gettext
-#endif
-#ifdef dgettext
-#undef dgettext
-#endif
-#ifdef dcgettext
-#undef dcgettext
-#endif
-#ifdef ngettext
-#undef ngettext
-#endif
-#ifdef dngettext
-#undef dngettext
-#endif
-#ifdef dcngettext
-#undef dcngettext
-#endif
-
-#define gettext(s)                                            (s)
-#define dgettext(domain,s)                                    (s)
-#define dcgettext(domain,s,type)                              (s)
-#define ngettext(msgid, msgid_plural, n)                      (((n) > 0) ? (msgid) : (msgid_plural))
-#define dngettext(domainname, msgid, msgid_plural, n)         (((n) > 0) ? (msgid) : (msgid_plural))
-#define dcngettext(domainname, msgid, msgid_plural, n, type)  (((n) > 0) ? (msgid) : (msgid_plural))
-
-#endif /* !defined(GETTEXT_PACKAGE) */
-
 void                  xfce_textdomain           (const gchar *package,
                                                  const gchar *localedir,
                                                  const gchar *encoding);
