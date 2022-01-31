@@ -218,5 +218,58 @@ xfce_create_shared_thumbnail_path (const gchar *uri,
 }
 
 
+
+gchar*
+xfce_get_local_thumbnail_path (const gchar *uri,
+                               const gchar *size)
+{
+  GChecksum   *checksum;
+  gchar       *filename;
+  gchar       *thumbnail_path = NULL;
+
+  checksum = g_checksum_new (G_CHECKSUM_MD5);
+
+  if (G_LIKELY (checksum != NULL))
+    {
+      g_checksum_update (checksum, (const guchar *) uri, strlen (uri));
+
+      filename = g_strconcat (g_checksum_get_string (checksum), ".png", NULL);
+
+      /* The thumbnail is in the format/location
+       * $XDG_CACHE_HOME/thumbnails/(nromal|large)/MD5_Hash_Of_URI.png
+       * for version 0.8.0 if XDG_CACHE_HOME is defined, otherwise
+       * /homedir/.thumbnails/(normal|large)/MD5_Hash_Of_URI.png
+       * will be used, which is also always used for versions prior
+       * to 0.7.0.
+       */
+
+      /* build and check if the thumbnail is in the new location */
+      thumbnail_path = g_build_path ("/", g_get_user_cache_dir (),
+                                           "thumbnails", size,
+                                           filename, NULL);
+
+      if (!g_file_test (thumbnail_path, G_FILE_TEST_EXISTS))
+        {
+          /* Fallback to old version */
+          g_free (thumbnail_path);
+
+          thumbnail_path = g_build_filename (xfce_get_homedir (),
+                                             ".thumbnails", size,
+                                             filename, NULL);
+          if(!g_file_test(thumbnail_path, G_FILE_TEST_EXISTS))
+            {
+              g_free (thumbnail_path);
+              thumbnail_path = NULL;
+            }
+        }
+
+      g_free (filename);
+      g_checksum_free (checksum);
+    }
+
+  return thumbnail_path;
+}
+
+
 #define __XFCE_FILEUTILS_C__
 #include <libxfce4util/libxfce4util-aliasdef.c>
