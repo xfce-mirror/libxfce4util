@@ -50,6 +50,7 @@ libxfce4util_micro_version
 #if IN_SOURCE(__XFCE_FILEUTILS_C__)
 xfce_mkdirhier
 xfce_create_shared_thumbnail_path
+xfce_create_shared_thumbnail_uri
 #endif
 #endif
 
