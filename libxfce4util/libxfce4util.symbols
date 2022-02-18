@@ -63,6 +63,14 @@ xfce_g_file_is_trusted
 #endif
 #endif
 
+/* xfce-string functions */
+#if IN_HEADER(__XFCE_STRING_H__)
+#if IN_SOURCE(__XFCE_STRING_C__)
+xfce_g_string_append_quoted
+xfce_str_replace
+#endif
+#endif
+
 /* xfce-i18n functions */
 #if IN_HEADER(__XFCE_I18N_H__)
 #if IN_SOURCE(__XFCE_I18N_C__)
