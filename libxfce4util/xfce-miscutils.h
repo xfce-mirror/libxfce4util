@@ -32,11 +32,6 @@
 
 G_BEGIN_DECLS
 
-static inline gboolean xfce_str_is_empty (const gchar *str)
-{
-  return str == NULL || *str == '\0';
-}
-
 const gchar* xfce_version_string (void) G_GNUC_PURE;
 
 const gchar* xfce_get_homedir    (void) G_GNUC_PURE;
