@@ -91,7 +91,8 @@ gchar* xfce_expand_variables                 (const gchar  *command,
                                               gchar       **envp) G_GNUC_MALLOC;
 
 void   xfce_append_quoted                    (GString      *string,
-                                              const gchar  *unquoted);
+                                              const gchar  *unquoted)
+  G_GNUC_DEPRECATED_FOR (xfce_g_string_append_quoted());
 
 gchar* xfce_expand_desktop_entry_field_codes (const gchar  *command,
                                               GSList       *uri_list,
