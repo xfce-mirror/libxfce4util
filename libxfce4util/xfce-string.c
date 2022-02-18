@@ -49,6 +49,9 @@
  * same size. If @replacement is %NULL, the pattern will be
  * removed from the string.
  *
+ * Note for future Xfce developers: Deprecate this function when
+ * g_string_replace() is available. (Added since Glib >= 2.68)
+ *
  * Returns: a newly allocated copy of @str where all occurances of
  *          @pattern are replaced with @replacement. Or %NULL if
  *          @str and/or @pattern is %NULL.
