@@ -113,6 +113,7 @@ xfce_mkdirhier
 xfce_create_shared_thumbnail_path
 </SECTION>
 
+
 <SECTION>
 <TITLE>GIO Extensions</TITLE>
 <FILE>xfce-gio-extensions</FILE>
@@ -120,6 +121,16 @@ xfce_g_file_metadata_is_supported
 xfce_g_file_create_checksum
 xfce_g_file_set_trusted
 xfce_g_file_is_trusted
+</SECTION>
+
+
+<SECTION>
+<TITLE>Xfce String Functions</TITLE>
+<FILE>xfce-string</FILE>
+xfce_g_string_append_quoted
+xfce_str_replace
+xfce_str_is_empty
+I_
 </SECTION>
 
 
