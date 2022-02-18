@@ -125,7 +125,7 @@ xfce_g_file_is_trusted
 
 
 <SECTION>
-<TITLE>Xfce Cstring/GString Functions</TITLE>
+<TITLE>Xfce String Functions</TITLE>
 <FILE>xfce-string</FILE>
 xfce_g_string_append_quoted
 xfce_str_replace
