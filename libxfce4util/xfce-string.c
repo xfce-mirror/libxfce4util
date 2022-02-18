@@ -19,8 +19,8 @@
 
 /**
  * SECTION:xfce-string
- * @title: Xfce Cstring Functions
- * @short_description: various functions to handle cstring
+ * @title: Xfce Cstring/GString Functions
+ * @short_description: various functions to handle string
  * @include: libxfce4util/libxfce4util.h
  *
  * Since: 4.17
@@ -96,6 +96,30 @@ xfce_str_replace (const gchar *str,
     }
 
   return g_string_free (result, FALSE);
+}
+
+
+/**
+ * xfce_g_string_append_quoted:
+ * @string: A #GString.
+ * @unqouted: A literal string.
+ *
+ * Quotes a string @unquoted and appends to an existing
+ * #GString @string. The shell will interpret the quoted string
+ * to mean @unquoted. The quoting style used is undefined
+ * (check g_shell_quote ()).
+ *
+ * Since: 4.17
+ **/
+void
+xfce_g_string_append_quoted (GString     *string,
+                             const gchar *unquoted)
+{
+  gchar *quoted;
+
+  quoted = g_shell_quote (unquoted);
+  g_string_append (string, quoted);
+  g_free (quoted);
 }
 
 #define __XFCE_STRING_C__

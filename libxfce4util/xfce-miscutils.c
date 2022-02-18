@@ -464,15 +464,20 @@ xfce_expand_variables (const gchar *command,
 
 
 
+/**
+ * xfce_append_quoted:
+ * @string: A #GString.
+ * @unqouted: A literal string.
+ *
+ * An alias of xfce_g_string_append_quoted().
+ *
+ * Deprecated: 4.17: Renamed to xfce_g_string_append_quoted()
+ **/
 void
-xfce_append_quoted (GString     *string,
-                    const gchar *unquoted)
+xfce_append_quoted (GString      *string,
+                    const gchar  *unquoted)
 {
-  gchar *quoted;
-
-  quoted = g_shell_quote (unquoted);
-  g_string_append (string, quoted);
-  g_free (quoted);
+  xfce_g_string_append_quoted (string, unquoted);
 }
 
 
@@ -529,7 +534,7 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
                   file = g_file_new_for_uri (li->data);
                   filename = g_file_get_path (file);
                   if (G_LIKELY (filename != NULL))
-                    xfce_append_quoted (string, filename);
+                    xfce_g_string_append_quoted (string, filename);
 
                   g_object_unref (file);
                   g_free (filename);
@@ -545,7 +550,7 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
             case 'U':
               for (li = uri_list; li != NULL; li = li->next)
                 {
-                  xfce_append_quoted (string, li->data);
+                  xfce_g_string_append_quoted (string, li->data);
 
                   if (*p == 'u')
                     break;
@@ -558,18 +563,18 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
               if (! xfce_str_is_empty (icon))
                 {
                   g_string_append (string, "--icon ");
-                  xfce_append_quoted (string, icon);
+                  xfce_g_string_append_quoted (string, icon);
                 }
               break;
 
             case 'c':
               if (! xfce_str_is_empty (name))
-                xfce_append_quoted (string, name);
+                xfce_g_string_append_quoted (string, name);
               break;
 
             case 'k':
               if (! xfce_str_is_empty (uri))
-                xfce_append_quoted (string, uri);
+                xfce_g_string_append_quoted (string, uri);
               break;
 
             case '%':

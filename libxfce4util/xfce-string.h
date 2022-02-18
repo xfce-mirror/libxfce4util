@@ -30,9 +30,12 @@
 
 
 
-gchar*   xfce_str_replace (const gchar *str,
-                           const gchar *pattern,
-                           const gchar *replacement);
+void     xfce_g_string_append_quoted (GString      *string,
+                                      const gchar  *unquoted);
+
+gchar*   xfce_str_replace            (const gchar *str,
+                                      const gchar *pattern,
+                                      const gchar *replacement);
 
 
 
