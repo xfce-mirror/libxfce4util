@@ -1,3 +1,15 @@
+4.17.2
+======
+- Memo for future devs: Deprecate xfce_str_replace()
+- Fix document generation error
+- Remove duplicate xfce_str_is_empty ()
+- Move xfce_append_quoted () to xfce-string
+- Remove invalid custom ngettext() macro
+- Fix some GObject introspection warnings
+- Add missing G_BEGIN_DECLS and G_END_DECLS
+- Translation Updates:
+  Catalan, Galician, Italian
+
 4.17.1
 ======
 - Create new function xfce_create_shared_thumbnail_path
