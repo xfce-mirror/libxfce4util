@@ -7,13 +7,14 @@
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2012
 # Chris K. Zhang <plutino@gmail.com>, 2009
 # Hunt Xu <huntxu@live.cn>, 2009
+# 玉堂白鹤 <yjwork@qq.com>, 2022
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2017-09-19 18:02+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"PO-Revision-Date: 2022-02-24 05:11+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/libxfce4util/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,7 +66,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "此程序是自由软件；您可以以自由软件基金会发布的 GNU\n通用公共许可协议第二版或(您可以选择)更高版方式重新发\n布它和/或修改它。\n\n此程序是希望其会有用而发布，但没有任何担保；没有甚至\n是暗含的适宜销售或特定目的适用性方面的担保。详情参看\nGNU 通用公共许可协议。\n\n您应该与此程序一道收到了一份 GUN 通用公共许可协议的\n副本；如果没有，致信给\nthe Free Software Foundation,Inc., 59 Temple \nPlace - Suite330, Boston,MA 02111-1307,USA.\n\n"
+msgstr "此程序是自由软件；您可以以自由软件基金会发布的 GNU\n通用公共许可协议第二版或(您可以选择)更高版方式重新发\n布它和/或修改它。\n\n此程序是希望其会有用而发布，但没有任何担保；没有甚至\n是暗含的适宜销售或特定目的适用性方面的担保。详情参看\nGNU 通用公共许可协议。\n\n您应该与此程序一道收到了一份 GNU 通用公共许可协议的\n副本；如果没有，致信给\nthe Free Software Foundation,Inc., 59 Temple \nPlace - Suite330, Boston,MA 02111-1307,USA.\n\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -83,7 +84,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "此库文件为自由软件；您可以以自由软件基金会发布的 GNU\n宽通用公共许可协议第二版或(您可以选择)更高版方式重新\n发布它和/或修改它。\n\n此库文件是希望其会有用而发布，但没有任何担保；没有甚\n至是暗含的适宜销售或特定目的适用性方面的担保。详情参\n看 GNU 宽通用公共许可协议。\n\n您应该与此程序一道收到了一份 GUN 宽通用公共许可协议\n的副本；如果没有，致信给\nthe Free Software Foundation,Inc., 59 Temple \nPlace - Suite330, Boston,MA 02111-1307,USA.\n\n"
+msgstr "此库文件为自由软件；您可以以自由软件基金会发布的 GNU\n宽通用公共许可协议第二版或(您可以选择)更高版方式重新\n发布它和/或修改它。\n\n此库文件是希望其会有用而发布，但没有任何担保；没有甚\n至是暗含的适宜销售或特定目的适用性方面的担保。详情参\n看 GNU 宽通用公共许可协议。\n\n您应该与此程序一道收到了一份 GNU 宽通用公共许可协议\n的副本；如果没有，致信给\nthe Free Software Foundation,Inc., 59 Temple \nPlace - Suite330, Boston,MA 02111-1307,USA.\n\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
