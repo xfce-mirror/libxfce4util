@@ -159,6 +159,11 @@ xfce_textdomain (const gchar *package,
   g_return_if_fail (package != NULL);
   g_return_if_fail (localedir != NULL);
 
+  /* make sure to set locale according to the environment variables */
+#ifdef HAVE_SETLOCALE
+  setlocale (LC_ALL, "");
+#endif
+
   /* bind the text domain for the package to the given directory */
   bindtextdomain (package, localedir);
 
