@@ -228,7 +228,7 @@ xfce_create_shared_thumbnail_path (const gchar *uri,
  *
  * It is the duty of the caller to free the returned string.
  *
- * Return value: a string with the thumbnail URI or NULL if the @uri could not be converted to
+ * Return value: a string with the thumbnail URI or %NULL if the @uri could not be converted to
  * a local filename.
  *
  * Since: 4.17.2
