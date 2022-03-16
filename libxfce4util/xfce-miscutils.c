@@ -138,7 +138,7 @@ internal_get_file_r (const gchar *dir,
   g_return_val_if_fail(format != NULL, NULL);
   g_return_val_if_fail(len > 0, NULL);
 
-  if ((n = g_strlcpy(buffer, dir, len)) >= len)
+  if (g_strlcpy(buffer, dir, len) >= len)
     return NULL;
 
   if ((n = g_strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
