@@ -105,7 +105,7 @@ xfce_str_replace (const gchar *str,
 /**
  * xfce_g_string_append_quoted:
  * @string: A #GString.
- * @unqouted: A literal string.
+ * @unquoted: A literal string.
  *
  * Quotes a string @unquoted and appends to an existing
  * #GString @string. The shell will interpret the quoted string

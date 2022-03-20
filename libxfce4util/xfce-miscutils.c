@@ -467,7 +467,7 @@ xfce_expand_variables (const gchar *command,
 /**
  * xfce_append_quoted:
  * @string: A #GString.
- * @unqouted: A literal string.
+ * @unquoted: A literal string.
  *
  * An alias of xfce_g_string_append_quoted().
  *
