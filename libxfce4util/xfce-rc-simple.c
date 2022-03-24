@@ -651,6 +651,9 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
           continue;
         }
 
+      if (key == NULL)
+        continue;
+
       if (locale == NULL)
         {
           simple_add_entry (simple, key, value, NULL);
