@@ -3,15 +3,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Ápo. <apostolos.papadimitriu@gmail.com>, 2016-2017
 # ebal <ebalaskas@ebalaskas.gr>, 2009
+# Efstathios Iosifidis <iosifidis@opensuse.org>, 2012
+# ebal <ebalaskas@ebalaskas.gr>, 2009
+# Ioannis LM, 2022
+# Ioannis LM, 2022
 # Stavros Giannouris <stavrosg@gmail.com>, 2011
+# Πέτρος Σαμαράς <psamaras1@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2017-09-19 18:02+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>\n"
+"PO-Revision-Date: 2013-07-02 20:35+0000\n"
+"Last-Translator: Ioannis LM, 2022\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/libxfce4util/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -63,7 +69,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Το πρόγραμμα αυτό είναι ελεύθερο λογισμικό. Επιτρέπεται\nη αναδιανομή ή/και τροποποίησή του υπό τους όρους της\nΓενικής ‘Αδειας Δημόσιας Χρήσης GNU (GNU General Public\nLicense), όπως αυτή έχει δημοσιευτεί από το Ίδρυμα Ελεύθερου\nΛογισμικού (Free Software Foundation) -είτε της έκδοσης 2\nτης ‘Αδειας, είτε (κατ' επιλογήν) οποιασδήποτε μεταγενέστερης\nέκδοσης.\nΤο πρόγραμμα αυτό διανέμεται με την ελπίδα ότι θα αποδειχθεί\nχρήσιμο, παρόλα αυτά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ –χωρίς ούτε και την\nσιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ\nΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ. Για περισσότερες λεπτομέρειες ανατρέξτε\nστη Γενική ‘Αδεια Δημόσιας Χρήσης GNU (GNU General Public\nLicense).\nΘα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής ‘Αδειας\nΔημόσιας Χρήσης GNU (GNU General Public License) μαζί με αυτό\nτο πρόγραμμα. Εάν όχι, επικοινωνήστε γραπτώς με το Ίδρυμα\nΕλεύθερου Λογισμικού (Free Software Foundation), Inc., 51\nFranklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Αυτό το πρόγραμμα είναι ελεύθερο λογισμικό και μπορείτε να το \nαναδιανείμετε ή/και να το τροποποιήσετε σύμφωνα με τους όρους της \nGNU General Public License όπως αυτή δημοσιεύεται από το Free \nSoftware Foundation, είτε την έκδοση 2 της άδειας, είτε (κατ' επιλογή σας) \nσε οποιαδήποτε μεταγενέστερη έκδοση.\n\nΑυτό το πρόγραμμα διανέμεται με την ελπίδα ότι θα είναι χρήσιμο, αλλά \nΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ, ούτε καν την σιωπηρή εγγύηση της ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή της ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ \nΣΚΟΠΟ. Για περισσότερες λεπτομέρειες δείτε την GNU General Public \nLicense.\n\nΘα πρέπει να έχετε λάβει ένα αντίγραφο της GNU General Public License \nμαζί με αυτό το πρόγραμμα. Εάν όχι, επικοινωνήστε γραπτώς με το Free \nSoftware Foundation), Inc., 51 Franklin Street, Fifth Floor, Boston, MA \n02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-license.c:88
 msgid ""
@@ -81,7 +87,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Αυτή η βιβλιοθήκη είναι ελεύθερο λογισμικό. Μπορείτε να\nτην αναδιανείμετε και/ή τροποποιήσετε υπό τους όρους της\nΕλάσσονος Γενικής Άδειας Δημόσιας Χρήσης GNU, όπως\nεκδόθηκε από το Ίδρυμα Ελεύθερου Λογισμικού (Free Software\nFoundation), την έκδοση 2.1 της Άδειας, ή (κατ’ επιλογή σας)\nοποιαδήποτε μεταγενέστερη έκδοση.\nΑυτή η βιβλιοθήκη διανέμεται με την ελπίδα ότι θα είναι\nχρήσιμη, αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΑΠΟΛΥΤΩΣ ΕΓΓΥΗΣΗ. Χωρίς ακόμη\nκαι την σιωπηρή εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή\nΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ.\nΓια περισσότερες λεπτομέρειες δείτε την Ελάσσονα Γενική\nΆδεια Δημόσιας Χρήσης GNU.\nΠρέπει να έχετε λάβει ένα αντίγραφο της Ελάσσονος Γενικής\nΆδειας Δημόσιας Χρήσης μαζί με αυτήν την βιβλιοθήκη. Αν όχι,\nεπικοινωνήστε γραπτώς με το Ίδρυμα Ελεύθερου Λογισμικού\n(Free Software Foundation), Foundation, Inc., 51 Franklin Street,\nFifth Floor, Boston, MA 02110-1301 USA.\n"
+msgstr "Αυτή η βιβλιοθήκη είναι ελεύθερο λογισμικό και μπορείτε να το \nαναδιανείμετε ή/και να το τροποποιήσετε σύμφωνα με τους όρους της \nGNU General Public License όπως αυτή δημοσιεύεται από το Free \nSoftware Foundation, είτε την έκδοση 2 της άδειας, είτε (κατ' επιλογή σας) \nσε οποιαδήποτε μεταγενέστερη έκδοση.\n\nΑυτή η βιβλιοθήκη διανέμεται με την ελπίδα ότι θα είναι χρήσιμο, αλλά \nΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ, ούτε καν την σιωπηρή εγγύηση της ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή της ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ \nΣΚΟΠΟ. Για περισσότερες λεπτομέρειες δείτε την GNU General Public \nLicense.\n\nΘα πρέπει να έχετε λάβει ένα αντίγραφο της GNU General Public License \nμαζί με αυτό το πρόγραμμα. Εάν όχι, επικοινωνήστε γραπτώς με το Free \nSoftware Foundation), Inc., 51 Franklin Street, Fifth Floor, Boston, MA \n02110-1301, USA.\n"
 
 #: ../libxfce4util/xfce-posix-signal-handler.c:132
 #, c-format
