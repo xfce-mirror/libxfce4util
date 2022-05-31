@@ -46,8 +46,7 @@ gchar*   xfce_str_replace            (const gchar *str,
  * Macro to check if a string is %NULL or empty. You should prefer
  * this function over strlen (str) == 0.
  *
- * Returns: %TRUE if the string is not %NULL and its length > 1,
- *          %FALSE otherwise.
+ * Returns: %TRUE if the string is %NULL or empty, %FALSE otherwise.
  *
  * Since : 4.17
  **/
