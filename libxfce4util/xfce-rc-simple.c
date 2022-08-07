@@ -46,11 +46,6 @@
 #define PATH_MAX 4096
 #endif
 
-#ifdef LINE_MAX
-#undef LINE_MAX
-#endif
-#define LINE_MAX 8192
-
 /* name of the NULL group */
 #define NULL_GROUP "[NULL]"
 
@@ -72,9 +67,8 @@ static gboolean simple_parse_line (gchar        *line,
                                    gchar       **key,
                                    gchar       **value,
                                    gchar       **locale);
-static gchar*   simple_escape     (gchar        *buffer,
-                                   gssize        size,
-                                   const gchar  *string);
+static void     fputs_escape      (const gchar  *string,
+                                   FILE         *fp);
 static gboolean simple_write      (XfceRcSimple *simple,
                                    const gchar  *filename);
 static void     simple_entry_free (Entry        *entry);
@@ -411,20 +405,16 @@ simple_parse_line (gchar  *line,
 
 
 
-static gchar*
-simple_escape (gchar *buffer, gssize size, const gchar *string)
+static void
+fputs_escape (const gchar *string, FILE *fp)
 {
   const gchar *s;
-  gchar       *p;
 
   /* escape all whitespace at the beginning of the string */
-  for (p = buffer; p - buffer < size - 2 && *string == ' '; ++string)
-    {
-      *p++ = '\\';
-      *p++ = ' ';
-    }
+  for (; *string == ' '; ++string)
+    fputs("\\ ", fp);
 
-  for (; p - buffer < size - 2 && *string != '\0'; ++string)
+  for (; *string != '\0'; ++string)
     switch (*string)
       {
       case ' ':
@@ -432,45 +422,31 @@ simple_escape (gchar *buffer, gssize size, const gchar *string)
         for (s = string + 1; g_ascii_isspace (*s); ++s)
           ;
         if (*s == '\0')
-          {
-            /* need to escape the space */
-            *p++ = '\\';
-            *p++ = ' ';
-          }
+          fputs("\\ ", fp); /* need to escape the space */
         else
-          {
-            /* still non-whitespace, no need to escape */
-            *p++ = ' ';
-          }
+          putc(' ', fp); /* still non-whitespace, no need to escape */
         break;
 
       case '\n':
-        *p++ = '\\';
-        *p++ = 'n';
+        fputs("\\n", fp);
         break;
 
       case '\t':
-        *p++ = '\\';
-        *p++ = 't';
+        fputs("\\t", fp);
         break;
 
       case '\r':
-        *p++ = '\\';
-        *p++ = 'r';
+        fputs("\\r", fp);
         break;
 
       case '\\':
-        *p++ = '\\';
-        *p++ = '\\';
+        fputs("\\\\", fp);
         break;
 
       default:
-        *p++ = *string;
+        putc(*string, fp);
         break;
       }
-
-  *p = '\0';
-  return buffer;
 }
 
 
@@ -481,7 +457,6 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
   LEntry *lentry;
   Entry  *entry;
   Group  *group;
-  gchar   buffer[LINE_MAX];
   FILE   *fp;
 
   fp = fopen (filename, "w");
@@ -503,13 +478,15 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
 
       for (entry = group->efirst; entry != NULL; entry = entry->next)
         {
-          simple_escape (buffer, LINE_MAX, entry->value);
-          fprintf (fp, "%s=%s\n", entry->key, buffer);
+          fprintf (fp, "%s=", entry->key);
+          fputs_escape (entry->value, fp);
+          fputc ('\n', fp);
 
           for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
             {
-              simple_escape (buffer, LINE_MAX, lentry->value);
-              fprintf (fp, "%s[%s]=%s\n", entry->key, lentry->locale, buffer);
+              fprintf (fp, "%s[%s]=", entry->key, lentry->locale);
+              fputs_escape (entry->value, fp);
+              fputc ('\n', fp);
             }
         }
 
@@ -622,7 +599,8 @@ gboolean
 _xfce_rc_simple_parse (XfceRcSimple *simple)
 {
   gboolean readonly;
-  gchar    line[LINE_MAX];
+  gchar   *line;
+  size_t   line_len;
   gchar   *section;
   gchar   *locale;
   gchar   *value;
@@ -640,7 +618,9 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
   if (fp == NULL)
     return FALSE;
 
-  while (fgets (line, LINE_MAX, fp) != NULL)
+  line = NULL;
+  line_len = 0;
+  while (getline (&line, &line_len, fp) != -1)
     {
       if (!simple_parse_line (line, &section, &key, &value, &locale))
         continue;
