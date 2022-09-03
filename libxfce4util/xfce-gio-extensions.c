@@ -347,9 +347,9 @@ xfce_read_from_desktop_file (const gchar *desktop_file_path,
                                   NULL))
             {
               value = g_key_file_get_value (desktop_file,
-                                                G_KEY_FILE_DESKTOP_GROUP,
-                                                key,
-                                                NULL);
+                                            G_KEY_FILE_DESKTOP_GROUP,
+                                            key,
+                                            NULL);
             }
         }
     }
