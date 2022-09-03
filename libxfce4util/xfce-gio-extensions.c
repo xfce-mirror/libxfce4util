@@ -371,7 +371,7 @@ xfce_read_from_desktop_file (const gchar *desktop_file_path,
  * Returns the value from a key in a given desktop file.
  * In case no desktop file with @application_name is
  * found, this function will use GIO's
- * #g_desktop_app_info_search to match @application_name
+ * g_desktop_app_info_search() to match @application_name
  * with a desktop file and return the value from
  * the first match.
  *
