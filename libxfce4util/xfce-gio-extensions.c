@@ -371,7 +371,7 @@ xfce_read_from_desktop_file (const gchar *desktop_file_path, const gchar *key)
  * with a desktop file and return the value from
  * the first match.
  *
- * Returns: A key from @application_name's desktop file or
+ * Returns: (transfer full) (allow-none): A key from @application_name's desktop file or
  * from a fallback as matched by GIO.
  * If no desktop file is found %NULL is returned.
  *
