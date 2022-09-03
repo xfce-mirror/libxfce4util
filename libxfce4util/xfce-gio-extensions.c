@@ -28,11 +28,10 @@
  * Since: 4.17
  **/
 
-
+#include <gio/gdesktopappinfo.h>
 
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4util/libxfce4util-alias.h>
-
 
 
 #define XFCE_ATTRIBUTE_EXECUTABLE_CHECKSUM "metadata::xfce-exe-checksum" /* string */
@@ -321,6 +320,113 @@ xfce_g_file_is_trusted (GFile        *file,
   g_object_unref (file_info);
 
   return is_trusted;
+}
+
+
+
+static gchar *
+xfce_read_from_desktop_file (const gchar *desktop_file_path,
+                             const gchar *key)
+{
+  GKeyFile *desktop_file;
+  gchar *value = NULL;
+
+  g_return_val_if_fail (g_path_is_absolute (desktop_file_path), NULL);
+
+  desktop_file = g_key_file_new ();
+  if (g_key_file_load_from_file (desktop_file,
+                                 desktop_file_path,
+                                 G_KEY_FILE_NONE,
+                                 NULL))
+    {
+      if (g_key_file_has_group (desktop_file, G_KEY_FILE_DESKTOP_GROUP))
+        {
+          if (g_key_file_has_key (desktop_file,
+                                  G_KEY_FILE_DESKTOP_GROUP,
+                                  key,
+                                  NULL))
+            {
+              value = g_key_file_get_value (desktop_file,
+                                                G_KEY_FILE_DESKTOP_GROUP,
+                                                key,
+                                                NULL);
+            }
+        }
+    }
+
+  g_key_file_free (desktop_file);
+
+  return value;
+}
+
+
+
+/**
+ * xfce_get_from_desktop_file:
+ * @application_name: the name of an application
+ * @key: A key under the %G_KEY_FILE_DESKTOP_GROUP, typically
+ *       %G_KEY_FILE_DESKTOP_KEY_NAME or
+ *       %G_KEY_FILE_DESKTOP_KEY_ICON
+ *
+ * Returns the value from a key in a given desktop file.
+ * In case no desktop file with @application_name is
+ * found, this function will use GIO's
+ * #g_desktop_app_info_search to match @application_name
+ * with a desktop file and return the value from
+ * the first match.
+ *
+ * Returns: (transfer full) (allow-none): A key from @application_name's desktop file or
+ * from a fallback as matched by GIO.
+ * If no desktop file is found %NULL is returned.
+ *
+ * Since: 4.17
+ **/
+gchar *
+xfce_get_from_desktop_file (const gchar *application_name,
+                            const gchar *key)
+{
+  GDesktopAppInfo *appinfo;
+  gchar *filename;
+  gchar *value = NULL;
+
+  filename = g_strdup_printf ("%s.desktop", application_name);
+  appinfo = g_desktop_app_info_new (filename);
+  g_free (filename);
+
+  if (appinfo)
+    {
+      value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
+      g_object_unref (appinfo);
+    }
+  /* Fallback: Try to find the correct desktop file
+      As the GIO matching algorithm is unknown and subject to change we naively pick the first match */
+  else
+    {
+      gchar ***matches;
+
+      matches = g_desktop_app_info_search (application_name);
+
+      if (matches[0])
+        {
+          gchar **match;
+
+          match = matches[0];
+          appinfo = g_desktop_app_info_new (match[0]);
+
+          if (appinfo)
+            {
+              value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
+              g_object_unref (appinfo);
+            }
+        }
+
+      for (gchar ***p = matches; *p != NULL; p++)
+        g_strfreev (*p);
+
+      g_free (matches);
+    }
+
+  return value;
 }
 
 #define __XFCE_GIO_EXTENSIONS_C__
