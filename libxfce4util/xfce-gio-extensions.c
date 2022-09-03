@@ -325,34 +325,38 @@ xfce_g_file_is_trusted (GFile        *file,
 
 
 static gchar *
-xfce_read_from_desktop_file (const gchar *desktop_file_path, const gchar *key)
+xfce_read_from_desktop_file (const gchar *desktop_file_path,
+                             const gchar *key)
 {
-    GKeyFile *desktop_file;
-    gchar *value = NULL;
+  GKeyFile *desktop_file;
+  gchar *value = NULL;
 
-    g_return_val_if_fail (g_path_is_absolute (desktop_file_path), NULL);
+  g_return_val_if_fail (g_path_is_absolute (desktop_file_path), NULL);
 
-    desktop_file = g_key_file_new ();
-    if (g_key_file_load_from_file (desktop_file,
-                                   desktop_file_path,
-                                   G_KEY_FILE_NONE,
-                                   NULL)) {
-        if (g_key_file_has_group (desktop_file, G_KEY_FILE_DESKTOP_GROUP)) {
-            if (g_key_file_has_key (desktop_file,
-                                    G_KEY_FILE_DESKTOP_GROUP,
-                                    key,
-                                    NULL))
-                {
-                    value = g_key_file_get_value (desktop_file,
-                                                      G_KEY_FILE_DESKTOP_GROUP,
-                                                      key,
-                                                      NULL);
-                }
+  desktop_file = g_key_file_new ();
+  if (g_key_file_load_from_file (desktop_file,
+                                 desktop_file_path,
+                                 G_KEY_FILE_NONE,
+                                 NULL))
+    {
+      if (g_key_file_has_group (desktop_file, G_KEY_FILE_DESKTOP_GROUP))
+        {
+          if (g_key_file_has_key (desktop_file,
+                                  G_KEY_FILE_DESKTOP_GROUP,
+                                  key,
+                                  NULL))
+            {
+              value = g_key_file_get_value (desktop_file,
+                                                G_KEY_FILE_DESKTOP_GROUP,
+                                                key,
+                                                NULL);
+            }
         }
-        g_key_file_free (desktop_file);
     }
 
-    return value;
+  g_key_file_free (desktop_file);
+
+  return value;
 }
 
 
@@ -378,41 +382,51 @@ xfce_read_from_desktop_file (const gchar *desktop_file_path, const gchar *key)
  * Since: 4.17
  **/
 gchar *
-xfce_get_from_desktop_file (const gchar *application_name, const gchar *key)
+xfce_get_from_desktop_file (const gchar *application_name,
+                            const gchar *key)
 {
-    GDesktopAppInfo *appinfo;
-    gchar *filename;
-    gchar *value = NULL;
+  GDesktopAppInfo *appinfo;
+  gchar *filename;
+  gchar *value = NULL;
 
-    filename = g_strdup_printf ("%s.desktop", application_name);
-    appinfo = g_desktop_app_info_new (filename);
-    g_free (filename);
+  filename = g_strdup_printf ("%s.desktop", application_name);
+  appinfo = g_desktop_app_info_new (filename);
+  g_free (filename);
 
-    if (appinfo) {
-        value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
+  if (appinfo)
+    {
+      value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
+      g_object_unref (appinfo);
     }
-    /* Fallback: Try to find the correct desktop file
-       As the GIO matching algorithm is unknown and subject to change we naively pick the first match */
-    else {
-        gchar ***matches;
+  /* Fallback: Try to find the correct desktop file
+      As the GIO matching algorithm is unknown and subject to change we naively pick the first match */
+  else
+    {
+      gchar ***matches;
 
-        matches = g_desktop_app_info_search (application_name);
+      matches = g_desktop_app_info_search (application_name);
 
-        if (matches[0]) {
-            gchar **match;
+      if (matches[0])
+        {
+          gchar **match;
 
-            match = matches[0];
-            appinfo = g_desktop_app_info_new (match[0]);
-            value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
+          match = matches[0];
+          appinfo = g_desktop_app_info_new (match[0]);
 
-            for (gchar ***p = matches; *p != NULL; p++)
-                g_strfreev (*p);
-
-            g_free (matches);
+          if (appinfo)
+            {
+              value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
+              g_object_unref (appinfo);
+            }
         }
+
+      for (gchar ***p = matches; *p != NULL; p++)
+        g_strfreev (*p);
+
+      g_free (matches);
     }
 
-    return value;
+  return value;
 }
 
 #define __XFCE_GIO_EXTENSIONS_C__
