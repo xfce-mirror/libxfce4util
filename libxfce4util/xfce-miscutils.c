@@ -172,8 +172,8 @@ xfce_version_string (void)
 /**
  * xfce_get_homedir:
  *
- * Similar to g_get_homedir() in functionality but will never return NULL.
- * While g_get_homedir() may return NULL under certain circumstances, this
+ * Similar to g_get_home_dir() in functionality but will never return NULL.
+ * While g_get_home_dir() may return NULL under certain circumstances, this
  * function is garantied to never ever return NULL, but always return a
  * valid character pointer with the absolute path to the user's home directory.
  *

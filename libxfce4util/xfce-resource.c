@@ -412,8 +412,7 @@ _res_match_path (const gchar *path,
  * of the directories returned in the list are garantied to exist.
  *
  * This function should be rarely used. You should consider using
- * xfce_resource_lookup(), xfce_resource_lookup_dirs() or
- * xfce_resource_match() instead.
+ * xfce_resource_lookup() or xfce_resource_match() instead.
  *
  * The returned list must be freed using g_strfreev().
  *

@@ -67,7 +67,7 @@ G_BEGIN_DECLS
  * |[<!-- language="C" -->
  * typedef XFCE_GENERIC_STACK(double) MyDoubleStack;
  * ]|
- * and furtheron refer to your stack type as %MyDoubleStack.
+ * and furtheron refer to your stack type as `MyDoubleStack`.
  *
  */
 
@@ -85,7 +85,7 @@ G_BEGIN_DECLS
  * @StackType: Type of stack declared with #XFCE_GENERIC_STACK.
  *
  * Creates a new instance of @StackType and returns a pointer to the newly
- * created instance. For example, imagine you declared a type %MyDoubleStack
+ * created instance. For example, imagine you declared a type `MyDoubleStack`
  * as shown above, you can instantiate this type with
  *
  * |[<!-- language="C" -->
