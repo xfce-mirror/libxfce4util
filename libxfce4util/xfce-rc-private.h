@@ -31,6 +31,7 @@ typedef struct _XfceRcSimple XfceRcSimple;
 
 struct _XfceRc
 {
+  /*< private >*/
   void          (*close)        (XfceRc       *rc);
   void          (*flush)        (XfceRc       *rc);
   void          (*rollback)     (XfceRc       *rc);

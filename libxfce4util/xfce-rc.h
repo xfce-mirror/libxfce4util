@@ -19,7 +19,7 @@
  * Boston, MA 02110-1301 USA
  */
 
-#if !defined(LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
+#if !defined(_LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H) && !defined(LIBXFCE4UTIL_COMPILATION)
 #error "Only <libxfce4util/libxfce4util.h> can be included directly, this file may disappear or change contents"
 #endif
 

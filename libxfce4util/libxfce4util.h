@@ -22,7 +22,7 @@
 #ifndef __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
 #define __LIBXFCE4UTIL_LIBXFCE4UTIL_H__
 
-#define LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
+#define _LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 
 #include <libxfce4util/libxfce4util-config.h>
 
@@ -40,6 +40,6 @@
 #include <libxfce4util/xfce-gio-extensions.h>
 #include <libxfce4util/xfce-string.h>
 
-#undef LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
+#undef _LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 
 #endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */

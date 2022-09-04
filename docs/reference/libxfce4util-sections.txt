@@ -38,6 +38,8 @@ xfce_stack_free
 xfce_stack_top
 xfce_stack_pop
 xfce_stack_push
+<SUBSECTION Private>
+xfce_stack_alloc
 </SECTION>
 
 
@@ -48,6 +50,9 @@ XfceKiosk
 xfce_kiosk_new
 xfce_kiosk_query
 xfce_kiosk_free
+<SUBSECTION Standard>
+xfce_kiosk_get_type
+XFCE_TYPE_KIOSK
 </SECTION>
 
 
@@ -95,6 +100,18 @@ xfce_rc_write_entry
 xfce_rc_write_bool_entry
 xfce_rc_write_int_entry
 xfce_rc_write_list_entry
+<SUBSECTION Standard>
+xfce_rc_get_type
+XFCE_RC
+XFCE_TYPE_RC
+XFCE_RC_CONST
+<SUBSECTION Private>
+XfceRcConfig
+XfceRcSimple
+XFCE_RC_CONFIG
+XFCE_RC_CONFIG_CONST
+XFCE_RC_SIMPLE
+XFCE_RC_SIMPLE_CONST
 </SECTION>
 
 
@@ -161,6 +178,10 @@ xfce_expand_variables
 xfce_append_quoted
 xfce_expand_desktop_entry_field_codes
 xfce_unescape_desktop_entry_value
+<SUBSECTION Private>
+DBG
+TRACE
+G_GNUC_WARN_UNUSED_RESULT
 </SECTION>
 
 
