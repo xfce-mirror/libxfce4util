@@ -362,7 +362,7 @@ xfce_read_from_desktop_file (const gchar *desktop_file_path,
 
 
 /**
- * xfce_get_from_desktop_file:
+ * xfce_g_desktop_app_get_value:
  * @application_name: the name of an application
  * @key: A key under the %G_KEY_FILE_DESKTOP_GROUP, typically
  *       %G_KEY_FILE_DESKTOP_KEY_NAME or
@@ -382,8 +382,8 @@ xfce_read_from_desktop_file (const gchar *desktop_file_path,
  * Since: 4.17
  **/
 gchar *
-xfce_get_from_desktop_file (const gchar *application_name,
-                            const gchar *key)
+xfce_g_desktop_app_get_value (const gchar *application_name,
+                              const gchar *key)
 {
   GDesktopAppInfo *appinfo;
   gchar *filename;
