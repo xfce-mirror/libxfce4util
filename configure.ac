@@ -123,7 +123,7 @@ GTK_DOC_CHECK([1.20])
 dnl ***************************************
 dnl *** Check for gobject-introspection ***
 dnl ***************************************
-GOBJECT_INTROSPECTION_CHECK([1.30.0])
+GOBJECT_INTROSPECTION_CHECK([1.66.0])
 
 dnl *************************
 dnl *** Check for vapigen ***
