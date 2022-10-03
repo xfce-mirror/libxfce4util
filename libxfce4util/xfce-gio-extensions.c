@@ -324,43 +324,6 @@ xfce_g_file_is_trusted (GFile        *file,
 
 
 
-static gchar *
-xfce_read_from_desktop_file (const gchar *desktop_file_path,
-                             const gchar *key)
-{
-  GKeyFile *desktop_file;
-  gchar *value = NULL;
-
-  g_return_val_if_fail (g_path_is_absolute (desktop_file_path), NULL);
-
-  desktop_file = g_key_file_new ();
-  if (g_key_file_load_from_file (desktop_file,
-                                 desktop_file_path,
-                                 G_KEY_FILE_NONE,
-                                 NULL))
-    {
-      if (g_key_file_has_group (desktop_file, G_KEY_FILE_DESKTOP_GROUP))
-        {
-          if (g_key_file_has_key (desktop_file,
-                                  G_KEY_FILE_DESKTOP_GROUP,
-                                  key,
-                                  NULL))
-            {
-              value = g_key_file_get_value (desktop_file,
-                                            G_KEY_FILE_DESKTOP_GROUP,
-                                            key,
-                                            NULL);
-            }
-        }
-    }
-
-  g_key_file_free (desktop_file);
-
-  return value;
-}
-
-
-
 /**
  * xfce_g_desktop_app_get_value:
  * @application_name: the name of an application
@@ -395,7 +358,7 @@ xfce_g_desktop_app_get_value (const gchar *application_name,
 
   if (appinfo)
     {
-      value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
+      value = g_desktop_app_info_get_string (appinfo, key);
       g_object_unref (appinfo);
     }
   /* Fallback: Try to find the correct desktop file
@@ -415,7 +378,7 @@ xfce_g_desktop_app_get_value (const gchar *application_name,
 
           if (appinfo)
             {
-              value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
+              value = g_desktop_app_info_get_string (appinfo, key);
               g_object_unref (appinfo);
             }
         }
