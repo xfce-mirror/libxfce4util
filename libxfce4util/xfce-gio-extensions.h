@@ -40,8 +40,9 @@ gboolean      xfce_g_file_set_trusted             (GFile        *file,
 gboolean      xfce_g_file_is_trusted              (GFile        *file,
                                                    GCancellable *cancellable,
                                                    GError      **error);
-gchar        *xfce_g_desktop_app_get_value        (const gchar  *application_name,
-                                                   const gchar  *key);
+void          xfce_g_desktop_app_get_values       (const gchar  *application_name,
+                                                   const gchar  *first_key,
+                                                   ...) G_GNUC_NULL_TERMINATED;
 
 G_END_DECLS
 

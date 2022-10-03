@@ -138,7 +138,7 @@ xfce_g_file_metadata_is_supported
 xfce_g_file_create_checksum
 xfce_g_file_set_trusted
 xfce_g_file_is_trusted
-xfce_g_desktop_app_get_value
+xfce_g_desktop_app_get_values
 </SECTION>
 
 
