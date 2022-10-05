@@ -324,83 +324,44 @@ xfce_g_file_is_trusted (GFile        *file,
 
 
 
-static gchar *
-xfce_read_from_desktop_file (const gchar *desktop_file_path,
-                             const gchar *key)
-{
-  GKeyFile *desktop_file;
-  gchar *value = NULL;
-
-  g_return_val_if_fail (g_path_is_absolute (desktop_file_path), NULL);
-
-  desktop_file = g_key_file_new ();
-  if (g_key_file_load_from_file (desktop_file,
-                                 desktop_file_path,
-                                 G_KEY_FILE_NONE,
-                                 NULL))
-    {
-      if (g_key_file_has_group (desktop_file, G_KEY_FILE_DESKTOP_GROUP))
-        {
-          if (g_key_file_has_key (desktop_file,
-                                  G_KEY_FILE_DESKTOP_GROUP,
-                                  key,
-                                  NULL))
-            {
-              value = g_key_file_get_value (desktop_file,
-                                            G_KEY_FILE_DESKTOP_GROUP,
-                                            key,
-                                            NULL);
-            }
-        }
-    }
-
-  g_key_file_free (desktop_file);
-
-  return value;
-}
-
-
-
 /**
- * xfce_g_desktop_app_get_value:
+ * xfce_g_desktop_app_get_values:
  * @application_name: the name of an application
- * @key: A key under the %G_KEY_FILE_DESKTOP_GROUP, typically
- *       %G_KEY_FILE_DESKTOP_KEY_NAME or
- *       %G_KEY_FILE_DESKTOP_KEY_ICON
+ * @first_key: A key under the %G_KEY_FILE_DESKTOP_GROUP, typically
+ *             %G_KEY_FILE_DESKTOP_KEY_NAME or
+ *             %G_KEY_FILE_DESKTOP_KEY_ICON
+ * @...: return location for the first key as a string, followed optionally
+ *       by more key/return location pairs, followed by NULL
  *
- * Returns the value from a key in a given desktop file.
+ * Returns the values from keys in a given desktop file.
  * In case no desktop file with @application_name is
  * found, this function will use GIO's
  * g_desktop_app_info_search() to match @application_name
- * with a desktop file and return the value from
+ * with a desktop file and return the values from
  * the first match.
  *
- * Returns: (transfer full) (allow-none): A key from @application_name's desktop file or
- * from a fallback as matched by GIO.
- * If no desktop file is found %NULL is returned.
+ * If no desktop file is found %NULL is returned, otherwise the returned strings
+ * must be freed with g_free().
  *
  * Since: 4.17
  **/
-gchar *
-xfce_g_desktop_app_get_value (const gchar *application_name,
-                              const gchar *key)
+void
+xfce_g_desktop_app_get_values (const gchar *application_name,
+                               const gchar *first_key,
+                               ...)
 {
   GDesktopAppInfo *appinfo;
   gchar *filename;
-  gchar *value = NULL;
+  gchar **value;
+  va_list args;
 
   filename = g_strdup_printf ("%s.desktop", application_name);
   appinfo = g_desktop_app_info_new (filename);
   g_free (filename);
 
-  if (appinfo)
-    {
-      value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
-      g_object_unref (appinfo);
-    }
   /* Fallback: Try to find the correct desktop file
-      As the GIO matching algorithm is unknown and subject to change we naively pick the first match */
-  else
+     As the GIO matching algorithm is unknown and subject to change we naively pick the first match */
+  if (appinfo == NULL)
     {
       gchar ***matches;
 
@@ -412,12 +373,6 @@ xfce_g_desktop_app_get_value (const gchar *application_name,
 
           match = matches[0];
           appinfo = g_desktop_app_info_new (match[0]);
-
-          if (appinfo)
-            {
-              value = xfce_read_from_desktop_file (g_desktop_app_info_get_filename (appinfo), key);
-              g_object_unref (appinfo);
-            }
         }
 
       for (gchar ***p = matches; *p != NULL; p++)
@@ -426,7 +381,16 @@ xfce_g_desktop_app_get_value (const gchar *application_name,
       g_free (matches);
     }
 
-  return value;
+  va_start (args, first_key);
+  for (const gchar *key = first_key; key != NULL; )
+    {
+      value = va_arg (args, gchar **);
+      *value = appinfo != NULL ? g_desktop_app_info_get_string (appinfo, key) : NULL;
+      key = va_arg (args, const gchar *);
+    }
+
+  if (appinfo != NULL)
+    g_object_unref (appinfo);
 }
 
 #define __XFCE_GIO_EXTENSIONS_C__
