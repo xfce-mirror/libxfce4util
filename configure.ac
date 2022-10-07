@@ -110,11 +110,6 @@ dnl *** Check for GIO installed ***
 dnl ********************************
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.56.0])
 
-dnl ************************************
-dnl *** Check for GIO UNIX installed ***
-dnl ************************************
-XDT_CHECK_PACKAGE([GIO_UNIX], [gio-unix-2.0], [2.56.0])
-
 dnl *************************
 dnl *** Check for gtk-doc ***
 dnl *************************
