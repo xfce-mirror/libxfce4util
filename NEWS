@@ -1,3 +1,21 @@
+4.17.3 (2022-10-31)
+======
+- Update COPYING (!27)
+- Bump GObject Introspection minim version to 1.66 (xfconf#8)
+- docs: Add missing index of deprecated symbols
+- docs: Fix broken links
+- docs: Fix "unused declarations" warning
+- docs: Update `.gitignore`
+- Remove limit on the size of configuration file line (!29)
+- Fix documentation of 'xfce_str_is_empty'
+- Clean the build system and use the new XDT_VERSION_INIT (!9)
+- Silence `-Wanalyzer-null-dereference` warnings
+- doc: Fix typo in `xfce_*_append_quoted()`
+- xfce-miscutils: Fix `deadcode.DeadStores` warning from `scan-build`
+- i18n: Make sure to set locale according to environment (!26)
+- Translation Updates:
+  Azerbaijani, Chinese (China), Georgian, Greek
+
 4.17.2
 ======
 - Memo for future devs: Deprecate xfce_str_replace()

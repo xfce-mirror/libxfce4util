@@ -10,7 +10,7 @@ dnl ***************************
 dnl *** Version information ***
 dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
-XDT_VERSION_INIT([4.17.2], [git])
+XDT_VERSION_INIT([4.17.3])
 
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
