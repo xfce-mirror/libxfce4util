@@ -52,9 +52,10 @@
  * Note for future Xfce developers: Deprecate this function when
  * g_string_replace() is available. (Added since Glib >= 2.68)
  *
- * Returns: a newly allocated copy of @str where all occurances of
+ * Returns: (nullable) (transfer full):
+ *          a newly allocated copy of @str where all occurrences of
  *          @pattern are replaced with @replacement. Or %NULL if
- *          @str and/or @pattern is %NULL.
+ *          @str is %NULL.
  *
  * Since: 4.17
  **/
