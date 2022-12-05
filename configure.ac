@@ -98,17 +98,17 @@ XDT_I18N()
 dnl ***********************************
 dnl *** Check for GObject installed ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.56.0])
+XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.66.0])
 
 dnl ********************************
 dnl *** Check for GLib installed ***
 dnl ********************************
-XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.56.0])
+XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.66.0])
 
 dnl ********************************
 dnl *** Check for GIO installed ***
 dnl ********************************
-XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.56.0])
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.66.0])
 
 dnl *************************
 dnl *** Check for gtk-doc ***
