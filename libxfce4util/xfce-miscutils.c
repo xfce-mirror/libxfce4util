@@ -625,8 +625,25 @@ xfce_unescape_desktop_entry_value (const gchar *value)
               g_string_append_c (string, ' ');
               break;
 
+            case 'n':
+              g_string_append_c (string, '\n');
+              break;
+
+            case 't':
+              g_string_append_c (string, '\t');
+              break;
+
+            case 'r':
+              g_string_append_c (string, '\r');
+              break;
+
             case '\\':
               g_string_append_c (string, '\\');
+              break;
+
+            default:
+              g_string_append_c (string, *(p - 1));
+              g_string_append_c (string, *p);
               break;
             }
         }
