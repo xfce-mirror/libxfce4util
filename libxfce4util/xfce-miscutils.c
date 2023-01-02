@@ -628,6 +628,11 @@ xfce_unescape_desktop_entry_value (const gchar *value)
             case '\\':
               g_string_append_c (string, '\\');
               break;
+
+            default:
+              g_string_append_c (string, *(p - 1));
+              g_string_append_c (string, *p);
+              break;
             }
         }
       else
