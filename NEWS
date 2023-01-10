@@ -1,3 +1,9 @@
+4.18.1 (2023-01-10)
+======
+- Handle remaining escape sequences
+- Fix desktop entry value escaping
+
+
 4.18.0 (2022-12-15)
 ======
 - build: Bump requirements for Xfce 4.18
