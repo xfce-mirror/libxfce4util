@@ -362,7 +362,7 @@ _res_match_path (const gchar *path,
       if (strcmp (entry, ".") == 0 || strcmp (entry, "..") == 0)
         continue;
 
-      if (!g_pattern_match_string (spec, entry))
+      if (!g_pattern_spec_match_string (spec, entry))
         continue;
 
       filename = g_build_filename (path, entry, NULL);
