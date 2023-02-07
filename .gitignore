@@ -32,6 +32,7 @@ mkinstalldirs
 .libs/
 po/*.gmo
 po/libxfce4util.pot
+*~
 *.la
 *.lo
 *.stamp
