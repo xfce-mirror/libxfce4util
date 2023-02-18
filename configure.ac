@@ -25,7 +25,7 @@ dnl *** Initialize autoconf ***
 dnl ***************************
 AC_COPYRIGHT([Copyright (c) 2002-2022
         The Xfce development team. All rights reserved.])
-AC_INIT([libxfce4util], [xdt_version], [xfce4-dev@xfce.org])
+AC_INIT([libxfce4util], [xdt_version], [https://gitlab.xfce.org/xfce/libxfce4util])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
 
