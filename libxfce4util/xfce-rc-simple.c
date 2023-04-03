@@ -491,7 +491,7 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
           for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
             {
               fprintf (fp, "%s[%s]=", entry->key, lentry->locale);
-              simple_write_escaped (entry->value, fp);
+              simple_write_escaped (lentry->value, fp);
               fputc ('\n', fp);
             }
         }
