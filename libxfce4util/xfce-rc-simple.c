@@ -487,11 +487,16 @@ simple_write (XfceRcSimple *simple, const gchar *filename)
           fprintf (fp, "%s=", entry->key);
           simple_write_escaped (entry->value, fp);
           fputc ('\n', fp);
-
+          /* 
+           * Write local dependen key/value pairs. E.g.
+           *   Name[da]=Xfce-session
+           *   Name[de]=Xfce-Sitzung
+           *   ...
+           */
           for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
             {
               fprintf (fp, "%s[%s]=", entry->key, lentry->locale);
-              simple_write_escaped (entry->value, fp);
+              simple_write_escaped (lentry->value, fp);
               fputc ('\n', fp);
             }
         }
