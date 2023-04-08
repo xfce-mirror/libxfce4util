@@ -128,6 +128,7 @@ xfce_utf8_strndup
 <FILE>xfce-fileutils</FILE>
 xfce_mkdirhier
 xfce_create_shared_thumbnail_path
+xfce_create_shared_thumbnail_uri
 </SECTION>
 
 
