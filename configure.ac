@@ -12,6 +12,9 @@ dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
 XDT_VERSION_INIT([4.18.0], [git])
 
+dnl minimum required versions
+m4_define([glib_min_version], [2.66.0])
+
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
 dnl **************************************************************
@@ -23,7 +26,7 @@ dnl # YOU ARE DOING.
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2002-2022
+AC_COPYRIGHT([Copyright (c) 2002-2023
         The Xfce development team. All rights reserved.])
 AC_INIT([libxfce4util], [xdt_version], [https://gitlab.xfce.org/xfce/libxfce4util])
 AC_PREREQ([2.69])
@@ -72,7 +75,6 @@ dnl ********************************
 AC_PROG_CC()
 AM_PROG_CC_C_O()
 AC_PROG_INSTALL()
-IT_PROG_INTLTOOL([0.35.0])
 AC_CHECK_PROGS([PERL], [perl5 perl])
 
 dnl **************************
@@ -93,22 +95,26 @@ AC_CHECK_FUNCS([gethostname getpwnam setlocale strdup \
 dnl ******************************
 dnl *** Check for i18n support ***
 dnl ******************************
-XDT_I18N()
+GETTEXT_PACKAGE="$PACKAGE"
+AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default gettext domain])
+AC_SUBST([GETTEXT_PACKAGE])
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.8])
 
 dnl ***********************************
 dnl *** Check for GObject installed ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [2.66.0])
+XDT_CHECK_PACKAGE([GOBJECT], [gobject-2.0], [glib_min_version])
 
 dnl ********************************
 dnl *** Check for GLib installed ***
 dnl ********************************
-XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [2.66.0])
+XDT_CHECK_PACKAGE([GLIB], [glib-2.0], [glib_min_version])
 
 dnl ********************************
 dnl *** Check for GIO installed ***
 dnl ********************************
-XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.66.0])
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [glib_min_version])
 
 dnl *************************
 dnl *** Check for gtk-doc ***
