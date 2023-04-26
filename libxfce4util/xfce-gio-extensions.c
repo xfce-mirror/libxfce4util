@@ -77,8 +77,6 @@ xfce_g_file_metadata_is_supported (GFile *file)
  * @error: (nullable): a #GError
  *
  * Generates an SHA-256 hash of the @file.
- * Utilizes g_compute_checksum_for_data() which
- * is present since Glib 2.16.
  *
  * Returns: (transfer full) (nullable): Checksum of the @file.
  * If file read fails, returns %NULL. Free with g_free().
@@ -91,80 +89,45 @@ xfce_g_file_create_checksum (GFile        *file,
                              GError      **error)
 {
   GError           *error_local = NULL;
-  GFileInfo        *file_info;
   GFileInputStream *stream;
-  guchar           *contents_buffer;
-  gchar            *checksum;
-  gsize             file_size, file_size_read;
+  GChecksum        *checksum;
+  gchar            *checksum_string;
+  gssize            read_bytes;
+  char              buffer[1024];
 
   g_return_val_if_fail (error == NULL || *error == NULL, NULL);
   g_return_val_if_fail (G_IS_FILE (file),                NULL);
 
-  /* query size */
-  file_info = g_file_query_info (file,
-                                 G_FILE_ATTRIBUTE_STANDARD_SIZE,
-                                 G_FILE_QUERY_INFO_NONE,
-                                 cancellable,
-                                 &error_local);
-  if (error_local != NULL)
-    {
-      g_propagate_error (error, error_local);
-      return NULL;
-    }
-
-  file_size = g_file_info_get_size (file_info);
-  g_object_unref (file_info);
-
-  /* special case : SHA-256 hash of NULL */
-  /* e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 */
-  if (file_size == 0)
-    return g_compute_checksum_for_data (G_CHECKSUM_SHA256, NULL, 0);
-
-  /* allocate buffer */
-  contents_buffer = g_malloc (file_size);
-  if (contents_buffer == NULL)
-    {
-      if (error != NULL)
-        *error = g_error_new (G_FILE_ERROR,
-                              G_FILE_ERROR_NOMEM,
-                              "Failed to allocate memory to read file '%s'",
-                              g_file_peek_path (file));
-      return NULL;
-    }
-
-  /* read the actual file */
   stream = g_file_read (file, cancellable, &error_local);
   if (error_local != NULL)
     {
-      g_free (contents_buffer);
       g_propagate_error (error, error_local);
       return NULL;
     }
 
-  g_input_stream_read_all (G_INPUT_STREAM (stream),
-                           contents_buffer,
-                           file_size,
-                           &file_size_read,
-                           cancellable,
-                           &error_local);
+  checksum = g_checksum_new (G_CHECKSUM_SHA256);
+
+  while ((read_bytes = g_input_stream_read (G_INPUT_STREAM (stream), buffer, sizeof (buffer), cancellable, &error_local)) > 0)
+    {
+      if (error_local != NULL)
+        {
+          g_object_unref (stream);
+          g_checksum_free (checksum);
+          g_propagate_error (error, error_local);
+          return NULL;
+        }
+
+      g_checksum_update (checksum, (guchar *) buffer, read_bytes);
+    }
+
   g_object_unref (stream);
 
-  if (error_local != NULL)
-    {
-      g_free (contents_buffer);
-      g_propagate_error (error, error_local);
-      return NULL;
-    }
+  checksum_string = g_strdup (g_checksum_get_string (checksum));
 
-  checksum = g_compute_checksum_for_data (G_CHECKSUM_SHA256,
-                                          contents_buffer,
-                                          file_size_read);
+  g_checksum_free (checksum);
 
-  g_free (contents_buffer);
-
-  return checksum;
+  return checksum_string;
 }
-
 
 
 /**
