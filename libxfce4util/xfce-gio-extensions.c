@@ -98,7 +98,9 @@ xfce_g_file_create_checksum (GFile        *file,
   g_return_val_if_fail (G_IS_FILE (file),                NULL);
 
   stream = g_file_read (file, cancellable, error);
-  if (*error != NULL)
+
+  /* An error occured */
+  if (stream == NULL)
     return NULL;
 
   checksum = g_checksum_new (G_CHECKSUM_SHA256);
@@ -110,7 +112,8 @@ xfce_g_file_create_checksum (GFile        *file,
 
   g_object_unref (stream);
 
-  if (*error != NULL)
+  /* An error occured */
+  if (read_bytes == -1)
     {
       g_checksum_free (checksum);
       return NULL;
