@@ -105,17 +105,16 @@ xfce_g_file_create_checksum (GFile        *file,
 
   while ((read_bytes = g_input_stream_read (G_INPUT_STREAM (stream), buffer, sizeof (buffer), cancellable, error)) > 0)
     {
-      if (*error != NULL)
-        {
-          g_object_unref (stream);
-          g_checksum_free (checksum);
-          return NULL;
-        }
-
       g_checksum_update (checksum, (guchar *) buffer, read_bytes);
     }
 
   g_object_unref (stream);
+
+  if (*error != NULL)
+    {
+      g_checksum_free (checksum);
+      return NULL;
+    }
 
   checksum_string = g_strdup (g_checksum_get_string (checksum));
 
