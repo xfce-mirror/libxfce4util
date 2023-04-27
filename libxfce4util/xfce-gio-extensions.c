@@ -92,7 +92,7 @@ xfce_g_file_create_checksum (GFile        *file,
   GChecksum        *checksum;
   gchar            *checksum_string;
   gssize            read_bytes;
-  char              buffer[1024];
+  guint8            buffer[1024];
 
   g_return_val_if_fail (error == NULL || *error == NULL, NULL);
   g_return_val_if_fail (G_IS_FILE (file),                NULL);
@@ -107,7 +107,7 @@ xfce_g_file_create_checksum (GFile        *file,
 
   while ((read_bytes = g_input_stream_read (G_INPUT_STREAM (stream), buffer, sizeof (buffer), cancellable, error)) > 0)
     {
-      g_checksum_update (checksum, (guchar *) buffer, read_bytes);
+      g_checksum_update (checksum, buffer, read_bytes);
     }
 
   g_object_unref (stream);
