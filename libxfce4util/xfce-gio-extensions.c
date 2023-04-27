@@ -88,7 +88,6 @@ xfce_g_file_create_checksum (GFile        *file,
                              GCancellable *cancellable,
                              GError      **error)
 {
-  GError           *error_local = NULL;
   GFileInputStream *stream;
   GChecksum        *checksum;
   gchar            *checksum_string;
@@ -98,22 +97,18 @@ xfce_g_file_create_checksum (GFile        *file,
   g_return_val_if_fail (error == NULL || *error == NULL, NULL);
   g_return_val_if_fail (G_IS_FILE (file),                NULL);
 
-  stream = g_file_read (file, cancellable, &error_local);
-  if (error_local != NULL)
-    {
-      g_propagate_error (error, error_local);
-      return NULL;
-    }
+  stream = g_file_read (file, cancellable, error);
+  if (*error != NULL)
+    return NULL;
 
   checksum = g_checksum_new (G_CHECKSUM_SHA256);
 
-  while ((read_bytes = g_input_stream_read (G_INPUT_STREAM (stream), buffer, sizeof (buffer), cancellable, &error_local)) > 0)
+  while ((read_bytes = g_input_stream_read (G_INPUT_STREAM (stream), buffer, sizeof (buffer), cancellable, error)) > 0)
     {
-      if (error_local != NULL)
+      if (*error != NULL)
         {
           g_object_unref (stream);
           g_checksum_free (checksum);
-          g_propagate_error (error, error_local);
           return NULL;
         }
 
