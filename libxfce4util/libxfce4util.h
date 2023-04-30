@@ -26,9 +26,11 @@
 
 #include <libxfce4util/libxfce4util-config.h>
 
+#include <libxfce4util/xfce-consolekit.h>
 #include <libxfce4util/xfce-debug.h>
 #include <libxfce4util/xfce-fileutils.h>
 #include <libxfce4util/xfce-generics.h>
+#include <libxfce4util/xfce-gio-extensions.h>
 #include <libxfce4util/xfce-i18n.h>
 #include <libxfce4util/xfce-kiosk.h>
 #include <libxfce4util/xfce-license.h>
@@ -36,9 +38,9 @@
 #include <libxfce4util/xfce-posix-signal-handler.h>
 #include <libxfce4util/xfce-rc.h>
 #include <libxfce4util/xfce-resource.h>
-#include <libxfce4util/xfce-utf8.h>
-#include <libxfce4util/xfce-gio-extensions.h>
 #include <libxfce4util/xfce-string.h>
+#include <libxfce4util/xfce-systemd.h>
+#include <libxfce4util/xfce-utf8.h>
 
 #undef _LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 
