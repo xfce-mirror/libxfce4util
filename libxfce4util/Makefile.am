@@ -21,11 +21,11 @@ lib_LTLIBRARIES =							\
 	libxfce4util.la
 
 libxfce4util_headers =							\
+	xfce-consolekit.h							\
 	xfce-debug.h							\
 	xfce-fileutils.h						\
 	xfce-generics.h							\
 	xfce-gio-extensions.h						\
-	xfce-string.h						\
 	xfce-i18n.h							\
 	xfce-kiosk.h							\
 	xfce-license.h							\
@@ -33,6 +33,8 @@ libxfce4util_headers =							\
 	xfce-posix-signal-handler.h					\
 	xfce-rc.h							\
 	xfce-resource.h							\
+	xfce-string.h						\
+	xfce-systemd.h						\
 	xfce-utf8.h
 
 libxfce4util_built_sources =						\
@@ -51,9 +53,9 @@ libxfce4util_la_SOURCES =						\
 	libxfce4util-config.c						\
 	libxfce4util-private.c						\
 	libxfce4util-private.h						\
+	xfce-consolekit.c							\
 	xfce-fileutils.c						\
 	xfce-gio-extensions.c						\
-	xfce-string.c						\
 	xfce-i18n.c							\
 	xfce-kiosk.c							\
 	xfce-license.c							\
@@ -65,6 +67,8 @@ libxfce4util_la_SOURCES =						\
 	xfce-rc-private.h						\
 	xfce-rc-simple.c						\
 	xfce-resource.c							\
+	xfce-string.c						\
+	xfce-systemd.c						\
 	xfce-utf8.c
 
 libxfce4util_la_CFLAGS = 						\
