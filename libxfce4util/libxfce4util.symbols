@@ -181,3 +181,38 @@ xfce_utf8_strndup G_GNUC_MALLOC
 #endif
 #endif
 
+/* xfce-consolekit functions */
+#if IN_HEADER(__XFCE_CONSOLEKIT_H__)
+#if IN_SOURCE(__XFCE_CONSOLEKIT_C__)
+xfce_consolekit_get_type
+xfce_consolekit_get
+xfce_consolekit_try_restart
+xfce_consolekit_try_shutdown
+xfce_consolekit_try_suspend
+xfce_consolekit_try_hibernate
+xfce_consolekit_try_hybrid_sleep
+xfce_consolekit_can_restart
+xfce_consolekit_can_shutdown
+xfce_consolekit_can_suspend
+xfce_consolekit_can_hibernate
+xfce_consolekit_can_hybrid_sleep
+#endif
+#endif
+
+/* xfce-systemd functions */
+#if IN_HEADER(__XFCE_SYSTEMD_H__)
+#if IN_SOURCE(__XFCE_SYSTEMD_C__)
+xfce_systemd_get_type
+xfce_systemd_get
+xfce_systemd_try_restart
+xfce_systemd_try_shutdown
+xfce_systemd_try_suspend
+xfce_systemd_try_hibernate
+xfce_systemd_try_hybrid_sleep
+xfce_systemd_can_restart
+xfce_systemd_can_shutdown
+xfce_systemd_can_suspend
+xfce_systemd_can_hibernate
+xfce_systemd_can_hybrid_sleep
+#endif
+#endif
