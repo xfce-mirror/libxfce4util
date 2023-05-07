@@ -1,3 +1,11 @@
+4.19.1 (2023-05-07)
+======
+- Add XfceConsolekit and XfceSystemd
+- I18n: Update po/LINGUAS list
+- I18n: Update po/LINGUAS list
+- Add missing config.h includes
+- Improve checksum calculation (#17)
+
 4.19.0 (2023-04-17)
 ======
 - Update copyright year also in kiosk-query
