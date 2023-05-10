@@ -52,10 +52,12 @@ gboolean          xfce_systemd_hybrid_sleep           (XfceSystemd      *systemd
 
 gboolean          xfce_systemd_can_reboot             (XfceSystemd      *systemd,
                                                        gboolean         *can_reboot,
+                                                       gboolean         *auth_reboot,
                                                        GError          **error);
 
 gboolean          xfce_systemd_can_power_off          (XfceSystemd      *systemd,
                                                        gboolean         *can_power_off,
+                                                       gboolean         *auth_power_off,
                                                        GError          **error);
 
 gboolean          xfce_systemd_can_suspend            (XfceSystemd      *systemd,

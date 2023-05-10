@@ -135,16 +135,20 @@ xfce_systemd_finalize (GObject *object)
 static gboolean
 xfce_systemd_can_method (XfceSystemd *systemd,
                          gboolean *can_method_out,
+                         gboolean *auth_method_out,
                          const gchar *method,
                          GError **error)
 {
   GVariant *variant;
   const gchar *can_string;
   gboolean can_method;
+  gboolean auth_method;
 
   /* never return true if something fails */
   if (can_method_out != NULL)
     *can_method_out = FALSE;
+  if (auth_method_out != NULL)
+    *auth_method_out = FALSE;
 
   if (systemd->proxy == NULL)
     {
@@ -165,11 +169,14 @@ xfce_systemd_can_method (XfceSystemd *systemd,
     return FALSE;
 
   g_variant_get_child (variant, 0, "&s", &can_string);
-  can_method = g_strcmp0 (can_string, "yes") == 0;
+  can_method = g_strcmp0 (can_string, "na") != 0;
+  auth_method = g_strcmp0 (can_string, "yes") == 0 || g_strcmp0 (can_string, "challenge") == 0;
   g_variant_unref (variant);
 
   if (can_method_out != NULL)
     *can_method_out = can_method;
+  if (auth_method_out != NULL)
+    *auth_method_out = auth_method;
 
   return TRUE;
 }
@@ -356,6 +363,7 @@ xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
  * xfce_systemd_can_reboot:
  * @systemd: the #XfceSystemd object
  * @can_reboot: (out) (nullable): location to store capacity or %NULL
+ * @auth_reboot: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Check whether systemd can trigger Reboot.
@@ -367,12 +375,13 @@ xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
 gboolean
 xfce_systemd_can_reboot (XfceSystemd *systemd,
                          gboolean *can_reboot,
+                         gboolean *auth_reboot,
                          GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_can_method (systemd, can_reboot, "CanReboot", error);
+  return xfce_systemd_can_method (systemd, can_reboot, auth_reboot, "CanReboot", error);
 }
 
 
@@ -381,6 +390,7 @@ xfce_systemd_can_reboot (XfceSystemd *systemd,
  * xfce_systemd_can_power_off:
  * @systemd: the #XfceSystemd object
  * @can_power_off: (out) (nullable): location to store capacity or %NULL
+ * @auth_power_off: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Check whether systemd can trigger PowerOff.
@@ -392,12 +402,13 @@ xfce_systemd_can_reboot (XfceSystemd *systemd,
 gboolean
 xfce_systemd_can_power_off (XfceSystemd *systemd,
                             gboolean *can_power_off,
+                            gboolean *auth_power_off,
                             GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_can_method (systemd, can_power_off, "CanPowerOff", error);
+  return xfce_systemd_can_method (systemd, can_power_off, auth_power_off, "CanPowerOff", error);
 }
 
 
@@ -421,19 +432,10 @@ xfce_systemd_can_suspend (XfceSystemd *systemd,
                           gboolean *auth_suspend,
                           GError **error)
 {
-  gboolean ret, can_method;
-
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  ret = xfce_systemd_can_method (systemd, &can_method, "CanSuspend", error);
-
-  if (can_suspend != NULL)
-    *can_suspend = can_method;
-  if (auth_suspend != NULL)
-    *auth_suspend = can_method;
-
-  return ret;
+  return xfce_systemd_can_method (systemd, can_suspend, auth_suspend, "CanSuspend", error);
 }
 
 
@@ -457,19 +459,10 @@ xfce_systemd_can_hibernate (XfceSystemd *systemd,
                             gboolean *auth_hibernate,
                             GError **error)
 {
-  gboolean ret, can_method;
-
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  ret = xfce_systemd_can_method (systemd, &can_method, "CanHibernate", error);
-
-  if (can_hibernate != NULL)
-    *can_hibernate = can_method;
-  if (auth_hibernate != NULL)
-    *auth_hibernate = can_method;
-
-  return ret;
+  return xfce_systemd_can_method (systemd, can_hibernate, auth_hibernate, "CanHibernate", error);
 }
 
 
@@ -493,17 +486,8 @@ xfce_systemd_can_hybrid_sleep (XfceSystemd *systemd,
                                gboolean *auth_hybrid_sleep,
                                GError **error)
 {
-  gboolean ret, can_method;
-
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  ret = xfce_systemd_can_method (systemd, &can_method, "CanHybridSleep", error);
-
-  if (can_hybrid_sleep != NULL)
-    *can_hybrid_sleep = can_method;
-  if (auth_hybrid_sleep != NULL)
-    *auth_hybrid_sleep = can_method;
-
-  return ret;
+  return xfce_systemd_can_method (systemd, can_hybrid_sleep, auth_hybrid_sleep, "CanHybridSleep", error);
 }
