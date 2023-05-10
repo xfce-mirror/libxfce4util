@@ -36,27 +36,29 @@ G_DECLARE_FINAL_TYPE (XfceConsolekit, xfce_consolekit, XFCE, CONSOLEKIT, GObject
 
 XfceConsolekit      *xfce_consolekit_get                  (void);
 
-gboolean             xfce_consolekit_try_restart          (XfceConsolekit       *consolekit,
+gboolean             xfce_consolekit_reboot               (XfceConsolekit       *consolekit,
                                                            GError              **error);
 
-gboolean             xfce_consolekit_try_shutdown         (XfceConsolekit       *consolekit,
+gboolean             xfce_consolekit_power_off            (XfceConsolekit       *consolekit,
                                                            GError              **error);
 
-gboolean             xfce_consolekit_try_suspend          (XfceConsolekit       *consolekit,
+gboolean             xfce_consolekit_suspend              (XfceConsolekit       *consolekit,
                                                            GError              **error);
 
-gboolean             xfce_consolekit_try_hibernate        (XfceConsolekit       *consolekit,
+gboolean             xfce_consolekit_hibernate            (XfceConsolekit       *consolekit,
                                                            GError              **error);
 
-gboolean             xfce_consolekit_try_hybrid_sleep     (XfceConsolekit       *consolekit,
+gboolean             xfce_consolekit_hybrid_sleep         (XfceConsolekit       *consolekit,
                                                            GError              **error);
 
-gboolean             xfce_consolekit_can_restart          (XfceConsolekit       *consolekit,
-                                                           gboolean             *can_restart,
+gboolean             xfce_consolekit_can_reboot           (XfceConsolekit       *consolekit,
+                                                           gboolean             *can_reboot,
+                                                           gboolean             *auth_reboot,
                                                            GError              **error);
 
-gboolean             xfce_consolekit_can_shutdown         (XfceConsolekit       *consolekit,
-                                                           gboolean             *can_shutdown,
+gboolean             xfce_consolekit_can_power_off        (XfceConsolekit       *consolekit,
+                                                           gboolean             *can_power_off,
+                                                           gboolean             *auth_power_off,
                                                            GError              **error);
 
 gboolean             xfce_consolekit_can_suspend          (XfceConsolekit       *consolekit,

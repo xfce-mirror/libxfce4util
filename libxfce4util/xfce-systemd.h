@@ -35,27 +35,29 @@ G_DECLARE_FINAL_TYPE (XfceSystemd, xfce_systemd, XFCE, SYSTEMD, GObject);
 
 XfceSystemd      *xfce_systemd_get                    (void);
 
-gboolean          xfce_systemd_try_restart            (XfceSystemd      *systemd,
+gboolean          xfce_systemd_reboot                 (XfceSystemd      *systemd,
                                                        GError          **error);
 
-gboolean          xfce_systemd_try_shutdown           (XfceSystemd      *systemd,
+gboolean          xfce_systemd_power_off              (XfceSystemd      *systemd,
                                                        GError          **error);
 
-gboolean          xfce_systemd_try_suspend            (XfceSystemd      *systemd,
+gboolean          xfce_systemd_suspend                (XfceSystemd      *systemd,
                                                        GError          **error);
 
-gboolean          xfce_systemd_try_hibernate          (XfceSystemd      *systemd,
+gboolean          xfce_systemd_hibernate              (XfceSystemd      *systemd,
                                                        GError          **error);
 
-gboolean          xfce_systemd_try_hybrid_sleep       (XfceSystemd      *systemd,
+gboolean          xfce_systemd_hybrid_sleep           (XfceSystemd      *systemd,
                                                        GError          **error);
 
-gboolean          xfce_systemd_can_restart            (XfceSystemd      *systemd,
-                                                       gboolean         *can_restart,
+gboolean          xfce_systemd_can_reboot             (XfceSystemd      *systemd,
+                                                       gboolean         *can_reboot,
+                                                       gboolean         *auth_reboot,
                                                        GError          **error);
 
-gboolean          xfce_systemd_can_shutdown           (XfceSystemd      *systemd,
-                                                       gboolean         *can_shutdown,
+gboolean          xfce_systemd_can_power_off          (XfceSystemd      *systemd,
+                                                       gboolean         *can_power_off,
+                                                       gboolean         *auth_power_off,
                                                        GError          **error);
 
 gboolean          xfce_systemd_can_suspend            (XfceSystemd      *systemd,
