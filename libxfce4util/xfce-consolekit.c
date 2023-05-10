@@ -135,10 +135,10 @@ xfce_consolekit_finalize (GObject *object)
 
 
 static gboolean
-xfce_consolekit_can_method (XfceConsolekit *consolekit,
-                            const gchar *method,
-                            gboolean *can_method_out,
-                            GError **error)
+xfce_consolekit_can_method_old (XfceConsolekit *consolekit,
+                                const gchar *method,
+                                gboolean *can_method_out,
+                                GError **error)
 {
   GVariant *variant;
   gboolean can_method;
@@ -177,11 +177,11 @@ xfce_consolekit_can_method (XfceConsolekit *consolekit,
 
 
 static gboolean
-xfce_consolekit_can_sleep (XfceConsolekit *consolekit,
-                           const gchar *method,
-                           gboolean *can_method_out,
-                           gboolean *auth_method_out,
-                           GError **error)
+xfce_consolekit_can_method (XfceConsolekit *consolekit,
+                            const gchar *method,
+                            gboolean *can_method_out,
+                            gboolean *auth_method_out,
+                            GError **error)
 {
   GVariant *variant;
   const gchar *can_string;
@@ -229,9 +229,9 @@ xfce_consolekit_can_sleep (XfceConsolekit *consolekit,
 
 
 static gboolean
-xfce_consolekit_method (XfceConsolekit *consolekit,
-                        const gchar *method,
-                        GError **error)
+xfce_consolekit_method_old (XfceConsolekit *consolekit,
+                            const gchar *method,
+                            GError **error)
 {
   GVariant *variant;
 
@@ -261,9 +261,9 @@ xfce_consolekit_method (XfceConsolekit *consolekit,
 
 
 static gboolean
-xfce_consolekit_sleep (XfceConsolekit *consolekit,
-                       const gchar *method,
-                       GError **error)
+xfce_consolekit_method (XfceConsolekit *consolekit,
+                        const gchar *method,
+                        GError **error)
 {
   GVariant *variant;
 
@@ -336,10 +336,24 @@ gboolean
 xfce_consolekit_reboot (XfceConsolekit *consolekit,
                         GError **error)
 {
+  GError *local_error = NULL;
+
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_method (consolekit, "Restart", error);
+  if (!xfce_consolekit_method (consolekit, "Reboot", &local_error))
+    {
+      if (g_error_matches (local_error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD))
+        {
+          g_error_free (local_error);
+          return xfce_consolekit_method_old (consolekit, "Restart", error);
+        }
+
+      g_propagate_error (error, local_error);
+      return FALSE;
+    }
+
+  return TRUE;
 }
 
 
@@ -359,10 +373,24 @@ gboolean
 xfce_consolekit_power_off (XfceConsolekit *consolekit,
                            GError **error)
 {
+  GError *local_error = NULL;
+
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_method (consolekit, "Stop", error);
+  if (!xfce_consolekit_method (consolekit, "PowerOff", &local_error))
+    {
+      if (g_error_matches (local_error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD))
+        {
+          g_error_free (local_error);
+          return xfce_consolekit_method_old (consolekit, "Stop", error);
+        }
+
+      g_propagate_error (error, local_error);
+      return FALSE;
+    }
+
+  return TRUE;
 }
 
 
@@ -385,7 +413,7 @@ xfce_consolekit_suspend (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_sleep (consolekit, "Suspend", error);
+  return xfce_consolekit_method (consolekit, "Suspend", error);
 }
 
 
@@ -408,7 +436,7 @@ xfce_consolekit_hibernate (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_sleep (consolekit, "Hibernate", error);
+  return xfce_consolekit_method (consolekit, "Hibernate", error);
 }
 
 
@@ -431,7 +459,7 @@ xfce_consolekit_hybrid_sleep (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_sleep (consolekit, "HybridSleep", error);
+  return xfce_consolekit_method (consolekit, "HybridSleep", error);
 }
 
 
@@ -453,10 +481,24 @@ xfce_consolekit_can_reboot (XfceConsolekit *consolekit,
                             gboolean *can_reboot,
                             GError **error)
 {
+  GError *local_error = NULL;
+
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_can_method (consolekit, "CanRestart", can_reboot, error);
+  if (!xfce_consolekit_can_method (consolekit, "CanReboot", can_reboot, NULL, &local_error))
+    {
+      if (g_error_matches (local_error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD))
+        {
+          g_error_free (local_error);
+          return xfce_consolekit_can_method_old (consolekit, "CanRestart", can_reboot, error);
+        }
+
+      g_propagate_error (error, local_error);
+      return FALSE;
+    }
+
+  return TRUE;
 }
 
 
@@ -478,10 +520,24 @@ xfce_consolekit_can_power_off (XfceConsolekit *consolekit,
                                gboolean *can_power_off,
                                GError **error)
 {
+  GError *local_error = NULL;
+
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_can_method (consolekit, "CanStop", can_power_off, error);
+  if (!xfce_consolekit_can_method (consolekit, "CanPowerOff", can_power_off, NULL, &local_error))
+    {
+      if (g_error_matches (local_error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD))
+        {
+          g_error_free (local_error);
+          return xfce_consolekit_can_method_old (consolekit, "CanStop", can_power_off, error);
+        }
+
+      g_propagate_error (error, local_error);
+      return FALSE;
+    }
+
+  return TRUE;
 }
 
 
@@ -508,7 +564,7 @@ xfce_consolekit_can_suspend (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_can_sleep (consolekit, "CanSuspend", can_suspend, auth_suspend, error);
+  return xfce_consolekit_can_method (consolekit, "CanSuspend", can_suspend, auth_suspend, error);
 }
 
 
@@ -535,7 +591,7 @@ xfce_consolekit_can_hibernate (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_can_sleep (consolekit, "CanHibernate", can_hibernate, auth_hibernate, error);
+  return xfce_consolekit_can_method (consolekit, "CanHibernate", can_hibernate, auth_hibernate, error);
 }
 
 
@@ -562,5 +618,5 @@ xfce_consolekit_can_hybrid_sleep (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_can_sleep (consolekit, "CanHybridSleep", can_hybrid_sleep, auth_hybrid_sleep, error);
+  return xfce_consolekit_can_method (consolekit, "CanHybridSleep", can_hybrid_sleep, auth_hybrid_sleep, error);
 }
