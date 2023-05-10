@@ -138,53 +138,10 @@ static gboolean
 xfce_consolekit_can_method_old (XfceConsolekit *consolekit,
                                 const gchar *method,
                                 gboolean *can_method_out,
+                                gboolean *auth_method_out,
                                 GError **error)
 {
   GVariant *variant;
-  gboolean can_method;
-
-  /* never return true if something fails */
-  if (can_method_out != NULL)
-    *can_method_out = FALSE;
-
-  if (consolekit->proxy == NULL)
-    {
-      g_debug ("No ConsoleKit proxy");
-      return FALSE;
-    }
-
-  g_debug ("Calling %s", method);
-
-  variant = g_dbus_proxy_call_sync (consolekit->proxy,
-                                    method,
-                                    NULL,
-                                    G_DBUS_CALL_FLAGS_NONE,
-                                    -1,
-                                    NULL,
-                                    error);
-  if (variant == NULL)
-    return FALSE;
-
-  g_variant_get_child (variant, 0, "b", &can_method);
-  g_variant_unref (variant);
-
-  if (can_method_out != NULL)
-    *can_method_out = can_method;
-
-  return TRUE;
-}
-
-
-
-static gboolean
-xfce_consolekit_can_method (XfceConsolekit *consolekit,
-                            const gchar *method,
-                            gboolean *can_method_out,
-                            gboolean *auth_method_out,
-                            GError **error)
-{
-  GVariant *variant;
-  const gchar *can_string;
   gboolean can_method;
 
   /* never return true if something fails */
@@ -211,17 +168,64 @@ xfce_consolekit_can_method (XfceConsolekit *consolekit,
   if (variant == NULL)
     return FALSE;
 
-  g_variant_get_child (variant, 0, "&s", &can_string);
-
-  /* If yes or challenge then we can sleep, it just might take a password */
-  can_method = g_strcmp0 (can_string, "yes") == 0 || g_strcmp0 (can_string, "challenge") == 0;
-
+  g_variant_get_child (variant, 0, "b", &can_method);
   g_variant_unref (variant);
 
   if (can_method_out != NULL)
     *can_method_out = can_method;
   if (auth_method_out != NULL)
     *auth_method_out = can_method;
+
+  return TRUE;
+}
+
+
+
+static gboolean
+xfce_consolekit_can_method (XfceConsolekit *consolekit,
+                            const gchar *method,
+                            gboolean *can_method_out,
+                            gboolean *auth_method_out,
+                            GError **error)
+{
+  GVariant *variant;
+  const gchar *can_string;
+  gboolean can_method;
+  gboolean auth_method;
+
+  /* never return true if something fails */
+  if (can_method_out != NULL)
+    *can_method_out = FALSE;
+  if (auth_method_out != NULL)
+    *auth_method_out = FALSE;
+
+  if (consolekit->proxy == NULL)
+    {
+      g_debug ("No ConsoleKit proxy");
+      return FALSE;
+    }
+
+  g_debug ("Calling %s", method);
+
+  variant = g_dbus_proxy_call_sync (consolekit->proxy,
+                                    method,
+                                    NULL,
+                                    G_DBUS_CALL_FLAGS_NONE,
+                                    -1,
+                                    NULL,
+                                    error);
+  if (variant == NULL)
+    return FALSE;
+
+  g_variant_get_child (variant, 0, "&s", &can_string);
+  can_method = g_strcmp0 (can_string, "na") != 0;
+  auth_method = g_strcmp0 (can_string, "yes") == 0 || g_strcmp0 (can_string, "challenge") == 0;
+  g_variant_unref (variant);
+
+  if (can_method_out != NULL)
+    *can_method_out = can_method;
+  if (auth_method_out != NULL)
+    *auth_method_out = auth_method;
 
   return TRUE;
 }
@@ -468,6 +472,7 @@ xfce_consolekit_hybrid_sleep (XfceConsolekit *consolekit,
  * xfce_consolekit_can_reboot:
  * @consolekit: the #XfceConsolekit object
  * @can_reboot: (out) (nullable): location to store capacity or %NULL
+ * @auth_reboot: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Check whether ConsoleKit can trigger Reboot.
@@ -479,6 +484,7 @@ xfce_consolekit_hybrid_sleep (XfceConsolekit *consolekit,
 gboolean
 xfce_consolekit_can_reboot (XfceConsolekit *consolekit,
                             gboolean *can_reboot,
+                            gboolean *auth_reboot,
                             GError **error)
 {
   GError *local_error = NULL;
@@ -486,12 +492,12 @@ xfce_consolekit_can_reboot (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  if (!xfce_consolekit_can_method (consolekit, "CanReboot", can_reboot, NULL, &local_error))
+  if (!xfce_consolekit_can_method (consolekit, "CanReboot", can_reboot, auth_reboot, &local_error))
     {
       if (g_error_matches (local_error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD))
         {
           g_error_free (local_error);
-          return xfce_consolekit_can_method_old (consolekit, "CanRestart", can_reboot, error);
+          return xfce_consolekit_can_method_old (consolekit, "CanRestart", can_reboot, auth_reboot, error);
         }
 
       g_propagate_error (error, local_error);
@@ -507,6 +513,7 @@ xfce_consolekit_can_reboot (XfceConsolekit *consolekit,
  * xfce_consolekit_can_power_off:
  * @consolekit: the #XfceConsolekit object
  * @can_power_off: (out) (nullable): location to store capacity or %NULL
+ * @auth_power_off: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Check whether ConsoleKit can trigger PowerOff.
@@ -518,6 +525,7 @@ xfce_consolekit_can_reboot (XfceConsolekit *consolekit,
 gboolean
 xfce_consolekit_can_power_off (XfceConsolekit *consolekit,
                                gboolean *can_power_off,
+                               gboolean *auth_power_off,
                                GError **error)
 {
   GError *local_error = NULL;
@@ -525,12 +533,12 @@ xfce_consolekit_can_power_off (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  if (!xfce_consolekit_can_method (consolekit, "CanPowerOff", can_power_off, NULL, &local_error))
+  if (!xfce_consolekit_can_method (consolekit, "CanPowerOff", can_power_off, auth_power_off, &local_error))
     {
       if (g_error_matches (local_error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD))
         {
           g_error_free (local_error);
-          return xfce_consolekit_can_method_old (consolekit, "CanStop", can_power_off, error);
+          return xfce_consolekit_can_method_old (consolekit, "CanStop", can_power_off, auth_power_off, error);
         }
 
       g_propagate_error (error, local_error);
