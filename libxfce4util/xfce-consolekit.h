@@ -53,10 +53,12 @@ gboolean             xfce_consolekit_hybrid_sleep         (XfceConsolekit       
 
 gboolean             xfce_consolekit_can_reboot           (XfceConsolekit       *consolekit,
                                                            gboolean             *can_reboot,
+                                                           gboolean             *auth_reboot,
                                                            GError              **error);
 
 gboolean             xfce_consolekit_can_power_off        (XfceConsolekit       *consolekit,
                                                            gboolean             *can_power_off,
+                                                           gboolean             *auth_power_off,
                                                            GError              **error);
 
 gboolean             xfce_consolekit_can_suspend          (XfceConsolekit       *consolekit,
