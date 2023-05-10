@@ -36,22 +36,6 @@
 
 
 
-#define SYSTEMD_DBUS_NAME               "org.freedesktop.login1"
-#define SYSTEMD_DBUS_PATH               "/org/freedesktop/login1"
-#define SYSTEMD_DBUS_INTERFACE          "org.freedesktop.login1.Manager"
-#define SYSTEMD_REBOOT_ACTION           "Reboot"
-#define SYSTEMD_POWEROFF_ACTION         "PowerOff"
-#define SYSTEMD_SUSPEND_ACTION          "Suspend"
-#define SYSTEMD_HIBERNATE_ACTION        "Hibernate"
-#define SYSTEMD_HYBRID_SLEEP_ACTION     "HybridSleep"
-#define SYSTEMD_REBOOT_TEST             "CanReboot"
-#define SYSTEMD_POWEROFF_TEST           "CanPowerOff"
-#define SYSTEMD_SUSPEND_TEST            "CanSuspend"
-#define SYSTEMD_HIBERNATE_TEST          "CanHibernate"
-#define SYSTEMD_HYBRID_SLEEP_TEST       "CanHybridSleep"
-
-
-
 static void     xfce_systemd_finalize     (GObject         *object);
 
 
@@ -94,9 +78,9 @@ name_appeared (GDBusConnection *connection,
   systemd->proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
                                                   G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START,
                                                   NULL,
-                                                  SYSTEMD_DBUS_NAME,
-                                                  SYSTEMD_DBUS_PATH,
-                                                  SYSTEMD_DBUS_INTERFACE,
+                                                  "org.freedesktop.login1",
+                                                  "/org/freedesktop/login1",
+                                                  "org.freedesktop.login1.Manager",
                                                   NULL,
                                                   &error);
   if (error != NULL)
@@ -193,9 +177,9 @@ xfce_systemd_can_method (XfceSystemd *systemd,
 
 
 static gboolean
-xfce_systemd_try_method (XfceSystemd *systemd,
-                         const gchar *method,
-                         GError **error)
+xfce_systemd_method (XfceSystemd *systemd,
+                     const gchar *method,
+                     GError **error)
 {
   GVariant *variant;
 
@@ -254,166 +238,166 @@ xfce_systemd_get (void)
 
 
 /**
- * xfce_systemd_try_restart:
+ * xfce_systemd_reboot:
  * @systemd: the #XfceSystemd object
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Ask systemd to trigger restart.
+ * Ask systemd to trigger Reboot.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
  * Since: 4.19.1
  **/
 gboolean
-xfce_systemd_try_restart (XfceSystemd *systemd,
-                          GError **error)
+xfce_systemd_reboot (XfceSystemd *systemd,
+                     GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_try_method (systemd, SYSTEMD_REBOOT_ACTION, error);
+  return xfce_systemd_method (systemd, "Reboot", error);
 }
 
 
 
 /**
- * xfce_systemd_try_shutdown:
+ * xfce_systemd_power_off:
  * @systemd: the #XfceSystemd object
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Ask systemd to trigger shutdown.
+ * Ask systemd to trigger PowerOff.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
  * Since: 4.19.1
  **/
 gboolean
-xfce_systemd_try_shutdown (XfceSystemd *systemd,
+xfce_systemd_power_off (XfceSystemd *systemd,
+                        GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method (systemd, "PowerOff", error);
+}
+
+
+
+/**
+ * xfce_systemd_suspend:
+ * @systemd: the #XfceSystemd object
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger Suspend.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.19.1
+ **/
+gboolean
+xfce_systemd_suspend (XfceSystemd *systemd,
+                      GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method (systemd, "Suspend", error);
+}
+
+
+
+/**
+ * xfce_systemd_hibernate:
+ * @systemd: the #XfceSystemd object
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger Hibernate.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.19.1
+ **/
+gboolean
+xfce_systemd_hibernate (XfceSystemd *systemd,
+                        GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method (systemd, "Hibernate", error);
+}
+
+
+
+/**
+ * xfce_systemd_hybrid_sleep:
+ * @systemd: the #XfceSystemd object
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger HybridSleep.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.19.1
+ **/
+gboolean
+xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
                            GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_try_method (systemd, SYSTEMD_POWEROFF_ACTION, error);
+  return xfce_systemd_method (systemd, "HybridSleep", error);
 }
 
 
 
 /**
- * xfce_systemd_try_suspend:
+ * xfce_systemd_can_reboot:
  * @systemd: the #XfceSystemd object
+ * @can_reboot: (out) (nullable): location to store capacity or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Ask systemd to trigger suspend.
+ * Check whether systemd can trigger Reboot.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
  * Since: 4.19.1
  **/
 gboolean
-xfce_systemd_try_suspend (XfceSystemd *systemd,
-                          GError **error)
+xfce_systemd_can_reboot (XfceSystemd *systemd,
+                         gboolean *can_reboot,
+                         GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_try_method (systemd, SYSTEMD_SUSPEND_ACTION, error);
+  return xfce_systemd_can_method (systemd, can_reboot, "CanReboot", error);
 }
 
 
 
 /**
- * xfce_systemd_try_hibernate:
+ * xfce_systemd_can_power_off:
  * @systemd: the #XfceSystemd object
+ * @can_power_off: (out) (nullable): location to store capacity or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Ask systemd to trigger hibernate.
+ * Check whether systemd can trigger PowerOff.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
  * Since: 4.19.1
  **/
 gboolean
-xfce_systemd_try_hibernate (XfceSystemd *systemd,
+xfce_systemd_can_power_off (XfceSystemd *systemd,
+                            gboolean *can_power_off,
                             GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_try_method (systemd, SYSTEMD_HIBERNATE_ACTION, error);
-}
-
-
-
-/**
- * xfce_systemd_try_hybrid_sleep:
- * @systemd: the #XfceSystemd object
- * @error: (out) (nullable): location to store error on failure or %NULL
- *
- * Ask systemd to trigger hybrid sleep.
- *
- * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
- *
- * Since: 4.19.1
- **/
-gboolean
-xfce_systemd_try_hybrid_sleep (XfceSystemd *systemd,
-                               GError **error)
-{
-  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-
-  return xfce_systemd_try_method (systemd, SYSTEMD_HYBRID_SLEEP_ACTION, error);
-}
-
-
-
-/**
- * xfce_systemd_can_restart:
- * @systemd: the #XfceSystemd object
- * @can_restart: (out) (nullable): location to store capacity or %NULL
- * @error: (out) (nullable): location to store error on failure or %NULL
- *
- * Check whether systemd can trigger restart.
- *
- * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
- *
- * Since: 4.19.1
- **/
-gboolean
-xfce_systemd_can_restart (XfceSystemd *systemd,
-                          gboolean *can_restart,
-                          GError **error)
-{
-  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-
-  return xfce_systemd_can_method (systemd, can_restart, SYSTEMD_REBOOT_TEST, error);
-}
-
-
-
-/**
- * xfce_systemd_can_shutdown:
- * @systemd: the #XfceSystemd object
- * @can_shutdown: (out) (nullable): location to store capacity or %NULL
- * @error: (out) (nullable): location to store error on failure or %NULL
- *
- * Check whether systemd can trigger shutdown.
- *
- * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
- *
- * Since: 4.19.1
- **/
-gboolean
-xfce_systemd_can_shutdown (XfceSystemd *systemd,
-                           gboolean *can_shutdown,
-                           GError **error)
-{
-  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-
-  return xfce_systemd_can_method (systemd, can_shutdown, SYSTEMD_POWEROFF_TEST, error);
+  return xfce_systemd_can_method (systemd, can_power_off, "CanPowerOff", error);
 }
 
 
@@ -425,7 +409,7 @@ xfce_systemd_can_shutdown (XfceSystemd *systemd,
  * @auth_suspend: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Check whether systemd can trigger and has authorization for suspend.
+ * Check whether systemd can trigger and has authorization for Suspend.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
@@ -442,7 +426,7 @@ xfce_systemd_can_suspend (XfceSystemd *systemd,
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  ret = xfce_systemd_can_method (systemd, &can_method, SYSTEMD_SUSPEND_TEST, error);
+  ret = xfce_systemd_can_method (systemd, &can_method, "CanSuspend", error);
 
   if (can_suspend != NULL)
     *can_suspend = can_method;
@@ -461,7 +445,7 @@ xfce_systemd_can_suspend (XfceSystemd *systemd,
  * @auth_hibernate: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Check whether systemd can trigger and has authorization for hibernate.
+ * Check whether systemd can trigger and has authorization for Hibernate.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
@@ -478,7 +462,7 @@ xfce_systemd_can_hibernate (XfceSystemd *systemd,
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  ret = xfce_systemd_can_method (systemd, &can_method, SYSTEMD_HIBERNATE_TEST, error);
+  ret = xfce_systemd_can_method (systemd, &can_method, "CanHibernate", error);
 
   if (can_hibernate != NULL)
     *can_hibernate = can_method;
@@ -497,7 +481,7 @@ xfce_systemd_can_hibernate (XfceSystemd *systemd,
  * @auth_hybrid_sleep: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Check whether systemd can trigger and has authorization for hybrid sleep.
+ * Check whether systemd can trigger and has authorization for HybridSleep.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
@@ -514,7 +498,7 @@ xfce_systemd_can_hybrid_sleep (XfceSystemd *systemd,
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  ret = xfce_systemd_can_method (systemd, &can_method, SYSTEMD_HYBRID_SLEEP_TEST, error);
+  ret = xfce_systemd_can_method (systemd, &can_method, "CanHybridSleep", error);
 
   if (can_hybrid_sleep != NULL)
     *can_hybrid_sleep = can_method;
