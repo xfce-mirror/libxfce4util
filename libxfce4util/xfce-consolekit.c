@@ -36,10 +36,6 @@
 
 #include "xfce-consolekit.h"
 
-#define CK_NAME         "org.freedesktop.ConsoleKit"
-#define CK_MANAGER_PATH "/org/freedesktop/ConsoleKit/Manager"
-#define CK_MANAGER_NAME CK_NAME ".Manager"
-
 
 
 static void     xfce_consolekit_finalize     (GObject         *object);
@@ -84,9 +80,9 @@ name_appeared (GDBusConnection *connection,
   consolekit->proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
                                                      G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START,
                                                      NULL,
-                                                     CK_NAME,
-                                                     CK_MANAGER_PATH,
-                                                     CK_MANAGER_NAME,
+                                                     "org.freedesktop.ConsoleKit",
+                                                     "/org/freedesktop/ConsoleKit/Manager",
+                                                     "org.freedesktop.ConsoleKit.Manager",
                                                      NULL,
                                                      &error);
   if (error != NULL)
@@ -116,7 +112,7 @@ static void
 xfce_consolekit_init (XfceConsolekit *consolekit)
 {
   g_bus_watch_name (G_BUS_TYPE_SYSTEM,
-                    CK_NAME,
+                    "org.freedesktop.ConsoleKit",
                     G_BUS_NAME_WATCHER_FLAGS_AUTO_START,
                     name_appeared,
                     name_vanished,
@@ -233,9 +229,9 @@ xfce_consolekit_can_sleep (XfceConsolekit *consolekit,
 
 
 static gboolean
-xfce_consolekit_try_method (XfceConsolekit *consolekit,
-                            const gchar *method,
-                            GError **error)
+xfce_consolekit_method (XfceConsolekit *consolekit,
+                        const gchar *method,
+                        GError **error)
 {
   GVariant *variant;
 
@@ -265,9 +261,9 @@ xfce_consolekit_try_method (XfceConsolekit *consolekit,
 
 
 static gboolean
-xfce_consolekit_try_sleep (XfceConsolekit *consolekit,
-                           const gchar *method,
-                           GError **error)
+xfce_consolekit_sleep (XfceConsolekit *consolekit,
+                       const gchar *method,
+                       GError **error)
 {
   GVariant *variant;
 
@@ -326,166 +322,166 @@ xfce_consolekit_get (void)
 
 
 /**
- * xfce_consolekit_try_restart:
+ * xfce_consolekit_reboot:
  * @consolekit: the #XfceConsolekit object
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Ask ConsoleKit to trigger restart.
+ * Ask ConsoleKit to trigger Reboot.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
  * Since: 4.19.1
  **/
 gboolean
-xfce_consolekit_try_restart (XfceConsolekit *consolekit,
-                             GError **error)
+xfce_consolekit_reboot (XfceConsolekit *consolekit,
+                        GError **error)
 {
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_try_method (consolekit, "Restart", error);
+  return xfce_consolekit_method (consolekit, "Restart", error);
 }
 
 
 
 /**
- * xfce_consolekit_try_shutdown:
+ * xfce_consolekit_power_off:
  * @consolekit: the #XfceConsolekit object
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Ask ConsoleKit to trigger shutdown.
+ * Ask ConsoleKit to trigger PowerOff.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
  * Since: 4.19.1
  **/
 gboolean
-xfce_consolekit_try_shutdown (XfceConsolekit *consolekit,
+xfce_consolekit_power_off (XfceConsolekit *consolekit,
+                           GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_consolekit_method (consolekit, "Stop", error);
+}
+
+
+
+/**
+ * xfce_consolekit_suspend:
+ * @consolekit: the #XfceConsolekit object
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask ConsoleKit to trigger Suspend.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.19.1
+ **/
+gboolean
+xfce_consolekit_suspend (XfceConsolekit *consolekit,
+                         GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_consolekit_sleep (consolekit, "Suspend", error);
+}
+
+
+
+/**
+ * xfce_consolekit_hibernate:
+ * @consolekit: the #XfceConsolekit object
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask ConsoleKit to trigger Hibernate.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.19.1
+ **/
+gboolean
+xfce_consolekit_hibernate (XfceConsolekit *consolekit,
+                           GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_consolekit_sleep (consolekit, "Hibernate", error);
+}
+
+
+
+/**
+ * xfce_consolekit_hybrid_sleep:
+ * @consolekit: the #XfceConsolekit object
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask ConsoleKit to trigger HybridSleep.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.19.1
+ **/
+gboolean
+xfce_consolekit_hybrid_sleep (XfceConsolekit *consolekit,
                               GError **error)
 {
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_try_method (consolekit, "Stop", error);
+  return xfce_consolekit_sleep (consolekit, "HybridSleep", error);
 }
 
 
 
 /**
- * xfce_consolekit_try_suspend:
+ * xfce_consolekit_can_reboot:
  * @consolekit: the #XfceConsolekit object
+ * @can_reboot: (out) (nullable): location to store capacity or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Ask ConsoleKit to trigger suspend.
+ * Check whether ConsoleKit can trigger Reboot.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
  * Since: 4.19.1
  **/
 gboolean
-xfce_consolekit_try_suspend (XfceConsolekit *consolekit,
-                             GError **error)
+xfce_consolekit_can_reboot (XfceConsolekit *consolekit,
+                            gboolean *can_reboot,
+                            GError **error)
 {
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_try_sleep (consolekit, "Suspend", error);
+  return xfce_consolekit_can_method (consolekit, "CanRestart", can_reboot, error);
 }
 
 
 
 /**
- * xfce_consolekit_try_hibernate:
+ * xfce_consolekit_can_power_off:
  * @consolekit: the #XfceConsolekit object
+ * @can_power_off: (out) (nullable): location to store capacity or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Ask ConsoleKit to trigger hibernate.
+ * Check whether ConsoleKit can trigger PowerOff.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
  * Since: 4.19.1
  **/
 gboolean
-xfce_consolekit_try_hibernate (XfceConsolekit *consolekit,
+xfce_consolekit_can_power_off (XfceConsolekit *consolekit,
+                               gboolean *can_power_off,
                                GError **error)
 {
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_try_sleep (consolekit, "Hibernate", error);
-}
-
-
-
-/**
- * xfce_consolekit_try_hybrid_sleep:
- * @consolekit: the #XfceConsolekit object
- * @error: (out) (nullable): location to store error on failure or %NULL
- *
- * Ask ConsoleKit to trigger hybrid sleep.
- *
- * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
- *
- * Since: 4.19.1
- **/
-gboolean
-xfce_consolekit_try_hybrid_sleep (XfceConsolekit *consolekit,
-                                  GError **error)
-{
-  g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-
-  return xfce_consolekit_try_sleep (consolekit, "HybridSleep", error);
-}
-
-
-
-/**
- * xfce_consolekit_can_restart:
- * @consolekit: the #XfceConsolekit object
- * @can_restart: (out) (nullable): location to store capacity or %NULL
- * @error: (out) (nullable): location to store error on failure or %NULL
- *
- * Check whether ConsoleKit can trigger restart.
- *
- * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
- *
- * Since: 4.19.1
- **/
-gboolean
-xfce_consolekit_can_restart (XfceConsolekit *consolekit,
-                             gboolean *can_restart,
-                             GError **error)
-{
-  g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-
-  return xfce_consolekit_can_method (consolekit, "CanRestart", can_restart, error);
-}
-
-
-
-/**
- * xfce_consolekit_can_shutdown:
- * @consolekit: the #XfceConsolekit object
- * @can_shutdown: (out) (nullable): location to store capacity or %NULL
- * @error: (out) (nullable): location to store error on failure or %NULL
- *
- * Check whether ConsoleKit can trigger shutdown.
- *
- * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
- *
- * Since: 4.19.1
- **/
-gboolean
-xfce_consolekit_can_shutdown (XfceConsolekit *consolekit,
-                              gboolean *can_shutdown,
-                              GError **error)
-{
-  g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
-  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-
-  return xfce_consolekit_can_method (consolekit, "CanStop", can_shutdown, error);
+  return xfce_consolekit_can_method (consolekit, "CanStop", can_power_off, error);
 }
 
 
@@ -497,7 +493,7 @@ xfce_consolekit_can_shutdown (XfceConsolekit *consolekit,
  * @auth_suspend: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Check whether ConsoleKit can trigger and has authorization for suspend.
+ * Check whether ConsoleKit can trigger and has authorization for Suspend.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
@@ -524,7 +520,7 @@ xfce_consolekit_can_suspend (XfceConsolekit *consolekit,
  * @auth_hibernate: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Check whether ConsoleKit can trigger and has authorization for hibernate.
+ * Check whether ConsoleKit can trigger and has authorization for Hibernate.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
@@ -551,7 +547,7 @@ xfce_consolekit_can_hibernate (XfceConsolekit *consolekit,
  * @auth_hybrid_sleep: (out) (nullable): location to store authorization or %NULL
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
- * Check whether ConsoleKit can trigger and has authorization for hybrid sleep.
+ * Check whether ConsoleKit can trigger and has authorization for HybridSleep.
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
