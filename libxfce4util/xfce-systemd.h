@@ -36,18 +36,23 @@ G_DECLARE_FINAL_TYPE (XfceSystemd, xfce_systemd, XFCE, SYSTEMD, GObject);
 XfceSystemd      *xfce_systemd_get                    (void);
 
 gboolean          xfce_systemd_reboot                 (XfceSystemd      *systemd,
+                                                       gboolean          polkit_interactive,
                                                        GError          **error);
 
 gboolean          xfce_systemd_power_off              (XfceSystemd      *systemd,
+                                                       gboolean          polkit_interactive,
                                                        GError          **error);
 
 gboolean          xfce_systemd_suspend                (XfceSystemd      *systemd,
+                                                       gboolean          polkit_interactive,
                                                        GError          **error);
 
 gboolean          xfce_systemd_hibernate              (XfceSystemd      *systemd,
+                                                       gboolean          polkit_interactive,
                                                        GError          **error);
 
 gboolean          xfce_systemd_hybrid_sleep           (XfceSystemd      *systemd,
+                                                       gboolean          polkit_interactive,
                                                        GError          **error);
 
 gboolean          xfce_systemd_can_reboot             (XfceSystemd      *systemd,

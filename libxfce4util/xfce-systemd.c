@@ -186,6 +186,7 @@ xfce_systemd_can_method (XfceSystemd *systemd,
 static gboolean
 xfce_systemd_method (XfceSystemd *systemd,
                      const gchar *method,
+                     gboolean polkit_interactive,
                      GError **error)
 {
   GVariant *variant;
@@ -200,7 +201,7 @@ xfce_systemd_method (XfceSystemd *systemd,
 
   variant = g_dbus_proxy_call_sync (systemd->proxy,
                                     method,
-                                    g_variant_new ("(b)", TRUE),
+                                    g_variant_new ("(b)", polkit_interactive),
                                     G_DBUS_CALL_FLAGS_NONE,
                                     -1,
                                     NULL,
@@ -247,6 +248,7 @@ xfce_systemd_get (void)
 /**
  * xfce_systemd_reboot:
  * @systemd: the #XfceSystemd object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask systemd to trigger Reboot.
@@ -257,12 +259,13 @@ xfce_systemd_get (void)
  **/
 gboolean
 xfce_systemd_reboot (XfceSystemd *systemd,
+                     gboolean polkit_interactive,
                      GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_method (systemd, "Reboot", error);
+  return xfce_systemd_method (systemd, "Reboot", polkit_interactive, error);
 }
 
 
@@ -270,6 +273,7 @@ xfce_systemd_reboot (XfceSystemd *systemd,
 /**
  * xfce_systemd_power_off:
  * @systemd: the #XfceSystemd object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask systemd to trigger PowerOff.
@@ -280,12 +284,13 @@ xfce_systemd_reboot (XfceSystemd *systemd,
  **/
 gboolean
 xfce_systemd_power_off (XfceSystemd *systemd,
+                        gboolean polkit_interactive,
                         GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_method (systemd, "PowerOff", error);
+  return xfce_systemd_method (systemd, "PowerOff", polkit_interactive, error);
 }
 
 
@@ -293,6 +298,7 @@ xfce_systemd_power_off (XfceSystemd *systemd,
 /**
  * xfce_systemd_suspend:
  * @systemd: the #XfceSystemd object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask systemd to trigger Suspend.
@@ -303,12 +309,13 @@ xfce_systemd_power_off (XfceSystemd *systemd,
  **/
 gboolean
 xfce_systemd_suspend (XfceSystemd *systemd,
+                      gboolean polkit_interactive,
                       GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_method (systemd, "Suspend", error);
+  return xfce_systemd_method (systemd, "Suspend", polkit_interactive, error);
 }
 
 
@@ -316,6 +323,7 @@ xfce_systemd_suspend (XfceSystemd *systemd,
 /**
  * xfce_systemd_hibernate:
  * @systemd: the #XfceSystemd object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask systemd to trigger Hibernate.
@@ -326,12 +334,13 @@ xfce_systemd_suspend (XfceSystemd *systemd,
  **/
 gboolean
 xfce_systemd_hibernate (XfceSystemd *systemd,
+                        gboolean polkit_interactive,
                         GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_method (systemd, "Hibernate", error);
+  return xfce_systemd_method (systemd, "Hibernate", polkit_interactive, error);
 }
 
 
@@ -339,6 +348,7 @@ xfce_systemd_hibernate (XfceSystemd *systemd,
 /**
  * xfce_systemd_hybrid_sleep:
  * @systemd: the #XfceSystemd object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask systemd to trigger HybridSleep.
@@ -349,12 +359,13 @@ xfce_systemd_hibernate (XfceSystemd *systemd,
  **/
 gboolean
 xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
+                           gboolean polkit_interactive,
                            GError **error)
 {
   g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_systemd_method (systemd, "HybridSleep", error);
+  return xfce_systemd_method (systemd, "HybridSleep", polkit_interactive, error);
 }
 
 
