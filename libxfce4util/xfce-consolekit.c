@@ -267,6 +267,7 @@ xfce_consolekit_method_old (XfceConsolekit *consolekit,
 static gboolean
 xfce_consolekit_method (XfceConsolekit *consolekit,
                         const gchar *method,
+                        gboolean polkit_interactive,
                         GError **error)
 {
   GVariant *variant;
@@ -281,7 +282,7 @@ xfce_consolekit_method (XfceConsolekit *consolekit,
 
   variant = g_dbus_proxy_call_sync (consolekit->proxy,
                                     method,
-                                    g_variant_new ("(b)", TRUE),
+                                    g_variant_new ("(b)", polkit_interactive),
                                     G_DBUS_CALL_FLAGS_NONE,
                                     -1,
                                     NULL,
@@ -328,6 +329,7 @@ xfce_consolekit_get (void)
 /**
  * xfce_consolekit_reboot:
  * @consolekit: the #XfceConsolekit object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask ConsoleKit to trigger Reboot.
@@ -338,6 +340,7 @@ xfce_consolekit_get (void)
  **/
 gboolean
 xfce_consolekit_reboot (XfceConsolekit *consolekit,
+                        gboolean polkit_interactive,
                         GError **error)
 {
   GError *local_error = NULL;
@@ -345,7 +348,7 @@ xfce_consolekit_reboot (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  if (!xfce_consolekit_method (consolekit, "Reboot", &local_error))
+  if (!xfce_consolekit_method (consolekit, "Reboot", polkit_interactive, &local_error))
     {
       if (g_error_matches (local_error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD))
         {
@@ -365,6 +368,7 @@ xfce_consolekit_reboot (XfceConsolekit *consolekit,
 /**
  * xfce_consolekit_power_off:
  * @consolekit: the #XfceConsolekit object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask ConsoleKit to trigger PowerOff.
@@ -375,6 +379,7 @@ xfce_consolekit_reboot (XfceConsolekit *consolekit,
  **/
 gboolean
 xfce_consolekit_power_off (XfceConsolekit *consolekit,
+                           gboolean polkit_interactive,
                            GError **error)
 {
   GError *local_error = NULL;
@@ -382,7 +387,7 @@ xfce_consolekit_power_off (XfceConsolekit *consolekit,
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  if (!xfce_consolekit_method (consolekit, "PowerOff", &local_error))
+  if (!xfce_consolekit_method (consolekit, "PowerOff", polkit_interactive, &local_error))
     {
       if (g_error_matches (local_error, G_DBUS_ERROR, G_DBUS_ERROR_UNKNOWN_METHOD))
         {
@@ -402,6 +407,7 @@ xfce_consolekit_power_off (XfceConsolekit *consolekit,
 /**
  * xfce_consolekit_suspend:
  * @consolekit: the #XfceConsolekit object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask ConsoleKit to trigger Suspend.
@@ -412,12 +418,13 @@ xfce_consolekit_power_off (XfceConsolekit *consolekit,
  **/
 gboolean
 xfce_consolekit_suspend (XfceConsolekit *consolekit,
+                         gboolean polkit_interactive,
                          GError **error)
 {
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_method (consolekit, "Suspend", error);
+  return xfce_consolekit_method (consolekit, "Suspend", polkit_interactive, error);
 }
 
 
@@ -425,6 +432,7 @@ xfce_consolekit_suspend (XfceConsolekit *consolekit,
 /**
  * xfce_consolekit_hibernate:
  * @consolekit: the #XfceConsolekit object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask ConsoleKit to trigger Hibernate.
@@ -435,12 +443,13 @@ xfce_consolekit_suspend (XfceConsolekit *consolekit,
  **/
 gboolean
 xfce_consolekit_hibernate (XfceConsolekit *consolekit,
+                           gboolean polkit_interactive,
                            GError **error)
 {
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_method (consolekit, "Hibernate", error);
+  return xfce_consolekit_method (consolekit, "Hibernate", polkit_interactive, error);
 }
 
 
@@ -448,6 +457,7 @@ xfce_consolekit_hibernate (XfceConsolekit *consolekit,
 /**
  * xfce_consolekit_hybrid_sleep:
  * @consolekit: the #XfceConsolekit object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
  * @error: (out) (nullable): location to store error on failure or %NULL
  *
  * Ask ConsoleKit to trigger HybridSleep.
@@ -458,12 +468,13 @@ xfce_consolekit_hibernate (XfceConsolekit *consolekit,
  **/
 gboolean
 xfce_consolekit_hybrid_sleep (XfceConsolekit *consolekit,
+                              gboolean polkit_interactive,
                               GError **error)
 {
   g_return_val_if_fail (XFCE_IS_CONSOLEKIT (consolekit), FALSE);
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
-  return xfce_consolekit_method (consolekit, "HybridSleep", error);
+  return xfce_consolekit_method (consolekit, "HybridSleep", polkit_interactive, error);
 }
 
 

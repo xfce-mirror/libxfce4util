@@ -37,18 +37,23 @@ G_DECLARE_FINAL_TYPE (XfceConsolekit, xfce_consolekit, XFCE, CONSOLEKIT, GObject
 XfceConsolekit      *xfce_consolekit_get                  (void);
 
 gboolean             xfce_consolekit_reboot               (XfceConsolekit       *consolekit,
+                                                           gboolean              polkit_interactive,
                                                            GError              **error);
 
 gboolean             xfce_consolekit_power_off            (XfceConsolekit       *consolekit,
+                                                           gboolean              polkit_interactive,
                                                            GError              **error);
 
 gboolean             xfce_consolekit_suspend              (XfceConsolekit       *consolekit,
+                                                           gboolean              polkit_interactive,
                                                            GError              **error);
 
 gboolean             xfce_consolekit_hibernate            (XfceConsolekit       *consolekit,
+                                                           gboolean              polkit_interactive,
                                                            GError              **error);
 
 gboolean             xfce_consolekit_hybrid_sleep         (XfceConsolekit       *consolekit,
+                                                           gboolean              polkit_interactive,
                                                            GError              **error);
 
 gboolean             xfce_consolekit_can_reboot           (XfceConsolekit       *consolekit,
