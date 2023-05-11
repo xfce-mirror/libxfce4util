@@ -45,6 +45,7 @@ struct _XfceSystemd
   GObject __parent__;
 
   GDBusProxy *proxy;
+  guint watch_id;
 };
 
 
@@ -109,13 +110,13 @@ name_vanished (GDBusConnection *connection,
 static void
 xfce_systemd_init (XfceSystemd *systemd)
 {
-  g_bus_watch_name (G_BUS_TYPE_SYSTEM,
-                    "org.freedesktop.login1",
-                    G_BUS_NAME_WATCHER_FLAGS_AUTO_START,
-                    name_appeared,
-                    name_vanished,
-                    systemd,
-                    NULL);
+  systemd->watch_id = g_bus_watch_name (G_BUS_TYPE_SYSTEM,
+                                        "org.freedesktop.login1",
+                                        G_BUS_NAME_WATCHER_FLAGS_AUTO_START,
+                                        name_appeared,
+                                        name_vanished,
+                                        systemd,
+                                        NULL);
 }
 
 
@@ -125,6 +126,7 @@ xfce_systemd_finalize (GObject *object)
 {
   XfceSystemd *systemd = XFCE_SYSTEMD (object);
 
+  g_bus_unwatch_name (systemd->watch_id);
   g_clear_object (&systemd->proxy);
 
   G_OBJECT_CLASS (xfce_systemd_parent_class)->finalize (object);

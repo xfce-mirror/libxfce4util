@@ -47,6 +47,7 @@ struct _XfceConsolekit
   GObject __parent__;
 
   GDBusProxy *proxy;
+  guint watch_id;
 };
 
 
@@ -111,13 +112,13 @@ name_vanished (GDBusConnection *connection,
 static void
 xfce_consolekit_init (XfceConsolekit *consolekit)
 {
-  g_bus_watch_name (G_BUS_TYPE_SYSTEM,
-                    "org.freedesktop.ConsoleKit",
-                    G_BUS_NAME_WATCHER_FLAGS_AUTO_START,
-                    name_appeared,
-                    name_vanished,
-                    consolekit,
-                    NULL);
+  consolekit->watch_id = g_bus_watch_name (G_BUS_TYPE_SYSTEM,
+                                           "org.freedesktop.ConsoleKit",
+                                           G_BUS_NAME_WATCHER_FLAGS_AUTO_START,
+                                           name_appeared,
+                                           name_vanished,
+                                           consolekit,
+                                           NULL);
 }
 
 
@@ -127,6 +128,7 @@ xfce_consolekit_finalize (GObject *object)
 {
   XfceConsolekit *consolekit = XFCE_CONSOLEKIT (object);
 
+  g_bus_unwatch_name (consolekit->watch_id);
   g_clear_object (&consolekit->proxy);
 
   G_OBJECT_CLASS (xfce_consolekit_parent_class)->finalize (object);
