@@ -1,3 +1,12 @@
+4.19.2 (2023-05-11)
+======
+- Allow disabling polkit interactivity in session management (Fixes #21)
+- consolekit: Complete implementation
+- consolekit: Use Reboot and PowerOff ConsoleKit2 methods
+- consolekit: Name methods according to the specification
+- systemd: Complete implementation
+- systemd: Name methods according to the specification
+
 4.19.1 (2023-05-07)
 ======
 - Add XfceConsolekit and XfceSystemd
