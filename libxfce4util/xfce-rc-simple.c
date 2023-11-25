@@ -649,6 +649,20 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
           continue;
         }
 
+      if (rc->languages != NULL)
+        {
+          if (!readonly)
+            simple_add_entry (simple, key, value, locale);
+          else
+            {
+              for (int i = 0; i < rc->languages->len; i++)
+                if (xfce_locale_match (g_array_index (rc->languages, gchar*, i), locale) > XFCE_LOCALE_NO_MATCH)
+                  simple_add_entry (simple, key, value, locale);
+            }
+
+          continue;
+        }
+
       if (rc->locale == NULL)
         continue;
 
@@ -1002,14 +1016,25 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
   if (G_LIKELY (entry != NULL))
     {
       /* check for localized entry (best fit!) */
-      if (G_LIKELY (translated && rc->locale != NULL))
+      if (G_LIKELY (translated && (rc->locale != NULL || rc->languages != NULL)))
         {
           best_match = XFCE_LOCALE_NO_MATCH;
           best_value = NULL;
 
           for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
             {
-              match = xfce_locale_match (rc->locale, lentry->locale);
+              if (rc->languages == NULL)
+                match = xfce_locale_match (rc->locale, lentry->locale);
+              else
+                {
+                  for (int i = 0; i < rc->languages->len; i++)
+                    {
+                      match = xfce_locale_match (g_array_index (rc->languages, gchar*, i), lentry->locale);
+                      if (match > XFCE_LOCALE_NO_MATCH)
+                        break;
+                    }
+                }
+
               if (match == XFCE_LOCALE_FULL_MATCH)
                 {
                   /* FULL MATCH */
