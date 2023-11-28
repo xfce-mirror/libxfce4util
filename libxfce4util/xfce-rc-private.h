@@ -61,7 +61,7 @@ struct _XfceRc
                                  const gchar  *value);
 
   gchar   *locale;
-  GArray  *languages;
+  gchar  **languages;
 };
 
 #define XFCE_RC_CONFIG(obj)       ((XfceRcConfig *) (obj))
