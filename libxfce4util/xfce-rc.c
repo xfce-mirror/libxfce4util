@@ -88,12 +88,17 @@ void
 _xfce_rc_init (XfceRc *rc)
 {
 #ifdef HAVE_SETLOCALE
+  const gchar *language;
   gchar *locale;
 #endif
 
   _xfce_return_if_fail (rc != NULL);
 
 #ifdef HAVE_SETLOCALE
+  language = g_getenv ("LANGUAGE");
+  if (language != NULL)
+    rc->languages = g_strsplit (language, ":", -1);
+
   locale = setlocale (LC_MESSAGES, NULL);
   if (locale != NULL
       && strcmp (locale, "C") != 0
@@ -208,6 +213,9 @@ xfce_rc_close (XfceRc *rc)
 
   if (rc->locale != NULL)
     g_free (rc->locale);
+
+  if (rc->languages != NULL)
+    g_strfreev (rc->languages);
 
   g_free (rc);
 }

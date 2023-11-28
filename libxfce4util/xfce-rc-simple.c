@@ -552,6 +552,26 @@ simple_group_free (Group *group)
 
 
 
+static guint
+xfce_locale_match_rc (const XfceRc *rc, const gchar *locale)
+{
+  if (rc->languages != NULL)
+    {
+      for (gchar **plng = rc->languages; *plng != NULL; plng++)
+        {
+          guint match = xfce_locale_match (*plng, locale);
+          if (match > XFCE_LOCALE_NO_MATCH)
+            return match;
+        }
+    }
+  else if (rc->locale != NULL)
+    return xfce_locale_match (rc->locale, locale);
+
+  return XFCE_LOCALE_NO_MATCH;
+}
+
+
+
 XfceRcSimple*
 _xfce_rc_simple_new (XfceRcSimple *shared,
                      const gchar  *filename,
@@ -649,10 +669,10 @@ _xfce_rc_simple_parse (XfceRcSimple *simple)
           continue;
         }
 
-      if (rc->locale == NULL)
+      if (rc->locale == NULL && rc->languages == NULL)
         continue;
 
-      if (!readonly || xfce_locale_match (rc->locale, locale) > XFCE_LOCALE_NO_MATCH)
+      if (!readonly || xfce_locale_match_rc (rc, locale) > XFCE_LOCALE_NO_MATCH)
         simple_add_entry (simple, key, value, locale);
     }
 
@@ -1002,14 +1022,14 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
   if (G_LIKELY (entry != NULL))
     {
       /* check for localized entry (best fit!) */
-      if (G_LIKELY (translated && rc->locale != NULL))
+      if (G_LIKELY (translated && (rc->locale != NULL || rc->languages != NULL)))
         {
           best_match = XFCE_LOCALE_NO_MATCH;
           best_value = NULL;
 
           for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
             {
-              match = xfce_locale_match (rc->locale, lentry->locale);
+              match = xfce_locale_match_rc (rc, lentry->locale);
               if (match == XFCE_LOCALE_FULL_MATCH)
                 {
                   /* FULL MATCH */
