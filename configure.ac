@@ -83,6 +83,11 @@ dnl **************************
 LT_PREREQ([2.2.6])
 LT_INIT([disable-static])
 
+dnl ****************************************************
+dnl *** Check for bind_textdomain_codeset in libintl ***
+dnl ****************************************************
+AC_SEARCH_LIBS([bind_textdomain_codeset], [intl], [], [])
+
 dnl ***************************************
 dnl *** Check for standard header files ***
 dnl ***************************************
