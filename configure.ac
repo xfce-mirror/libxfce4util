@@ -89,8 +89,7 @@ dnl ***************************************
 AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
                   signal.h sys/stat.h sys/types.h sys/utsname.h \
                   time.h unistd.h stdarg.h varargs.h libintl.h])
-AC_CHECK_FUNCS([gethostname getpwnam setlocale strdup \
-                bind_textdomain_codeset])
+AC_CHECK_FUNCS([gethostname getpwnam setlocale strdup])
 
 dnl ******************************
 dnl *** Check for i18n support ***
@@ -100,6 +99,9 @@ AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Name of default get
 AC_SUBST([GETTEXT_PACKAGE])
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.19.8])
+AC_SEARCH_LIBS([bind_textdomain_codeset], [intl],
+  [AC_DEFINE([HAVE_BIND_TEXTDOMAIN_CODESET], [1], [Define to 1 if you have the 'bind_textdomain_codeset' function.])],
+  [])
 
 dnl ***********************************
 dnl *** Check for GObject installed ***
