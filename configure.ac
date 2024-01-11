@@ -87,13 +87,15 @@ dnl ***************************************
 AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
                   signal.h sys/stat.h sys/types.h sys/utsname.h \
                   time.h unistd.h stdarg.h varargs.h libintl.h])
-AC_CHECK_FUNCS([gethostname getpwnam setlocale strdup \
-                bind_textdomain_codeset])
+AC_CHECK_FUNCS([gethostname getpwnam setlocale strdup])
 
 dnl ******************************
 dnl *** Check for i18n support ***
 dnl ******************************
 XDT_I18N()
+AC_SEARCH_LIBS([bind_textdomain_codeset], [intl],
+  [AC_DEFINE([HAVE_BIND_TEXTDOMAIN_CODESET], [1], [Define to 1 if you have the 'bind_textdomain_codeset' function.])],
+  [])
 
 dnl ***********************************
 dnl *** Check for GObject installed ***
