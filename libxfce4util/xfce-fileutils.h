@@ -35,6 +35,8 @@ gboolean  xfce_mkdirhier                    (const gchar *whole_path,
                                              GError     **error);
 gchar*    xfce_create_shared_thumbnail_path (const gchar *uri,
                                              const gchar *size);
+gchar*    xfce_create_shared_thumbnail_uri  (const gchar *uri,
+                                             const gchar *size);
 
 G_END_DECLS
 
