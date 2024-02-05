@@ -1,3 +1,10 @@
+4.19.3 (2024-02-05)
+======
+- Update copyright year
+- Search for bind_textdomain_codeset in libintl too
+- xfce-rc: Add support for the LANGUAGE environment variable
+- session-management: Fix name watching management
+
 4.19.2 (2023-05-11)
 ======
 - Allow disabling polkit interactivity in session management (Fixes #21)
