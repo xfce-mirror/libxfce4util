@@ -68,7 +68,7 @@ main (int argc, char **argv)
         {
         case 'v':
           printf ("xfce4-kiosk-query %s (Xfce %s)\n\n"
-                  "Copyright (c) 2003-2023\n"
+                  "Copyright (c) 2003-2024\n"
                   "        The Xfce development team. All rights reserved.\n"
                   "Written for Xfce by Benedikt Meurer <benny@xfce.org>.\n\n"
                   "Please report bugs to <%s>.\n",
