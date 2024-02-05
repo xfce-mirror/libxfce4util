@@ -1,5 +1,5 @@
 dnl
-dnl Copyright (c) 2002-2022
+dnl Copyright (c) 2002-2024
 dnl         The Xfce development team. All rights reserved.
 dnl
 dnl Written for Xfce by Benedikt Meurer <benny@xfce.org>, Jasper
@@ -23,7 +23,7 @@ dnl # YOU ARE DOING.
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2002-2022
+AC_COPYRIGHT([Copyright (c) 2002-2024
         The Xfce development team. All rights reserved.])
 AC_INIT([libxfce4util], [xdt_version], [https://gitlab.xfce.org/xfce/libxfce4util])
 AC_PREREQ([2.69])
