@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the libxfce4util.master package.
 # 
 # Translators:
 # Ápo. <apostolos.papadimitriu@gmail.com>, 2016-2017
@@ -14,23 +14,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-28 14:58+0100\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2023-05-30 00:46+0200\n"
 "PO-Revision-Date: 2013-07-02 20:35+0000\n"
-"Last-Translator: Ioannis LM, 2022-2023\n"
-"Language-Team: Greek (http://www.transifex.com/xfce/libxfce4util/language/el/)\n"
+"Last-Translator: Πέτρος Σαμαράς <psamaras1@gmail.com>, 2017\n"
+"Language-Team: Greek (http://app.transifex.com/xfce/libxfce4util/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libxfce4util/xfce-fileutils.c:162
+#: libxfce4util/xfce-fileutils.c:162
 #, c-format
 msgid "Error creating directory '%s': %s"
 msgstr "Σφάλμα δημιουργίας του καταλόγου '%s': %s"
 
-#: ../libxfce4util/xfce-license.c:43
+#: libxfce4util/xfce-license.c:43
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -54,7 +54,7 @@ msgid ""
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
 msgstr " Η αναδιανομή και η χρήση του κώδικα και των δυαδικών μορφών του, με \nή χωρίς τροποποίηση, επιτρέπονται αν πληρούνται οι ακόλουθοι όροι:\n\n 1. Οι αναδιανομές του κώδικα πρέπει να διατηρούν τα πνευματικά δικαιώματα\n    και την αποποίηση ευθυνών αυτής της λίστας των όρων.\n 2. Οι αναδιανομές των δυαδικών μορφών πρέπει να περιέχουν τα πνευματικά\n    δικαιώματα και την αποποίηση ευθυνών αυτής της λίστας των όρων, στην\n    τεκμηρίωση ή/και σε άλλο υλικό που παρέχεται με τη διανομή.\n\n ΑΥΤΟ ΤΟ ΛΟΓΙΣΜΙΚΟ ΠΑΡΕΧΕΤΑΙ ΑΠΟ ΤΟΝ ΣΥΓΓΡΑΦΕΑ ``ΩΣ ΕΧΕΙ`` ΚΑΙ \n ΑΠΟΠΟΙΟΥΝΤΑΙ ΟΠΟΙΕΣΔΗΠΟΤΕ ΑΜΕΣΕΣ Η ΕΜΜΕΣΕΣ ΕΓΓΥΗΣΕΙΣ, \n ΣΥΜΠΕΡΙΛΑΜΒΑΝΟΜΕΝΩΝ ΜΕΤΑΞΥ ΤΩΝ ΑΛΛΩΝ ΤΗΣ ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ΚΑΙ \n ΤΗΣ ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ.\n ΣΕ ΚΑΜΙΑ ΠΕΡΙΠΤΩΣΗ Ο ΣΥΓΓΡΑΦΕΑΣ ΔΕΝ ΕΥΘΥΝΕΤΑΙ ΓΙΑ ΟΠΟΙΕΣΔΗΠΟΤΕ \n ΑΜΕΣΕΣ, ΕΜΜΕΣΕΣ, ΤΥΧΑΙΕΣ, ΕΙΔΙΚΕΣ, ΕΝΔΕΙΚΤΙΚΕΣ Η ΕΠΑΚΟΛΟΥΘΕΣ \n ΖΗΜΙΕΣ (ΠΟΥ ΠΕΡΙΛΑΜΒΑΝΟΥΝ, ΑΛΛΑ ΔΕΝ ΠΕΡΙΟΡΙΖΟΝΤΑΙ ΜΟΝΟ ΣΤΗ ΠΑΡΟΧΗ \n ΑΓΑΘΩΝ Η ΥΠΗΡΕΣΙΩΝ: ΣΤΗ ΔΥΣΛΕΙΤΟΥΡΓΙΑ, ΣΤΗΝ ΑΠΩΛΕΙΑ ΔΕΔΟΜΕΝΩΝ Η \n ΚΕΡΔΩΝ: Η ΣΤΗ ΔΙΑΚΟΠΗ ΕΡΓΑΣΙΩΝ) ΑΝΕΞΑΡΤΗΤΩΣ ΑΙΤΙΑΣ ΚΑΙ ΕΥΘΥΝΗΣ, \n ΕΙΤΕ ΠΡΟΚΕΙΤΑΙ ΓΙΑ ΣΥΜΒΑΣΗ, ΕΙΤΕ ΓΙΑ ΑΝΤΙΚΕΙΜΕΝΙΚΗ ΕΥΘΥΝΗ, ΕΙΤΕ \n ΓΙΑ ΑΔΙΚΟΠΡΑΞΙΑ (ΣΥΜΠΕΡΙΛΑΜΒΑΝΟΜΕΝΗΣ ΤΗΣ ΑΜΕΛΕΙΑΣ Η ΑΛΛΗΣ ΑΙΤΙΑΣ) \n ΠΟΥ ΠΡΟΚΥΠΤΟΥΝ ΜΕ ΟΠΟΙΟΝΔΗΠΟΤΕ ΤΡΟΠΟ ΑΠΟ ΤΗ ΧΡΗΣΗ ΑΥΤΟΥ ΤΟΥ ΛΟΓΙΣΜΙΚΟΥ, \n ΑΚΟΜΗ ΚΑΙ ΑΝ ΥΠΗΡΞΕ ΕΝΗΜΕΡΩΣΗ ΓΙΑ ΤΗΝ  ΠΙΘΑΝΟΤΗΤΑ ΤΕΤΟΙΑΣ ΖΗΜΙΑΣ.\n"
 
-#: ../libxfce4util/xfce-license.c:72
+#: libxfce4util/xfce-license.c:72
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -71,7 +71,7 @@ msgid ""
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 msgstr "Αυτό το πρόγραμμα είναι ελεύθερο λογισμικό. Επιτρέπεται η αναδιανομή\nή/και η τροποποίησή του υπό τους όρους της Γενικής Άδειας Δημόσιας \nΧρήσης GNU όπως αυτή έχει δημοσιευτεί από το Free Software \nFoundation, είτε την έκδοση 2 της άδειας, είτε (κατ' επιλογήν) σε \nοποιαδήποτε μεταγενέστερη έκδοση.\n\nΑυτό το πρόγραμμα διανέμεται με την ελπίδα ότι θα αποδειχθεί χρήσιμο \nαλλά, ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ: ούτε καν την σιωπηρή εγγύηση της \nΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή της ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ \nΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ. Για περισσότερες λεπτομέρειες \nανατρέξτε στη Γενική Άδεια Δημόσιας Χρήσης GNU.\n\nΘα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Άδειας Δημόσιας \nΧρήσης GNU μαζί με αυτό το πρόγραμμα. Εάν όχι, επικοινωνήστε \nγραπτώς με το Free Software Foundation, Inc., 51 Franklin Street, \nFifth Floor, Boston,MA 02110-1301, USA.\n"
 
-#: ../libxfce4util/xfce-license.c:94
+#: libxfce4util/xfce-license.c:94
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -87,19 +87,18 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Αυτή η βιβλιοθήκη είναι ελεύθερο λογισμικό.  Επιτρέπεται η αναδιανομή\nή/και η τροποποίησή της υπό τους όρους της Γενικής Άδειας Δημόσιας \nΧρήσης GNU όπως αυτή έχει δημοσιευτεί από το Free Software \nFoundation, είτε την έκδοση 2 της άδειας, είτε (κατ' επιλογήν) σε \nοποιαδήποτε μεταγενέστερη έκδοση.\n\nΑυτή η βιβλιοθήκη διανέμεται με την ελπίδα ότι θα αποδειχθεί χρήσιμη \nαλλά, ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ: ούτε καν την σιωπηρή εγγύηση της \nΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή της ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ \nΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ. Για περισσότερες λεπτομέρειες \nανατρέξτε στη Γενική Άδεια Δημόσιας Χρήσης GNU.\n\nΘα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Άδειας Δημόσιας \nΧρήσης GNU μαζί με αυτό το πρόγραμμα. Εάν όχι, επικοινωνήστε \nγραπτώς με το Free Software Foundation, Inc., 51 Franklin Street, \nFifth Floor, Boston,MA 02110-1301, USA.\n"
+msgstr "Αυτή η βιβλιοθήκη είναι ελεύθερο λογισμικό. Επιτρέπεται η αναδιανομή\nή/και η τροποποίησή της υπό τους όρους της Γενικής Άδειας Δημόσιας \nΧρήσης GNU όπως αυτή έχει δημοσιευτεί από το Free Software \nFoundation, είτε την έκδοση 2 της άδειας, είτε (κατ' επιλογήν) σε \nοποιαδήποτε μεταγενέστερη έκδοση.\n\nΑυτή η βιβλιοθήκη διανέμεται με την ελπίδα ότι θα αποδειχθεί χρήσιμη \nαλλά, ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ: ούτε καν την σιωπηρή εγγύηση της \nΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή της ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ \nΣΥΓΚΕΚΡΙΜΕΝΗ ΧΡΗΣΗ. Για περισσότερες λεπτομέρειες \nανατρέξτε στη Γενική Άδεια Δημόσιας Χρήσης GNU.\n\nΘα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Άδειας Δημόσιας \nΧρήσης GNU μαζί με αυτή τη βιβλιοθήκη. Εάν όχι, επικοινωνήστε \nγραπτώς με το Free Software Foundation, Inc., 51 Franklin Street, \nFifth Floor, Boston,MA 02110-1301, USA.\n"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:145
+#: libxfce4util/xfce-posix-signal-handler.c:145
 #, c-format
 msgid "pipe() failed: %s"
 msgstr "Το pipe() απέτυχε: %s"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:218
-#, c-format
+#: libxfce4util/xfce-posix-signal-handler.c:218
 msgid "xfce_posix_signal_handler_init() must be called first"
 msgstr "πρέπει να κληθεί πρώτα το xfce_posix_signal_handler_init()"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:244
+#: libxfce4util/xfce-posix-signal-handler.c:244
 #, c-format
 msgid "sigaction() failed: %s\n"
 msgstr "Το sigaction() απέτυχε: %s\n"
