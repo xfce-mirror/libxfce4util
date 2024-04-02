@@ -182,6 +182,7 @@ xfce_mkdirhier (const gchar *whole_path,
  * a local filename.
  *
  * Since: 4.17.1
+ * Deprecated since: 4.17.2 (use @ref xfce_create_shared_thumbnail_uri instead)
  **/
 gchar*
 xfce_create_shared_thumbnail_path (const gchar *uri,
@@ -215,6 +216,53 @@ xfce_create_shared_thumbnail_path (const gchar *uri,
   g_free (filename);
   g_free (dir_uri);
   g_free (dir_path);
+  g_checksum_free (checksum);
+
+  return thumbnail_path;
+}
+
+/**
+ * xfce_create_shared_thumbnail_uri:
+ * @uri        : the uri of the file whose shared thumbnail we want to find.
+ * @size       : the thumbnail size (e.g. normal, large).
+ *
+ * Creates the shared thumbnail URI for the file that corresponds to the given @uri
+ * and @size. No checks are made regarding the existence of the thumbnail.
+ *
+ * It is the duty of the caller to free the returned string.
+ *
+ * Return value: a string with the thumbnail URI or %NULL if the @uri could not be converted to
+ * a local filename.
+ *
+ * Since: 4.17.2
+ **/
+gchar*
+xfce_create_shared_thumbnail_uri (const gchar *uri,
+                                   const gchar *size)
+{
+  GChecksum   *checksum;
+  gchar       *dir_uri;
+  gchar       *name;
+  gchar       *filename;
+  gchar       *thumbnail_path;
+
+  name = g_path_get_basename (uri);
+  /* Using path functions on URIs is a tad dangerous, but leads to the correct
+   * results more easily here than going through GFile and
+   * g_file_resolve_relative_path. (Plus it's what
+   * xfce_create_shared_thumbnail_path did with its uri already...). */
+  dir_uri = g_path_get_dirname (uri);
+
+  checksum = g_checksum_new (G_CHECKSUM_MD5);
+  g_checksum_update (checksum, (const guchar *) name, strlen (name));
+  filename = g_strconcat (g_checksum_get_string (checksum), ".png", NULL);
+
+  thumbnail_path = g_build_filename (dir_uri, ".sh_thumbnails", size, filename, NULL);
+
+  /* free memory */
+  g_free (name);
+  g_free (filename);
+  g_free (dir_uri);
   g_checksum_free (checksum);
 
   return thumbnail_path;
