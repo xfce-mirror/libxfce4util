@@ -110,13 +110,32 @@ name_vanished (GDBusConnection *connection,
 static void
 xfce_systemd_init (XfceSystemd *systemd)
 {
-  systemd->watch_id = g_bus_watch_name (G_BUS_TYPE_SYSTEM,
-                                        "org.freedesktop.login1",
-                                        G_BUS_NAME_WATCHER_FLAGS_AUTO_START,
-                                        name_appeared,
-                                        name_vanished,
-                                        systemd,
-                                        NULL);
+  GError *error = NULL;
+
+  /* try to create a proxy synchronously with default flags, so the returned
+   * object is immediately usable */
+  systemd->proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+                                                  G_DBUS_PROXY_FLAGS_NONE,
+                                                  NULL,
+                                                  "org.freedesktop.login1",
+                                                  "/org/freedesktop/login1",
+                                                  "org.freedesktop.login1.Manager",
+                                                  NULL,
+                                                  &error);
+  if (error != NULL)
+    {
+      g_warning ("Failed to get a systemd proxy: %s", error->message);
+      g_error_free (error);
+
+      /* watch the name if it failed, maybe we'll have better luck later */
+      systemd->watch_id = g_bus_watch_name (G_BUS_TYPE_SYSTEM,
+                                            "org.freedesktop.login1",
+                                            G_BUS_NAME_WATCHER_FLAGS_AUTO_START,
+                                            name_appeared,
+                                            name_vanished,
+                                            systemd,
+                                            NULL);
+    }
 }
 
 
@@ -126,7 +145,8 @@ xfce_systemd_finalize (GObject *object)
 {
   XfceSystemd *systemd = XFCE_SYSTEMD (object);
 
-  g_bus_unwatch_name (systemd->watch_id);
+  if (systemd->watch_id != 0)
+    g_bus_unwatch_name (systemd->watch_id);
   g_clear_object (&systemd->proxy);
 
   G_OBJECT_CLASS (xfce_systemd_parent_class)->finalize (object);
