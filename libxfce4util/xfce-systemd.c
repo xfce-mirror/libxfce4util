@@ -155,6 +155,7 @@ xfce_systemd_can_method (XfceSystemd *systemd,
   if (systemd->proxy == NULL)
     {
       g_debug ("No systemd proxy");
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "No systemd proxy available");
       return FALSE;
     }
 
@@ -196,6 +197,7 @@ xfce_systemd_method (XfceSystemd *systemd,
   if (systemd->proxy == NULL)
     {
       g_debug ("No systemd proxy");
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "No systemd proxy available");
       return FALSE;
     }
 

@@ -155,6 +155,7 @@ xfce_consolekit_can_method_old (XfceConsolekit *consolekit,
   if (consolekit->proxy == NULL)
     {
       g_debug ("No ConsoleKit proxy");
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "No ConsoleKit proxy available");
       return FALSE;
     }
 
@@ -204,6 +205,7 @@ xfce_consolekit_can_method (XfceConsolekit *consolekit,
   if (consolekit->proxy == NULL)
     {
       g_debug ("No ConsoleKit proxy");
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "No ConsoleKit proxy available");
       return FALSE;
     }
 
