@@ -1025,7 +1025,7 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
   /* check for localized entry (best fit!) */
   if (G_LIKELY (translated && (rc->locale != NULL || rc->languages != NULL)))
     {
-      gchar  *locale_languages[] = { rc->locale, NULL };
+      gchar *locale_languages[] = { rc->locale, NULL };
 
       for (gchar **p = (rc->languages != NULL) ? rc->languages : locale_languages;
             *p != NULL; p++)
