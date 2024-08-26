@@ -1023,26 +1023,19 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
     return NULL;
 
   /* check for localized entry (best fit!) */
-  if (G_LIKELY (translated))
+  if (G_LIKELY (translated && (rc->locale != NULL || rc->languages != NULL)))
     {
-      gchar **languages;
       gchar  *locale_languages[] = { rc->locale, NULL };
 
-      if (rc->languages != NULL)
-        languages = rc->languages;
-      else if (rc->locale != NULL)
-        languages = locale_languages;
-      else
-        return entry->value;
-
-      for (gchar **plng = languages; *plng != NULL; plng++)
+      for (gchar **p = (rc->languages != NULL) ? rc->languages : locale_languages;
+	        *p != NULL; p++)
         {
           best_match = XFCE_LOCALE_NO_MATCH;
           best_value = NULL;
 
           for (lentry = entry->lfirst; lentry != NULL; lentry = lentry->next)
             {
-              match = xfce_locale_match (*plng, lentry->locale);
+              match = xfce_locale_match (*p, lentry->locale);
               if (match == XFCE_LOCALE_FULL_MATCH)
                 {
                   /* FULL MATCH */
