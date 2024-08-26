@@ -1028,7 +1028,7 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
       gchar  *locale_languages[] = { rc->locale, NULL };
 
       for (gchar **p = (rc->languages != NULL) ? rc->languages : locale_languages;
-	        *p != NULL; p++)
+            *p != NULL; p++)
         {
           best_match = XFCE_LOCALE_NO_MATCH;
           best_value = NULL;
