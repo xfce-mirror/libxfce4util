@@ -33,6 +33,7 @@
 #include <gio/gio.h>
 
 #include "xfce-systemd.h"
+#include "libxfce4util-alias.h"
 
 
 
@@ -526,3 +527,6 @@ xfce_systemd_can_hybrid_sleep (XfceSystemd *systemd,
 
   return xfce_systemd_can_method (systemd, can_hybrid_sleep, auth_hybrid_sleep, "CanHybridSleep", error);
 }
+
+#define __XFCE_SYSTEMD_C__
+#include "libxfce4util-aliasdef.c"
