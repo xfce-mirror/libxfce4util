@@ -28,7 +28,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_SYS_TYPES_H
@@ -57,8 +57,8 @@
 #include <unistd.h>
 #endif
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util.h"
+#include "libxfce4util-alias.h"
 
 
 
@@ -69,23 +69,27 @@ struct _XfceKiosk
 {
   GObject __parent__;
 
-  gchar  *module_name;
+  gchar *module_name;
   XfceRc *module_rc;
 };
 
 
-static const gchar *xfce_kiosk_lookup  (const XfceKiosk *kiosk,
-                                        const gchar     *capability);
-static gboolean     xfce_kiosk_chkgrp  (const gchar     *group);
-static time_t       mtime              (const gchar     *path);
-static void         xfce_kiosk_finalize (GObject        *object);
+static const gchar *
+xfce_kiosk_lookup (const XfceKiosk *kiosk,
+                   const gchar *capability);
+static gboolean
+xfce_kiosk_chkgrp (const gchar *group);
+static time_t
+mtime (const gchar *path);
+static void
+xfce_kiosk_finalize (GObject *object);
 
 
-static gchar        *usrname = NULL;
-static gchar       **groups;
-static time_t        kiosktime = 0;
-static const gchar  *kioskdef = NULL;
-static XfceRc       *kioskrc = NULL;
+static gchar *usrname = NULL;
+static gchar **groups;
+static time_t kiosktime = 0;
+static const gchar *kioskdef = NULL;
+static XfceRc *kioskrc = NULL;
 
 G_DEFINE_TYPE (XfceKiosk, xfce_kiosk, G_TYPE_OBJECT)
 G_LOCK_DEFINE_STATIC (kiosk_lock);
@@ -110,20 +114,20 @@ xfce_kiosk_class_init (XfceKioskClass *klass)
  *
  * Since: 4.2
  **/
-XfceKiosk*
+XfceKiosk *
 xfce_kiosk_new (const gchar *module)
 {
   XfceKiosk *kiosk;
-  gchar      path[1024];
+  gchar path[1024];
 
   g_return_val_if_fail (module != NULL, NULL);
   g_return_val_if_fail (g_strcmp0 (module, "General") != 0, NULL);
 
   g_snprintf (path, 1024, "%s/%s.kioskrc", KIOSKDIR, module);
 
-  kiosk               = g_object_new (XFCE_TYPE_KIOSK, NULL);
-  kiosk->module_name  = g_strdup (module);
-  kiosk->module_rc    = xfce_rc_simple_open (path, TRUE);
+  kiosk = g_object_new (XFCE_TYPE_KIOSK, NULL);
+  kiosk->module_name = g_strdup (module);
+  kiosk->module_rc = xfce_rc_simple_open (path, TRUE);
 
   return kiosk;
 }
@@ -143,13 +147,13 @@ xfce_kiosk_new (const gchar *module)
  **/
 gboolean
 xfce_kiosk_query (const XfceKiosk *kiosk,
-                  const gchar     *capability)
+                  const gchar *capability)
 {
   const gchar *value;
-  gboolean     result;
-  gchar      **vector;
-  gchar       *string;
-  gint         n;
+  gboolean result;
+  gchar **vector;
+  gchar *string;
+  gint n;
 
   g_return_val_if_fail (kiosk != NULL, FALSE);
   g_return_val_if_fail (capability != NULL, FALSE);
@@ -161,18 +165,18 @@ xfce_kiosk_query (const XfceKiosk *kiosk,
 
   /* most common case first! */
   if (G_LIKELY (value[0] == 'A'
-            &&  value[1] == 'L'
-            &&  value[2] == 'L'
-            && (value[3] == '\0' || value[4] == ' ')))
+                && value[1] == 'L'
+                && value[2] == 'L'
+                && (value[3] == '\0' || value[4] == ' ')))
     {
       return TRUE;
     }
 
   if (G_LIKELY (value[0] == 'N'
-            &&  value[1] == 'O'
-            &&  value[2] == 'N'
-            &&  value[3] == 'E'
-            && (value[4] == '\0' || value[4] == ' ')))
+                && value[1] == 'O'
+                && value[2] == 'N'
+                && value[3] == 'E'
+                && (value[4] == '\0' || value[4] == ' ')))
     {
       return FALSE;
     }
@@ -229,9 +233,9 @@ xfce_kiosk_free (XfceKiosk *kiosk)
 }
 
 
-static const gchar*
+static const gchar *
 xfce_kiosk_lookup (const XfceKiosk *kiosk,
-                   const gchar     *capability)
+                   const gchar *capability)
 {
   const gchar *value;
 
@@ -276,12 +280,12 @@ static void
 xfce_kiosk_init (XfceKiosk *kiosk)
 {
   struct passwd *pw;
-  struct group  *gr;
-  gid_t         *gidset;
-  int            gidsetlen;
-  int            n;
-  int            m;
-  time_t         timestamp;
+  struct group *gr;
+  gid_t *gidset;
+  int gidsetlen;
+  int n;
+  int m;
+  time_t timestamp;
 
   G_LOCK (kiosk_lock);
 
@@ -330,7 +334,8 @@ xfce_kiosk_init (XfceKiosk *kiosk)
       g_warning ("Unable to determine the number of groups for your user account, "
                  "all kiosk protected features will be disabled for you. Please "
                  "check your system setup or ask your administrator.");
-      g_free (usrname); usrname = NULL;
+      g_free (usrname);
+      usrname = NULL;
       G_UNLOCK (kiosk_lock);
       return;
     }
@@ -343,7 +348,8 @@ xfce_kiosk_init (XfceKiosk *kiosk)
       g_warning ("Unable to determine your current group access list, all kiosk "
                  "protected features will be disabled for you. Please check "
                  "your system setup or ask your administrator.");
-      g_free (usrname); usrname = NULL;
+      g_free (usrname);
+      usrname = NULL;
       G_UNLOCK (kiosk_lock);
       g_free (gidset);
       return;
@@ -376,4 +382,4 @@ mtime (const gchar *path)
 
 
 #define __XFCE_KIOSK_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

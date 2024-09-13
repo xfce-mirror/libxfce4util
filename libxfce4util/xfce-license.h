@@ -43,10 +43,11 @@ typedef enum /*< enum >*/
   XFCE_LICENSE_TEXT_LGPL,
 } XfceLicenseTextType;
 
-const gchar *xfce_get_license_text (XfceLicenseTextType license_type) G_GNUC_PURE;
+const gchar *
+xfce_get_license_text (XfceLicenseTextType license_type) G_GNUC_PURE;
 
-#define XFCE_LICENSE_BSD  (xfce_get_license_text (XFCE_LICENSE_TEXT_BSD))
-#define XFCE_LICENSE_GPL  (xfce_get_license_text (XFCE_LICENSE_TEXT_GPL))
+#define XFCE_LICENSE_BSD (xfce_get_license_text (XFCE_LICENSE_TEXT_BSD))
+#define XFCE_LICENSE_GPL (xfce_get_license_text (XFCE_LICENSE_TEXT_GPL))
 #define XFCE_LICENSE_LGPL (xfce_get_license_text (XFCE_LICENSE_TEXT_LGPL))
 
 G_END_DECLS

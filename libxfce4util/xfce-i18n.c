@@ -32,7 +32,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_LIMITS_H
@@ -58,14 +58,14 @@
 #include <unistd.h>
 #endif
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util.h"
+#include "libxfce4util-alias.h"
 
 
 
 /* fallback to g_strlcpy() if strlcpy() is not found */
 #ifndef HAVE_STRLCPY
-#define strlcpy(x,y,z)  g_strlcpy(x,y,z)
+#define strlcpy(x, y, z) g_strlcpy (x, y, z)
 #endif
 
 /* some platforms don't define PATH_MAX */
@@ -74,28 +74,29 @@
 #endif
 
 /* fallback locale */
-#define DEFAULT_LOCALE  "C"
+#define DEFAULT_LOCALE "C"
 
 
 
-static gchar *xfce_localize_path_internal (gchar       *buffer,
-                                           gsize        len,
-                                           const gchar *path,
-                                           GFileTest    test);
-
-
-
-static gchar*
-xfce_localize_path_internal (gchar       *buffer,
-                             gsize        len,
+static gchar *
+xfce_localize_path_internal (gchar *buffer,
+                             gsize len,
                              const gchar *path,
-                             GFileTest    test)
+                             GFileTest test);
+
+
+
+static gchar *
+xfce_localize_path_internal (gchar *buffer,
+                             gsize len,
+                             const gchar *path,
+                             GFileTest test)
 {
   static const gchar delim[] = { '.', '@', '_' };
-  const gchar       *lang;
-  gchar             *langext;
-  gchar             *p;
-  guint              n;
+  const gchar *lang;
+  gchar *langext;
+  gchar *p;
+  guint n;
 
 #ifdef HAVE_SETLOCALE
   lang = setlocale (LC_MESSAGES, NULL);
@@ -194,7 +195,7 @@ xfce_textdomain (const gchar *package,
  * Return value: path of the localized file or copy of @filename if no such
  *               file exists. Returned string should be freed using g_free().
  **/
-gchar*
+gchar *
 xfce_get_file_localized (const gchar *filename)
 {
   gchar buffer[PATH_MAX + 1];
@@ -217,7 +218,7 @@ xfce_get_file_localized (const gchar *filename)
  *
  * Return value: pointer to @buffer or %NULL on error.
  **/
-gchar*
+gchar *
 xfce_get_file_localized_r (gchar *buffer, gsize length, const gchar *filename)
 {
   g_return_val_if_fail (buffer != NULL, NULL);
@@ -239,7 +240,7 @@ xfce_get_file_localized_r (gchar *buffer, gsize length, const gchar *filename)
  *               no such directory exists. Returned string should be freed using
  *               g_free().
  **/
-gchar*
+gchar *
 xfce_get_dir_localized (const gchar *directory)
 {
   gchar buffer[PATH_MAX + 1];
@@ -262,7 +263,7 @@ xfce_get_dir_localized (const gchar *directory)
  *
  * Return value: pointer to @buffer or %NULL on error.
  **/
-gchar*
+gchar *
 xfce_get_dir_localized_r (gchar *buffer, gsize length, const gchar *directory)
 {
   g_return_val_if_fail (buffer != NULL, NULL);
@@ -291,23 +292,23 @@ xfce_get_dir_localized_r (gchar *buffer, gsize length, const gchar *directory)
  * Example paths: `/usr/local/lib/%L/%F:/usr/local/share/%N/%l/%F`
  *
  */
-gchar*
-xfce_get_path_localized (gchar       *dst,
-                         gsize        size,
+gchar *
+xfce_get_path_localized (gchar *dst,
+                         gsize size,
                          const gchar *paths,
                          const gchar *filename,
-                         GFileTest    test)
+                         GFileTest test)
 {
   static const gchar delim[] = { '.', '@', '_' };
-  const gchar       *locale;
-  const gchar       *f;
-  const gchar       *p;
-  gboolean           need_lang = FALSE;
-  gchar             *dstlast = dst + (size - 1);
-  gchar             *d = dst;
-  gchar             *langext;
-  gchar             *buffer;
-  guint              n;
+  const gchar *locale;
+  const gchar *f;
+  const gchar *p;
+  gboolean need_lang = FALSE;
+  gchar *dstlast = dst + (size - 1);
+  gchar *d = dst;
+  gchar *langext;
+  gchar *buffer;
+  guint n;
 
   g_return_val_if_fail (paths != NULL, NULL);
   g_return_val_if_fail (dst != NULL, NULL);
@@ -350,7 +351,7 @@ xfce_get_path_localized (gchar       *dst,
                */
               g_snprintf (buffer, size, dst, locale);
 
-              if (g_file_test(buffer, test))
+              if (g_file_test (buffer, test))
                 {
                   strncpy (dst, buffer, size);
                   return dst;
@@ -399,7 +400,7 @@ xfce_get_path_localized (gchar       *dst,
                */
               if (G_LIKELY (filename != NULL))
                 {
-                  for (f = filename; *f && d < dstlast; )
+                  for (f = filename; *f && d < dstlast;)
                     *d++ = *f++;
                 }
 
@@ -408,7 +409,7 @@ xfce_get_path_localized (gchar       *dst,
             }
           else if (paths[1] == 'L')
             {
-              for (f = locale; *f && d < dstlast; )
+              for (f = locale; *f && d < dstlast;)
                 *d++ = *f++;
 
               paths += 2;
@@ -497,9 +498,12 @@ xfce_locale_match (const gchar *locale1,
     {
       switch (*locale1)
         {
-          case '@': return XFCE_LOCALE_NO_MATCH + 3;
-          case '.': return XFCE_LOCALE_NO_MATCH + 2;
-          case '_': return XFCE_LOCALE_NO_MATCH + 1;
+        case '@':
+          return XFCE_LOCALE_NO_MATCH + 3;
+        case '.':
+          return XFCE_LOCALE_NO_MATCH + 2;
+        case '_':
+          return XFCE_LOCALE_NO_MATCH + 1;
         }
 
       /* FALL-THROUGH */
@@ -511,4 +515,4 @@ xfce_locale_match (const gchar *locale1,
 
 
 #define __XFCE_I18N_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

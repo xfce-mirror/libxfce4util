@@ -29,16 +29,18 @@
  **/
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <gio/gio.h>
 
 #include "xfce-consolekit.h"
+#include "libxfce4util-alias.h"
 
 
 
-static void     xfce_consolekit_finalize     (GObject         *object);
+static void
+xfce_consolekit_finalize (GObject *object);
 
 
 
@@ -663,3 +665,6 @@ xfce_consolekit_can_hybrid_sleep (XfceConsolekit *consolekit,
 
   return xfce_consolekit_can_method (consolekit, "CanHybridSleep", can_hybrid_sleep, auth_hybrid_sleep, error);
 }
+
+#define __XFCE_CONSOLEKIT_C__
+#include "libxfce4util-aliasdef.c"

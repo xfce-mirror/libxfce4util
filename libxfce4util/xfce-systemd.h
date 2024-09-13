@@ -33,53 +33,64 @@ G_BEGIN_DECLS
 #define XFCE_TYPE_SYSTEMD (xfce_systemd_get_type ())
 G_DECLARE_FINAL_TYPE (XfceSystemd, xfce_systemd, XFCE, SYSTEMD, GObject);
 
-XfceSystemd      *xfce_systemd_get                    (void);
+XfceSystemd *
+xfce_systemd_get (void);
 
-gboolean          xfce_systemd_reboot                 (XfceSystemd      *systemd,
-                                                       gboolean          polkit_interactive,
-                                                       GError          **error);
+gboolean
+xfce_systemd_reboot (XfceSystemd *systemd,
+                     gboolean polkit_interactive,
+                     GError **error);
 
-gboolean          xfce_systemd_power_off              (XfceSystemd      *systemd,
-                                                       gboolean          polkit_interactive,
-                                                       GError          **error);
+gboolean
+xfce_systemd_power_off (XfceSystemd *systemd,
+                        gboolean polkit_interactive,
+                        GError **error);
 
-gboolean          xfce_systemd_suspend                (XfceSystemd      *systemd,
-                                                       gboolean          polkit_interactive,
-                                                       GError          **error);
+gboolean
+xfce_systemd_suspend (XfceSystemd *systemd,
+                      gboolean polkit_interactive,
+                      GError **error);
 
-gboolean          xfce_systemd_hibernate              (XfceSystemd      *systemd,
-                                                       gboolean          polkit_interactive,
-                                                       GError          **error);
+gboolean
+xfce_systemd_hibernate (XfceSystemd *systemd,
+                        gboolean polkit_interactive,
+                        GError **error);
 
-gboolean          xfce_systemd_hybrid_sleep           (XfceSystemd      *systemd,
-                                                       gboolean          polkit_interactive,
-                                                       GError          **error);
+gboolean
+xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
+                           gboolean polkit_interactive,
+                           GError **error);
 
-gboolean          xfce_systemd_can_reboot             (XfceSystemd      *systemd,
-                                                       gboolean         *can_reboot,
-                                                       gboolean         *auth_reboot,
-                                                       GError          **error);
+gboolean
+xfce_systemd_can_reboot (XfceSystemd *systemd,
+                         gboolean *can_reboot,
+                         gboolean *auth_reboot,
+                         GError **error);
 
-gboolean          xfce_systemd_can_power_off          (XfceSystemd      *systemd,
-                                                       gboolean         *can_power_off,
-                                                       gboolean         *auth_power_off,
-                                                       GError          **error);
+gboolean
+xfce_systemd_can_power_off (XfceSystemd *systemd,
+                            gboolean *can_power_off,
+                            gboolean *auth_power_off,
+                            GError **error);
 
-gboolean          xfce_systemd_can_suspend            (XfceSystemd      *systemd,
-                                                       gboolean         *can_suspend,
-                                                       gboolean         *auth_suspend,
-                                                       GError          **error);
+gboolean
+xfce_systemd_can_suspend (XfceSystemd *systemd,
+                          gboolean *can_suspend,
+                          gboolean *auth_suspend,
+                          GError **error);
 
-gboolean          xfce_systemd_can_hibernate          (XfceSystemd      *systemd,
-                                                       gboolean         *can_hibernate,
-                                                       gboolean         *auth_hibernate,
-                                                       GError          **error);
+gboolean
+xfce_systemd_can_hibernate (XfceSystemd *systemd,
+                            gboolean *can_hibernate,
+                            gboolean *auth_hibernate,
+                            GError **error);
 
-gboolean          xfce_systemd_can_hybrid_sleep       (XfceSystemd      *systemd,
-                                                       gboolean         *can_hybrid_sleep,
-                                                       gboolean         *auth_hybrid_sleep,
-                                                       GError          **error);
+gboolean
+xfce_systemd_can_hybrid_sleep (XfceSystemd *systemd,
+                               gboolean *can_hybrid_sleep,
+                               gboolean *auth_hybrid_sleep,
+                               GError **error);
 
 G_END_DECLS
 
-#endif  /* __XFCE_SYSTEMD_H__ */
+#endif /* __XFCE_SYSTEMD_H__ */

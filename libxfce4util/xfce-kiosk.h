@@ -26,18 +26,21 @@
 #ifndef __XFCE_KIOSK_H__
 #define __XFCE_KIOSK_H__
 
-#include <glib.h>
 #include <glib-object.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
 #define XFCE_TYPE_KIOSK xfce_kiosk_get_type ()
 G_DECLARE_FINAL_TYPE (XfceKiosk, xfce_kiosk, XFCE, KIOSK, GObject)
 
-XfceKiosk *xfce_kiosk_new   (const gchar     *module) G_GNUC_MALLOC;
-gboolean   xfce_kiosk_query (const XfceKiosk *kiosk,
-                             const gchar     *capability);
-void       xfce_kiosk_free  (XfceKiosk       *kiosk);
+XfceKiosk *
+xfce_kiosk_new (const gchar *module) G_GNUC_MALLOC;
+gboolean
+xfce_kiosk_query (const XfceKiosk *kiosk,
+                  const gchar *capability);
+void
+xfce_kiosk_free (XfceKiosk *kiosk);
 
 G_END_DECLS
 

@@ -24,22 +24,26 @@
 #ifndef __XFCE_GIO_EXTENSIONS_H__
 #define __XFCE_GIO_EXTENSIONS_H__
 
-#include <glib.h>
 #include <gio/gio.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 
-gboolean      xfce_g_file_metadata_is_supported   (GFile        *file);
-gchar        *xfce_g_file_create_checksum         (GFile        *file,
-                                                   GCancellable *cancellable,
-                                                   GError      **error);
-gboolean      xfce_g_file_set_trusted             (GFile        *file,
-                                                   gboolean      is_trusted,
-                                                   GCancellable *cancellable,
-                                                   GError      **error);
-gboolean      xfce_g_file_is_trusted              (GFile        *file,
-                                                   GCancellable *cancellable,
-                                                   GError      **error);
+gboolean
+xfce_g_file_metadata_is_supported (GFile *file);
+gchar *
+xfce_g_file_create_checksum (GFile *file,
+                             GCancellable *cancellable,
+                             GError **error);
+gboolean
+xfce_g_file_set_trusted (GFile *file,
+                         gboolean is_trusted,
+                         GCancellable *cancellable,
+                         GError **error);
+gboolean
+xfce_g_file_is_trusted (GFile *file,
+                        GCancellable *cancellable,
+                        GError **error);
 
 G_END_DECLS
 

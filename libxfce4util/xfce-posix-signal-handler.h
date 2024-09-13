@@ -34,17 +34,21 @@ G_BEGIN_DECLS
  * @user_data: The @user_data parameter passed when the handler was registered.
  */
 
-typedef void (*XfcePosixSignalHandler)(gint signal, gpointer user_data);
+typedef void (*XfcePosixSignalHandler) (gint signal, gpointer user_data);
 
-gboolean xfce_posix_signal_handler_init(GError **error);
-void xfce_posix_signal_handler_shutdown(void);
+gboolean
+xfce_posix_signal_handler_init (GError **error);
+void
+xfce_posix_signal_handler_shutdown (void);
 
-gboolean xfce_posix_signal_handler_set_handler(gint signal,
-                                               XfcePosixSignalHandler handler,
-                                               gpointer user_data,
-                                               GError **error);
-void xfce_posix_signal_handler_restore_handler(gint signal);
+gboolean
+xfce_posix_signal_handler_set_handler (gint signal,
+                                       XfcePosixSignalHandler handler,
+                                       gpointer user_data,
+                                       GError **error);
+void
+xfce_posix_signal_handler_restore_handler (gint signal);
 
 G_END_DECLS
 
-#endif  /* __XFCE_POSIX_SIGNAL_HANDLER_H__ */
+#endif /* __XFCE_POSIX_SIGNAL_HANDLER_H__ */

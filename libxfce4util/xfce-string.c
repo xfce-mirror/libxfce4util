@@ -29,11 +29,11 @@
 
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util.h"
+#include "libxfce4util-alias.h"
 
 
 
@@ -63,18 +63,18 @@
  *
  * Since: 4.17
  **/
-gchar*
+gchar *
 xfce_str_replace (const gchar *str,
                   const gchar *pattern,
                   const gchar *replacement)
 {
   const gchar *s, *p;
-  GString     *result;
+  GString *result;
 
   /* an empty string or pattern is useless, so just
    * return a copy of str */
   if (G_UNLIKELY (xfce_str_is_empty (str)
-               || xfce_str_is_empty (pattern)))
+                  || xfce_str_is_empty (pattern)))
     return g_strdup (str);
 
   /* allocate the result string */
@@ -120,7 +120,7 @@ xfce_str_replace (const gchar *str,
  * Since: 4.17
  **/
 void
-xfce_g_string_append_quoted (GString     *string,
+xfce_g_string_append_quoted (GString *string,
                              const gchar *unquoted)
 {
   gchar *quoted;
@@ -131,4 +131,4 @@ xfce_g_string_append_quoted (GString     *string,
 }
 
 #define __XFCE_STRING_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

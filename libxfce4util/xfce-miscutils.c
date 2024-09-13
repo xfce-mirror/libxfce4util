@@ -28,7 +28,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_SYS_TYPES_H
@@ -53,7 +53,7 @@
 #endif
 #ifdef HAVE_STDARG_H
 #include <stdarg.h>
-#elif defined (HAVE_VARARGS_H)
+#elif defined(HAVE_VARARGS_H)
 #include <varargs.h>
 #endif
 #include <stdio.h>
@@ -69,8 +69,8 @@
 
 #include <gio/gio.h>
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util.h"
+#include "libxfce4util-alias.h"
 
 #define XFCE4DIR ".xfce4"
 
@@ -80,7 +80,7 @@
  */
 #define XFCE4HOME_ENVVAR "XFCE4HOME"
 
-G_LOCK_DEFINE_STATIC(_lock);
+G_LOCK_DEFINE_STATIC (_lock);
 
 
 static gchar *xfce_homedir = NULL; /* path to users home directory */
@@ -89,7 +89,7 @@ static gchar *xfce_userdir = NULL; /* path to users .xfce4 directory */
 
 
 static void
-internal_initialize(void)
+internal_initialize (void)
 {
   const gchar *dir;
 
@@ -125,26 +125,26 @@ internal_initialize(void)
 
 
 
-static gchar*
+static gchar *
 internal_get_file_r (const gchar *dir,
-                     gchar       *buffer,
-                     gsize        len,
+                     gchar *buffer,
+                     gsize len,
                      const gchar *format,
-                     va_list      ap)
+                     va_list ap)
 {
   gsize n;
 
-  g_return_val_if_fail(buffer != NULL, NULL);
-  g_return_val_if_fail(format != NULL, NULL);
-  g_return_val_if_fail(len > 0, NULL);
+  g_return_val_if_fail (buffer != NULL, NULL);
+  g_return_val_if_fail (format != NULL, NULL);
+  g_return_val_if_fail (len > 0, NULL);
 
-  if (g_strlcpy(buffer, dir, len) >= len)
+  if (g_strlcpy (buffer, dir, len) >= len)
     return NULL;
 
-  if ((n = g_strlcat(buffer, G_DIR_SEPARATOR_S, len)) >= len)
+  if ((n = g_strlcat (buffer, G_DIR_SEPARATOR_S, len)) >= len)
     return NULL;
 
-  if ((gsize) g_vsnprintf(buffer + n, len - n, format, ap) >= len - n)
+  if ((gsize) g_vsnprintf (buffer + n, len - n, format, ap) >= len - n)
     return NULL;
 
   return buffer;
@@ -161,7 +161,7 @@ internal_get_file_r (const gchar *dir,
  *
  * Since: 4.2
  */
-const gchar*
+const gchar *
 xfce_version_string (void)
 {
   return XFCE_VERSION_STRING;
@@ -182,7 +182,7 @@ xfce_version_string (void)
  *
  * Return value: the path to the current user's home directory.
  **/
-const gchar*
+const gchar *
 xfce_get_homedir (void)
 {
   G_LOCK (_lock);
@@ -211,10 +211,10 @@ xfce_get_homedir (void)
  *
  * Return value: pointer to @buffer.
  **/
-gchar*
+gchar *
 xfce_get_homefile_r (gchar *buffer, size_t len, const gchar *format, ...)
 {
-  gchar  *ptr;
+  gchar *ptr;
   va_list ap;
 
   va_start (ap, format);
@@ -241,19 +241,19 @@ xfce_get_homefile_r (gchar *buffer, size_t len, const gchar *format, ...)
  *
  * Return value: the path to the current user's ".xfce4" directory.
  */
-const gchar*
+const gchar *
 xfce_get_userdir (void)
 {
-  G_LOCK(_lock);
+  G_LOCK (_lock);
   if (!xfce_userdir)
     {
-      internal_initialize();
+      internal_initialize ();
 
       /* verify that the directory exists or is created */
       if (!g_file_test (xfce_userdir, G_FILE_TEST_IS_DIR))
         xfce_mkdirhier (xfce_userdir, 0700, NULL);
     }
-  G_UNLOCK(_lock);
+  G_UNLOCK (_lock);
 
   return xfce_userdir;
 }
@@ -269,10 +269,10 @@ xfce_get_userdir (void)
  *
  * Return value: pointer to @buffer.
  **/
-gchar*
+gchar *
 xfce_get_userfile_r (gchar *buffer, size_t length, const gchar *format, ...)
 {
-  gchar  *ptr;
+  gchar *ptr;
   va_list ap;
 
   va_start (ap, format);
@@ -294,7 +294,7 @@ xfce_get_userfile_r (gchar *buffer, size_t length, const gchar *format, ...)
  * Return value: the current node's hostname. The string has to be freed
  *               by the caller using g_free().
  **/
-gchar*
+gchar *
 xfce_gethostname (void)
 {
 #if defined(HAVE_GETHOSTNAME)
@@ -348,18 +348,18 @@ xfce_is_valid_tilde_prefix (const gchar *p)
  **/
 gchar *
 xfce_expand_variables (const gchar *command,
-                       gchar      **envp)
+                       gchar **envp)
 {
-  GString        *buf;
-  const gchar    *start;
-  gchar          *variable;
-  const gchar    *p;
-  const gchar    *value;
-  gchar         **ep;
-  guint           len;
+  GString *buf;
+  const gchar *start;
+  gchar *variable;
+  const gchar *p;
+  const gchar *value;
+  gchar **ep;
+  guint len;
 #ifdef HAVE_GETPWNAM
-  struct passwd  *pw;
-  gchar          *username;
+  struct passwd *pw;
+  gchar *username;
 #endif
 
   if (G_UNLIKELY (command == NULL))
@@ -369,14 +369,15 @@ xfce_expand_variables (const gchar *command,
 
   for (p = command; *p != '\0'; ++p)
     {
-      continue_without_increase:
+continue_without_increase:
 
       if (*p == '~'
           && (p == command
               || xfce_is_valid_tilde_prefix (p - 1)))
         {
           /* walk to the end of the string or to a directory separator */
-          for (start = ++p; *p != '\0' && *p != G_DIR_SEPARATOR; ++p);
+          for (start = ++p; *p != '\0' && *p != G_DIR_SEPARATOR; ++p)
+            ;
 
           if (G_LIKELY (start == p))
             {
@@ -405,7 +406,8 @@ xfce_expand_variables (const gchar *command,
       else if (*p == '$')
         {
           /* walk to the end of a valid variable name */
-          for (start = ++p; *p != '\0' && (g_ascii_isalnum (*p) || *p == '_'); ++p);
+          for (start = ++p; *p != '\0' && (g_ascii_isalnum (*p) || *p == '_'); ++p)
+            ;
 
           if (start < p)
             {
@@ -474,8 +476,8 @@ xfce_expand_variables (const gchar *command,
  * Deprecated: 4.17: Renamed to xfce_g_string_append_quoted()
  **/
 void
-xfce_append_quoted (GString      *string,
-                    const gchar  *unquoted)
+xfce_append_quoted (GString *string,
+                    const gchar *unquoted)
 {
   xfce_g_string_append_quoted (string, unquoted);
 }
@@ -496,19 +498,19 @@ xfce_append_quoted (GString      *string,
  * Return value: %NULL on error, else the string, which should be freed using g_free() when
  *               no longer needed.
  **/
-gchar*
+gchar *
 xfce_expand_desktop_entry_field_codes (const gchar *command,
-                                       GSList      *uri_list,
+                                       GSList *uri_list,
                                        const gchar *icon,
                                        const gchar *name,
                                        const gchar *uri,
-                                       gboolean     requires_terminal)
+                                       gboolean requires_terminal)
 {
   const gchar *p;
-  gchar       *filename;
-  GString     *string;
-  GSList      *li;
-  GFile       *file;
+  gchar *filename;
+  GString *string;
+  GSList *li;
+  GFile *file;
 
   if (G_UNLIKELY (command == NULL))
     return NULL;
@@ -560,7 +562,7 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
               break;
 
             case 'i':
-              if (! xfce_str_is_empty (icon))
+              if (!xfce_str_is_empty (icon))
                 {
                   g_string_append (string, "--icon ");
                   xfce_g_string_append_quoted (string, icon);
@@ -568,12 +570,12 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
               break;
 
             case 'c':
-              if (! xfce_str_is_empty (name))
+              if (!xfce_str_is_empty (name))
                 xfce_g_string_append_quoted (string, name);
               break;
 
             case 'k':
-              if (! xfce_str_is_empty (uri))
+              if (!xfce_str_is_empty (uri))
                 xfce_g_string_append_quoted (string, uri);
               break;
 
@@ -604,11 +606,11 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
  *
  * Since: 4.18
  **/
-gchar*
+gchar *
 xfce_unescape_desktop_entry_value (const gchar *value)
 {
   const gchar *p;
-  GString     *string;
+  GString *string;
 
   if (G_UNLIKELY (value == NULL))
     return NULL;
@@ -657,4 +659,4 @@ xfce_unescape_desktop_entry_value (const gchar *value)
 }
 
 #define __XFCE_MISCUTILS_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

@@ -25,7 +25,6 @@
 #define _LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 
 #include <libxfce4util/libxfce4util-config.h>
-
 #include <libxfce4util/xfce-consolekit.h>
 #include <libxfce4util/xfce-debug.h>
 #include <libxfce4util/xfce-fileutils.h>
@@ -44,4 +43,4 @@
 
 #undef _LIBXFCE4UTIL_INSIDE_LIBXFCE4UTIL_H
 
-#endif  /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */
+#endif /* !__LIBXFCE4UTIL_LIBXFCE4UTIL_H__ */

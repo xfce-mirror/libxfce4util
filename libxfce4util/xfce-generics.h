@@ -71,12 +71,12 @@ G_BEGIN_DECLS
  *
  */
 
-#define XFCE_GENERIC_STACK(Type)                                            \
-  struct                                                                    \
-  {                                                                         \
-    Type  *elements;                                                        \
-    gint   nelements;                                                       \
-    gint   top;                                                             \
+#define XFCE_GENERIC_STACK(Type) \
+  struct \
+  { \
+    Type *elements; \
+    gint nelements; \
+    gint top; \
   }
 
 
@@ -96,29 +96,34 @@ G_BEGIN_DECLS
 
 #ifdef __GNUC__
 
-#define xfce_stack_new(StackType)                                           \
-  ({                                                                        \
-    StackType *stack;                                                       \
-                                                                            \
-    stack            = g_new (StackType, 1);                                \
-    stack->elements  = g_malloc (20 * sizeof (*(stack->elements)));         \
-    stack->nelements = 20;                                                  \
-    stack->top       = -1;                                                  \
-                                                                            \
-    stack;                                                                  \
+#define xfce_stack_new(StackType) \
+  ({ \
+    StackType *stack; \
+\
+    stack = g_new (StackType, 1); \
+    stack->elements = g_malloc (20 * sizeof (*(stack->elements))); \
+    stack->nelements = 20; \
+    stack->top = -1; \
+\
+    stack; \
   })
 #else
 static inline gpointer
 xfce_stack_alloc (gsize element_size)
 {
-  typedef struct { gpointer elements; gint nelements; gint top; } Stack;
+  typedef struct
+  {
+    gpointer elements;
+    gint nelements;
+    gint top;
+  } Stack;
   Stack *stack = g_new (Stack, 1);
   stack->elements = g_malloc (20 * element_size);
   stack->nelements = 20;
   stack->top = -1;
   return stack;
 }
-#define xfce_stack_new(StackType)                                           \
+#define xfce_stack_new(StackType) \
   ((StackType *) xfce_stack_alloc (sizeof (*(((StackType *) 0)->elements))))
 #endif
 
@@ -131,12 +136,12 @@ xfce_stack_alloc (gsize element_size)
  *
  */
 
-#define xfce_stack_free(stack)                                              \
-  G_STMT_START                                                              \
-    {                                                                       \
-      g_free (stack->elements);                                             \
-      g_free (stack);                                                       \
-    }                                                                       \
+#define xfce_stack_free(stack) \
+  G_STMT_START \
+  { \
+    g_free (stack->elements); \
+    g_free (stack); \
+  } \
   G_STMT_END
 
 /**
@@ -147,10 +152,10 @@ xfce_stack_alloc (gsize element_size)
  */
 
 #ifdef __GNUC__
-#define xfce_stack_top(stack)                                               \
-  ({                                                                        \
-    g_assert (stack->top >= 0);                                             \
-    stack->elements[stack->top];                                            \
+#define xfce_stack_top(stack) \
+  ({ \
+    g_assert (stack->top >= 0); \
+    stack->elements[stack->top]; \
   })
 #else
 #define xfce_stack_top(stack) ((stack)->elements[(stack)->top])
@@ -163,12 +168,12 @@ xfce_stack_alloc (gsize element_size)
  *  Removes the top element from @stack.
  */
 
-#define xfce_stack_pop(stack)                                               \
-  G_STMT_START                                                              \
-    {                                                                       \
-      g_assert (stack->top > 0);                                            \
-      stack->top--;                                                         \
-    }                                                                       \
+#define xfce_stack_pop(stack) \
+  G_STMT_START \
+  { \
+    g_assert (stack->top > 0); \
+    stack->top--; \
+  } \
   G_STMT_END
 
 /**
@@ -179,20 +184,20 @@ xfce_stack_alloc (gsize element_size)
  * Pushes a new @value on top of @stack.
  */
 
-#define xfce_stack_push(stack, value)                                       \
-  G_STMT_START                                                              \
-    {                                                                       \
-      stack->top++;                                                         \
-                                                                            \
-      if (G_UNLIKELY (stack->top >= stack->nelements))                      \
-        {                                                                   \
-          stack->nelements *= 2;                                            \
-          stack->elements = g_realloc (stack->elements,                     \
-                                       stack->nelements * sizeof(value));   \
-        }                                                                   \
-                                                                            \
-      stack->elements[stack->top] = value;                                  \
-    }                                                                       \
+#define xfce_stack_push(stack, value) \
+  G_STMT_START \
+  { \
+    stack->top++; \
+\
+    if (G_UNLIKELY (stack->top >= stack->nelements)) \
+      { \
+        stack->nelements *= 2; \
+        stack->elements = g_realloc (stack->elements, \
+                                     stack->nelements * sizeof (value)); \
+      } \
+\
+    stack->elements[stack->top] = value; \
+  } \
   G_STMT_END
 
 G_END_DECLS

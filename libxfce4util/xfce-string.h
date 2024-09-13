@@ -25,17 +25,19 @@
 #ifndef __XFCE_STRING_H__
 #define __XFCE_STRING_H__
 
-#include <glib.h>
 #include <gio/gio.h>
+#include <glib.h>
 
 
 
-void     xfce_g_string_append_quoted (GString      *string,
-                                      const gchar  *unquoted);
+void
+xfce_g_string_append_quoted (GString *string,
+                             const gchar *unquoted);
 
-gchar*   xfce_str_replace            (const gchar *str,
-                                      const gchar *pattern,
-                                      const gchar *replacement);
+gchar *
+xfce_str_replace (const gchar *str,
+                  const gchar *pattern,
+                  const gchar *replacement);
 
 
 

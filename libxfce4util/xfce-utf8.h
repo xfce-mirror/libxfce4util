@@ -31,12 +31,14 @@
 
 G_BEGIN_DECLS
 
-gchar *xfce_utf8_remove_controls  (gchar       *str,
-                                   gssize       max_len,
-                                   const gchar *end);
+gchar *
+xfce_utf8_remove_controls (gchar *str,
+                           gssize max_len,
+                           const gchar *end);
 
-gchar *xfce_utf8_strndup          (const gchar *src,
-                                   gssize       max_len) G_GNUC_MALLOC;
+gchar *
+xfce_utf8_strndup (const gchar *src,
+                   gssize max_len) G_GNUC_MALLOC;
 
 G_END_DECLS
 
