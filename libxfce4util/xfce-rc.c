@@ -36,7 +36,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_ERRNO_H
@@ -58,12 +58,12 @@
 #include <string.h>
 #endif
 
+#include "libxfce4util.h"
+#include "xfce-private.h"
+#include "xfce-rc-private.h"
+#include "libxfce4util-alias.h"
 
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/xfce-private.h>
-#include <libxfce4util/xfce-rc-private.h>
-#include <libxfce4util/libxfce4util-alias.h>
 
 static XfceRc *
 xfce_rc_copy (const XfceRc *rc)
@@ -821,4 +821,4 @@ xfce_rc_write_list_entry (XfceRc      *rc,
 
 
 #define __XFCE_RC_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

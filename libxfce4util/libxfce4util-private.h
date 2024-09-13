@@ -26,7 +26,7 @@
 #ifndef __LIBXFCE4UTIL_PRIVATE_H__
 #define __LIBXFCE4UTIL_PRIVATE_H__
 
-#include <libxfce4util/libxfce4util.h>
+#include "libxfce4util.h"
 
 G_BEGIN_DECLS
 

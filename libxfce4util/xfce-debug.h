@@ -26,9 +26,8 @@
 #ifndef __LIBXFCE4UTIL_DEBUG_H__
 #define __LIBXFCE4UTIL_DEBUG_H__
 
-#include <stdio.h>
-
 #include <glib.h>
+#include <stdio.h>
 
 #if defined(DEBUG) && (DEBUG > 0) && (defined(G_HAVE_ISO_VARARGS) \
                                         || defined(G_HAVE_GNUC_VARARGS))

@@ -26,11 +26,11 @@
  *
  */
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include <libxfce4util/libxfce4util-private.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util-private.h"
+#include "libxfce4util-alias.h"
 
 #ifdef __SUNPRO_C
 #pragma align 4 (xfce_builtin_license_BSD)
@@ -137,4 +137,4 @@ xfce_get_license_text (XfceLicenseTextType license_type)
 
 
 #define __XFCE_LICENSE_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

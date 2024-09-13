@@ -28,7 +28,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_SYS_TYPES_H
@@ -69,8 +69,8 @@
 
 #include <gio/gio.h>
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util.h"
+#include "libxfce4util-alias.h"
 
 #define XFCE4DIR ".xfce4"
 
@@ -657,4 +657,4 @@ xfce_unescape_desktop_entry_value (const gchar *value)
 }
 
 #define __XFCE_MISCUTILS_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

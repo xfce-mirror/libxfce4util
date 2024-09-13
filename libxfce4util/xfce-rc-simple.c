@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_ERRNO_H
@@ -37,9 +37,9 @@
 #include <unistd.h>
 #endif
 
-#include <libxfce4util/xfce-private.h>
-#include <libxfce4util/xfce-rc-private.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "xfce-private.h"
+#include "xfce-rc-private.h"
+#include "libxfce4util-alias.h"
 
 
 #ifndef PATH_MAX
@@ -1076,4 +1076,4 @@ _xfce_rc_simple_write_entry (XfceRc      *rc,
 
 
 #define __XFCE_RC_SIMPLE_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

@@ -20,7 +20,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #ifdef HAVE_LIBINTL_H
@@ -30,8 +30,8 @@
 #include <locale.h>
 #endif
 
-#include <libxfce4util/libxfce4util-private.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util-private.h"
+#include "libxfce4util-alias.h"
 
 
 
@@ -66,4 +66,4 @@ _xfce_i18n_init (void)
 
 
 #define __LIBXFCE4UTIL_PRIVATE_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

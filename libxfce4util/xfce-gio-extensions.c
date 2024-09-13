@@ -31,11 +31,11 @@
 
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util.h"
+#include "libxfce4util-alias.h"
 
 
 
@@ -288,4 +288,4 @@ xfce_g_file_is_trusted (GFile        *file,
 }
 
 #define __XFCE_GIO_EXTENSIONS_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

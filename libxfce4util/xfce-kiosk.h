@@ -26,8 +26,8 @@
 #ifndef __XFCE_KIOSK_H__
 #define __XFCE_KIOSK_H__
 
-#include <glib.h>
 #include <glib-object.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 

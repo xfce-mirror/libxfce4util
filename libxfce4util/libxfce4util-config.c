@@ -29,11 +29,11 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util.h"
+#include "libxfce4util-alias.h"
 
 
 
@@ -44,4 +44,4 @@ const guint libxfce4util_micro_version = LIBXFCE4UTIL_MICRO_VERSION;
 
 
 #define __LIBXFCE4UTIL_CONFIG_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"

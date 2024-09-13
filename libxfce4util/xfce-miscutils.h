@@ -27,7 +27,6 @@
 #define __XFCE_MISCUTILS_H__
 
 #include <glib.h>
-
 #include <libxfce4util/xfce-debug.h>
 
 G_BEGIN_DECLS

@@ -24,8 +24,8 @@
 #ifndef __XFCE_GIO_EXTENSIONS_H__
 #define __XFCE_GIO_EXTENSIONS_H__
 
-#include <glib.h>
 #include <gio/gio.h>
+#include <glib.h>
 
 G_BEGIN_DECLS
 

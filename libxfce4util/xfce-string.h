@@ -25,8 +25,8 @@
 #ifndef __XFCE_STRING_H__
 #define __XFCE_STRING_H__
 
-#include <glib.h>
 #include <gio/gio.h>
+#include <glib.h>
 
 
 

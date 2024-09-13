@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <stdio.h>
@@ -30,7 +30,7 @@
 #include <unistd.h>
 #endif
 
-#include <libxfce4util/libxfce4util.h>
+#include "libxfce4util/libxfce4util.h"
 
 
 G_GNUC_NORETURN static void
@@ -103,5 +103,3 @@ main (int argc, char **argv)
 
   return EXIT_SUCCESS;
 }
-
-

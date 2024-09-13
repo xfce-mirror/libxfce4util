@@ -31,31 +31,27 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <stdio.h>
-
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
-
 #ifdef HAVE_SIGNAL_H
 #include <signal.h>
 #endif
-
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
-
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
 
 #include <glib.h>
 
-#include <libxfce4util/libxfce4util.h>
-#include <libxfce4util/libxfce4util-alias.h>
+#include "libxfce4util.h"
+#include "libxfce4util-alias.h"
 
 #define SIGNAL_PIPE_READ   __signal_pipe[0]
 #define SIGNAL_PIPE_WRITE  __signal_pipe[1]
@@ -270,4 +266,4 @@ xfce_posix_signal_handler_restore_handler(gint signal)
 
 
 #define __XFCE_POSIX_SIGNAL_HANDLER_C__
-#include <libxfce4util/libxfce4util-aliasdef.c>
+#include "libxfce4util-aliasdef.c"
