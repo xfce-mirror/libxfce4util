@@ -80,8 +80,7 @@ xfce_rc_free (XfceRc *rc)
     }
 }
 
-G_DEFINE_BOXED_TYPE (XfceRc, xfce_rc,
-  xfce_rc_copy, xfce_rc_free)
+G_DEFINE_BOXED_TYPE (XfceRc, xfce_rc, xfce_rc_copy, xfce_rc_free)
 
 /* called by _xfce_rc_{simple,config}_new */
 void
@@ -131,12 +130,12 @@ _xfce_rc_init (XfceRc *rc)
  *
  * Since: 4.2
  **/
-XfceRc*
+XfceRc *
 xfce_rc_simple_open (const gchar *filename,
-                     gboolean     readonly)
+                     gboolean readonly)
 {
   XfceRcSimple *simple;
-  gboolean      exists;
+  gboolean exists;
 
   exists = g_file_test (filename, G_FILE_TEST_IS_REGULAR);
 
@@ -175,10 +174,10 @@ xfce_rc_simple_open (const gchar *filename,
  *
  * Since: 4.2
  **/
-XfceRc*
+XfceRc *
 xfce_rc_config_open (XfceResourceType type,
-                     const gchar     *resource,
-                     gboolean         readonly)
+                     const gchar *resource,
+                     gboolean readonly)
 {
   XfceRcConfig *config;
 
@@ -320,7 +319,7 @@ xfce_rc_is_readonly (const XfceRc *rc)
  *
  * Since: 4.2
  **/
-const gchar*
+const gchar *
 xfce_rc_get_locale (const XfceRc *rc)
 {
   g_return_val_if_fail (rc != NULL, NULL);
@@ -348,7 +347,7 @@ xfce_rc_get_locale (const XfceRc *rc)
  *
  * Since: 4.2
  **/
-gchar**
+gchar **
 xfce_rc_get_groups (const XfceRc *rc)
 {
   g_return_val_if_fail (rc != NULL, NULL);
@@ -378,7 +377,7 @@ xfce_rc_get_groups (const XfceRc *rc)
  *
  * Since: 4.2
  **/
-gchar**
+gchar **
 xfce_rc_get_entries (const XfceRc *rc, const gchar *group)
 {
   g_return_val_if_fail (rc != NULL, NULL);
@@ -430,7 +429,7 @@ xfce_rc_delete_group (XfceRc *rc, const gchar *group, gboolean global)
  *
  * Since: 4.2
  **/
-const gchar*
+const gchar *
 xfce_rc_get_group (const XfceRc *rc)
 {
   g_return_val_if_fail (rc != NULL, NULL);
@@ -524,7 +523,7 @@ xfce_rc_delete_entry (XfceRc *rc, const gchar *key, gboolean global)
  **/
 gboolean
 xfce_rc_has_entry (const XfceRc *rc,
-                   const gchar  *key)
+                   const gchar *key)
 {
   g_return_val_if_fail (rc != NULL, FALSE);
   g_return_val_if_fail (key != NULL, FALSE);
@@ -549,10 +548,10 @@ xfce_rc_has_entry (const XfceRc *rc,
  *
  * Since: 4.2
  **/
-const gchar*
+const gchar *
 xfce_rc_read_entry (const XfceRc *rc,
-                    const gchar  *key,
-                    const gchar  *fallback)
+                    const gchar *key,
+                    const gchar *fallback)
 {
   const gchar *value;
 
@@ -582,10 +581,10 @@ xfce_rc_read_entry (const XfceRc *rc,
  *
  * Since: 4.2
  **/
-const gchar*
+const gchar *
 xfce_rc_read_entry_untranslated (const XfceRc *rc,
-                                 const gchar  *key,
-                                 const gchar  *fallback)
+                                 const gchar *key,
+                                 const gchar *fallback)
 {
   const gchar *value;
 
@@ -617,8 +616,8 @@ xfce_rc_read_entry_untranslated (const XfceRc *rc,
  **/
 gboolean
 xfce_rc_read_bool_entry (const XfceRc *rc,
-                         const gchar  *key,
-                         gboolean      fallback)
+                         const gchar *key,
+                         gboolean fallback)
 {
   const gchar *value;
 
@@ -626,8 +625,8 @@ xfce_rc_read_bool_entry (const XfceRc *rc,
   if (value != NULL)
     {
       return g_ascii_strcasecmp (value, "true") == 0
-          || g_ascii_strcasecmp (value, "on") == 0
-          || g_ascii_strcasecmp (value, "yes") == 0;
+             || g_ascii_strcasecmp (value, "on") == 0
+             || g_ascii_strcasecmp (value, "yes") == 0;
     }
 
   return fallback;
@@ -650,12 +649,12 @@ xfce_rc_read_bool_entry (const XfceRc *rc,
  **/
 gint
 xfce_rc_read_int_entry (const XfceRc *rc,
-                        const gchar  *key,
-                        gint          fallback)
+                        const gchar *key,
+                        gint fallback)
 {
   const gchar *value;
-  gchar       *endptr;
-  long         result;
+  gchar *endptr;
+  long result;
 
   value = xfce_rc_read_entry (rc, key, NULL);
   if (value != NULL)
@@ -692,13 +691,13 @@ xfce_rc_read_int_entry (const XfceRc *rc,
  *
  * Since: 4.2
  **/
-gchar**
+gchar **
 xfce_rc_read_list_entry (const XfceRc *rc,
-                         const gchar  *key,
-                         const gchar  *delimiter)
+                         const gchar *key,
+                         const gchar *delimiter)
 {
   const gchar *value;
-  gchar      **result = NULL;
+  gchar **result = NULL;
 
   if (delimiter == NULL)
     delimiter = ",";
@@ -729,7 +728,7 @@ xfce_rc_read_list_entry (const XfceRc *rc,
  * Since: 4.2
  **/
 void
-xfce_rc_write_entry (XfceRc      *rc,
+xfce_rc_write_entry (XfceRc *rc,
                      const gchar *key,
                      const gchar *value)
 {
@@ -754,9 +753,9 @@ xfce_rc_write_entry (XfceRc      *rc,
  * Since: 4.2
  **/
 void
-xfce_rc_write_bool_entry (XfceRc      *rc,
+xfce_rc_write_bool_entry (XfceRc *rc,
                           const gchar *key,
-                          gboolean     value)
+                          gboolean value)
 {
   xfce_rc_write_entry (rc, key, value ? "true" : "false");
 }
@@ -774,9 +773,9 @@ xfce_rc_write_bool_entry (XfceRc      *rc,
  * Since: 4.2
  **/
 void
-xfce_rc_write_int_entry (XfceRc      *rc,
+xfce_rc_write_int_entry (XfceRc *rc,
                          const gchar *key,
-                         gint         value)
+                         gint value)
 {
   gchar buffer[32];
 
@@ -801,9 +800,9 @@ xfce_rc_write_int_entry (XfceRc      *rc,
  * Since: 4.2
  **/
 void
-xfce_rc_write_list_entry (XfceRc      *rc,
+xfce_rc_write_list_entry (XfceRc *rc,
                           const gchar *key,
-                          gchar      **value,
+                          gchar **value,
                           const gchar *separator)
 {
   gchar *list;

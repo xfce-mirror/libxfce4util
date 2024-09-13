@@ -71,8 +71,8 @@
  **/
 gboolean
 xfce_mkdirhier (const gchar *whole_path,
-                gulong       mode,
-                GError     **error)
+                gulong mode,
+                GError **error)
 {
   /* Stolen from FreeBSD's mkdir(1) with modifications to make it
    * work properly with NFS on Solaris */
@@ -93,7 +93,7 @@ xfce_mkdirhier (const gchar *whole_path,
   if (p[0] == G_DIR_SEPARATOR) /* Skip leading '/'. */
     ++p;
 
-  for (first = 1, last = 0; !last ; ++p)
+  for (first = 1, last = 0; !last; ++p)
     {
       if (p[0] == '\0')
         last = 1;
@@ -118,14 +118,14 @@ xfce_mkdirhier (const gchar *whole_path,
            * We change the user's umask and then restore it,
            * instead of doing chmod's.
            */
-          oumask = umask(0);
+          oumask = umask (0);
           numask = oumask & ~(S_IWUSR | S_IXUSR);
-          umask(numask);
+          umask (numask);
           first = 0;
         }
 
       if (last)
-        umask(oumask);
+        umask (oumask);
 
       if (mkdir (path, last ? mode : S_IRWXU | S_IRWXG | S_IRWXO) < 0)
         {
@@ -183,17 +183,17 @@ xfce_mkdirhier (const gchar *whole_path,
  *
  * Since: 4.17.1
  **/
-gchar*
+gchar *
 xfce_create_shared_thumbnail_path (const gchar *uri,
                                    const gchar *size)
 {
-  GChecksum   *checksum;
-  gchar       *dir_uri;
-  gchar       *dir_path;
-  gchar       *basename;
-  gchar       *relname;
-  gchar       *filename;
-  gchar       *thumbnail_path;
+  GChecksum *checksum;
+  gchar *dir_uri;
+  gchar *dir_path;
+  gchar *basename;
+  gchar *relname;
+  gchar *filename;
+  gchar *thumbnail_path;
 
   basename = g_path_get_basename (uri);
   relname = g_build_filename (".", basename, NULL);

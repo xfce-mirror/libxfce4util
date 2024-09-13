@@ -58,7 +58,7 @@ gboolean
 xfce_g_file_metadata_is_supported (GFile *file)
 {
   GFileAttributeInfoList *info_list;
-  gboolean                is_supported;
+  gboolean is_supported;
 
   g_return_val_if_fail (G_IS_FILE (file), FALSE);
 
@@ -88,18 +88,18 @@ xfce_g_file_metadata_is_supported (GFile *file)
  * Since: 4.17
  **/
 gchar *
-xfce_g_file_create_checksum (GFile        *file,
+xfce_g_file_create_checksum (GFile *file,
                              GCancellable *cancellable,
-                             GError      **error)
+                             GError **error)
 {
   GFileInputStream *stream;
-  GChecksum        *checksum;
-  gchar            *checksum_string;
-  gssize            read_bytes;
-  guint8            buffer[1024];
+  GChecksum *checksum;
+  gchar *checksum_string;
+  gssize read_bytes;
+  guint8 buffer[1024];
 
   g_return_val_if_fail (error == NULL || *error == NULL, NULL);
-  g_return_val_if_fail (G_IS_FILE (file),                NULL);
+  g_return_val_if_fail (G_IS_FILE (file), NULL);
 
   stream = g_file_read (file, cancellable, error);
 
@@ -157,16 +157,16 @@ xfce_g_file_create_checksum (GFile        *file,
  * Since: 4.17
  **/
 gboolean
-xfce_g_file_set_trusted (GFile        *file,
-                         gboolean      is_trusted,
+xfce_g_file_set_trusted (GFile *file,
+                         gboolean is_trusted,
                          GCancellable *cancellable,
-                         GError      **error)
+                         GError **error)
 {
-  GError  *error_local = NULL;
-  gchar   *checksum_string;
+  GError *error_local = NULL;
+  gchar *checksum_string;
 
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
-  g_return_val_if_fail (G_IS_FILE (file),                FALSE);
+  g_return_val_if_fail (G_IS_FILE (file), FALSE);
 
   if (!xfce_g_file_metadata_is_supported (file))
     {
@@ -228,15 +228,15 @@ xfce_g_file_set_trusted (GFile        *file,
  * Since: 4.17
  **/
 gboolean
-xfce_g_file_is_trusted (GFile        *file,
+xfce_g_file_is_trusted (GFile *file,
                         GCancellable *cancellable,
-                        GError      **error)
+                        GError **error)
 {
-  GError      *error_local = NULL;
-  GFileInfo   *file_info;
-  gboolean     is_trusted;
+  GError *error_local = NULL;
+  GFileInfo *file_info;
+  gboolean is_trusted;
   const gchar *attribute_string;
-  gchar       *checksum_string;
+  gchar *checksum_string;
 
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
   g_return_val_if_fail (G_IS_FILE (file), FALSE);

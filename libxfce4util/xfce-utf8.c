@@ -55,17 +55,17 @@
  *
  * Since: 4.2
  **/
-gchar*
+gchar *
 xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
 {
   gchar *p;
 
   g_return_val_if_fail (str != NULL, NULL);
 
-  for (p = str; p != NULL && *p != '\0' && (!end || p < end) && (max_len < 0 || (p - str) < max_len); )
+  for (p = str; p != NULL && *p != '\0' && (!end || p < end) && (max_len < 0 || (p - str) < max_len);)
     {
       if ((*p > 0) && (*p < 32))
-          *p = ' ';
+        *p = ' ';
       p = g_utf8_find_next_char (p, end);
     }
 
@@ -91,7 +91,7 @@ xfce_utf8_remove_controls (gchar *str, gssize max_len, const gchar *end)
  **/
 gchar *
 xfce_utf8_strndup (const gchar *src,
-                   gssize       max_len)
+                   gssize max_len)
 {
   const gchar *s;
 

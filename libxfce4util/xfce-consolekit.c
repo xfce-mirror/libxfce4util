@@ -39,7 +39,8 @@
 
 
 
-static void     xfce_consolekit_finalize     (GObject         *object);
+static void
+xfce_consolekit_finalize (GObject *object);
 
 
 

@@ -34,52 +34,63 @@ G_BEGIN_DECLS
 #define XFCE_TYPE_CONSOLEKIT (xfce_consolekit_get_type ())
 G_DECLARE_FINAL_TYPE (XfceConsolekit, xfce_consolekit, XFCE, CONSOLEKIT, GObject);
 
-XfceConsolekit      *xfce_consolekit_get                  (void);
+XfceConsolekit *
+xfce_consolekit_get (void);
 
-gboolean             xfce_consolekit_reboot               (XfceConsolekit       *consolekit,
-                                                           gboolean              polkit_interactive,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_reboot (XfceConsolekit *consolekit,
+                        gboolean polkit_interactive,
+                        GError **error);
 
-gboolean             xfce_consolekit_power_off            (XfceConsolekit       *consolekit,
-                                                           gboolean              polkit_interactive,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_power_off (XfceConsolekit *consolekit,
+                           gboolean polkit_interactive,
+                           GError **error);
 
-gboolean             xfce_consolekit_suspend              (XfceConsolekit       *consolekit,
-                                                           gboolean              polkit_interactive,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_suspend (XfceConsolekit *consolekit,
+                         gboolean polkit_interactive,
+                         GError **error);
 
-gboolean             xfce_consolekit_hibernate            (XfceConsolekit       *consolekit,
-                                                           gboolean              polkit_interactive,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_hibernate (XfceConsolekit *consolekit,
+                           gboolean polkit_interactive,
+                           GError **error);
 
-gboolean             xfce_consolekit_hybrid_sleep         (XfceConsolekit       *consolekit,
-                                                           gboolean              polkit_interactive,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_hybrid_sleep (XfceConsolekit *consolekit,
+                              gboolean polkit_interactive,
+                              GError **error);
 
-gboolean             xfce_consolekit_can_reboot           (XfceConsolekit       *consolekit,
-                                                           gboolean             *can_reboot,
-                                                           gboolean             *auth_reboot,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_can_reboot (XfceConsolekit *consolekit,
+                            gboolean *can_reboot,
+                            gboolean *auth_reboot,
+                            GError **error);
 
-gboolean             xfce_consolekit_can_power_off        (XfceConsolekit       *consolekit,
-                                                           gboolean             *can_power_off,
-                                                           gboolean             *auth_power_off,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_can_power_off (XfceConsolekit *consolekit,
+                               gboolean *can_power_off,
+                               gboolean *auth_power_off,
+                               GError **error);
 
-gboolean             xfce_consolekit_can_suspend          (XfceConsolekit       *consolekit,
-                                                           gboolean             *can_suspend,
-                                                           gboolean             *auth_suspend,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_can_suspend (XfceConsolekit *consolekit,
+                             gboolean *can_suspend,
+                             gboolean *auth_suspend,
+                             GError **error);
 
-gboolean             xfce_consolekit_can_hibernate        (XfceConsolekit       *consolekit,
-                                                           gboolean             *can_hibernate,
-                                                           gboolean             *auth_hibernate,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_can_hibernate (XfceConsolekit *consolekit,
+                               gboolean *can_hibernate,
+                               gboolean *auth_hibernate,
+                               GError **error);
 
-gboolean             xfce_consolekit_can_hybrid_sleep     (XfceConsolekit       *consolekit,
-                                                           gboolean             *can_hybrid_sleep,
-                                                           gboolean             *auth_hybrid_sleep,
-                                                           GError              **error);
+gboolean
+xfce_consolekit_can_hybrid_sleep (XfceConsolekit *consolekit,
+                                  gboolean *can_hybrid_sleep,
+                                  gboolean *auth_hybrid_sleep,
+                                  GError **error);
 
 G_END_DECLS
 

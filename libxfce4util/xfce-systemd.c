@@ -37,7 +37,8 @@
 
 
 
-static void     xfce_systemd_finalize     (GObject         *object);
+static void
+xfce_systemd_finalize (GObject *object);
 
 
 

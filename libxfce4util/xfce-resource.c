@@ -50,19 +50,19 @@
 
 
 
-#define TYPE_VALID(t) ((gint)(t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
+#define TYPE_VALID(t) ((gint) (t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
 
 
 
-static gchar*   _save[5] = { NULL, NULL, NULL, NULL, NULL };
-static GSList*  _list[5] = { NULL, NULL, NULL, NULL, NULL };
+static gchar *_save[5] = { NULL, NULL, NULL, NULL, NULL };
+static GSList *_list[5] = { NULL, NULL, NULL, NULL, NULL };
 static gboolean _inited = FALSE;
 
 
 
-static const gchar*
+static const gchar *
 _res_getenv (const gchar *variable,
-       const gchar *fallback)
+             const gchar *fallback)
 {
   static gchar buffer[PATH_MAX];
   const gchar *result;
@@ -72,7 +72,7 @@ _res_getenv (const gchar *variable,
     {
       if (*fallback == '~')
         {
-          g_strlcpy (buffer, xfce_get_homedir(), PATH_MAX);
+          g_strlcpy (buffer, xfce_get_homedir (), PATH_MAX);
           g_strlcat (buffer, fallback + 1, PATH_MAX);
 
           result = buffer;
@@ -88,11 +88,11 @@ _res_getenv (const gchar *variable,
 
 
 static void
-_res_split_and_append (const gchar     *dir_list,
+_res_split_and_append (const gchar *dir_list,
                        XfceResourceType type)
 {
   gchar **dirs;
-  gint    n;
+  gint n;
 
   dirs = g_strsplit (dir_list, ":", -1);
   for (n = 0; dirs[n] != NULL; ++n)
@@ -107,7 +107,7 @@ _res_split_and_append (const gchar     *dir_list,
 
 
 
-static GSList*
+static GSList *
 _res_remove_duplicates (GSList *list)
 {
   GSList *ll = NULL;
@@ -132,20 +132,20 @@ _res_remove_duplicates (GSList *list)
 
 
 
-static GSList*
+static GSList *
 _res_remove_trailing_slashes (GSList *list)
 {
-  GSList      *ll = NULL;
-  GSList      *lp;
+  GSList *ll = NULL;
+  GSList *lp;
   const gchar *path;
-  gsize        len;
+  gsize len;
 
   for (lp = list; lp != NULL; lp = lp->next)
     {
       path = (const gchar *) lp->data;
       len = strlen (path);
 
-      while (len > 0 && G_IS_DIR_SEPARATOR (path[len-1]))
+      while (len > 0 && G_IS_DIR_SEPARATOR (path[len - 1]))
         --len;
 
       if (len <= 0)
@@ -174,8 +174,8 @@ _res_init (void)
 {
   const gchar *dirs;
   const gchar *dir;
-  gchar       *path;
-  GSList      *l;
+  gchar *path;
+  GSList *l;
 
   if (_inited)
     return;
@@ -267,8 +267,11 @@ _res_init (void)
       _list[XFCE_RESOURCE_THEMES] = g_slist_append (_list[XFCE_RESOURCE_THEMES], path);
     }
 
-  /* Remove trailing slashes */
-#define REMOVE_TRAILING_SLASHES(type) { _list[(type)] = _res_remove_trailing_slashes (_list[(type)]); }
+    /* Remove trailing slashes */
+#define REMOVE_TRAILING_SLASHES(type) \
+  { \
+    _list[(type)] = _res_remove_trailing_slashes (_list[(type)]); \
+  }
   REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_DATA);
   REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_CONFIG);
   REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_CACHE);
@@ -277,7 +280,10 @@ _res_init (void)
 #undef REMOVE_TRAILING_SLASHES
 
   /* remove duplicates from the lists */
-#define REMOVE_DUPLICATES(type) { _list[(type)] = _res_remove_duplicates (_list[(type)]); }
+#define REMOVE_DUPLICATES(type) \
+  { \
+    _list[(type)] = _res_remove_duplicates (_list[(type)]); \
+  }
   REMOVE_DUPLICATES (XFCE_RESOURCE_DATA);
   REMOVE_DUPLICATES (XFCE_RESOURCE_CONFIG);
   REMOVE_DUPLICATES (XFCE_RESOURCE_CACHE);
@@ -290,8 +296,8 @@ _res_init (void)
 
 static gboolean
 _res_splitup_pattern (const gchar *pattern,
-          gchar      **current,
-          gchar      **child)
+                      gchar **current,
+                      gchar **child)
 {
   const gchar *p;
 
@@ -317,21 +323,21 @@ _res_splitup_pattern (const gchar *pattern,
 
 
 
-static GSList*
+static GSList *
 _res_match_path (const gchar *path,
                  const gchar *relpath,
                  const gchar *pattern,
-                 GSList      *entries)
+                 GSList *entries)
 {
   GPatternSpec *spec;
-  const gchar  *entry;
-  GFileTest     file_test = G_FILE_TEST_IS_REGULAR;
-  gchar        *pattern_this;
-  gchar        *pattern_child;
-  gchar        *filename;
-  gchar        *child_relpath;
-  GSList       *list = NULL;
-  GDir         *dp;
+  const gchar *entry;
+  GFileTest file_test = G_FILE_TEST_IS_REGULAR;
+  gchar *pattern_this;
+  gchar *pattern_child;
+  gchar *filename;
+  gchar *child_relpath;
+  GSList *list = NULL;
+  GDir *dp;
 
   dp = g_dir_open (path, 0, NULL);
   if (dp == NULL)
@@ -349,10 +355,10 @@ _res_match_path (const gchar *path,
       guint end = strlen (pattern_this) - 1;
 
       if (pattern_this[end] == G_DIR_SEPARATOR)
-  {
-    file_test = G_FILE_TEST_IS_DIR;
-    pattern_this[end] = '\0';
-  }
+        {
+          file_test = G_FILE_TEST_IS_DIR;
+          pattern_this[end] = '\0';
+        }
     }
 
   spec = g_pattern_spec_new (pattern_this);
@@ -420,12 +426,12 @@ _res_match_path (const gchar *path,
  *
  * Since: 4.2
  **/
-gchar**
+gchar **
 xfce_resource_dirs (XfceResourceType type)
 {
   gchar **paths;
-  guint   size;
-  guint   pos;
+  guint size;
+  guint pos;
   GSList *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
@@ -433,8 +439,8 @@ xfce_resource_dirs (XfceResourceType type)
   _res_init ();
 
   paths = g_new (gchar *, 11);
-  size  = 10;
-  pos   = 0;
+  size = 10;
+  pos = 0;
 
   for (l = _list[type]; l != NULL; l = l->next)
     {
@@ -473,13 +479,13 @@ xfce_resource_dirs (XfceResourceType type)
  *
  * Since: 4.2
  **/
-gchar*
+gchar *
 xfce_resource_lookup (XfceResourceType type,
-                      const gchar     *filename)
+                      const gchar *filename)
 {
   GFileTest test;
-  gchar    *path;
-  GSList   *l;
+  gchar *path;
+  GSList *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
   g_return_val_if_fail (filename != NULL && *filename != '\0', NULL);
@@ -493,7 +499,6 @@ xfce_resource_lookup (XfceResourceType type,
 
   for (l = _list[type]; l != NULL; l = l->next)
     {
-
       path = g_build_path (G_DIR_SEPARATOR_S, (const gchar *) l->data, filename, NULL);
 
       if (g_file_test (path, test))
@@ -524,16 +529,16 @@ xfce_resource_lookup (XfceResourceType type,
  *
  * Since: 4.2
  **/
-gchar**
+gchar **
 xfce_resource_lookup_all (XfceResourceType type,
-                          const gchar     *filename)
+                          const gchar *filename)
 {
   GFileTest test;
-  gchar    *path;
-  gchar   **paths;
-  guint     size;
-  guint     pos;
-  GSList   *l;
+  gchar *path;
+  gchar **paths;
+  guint size;
+  guint pos;
+  GSList *l;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
   g_return_val_if_fail (filename != NULL && *filename != '\0', NULL);
@@ -546,8 +551,8 @@ xfce_resource_lookup_all (XfceResourceType type,
     test = G_FILE_TEST_IS_REGULAR;
 
   paths = g_new (gchar *, 11);
-  size  = 10;
-  pos   = 0;
+  size = 10;
+  pos = 0;
 
   for (l = _list[type]; l != NULL; l = l->next)
     {
@@ -602,15 +607,15 @@ xfce_resource_lookup_all (XfceResourceType type,
  *
  * Since: 4.2
  **/
-gchar**
+gchar **
 xfce_resource_match (XfceResourceType type,
-                     const gchar     *pattern,
-                     gboolean         unique)
+                     const gchar *pattern,
+                     gboolean unique)
 {
   gchar **paths;
   GSList *result = NULL;
   GSList *l;
-  guint   n;
+  guint n;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
   g_return_val_if_fail (pattern != NULL, NULL);
@@ -649,16 +654,16 @@ xfce_resource_match (XfceResourceType type,
  *
  * Since: 4.2
  **/
-gchar**
+gchar **
 xfce_resource_match_custom (XfceResourceType type,
-                            gboolean         unique,
-                            XfceMatchFunc    func,
-                            gpointer         user_data)
+                            gboolean unique,
+                            XfceMatchFunc func,
+                            gpointer user_data)
 {
   gchar **paths;
   GSList *result = NULL;
   GSList *l;
-  guint   n;
+  guint n;
 
   g_return_val_if_fail (TYPE_VALID (type), NULL);
   g_return_val_if_fail (func != NULL, NULL);
@@ -697,7 +702,7 @@ xfce_resource_match_custom (XfceResourceType type,
  **/
 void
 xfce_resource_push_path (XfceResourceType type,
-                         const gchar     *path)
+                         const gchar *path)
 {
   g_return_if_fail (TYPE_VALID (type));
   g_return_if_fail (path != NULL);
@@ -764,10 +769,10 @@ xfce_resource_pop_path (XfceResourceType type)
  *
  * Since: 4.2
  **/
-gchar*
+gchar *
 xfce_resource_save_location (XfceResourceType type,
-                             const gchar     *relpath,
-                             gboolean         create)
+                             const gchar *relpath,
+                             gboolean create)
 {
   gchar *path;
   gchar *dir;
@@ -784,10 +789,10 @@ xfce_resource_save_location (XfceResourceType type,
   if (relpath[strlen (relpath) - 1] == G_DIR_SEPARATOR)
     {
       if (create && !xfce_mkdirhier (path, 0700, NULL))
-  {
-    g_free (path);
-    path = NULL;
-  }
+        {
+          g_free (path);
+          path = NULL;
+        }
     }
   else
     {

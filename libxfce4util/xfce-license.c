@@ -33,7 +33,7 @@
 #include "libxfce4util-alias.h"
 
 #ifdef __SUNPRO_C
-#pragma align 4 (xfce_builtin_license_BSD)
+#pragma align 4(xfce_builtin_license_BSD)
 #endif
 #ifdef __GNUC__
 static const char xfce_builtin_license_BSD[] __attribute__ ((__aligned__ (4))) =
@@ -62,7 +62,7 @@ static const char xfce_builtin_license_BSD[] =
       " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n");
 
 #ifdef __SUNPRO_C
-#pragma align 4 (xfce_builtin_license_GPL)
+#pragma align 4(xfce_builtin_license_GPL)
 #endif
 #ifdef __GNUC__
 static const char xfce_builtin_license_GPL[] __attribute__ ((__aligned__ (4))) =
@@ -84,7 +84,7 @@ static const char xfce_builtin_license_GPL[] =
       "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n");
 
 #ifdef __SUNPRO_C
-#pragma align 4 (xfce_builtin_license_LGPL)
+#pragma align 4(xfce_builtin_license_LGPL)
 #endif
 #ifdef __GNUC__
 static const char xfce_builtin_license_LGPL[] __attribute__ ((__aligned__ (4))) =
@@ -119,7 +119,7 @@ static const char xfce_builtin_license_LGPL[] =
  *
  * Return value: the license text for @license_type.
  **/
-const gchar*
+const gchar *
 xfce_get_license_text (XfceLicenseTextType license_type)
 {
   /* make sure to initialize the i18n support */
@@ -128,9 +128,12 @@ xfce_get_license_text (XfceLicenseTextType license_type)
   /* return the appropriate license */
   switch (license_type)
     {
-    case XFCE_LICENSE_TEXT_BSD: return _(xfce_builtin_license_BSD);
-    case XFCE_LICENSE_TEXT_GPL: return _(xfce_builtin_license_GPL);
-    default:                    return _(xfce_builtin_license_LGPL);
+    case XFCE_LICENSE_TEXT_BSD:
+      return _(xfce_builtin_license_BSD);
+    case XFCE_LICENSE_TEXT_GPL:
+      return _(xfce_builtin_license_GPL);
+    default:
+      return _(xfce_builtin_license_LGPL);
     }
 }
 

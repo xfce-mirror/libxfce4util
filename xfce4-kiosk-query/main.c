@@ -58,9 +58,9 @@ int
 main (int argc, char **argv)
 {
   const gchar *module;
-  XfceKiosk   *kiosk;
-  int          ch;
-  int          n;
+  XfceKiosk *kiosk;
+  int ch;
+  int n;
 
   while ((ch = getopt (argc, argv, "hv")) != -1)
     {
