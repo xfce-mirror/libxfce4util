@@ -13,7 +13,7 @@ m4_define([libxfce4util_verinfo], [7:0:0])
 XDT_VERSION_INIT([4.19.3], [git])
 
 dnl minimum required versions
-m4_define([glib_min_version], [2.66.0])
+m4_define([glib_min_version], [2.72.0])
 
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
@@ -126,7 +126,7 @@ GTK_DOC_CHECK([1.20])
 dnl ***************************************
 dnl *** Check for gobject-introspection ***
 dnl ***************************************
-GOBJECT_INTROSPECTION_CHECK([1.66.0])
+GOBJECT_INTROSPECTION_CHECK([1.72.0])
 
 dnl *************************
 dnl *** Check for vapigen ***
