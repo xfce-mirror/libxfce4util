@@ -38,8 +38,8 @@ libxfce4util_headers =							\
 	xfce-utf8.h
 
 libxfce4util_built_sources =						\
-	libxfce4util-alias.h						\
-	libxfce4util-aliasdef.c
+	libxfce4util-visibility.h					\
+	libxfce4util-visibility.c
 
 libxfce4utilincludedir = $(includedir)/xfce4/libxfce4util
 libxfce4utilinclude_HEADERS =						\
@@ -136,21 +136,17 @@ endif
 ## files as part of the dist tarball.
 ##
 if MAINTAINER_MODE
-CLEANFILES +=								\
-	actual-abi							\
-	expected-abi
-
 DISTCLEANFILES =							\
 	$(libxfce4util_built_sources)
 
 BUILT_SOURCES =								\
 	$(libxfce4util_built_sources)
 
-libxfce4util-alias.h: make-libxfce4util-alias.pl libxfce4util.symbols
-	$(PERL) $(srcdir)/make-libxfce4util-alias.pl < $(srcdir)/libxfce4util.symbols > libxfce4util-alias.h
+libxfce4util-visibility.h: libxfce4util.symbols Makefile
+	$(AM_V_GEN) $(XDT_GEN_VISIBILITY) --kind=header $< $@
 
-libxfce4util-aliasdef.c: make-libxfce4util-alias.pl libxfce4util.symbols
-	$(AM_V_GEN) $(PERL) $(srcdir)/make-libxfce4util-alias.pl -def < $(srcdir)/libxfce4util.symbols > libxfce4util-aliasdef.c
+libxfce4util-visibility.c: libxfce4util.symbols Makefile
+	$(AM_V_GEN) $(XDT_GEN_VISIBILITY) --kind=source $< $@
 
 endif
 
@@ -160,9 +156,8 @@ dist-hook: all
 EXTRA_DIST =								\
 	abicheck.sh							\
 	libxfce4util.symbols						\
-	libxfce4util-alias.h						\
-	libxfce4util-aliasdef.c						\
-	make-libxfce4util-alias.pl
+	libxfce4util-visibility.h					\
+	libxfce4util-visibility.c
 
 if ENABLE_VAPIGEN
 -include $(VAPIGEN_MAKEFILE)
@@ -184,6 +179,7 @@ vapi_DATA = $(VAPIGEN_VAPIS)
 endif
 
 if HAVE_GNUC_VISIBILITY
+export XDT_CHECK_ABI
 TESTS = abicheck.sh
 endif
 
