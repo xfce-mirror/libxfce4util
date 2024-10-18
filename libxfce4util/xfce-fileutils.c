@@ -47,7 +47,7 @@
 #endif
 
 #include "libxfce4util-private.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -222,4 +222,4 @@ xfce_create_shared_thumbnail_path (const gchar *uri,
 
 
 #define __XFCE_FILEUTILS_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

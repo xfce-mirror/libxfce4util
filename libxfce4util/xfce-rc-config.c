@@ -33,7 +33,7 @@
 
 #include "xfce-private.h"
 #include "xfce-rc-private.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -425,4 +425,4 @@ _xfce_rc_config_write_entry (XfceRc *rc,
 
 
 #define __XFCE_RC_CONFIG_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

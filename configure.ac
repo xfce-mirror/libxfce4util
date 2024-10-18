@@ -51,7 +51,7 @@ AC_SUBST([LIBXFCE4UTIL_VERINFO])
 dnl **********************************
 dnl *** Subst overall Xfce version ***
 dnl **********************************
-AC_DEFINE([XFCE_VERSION_STRING], ["xfce_version_string"],
+AC_DEFINE([VERSION_SHORT], ["xfce_version_string"],
   [Overall Xfce version])
 
 dnl **********************************
@@ -75,7 +75,8 @@ dnl ********************************
 AC_PROG_CC()
 AM_PROG_CC_C_O()
 AC_PROG_INSTALL()
-AC_CHECK_PROGS([PERL], [perl5 perl])
+AC_PATH_PROG([XDT_GEN_VISIBILITY], [xdt-gen-visibility])
+AC_PATH_PROG([XDT_CHECK_ABI], [xdt-check-abi])
 
 dnl **************************
 dnl *** Initialize libtool ***
@@ -89,7 +90,7 @@ dnl ***************************************
 AC_CHECK_HEADERS([err.h errno.h grp.h limits.h locale.h pwd.h \
                   signal.h sys/stat.h sys/types.h sys/utsname.h \
                   time.h unistd.h stdarg.h varargs.h libintl.h])
-AC_CHECK_FUNCS([gethostname getpwnam setlocale strdup])
+AC_CHECK_FUNCS([gethostname getpwnam setlocale])
 
 dnl ******************************
 dnl *** Check for i18n support ***
