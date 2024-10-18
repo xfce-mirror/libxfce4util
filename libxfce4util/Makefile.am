@@ -154,7 +154,6 @@ endif
 dist-hook: all
 
 EXTRA_DIST =								\
-	abicheck.sh							\
 	libxfce4util.symbols						\
 	libxfce4util-visibility.h					\
 	libxfce4util-visibility.c
@@ -176,11 +175,6 @@ vapidir = $(datadir)/vala/vapi
 vapi_DATA = $(VAPIGEN_VAPIS)
 ## $(VAPIGEN_VAPIS:.vapi=.deps)
 
-endif
-
-if HAVE_GNUC_VISIBILITY
-export XDT_CHECK_ABI
-TESTS = abicheck.sh
 endif
 
 # vi:set ts=8 sw=8 noet ai nocindent:
