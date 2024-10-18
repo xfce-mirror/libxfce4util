@@ -16,3 +16,6 @@ xfce4_kiosk_query_DEPENDENCIES =					\
 
 xfce4_kiosk_query_LDFLAGS =						\
 	$(top_builddir)/libxfce4util/libxfce4util.la
+
+EXTRA_DIST =								\
+	meson.build
