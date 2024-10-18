@@ -33,7 +33,7 @@
 #include <gio/gio.h>
 
 #include "xfce-systemd.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -530,4 +530,4 @@ xfce_systemd_can_hybrid_sleep (XfceSystemd *systemd,
 }
 
 #define __XFCE_SYSTEMD_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

@@ -35,7 +35,7 @@
 #endif
 
 #include "libxfce4util.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -288,4 +288,4 @@ xfce_g_file_is_trusted (GFile *file,
 }
 
 #define __XFCE_GIO_EXTENSIONS_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

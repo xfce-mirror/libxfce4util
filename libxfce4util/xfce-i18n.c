@@ -59,7 +59,7 @@
 #endif
 
 #include "libxfce4util.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -515,4 +515,4 @@ xfce_locale_match (const gchar *locale1,
 
 
 #define __XFCE_I18N_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

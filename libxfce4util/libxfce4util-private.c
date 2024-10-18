@@ -31,7 +31,7 @@
 #endif
 
 #include "libxfce4util-private.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -66,4 +66,4 @@ _xfce_i18n_init (void)
 
 
 #define __LIBXFCE4UTIL_PRIVATE_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

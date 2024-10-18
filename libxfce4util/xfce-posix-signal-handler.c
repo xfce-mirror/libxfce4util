@@ -51,7 +51,7 @@
 #include <glib.h>
 
 #include "libxfce4util.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 #define SIGNAL_PIPE_READ __signal_pipe[0]
 #define SIGNAL_PIPE_WRITE __signal_pipe[1]
@@ -276,4 +276,4 @@ xfce_posix_signal_handler_restore_handler (gint signal)
 
 
 #define __XFCE_POSIX_SIGNAL_HANDLER_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"
