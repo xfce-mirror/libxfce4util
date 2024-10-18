@@ -33,7 +33,7 @@
 #endif
 
 #include "libxfce4util.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -131,4 +131,4 @@ xfce_g_string_append_quoted (GString *string,
 }
 
 #define __XFCE_STRING_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

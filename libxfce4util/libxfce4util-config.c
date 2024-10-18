@@ -32,8 +32,8 @@
 #include "config.h"
 #endif
 
-#include "libxfce4util.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-config.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -44,4 +44,4 @@ const guint libxfce4util_micro_version = LIBXFCE4UTIL_MICRO_VERSION;
 
 
 #define __LIBXFCE4UTIL_CONFIG_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"
