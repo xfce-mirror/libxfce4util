@@ -164,7 +164,7 @@ internal_get_file_r (const gchar *dir,
 const gchar *
 xfce_version_string (void)
 {
-  return XFCE_VERSION_STRING;
+  return VERSION_SHORT;
 }
 
 
