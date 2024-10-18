@@ -39,7 +39,7 @@
 #endif
 
 #include "libxfce4util.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -811,4 +811,4 @@ xfce_resource_save_location (XfceResourceType type,
 
 
 #define __XFCE_RESOURCE_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

@@ -70,7 +70,7 @@
 #include <gio/gio.h>
 
 #include "libxfce4util.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 #define XFCE4DIR ".xfce4"
 
@@ -659,4 +659,4 @@ xfce_unescape_desktop_entry_value (const gchar *value)
 }
 
 #define __XFCE_MISCUTILS_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

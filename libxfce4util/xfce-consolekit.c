@@ -35,7 +35,7 @@
 #include <gio/gio.h>
 
 #include "xfce-consolekit.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -667,4 +667,4 @@ xfce_consolekit_can_hybrid_sleep (XfceConsolekit *consolekit,
 }
 
 #define __XFCE_CONSOLEKIT_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

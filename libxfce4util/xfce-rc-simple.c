@@ -39,7 +39,7 @@
 
 #include "xfce-private.h"
 #include "xfce-rc-private.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 #ifndef PATH_MAX
@@ -1083,4 +1083,4 @@ _xfce_rc_simple_write_entry (XfceRc *rc,
 
 
 #define __XFCE_RC_SIMPLE_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

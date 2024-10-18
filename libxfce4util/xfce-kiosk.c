@@ -58,7 +58,7 @@
 #endif
 
 #include "libxfce4util.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -382,4 +382,4 @@ mtime (const gchar *path)
 
 
 #define __XFCE_KIOSK_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"

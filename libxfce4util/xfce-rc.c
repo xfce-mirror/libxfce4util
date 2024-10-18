@@ -61,7 +61,7 @@
 #include "libxfce4util.h"
 #include "xfce-private.h"
 #include "xfce-rc-private.h"
-#include "libxfce4util-alias.h"
+#include "libxfce4util-visibility.h"
 
 
 
@@ -820,4 +820,4 @@ xfce_rc_write_list_entry (XfceRc *rc,
 
 
 #define __XFCE_RC_C__
-#include "libxfce4util-aliasdef.c"
+#include "libxfce4util-visibility.c"
