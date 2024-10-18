@@ -53,3 +53,7 @@ GTKDOC_LIBS = \
 	$(GOBJECT_LIBS)
 
 include $(top_srcdir)/gtk-doc.make
+
+EXTRA_DIST += \
+	gtkdocentities.ent.in \
+	meson.build
