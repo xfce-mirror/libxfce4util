@@ -1,3 +1,23 @@
+4.19.4 (2024-11-01)
+======
+- bump Xfce overall version to 4.20pre1
+- Remove local ABI check
+- Add meson build
+- Migrate to xdt-gen-visibility and xdt-check-abi
+- I18n: Update po/LINGUAS list
+- build: Bump requirements for Xfce 4.20
+- Apply .clang-format file
+- Add missing includes of libxfce4util-alias.h
+- clang-format: Add file
+- xfce-rc: Fix support for the LANGUAGE environment variable
+- scan-build: Add false positive file
+- build: Use AM_DISTCHECK_CONFIGURE_FLAGS
+- session-management: Try to create D-BUS proxy synchronously
+- session-management: Always set an error when returning FALSE
+- fileutils: Fix MD5 hash in xfce_create_shared_thumbnail_path()
+- Translation Updates:
+  Asturian, Greek, Hungarian, Lithuanian, Persian (Iran)
+
 4.19.3 (2024-02-05)
 ======
 - Update copyright year

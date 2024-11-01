@@ -1,7 +1,7 @@
 project(
   'libxfce4util',
   'c',
-  version: '4.19.3-dev',
+  version: '4.19.4-dev',
   license: 'GPL-2',
   meson_version: '>= 0.56.0',
   default_options: [
