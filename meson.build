@@ -1,15 +1,10 @@
 project(
   'libxfce4util',
   'c',
-  version: '4.19.4-dev',
-  license: 'GPL-2',
-  meson_version: '>= 0.56.0',
-  default_options: [
-    'c_std=gnu11',
-    'buildtype=debugoptimized',
-    'warning_level=2',
-    'b_ndebug=if-release',
-  ]
+version : '4.19.4-dev',
+  license : 'GPL-2',
+  meson_version : '>= 0.56.0',
+  default_options : ['c_std=gnu11', 'buildtype=debugoptimized', 'warning_level=2', 'b_ndebug=if-release']
 )
 libxfce4util_soversion = '7.0.0'
 libxfce4util_soversion_major = libxfce4util_soversion.split('.')[0]
