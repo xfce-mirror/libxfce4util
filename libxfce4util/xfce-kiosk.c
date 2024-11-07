@@ -212,6 +212,8 @@ xfce_kiosk_finalize (GObject *object)
   if (kiosk->module_rc != NULL)
     xfce_rc_close (kiosk->module_rc);
   g_free (kiosk->module_name);
+
+  G_OBJECT_CLASS (xfce_kiosk_parent_class)->finalize (object);
 }
 
 
