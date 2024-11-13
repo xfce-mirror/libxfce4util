@@ -31,6 +31,33 @@
 
 #if defined(DEBUG) && (DEBUG > 0) && (defined(G_HAVE_ISO_VARARGS) || defined(G_HAVE_GNUC_VARARGS))
 
+#if defined(DEBUG_TIME) && (DEBUG_TIME > 0)
+  #include <time.h>
+
+  typedef struct { char timestamp[32]; } xfce_debug_timestamp;
+
+  static inline xfce_debug_timestamp xfce_debug_create_timestamp(void)
+  {
+    time_t now = time(NULL);
+    struct tm *tm = localtime(&now);
+    xfce_debug_timestamp timestamp;
+
+    if (tm) {
+      strftime(timestamp.timestamp, sizeof(timestamp.timestamp) / sizeof(*timestamp.timestamp), "%F %T %z ", tm);
+    } else {
+      *timestamp.timestamp = '\0';
+    }
+
+    return timestamp;
+  }
+
+  #define DBG_PRINT_PREFIX(file, line, func) \
+      fprintf (stderr, "DBG[%s%s:%d] %s(): ", xfce_debug_create_timestamp().timestamp, file, line, func)
+#else
+  #define DBG_PRINT_PREFIX(file, line, func) \
+      fprintf (stderr, "DBG[%s:%d] %s(): ", file, line, func)
+#endif
+
 #if defined(__NetBSD__) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
 #define __DBG_FUNC__ __func__
 #elif defined(__GNUC__) && __GNUC__ >= 3
@@ -46,7 +73,7 @@
 #define DBG(...) \
   G_STMT_START \
   { \
-    fprintf (stderr, "DBG[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+    DBG_PRINT_PREFIX(__FILE__, __LINE__, __DBG_FUNC__); \
     fprintf (stderr, __VA_ARGS__); \
     fprintf (stderr, "\n"); \
   } \
@@ -58,7 +85,7 @@
   G_STMT_START \
   { \
     { \
-      fprintf (stderr, "DBG[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+      DBG_PRINT_PREFIX(__FILE__, __LINE__, __DBG_FUNC__); \
       fprintf (stderr, fmt, ##args); \
       fprintf (stderr, "\n"); \
     } \
@@ -73,7 +100,7 @@
 #define TRACE(...) \
   G_STMT_START \
   { \
-    fprintf (stderr, "TRACE[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+    DBG_PRINT_PREFIX(__FILE__, __LINE__, __DBG_FUNC__); \
     fprintf (stderr, __VA_ARGS__); \
     fprintf (stderr, "\n"); \
   } \
@@ -85,7 +112,7 @@
   G_STMT_START \
   { \
     { \
-      fprintf (stderr, "TRACE[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+      DBG_PRINT_PREFIX(__FILE__, __LINE__, __DBG_FUNC__); \
       fprintf (stderr, fmt, ##args); \
       fprintf (stderr, "\n"); \
     } \
