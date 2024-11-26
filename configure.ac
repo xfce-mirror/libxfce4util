@@ -187,6 +187,7 @@ dnl *** Generate output files ***
 dnl *****************************
 AC_CONFIG_FILES([
 Makefile
+data/Makefile
 docs/Makefile
 docs/reference/Makefile
 libxfce4util/libxfce4util-1.0.pc
