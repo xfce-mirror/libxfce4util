@@ -1,3 +1,11 @@
+4.19.5 (2024-12-01)
+======
+- Bump Xfce overall version to 4.20pre2
+- I18n: Update po/LINGUAS list
+- Call xfce_kiosk's parent finalizer to prevent leaks
+- Translation Updates:
+  Amharic, Telugu
+
 4.19.4 (2024-11-01)
 ======
 - bump Xfce overall version to 4.20pre1
