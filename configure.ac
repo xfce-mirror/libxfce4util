@@ -18,7 +18,7 @@ m4_define([glib_min_version], [2.72.0])
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
 dnl **************************************************************
-m4_define([xfce_version_string], [4.20pre1])
+m4_define([xfce_version_string], [4.20pre2])
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
 dnl # YOU ARE DOING.
