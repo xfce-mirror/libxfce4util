@@ -10,7 +10,7 @@ dnl ***************************
 dnl *** Version information ***
 dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
-XDT_VERSION_INIT([4.19.5], [git])
+XDT_VERSION_INIT([4.20.0])
 
 dnl minimum required versions
 m4_define([glib_min_version], [2.72.0])
@@ -18,7 +18,7 @@ m4_define([glib_min_version], [2.72.0])
 dnl **************************************************************
 dnl *** Overall Xfce version, modify this when making releases ***
 dnl **************************************************************
-m4_define([xfce_version_string], [4.20pre2])
+m4_define([xfce_version_string], [4.20])
 
 dnl # DO NOT MODIFY ANYTHING BELOW THIS LINE, UNLESS YOU KNOW WHAT
 dnl # YOU ARE DOING.
