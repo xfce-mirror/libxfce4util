@@ -156,7 +156,8 @@ dist-hook: all
 EXTRA_DIST =								\
 	libxfce4util.symbols						\
 	libxfce4util-visibility.h					\
-	libxfce4util-visibility.c
+	libxfce4util-visibility.c					\
+	meson.build
 
 if ENABLE_VAPIGEN
 -include $(VAPIGEN_MAKEFILE)
