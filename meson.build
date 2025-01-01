@@ -6,7 +6,7 @@ version : '4.20.0-dev',
   meson_version : '>= 0.56.0',
   default_options : ['c_std=gnu11', 'buildtype=debugoptimized', 'warning_level=2', 'b_ndebug=if-release']
 )
-libxfce4util_soversion = '7.0.0'
+libxfce4util_soversion = '1.0.0'
 libxfce4util_soversion_major = libxfce4util_soversion.split('.')[0]
 
 project_namespace = 'xfce'
