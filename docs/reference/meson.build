@@ -34,5 +34,6 @@ if get_option('gtk-doc')
     fixxref_args: libxfce4util_doc_fixxref_args,
     install: true,
     check: true,
+    scan_args: '--rebuild-types',
   )
 endif
