@@ -76,7 +76,6 @@ AC_PROG_CC()
 AM_PROG_CC_C_O()
 AC_PROG_INSTALL()
 AC_PATH_PROG([XDT_GEN_VISIBILITY], [xdt-gen-visibility])
-AC_PATH_PROG([XDT_CHECK_ABI], [xdt-check-abi])
 
 dnl **************************
 dnl *** Initialize libtool ***
