@@ -31,7 +31,7 @@
 G_BEGIN_DECLS
 
 #define XFCE_TYPE_SYSTEMD (xfce_systemd_get_type ())
-G_DECLARE_FINAL_TYPE (XfceSystemd, xfce_systemd, XFCE, SYSTEMD, GObject);
+G_DECLARE_FINAL_TYPE (XfceSystemd, xfce_systemd, XFCE, SYSTEMD, GObject)
 
 XfceSystemd *
 xfce_systemd_get (void);

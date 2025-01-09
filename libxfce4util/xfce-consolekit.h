@@ -32,7 +32,7 @@
 G_BEGIN_DECLS
 
 #define XFCE_TYPE_CONSOLEKIT (xfce_consolekit_get_type ())
-G_DECLARE_FINAL_TYPE (XfceConsolekit, xfce_consolekit, XFCE, CONSOLEKIT, GObject);
+G_DECLARE_FINAL_TYPE (XfceConsolekit, xfce_consolekit, XFCE, CONSOLEKIT, GObject)
 
 XfceConsolekit *
 xfce_consolekit_get (void);
