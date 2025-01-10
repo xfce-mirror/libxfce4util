@@ -99,7 +99,7 @@ INTROSPECTION_SCANNER_ARGS = \
 	--warn-all \
 	--identifier-prefix=Xfce \
 	--identifier-prefix=xfce \
-	--identifier-prefix=libxfce \
+	--identifier-prefix=libxfce4util \
 	-DLIBXFCE4UTIL_COMPILATION \
 	--c-include=libxfce4util/libxfce4util.h
 INTROSPECTION_COMPILER_ARGS = \
