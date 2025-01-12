@@ -150,7 +150,7 @@ if get_option('introspection')
     ],
     symbol_prefix: [
       'xfce',
-      'libxfce',
+      'libxfce4util',
     ],
     export_packages: libxfce4util_pkgname,
     includes: [
