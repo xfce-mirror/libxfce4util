@@ -145,8 +145,6 @@ if get_option('introspection')
     nsversion: '1.0',
     identifier_prefix: [
       'Xfce',
-      'xfce',
-      'libxfce',
     ],
     symbol_prefix: [
       'xfce',
@@ -164,8 +162,6 @@ if get_option('introspection')
       '-DLIBXFCE4UTIL_COMPILATION=1',
     ],
   )
-
-  libxfce4util_gir_dep = declare_dependency(sources: libxfce4util_gir)
 
   if generate_vala
     gnome.generate_vapi(
