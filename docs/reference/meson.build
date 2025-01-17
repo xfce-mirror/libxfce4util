@@ -26,7 +26,7 @@ if get_option('gtk-doc')
 
   gnome.gtkdoc(
     libxfce4util_doc_name,
-    src_dir: meson.project_source_root() / 'libxfce4util',
+    src_dir: 'libxfce4util',
     ignore_headers: libxfce4util_doc_private_headers,
     main_xml: 'libxfce4util-docs.xml',
     dependencies: libxfce4util_dep,
