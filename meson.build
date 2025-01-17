@@ -82,10 +82,10 @@ foreach function : functions
   endif
 endforeach
 
-libintl = cc.find_library('intl', required: false)
 need_libintl = false
 has_bind_textdomain_codeset = cc.has_function('bind_textdomain_codeset')
 if not has_bind_textdomain_codeset
+  libintl = cc.find_library('intl', required: false)
   if libintl.found()
     has_bind_textdomain_codeset = cc.has_function(
       'bind_textdomain_codeset',
