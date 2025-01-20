@@ -122,9 +122,6 @@ pkgconfig.generate(
   name: libxfce4util_pkgname,
   filebase: libxfce4util_pkgname,
   description: 'Utility library for the Xfce 4 desktop environment',
-  requires: [
-    'glib-2.0',
-  ],
   subdirs: [
     'xfce4',
   ],
