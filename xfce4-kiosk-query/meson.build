@@ -3,6 +3,7 @@ executable(
   [
     'main.c',
   ],
+  sources: xfce_revision_h,
   include_directories: [
     include_directories('..'),
   ],

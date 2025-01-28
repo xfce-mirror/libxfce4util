@@ -21,6 +21,9 @@
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
+#ifdef HAVE_XFCE_REVISION_H
+#include "xfce-revision.h"
+#endif
 
 #include <stdio.h>
 #ifdef HAVE_STDLIB_H
@@ -72,7 +75,7 @@ main (int argc, char **argv)
                   "        The Xfce development team. All rights reserved.\n"
                   "Written for Xfce by Benedikt Meurer <benny@xfce.org>.\n\n"
                   "Please report bugs to <%s>.\n",
-                  PACKAGE_VERSION, xfce_version_string (), PACKAGE_BUGREPORT);
+                  VERSION_FULL, xfce_version_string (), PACKAGE_BUGREPORT);
           return EXIT_SUCCESS;
 
         case 'h':

@@ -31,6 +31,7 @@ AC_COPYRIGHT([Copyright (c) 2002-2024
 AC_INIT([libxfce4util], [xdt_version], [https://gitlab.xfce.org/xfce/libxfce4util])
 AC_PREREQ([2.69])
 AC_REVISION([xdt_version_build])
+AC_DEFINE([VERSION_FULL], [PACKAGE_VERSION], [Alias for VERSION and PACKAGE_VERSION for meson compatibility])
 
 dnl ***************************
 dnl *** Initialize automake ***
