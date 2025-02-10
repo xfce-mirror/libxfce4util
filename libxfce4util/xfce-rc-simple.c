@@ -1037,6 +1037,10 @@ _xfce_rc_simple_read_entry (const XfceRc *rc,
       for (gchar **p = (rc->languages != NULL) ? rc->languages : locale_languages;
            *p != NULL; p++)
         {
+          /* return untranslated value if we encounter the C locale */
+          if (g_strcmp0 (*p, "C") == 0)
+            break;
+
           best_match = XFCE_LOCALE_NO_MATCH;
           best_value = NULL;
 
