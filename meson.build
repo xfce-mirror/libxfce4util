@@ -64,6 +64,7 @@ headers = [
   'sys/utsname.h',
   'time.h',
   'unistd.h',
+  'varargs.h',
 ]
 foreach header : headers
   if cc.check_header(header)
