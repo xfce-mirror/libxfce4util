@@ -63,11 +63,6 @@
 
 
 
-/* fallback to g_strlcpy() if strlcpy() is not found */
-#ifndef HAVE_STRLCPY
-#define strlcpy(x, y, z) g_strlcpy (x, y, z)
-#endif
-
 /* some platforms don't define PATH_MAX */
 #ifndef PATH_MAX
 #define PATH_MAX 4096
@@ -135,7 +130,7 @@ xfce_localize_path_internal (gchar *buffer,
         }
     }
 
-  strlcpy (buffer, path, len);
+  g_strlcpy (buffer, path, len);
 
 found:
   return buffer;
