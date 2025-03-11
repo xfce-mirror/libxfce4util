@@ -23,7 +23,7 @@ util_headers = [
   'xfce-utf8.h',
 ]
 
-util_public_sources = [
+util_gir_sources = [
   'libxfce4util-config.c',
   'xfce-consolekit.c',
   'xfce-fileutils.c',
@@ -45,7 +45,7 @@ util_public_sources = [
 util_sources = [
   'libxfce4util-private.c',
 ]
-util_sources += util_public_sources
+util_sources += util_gir_sources
 
 util_config_data = configuration_data({
   'LIBXFCE4UTIL_VERSION_MAJOR': version_parts[0],
@@ -59,7 +59,8 @@ util_config_h = configure_file(
   install: true,
   install_dir: util_headers_install_dir,
 )
-util_public_sources += util_config_h
+# do not add this header to GI sources, it creates unsolvable conflicts with other
+# libs whose identifier prefix is Xfce, e.g. libxfce4ui and libxfce4panel
 util_sources += util_config_h
 
 util_sources += custom_target(
@@ -129,19 +130,14 @@ pkgconfig.generate(
 )
 
 if get_option('introspection')
-  util_gir_sources = util_public_sources + util_headers
-
   libxfce4util_gir = gnome.generate_gir(
     libxfce4util,
-    sources: util_gir_sources,
+    sources: util_gir_sources + util_headers,
     namespace: 'Libxfce4util',
     nsversion: '1.0',
-    identifier_prefix: [
-      'Xfce',
-    ],
+    identifier_prefix: 'Xfce',
     symbol_prefix: [
       'xfce',
-      'libxfce4util',
     ],
     export_packages: libxfce4util_pkgname,
     includes: [
