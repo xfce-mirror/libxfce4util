@@ -99,7 +99,6 @@ INTROSPECTION_SCANNER_ARGS = \
 	--warn-all \
 	--identifier-prefix=Xfce \
 	--identifier-prefix=xfce \
-	--identifier-prefix=libxfce4util \
 	-DLIBXFCE4UTIL_COMPILATION \
 	--c-include=libxfce4util/libxfce4util.h
 INTROSPECTION_COMPILER_ARGS = \
@@ -107,7 +106,7 @@ INTROSPECTION_COMPILER_ARGS = \
 	--includedir=.
 
 if HAVE_INTROSPECTION
-introspection_sources = $(filter-out %private.h, $(libxfce4util_la_SOURCES))
+introspection_sources = $(filter-out %private.h libxfce4util-config.h, $(libxfce4util_la_SOURCES))
 
 Libxfce4util-1.0.gir: libxfce4util.la Makefile
 Libxfce4util_1_0_gir_INCLUDES = GObject-2.0 GLib-2.0 Gio-2.0
