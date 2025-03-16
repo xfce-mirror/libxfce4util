@@ -14,6 +14,7 @@ if get_option('gtk-doc')
 
   libxfce4util_doc_private_headers = [
     'libxfce4util-private.h',
+    'libxfce4util-visibility.h',
     'xfce-private.h',
     'xfce-rc-private.h',
   ]

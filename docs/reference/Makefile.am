@@ -25,7 +25,12 @@ HFILE_GLOB=
 CFILE_GLOB=
 
 # Header files to ignore when scanning
-IGNORE_HFILES=
+IGNORE_HFILES = \
+	libxfce4util-private.h \
+	libxfce4util-visibility.h \
+	xfce-private.h \
+	xfce-rc-private.h \
+	$(NULL)
 
 # Extra files to add when scanning (relative to $srcdir)
 EXTRA_HFILES=
