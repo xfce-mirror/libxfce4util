@@ -518,7 +518,14 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
   string = g_string_sized_new (strlen (command));
 
   if (requires_terminal)
-    g_string_append (string, "exo-open --launch TerminalEmulator ");
+    {
+      gchar *xfce_open = g_find_program_in_path ("xfce-open");
+      if (xfce_open != NULL)
+        g_string_append (string, "xfce-open --launch TerminalEmulator ");
+      else
+        g_string_append (string, "exo-open --launch TerminalEmulator ");
+      g_free (xfce_open);
+    }
 
   for (p = command; *p != '\0'; ++p)
     {
