@@ -31,6 +31,34 @@
 
 #if defined(DEBUG) && (DEBUG > 0) && (defined(G_HAVE_ISO_VARARGS) || defined(G_HAVE_GNUC_VARARGS))
 
+#include <time.h>
+#include <stdlib.h>
+
+typedef struct { char timestamp[32]; } xfce_debug_timestamp;
+
+static inline xfce_debug_timestamp xfce_debug_create_timestamp(void)
+{
+  xfce_debug_timestamp timestamp;
+  struct timespec timespec;
+
+  clock_gettime(CLOCK_REALTIME, &timespec);
+  struct tm *tm = localtime(&timespec.tv_sec);
+
+  if (tm) {
+    size_t offset = strftime(timestamp.timestamp, sizeof(timestamp.timestamp), "%FT%T", tm);
+    snprintf(timestamp.timestamp + offset, sizeof(timestamp.timestamp) - offset, ".%03ld%c%02ld:%02ld",
+	     timespec.tv_nsec / 1000000, tm->tm_gmtoff >= 0 ? '+' : '-',
+	     labs(tm->tm_gmtoff) / 3600, labs(tm->tm_gmtoff) % 3600 / 60);
+  } else {
+    *timestamp.timestamp = '\0';
+  }
+
+  return timestamp;
+}
+
+#define DBG_PRINT_PREFIX(label, file, line, func) \
+    fprintf (stderr, ("[%s] " label "[%s:%d] %s(): "), xfce_debug_create_timestamp().timestamp, file, line, func)
+
 #if defined(__NetBSD__) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
 #define __DBG_FUNC__ __func__
 #elif defined(__GNUC__) && __GNUC__ >= 3
@@ -46,7 +74,7 @@
 #define DBG(...) \
   G_STMT_START \
   { \
-    fprintf (stderr, "DBG[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+    DBG_PRINT_PREFIX("DBG", __FILE__, __LINE__, __DBG_FUNC__); \
     fprintf (stderr, __VA_ARGS__); \
     fprintf (stderr, "\n"); \
   } \
@@ -58,7 +86,7 @@
   G_STMT_START \
   { \
     { \
-      fprintf (stderr, "DBG[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+      DBG_PRINT_PREFIX("DBG", __FILE__, __LINE__, __DBG_FUNC__); \
       fprintf (stderr, fmt, ##args); \
       fprintf (stderr, "\n"); \
     } \
@@ -73,7 +101,7 @@
 #define TRACE(...) \
   G_STMT_START \
   { \
-    fprintf (stderr, "TRACE[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+    DBG_PRINT_PREFIX("TRACE", __FILE__, __LINE__, __DBG_FUNC__); \
     fprintf (stderr, __VA_ARGS__); \
     fprintf (stderr, "\n"); \
   } \
@@ -85,7 +113,7 @@
   G_STMT_START \
   { \
     { \
-      fprintf (stderr, "TRACE[%s:%d] %s(): ", __FILE__, __LINE__, __DBG_FUNC__); \
+      DBG_PRINT_PREFIX("TRACE", __FILE__, __LINE__, __DBG_FUNC__); \
       fprintf (stderr, fmt, ##args); \
       fprintf (stderr, "\n"); \
     } \
