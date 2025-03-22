@@ -25,11 +25,20 @@ if get_option('gtk-doc')
     '--extra-dir=@0@/share/gtk-doc/html/gio'.format(gio.get_variable(pkgconfig: 'prefix')),
   ]
 
+  configure_file(
+    configuration: configuration_data({
+      'COPYRIGHT_YEAR': copyright_year,
+    }),
+    input: 'libxfce4util-docs.xml.in',
+    output: 'libxfce4util-docs.xml',
+    install: false,
+  )
+
   gnome.gtkdoc(
     libxfce4util_doc_name,
     src_dir: 'libxfce4util',
     ignore_headers: libxfce4util_doc_private_headers,
-    main_xml: 'libxfce4util-docs.xml',
+    main_xml: meson.project_build_root() / 'docs' / 'reference' / 'libxfce4util-docs.xml',
     dependencies: libxfce4util_dep,
     gobject_typesfile: 'libxfce4util.types',
     fixxref_args: libxfce4util_doc_fixxref_args,
