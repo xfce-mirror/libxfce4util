@@ -11,7 +11,7 @@ dnl *** Version information ***
 dnl ***************************
 m4_define([libxfce4util_verinfo], [7:0:0])
 m4_define([copyright_year], [2025])
-XDT_VERSION_INIT([4.20.0], [git])
+XDT_VERSION_INIT([4.20.1])
 
 dnl minimum required versions
 m4_define([glib_min_version], [2.72.0])
