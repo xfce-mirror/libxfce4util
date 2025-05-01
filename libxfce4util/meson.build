@@ -63,14 +63,12 @@ util_config_h = configure_file(
 # libs whose identifier prefix is Xfce, e.g. libxfce4ui and libxfce4panel
 util_sources += util_config_h
 
-util_sources += custom_target(
-  'libxfce4util-visibility.h',
+util_sources += configure_file(
   input: 'libxfce4util.symbols',
   output: 'libxfce4util-visibility.h',
   command: [xdt_gen_visibility, '--kind=header', '@INPUT@', '@OUTPUT@'],
 )
-util_sources += custom_target(
-  'libxfce4util-visibility.c',
+util_sources += configure_file(
   input: 'libxfce4util.symbols',
   output: 'libxfce4util-visibility.c',
   command: [xdt_gen_visibility, '--kind=source', '@INPUT@', '@OUTPUT@'],
