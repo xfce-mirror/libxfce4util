@@ -28,10 +28,6 @@
  * These macros provide a few commonly-used features.
  */
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "libxfce4util-config.h"
 #include "libxfce4util-visibility.h"
 
