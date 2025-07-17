@@ -30,10 +30,6 @@
 
 
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "libxfce4util.h"
 #include "libxfce4util-visibility.h"
 
