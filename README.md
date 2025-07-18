@@ -29,17 +29,17 @@ See [NEWS](https://gitlab.xfce.org/xfce/libxfce4util/-/blob/master/NEWS) for det
 From source: 
 
     % cd libxfce4util 
-    % ./autogen.sh
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 From release tarball:
 
-    % tar xf libxfce4util-<version>.tar.bz2
+    % tar xf libxfce4util-<version>.tar.xz
     % cd libxfce4util-<version>
-    % ./configure
-    % make
-    % make install
+    % meson setup build
+    % meson compile -C build
+    % meson install -C build
 
 ### Reporting Bugs
 
