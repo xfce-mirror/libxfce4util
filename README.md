@@ -41,6 +41,10 @@ From release tarball:
     % make
     % make install
 
+### Uninstallation
+
+    % ninja uninstall -C build
+
 ### Reporting Bugs
 
 Visit the [reporting bugs](https://docs.xfce.org/xfce/libxfce4util/bugs) page to view currently open bug reports and instructions on reporting new bugs or submitting bugfixes.
