@@ -45,7 +45,7 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr ""
+msgstr "Redistribuado kaj uzo en fonta aŭ duuma formo, kun aŭ sen\n modifoj, estas permesataj kondiĉe ke jenaj kondiĉoj \nestu plenumitaj:\n\n1. Redistribuaĵoj de fontkodo devas reteni la supre menciitan aŭtorrajton,\nĉi tiun liston de kondiĉoj kaj la jenan malgarantion.\n2. Redistribuaĵoj en binara formo devas reprodukti la supre menciitan aŭtorrajton,\nĉi tiun liston de kondiĉoj kaj la jenan malgarantion en la\ndokumentaro kaj/aŭ aliaj materialoj provizitaj kun la distribuo.\n\nĈI TIU PROGRAMARO ESTAS PROVIZITA DE LA AŬTORO “KIEL Ĝi ESTAS” KAJ ĈIUJ\nESPRIMITAJ AŬ IMPLIKITAJ GARANTIOJ, INKLUDE, SED NE LIMIGITE AL, LA IMPLIKITAJ GARANTIOJ\nPRI KOMERCEBLO KAJ TAŬGECO POR SPECIFA CELO, ESTAS MALAKCEPTITAJ.\nEN NENIU OKAZO LA AŬTORO ESTOS RESPONDA PRI IUJ REKTAJ, NEREKTAJ,\nOKAZAJ, SPECIALAJ, EKZEMPLAJ, AŬ SEKVO-DAŬRAJ DAMAĜOJ (INKLUDE, SED NE\nLIMIGITE AL, AĈETO DE ANSTATAŬAJ VAROJ AŬ SERVICOJ; PERDO DE UZO,\nDATUMOJ, AŬ PROFITOJ; AŬ INTERROMPO DE NEGOCADO) TUTEKIEL AJN KAJ SUR IU\nTEORIO DE RESPONDECO, ĈU EN KONTRAKTO, STRIKTA RESPONDECO, AŬ DELIKTO\n(INKLUDE NEGLIGECO AŬ ALIAĴO), KIU EKIĜAS EL LA UZO DE\nĈI TIU PROGRAMARO, EĈ SE ANTAŬE AVIZITE PRI LA EBLO DE TIA DAMAĜO.\n"
 
 #: libxfce4util/xfce-license.c:72
 msgid ""
@@ -62,7 +62,7 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr ""
+msgstr "Ĉi tiu programo estas libera programaro; vi povas redistribui ĝin kaj/aŭ modifi ĝin\nlaŭ la kondiĉoj de la Ĝenerala Publika Permesilo GNU kiel publikigita de la Libera\nProgramara Fonduso; ĉu versio 2 de la Permesilo, aŭ (laŭ via elekto)\niu ajn posta versio.\n\nĈi tiu programo estas distribuita kun la espero ke ĝi estos utila, sed SEN\nIA AJN GARANTIO; eĉ sen la implicita garantio de KOMERCEBLO aŭ\nTAŬGECO POR IU SPECIFA CELO. Vidu la Ĝeneralan Publikan Permesilon GNU por\npli da detaloj.\n\nVi devus esti ricevinte kopion de la Ĝenerala Publika Permesilo GNU kune kun\nĉi tiu programo; se ne, skribu al the Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: libxfce4util/xfce-license.c:94
 msgid ""
@@ -80,7 +80,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr ""
+msgstr "Ĉi tiu biblioteko estas libera programaro; vi povas redistribui ĝin kaj/aŭ\nmodifi ĝin laŭ la kondiĉoj de la Ĝenerala Publika Permesilo GNU por Bibliotekoj,\nkiel publikigita de la Libera Programara Fonduso; ĉu versio 2 de la Permesilo,\naŭ (laŭ via elekto) iu ajn posta versio.\n\nĈi tiu biblioteko estas distribuita kun la espero ke ĝi estos utila,\nsed SEN IA AJN GARANTIO; eĉ sen la implicita garantio de\nKOMERCEBLO aŭ TAŬGECO POR IU SPECIFA CELO. Vidu la Ĝeneralan\nPublikan Permesilon GNU por Bibliotekoj por pli da detaloj.\n\nVi devus esti ricevinte kopion de la Ĝenerala Publika Permesilo GNU por Bibliotekoj\nkune kun ĉi tiu biblioteko; se ne, skribu al the Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: libxfce4util/xfce-posix-signal-handler.c:145
 #, c-format
