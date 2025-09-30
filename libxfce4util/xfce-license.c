@@ -25,10 +25,6 @@
  * @short_description: Software Licenses
  *
  */
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include "libxfce4util-private.h"
 #include "libxfce4util-visibility.h"
 
