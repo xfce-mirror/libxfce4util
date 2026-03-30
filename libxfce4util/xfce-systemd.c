@@ -26,10 +26,6 @@
  * Since: 4.19.1
  **/
 
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
-
 #include <gio/gio.h>
 
 #include "xfce-systemd.h"
