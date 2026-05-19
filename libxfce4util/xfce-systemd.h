@@ -33,6 +33,21 @@ G_BEGIN_DECLS
 #define XFCE_TYPE_SYSTEMD (xfce_systemd_get_type ())
 G_DECLARE_FINAL_TYPE (XfceSystemd, xfce_systemd, XFCE, SYSTEMD, GObject)
 
+/**
+ * XfceSystemdFlags:
+ *
+ * The `SD_LOGIND_*` flags to be passed to the D-Bus request, see <ulink url="https://www.freedesktop.org/software/systemd/man/latest/org.freedesktop.login1.html##Methods">systemd-logind documentation</ulink>.
+ **/
+typedef enum /*< prefix=XFCE_SYSTEMD_ >*/
+{
+  XFCE_SYSTEMD_NONE = 0,
+  XFCE_SYSTEMD_ROOT_CHECK_INHIBITORS = 1 << 0,
+  XFCE_SYSTEMD_KEXEC_REBOOT = 1 << 1,
+  XFCE_SYSTEMD_SOFT_REBOOT = 1 << 2,
+  XFCE_SYSTEMD_SOFT_REBOOT_IF_NEXTROOT_SET_UP = 1 << 3,
+  XFCE_SYSTEMD_SKIP_INHIBITORS = 1 << 4,
+} XfceSystemdFlags;
+
 XfceSystemd *
 xfce_systemd_get (void);
 
@@ -60,6 +75,31 @@ gboolean
 xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
                            gboolean polkit_interactive,
                            GError **error);
+
+gboolean
+xfce_systemd_reboot_with_flags (XfceSystemd *systemd,
+                                XfceSystemdFlags flags,
+                                GError **error);
+
+gboolean
+xfce_systemd_power_off_with_flags (XfceSystemd *systemd,
+                                   XfceSystemdFlags flags,
+                                   GError **error);
+
+gboolean
+xfce_systemd_suspend_with_flags (XfceSystemd *systemd,
+                                 XfceSystemdFlags flags,
+                                 GError **error);
+
+gboolean
+xfce_systemd_hibernate_with_flags (XfceSystemd *systemd,
+                                   XfceSystemdFlags flags,
+                                   GError **error);
+
+gboolean
+xfce_systemd_hybrid_sleep_with_flags (XfceSystemd *systemd,
+                                      XfceSystemdFlags flags,
+                                      GError **error);
 
 gboolean
 xfce_systemd_can_reboot (XfceSystemd *systemd,

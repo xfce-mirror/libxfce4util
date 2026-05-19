@@ -242,6 +242,40 @@ xfce_systemd_method (XfceSystemd *systemd,
 
 
 
+static gboolean
+xfce_systemd_method_with_flags (XfceSystemd *systemd,
+                                const gchar *method,
+                                XfceSystemdFlags flags,
+                                GError **error)
+{
+  GVariant *variant;
+
+  if (systemd->proxy == NULL)
+    {
+      g_debug ("No systemd proxy");
+      g_set_error (error, G_IO_ERROR, G_IO_ERROR_FAILED, "No systemd proxy available");
+      return FALSE;
+    }
+
+  g_debug ("Calling %s", method);
+
+  variant = g_dbus_proxy_call_sync (systemd->proxy,
+                                    method,
+                                    g_variant_new ("(t)", flags),
+                                    G_DBUS_CALL_FLAGS_NONE,
+                                    -1,
+                                    NULL,
+                                    error);
+  if (variant == NULL)
+    return FALSE;
+
+  g_variant_unref (variant);
+
+  return TRUE;
+}
+
+
+
 /**
  * xfce_systemd_get:
  *
@@ -392,6 +426,131 @@ xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   return xfce_systemd_method (systemd, "HybridSleep", polkit_interactive, error);
+}
+
+
+
+/**
+ * xfce_systemd_reboot_with_flags:
+ * @systemd: the #XfceSystemd object
+ * @flags: #XfceSystemdFlags to be passed to the D-Bus request
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger Reboot with `SD_LOGIND_*` flags.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.20.2
+ **/
+gboolean
+xfce_systemd_reboot_with_flags (XfceSystemd *systemd,
+                                XfceSystemdFlags flags,
+                                GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method_with_flags (systemd, "RebootWithFlags", flags, error);
+}
+
+
+
+/**
+ * xfce_systemd_power_off_with_flags:
+ * @systemd: the #XfceSystemd object
+ * @flags: #XfceSystemdFlags to be passed to the D-Bus request
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger PowerOff with `SD_LOGIND_*` flags.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.20.2
+ **/
+gboolean
+xfce_systemd_power_off_with_flags (XfceSystemd *systemd,
+                                   XfceSystemdFlags flags,
+                                   GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method_with_flags (systemd, "PowerOffWithFlags", flags, error);
+}
+
+
+
+/**
+ * xfce_systemd_suspend_with_flags:
+ * @systemd: the #XfceSystemd object
+ * @flags: #XfceSystemdFlags to be passed to the D-Bus request
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger Suspend with `SD_LOGIND_*` flags.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.20.2
+ **/
+gboolean
+xfce_systemd_suspend_with_flags (XfceSystemd *systemd,
+                                 XfceSystemdFlags flags,
+                                 GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method_with_flags (systemd, "SuspendWithFlags", flags, error);
+}
+
+
+
+/**
+ * xfce_systemd_hibernate_with_flags:
+ * @systemd: the #XfceSystemd object
+ * @flags: #XfceSystemdFlags to be passed to the D-Bus request
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger Hibernate with `SD_LOGIND_*` flags.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.20.2
+ **/
+gboolean
+xfce_systemd_hibernate_with_flags (XfceSystemd *systemd,
+                                   XfceSystemdFlags flags,
+                                   GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method_with_flags (systemd, "HibernateWithFlags", flags, error);
+}
+
+
+
+/**
+ * xfce_systemd_hybrid_sleep_with_flags:
+ * @systemd: the #XfceSystemd object
+ * @flags: #XfceSystemdFlags to be passed to the D-Bus request
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger HybridSleep with `SD_LOGIND_*` flags.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.20.2
+ **/
+gboolean
+xfce_systemd_hybrid_sleep_with_flags (XfceSystemd *systemd,
+                                      XfceSystemdFlags flags,
+                                      GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method_with_flags (systemd, "HybridSleepWithFlags", flags, error);
 }
 
 
