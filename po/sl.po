@@ -82,7 +82,7 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Ta program je prosta programska oprema; lahko ga širite in/ali spreminjate pod pogoji GNU General Public License, kot ga je objavila ustanova Free Software Foundation; bodisi različice 2 ali (po vaši izbiri) katerekoli poznejše različice.\n\nProgram je na voljo v upanju, da bo uporaben, vendar je BREZ VSAKRŠNEGA JAMSTVA; tudi brez jamstva o USTREZNOSTI ZA PRODAJO ali PRIMERNOSTI ZA DOLOČEN NAMEN. Za več podrobnosti si oglejte GNU General Public License.\n\nKopijo GNU General Public License bi morali prejeti skupaj s tem programom. Če je niste, pišite na Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+msgstr "Ta knjižnica je prosta programska oprema; lahko jo širite in/ali spreminjate\npod pogoji GNU General Public License, kot ga je objavila ustanova Free\nSoftware Foundation; bodisi različice 2 ali (po vaši izbiri) katerekoli\npoznejše različice.\n\nKnjižnica je na voljo v upanju, da bo uporabna, vendar je BREZ VSAKRŠNEGA\nJAMSTVA; tudi brez jamstva o USTREZNOSTI ZA PRODAJO ali PRIMERNOSTI\nZA DOLOČEN NAMEN. Za več podrobnosti si oglejte GNU General Public License.\n\nKopijo GNU General Public License bi morali prejeti skupaj s tem programom.\nČe je niste, pišite na Free Software Foundation, Inc., 51 Franklin Street,\nFifth Floor, Boston, MA 02110-1301, USA.\n"
 
 #: libxfce4util/xfce-posix-signal-handler.c:145
 #, c-format
