@@ -148,7 +148,7 @@ _res_remove_trailing_slashes (GSList *list)
       while (len > 0 && G_IS_DIR_SEPARATOR (path[len - 1]))
         --len;
 
-      if (len <= 0)
+      if (len == 0)
         {
           /* A string with slashes only => root directory */
           ll = g_slist_append (ll, g_strdup (G_DIR_SEPARATOR_S));
