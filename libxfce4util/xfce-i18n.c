@@ -302,7 +302,7 @@ xfce_get_path_localized (gchar *dst,
   gchar *dstlast = dst + (size - 1);
   gchar *d = dst;
   gchar *langext;
-  gchar *buffer;
+  gchar buffer[size];
   guint n;
 
   g_return_val_if_fail (paths != NULL, NULL);
@@ -314,9 +314,6 @@ xfce_get_path_localized (gchar *dst,
 #else
   locale = NULL;
 #endif
-
-  /* allocate buffer space */
-  buffer = g_newa (gchar, size);
 
   /* determine locale fallbacks */
   if (locale == NULL)
