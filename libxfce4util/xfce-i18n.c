@@ -117,7 +117,7 @@ xfce_localize_path_internal (gchar *buffer,
 
       for (n = 0; n < G_N_ELEMENTS (delim); ++n)
         {
-          p = strchr (lang, delim[n]);
+          p = (gchar *) strchr (lang, delim[n]);
           if (p != NULL)
             {
               langext = g_strndup (lang, p - lang);
