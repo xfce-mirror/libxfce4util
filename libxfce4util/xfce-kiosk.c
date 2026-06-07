@@ -336,8 +336,7 @@ xfce_kiosk_init (XfceKiosk *kiosk)
       g_warning ("Unable to determine the number of groups for your user account, "
                  "all kiosk protected features will be disabled for you. Please "
                  "check your system setup or ask your administrator.");
-      g_free (usrname);
-      usrname = NULL;
+      g_clear_pointer (&usrname, g_free);
       G_UNLOCK (kiosk_lock);
       return;
     }
@@ -350,8 +349,7 @@ xfce_kiosk_init (XfceKiosk *kiosk)
       g_warning ("Unable to determine your current group access list, all kiosk "
                  "protected features will be disabled for you. Please check "
                  "your system setup or ask your administrator.");
-      g_free (usrname);
-      usrname = NULL;
+      g_clear_pointer (&usrname, g_free);
       G_UNLOCK (kiosk_lock);
       g_free (gidset);
       return;

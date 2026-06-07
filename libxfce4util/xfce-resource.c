@@ -789,19 +789,13 @@ xfce_resource_save_location (XfceResourceType type,
   if (relpath[strlen (relpath) - 1] == G_DIR_SEPARATOR)
     {
       if (create && !xfce_mkdirhier (path, 0700, NULL))
-        {
-          g_free (path);
-          path = NULL;
-        }
+        g_clear_pointer (&path, g_free);
     }
   else
     {
       dir = g_path_get_dirname (path);
       if (create && !xfce_mkdirhier (dir, 0700, NULL))
-        {
-          g_free (path);
-          path = NULL;
-        }
+        g_clear_pointer (&path, g_free);
       g_free (dir);
     }
 
