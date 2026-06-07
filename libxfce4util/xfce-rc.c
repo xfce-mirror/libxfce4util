@@ -210,12 +210,8 @@ xfce_rc_close (XfceRc *rc)
 
   (*rc->close) (rc);
 
-  if (rc->locale != NULL)
-    g_free (rc->locale);
-
-  if (rc->languages != NULL)
-    g_strfreev (rc->languages);
-
+  g_free (rc->locale);
+  g_strfreev (rc->languages);
   g_free (rc);
 }
 

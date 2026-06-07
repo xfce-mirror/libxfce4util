@@ -399,9 +399,7 @@ _res_match_path (const gchar *path,
 
   g_pattern_spec_free (spec);
   g_dir_close (dp);
-
-  if (pattern_child != NULL)
-    g_free (pattern_child);
+  g_free (pattern_child);
   g_free (pattern_this);
 
   return g_slist_concat (entries, list);
