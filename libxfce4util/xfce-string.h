@@ -28,7 +28,7 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-
+G_BEGIN_DECLS
 
 void
 xfce_g_string_append_quoted (GString *string,
@@ -67,6 +67,6 @@ xfce_str_replace (const gchar *str,
  **/
 #define I_(string) (g_intern_static_string ((string)))
 
-
+G_END_DECLS
 
 #endif /* __XFCE_STRING_H__ */

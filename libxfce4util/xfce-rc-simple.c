@@ -234,8 +234,7 @@ simple_add_entry (XfceRcSimple *simple,
             break;
           else if (result < 0)
             {
-              lentry_before = lentry;
-              lentry = NULL;
+              lentry_before = g_steal_pointer (&lentry);
               break;
             }
         }

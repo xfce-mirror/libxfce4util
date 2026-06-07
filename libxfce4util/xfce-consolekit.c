@@ -54,7 +54,7 @@ struct _XfceConsolekit
 
 
 
-G_DEFINE_TYPE (XfceConsolekit, xfce_consolekit, G_TYPE_OBJECT)
+G_DEFINE_FINAL_TYPE (XfceConsolekit, xfce_consolekit, G_TYPE_OBJECT)
 
 
 
