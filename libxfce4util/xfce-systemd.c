@@ -52,7 +52,7 @@ struct _XfceSystemd
 
 
 
-G_DEFINE_TYPE (XfceSystemd, xfce_systemd, G_TYPE_OBJECT)
+G_DEFINE_FINAL_TYPE (XfceSystemd, xfce_systemd, G_TYPE_OBJECT)
 
 
 

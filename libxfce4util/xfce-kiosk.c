@@ -91,7 +91,7 @@ static time_t kiosktime = 0;
 static const gchar *kioskdef = NULL;
 static XfceRc *kioskrc = NULL;
 
-G_DEFINE_TYPE (XfceKiosk, xfce_kiosk, G_TYPE_OBJECT)
+G_DEFINE_FINAL_TYPE (XfceKiosk, xfce_kiosk, G_TYPE_OBJECT)
 G_LOCK_DEFINE_STATIC (kiosk_lock);
 
 
