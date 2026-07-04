@@ -10,7 +10,7 @@ xfce_consolekit_can_power_off
 xfce_consolekit_can_reboot
 xfce_consolekit_can_suspend
 xfce_consolekit_get
-xfce_consolekit_get_type attr:G_GNUC_CONST
+xfce_consolekit_get_type
 xfce_consolekit_hibernate
 xfce_consolekit_hybrid_sleep
 xfce_consolekit_power_off
@@ -38,7 +38,7 @@ xfce_textdomain
 
 # file:xfce-kiosk
 xfce_kiosk_free
-xfce_kiosk_get_type attr:G_GNUC_CONST
+xfce_kiosk_get_type
 xfce_kiosk_new attr:G_GNUC_MALLOC
 xfce_kiosk_query
 
@@ -73,7 +73,7 @@ xfce_rc_get_entries
 xfce_rc_get_group
 xfce_rc_get_groups
 xfce_rc_get_locale
-xfce_rc_get_type attr:G_GNUC_CONST
+xfce_rc_get_type
 xfce_rc_has_entry
 xfce_rc_has_group
 xfce_rc_is_dirty
@@ -112,7 +112,7 @@ xfce_systemd_can_power_off
 xfce_systemd_can_reboot
 xfce_systemd_can_suspend
 xfce_systemd_get
-xfce_systemd_get_type attr:G_GNUC_CONST
+xfce_systemd_get_type
 xfce_systemd_hibernate
 xfce_systemd_hybrid_sleep
 xfce_systemd_power_off
