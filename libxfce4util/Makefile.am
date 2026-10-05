@@ -7,6 +7,7 @@ AM_CPPFLAGS =								\
 	-DDEFAULT_XDG_CACHE_HOME=\"~/.cache\"				\
 	-DDEFAULT_XDG_DATA_HOME=\"~/.local/share\"			\
 	-DDEFAULT_XDG_CONFIG_HOME=\"~/.config\"				\
+	-DDEFAULT_XDG_STATE_HOME=\"~/.local/state\"			\
 	-DDEFAULT_XDG_DATA_DIRS=\"$(datadir):/usr/local/share:/usr/share\" \
 	-DDEFAULT_XDG_CONFIG_DIRS=\"$(sysconfdir)/xdg:$(sysconfdir)/xfce4:/etc/xdg\" \
 	-DDATADIR=\"$(datadir)\"					\
