@@ -78,6 +78,7 @@ util_extra_args = [
   '-DDEFAULT_XDG_CACHE_HOME="~/.cache"',
   '-DDEFAULT_XDG_DATA_HOME="~/.local/share"',
   '-DDEFAULT_XDG_CONFIG_HOME="~/.config"',
+  '-DDEFAULT_XDG_STATE_HOME="~/.local/state"',
   '-DDEFAULT_XDG_DATA_DIRS="@0@:/usr/local/share:/usr/share"'.format(datadir),
   '-DDEFAULT_XDG_CONFIG_DIRS="@0@/xdg:@0@/xfce4:/etc/xdg"'.format(sysconfdir),
   '-DKIOSKDIR="@0@/xdg/xfce4/kiosk"'.format(sysconfdir),

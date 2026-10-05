@@ -50,12 +50,12 @@
 
 
 
-#define TYPE_VALID(t) ((gint) (t) >= XFCE_RESOURCE_DATA && (t) <= XFCE_RESOURCE_THEMES)
+#define TYPE_VALID(t) ((gint) (t) >= XFCE_RESOURCE_DATA && (t) < N_XFCE_RESOURCES)
 
 
 
-static gchar *_save[5] = { NULL, NULL, NULL, NULL, NULL };
-static GSList *_list[5] = { NULL, NULL, NULL, NULL, NULL };
+static gchar *_save[N_XFCE_RESOURCES];
+static GSList *_list[N_XFCE_RESOURCES];
 static gboolean _inited = FALSE;
 
 
@@ -216,6 +216,17 @@ _res_init (void)
   _list[XFCE_RESOURCE_CONFIG] = g_slist_prepend (_list[XFCE_RESOURCE_CONFIG], g_strdup (dir));
 
   /*
+   * State home
+   */
+  dir = _res_getenv ("XDG_STATE_HOME", DEFAULT_XDG_STATE_HOME);
+  if (!xfce_mkdirhier (dir, 0700, NULL))
+    {
+      g_warning ("Invalid XDG_STATE_HOME directory `%s', program may behave incorrectly.", dir);
+    }
+  _save[XFCE_RESOURCE_STATE] = g_strdup (dir);
+  _list[XFCE_RESOURCE_STATE] = g_slist_prepend (_list[XFCE_RESOURCE_STATE], g_strdup (dir));
+
+  /*
    * Data dirs
    */
   dirs = _res_getenv ("XDG_DATA_DIRS", DEFAULT_XDG_DATA_DIRS);
@@ -277,6 +288,7 @@ _res_init (void)
   REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_CACHE);
   REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_ICONS);
   REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_THEMES);
+  REMOVE_TRAILING_SLASHES (XFCE_RESOURCE_STATE);
 #undef REMOVE_TRAILING_SLASHES
 
   /* remove duplicates from the lists */
@@ -289,6 +301,7 @@ _res_init (void)
   REMOVE_DUPLICATES (XFCE_RESOURCE_CACHE);
   REMOVE_DUPLICATES (XFCE_RESOURCE_ICONS);
   REMOVE_DUPLICATES (XFCE_RESOURCE_THEMES);
+  REMOVE_DUPLICATES (XFCE_RESOURCE_STATE);
 #undef REMOVE_DUPLICATES
 }
 
