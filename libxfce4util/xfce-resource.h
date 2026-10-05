@@ -35,6 +35,7 @@ G_BEGIN_DECLS
  * @XFCE_RESOURCE_CACHE  : cached information.
  * @XFCE_RESOURCE_ICONS  : icon search path.
  * @XFCE_RESOURCE_THEMES : themes search path.
+ * @XFCE_RESOURCE_STATE  : where applications store state.
  **/
 typedef enum /*< prefix=XFCE_RESOURCE_ >*/
 {
@@ -43,6 +44,7 @@ typedef enum /*< prefix=XFCE_RESOURCE_ >*/
   XFCE_RESOURCE_CACHE = 2,
   XFCE_RESOURCE_ICONS = 3,
   XFCE_RESOURCE_THEMES = 4,
+  XFCE_RESOURCE_STATE = 5,
 } XfceResourceType;
 
 /**
