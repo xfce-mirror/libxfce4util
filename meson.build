@@ -1,7 +1,7 @@
 project(
   'libxfce4util',
   'c',
-version : '4.20.1-dev',
+version : '4.21.0',
   license : 'GPL-2.0-or-later',
   meson_version : '>= 0.56.0',
   default_options : ['c_std=gnu11', 'buildtype=debugoptimized', 'warning_level=2']
@@ -14,7 +14,7 @@ sysconfdir = get_option('prefix') / get_option('sysconfdir')
 datadir = get_option('prefix') / get_option('datadir')
 pkgdatadir = get_option('prefix') / get_option('datadir') / meson.project_name()
 localedir = get_option('prefix') / get_option('localedir')
-copyright_year = '2025'
+copyright_year = '2026'
 
 cc = meson.get_compiler('c')
 pkgconfig = import('pkgconfig')

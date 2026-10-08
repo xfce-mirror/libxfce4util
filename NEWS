@@ -1,3 +1,32 @@
+4.21.0 (2026-10-08)
+======
+- Update README after switchover to meson
+- Remove autotools build
+- Support XDG_STATE_HOME in xfce_resource_*()
+- Remove G_GNUC_CONST
+- gobject-linter: Fix use_g_steal_pointer
+- gobject-linter: Fix unnecessary_null_check
+- gobject-linter: Fix missing_g_begin_decls
+- gobject-linter: Fix use_clear_functions
+- gobject-linter: Fix matching_declare_define
+- Fix -Wdiscarded-qualifiers compiler warning
+- cppcheck: Fix knownConditionTrueFalse
+- cppcheck: Fix allocaCalled
+- Remove include guards from private headers
+- cppcheck: Fix unsignedLessThanZero
+- scan-build: Update false positive file after clang version bump
+- systemd: Add *_with_flags methods
+- I18n: Update po/LINGUAS list
+- I18n: Update po/LINGUAS list
+- build: Fix typo in optimization level
+- I18n: Update po/LINGUAS list
+- autotools-build: Add *-docs.xml.in to EXTRA_DIST
+- Revert "Update README after switchover to meson"
+- Update README after switchover to meson
+- meson-build: Use configure_file() to generate GNU visibility files
+- Translation Updates:
+  Esperanto, Georgian, Lao, Occitan (post 1500), Slovenian, Vietnamese
+
 4.20.1 (2025-03-23)
 ======
 - autotools-build: Search for xdt-gen-visibility also in the working 
