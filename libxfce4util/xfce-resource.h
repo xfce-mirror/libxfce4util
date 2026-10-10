@@ -45,8 +45,11 @@ typedef enum /*< prefix=XFCE_RESOURCE_ >*/
   XFCE_RESOURCE_ICONS = 3,
   XFCE_RESOURCE_THEMES = 4,
   XFCE_RESOURCE_STATE = 5,
-  N_XFCE_RESOURCES,
+  XFCE_RESOURCE_N_RESOURCES,
 } XfceResourceType;
+
+/* keep prefix above so it doesn't break vala binding */
+#define N_XFCE_RESOURCES XFCE_RESOURCE_N_RESOURCES
 
 /**
  * XfceMatchFunc:
