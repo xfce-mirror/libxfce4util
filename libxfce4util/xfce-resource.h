@@ -45,7 +45,10 @@ typedef enum /*< prefix=XFCE_RESOURCE_ >*/
   XFCE_RESOURCE_ICONS = 3,
   XFCE_RESOURCE_THEMES = 4,
   XFCE_RESOURCE_STATE = 5,
+#ifndef __GI_SCANNER__
+  /* do not break gi scan due to missing prefix */
   N_XFCE_RESOURCES,
+#endif
 } XfceResourceType;
 
 /**
