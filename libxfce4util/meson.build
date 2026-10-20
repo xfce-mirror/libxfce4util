@@ -149,6 +149,9 @@ if get_option('introspection')
     extra_args: [
       '-DLIBXFCE4UTIL_COMPILATION=1',
     ],
+    # we can't avoid all warnings, and they might implicitly become fatal otherwise
+    # see https://gitlab.xfce.org/xfce/libxfce4util/-/work_items/34
+    fatal_warnings: false,
   )
 
   if generate_vala
