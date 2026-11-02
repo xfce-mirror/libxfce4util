@@ -457,7 +457,7 @@ continue_without_increase:
       buf = g_string_append_c (buf, *p);
     }
 
-  return g_string_free (buf, FALSE);
+  return g_string_free_and_steal (buf);
 }
 
 
@@ -593,7 +593,7 @@ xfce_expand_desktop_entry_field_codes (const gchar *command,
         }
     }
 
-  return g_string_free (string, FALSE);
+  return g_string_free_and_steal (string);
 }
 
 
@@ -658,7 +658,7 @@ xfce_unescape_desktop_entry_value (const gchar *value)
         }
     }
 
-  return g_string_free (string, FALSE);
+  return g_string_free_and_steal (string);
 }
 
 #define __XFCE_MISCUTILS_C__

@@ -99,7 +99,7 @@ xfce_str_replace (const gchar *str,
       g_string_append_c (result, *str++);
     }
 
-  return g_string_free (result, FALSE);
+  return g_string_free_and_steal (result);
 }
 
 
