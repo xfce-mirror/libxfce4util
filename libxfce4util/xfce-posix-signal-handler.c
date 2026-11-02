@@ -174,10 +174,8 @@ xfce_posix_signal_handler_shutdown (void)
   g_clear_pointer (&__signal_io, g_io_channel_unref);
   g_clear_pointer (&__handlers, g_hash_table_destroy);
 
-  close (SIGNAL_PIPE_READ);
-  SIGNAL_PIPE_READ = -1;
-  close (SIGNAL_PIPE_WRITE);
-  SIGNAL_PIPE_WRITE = -1;
+  g_clear_fd (&SIGNAL_PIPE_READ, NULL);
+  g_clear_fd (&SIGNAL_PIPE_WRITE, NULL);
 
   __inited = FALSE;
 }
