@@ -22,8 +22,8 @@ gnome = import('gnome')
 i18n = import('i18n')
 
 dependency_versions = {
-  'gir': '>= 1.72.0',
-  'glib': '>= 2.72.0',
+  'gir': '>= 1.80.1',
+  'glib': '>= 2.80.0',
 }
 
 glib = dependency('glib-2.0', version: dependency_versions['glib'])
