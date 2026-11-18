@@ -427,6 +427,31 @@ xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
 
 
 /**
+ * xfce_systemd_suspend_then_hibernate:
+ * @systemd: the #XfceSystemd object
+ * @polkit_interactive: whether PolicyKit should ask the user to authenticate if needed
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger SuspendThenHibernate.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.19.1
+ **/
+gboolean
+xfce_systemd_suspend_then_hibernate (XfceSystemd *systemd,
+                                     gboolean polkit_interactive,
+                                     GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method (systemd, "SuspendThenHibernate", polkit_interactive, error);
+}
+
+
+
+/**
  * xfce_systemd_reboot_with_flags:
  * @systemd: the #XfceSystemd object
  * @flags: #XfceSystemdFlags to be passed to the D-Bus request
@@ -547,6 +572,31 @@ xfce_systemd_hybrid_sleep_with_flags (XfceSystemd *systemd,
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   return xfce_systemd_method_with_flags (systemd, "HybridSleepWithFlags", flags, error);
+}
+
+
+
+/**
+ * xfce_systemd_suspend_then_hibernate_with_flags:
+ * @systemd: the #XfceSystemd object
+ * @flags: #XfceSystemdFlags to be passed to the D-Bus request
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Ask systemd to trigger SuspendThenHibernate with `SD_LOGIND_*` flags.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.20.2
+ **/
+gboolean
+xfce_systemd_suspend_then_hibernate_with_flags (XfceSystemd *systemd,
+                                                XfceSystemdFlags flags,
+                                                GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_method_with_flags (systemd, "SuspendThenHibernateWithFlags", flags, error);
 }
 
 
@@ -682,6 +732,33 @@ xfce_systemd_can_hybrid_sleep (XfceSystemd *systemd,
   g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
 
   return xfce_systemd_can_method (systemd, can_hybrid_sleep, auth_hybrid_sleep, "CanHybridSleep", error);
+}
+
+
+
+/**
+ * xfce_systemd_can_suspend_then_hibernate:
+ * @systemd: the #XfceSystemd object
+ * @can_suspend_then_hibernate: (out) (nullable): location to store capacity or %NULL
+ * @auth_suspend_then_hibernate: (out) (nullable): location to store authorization or %NULL
+ * @error: (out) (nullable): location to store error on failure or %NULL
+ *
+ * Check whether systemd can trigger and has authorization for SuspendThenHibernate.
+ *
+ * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
+ *
+ * Since: 4.19.1
+ **/
+gboolean
+xfce_systemd_can_suspend_then_hibernate (XfceSystemd *systemd,
+                                         gboolean *can_suspend_then_hibernate,
+                                         gboolean *auth_suspend_then_hibernate,
+                                         GError **error)
+{
+  g_return_val_if_fail (XFCE_IS_SYSTEMD (systemd), FALSE);
+  g_return_val_if_fail (error == NULL || *error == NULL, FALSE);
+
+  return xfce_systemd_can_method (systemd, can_suspend_then_hibernate, auth_suspend_then_hibernate, "CanSuspendThenHibernate", error);
 }
 
 #define __XFCE_SYSTEMD_C__
