@@ -1,30 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR Xfce
+# This file is distributed under the same license as the libxfce4util.master package.
 # 
 # Translators:
 # Rihards Priedītis <rprieditis@gmail.com>, 2009
+# Rihards Priedītis <rprieditis@gmail.com>, 2007,2009,2026
 # Rihards Prieditis <rprieditis@inbox.lv>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: Libxfce4util\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 22:35+0200\n"
-"PO-Revision-Date: 2017-09-19 18:02+0000\n"
-"Last-Translator: Nick Schermer <nick@xfce.org>\n"
-"Language-Team: Latvian (http://www.transifex.com/xfce/libxfce4util/language/lv/)\n"
+"Report-Msgid-Bugs-To: https://gitlab.xfce.org/\n"
+"POT-Creation-Date: 2023-05-30 00:46+0200\n"
+"PO-Revision-Date: 2013-07-02 20:35+0000\n"
+"Last-Translator: Rihards Priedītis <rprieditis@gmail.com>, 2007,2009,2026\n"
+"Language-Team: Latvian (http://app.transifex.com/xfce/libxfce4util/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: ../libxfce4util/xfce-fileutils.c:153
+#: libxfce4util/xfce-fileutils.c:162
 #, c-format
 msgid "Error creating directory '%s': %s"
-msgstr "Kļūda veidojot direktoriju '%s': %s"
+msgstr "Kļūda, veidojot direktoriju „%s”: %s"
 
-#: ../libxfce4util/xfce-license.c:37
+#: libxfce4util/xfce-license.c:43
 msgid ""
 " Redistribution and use in source and binary forms, with or without\n"
 " modification, are permitted provided that the following conditions\n"
@@ -46,9 +47,9 @@ msgid ""
 " THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n"
 " (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\n"
 " THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n"
-msgstr " Izplatīšana un izmantošana pirmkoda un binārajā\n formā  ar vai bez  modifikācijām, ir atļauta, ja tiek\n ievēroti šie nosacījumi:\n\n 1. Pirmkoda izplatīšanā jāsaglabā augšējie autortiesību\n    nosacījumi, šis nosacījumu saraksts and turpmākā atteikšanās.\n 2. Binārās formas izplatīšanā, jāpievieno dokumentācijā un/vai citos\n     izplatīšanai pievienotajos materiālos, augstāk esošie autortiesību\n    nosacījumi, šis nosacījumu saraksts un turpmāk minēta atteikšanās.\n\nŠO PROGRAMMATŪRU AUTORS NODROŠINA, \"KĀ IR\" UN JEBKĀDAS IZTEIKTĀS\nVAI NORĀDĪTĀS GARANTIJAS, IESKAITOT, BET NE TIKAI, NORĀDĪTAJĀM TIRDZNIECĪBAS\nGARANTIJĀM UN DERĪGUMAM KONKRĒTAM MĒRĶIM IR ATTEIKTA.\nZEM NE VIENA NOTIKUMA, AUTORS NETIKS UZSKATĪTS PAR ATBILDĪGU, PAR JEBKĀDU TIEŠU,\nNETIEŠU, NEJAUŠU, ĪPAŠU, PARAUGA, VAI SEKOJOŠIEM ZAUDĒJUMIEM (IESKAITOT, BET\nNE IEROBEŽOJOŠIEM, PREČU VAI PAKALPOJUMU AIZVIETOŠANAS PAKALPOJUMIEM; IZMANTOŠANAS,\nDATU, IENĀKUMU PAZAUDĒŠANAS; VAI BIZNESA PĀRTRAUKUMIEM) JEBKĀDĀ VEIDĀ RADĪTAJIEM\nUN JEBKĀDAS ATBILDĪBAS: ZEM KONTRAKTA, NOTEIKTĀS ATBILDĪBAS, VAI CIVILTIESĪBAS ATBILDĪBAS \n(IESKAITOT NOLAIDĪBA VAI CITĀDAS), KAS RADUSIES JEBKĀDĀ VEIDĀ IZMANTOJOT ŠO\nPROGRAMMATŪRU, PAT JA APZINĀTS PAR IESPĒJAMU ZAUDĒJUMU IESPĒJAMĪBU.\n"
+msgstr " Izplatīšana un izmantošana pirmkoda un binārā formā, ar izmaiņām\n vai bez tām, ir atļauta, ja tiek izpildīti šādi nosacījumi:\n\n 1. Izplatot pirmkodu, jāsaglabā iepriekš minētais autortiesību\n    paziņojums, šis nosacījumu saraksts un turpmākā atruna.\n 2. Izplatot bināro formu, iepriekš minētais autortiesību paziņojums,\n    šis nosacījumu saraksts un turpmākā atruna jāatveido dokumentācijā\n    un/vai citos materiālos, kas tiek izplatīti kopā ar to.\n\n AUTORS NODROŠINA ŠO PROGRAMMATŪRU „TĀDU, KĀDA TĀ IR”, UN JEBKĀDAS TIEŠAS\n VAI NETIEŠAS GARANTIJAS, TOSTARP, BET NE TIKAI, NETIEŠĀS GARANTIJAS\n PAR PĀRDODAMĪBU UN PIEMĒROTĪBU KONKRĒTAM MĒRĶIM, TIEK NOLIEGTAS.\n AUTORS NEKĀDĀ GADĪJUMĀ NAV ATBILDĪGS PAR JEBKĀDIEM TIEŠIEM, NETIEŠIEM,\n NEJAUŠIEM, ĪPAŠIEM, SODA VAI IZRIETOŠIEM ZAUDĒJUMIEM (TOSTARP, BET\n NE TIKAI, AIZSTĀJĒJPRECES VAI -PAKALPOJUMU IEGĀDI; LIETOŠANAS IESPĒJU,\n DATU VAI PEĻŅAS ZAUDĒJUMU VAI DARBĪBAS PĀRTRAUKUMU), NEATKARĪGI NO TO\n CĒLOŅA UN ATBILDĪBAS PAMATA — LĪGUMA, STINGRAS ATBILDĪBAS VAI DELIKTA\n (TOSTARP NOLAIDĪBAS VAI CITĀDI) —, KAS JEBKĀDĀ VEIDĀ RODAS ŠĪS\n PROGRAMMATŪRAS LIETOŠANAS DĒĻ, PAT JA PAR ŠĀDU ZAUDĒJUMU IESPĒJAMĪBU\n IR BRĪDINĀTS.\n"
 
-#: ../libxfce4util/xfce-license.c:66
+#: libxfce4util/xfce-license.c:72
 msgid ""
 "This program is free software; you can redistribute it and/or modify it\n"
 "under the terms of the GNU General Public License as published by the Free\n"
@@ -63,9 +64,9 @@ msgid ""
 "You should have received a copy of the GNU General Public License along with\n"
 "this program; if not, write to the Free Software Foundation, Inc., 51 Franklin\n"
 "Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
-msgstr "Šī programma ir brīvā programmatūra; jūs varat izplatīt to un/vai modificēt to\nzem GNU General Public License nosacījumiem, kurus publicējusi Free\nSoftware Foundation; gan zem licences otrās versijas, vai zem (pēc jūsu\nslēdziena) jebkuras vēlākas.\n\nŠī programma tiek izplatīta cerībā, ka būs noderīga, bet bez JEBKĀDAS\nGARANTIJAS; pat bez norādītās TIRGOŠANAS garantijas vai\nDERĪGUMA MĒRĶIM. Apskatiet GNU General Public Licence, ja vēlaties\niegūt vairāk informācijas.\n\nJums vajadzētu saņemt GNU General Public Licence kopā ar\nšo programmu; ja nav, tad rakstiet uz Free Software Foundation, Inc., 59 Temple\nPlace, Suite 330, Boston, MA 02111-1307 USA.\n"
+msgstr "Šī programma ir brīvā programmatūra; jūs varat to izplatīt un/vai mainīt\nsaskaņā ar GNU Vispārējās publiskās licences noteikumiem, kā tos publicējis\nBrīvās programmatūras fonds (Free Software Foundation), — licences 2. versiju\nvai (pēc jūsu izvēles) jebkuru vēlāku versiju.\n\nŠī programma tiek izplatīta cerībā, ka tā būs noderīga, taču BEZ JEBKĀDAS\nGARANTIJAS, pat bez netiešas garantijas par PĀRDODAMĪBU vai PIEMĒROTĪBU\nKONKRĒTAM MĒRĶIM. Sīkāk skatiet GNU Vispārējo publisko licenci.\n\nJums kopā ar šo programmu vajadzēja saņemt GNU Vispārējās publiskās licences\nkopiju; ja tā nav saņemta, rakstiet Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA.\n"
 
-#: ../libxfce4util/xfce-license.c:88
+#: libxfce4util/xfce-license.c:94
 msgid ""
 "This library is free software; you can redistribute it and/or\n"
 "modify it under the terms of the GNU Library General Public\n"
@@ -81,19 +82,18 @@ msgid ""
 "License along with this library; if not, write to the \n"
 "Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, \n"
 "Boston, MA 02110-1301  USA.\n"
-msgstr "Šī bibliotēka ir brīvā programmatūra; jūs varat izplatīt to un/vai modificēt to\nzem GNU General Public License nosacījumiem, kurus publicējusi Free\nSoftware Foundation; gan zem licences otrās versijas, vai zem (pēc jūsu\nslēdziena) jebkuras vēlākas.\n\nŠī bibliotēka tiek izplatīta cerībā, ka būs noderīga, bet bez JEBKĀDAS\nGARANTIJAS; pat bez norādītās TIRGOŠANAS garantijas vai\nDERĪGUMA MĒRĶIM. Apskatiet GNU General Public Licence, ja vēlaties\niegūt vairāk informācijas.\n\nJums vajadzētu saņemt GNU General Public Licence kopā ar\nšo programmu; ja nav, tad rakstiet uz Free Software Foundation, Inc., 59 Temple\nPlace, Suite 330, Boston, MA 02111-1307 USA.\n"
+msgstr "Šī bibliotēka ir brīvā programmatūra; jūs varat to izplatīt un/vai\nmainīt saskaņā ar GNU Bibliotēku vispārējās publiskās licences\nnoteikumiem, kā tos publicējis Brīvās programmatūras fonds (Free\nSoftware Foundation), — licences 2. versiju vai (pēc jūsu izvēles)\njebkuru vēlāku versiju.\n\nŠī bibliotēka tiek izplatīta cerībā, ka tā būs noderīga,\ntaču BEZ JEBKĀDAS GARANTIJAS, pat bez netiešas garantijas par\nPĀRDODAMĪBU vai PIEMĒROTĪBU KONKRĒTAM MĒRĶIM. Sīkāk skatiet GNU\nBibliotēku vispārējo publisko licenci.\n\nJums kopā ar šo bibliotēku vajadzēja saņemt GNU Bibliotēku\nvispārējās publiskās licences kopiju; ja tā nav saņemta, rakstiet\nFree Software Foundation, Inc., 51 Franklin Street, Fifth Floor,\nBoston, MA 02110-1301  USA.\n"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:132
+#: libxfce4util/xfce-posix-signal-handler.c:145
 #, c-format
 msgid "pipe() failed: %s"
 msgstr "pipe() neizdevās: %s"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:205
-#, c-format
+#: libxfce4util/xfce-posix-signal-handler.c:218
 msgid "xfce_posix_signal_handler_init() must be called first"
-msgstr "pirmais ir jāizsauc xfce_posix_signal_handler_init()"
+msgstr "Vispirms jāizsauc xfce_posix_signal_handler_init()"
 
-#: ../libxfce4util/xfce-posix-signal-handler.c:231
+#: libxfce4util/xfce-posix-signal-handler.c:244
 #, c-format
 msgid "sigaction() failed: %s\n"
 msgstr "sigaction() neizdevās: %s\n"
