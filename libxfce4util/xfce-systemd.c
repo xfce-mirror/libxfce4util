@@ -436,7 +436,7 @@ xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
- * Since: 4.19.1
+ * Since: 4.21.1
  **/
 gboolean
 xfce_systemd_suspend_then_hibernate (XfceSystemd *systemd,
@@ -586,7 +586,7 @@ xfce_systemd_hybrid_sleep_with_flags (XfceSystemd *systemd,
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
- * Since: 4.20.2
+ * Since: 4.21.1
  **/
 gboolean
 xfce_systemd_suspend_then_hibernate_with_flags (XfceSystemd *systemd,
@@ -747,7 +747,7 @@ xfce_systemd_can_hybrid_sleep (XfceSystemd *systemd,
  *
  * Returns: %TRUE if the D-Bus request was successful, %FALSE otherwise and @error is set.
  *
- * Since: 4.19.1
+ * Since: 4.21.1
  **/
 gboolean
 xfce_systemd_can_suspend_then_hibernate (XfceSystemd *systemd,
