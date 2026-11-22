@@ -111,6 +111,7 @@ xfce_systemd_can_hybrid_sleep
 xfce_systemd_can_power_off
 xfce_systemd_can_reboot
 xfce_systemd_can_suspend
+xfce_systemd_can_suspend_then_hibernate
 xfce_systemd_get
 xfce_systemd_get_type
 xfce_systemd_hibernate
@@ -118,11 +119,13 @@ xfce_systemd_hybrid_sleep
 xfce_systemd_power_off
 xfce_systemd_reboot
 xfce_systemd_suspend
+xfce_systemd_suspend_then_hibernate
 xfce_systemd_reboot_with_flags
 xfce_systemd_power_off_with_flags
 xfce_systemd_suspend_with_flags
 xfce_systemd_hibernate_with_flags
 xfce_systemd_hybrid_sleep_with_flags
+xfce_systemd_suspend_then_hibernate_with_flags
 
 # file:xfce-utf8
 xfce_utf8_remove_controls

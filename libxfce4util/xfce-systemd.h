@@ -77,6 +77,11 @@ xfce_systemd_hybrid_sleep (XfceSystemd *systemd,
                            GError **error);
 
 gboolean
+xfce_systemd_suspend_then_hibernate (XfceSystemd *systemd,
+                                     gboolean polkit_interactive,
+                                     GError **error);
+
+gboolean
 xfce_systemd_reboot_with_flags (XfceSystemd *systemd,
                                 XfceSystemdFlags flags,
                                 GError **error);
@@ -100,6 +105,11 @@ gboolean
 xfce_systemd_hybrid_sleep_with_flags (XfceSystemd *systemd,
                                       XfceSystemdFlags flags,
                                       GError **error);
+
+gboolean
+xfce_systemd_suspend_then_hibernate_with_flags (XfceSystemd *systemd,
+                                                XfceSystemdFlags flags,
+                                                GError **error);
 
 gboolean
 xfce_systemd_can_reboot (XfceSystemd *systemd,
@@ -130,6 +140,12 @@ xfce_systemd_can_hybrid_sleep (XfceSystemd *systemd,
                                gboolean *can_hybrid_sleep,
                                gboolean *auth_hybrid_sleep,
                                GError **error);
+
+gboolean
+xfce_systemd_can_suspend_then_hibernate (XfceSystemd *systemd,
+                                         gboolean *can_suspend_then_hibernate,
+                                         gboolean *auth_suspend_then_hibernate,
+                                         GError **error);
 
 G_END_DECLS
 
