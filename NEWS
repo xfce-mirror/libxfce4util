@@ -1,3 +1,15 @@
+4.21.1 (2026-11-23)
+======
+- systemd: Add wrappers for SuspendThenHibernate
+- I18n: Update po/LINGUAS list
+- gobject-linter: Fix use_clear_functions
+- gobject-linter: Fix use_g_string_free_and_steal
+- build: Bump requirements for Xfce 4.22
+- build: Explicitly set gi warnings non-fatal
+- Do not break gi scan due to missing prefix
+- Translation Updates:
+  Latin, Latvian
+
 4.21.0 (2026-10-08)
 ======
 - Update README after switchover to meson
